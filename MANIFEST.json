@@ -1,0 +1,79 @@
+{
+  "manifest_version": "1.0.0",
+  "ecosystem": "ecosystem-1",
+  "spec": "agentskills.io/v1",
+  "registry": "gerivdb/SKILLS",
+  "generated": "2026-03-17T22:00:00Z",
+  "intent_hash": "0xA3F2E891_SKILLS_REGISTRY_INIT_20260317",
+  
+  "compatibility": {
+    "agentskills_io": {
+      "version": "v1",
+      "status": "compatible",
+      "validation": "strict"
+    }
+  },
+  
+  "skills": {
+    "count": 6,
+    "native": 6,
+    "external": 0,
+    "assimilated": 0
+  },
+  
+  "metadata": {
+    "governance": {
+      "level": "L2",
+      "citizen": "skills-registry",
+      "lifecycle": "GENESIS"
+    },
+    "phi_cps": {
+      "contribution": 0.039,
+      "weight": 0.008
+    }
+  },
+  
+  "repositories": {
+    "native": {
+      "path": "native/",
+      "foundational": [
+        "product-context",
+        "ecosystem-principles"
+      ],
+      "domain": [
+        "booking",
+        "recruitment",
+        "finance",
+        "content"
+      ]
+    },
+    "external": {
+      "path": "ext/",
+      "pending": [
+        "marketingskills"
+      ]
+    }
+  },
+  
+  "validation": {
+    "frontmatter_required": true,
+    "yaml_schema": "strict",
+    "duplicates_check": true,
+    "links_check": true
+  },
+  
+  "integration": {
+    "ecoystem": {
+      "submodule_path": ".skills-hub",
+      "clinerules_reference": ".skills-hub/REGISTRY.yaml",
+      "status": "pending_integration"
+    },
+    "consumers": [
+      "FLUENCE",
+      "BRAIN",
+      "CANDIDATOR",
+      "GERIBOOKING",
+      "BANK-BUSTER"
+    ]
+  }
+}

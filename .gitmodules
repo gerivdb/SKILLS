@@ -1,0 +1,16 @@
+# Git Modules Configuration
+# SKILLS Registry - External Dependencies
+# IntentHash: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
+
+[submodule "ext/marketingskills"]
+	path = ext/marketingskills
+	url = https://github.com/coreyhaines31/marketingskills.git
+	branch = main
+	status = pending
+	license = MIT
+
+# Notes:
+# - Submodules are READ-ONLY
+# - Do not modify submodule content directly
+# - Use 'git submodule update --remote --merge' to sync
+# - All submodule changes must be tracked via ASSIMILATION.md

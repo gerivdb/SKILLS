@@ -1,0 +1,181 @@
+# SKILLS Registry — Index Canonical
+# Generated: 2026-03-17
+# Version: 1.0.0
+# IntentHash: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
+
+registry:
+  version: "1.0.0"
+  ecosystem: "ecosystem-1"
+  last_updated: "2026-03-17"
+  total_skills: 6
+
+skills:
+  # ========================================
+  # FOUNDATIONAL SKILLS
+  # ========================================
+
+  - name: product-context
+    description: Contextualisation produit et audience pour适配 рынка
+    type: foundational
+    triggers:
+      - product-context
+      - audience
+      - market-fit
+      - positionnement
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-17"
+    updated: "2026-03-17"
+    phi_weight: 0.005
+    path: native/foundational/product-context/SKILL.md
+    source: native
+    assimilation_status: N/A
+
+  - name: ecosystem-principles
+    description: Principes architecturaux ONTOLOGY, DRY, KISS, φ-CPS
+    type: foundational
+    triggers:
+      - ontology
+      - dry
+      - kiss
+      - phi-cps
+      - principles
+      - architecture
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-17"
+    updated: "2026-03-17"
+    phi_weight: 0.005
+    path: native/foundational/ecosystem-principles/SKILL.md
+    source: native
+    assimilation_status: N/A
+
+  # ========================================
+  # DOMAIN SKILLS
+  # ========================================
+
+  - name: booking
+    description: Orchestration des réservations et planification
+    type: domain
+    triggers:
+      - booking
+      - reservation
+      - scheduling
+      - calendar
+    domain: booking
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-17"
+    updated: "2026-03-17"
+    phi_weight: 0.005
+    path: native/domain/booking/SKILL.md
+    source: native
+    consumes_from:
+      - product-context
+    provides_to:
+      - GERIBOOKING
+
+  - name: recruitment
+    description: Matching candidats et analyse de profil
+    type: domain
+    triggers:
+      - recruitment
+      - candidate
+      - matching
+      - hiring
+    domain: recruitment
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-17"
+    updated: "2026-03-17"
+    phi_weight: 0.005
+    path: native/domain/recruitment/SKILL.md
+    source: native
+    consumes_from:
+      - product-context
+    provides_to:
+      - CANDIDATOR
+
+  - name: finance
+    description: Analyse financière et banking
+    type: domain
+    triggers:
+      - finance
+      - banking
+      - analysis
+      - transactions
+    domain: finance
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-17"
+    updated: "2026-03-17"
+    phi_weight: 0.005
+    path: native/domain/finance/SKILL.md
+    source: native
+    consumes_from:
+      - ecosystem-principles
+    provides_to:
+      - BANK-BUSTER
+
+  - name: content
+    description: Génération de contenu intelligent
+    type: domain
+    triggers:
+      - content
+      - generation
+      - writing
+      -文案
+    domain: content
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-17"
+    updated: "2026-03-17"
+    phi_weight: 0.005
+    path: native/domain/content/SKILL.md
+    source: native
+    consumes_from:
+      - product-context
+      - ecosystem-principles
+    provides_to:
+      - FLUENCE
+      - BRAIN
+
+# ========================================
+# EXTERNAL SKILLS (Pending Assimilation)
+# ========================================
+
+external_pending:
+  - name: marketingskills
+    description: Compétences marketing externalisées
+    source_repo: coreyhaines31/marketingskills
+    license: MIT
+    status: pending_assimilation
+    assimilation_target: "2026-Q2"
+    skills_count: 8
+    path: ext/marketingskills/
+    notes: Submodule en attente de configuration
+
+# ========================================
+# METADATA
+# ========================================
+
+metadata:
+  phi_cps_contribution: 0.039
+  governance_level: L2
+  citizen: skills-registry
+  lifecycle: GENESIS
+  next_review: "2026-06-17"

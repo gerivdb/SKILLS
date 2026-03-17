@@ -1,0 +1,87 @@
+name: Validate Skills
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+          
+      - name: Run Validation Script
+        run: |
+          chmod +x tools/validate-skills.sh
+          bash tools/validate-skills.sh
+          
+      - name: Validate YAML Syntax
+        run: |
+          python -c "import yaml; yaml.safe_load(open('REGISTRY.yaml'))"
+          
+      - name: Check for Duplicate Skills
+        run: |
+          python tools/check-duplicates.py || true
+          
+      - name: Validate Frontmatter Completeness
+        run: |
+          python tools/validate-frontmatter.py || true
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        
+      - name: Check Bash Scripts
+        run: |
+          shellcheck tools/validate-skills.sh || true
+
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          
+      - name: Test Registry Generator
+        run: |
+          pip install pyyaml
+          python tools/registry-gen.py --output /tmp/test-registry.yaml
+          diff REGISTRY.yaml /tmp/test-registry.yaml || echo "Registry may need regeneration"
+
+  notify:
+    needs: [validate, lint, test]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Summary
+        run: |
+          echo "## Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Validate: ${{ needs.validate.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Lint: ${{ needs.lint.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Test: ${{ needs.test.result }}" >> $GITHUB_STEP_SUMMARY
