@@ -1,13 +1,14 @@
 # SKILLS Registry — Index Canonical
-# Generated: 2026-03-17
-# Version: 1.0.0
-# IntentHash: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
+# Generated: 2026-03-25
+# Version: 1.0.1
+# IntentHash: 0xB7C4D902_GRILL_ME_DESIGN_VALIDATION_20260325
+# Previous: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
 
 registry:
-  version: "1.0.0"
+  version: "1.0.1"
   ecosystem: "ecosystem-1"
-  last_updated: "2026-03-17"
-  total_skills: 6
+  last_updated: "2026-03-25"
+  total_skills: 7
 
 skills:
   # ========================================
@@ -15,7 +16,7 @@ skills:
   # ========================================
 
   - name: product-context
-    description: Contextualisation produit et audience pour适配 рынка
+    description: Contextualisation produit et audience pour adaptation marché
     type: foundational
     triggers:
       - product-context
@@ -55,6 +56,37 @@ skills:
     path: native/foundational/ecosystem-principles/SKILL.md
     source: native
     assimilation_status: N/A
+
+  - name: design-validation
+    description: Interview socratique relentless sur tout plan ou design jusqu'à résolution complète de chaque branche de l'arbre de décisions
+    type: foundational
+    triggers:
+      - grill-me
+      - stress-test
+      - design-review
+      - validate-plan
+      - challenge
+      - interview-design
+      - decision-tree
+      - validate-architecture
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-25"
+    updated: "2026-03-25"
+    phi_weight: 0.007
+    path: native/foundational/design-validation/SKILL.md
+    source: native
+    assimilation_status: N/A
+    consumes_from:
+      - ecosystem-principles
+    provides_to:
+      - BRAIN
+      - FLUENCE
+      - CANDIDATOR
+      - ECOYSTEM
 
   # ========================================
   # DOMAIN SKILLS
@@ -136,7 +168,6 @@ skills:
       - content
       - generation
       - writing
-      -文案
     domain: content
     version: "1.0.0"
     author: gerivdb
@@ -174,8 +205,17 @@ external_pending:
 # ========================================
 
 metadata:
-  phi_cps_contribution: 0.039
+  phi_cps_contribution: 0.046
   governance_level: L2
   citizen: skills-registry
-  lifecycle: GENESIS
-  next_review: "2026-06-17"
+  lifecycle: ACTIVE
+  next_review: "2026-06-25"
+  changelog:
+    - version: "1.0.1"
+      date: "2026-03-25"
+      change: "Add design-validation foundational skill (grill-me)"
+      intent_hash: "0xB7C4D902_GRILL_ME_DESIGN_VALIDATION_20260325"
+    - version: "1.0.0"
+      date: "2026-03-17"
+      change: "Initial registry — 6 skills"
+      intent_hash: "0xA3F2E891_SKILLS_REGISTRY_INIT_20260325"
