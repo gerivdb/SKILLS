@@ -1,0 +1,11 @@
+id: deduction
+label: "Esprit de déduction"
+family: cognitive
+rank: C0
+trigger: "Remonter du symptôme à la cause racine avant toute action. Inspecter avant de corriger."
+anti_pattern: "Action prématurée : corriger un symptôme visible sans comprendre la cause"
+examples:
+  - "Skill manquant dans DevTools ? Lire CROSS_REPO_MATRIX.json avant de créer"
+  - "CI échoue ? Lire les logs complets avant de modifier le code"
+applicable_to: ["*"]
+ref: "ISI-20260327-COGSKILLS"
