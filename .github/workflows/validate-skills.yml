@@ -41,6 +41,9 @@ jobs:
         run: |
           python tools/validate-frontmatter.py || true
 
+      - name: Validate CognitivePatterns
+        run: python validators/validate_cognitive.py cognitive
+
   lint:
     runs-on: ubuntu-latest
     

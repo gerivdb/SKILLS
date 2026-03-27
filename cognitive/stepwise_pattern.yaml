@@ -1,0 +1,11 @@
+id: stepwise_pattern
+label: "Pattern proche-en-proche"
+family: cognitive
+rank: C0
+trigger: "Progresser par adjacence depuis un nœud connu. Ne jamais sauter directement à un repo inconnu sans passer par son voisin connu."
+anti_pattern: "Téléportation : aller directement dans un repo profond sans tracer le chemin"
+examples:
+  - "ONTOLOGY → ECOYSTEM → SKILLS (chemin adjacence vs saut direct à SKILLS)"
+  - "BLO concept → issue_ontology.yaml → lifecycle_states.yaml (progressif)"
+applicable_to: ["*"]
+ref: "ISI-20260327-COGSKILLS"

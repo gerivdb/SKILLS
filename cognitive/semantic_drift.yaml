@@ -1,0 +1,12 @@
+id: semantic_drift
+label: "Drifting sémantique contrôlé"
+family: cognitive
+rank: C0
+trigger: "Élargir volontairement le champ sémantique pour détecter des connexions latentes non évidentes. Contrôlé = retour au focus après exploration."
+anti_pattern: "Drift non contrôlé : s'éloigner du sujet sans revenir au focus initial"
+examples:
+  - "En cherchant un skill tech, découvrir un pattern cognitif transversal"
+  - "En lisant cbiz-ontology.yaml, remarquer l'absence de CognitivePattern"
+guard: "Toujours revenir au focus d'origine après le drift"
+applicable_to: ["*"]
+ref: "ISI-20260327-COGSKILLS"
