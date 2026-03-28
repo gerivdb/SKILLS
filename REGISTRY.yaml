@@ -1,14 +1,14 @@
 # SKILLS Registry — Index Canonical
-# Generated: 2026-03-25
-# Version: 1.0.1
-# IntentHash: 0xB7C4D902_GRILL_ME_DESIGN_VALIDATION_20260325
-# Previous: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
+# Generated: 2026-03-27
+# Version: 1.0.2
+# IntentHash: 0xC8D5E013_INTEGRATION_SKILLS_20260327
+# Previous: 0xB7C4D902_GRILL_ME_DESIGN_VALIDATION_20260325
 
 registry:
-  version: "1.0.1"
+  version: "1.0.3"
   ecosystem: "ecosystem-1"
-  last_updated: "2026-03-25"
-  total_skills: 7
+  last_updated: "2026-03-27"
+  total_skills: 14
 
 skills:
   # ========================================
@@ -185,6 +185,180 @@ skills:
       - FLUENCE
       - BRAIN
 
+  - name: cv-parser
+    description: Skill for parsing and extracting structured data from CV/resume documents
+    type: domain
+    triggers:
+      - cv
+      - resume
+      - parsing
+      - extraction
+      - recruitment
+    domain: recruitment
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/domain/recruitment/cv-parser/SKILL.md
+    source: native
+    provides_to:
+      - recruitment
+
+  - name: audit-trail
+    description: Skill for tracking and auditing financial transactions and operations
+    type: domain
+    triggers:
+      - audit
+      - trail
+      - tracking
+      - finance
+      - transactions
+      - compliance
+    domain: finance
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/domain/finance/audit-trail/SKILL.md
+    source: native
+    provides_to:
+      - BANK-BUSTER
+
+  - name: gedcom-parser
+    description: Skill for parsing and analyzing GEDCOM genealogy files
+    type: domain
+    triggers:
+      - gedcom
+      - genealogy
+      - family-tree
+      - parsing
+      - ancestry
+    domain: genealogy
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    rgpd_note: "Données personnelles sensibles (noms, dates de naissance, liens familiaux). Conformité RGPD requise."
+    alive_check_required: true
+    path: native/domain/genealogy/gedcom-parser/SKILL.md
+    source: native
+    provides_to:
+      - RACINES
+
+  - name: alive-check
+    description: Skill for verifying if individuals in genealogy records are still alive
+    type: domain
+    triggers:
+      - alive
+      - check
+      - verification
+      - genealogy
+      - status
+      - vital-records
+    domain: genealogy
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    rgpd_note: "Vérification de statut vital (vivant/décédé). Données sensibles soumises au RGPD."
+    alive_check_required: true
+    path: native/domain/genealogy/alive-check/SKILL.md
+    source: native
+    consumes_from:
+      - gedcom-parser
+    provides_to:
+      - RACINES
+
+  # ========================================
+  # INTEGRATION SKILLS
+  # ========================================
+
+  - name: notion-connector
+    description: Skill for connecting to Notion API and retrieving data from databases
+    type: foundational
+    triggers:
+      - notion
+      - api
+      - database
+      - data-retrieval
+      - connector
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/foundational/notion-connector/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - workflow-orchestrator
+      - recruitment
+
+  - name: perplexity-sourcer
+    description: Skill for automated job sourcing using Perplexity API
+    type: foundational
+    triggers:
+      - perplexity
+      - job-sourcing
+      - search
+      - api
+      - job-listings
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/foundational/perplexity-sourcer/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - workflow-orchestrator
+      - recruitment
+
+  - name: workflow-orchestrator
+    description: Skill for orchestrating daily automated workflows
+    type: foundational
+    triggers:
+      - workflow
+      - orchestration
+      - automation
+      - daily
+      - process
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/foundational/workflow-orchestrator/SKILL.md
+    source: native
+    assimilation_status: N/A
+    consumes_from:
+      - notion-connector
+      - perplexity-sourcer
+    provides_to:
+      - recruitment
+
 # ========================================
 # EXTERNAL SKILLS (Pending Assimilation)
 # ========================================
@@ -205,12 +379,20 @@ external_pending:
 # ========================================
 
 metadata:
-  phi_cps_contribution: 0.046
+  phi_cps_contribution: 0.061
   governance_level: L2
   citizen: skills-registry
   lifecycle: ACTIVE
-  next_review: "2026-06-25"
+  next_review: "2026-06-27"
   changelog:
+    - version: "1.0.3"
+      date: "2026-03-27"
+      change: "Align with official taxonomy: migrate foundational stubs to native/foundational/, add genealogy domain (BIZ-3), add domain stubs (cv-parser, audit-trail, gedcom-parser, alive-check)"
+      intent_hash: "0xTRACK_B_TAXONOMY_ALIGNMENT_20260327"
+    - version: "1.0.2"
+      date: "2026-03-27"
+      change: "Add 3 integration skills: notion-connector, perplexity-sourcer, workflow-orchestrator"
+      intent_hash: "0xC8D5E013_INTEGRATION_SKILLS_20260327"
     - version: "1.0.1"
       date: "2026-03-25"
       change: "Add design-validation foundational skill (grill-me)"

@@ -3,8 +3,8 @@
   "ecosystem": "ecosystem-1",
   "spec": "agentskills.io/v1",
   "registry": "gerivdb/SKILLS",
-  "generated": "2026-03-17T22:00:00Z",
-  "intent_hash": "0xA3F2E891_SKILLS_REGISTRY_INIT_20260317",
+  "generated": "2026-03-27T23:53:00Z",
+  "intent_hash": "0xTRACK_B_TAXONOMY_ALIGNMENT_20260327",
   
   "compatibility": {
     "agentskills_io": {
@@ -15,8 +15,8 @@
   },
   
   "skills": {
-    "count": 6,
-    "native": 6,
+    "count": 14,
+    "native": 14,
     "external": 0,
     "assimilated": 0
   },
@@ -25,10 +25,10 @@
     "governance": {
       "level": "L2",
       "citizen": "skills-registry",
-      "lifecycle": "GENESIS"
+      "lifecycle": "ACTIVE"
     },
     "phi_cps": {
-      "contribution": 0.039,
+      "contribution": 0.069,
       "weight": 0.008
     }
   },
@@ -38,13 +38,18 @@
       "path": "native/",
       "foundational": [
         "product-context",
-        "ecosystem-principles"
+        "ecosystem-principles",
+        "design-validation",
+        "notion-connector",
+        "perplexity-sourcer",
+        "workflow-orchestrator"
       ],
       "domain": [
         "booking",
         "recruitment",
         "finance",
-        "content"
+        "content",
+        "genealogy"
       ]
     },
     "external": {
