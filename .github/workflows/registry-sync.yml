@@ -10,7 +10,7 @@ on:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, kiva]
     if: github.ref == 'refs/heads/main'
     
     steps:
@@ -70,7 +70,7 @@ jobs:
 
   notify:
     needs: sync
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, kiva]
     
     steps:
       - name: Notify Success

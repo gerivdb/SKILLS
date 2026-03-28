@@ -8,7 +8,7 @@ on:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, kiva]
     
     steps:
       - name: Checkout Repository
@@ -42,7 +42,7 @@ jobs:
           python tools/validate-frontmatter.py || true
 
   lint:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, kiva]
     
     steps:
       - name: Checkout Repository
@@ -56,7 +56,7 @@ jobs:
           shellcheck tools/validate-skills.sh || true
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, kiva]
     
     steps:
       - name: Checkout Repository
@@ -75,7 +75,7 @@ jobs:
 
   notify:
     needs: [validate, lint, test]
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, kiva]
     if: always()
     
     steps:
