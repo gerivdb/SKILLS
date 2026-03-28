@@ -3,8 +3,8 @@
   "ecosystem": "ecosystem-1",
   "spec": "agentskills.io/v1",
   "registry": "gerivdb/SKILLS",
-  "generated": "2026-03-27T23:53:00Z",
-  "intent_hash": "0xTRACK_B_TAXONOMY_ALIGNMENT_20260327",
+  "generated": "2026-03-28T00:38:00Z",
+  "intent_hash": "0xS8_BIZ_SCAN_PHASE2_20260328T0121Z",
   
   "compatibility": {
     "agentskills_io": {
@@ -15,8 +15,8 @@
   },
   
   "skills": {
-    "count": 14,
-    "native": 14,
+    "count": 20,
+    "native": 20,
     "external": 0,
     "assimilated": 0
   },
@@ -42,7 +42,13 @@
         "design-validation",
         "notion-connector",
         "perplexity-sourcer",
-        "workflow-orchestrator"
+        "workflow-orchestrator",
+        "embedding",
+        "web-scraper",
+        "csv-extract",
+        "rate-limiter",
+        "email-sender",
+        "semantic-search"
       ],
       "domain": [
         "booking",

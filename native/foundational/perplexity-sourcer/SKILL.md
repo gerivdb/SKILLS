@@ -22,6 +22,7 @@ tags:
   - api
   - recruitment
 phi_weight: 0.005
+rgpd_note: "Données d'emploi et informations candidats. Conformité RGPD requise pour le sourcing automatisé."
 ---
 
 # Perplexity Sourcer — Sourcing Automatisé d'Offres d'Emploi

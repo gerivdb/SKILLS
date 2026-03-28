@@ -24,6 +24,8 @@ tags:
   - compliance
   - banking
 phi_weight: 0.005
+audit_trail_required: true
+rgpd_note: "Données financières sensibles (transactions, comptes). Conformité RGPD et réglementaire requise."
 ---
 
 # Audit Trail — Traçabilité des Opérations Financières

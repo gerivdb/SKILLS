@@ -22,6 +22,7 @@ tags:
   - process
   - multi-step
 phi_weight: 0.005
+rgpd_note: "Données de workflow et informations personnelles. Conformité RGPD requise pour l'orchestration automatisée."
 deps:
   - notion-connector
   - perplexity-sourcer

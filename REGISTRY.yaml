@@ -5,10 +5,10 @@
 # Previous: 0xB7C4D902_GRILL_ME_DESIGN_VALIDATION_20260325
 
 registry:
-  version: "1.0.3"
+  version: "1.0.4"
   ecosystem: "ecosystem-1"
-  last_updated: "2026-03-27"
-  total_skills: 14
+  last_updated: "2026-03-28"
+  total_skills: 20
 
 skills:
   # ========================================
@@ -359,6 +359,208 @@ skills:
     provides_to:
       - recruitment
 
+  - name: embedding
+    description: Skill for generating and managing vector embeddings for semantic search and similarity matching
+    type: foundational
+    triggers:
+      - embedding
+      - vector
+      - semantic
+      - similarity
+      - search
+      - representation
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-FINANCE
+      - BIZ-GENEALOGY
+    path: native/foundational/embedding/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - semantic-search
+      - finance
+      - genealogy
+
+  - name: web-scraper
+    description: Skill for extracting structured data from websites and web pages
+    type: foundational
+    triggers:
+      - web-scraper
+      - scraping
+      - extraction
+      - web
+      - data-collection
+      - crawling
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-FINANCE
+      - BIZ-RECRUIT
+      - BIZ-MEDIA
+    path: native/foundational/web-scraper/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - semantic-search
+      - recruitment
+      - content
+
+  - name: csv-extract
+    description: Skill for extracting and processing data from CSV files with advanced parsing capabilities
+    type: foundational
+    triggers:
+      - csv
+      - extract
+      - parsing
+      - data-processing
+      - spreadsheet
+      - tabular
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-FINANCE
+      - BIZ-GENEALOGY
+    path: native/foundational/csv-extract/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - finance
+      - genealogy
+
+  - name: rate-limiter
+    description: Skill for controlling request rates and managing API quotas with intelligent throttling
+    type: foundational
+    triggers:
+      - rate-limiter
+      - throttle
+      - quota
+      - api-limit
+      - request-control
+      - backoff
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-FINANCE
+      - BIZ-BOOKING
+    path: native/foundational/rate-limiter/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - finance
+      - booking
+
+  - name: email-sender
+    description: Skill for sending emails with templates, attachments, and delivery tracking
+    type: foundational
+    triggers:
+      - email
+      - send
+      - notification
+      - mail
+      - smtp
+      - delivery
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-RECRUIT
+      - BIZ-BOOKING
+      - BIZ-FINANCE
+    path: native/foundational/email-sender/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - recruitment
+      - booking
+      - finance
+
+  - name: semantic-search
+    description: Skill for performing semantic search using vector embeddings and natural language understanding
+    type: foundational
+    triggers:
+      - semantic-search
+      - search
+      - vector-search
+      - similarity
+      - nlp
+      - retrieval
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-RECRUIT
+      - BIZ-GENEALOGY
+      - BIZ-DEV
+    path: native/foundational/semantic-search/SKILL.md
+    source: native
+    assimilation_status: N/A
+    consumes_from:
+      - embedding
+    provides_to:
+      - recruitment
+      - genealogy
+
+  - name: template-render
+    description: Skill for rendering dynamic templates for CVs, cover letters, and recruitment documents
+    type: domain
+    triggers:
+      - template
+      - render
+      - cv
+      - cover-letter
+      - document-generation
+      - recruitment
+    domain: recruitment
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-RECRUIT
+      - BIZ-BOOKING
+    path: native/domain/recruitment/template-render/SKILL.md
+    source: native
+    provides_to:
+      - recruitment
+
 # ========================================
 # EXTERNAL SKILLS (Pending Assimilation)
 # ========================================
@@ -385,6 +587,10 @@ metadata:
   lifecycle: ACTIVE
   next_review: "2026-06-27"
   changelog:
+    - version: "1.0.4"
+      date: "2026-03-28"
+      change: "S8-T1 Phase 2: Add 6 foundational stubs (embedding, web-scraper, csv-extract, rate-limiter, email-sender, semantic-search) and 1 domain stub (template-render). Add persona annotations (rgpd_note, phi_weight, audit_trail_required)."
+      intent_hash: "0xS8_BIZ_SCAN_PHASE2_20260328T0121Z"
     - version: "1.0.3"
       date: "2026-03-27"
       change: "Align with official taxonomy: migrate foundational stubs to native/foundational/, add genealogy domain (BIZ-3), add domain stubs (cv-parser, audit-trail, gedcom-parser, alive-check)"

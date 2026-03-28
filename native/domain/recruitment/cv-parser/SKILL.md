@@ -21,7 +21,8 @@ tags:
   - extraction
   - recruitment
   - candidate
-phi_weight: 0.005
+phi_weight: 0.008
+rgpd_note: "Données personnelles sensibles (CV, expériences, compétences). Conformité RGPD stricte requise."
 ---
 
 # CV Parser — Extraction de Données depuis CV/Resume

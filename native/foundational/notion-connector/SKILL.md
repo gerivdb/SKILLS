@@ -22,6 +22,7 @@ tags:
   - connector
   - integration
 phi_weight: 0.005
+rgpd_note: "Données personnelles (noms, emails, expériences). Conformité RGPD requise pour les bases de données Notion."
 ---
 
 # Notion Connector — API Notion et Bases de Données
