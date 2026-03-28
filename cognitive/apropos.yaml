@@ -1,0 +1,11 @@
+id: apropos
+label: "À-propos"
+family: cognitive
+rank: C0
+trigger: "Lire le MANIFEST/README du repo concerné avant toute action. Information pertinente au bon moment."
+anti_pattern: "Action aveugle : modifier un fichier sans avoir lu son contexte déclaré"
+examples:
+  - "Lire SKILLS/MANIFEST.json avant de proposer un nouveau skill"
+  - "Lire .ecos/blo.yaml avant de créer une issue"
+applicable_to: ["*"]
+ref: "ISI-20260327-COGSKILLS"

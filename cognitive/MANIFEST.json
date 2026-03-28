@@ -1,0 +1,17 @@
+{
+  "$schema": "https://gerivdb.github.io/ONTOLOGY/cbiz-ontology.yaml#/entities/CognitivePattern",
+  "version": "1.0.0",
+  "family": "cognitive",
+  "rank": "C0",
+  "ref": "ISI-20260327-COGSKILLS",
+  "generated": "2026-03-27T20:33:00+01:00",
+  "intentHash": "0xS7_COGSKILLS_C0_20260327T2033Z",
+  "patterns": [
+    { "id": "serendipity",      "label": "Sérendipité",                   "file": "serendipity.yaml" },
+    { "id": "apropos",          "label": "À-propos",                       "file": "apropos.yaml" },
+    { "id": "analogy",          "label": "Analogie",                       "file": "analogy.yaml" },
+    { "id": "deduction",        "label": "Esprit de déduction",            "file": "deduction.yaml" },
+    { "id": "stepwise_pattern", "label": "Pattern proche-en-proche",      "file": "stepwise_pattern.yaml" },
+    { "id": "semantic_drift",   "label": "Drifting sémantique contrôlé",  "file": "semantic_drift.yaml" }
+  ]
+}

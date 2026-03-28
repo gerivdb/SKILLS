@@ -1,0 +1,11 @@
+id: analogy
+label: "Analogie"
+family: cognitive
+rank: C0
+trigger: "Identifier un pattern connu dans un autre domaine et le transposer. Demander : 'où ai-je déjà vu ce problème ?'"
+anti_pattern: "Ré-inventer la roue sans vérifier si un pattern existant s'applique"
+examples:
+  - "Pattern FSM de lifecycle_states.yaml transposé vers initiative_states.yaml"
+  - "Règle des 3 (Skills) transposée vers la règle de cristallisation (epics_count >= 2)"
+applicable_to: ["*"]
+ref: "ISI-20260327-COGSKILLS"
