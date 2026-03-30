@@ -130,6 +130,15 @@ updated: 2026-03-17
 | **ecoystem-orchestrator (L5)** | Intégration dans ECOYSTEM |
 | **governance-guardian (L3)** | Conformité taxonomie |
 
+### Registre Système vs Registre Domaine
+
+| Type | Définition | Dépôt | Périmètre |
+|------|------------|-------|-----------|
+| **Registre Système** | Registre canonique de tous les repos de l'écosystème | `NEXUS` (T1-CORE, P0) | Tous les dépôts ecosystem-1 |
+| **Registre Domaine** | Registre spécialisé d'entités transversales dans son domaine | `SKILLS` (T2-OUTILS, P2) | Skills (foundational, domain, external) |
+
+**Règle** : Un dépôt de type **Registre Domaine** DOIT être référencé dans le **Registre Système** (`NEXUS`). Il ne prétend pas au rang de registre canonique de l'écosystème, mais reste l'autorité canonique **dans son domaine**.
+
 ---
 
 *Canonical document · Part of ecosystem-1 SKILLS registry*

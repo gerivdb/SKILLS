@@ -1,10 +1,12 @@
-# SKILLS — Skills Registry Ecosystem-1
+# SKILLS — Domain Registry for Ecosystem-1 Skills
 
 **Version** : 1.0.0 · **Date** : 2026-03-17 · **Status** : 🟡 GENESIS
 
 ## 🎯 Purpose
 
-This repository is the **canonical registry** of all Skills in ecosystem-1. It serves as the single source of truth for:
+This repository is the **domain registry** for all Skills in ecosystem-1. It is a **sub-registre** of [NEXUS](https://github.com/gerivdb/NEXUS), which is the canonical system registry for all Ecosystem-1 repositories.
+
+SKILLS serves as the single source of truth for:
 
 - **Native Skills**: Skills developed and maintained by gerivdb
 - **Assimilated Skills**: External skills integrated into ecosystem-1
@@ -14,12 +16,13 @@ This repository is the **canonical registry** of all Skills in ecosystem-1. It s
 
 ### Repository Type
 
-This is a **Registry Repository** (dépôt registre) per the ecosystem-1 taxonomy:
+This is a **Domain Registry** (registre domaine) per the ecosystem-1 taxonomy:
 
 | Type | Definition | Rule |
 |------|------------|------|
 | **Dépôt Fédérateur** | Orchestrates all others via submodules | `ECOYSTEM` |
-| **Dépôt Registre** | Declarative directory of transversal entities | `SKILLS` (this repo) |
+| **Registre Système** | Registre canonique de tous les repos de l'écosystème | `NEXUS` |
+| **Registre Domaine** | Registre spécialisé d'entités transversales (skills) | `SKILLS` (this repo) |
 | **Dépôt Domaine** | Implements a coherent business domain | `FLUENCE`, `BRAIN`, etc. |
 
 ### Taxonomie des Types de Skills
