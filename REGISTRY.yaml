@@ -7,8 +7,8 @@
 registry:
   version: "1.0.1"
   ecosystem: "ecosystem-1"
-  last_updated: "2026-03-25"
-  total_skills: 7
+  last_updated: "2026-04-01"
+  total_skills: 21
 
 skills:
   # ========================================
@@ -184,6 +184,414 @@ skills:
     provides_to:
       - FLUENCE
       - BRAIN
+
+  - name: cv-parser
+    description: Skill for parsing and extracting structured data from CV/resume documents
+    type: domain
+    triggers:
+      - cv
+      - resume
+      - parsing
+      - extraction
+      - recruitment
+    domain: recruitment
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/domain/recruitment/cv-parser/SKILL.md
+    source: native
+    provides_to:
+      - recruitment
+
+  - name: audit-trail
+    description: Skill for tracking and auditing financial transactions and operations
+    type: domain
+    triggers:
+      - audit
+      - trail
+      - tracking
+      - finance
+      - transactions
+      - compliance
+    domain: finance
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/domain/finance/audit-trail/SKILL.md
+    source: native
+    provides_to:
+      - BANK-BUSTER
+
+  - name: gedcom-parser
+    description: Skill for parsing and analyzing GEDCOM genealogy files
+    type: domain
+    triggers:
+      - gedcom
+      - genealogy
+      - family-tree
+      - parsing
+      - ancestry
+    domain: genealogy
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    rgpd_note: "Données personnelles sensibles (noms, dates de naissance, liens familiaux). Conformité RGPD requise."
+    alive_check_required: true
+    path: native/domain/genealogy/gedcom-parser/SKILL.md
+    source: native
+    provides_to:
+      - RACINES
+
+  - name: alive-check
+    description: Skill for verifying if individuals in genealogy records are still alive
+    type: domain
+    triggers:
+      - alive
+      - check
+      - verification
+      - genealogy
+      - status
+      - vital-records
+    domain: genealogy
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    rgpd_note: "Vérification de statut vital (vivant/décédé). Données sensibles soumises au RGPD."
+    alive_check_required: true
+    path: native/domain/genealogy/alive-check/SKILL.md
+    source: native
+    consumes_from:
+      - gedcom-parser
+    provides_to:
+      - RACINES
+
+  # ========================================
+  # INTEGRATION SKILLS
+  # ========================================
+
+  - name: notion-connector
+    description: Skill for connecting to Notion API and retrieving data from databases
+    type: foundational
+    triggers:
+      - notion
+      - api
+      - database
+      - data-retrieval
+      - connector
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/foundational/notion-connector/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - workflow-orchestrator
+      - recruitment
+
+  - name: perplexity-sourcer
+    description: Skill for automated job sourcing using Perplexity API
+    type: foundational
+    triggers:
+      - perplexity
+      - job-sourcing
+      - search
+      - api
+      - job-listings
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/foundational/perplexity-sourcer/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - workflow-orchestrator
+      - recruitment
+
+  - name: workflow-orchestrator
+    description: Skill for orchestrating daily automated workflows
+    type: foundational
+    triggers:
+      - workflow
+      - orchestration
+      - automation
+      - daily
+      - process
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-27"
+    updated: "2026-03-27"
+    phi_weight: 0.005
+    path: native/foundational/workflow-orchestrator/SKILL.md
+    source: native
+    assimilation_status: N/A
+    consumes_from:
+      - notion-connector
+      - perplexity-sourcer
+    provides_to:
+      - recruitment
+
+  - name: embedding
+    description: Skill for generating and managing vector embeddings for semantic search and similarity matching
+    type: foundational
+    triggers:
+      - embedding
+      - vector
+      - semantic
+      - similarity
+      - search
+      - representation
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-FINANCE
+      - BIZ-GENEALOGY
+    path: native/foundational/embedding/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - semantic-search
+      - finance
+      - genealogy
+
+  - name: web-scraper
+    description: Skill for extracting structured data from websites and web pages
+    type: foundational
+    triggers:
+      - web-scraper
+      - scraping
+      - extraction
+      - web
+      - data-collection
+      - crawling
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-FINANCE
+      - BIZ-RECRUIT
+      - BIZ-MEDIA
+    path: native/foundational/web-scraper/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - semantic-search
+      - recruitment
+      - content
+
+  - name: csv-extract
+    description: Skill for extracting and processing data from CSV files with advanced parsing capabilities
+    type: foundational
+    triggers:
+      - csv
+      - extract
+      - parsing
+      - data-processing
+      - spreadsheet
+      - tabular
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-FINANCE
+      - BIZ-GENEALOGY
+    path: native/foundational/csv-extract/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - finance
+      - genealogy
+
+  - name: rate-limiter
+    description: Skill for controlling request rates and managing API quotas with intelligent throttling
+    type: foundational
+    triggers:
+      - rate-limiter
+      - throttle
+      - quota
+      - api-limit
+      - request-control
+      - backoff
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-FINANCE
+      - BIZ-BOOKING
+    path: native/foundational/rate-limiter/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - finance
+      - booking
+
+  - name: email-sender
+    description: Skill for sending emails with templates, attachments, and delivery tracking
+    type: foundational
+    triggers:
+      - email
+      - send
+      - notification
+      - mail
+      - smtp
+      - delivery
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-RECRUIT
+      - BIZ-BOOKING
+      - BIZ-FINANCE
+    path: native/foundational/email-sender/SKILL.md
+    source: native
+    assimilation_status: N/A
+    provides_to:
+      - recruitment
+      - booking
+      - finance
+
+  - name: semantic-search
+    description: Skill for performing semantic search using vector embeddings and natural language understanding
+    type: foundational
+    triggers:
+      - semantic-search
+      - search
+      - vector-search
+      - similarity
+      - nlp
+      - retrieval
+    domain: foundational
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-RECRUIT
+      - BIZ-GENEALOGY
+      - BIZ-DEV
+    path: native/foundational/semantic-search/SKILL.md
+    source: native
+    assimilation_status: N/A
+    consumes_from:
+      - embedding
+    provides_to:
+      - recruitment
+      - genealogy
+
+  - name: template-render
+    description: Skill for rendering dynamic templates for CVs, cover letters, and recruitment documents
+    type: domain
+    triggers:
+      - template
+      - render
+      - cv
+      - cover-letter
+      - document-generation
+      - recruitment
+    domain: recruitment
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-03-28"
+    updated: "2026-03-28"
+    phi_weight: 0.005
+    biz_domains:
+      - BIZ-RECRUIT
+      - BIZ-BOOKING
+    path: native/domain/recruitment/template-render/SKILL.md
+    source: native
+    provides_to:
+      - recruitment
+
+  - name: analyse_repo
+    description: Analyse cross-repo avec scoring φ-relevance selon protocole /analyse-repo v2.0 (BRAIN-DOCS)
+    type: domain
+    triggers:
+      - analyse-repo
+      - repo-analysis
+      - phi-relevance
+      - kfe
+      - cross-repo
+      - dispatch
+    domain: kfe
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-04-01"
+    updated: "2026-04-01"
+    phi_weight: 0.010
+    phi_relevance_threshold: 0.3
+    protocol_version: "2.0.0"
+    path: native/domain/kfe/analyse_repo/SKILL.md
+    source: native
+    consumes_from:
+      - ecosystem-principles
+      - design-validation
+    provides_to:
+      - FLUENCE
+      - ECOS-CLI
+      - ECOYSTEM
+    source_repo: gerivdb/FLUENCE
+    implementation: skills/analyse_repo.py
 
 # ========================================
 # EXTERNAL SKILLS (Pending Assimilation)
