@@ -1,0 +1,15 @@
+# Crash dumps (Git Bash Windows)
+*.stackdump
+
+# Monitoring auto-logs
+logs/
+monitoring-*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
