@@ -5,15 +5,39 @@
 # Previous: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
 
 registry:
-  version: "1.0.1"
+  version: "1.0.2"
   ecosystem: "ecosystem-1"
-  last_updated: "2026-04-01"
-  total_skills: 27
+  last_updated: "2026-04-19"
+  total_skills: 28
 
 skills:
-  # ========================================
-  # FOUNDATIONAL SKILLS
-  # ========================================
+    # ========================================
+    # GOVERNANCE SKILLS
+    # ========================================
+
+  - name: epic-forge
+    description: Crée, valide, et gère les EPICs selon la nomenclature NEXUS
+    type: domain
+    triggers:
+      - /epic
+      - epic create
+      - epic validate
+      - epic status
+    domain: governance
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-04-19"
+    updated: "2026-04-19"
+    phi_weight: 0.003
+    path: native/domain/epic-forge/SKILL.md
+    source: native
+    assimilation_status: N/A
+
+    # ========================================
+    # FOUNDATIONAL SKILLS
+    # ========================================
 
   - name: product-context
     description: Contextualisation produit et audience pour adaptation marché
@@ -697,6 +721,10 @@ metadata:
   lifecycle: ACTIVE
   next_review: "2026-06-25"
   changelog:
+    - version: "1.0.2"
+      date: "2026-04-19"
+      change: "Add epic-forge skill for EPIC management"
+      intent_hash: "0xEPIC_FORGE_SKILL_20260419"
     - version: "1.0.1"
       date: "2026-03-25"
       change: "Add design-validation foundational skill (grill-me)"
