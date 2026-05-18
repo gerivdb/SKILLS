@@ -1,3 +1,10 @@
+---
+type: EPIC
+version: 1.0
+date: 2026-05-16
+intent_hash: 0x2961508F33DEA17E
+status: planned
+---
 # EPIC — Pilier Curiosité (Innovation, Recherche)
 
 **IntentHash**: `0xPILIER_CURIOSITE_SKILLS_20260419`
