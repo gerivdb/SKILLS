@@ -30,6 +30,22 @@ Ce document est le résultat d'une validation empirique : comparaison de fichier
 
 ---
 
+## ⚠️ Anti-pattern : Format Comet vs Format Perplexity
+
+C'est le **piège le plus fréquent**. Les deux formats semblent similaires mais sont incompatibles.
+
+| Élément | Format Comet (❌ refusé) | Format Perplexity (✅ accepté) |
+|---------|------------------------|--------------------------------|
+| Frontmatter | `name:`, `description:`, `prompt: \|`, `tools:`, `output_format:`, `priority:` | `name:`, `description:` (2 lignes avec `Use when user mentions`) uniquement |
+| Corps | Bloc YAML `prompt: \|` avec instructions intégrées | Sections Markdown `## Instructions`, `## Règles`, `## Format`, `## Exemples` |
+| Outils | Champ `tools: ["fetch_url", ...]` | Mentionnés dans le texte des instructions |
+| Format de sortie | Champ `output_format:` | Section `## Format` |
+| Marqueur | Contient `Comet-ready` ou `Comet browser skill loader` | Aucune méta-annotation |
+
+**Pourquoi ce format échoue** : Le parseur Perplexity SaaS ne lit que `name:` et `description:` dans le frontmatter. Toute clé YAML supplémentaire (`prompt:`, `tools:`, `output_format:`, `priority:`) est ignorée ou provoque un rejet silencieux. Le contenu réel du skill (les instructions) se retrouve alors dans un bloc YAML jamais interprété comme Markdown.
+
+---
+
 ## Template canonique
 
 ```markdown
@@ -72,7 +88,8 @@ description: Description courte du rôle. Use when user mentions
 |---------|--------|-------|
 | `perp/examples/ecosystem-maestro.md` | ✅ Accepté | Référence canonique |
 | `perp/examples/brain-cortex.md` | ✅ Accepté | Référence canonique |
-| `SKILL.md` (ancienne version) | ❌ Refusé | Cause probable : `description` sans `Use when user mentions` |
+| `perp/deepwiki_repo_enricher.md` (v1) | ❌ Refusé | Format Comet : `prompt:\|`, `tools:`, `output_format:`, `priority:` dans le frontmatter |
+| `perp/analyse-repo-deepwiki.md` | ✅ Corrigé | Converti au format canonique Perplexity |
 
 ---
 
