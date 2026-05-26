@@ -5,15 +5,39 @@
 # Previous: 0xB7C4D902_GRILL_ME_DESIGN_VALIDATION_20260325
 
 registry:
-  version: "1.0.4"
+  version: "1.0.5"
   ecosystem: "ecosystem-1"
-  last_updated: "2026-03-28"
-  total_skills: 21
+  last_updated: "2026-05-26"
+  total_skills: 29
 
 skills:
-  # ========================================
-  # FOUNDATIONAL SKILLS
-  # ========================================
+    # ========================================
+    # GOVERNANCE SKILLS
+    # ========================================
+
+  - name: epic-forge
+    description: Crée, valide, et gère les EPICs selon la nomenclature NEXUS
+    type: domain
+    triggers:
+      - /epic
+      - epic create
+      - epic validate
+      - epic status
+    domain: governance
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-04-19"
+    updated: "2026-04-19"
+    phi_weight: 0.003
+    path: native/domain/epic-forge/SKILL.md
+    source: native
+    assimilation_status: N/A
+
+    # ========================================
+    # FOUNDATIONAL SKILLS
+    # ========================================
 
   - name: product-context
     description: Contextualisation produit et audience pour adaptation marché
@@ -597,6 +621,84 @@ skills:
 # EXTERNAL SKILLS (Pending Assimilation)
 # ========================================
 
+  - name: platform-adapt
+    description: Adapte les commandes selon la plateforme (WSL/Ubuntu/Windows)
+    type: detection
+    triggers: [platform, wsl, ubuntu, deploy, adapt]
+    domain: infrastructure
+    version: "1.0.0"
+    author: gerivdb
+    status: active
+    created: "2026-04-02"
+    source: native
+    phi_weight: 0.005
+    provides_to: [ECOS-CLI, DevTools]
+
+  - name: config-validate
+    description: Valide les fichiers de config (env, yaml, json) avant utilisation
+    type: validation
+    triggers: [config, env, validate, yaml, json, gotrue]
+    domain: validation
+    version: "1.0.0"
+    author: gerivdb
+    status: active
+    created: "2026-04-02"
+    source: native
+    phi_weight: 0.005
+    provides_to: [ECOS-CLI, DevTools]
+
+  - name: token-manage
+    description: Gère le cycle de vie des tokens JWT (refresh, rotation, alertes)
+    type: lifecycle
+    triggers: [token, jwt, auth, refresh, expire]
+    domain: auth
+    version: "1.0.0"
+    author: gerivdb
+    status: active
+    created: "2026-04-02"
+    source: native
+    phi_weight: 0.005
+    provides_to: [ECOS-CLI, appflowy-mcp-server]
+
+  - name: rollback-execute
+    description: Exécute les rollbacks ordonnés après échec de déploiement
+    type: recovery
+    triggers: [rollback, recovery, revert, undo]
+    domain: resilience
+    version: "1.0.0"
+    author: gerivdb
+    status: active
+    created: "2026-04-02"
+    source: native
+    phi_weight: 0.005
+    provides_to: [ECOS-CLI]
+
+  - name: network-diagnose
+    description: Diagnostique les problèmes réseau (DNS, ports, firewall)
+    type: diagnostic
+    triggers: [network, dns, port, ping, connectivity]
+    domain: infrastructure
+    version: "1.0.0"
+    author: gerivdb
+    status: active
+    created: "2026-04-02"
+    source: native
+    phi_weight: 0.005
+    provides_to: [ECOS-CLI, DevTools]
+
+  - name: matrix-sync
+    description: Synchronise CROSS_REPO_MATRIX avec GitHub API
+    type: sync
+    triggers: [matrix, sync, github, repos, cross-repo]
+    domain: governance
+    version: "1.0.0"
+    author: gerivdb
+    status: active
+    created: "2026-04-02"
+    source: native
+    phi_weight: 0.005
+    provides_to: [ECOS-CLI, ECOYSTEM]
+
 external_pending:
   - name: marketingskills
     description: Compétences marketing externalisées
@@ -628,9 +730,13 @@ metadata:
       change: "Align with official taxonomy: migrate foundational stubs to native/foundational/, add genealogy domain (BIZ-3), add domain stubs (cv-parser, audit-trail, gedcom-parser, alive-check)"
       intent_hash: "0xTRACK_B_TAXONOMY_ALIGNMENT_20260327"
     - version: "1.0.2"
-      date: "2026-03-27"
-      change: "Add 3 integration skills: notion-connector, perplexity-sourcer, workflow-orchestrator"
-      intent_hash: "0xC8D5E013_INTEGRATION_SKILLS_20260327"
+      date: "2026-04-19"
+      change: "Add epic-forge skill for EPIC management"
+      intent_hash: "0xEPIC_FORGE_SKILL_20260419"
+    - version: "1.0.1"
+      date: "2026-03-25"
+      change: "Add design-validation foundational skill (grill-me)"
+      intent_hash: "0xB7C4D902_GRILL_ME_DESIGN_VALIDATION_20260325"
     - version: "1.0.1"
       date: "2026-03-25"
       change: "Add design-validation foundational skill (grill-me)"

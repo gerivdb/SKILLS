@@ -1,5 +1,4 @@
 ---
-<<<<<<< HEAD
 name: web-scraper
 description: Skill for extracting structured data from websites and web pages
 triggers:
@@ -222,7 +221,9 @@ web_scraper:
 ---
 
 *Skill fondamental gerivdb · Part du registre SKILLS ecosystem-1*
-=======
+
+
+
 id: web-scraper
 label: Web Scraper Skill
 family: foundational
@@ -263,4 +264,7 @@ data = scraper.extract(url="https://source.example.com", selector="table.results
 - `BIZ-RECRUIT` (consumer) — scraping offres d'emploi, profils publics
 
 > ⚠️ Pour tout usage `BIZ-GENEALOGY` : combiner avec `alive-check` skill pour les personnes vivantes.
+<< HEAD
 >>>>>>> origin/feat/s8-biz-scan-phase2
+
+

@@ -1,0 +1,26 @@
+#!/bin/bash
+# ECOS Test Hook - Runs test daemon on every commit
+# Ensures all scripts pass before allowing commit
+
+echo "=== ECOS Test Hook ==="
+
+TEST_DAEMON="C:/DevTools/bin/ecos-test-daemon.ps1"
+
+if [ -f "$TEST_DAEMON" ]; then
+    powershell -Command "& '$TEST_DAEMON'"
+    EXIT_CODE=$?
+    
+    if [ $EXIT_CODE -ne 0 ]; then
+        echo ""
+        echo "[FAILED] Tests failed. Commit aborted."
+        echo "Fix the errors and try again."
+        exit 1
+    fi
+    
+    echo ""
+    echo "[OK] All tests passed"
+else
+    echo "[WARNING] Test daemon not found: $TEST_DAEMON"
+fi
+
+exit 0

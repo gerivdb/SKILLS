@@ -1,0 +1,74 @@
+{
+  "skills": [
+    {
+      "name": "script-maturation",
+      "version": "1.0.0",
+      "description": "Promotion automatique des scripts de Skeleton à Production",
+      "author": "ECOS Team",
+      "repository": "gerivdb/KIVA-CLI",
+      "dependencies": [],
+      "capabilities": ["script_promotion", "queue_management", "worker_orchestration"],
+      "repos_served": ["DevTools", "KIVA-CLI"]
+    },
+    {
+      "name": "path-resolver",
+      "version": "1.0.0",
+      "description": "Conversion de paths local/remote et détection de dépôt",
+      "author": "ECOS Team",
+      "repository": "gerivdb/KIVA-CLI",
+      "dependencies": [],
+      "capabilities": ["path_conversion", "repo_detection"],
+      "repos_served": ["DevTools", "KIVA-CLI", "ECOYSTEM"]
+    },
+    {
+      "name": "context-manager",
+      "version": "1.0.0",
+      "description": "Gestion du contexte dépôt actif",
+      "author": "ECOS Team",
+      "repository": "gerivdb/KIVA-CLI",
+      "dependencies": ["path-resolver"],
+      "capabilities": ["context_management", "repo_switching"],
+      "repos_served": ["KIVA-CLI"]
+    },
+    {
+      "name": "windows-explorer",
+      "version": "1.0.0",
+      "description": "Intégration avec l'explorateur Windows",
+      "author": "ECOS Team",
+      "repository": "gerivdb/KIVA-CLI",
+      "dependencies": ["path-resolver"],
+      "capabilities": ["explorer_integration", "clipboard_operations"],
+      "repos_served": ["KIVA-CLI"]
+    },
+    {
+      "name": "entity-path-mapper",
+      "version": "1.0.0",
+      "description": "Mapping des citoyens KIVA aux paths locaux",
+      "author": "ECOS Team",
+      "repository": "gerivdb/KIVA-CLI",
+      "dependencies": [],
+      "capabilities": ["entity_mapping", "citizen_location"],
+      "repos_served": ["ECOYSTEM", "KIVA-CLI"]
+    },
+    {
+      "name": "repo-discovery",
+      "version": "1.0.0",
+      "description": "Découverte automatique des dépôts git",
+      "author": "ECOS Team",
+      "repository": "gerivdb/KIVA-CLI",
+      "dependencies": ["path-resolver"],
+      "capabilities": ["repo_scanning", "auto_registration"],
+      "repos_served": ["KIVA-CLI"]
+    },
+    {
+      "name": "skill-discovery",
+      "version": "1.0.0",
+      "description": "Découverte et enregistrement de skills",
+      "author": "ECOS Team",
+      "repository": "gerivdb/KIVA-CLI",
+      "dependencies": [],
+      "capabilities": ["skill_scanning", "ontology_management"],
+      "repos_served": ["SKILLS", "KIVA-CLI"]
+    }
+  ]
+}

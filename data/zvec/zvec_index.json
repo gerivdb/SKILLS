@@ -1,0 +1,97 @@
+{
+  "size": 7,
+  "entries": [
+    {
+      "id": "script-maturation",
+      "text": "script-maturation Promotion automatique des scripts de Skeleton à Production script_promotion queue_management worker_orchestration",
+      "metadata": {
+        "name": "script-maturation",
+        "description": "Promotion automatique des scripts de Skeleton à Production",
+        "capabilities": [
+          "script_promotion",
+          "queue_management",
+          "worker_orchestration"
+        ],
+        "type": "skill"
+      }
+    },
+    {
+      "id": "path-resolver",
+      "text": "path-resolver Conversion de paths local/remote et détection de dépôt path_conversion repo_detection",
+      "metadata": {
+        "name": "path-resolver",
+        "description": "Conversion de paths local/remote et détection de dépôt",
+        "capabilities": [
+          "path_conversion",
+          "repo_detection"
+        ],
+        "type": "skill"
+      }
+    },
+    {
+      "id": "context-manager",
+      "text": "context-manager Gestion du contexte dépôt actif context_management repo_switching",
+      "metadata": {
+        "name": "context-manager",
+        "description": "Gestion du contexte dépôt actif",
+        "capabilities": [
+          "context_management",
+          "repo_switching"
+        ],
+        "type": "skill"
+      }
+    },
+    {
+      "id": "windows-explorer",
+      "text": "windows-explorer Intégration avec l'explorateur Windows explorer_integration clipboard_operations",
+      "metadata": {
+        "name": "windows-explorer",
+        "description": "Intégration avec l'explorateur Windows",
+        "capabilities": [
+          "explorer_integration",
+          "clipboard_operations"
+        ],
+        "type": "skill"
+      }
+    },
+    {
+      "id": "entity-path-mapper",
+      "text": "entity-path-mapper Mapping des citoyens KIVA aux paths locaux entity_mapping citizen_location",
+      "metadata": {
+        "name": "entity-path-mapper",
+        "description": "Mapping des citoyens KIVA aux paths locaux",
+        "capabilities": [
+          "entity_mapping",
+          "citizen_location"
+        ],
+        "type": "skill"
+      }
+    },
+    {
+      "id": "repo-discovery",
+      "text": "repo-discovery Découverte automatique des dépôts git repo_scanning auto_registration",
+      "metadata": {
+        "name": "repo-discovery",
+        "description": "Découverte automatique des dépôts git",
+        "capabilities": [
+          "repo_scanning",
+          "auto_registration"
+        ],
+        "type": "skill"
+      }
+    },
+    {
+      "id": "skill-discovery",
+      "text": "skill-discovery Découverte et enregistrement de skills skill_scanning ontology_management",
+      "metadata": {
+        "name": "skill-discovery",
+        "description": "Découverte et enregistrement de skills",
+        "capabilities": [
+          "skill_scanning",
+          "ontology_management"
+        ],
+        "type": "skill"
+      }
+    }
+  ]
+}
