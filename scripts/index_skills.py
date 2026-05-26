@@ -1,25 +1,18 @@
 #!/usr/bin/env python3
 """
-SKILLS zvec Integration
-
-Indexes all skills in SKILLS registry for semantic discovery.
-Usage: python index_skills.py
+Index all skills from perplexity/*.md into zvec index.
+Usage: python scripts/index_skills.py
 """
-
 import json
+import re
 import sys
 from pathlib import Path
 
-# Use repository root as skills_dir (script intended to run from repo root)
-skills_dir = Path.cwd()
-registry_file = skills_dir / "registry.json"
-
-# allow local shim of ZVecManager in tools.core
+# Allow importing project's ZVecManager if present
 sys.path.insert(0, str(Path.cwd()))
 try:
     from tools.core.zvec_manager import ZVecManager
 except Exception:
-    # Minimal fallback shim if missing
     class ZVecManager:
         def __init__(self, data_dir=None):
             if data_dir is None:
@@ -37,41 +30,92 @@ except Exception:
             return {'size': len(self.index)}
 
 
-def index_skills():
-    mgr = ZVecManager(data_dir=skills_dir / "data" / "zvec")
+def parse_frontmatter(md_text):
+    """Return dict with keys found in frontmatter: name, description"""
+    fm = {}
+    m = re.match(r"^---\s*\n(.*?)\n---\s*\n", md_text, re.S)
+    if not m:
+        return fm
+    body = m.group(1)
+    # look for name
+    name_m = re.search(r"^\s*name:\s*(?:\"|\')?(.*?)(?:\"|\')?\s*$", body, re.M)
+    if name_m:
+        fm['name'] = name_m.group(1).strip()
+    # description: handle block scalar '|' or inline
+    desc_block = re.search(r"^\s*description:\s*\|\s*\n((?:\s+.*\n)+)", body, re.M)
+    if desc_block:
+        lines = desc_block.group(1).splitlines()
+        # strip leading indentation
+        stripped = [re.sub(r"^\s+", "", ln) for ln in lines]
+        fm['description'] = '\n'.join([ln.rstrip() for ln in stripped]).strip()
+    else:
+        desc_inline = re.search(r"^\s*description:\s*(?:\"|\')?(.*?)(?:\"|\')?\s*$", body, re.M)
+        if desc_inline:
+            fm['description'] = desc_inline.group(1).strip()
+    return fm
 
-    if not registry_file.exists():
-        print(f"Registry not found: {registry_file}")
-        return
 
-    with open(registry_file, 'r', encoding='utf-8') as f:
-        registry = json.load(f)
+def extract_title_and_body(md_text):
+    # find first H1
+    m = re.search(r"^#\s+(.*)", md_text, re.M)
+    title = m.group(1).strip() if m else ''
+    # find first paragraph after title or after frontmatter
+    # remove frontmatter if present
+    md_no_fm = re.sub(r"^---\s*\n.*?\n---\s*\n", "", md_text, flags=re.S)
+    # split into paragraphs
+    paras = re.split(r"\n\s*\n", md_no_fm)
+    first_para = ''
+    for p in paras:
+        p_strip = p.strip()
+        if p_strip:
+            # ignore a single heading paragraph
+            if re.match(r"^#", p_strip):
+                continue
+            first_para = p_strip
+            break
+    return title, first_para
 
-    skills = registry.get("skills", [])
+
+def index_all_perplexity():
+    skills_dir = Path.cwd() / 'perplexity'
+    out_dir = Path.cwd() / 'data' / 'zvec'
+    mgr = ZVecManager(data_dir=out_dir)
+
+    md_files = sorted(skills_dir.glob('*.md'))
     indexed = 0
 
-    for skill in skills:
-        skill_id = skill.get("name", "")
-        description = skill.get("description", "")
-        capabilities = skill.get("capabilities", [])
+    for md in md_files:
+        try:
+            text = md.read_text(encoding='utf-8')
+        except Exception:
+            text = md.read_text(encoding='latin-1')
 
-        if not skill_id:
-            continue
+        fm = parse_frontmatter(text)
+        name = fm.get('name') or md.stem
+        description = fm.get('description','').strip()
 
-        content = f"{skill_id} {description} {' '.join(capabilities)}"
-        mgr.add_text(skill_id, content, {
-            "name": skill_id,
-            "description": description,
-            "capabilities": capabilities,
-            "type": "skill"
-        })
+        # if description empty, try to extract from body
+        if not description:
+            title, para = extract_title_and_body(text)
+            if para:
+                description = para
+            elif title:
+                description = title
+
+        # prepare content to index
+        content = f"{name} {description}"
+        metadata = {
+            'name': name,
+            'source_file': str(md.relative_to(Path.cwd())),
+        }
+        mgr.add_text(name, content, metadata)
         indexed += 1
-        print(f"Indexed skill: {skill_id}")
+        print(f"Indexed skill: {name}")
 
     print(f"\nTotal skills indexed: {indexed}")
     stats = mgr.get_stats()
     print(f"Vector index size: {stats['size']}")
 
 
-if __name__ == "__main__":
-    index_skills()
+if __name__ == '__main__':
+    index_all_perplexity()
