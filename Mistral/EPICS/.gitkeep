@@ -1,0 +1,27 @@
+# Dossier EPICS pour Mistral
+
+Ce dossier contient les **Épics (EPICS)** spécifiques à l'intégration de Mistral dans l'écosystème gerivdb.
+
+## Structure attendue
+- `EPIC_<NOM>.md` : Documents décrivant les grands thèmes ou initiatives.
+- Sous-dossiers par domaine (ex: `nexus/`, `skills/`).
+
+## Conventions
+- Nommage : `EPIC_<DOMAINE>_<DESCRIPTION>.md` (ex: `EPIC_MISTRAL_SKILLS_INTEGRATION.md`).
+- Format : Markdown avec métadonnées YAML (voir `EPIC_PERP_PERPLEXITY_CONSOLIDATION.md` pour référence).
+- Strate : Associer chaque EPIC à une strate L0-L9 (ex: `strate: L0` pour la gouvernance).
+- Liens : Référencer les PRD associés (ex: `related_prds: [PRD_MISTRAL_NEXUS_SYNC.md]`).
+
+## Exemple de métadonnées
+```yaml
+---
+name: EPIC_MISTRAL_GOVERNANCE
+strate: L0
+source: Mistral
+related_prds:
+  - PRD_MISTRAL_AGENT_RULES.md
+  - PRD_MISTRAL_ORGANS_REGISTRY.md
+dependencies:
+  - repo: gerivdb/GOVERNANCE-HUB
+---
+```
