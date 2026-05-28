@@ -1,0 +1,29 @@
+# Dossier nexus pour Mistral
+
+Ce dossier contient les **skills liés à NEXUS (L1)** pour Mistral.
+
+## Structure attendue
+- `mistral-*.md` : Skills de synchronisation, audit, ou gestion des registres NEXUS.
+
+## Conventions
+- Nommage : `mistral-<action>-<cible>.md` (ex: `mistral-sync-nexus.md`).
+- Format : Markdown avec métadonnées YAML (voir `SKILL_FORMAT_CANONICAL.md`).
+- Strate : **L1** (NEXUS).
+
+## Exemple de métadonnées
+```yaml
+---
+name: mistral-sync-nexus
+strate: L1
+source: Mistral
+dependencies:
+  - repo: gerivdb/NEXUS
+  - tool: mcp_github
+  - tool: code_interpreter
+---
+```
+
+## Skills à intégrer
+- [ ] `mistral-nexus-sync.md` (synchronisation des registres).
+- [ ] `mistral-nexus-audit.md` (audit des données NEXUS).
+- [ ] `mistral-nexus-monitor.md` (surveillance des flux).
