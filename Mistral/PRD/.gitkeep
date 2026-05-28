@@ -1,0 +1,24 @@
+# Dossier PRD pour Mistral
+
+Ce dossier contient les **Product Requirements Documents (PRD)** spécifiques à l'intégration de Mistral dans l'écosystème gerivdb.
+
+## Structure attendue
+- `PRD_<NOM>.md` : Documents de spécifications produit.
+- Sous-dossiers par domaine (ex: `nexus/`, `governance/`).
+
+## Conventions
+- Nommage : `PRD_<DOMAINE>_<DESCRIPTION>.md` (ex: `PRD_NEXUS_INTEGRATION.md`).
+- Format : Markdown avec métadonnées YAML (voir `PRD_CONSOLIDATION_PERP_TO_PERPLEXITY.md` pour référence).
+- Strate : Associer chaque PRD à une strate L0-L9 (ex: `strate: L1` pour NEXUS).
+
+## Exemple de métadonnées
+```yaml
+---
+name: PRD_MISTRAL_NEXUS_SYNC
+strate: L1
+source: Mistral
+dependencies:
+  - repo: gerivdb/NEXUS
+  - tool: mcp_github
+---
+```
