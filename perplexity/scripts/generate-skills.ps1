@@ -1,100 +1,48 @@
 # ============================================================
-# generate-skills.ps1
-# Génération d'un ZIP de Skills Perplexity au format canonique
-# Repo   : gerivdb/SKILLS
-# Chemin : perp/scripts/generate-skills.ps1
-# Format : UTF-8 sans BOM, front-matter YAML strict
+# generate-skills.ps1  v2.0
+# Packager ZIP depuis perplexity/skills/*.md → ZIP à plat
+# Règle 8 : les .md doivent être à la racine du ZIP (pas de sous-dossier)
 # ============================================================
 $ErrorActionPreference = "Stop"
-$tempDir = Join-Path $env:TEMP "SkillsTemp"
-New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
 
-# ------------------------------------------------------------
-# Fonction d'écriture d'un skill au format canonique
-# ------------------------------------------------------------
-function Write-Skill {
-    param(
-        [string]$FileName,          # ex: "mon-skill.md"
-        [string]$Name,              # ex: "mon-skill" (kebab-case strict)
-        [string]$Title,             # ex: "Mon Skill"
-        [string]$DescriptionLine1,  # ex: "Description courte du rôle."
-        [string[]]$Keywords,        # ex: @("mot1", "mot2")
-        [string]$Body               # Corps complet (Instructions, Règles, Format, Exemples)
-    )
-    $keywordsFormatted = ($Keywords | ForEach-Object { '"' + $_ + '"' }) -join ", "
-    $yaml = @"
----
-name: $Name
-description: $DescriptionLine1 Use when user mentions
-  $keywordsFormatted.
----
+$repoRoot   = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$skillsDir  = Join-Path $repoRoot "perplexity\skills"
+$buildDir   = Join-Path $repoRoot "perplexity\build"
+$zipPath    = Join-Path $buildDir "Skills.zip"
 
-# $Title
-
-$Body
-"@
-    $path = Join-Path $tempDir $FileName
-    $utf8NoBom = New-Object System.Text.UTF8Encoding $false
-    [System.IO.File]::WriteAllText($path, $yaml, $utf8NoBom)
-    Write-Host "  OK $FileName"
-}
-
-# ============================================================
-# Corps des skills (here-strings @' '@)
-# Dupliquer ce bloc pour chaque skill
-# ============================================================
-$bodySkill1 = @'
-## Instructions
-
-1. **Identifier la demande** : contexte et périmètre.
-2. **Vérification préalable** : `mcp_github get_file_contents` sur `<dépôt>`.
-3. **Appliquer les tags NEXUS**.
-4. **Répondre en français**.
-
-## Règles
-
-- Règle canonique 1.
-- Ne pas inventer de commandes sans preuve.
-
-## Format
-
-- Format de sortie 1.
-
-## Exemples
-
-- "[Déclencheur typique]" → Action concrète.
-'@
-
-# ============================================================
-# Appels — un Write-Skill par skill à générer
-# ============================================================
-Write-Host "Génération des skills..."
-Write-Skill `
-    "skill-exemple.md" `
-    "skill-exemple" `
-    "Skill Exemple" `
-    "Description courte du rôle." `
-    @("mot-clé1", "mot-clé2", "mot-clé3") `
-    $bodySkill1
-
-# ============================================================
-# Vérification et compression
-# ============================================================
-$files = Get-ChildItem -Path $tempDir -Filter *.md
-Write-Host "Fichiers générés : $($files.Count)"
-if ($files.Count -eq 0) {
-    Write-Error "Aucun fichier généré. Abandon."
+# Vérification source
+if (-not (Test-Path $skillsDir)) {
+    Write-Error "Dossier source introuvable : $skillsDir"
     exit 1
 }
 
-# Destination : Bureau ou TEMP si inaccessible
-$desktop = [Environment]::GetFolderPath("Desktop")
-if (-not $desktop -or -not (Test-Path $desktop)) { $desktop = $env:TEMP }
-$zip = Join-Path $desktop "Skills.zip"
+$files = Get-ChildItem -Path $skillsDir -Filter "*.md"
+if ($files.Count -eq 0) {
+    Write-Error "Aucun fichier .md dans $skillsDir"
+    exit 1
+}
 
-Compress-Archive -Path (Join-Path $tempDir '*.md') -DestinationPath $zip -Force
-Write-Host "ZIP créé : $zip"
+Write-Host "  $($files.Count) skills trouves dans $skillsDir"
+
+# Créer build/ si absent
+New-Item -ItemType Directory -Force -Path $buildDir | Out-Null
+
+# Supprimer le ZIP précédent
+if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
+
+# Copie à plat dans un temp (règle 8 : pas de sous-dossier dans le ZIP)
+$tempDir = Join-Path $env:TEMP "SkillsZipTemp_$(Get-Random)"
+New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
+
+foreach ($f in $files) {
+    Copy-Item $f.FullName -Destination (Join-Path $tempDir $f.Name)
+}
+
+# Compression à plat
+Compress-Archive -Path (Join-Path $tempDir "*.md") -DestinationPath $zipPath -Force
+Remove-Item $tempDir -Recurse -Force
+
+# Résumé
+$zipSize = (Get-Item $zipPath).Length
+Write-Host "ZIP cree : $zipPath ($($files.Count) skills, $([math]::Round($zipSize/1024,1)) KB)"
 Write-Host "Importer ce ZIP dans Perplexity > Space > Skills."
-
-# Nettoyage
-Remove-Item -Path $tempDir -Recurse -Force
