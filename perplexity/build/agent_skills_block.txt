@@ -75,13 +75,13 @@ Disappeared local clones, WAZAA, git detective, restoration. Use when user menti
 Compétence couvrant la résilience d’écriture MCP : estimateur de taille de payload, stratégie de retry avec escalade, surveillance du contexte de session, gestion de la verbosité des échecs. Utiliser quand l’utilisateur mentionne 'MCP write resilience', 'payload size', 'retry strategy', 'session context', 'fail verbosity'.
 
 ### Skill: media-culture
-
+Expert en Media Culture.
 
 ### Skill: multi-repo-syncer
 Cross-repo synchronization, KIVA, NEXUS, gateway GPU, ECOS_ROOT. Use when user mentions 'sync multi-dépôts', 'KIVA', 'NEXUS', 'gateway GPU'.
 
 ### Skill: new-pillars
-
+Expert en New Pillars.
 
 ### Skill: nexus-auditor
 Audit repository structure against DDD criteria, EPIC size, violations. Use when user mentions 'audit structure', 'DDD', 'EPIC volumineuse', 'taille'.
@@ -96,7 +96,7 @@ NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use when user me
 Shadow dependency detection, dependency matrix, inter-layer coupling. Use when user mentions 'shadow dependency', 'matrice dépendances', 'inter-strates'.
 
 ### Skill: nexus-map
-
+Expert en NEXUS Map.
 
 ### Skill: nexus-monitor
 φ-CPS scoring, ecosystem health, production readiness, drift detection. Use when user mentions 'φ-CPS', 'santé écosystème', 'production readiness', 'drift'.
@@ -117,13 +117,13 @@ Dashboard, herd view, registry status. Use when user mentions 'dashboard troupea
 PLIX video substrate, CODEC-243, PLAYER-243, PLIXVAULT, OCTOPUS, BitNet mapping, ThermoGate, VDB. Use when user mentions 'PLIX', 'CODEC-243', 'PLAYER-243', 'PLIXVAULT', 'OCTOPUS', 'ThermoGate', 'VDB'.
 
 ### Skill: prd-factory
-Compétence pour la production complète d’un PRD : validation croisée des spécifications, vérification de la cohérence OKR, guide de rédaction selon le format canonique (sections 1→17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur mentionne 'PRD production', 'spec cross‑validator', 'OKR consistency', 'PRD canonique'.
+Compétence pour la production complète d’un PRD : validation croisée des spécifications, vérification de la cohérence OKR, guide de rédaction selon le format canonique (sections 1→17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur mentionne 'PRD production', 'spec cross‑validator', 'OKR consistency', 'PRD canonique'.
 
 ### Skill: pruning-explainer
 Pruning in dev and Git, git remote prune, optimization. Use when user mentions 'pruning', 'élagage', 'git remote prune'.
 
 ### Skill: pulse-infra
-
+Expert en Pulse Infra.
 
 ### Skill: reasoning-toolkit
 Fused skill combining Fermi‑legacy (hardware/performance expert for FERMI‑EVER, CodeDB‑E5620, LYCOS) and Scientific Method (hypothesis validation, NEXUS protocol). Use when user mentions any of the original triggers.
@@ -150,7 +150,7 @@ Skill testing, validation, trigger verification, matrix. Use when user mentions 
 Skill creation, fusion, format canonical, refactoring, analysis. Use when user mentions 'skill', 'format canonique', 'refonte', 'fusion', 'analyse'.
 
 ### Skill: swarm-cli
-
+Expert en Swarm CLI.
 
 ### Skill: task-automator
 Windows Task Scheduler, schtasks, polling automation. Use when user mentions 'Task Scheduler', 'schtasks', 'polling'.
