@@ -1,4 +1,4 @@
-﻿---
+---
 name: data-vector
 description: "VDB, TQL, embeddings, vector search, VEC-243, SparrowDB. Use when user mentions 'VDB', 'TQL', 'embedding', 'vector', 'VEC-243'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Data Vector
 
 ## Domaine et périmètre

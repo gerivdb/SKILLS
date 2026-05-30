@@ -1,4 +1,4 @@
-﻿---
+---
 name: workflow-debugger
 description: "GitHub Actions debugging: startup_failure, permissions, PYTHONPATH. Use when user mentions 'startup_failure', 'permissions', 'PYTHONPATH'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Workflow Debugger
 
 ## Domaine et périmètre

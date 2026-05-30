@@ -1,4 +1,4 @@
-﻿---
+---
 name: diagram-vega
 description: "Vega-Lite charts, data visualization, analytics. Use when user mentions 'Vega-Lite', 'graphique', 'data analytics'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Diagram Vega
 
 ## Domaine et périmètre

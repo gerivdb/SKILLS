@@ -1,4 +1,4 @@
-﻿---
+---
 name: iot-diagram
 description: "IoT architecture diagrams, sensors, edge computing, MQTT. Use when user mentions 'IoT', 'capteurs', 'edge', 'MQTT'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # IoT Diagram
 
 ## Domaine et périmètre

@@ -1,4 +1,4 @@
-﻿---
+---
 name: nexus-compliance
 description: "Branch governance, cherry-pick safety, hook validation. Use when user mentions 'conformité', 'gouvernance branche', 'cherry-pick safety'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # NEXUS Compliance
 
 ## Domaine et périmètre

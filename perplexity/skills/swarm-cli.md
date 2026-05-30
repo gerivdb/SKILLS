@@ -1,4 +1,4 @@
-﻿---
+---
 name: swarm-cli
 description: Swarm, bus ternaire and governance CLI expert for WAZAA, OPENCLAW-CLI, BLO, GOVERNANCE-HUB. Use when user mentions
   "WAZAA", "OPENCLAW", "BLO", "GOVERNANCE-HUB", "bus ternaire", "swarm", "φ-CPS", "TritRegistry".

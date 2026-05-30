@@ -1,4 +1,4 @@
-﻿---
+---
 name: github-config
 version: "2.1.0"
 description: "GITHUB_TOKEN, gh auth, scopes, Actions settings, rate-limit, gestion des gros fichiers (push_files vs create_or_update, split‑payload, SHA‑management). Use when user mentions 'GITHUB_TOKEN', 'gh auth', 'scopes', 'Settings Actions', 'large files', 'push_files', 'create_or_update'."

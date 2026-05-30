@@ -1,4 +1,4 @@
-﻿---
+---
 name: nexus-map
 description: Universal navigation map for all active gerivdb repos (168 total, geri-cms-* excluded). Use when user mentions
   "where is", "quel repo", "cluster", "liste des repos", "cartographie", "nexus-map".

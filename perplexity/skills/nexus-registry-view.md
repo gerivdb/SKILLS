@@ -1,4 +1,4 @@
-﻿---
+---
 name: nexus-registry-view
 description: "Dashboard, herd view, registry status. Use when user mentions 'dashboard troupeau', 'vue registre', 'tableau de bord'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # NEXUS Registry View
 
 ## Domaine et périmètre

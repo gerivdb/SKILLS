@@ -1,4 +1,4 @@
-﻿---
+---
 name: reposcope-watch
 description: "External surveillance: signals, flags, env vars, API endpoints, secrets. Use when user mentions 'surveillance', 'signal', 'hidden flag', 'API endpoint', 'secret CI'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # RepoScope Watch
 
 ## Domaine et périmètre

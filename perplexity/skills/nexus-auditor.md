@@ -1,4 +1,4 @@
-﻿---
+---
 name: nexus-auditor
 description: "Audit repository structure against DDD criteria, EPIC size, violations. Use when user mentions 'audit structure', 'DDD', 'EPIC volumineuse', 'taille'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # NEXUS Auditor
 
 ## Domaine et périmètre

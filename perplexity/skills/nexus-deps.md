@@ -1,4 +1,4 @@
-﻿---
+---
 name: nexus-deps
 description: "Shadow dependency detection, dependency matrix, inter-layer coupling. Use when user mentions 'shadow dependency', 'matrice dépendances', 'inter-strates'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # NEXUS Deps
 
 Domaine et périmètre

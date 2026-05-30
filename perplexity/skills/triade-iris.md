@@ -1,4 +1,4 @@
-﻿---
+---
 name: triade-iris
 description: "IRIS external sensor, polling, GitHub Actions workflow, target YAML. Use when user mentions 'IRIS', 'polling', 'capteur externe'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Triade IRIS
 
 ## Domaine et périmètre

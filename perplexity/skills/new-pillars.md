@@ -1,4 +1,4 @@
-﻿---
+---
 name: new-pillars
 description: New ecosystem pillars expert for PLIX, GOST, TINA, TRANSCENDANCE, VERSUS, BATVERSE. Use when user mentions
   "PLIX", "GOST", "TINA", "TRANSCENDANCE", "VERSUS", "BATVERSE", "piliers", "ternaire", "grain".

@@ -1,4 +1,4 @@
-﻿---
+---
 name: nexus-reformer
 description: "Refactoring, migration, cleanup, extraction of responsibilities. Use when user mentions 'refactoring', 'migration', 'nettoyage résidus', 'extraction'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # NEXUS Reformer
 
 ## Domaine et périmètre

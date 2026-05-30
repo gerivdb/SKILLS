@@ -1,4 +1,4 @@
-﻿---
+---
 name: ide-tools
 description: "KiloCode, Cline, VSIX, MCP Sequential Thinking, Rust alternatives. Use when user mentions 'KiloCode', 'Cline', 'VSIX', 'MCP Sequential Thinking', 'Rust'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # IDE Tools
 
 ## Domaine et périmètre

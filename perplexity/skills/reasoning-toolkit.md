@@ -1,4 +1,4 @@
-﻿---
+---
 name: reasoning-toolkit
 version: "1.0.0"
 description: "Fused skill combining Fermi‑legacy (hardware/performance expert for FERMI‑EVER, CodeDB‑E5620, LYCOS) and Scientific Method (hypothesis validation, NEXUS protocol). Use when user mentions any of the original triggers."

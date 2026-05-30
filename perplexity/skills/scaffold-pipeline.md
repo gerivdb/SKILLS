@@ -1,4 +1,4 @@
-﻿---
+---
 name: scaffold-pipeline
 description: "SCAFFOLD governance flow: issue→intent, WAL, constitutional validation, artifact cataloging. Use when user mentions 'SCAFFOLD', 'pipeline gouvernance', 'WAL', 'issue to intent'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Scaffold Pipeline
 
 Domaine et périmètre

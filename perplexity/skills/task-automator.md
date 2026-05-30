@@ -1,4 +1,4 @@
-﻿---
+---
 name: task-automator
 description: "Windows Task Scheduler, schtasks, polling automation. Use when user mentions 'Task Scheduler', 'schtasks', 'polling'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Task Automator
 
 ## Domaine et périmètre

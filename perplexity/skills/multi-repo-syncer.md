@@ -1,4 +1,4 @@
-﻿---
+---
 name: multi-repo-syncer
 description: "Cross-repo synchronization, KIVA, NEXUS, gateway GPU, ECOS_ROOT. Use when user mentions 'sync multi-dépôts', 'KIVA', 'NEXUS', 'gateway GPU'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Multi-Repo Syncer
 
 Domaine et périmètre

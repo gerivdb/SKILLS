@@ -1,4 +1,4 @@
-﻿---
+---
 name: diagram-infographic
 description: "Infographics, KPI cards, mind maps, layered architecture. Use when user mentions 'infographie', 'KPI', 'carte mentale', 'architecture'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Diagram Infographic
 
 ## Domaine et périmètre

@@ -1,4 +1,4 @@
-﻿---
+---
 name: wiki-mimir
 description: "Wiki back-office, MIMIR, Atomic, project management, cross-repo docs. Use when user mentions 'wiki back-office', 'MIMIR', 'Atomic', 'projets'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Wiki Mimir
 
 ## Domaine et périmètre

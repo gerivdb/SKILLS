@@ -1,4 +1,4 @@
-﻿---
+---
 name: skill-tester
 description: "Skill testing, validation, trigger verification, matrix. Use when user mentions 'test skill', 'validation', 'déclenchement', 'matrice'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Skill Tester
 
 ## Domaine et périmètre

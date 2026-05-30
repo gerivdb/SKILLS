@@ -1,4 +1,4 @@
-﻿---
+---
 name: devtools-core
 description: "PowerShell modules, CI Gate, MCP, Fix-MCPConnection, cleanup. Use when user mentions 'DevTools', 'PowerShell', 'CI Gate', 'nettoyage'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # DevTools Core
 
 ## Domaine et périmètre

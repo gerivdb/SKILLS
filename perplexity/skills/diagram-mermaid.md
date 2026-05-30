@@ -1,4 +1,4 @@
-﻿---
+---
 name: diagram-mermaid
 description: "Mermaid diagrams, flowcharts, Gantt, ERD, gitgraph. Use when user mentions 'Mermaid', 'flowchart', 'Gantt', 'ERD'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Diagram Mermaid
 
 ## Domaine et périmètre

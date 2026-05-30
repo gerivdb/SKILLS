@@ -1,4 +1,4 @@
-﻿---
+---
 name: diagram-uml
 description: "UML diagrams, PlantUML, ArchiMate, BPMN. Use when user mentions 'UML', 'PlantUML', 'ArchiMate', 'BPMN'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Diagram UML
 
 ## Domaine et périmètre

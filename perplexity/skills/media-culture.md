@@ -1,4 +1,4 @@
-﻿---
+---
 name: media-culture
 description: Media, culture and booking expert for ROCK-REIMS-AGENDA, GVDB-MEDIA, GERI-VON-DER-BITSH. Use when user mentions
   "ROCK-REIMS", "GVDB-MEDIA", "GERI-VON-DER-BITSH", "agenda", "booking", "médias", "culture rémoise".

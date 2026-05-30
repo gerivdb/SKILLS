@@ -1,4 +1,4 @@
-﻿---
+---
 name: comet-browser
 description: "COMET, BIRDY, headless browsers, CDP automation, browser extensions. Use when user mentions 'COMET', 'BIRDY', 'headless', 'CDP', 'navigateur IA'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Comet Browser
 
 ## Domaine et périmètre

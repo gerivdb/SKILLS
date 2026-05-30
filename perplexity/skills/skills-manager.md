@@ -1,4 +1,4 @@
-﻿---
+---
 name: skills-manager
 description: "Skill creation, fusion, format canonical, refactoring, analysis. Use when user mentions 'skill', 'format canonique', 'refonte', 'fusion', 'analyse'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Skills Manager
 
 Domaine et périmètre

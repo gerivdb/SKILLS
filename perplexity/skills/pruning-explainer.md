@@ -1,4 +1,4 @@
-﻿---
+---
 name: pruning-explainer
 description: "Pruning in dev and Git, git remote prune, optimization. Use when user mentions 'pruning', 'élagage', 'git remote prune'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Pruning Explainer
 
 Domaine et périmètre

@@ -1,4 +1,4 @@
-﻿---
+---
 name: plix-core
 version: "2.0.0"
 description: "PLIX video substrate, CODEC-243, PLAYER-243, PLIXVAULT, OCTOPUS, BitNet mapping, ThermoGate, VDB. Use when user mentions 'PLIX', 'CODEC-243', 'PLAYER-243', 'PLIXVAULT', 'OCTOPUS', 'ThermoGate', 'VDB'."

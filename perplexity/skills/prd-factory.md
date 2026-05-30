@@ -1,4 +1,4 @@
-﻿---
+---
 name: prd-factory
 version: "1.0.0"
 description: "Compétence pour la production complète d’un PRD : validation croisée des spécifications, vérification de la cohérence OKR, guide de rédaction selon le format canonique (sections 1→17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur mentionne 'PRD production', 'spec cross‑validator', 'OKR consistency', 'PRD canonique'."

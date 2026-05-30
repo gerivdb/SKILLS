@@ -1,4 +1,4 @@
-﻿---
+---
 name: reposcope-run
 description: "Digestion engine execution, long scans, ingestion pipeline. Use when user mentions 'digestion', 'scan long', 'ingestion', 'pipeline'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # RepoScope Run
 
 ## Domaine et périmètre

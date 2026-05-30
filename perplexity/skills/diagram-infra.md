@@ -1,4 +1,4 @@
-﻿---
+---
 name: diagram-infra
 description: "Infrastructure diagrams: cloud, network, security, AWS, Azure. Use when user mentions 'cloud', 'AWS', 'Azure', 'réseau', 'sécurité'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Diagram Infra
 
 ## Domaine et périmètre

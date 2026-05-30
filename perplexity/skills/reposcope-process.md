@@ -1,4 +1,4 @@
-﻿---
+---
 name: reposcope-process
 description: "Signal scoring, cross-artefact correlation, timeline, discovery sheets. Use when user mentions 'scoring', 'corrélation', 'timeline', 'fiche découverte'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # RepoScope Process
 
 ## Domaine et périmètre

@@ -1,4 +1,4 @@
-﻿---
+---
 name: claude-optimizer
 description: "18-step Claude optimization, custom instructions, projects, style cloning. Use when user mentions 'optimisation Claude', '18 étapes', 'custom instructions'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Claude Optimizer
 
 ## Domaine et périmètre

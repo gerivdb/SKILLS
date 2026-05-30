@@ -1,4 +1,4 @@
-﻿---
+---
 name: local-recovery
 description: "Disappeared local clones, WAZAA, git detective, restoration. Use when user mentions 'clone disparu', 'WAZAA', 'restauration', 'ecos repo'."
 version: "1.0.0"
@@ -8,7 +8,6 @@ triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
 ---
-|
 # Local Recovery
 
 ## Domaine et périmètre
