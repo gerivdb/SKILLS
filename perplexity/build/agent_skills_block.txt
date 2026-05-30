@@ -1,0 +1,179 @@
+<agent_skills>
+### Skill: adr-manager
+Architecture Decision Records: validation, creation, lifecycle. Use when user mentions 'ADR', 'décision architecture', 'valider ADR', 'nexus jalon'.
+
+### Skill: argus-tracker
+ARGUS project phases, delta registry, propagation, KIVA scheduler. Use when user mentions 'ARGUS', 'delta registry', 'propagation', 'Phase 4'.
+
+### Skill: base243
+Base-243 converter, Ladybird, ternary, Tauri, portage. Use when user mentions 'base 243', 'convertisseur', 'Ladybird', 'ternaire'.
+
+### Skill: boinc-p2p
+BOINC-LLM distributed inference, DHT Kademlia, swarm, P2P computing. Use when user mentions 'BOINC-LLM', 'P2P', 'distribué', 'swarm'.
+
+### Skill: claude-optimizer
+18-step Claude optimization, custom instructions, projects, style cloning. Use when user mentions 'optimisation Claude', '18 étapes', 'custom instructions'.
+
+### Skill: comet-browser
+COMET, BIRDY, headless browsers, CDP automation, browser extensions. Use when user mentions 'COMET', 'BIRDY', 'headless', 'CDP', 'navigateur IA'.
+
+### Skill: data-vector
+VDB, TQL, embeddings, vector search, VEC-243, SparrowDB. Use when user mentions 'VDB', 'TQL', 'embedding', 'vector', 'VEC-243'.
+
+### Skill: deepwiki-ops
+Fused skill combining DeepWiki-based repo analysis (analyse-repo-deepwiki) and DeepWiki repo enrichment (deepwiki_repo_enricher). Provides constitutional ECOS analysis, ENV2 scoring, GitHub issue coverage, alternatives comparison, and final recommendation. Use when user mentions any of the original triggers.
+
+### Skill: devtools-core
+PowerShell modules, CI Gate, MCP, Fix-MCPConnection, cleanup. Use when user mentions 'DevTools', 'PowerShell', 'CI Gate', 'nettoyage'.
+
+### Skill: diagram-infographic
+Infographics, KPI cards, mind maps, layered architecture. Use when user mentions 'infographie', 'KPI', 'carte mentale', 'architecture'.
+
+### Skill: diagram-infra
+Infrastructure diagrams: cloud, network, security, AWS, Azure. Use when user mentions 'cloud', 'AWS', 'Azure', 'réseau', 'sécurité'.
+
+### Skill: diagram-mermaid
+Mermaid diagrams, flowcharts, Gantt, ERD, gitgraph. Use when user mentions 'Mermaid', 'flowchart', 'Gantt', 'ERD'.
+
+### Skill: diagram-uml
+UML diagrams, PlantUML, ArchiMate, BPMN. Use when user mentions 'UML', 'PlantUML', 'ArchiMate', 'BPMN'.
+
+### Skill: diagram-vega
+Vega-Lite charts, data visualization, analytics. Use when user mentions 'Vega-Lite', 'graphique', 'data analytics'.
+
+### Skill: ecos-vision
+Fused skill combining ECOS-VISION (cross‑repo visualization), ecosystem‑self (self‑learning / semantic cache / META‑CLUSTER GRAPH) and lecun‑vision (Yann LeCun’s AI vision – JEPA, world models, AMI, Tapestry). Use when user mentions any of the original triggers.
+
+### Skill: github-config
+GITHUB_TOKEN, gh auth, scopes, Actions settings, rate-limit, gestion des gros fichiers (push_files vs create_or_update, split‑payload, SHA‑management). Use when user mentions 'GITHUB_TOKEN', 'gh auth', 'scopes', 'Settings Actions', 'large files', 'push_files', 'create_or_update'.
+
+### Skill: governance-formal
+GOVERNANCE-HUB, REPO-STANDARDS, ONTOLOGY, RSS-v1 lifecycle. Use when user mentions 'GOVERNANCE-HUB', 'REPO-STANDARDS', 'ONTOLOGY', 'RSS-v1', 'lifecycle'.
+
+### Skill: hitl-core
+Fused skill combining HITL Hub (review of signals, workflow building, world‑model review) and HITL Ops (governance audit, ecosystem health, token scope, permissions). Use when user mentions any of the original triggers.
+
+### Skill: ide-tools
+KiloCode, Cline, VSIX, MCP Sequential Thinking, Rust alternatives. Use when user mentions 'KiloCode', 'Cline', 'VSIX', 'MCP Sequential Thinking', 'Rust'.
+
+### Skill: intent-bridge
+Neurosymbolic bridge: INTENT-ENCODER, nomic-embed-text, 768-dim, ECOS v3.0. Use when user mentions 'INTENT-ENCODER', 'neurosymbolique', 'nomic-embed-text', 'BOINC-LLM'.
+
+### Skill: iot-diagram
+IoT architecture diagrams, sensors, edge computing, MQTT. Use when user mentions 'IoT', 'capteurs', 'edge', 'MQTT'.
+
+### Skill: kiva-pipeline
+KIVA-CLI pipelines, local CI, preflight, GitHub Actions migration. Use when user mentions 'KIVA', 'pipeline', 'CI locale', 'preflight'.
+
+### Skill: lecun-prd
+Generate PRD from LeCun's positions, PLIX world model, Triade alignment. Use when user mentions 'PRD LeCun', 'plix world model', 'triade alignment'.
+
+### Skill: local-recovery
+Disappeared local clones, WAZAA, git detective, restoration. Use when user mentions 'clone disparu', 'WAZAA', 'restauration', 'ecos repo'.
+
+### Skill: mcp-write-guard
+Compétence couvrant la résilience d’écriture MCP : estimateur de taille de payload, stratégie de retry avec escalade, surveillance du contexte de session, gestion de la verbosité des échecs. Utiliser quand l’utilisateur mentionne 'MCP write resilience', 'payload size', 'retry strategy', 'session context', 'fail verbosity'.
+
+### Skill: media-culture
+
+
+### Skill: multi-repo-syncer
+Cross-repo synchronization, KIVA, NEXUS, gateway GPU, ECOS_ROOT. Use when user mentions 'sync multi-dépôts', 'KIVA', 'NEXUS', 'gateway GPU'.
+
+### Skill: new-pillars
+
+
+### Skill: nexus-auditor
+Audit repository structure against DDD criteria, EPIC size, violations. Use when user mentions 'audit structure', 'DDD', 'EPIC volumineuse', 'taille'.
+
+### Skill: nexus-compliance
+Branch governance, cherry-pick safety, hook validation. Use when user mentions 'conformité', 'gouvernance branche', 'cherry-pick safety'.
+
+### Skill: nexus-core
+NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'φ-CPS'.
+
+### Skill: nexus-deps
+Shadow dependency detection, dependency matrix, inter-layer coupling. Use when user mentions 'shadow dependency', 'matrice dépendances', 'inter-strates'.
+
+### Skill: nexus-map
+
+
+### Skill: nexus-monitor
+φ-CPS scoring, ecosystem health, production readiness, drift detection. Use when user mentions 'φ-CPS', 'santé écosystème', 'production readiness', 'drift'.
+
+### Skill: nexus-prd
+Magistral PRD synthesis, ASCII diagrams, recommendations. Use when user mentions 'PRD magistral', 'synthèse', 'diagramme ASCII', 'recommandations'.
+
+### Skill: nexus-reformer
+Refactoring, migration, cleanup, extraction of responsibilities. Use when user mentions 'refactoring', 'migration', 'nettoyage résidus', 'extraction'.
+
+### Skill: nexus-registry-sync
+ECOS_ROOT synchronization, autodiscover, missing repositories. Use when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'dépôts manquants'.
+
+### Skill: nexus-registry-view
+Dashboard, herd view, registry status. Use when user mentions 'dashboard troupeau', 'vue registre', 'tableau de bord'.
+
+### Skill: plix-core
+PLIX video substrate, CODEC-243, PLAYER-243, PLIXVAULT, OCTOPUS, BitNet mapping, ThermoGate, VDB. Use when user mentions 'PLIX', 'CODEC-243', 'PLAYER-243', 'PLIXVAULT', 'OCTOPUS', 'ThermoGate', 'VDB'.
+
+### Skill: prd-factory
+Compétence pour la production complète d’un PRD : validation croisée des spécifications, vérification de la cohérence OKR, guide de rédaction selon le format canonique (sections 1→17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur mentionne 'PRD production', 'spec cross‑validator', 'OKR consistency', 'PRD canonique'.
+
+### Skill: pruning-explainer
+Pruning in dev and Git, git remote prune, optimization. Use when user mentions 'pruning', 'élagage', 'git remote prune'.
+
+### Skill: pulse-infra
+
+
+### Skill: reasoning-toolkit
+Fused skill combining Fermi‑legacy (hardware/performance expert for FERMI‑EVER, CodeDB‑E5620, LYCOS) and Scientific Method (hypothesis validation, NEXUS protocol). Use when user mentions any of the original triggers.
+
+### Skill: reposcope-process
+Signal scoring, cross-artefact correlation, timeline, discovery sheets. Use when user mentions 'scoring', 'corrélation', 'timeline', 'fiche découverte'.
+
+### Skill: reposcope-publish
+Brain-feed publication, signal clustering, dashboards, alerts. Use when user mentions 'brain‑feed', 'clusters', 'dashboard', 'alertes'.
+
+### Skill: reposcope-run
+Digestion engine execution, long scans, ingestion pipeline. Use when user mentions 'digestion', 'scan long', 'ingestion', 'pipeline'.
+
+### Skill: reposcope-watch
+External surveillance: signals, flags, env vars, API endpoints, secrets. Use when user mentions 'surveillance', 'signal', 'hidden flag', 'API endpoint', 'secret CI'.
+
+### Skill: scaffold-pipeline
+SCAFFOLD governance flow: issue→intent, WAL, constitutional validation, artifact cataloging. Use when user mentions 'SCAFFOLD', 'pipeline gouvernance', 'WAL', 'issue to intent'.
+
+### Skill: skill-tester
+Skill testing, validation, trigger verification, matrix. Use when user mentions 'test skill', 'validation', 'déclenchement', 'matrice'.
+
+### Skill: skills-manager
+Skill creation, fusion, format canonical, refactoring, analysis. Use when user mentions 'skill', 'format canonique', 'refonte', 'fusion', 'analyse'.
+
+### Skill: swarm-cli
+
+
+### Skill: task-automator
+Windows Task Scheduler, schtasks, polling automation. Use when user mentions 'Task Scheduler', 'schtasks', 'polling'.
+
+### Skill: triade-flux
+FLUX review, HITL promotion, assimilation into NEXUS. Use when user mentions 'FLUX', 'review', 'HITL', 'promotion'.
+
+### Skill: triade-hub
+Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX. Use when user mentions 'triade cognitive', 'orchestration', 'end‑to‑end'.
+
+### Skill: triade-iris
+IRIS external sensor, polling, GitHub Actions workflow, target YAML. Use when user mentions 'IRIS', 'polling', 'capteur externe'.
+
+### Skill: triade-kronos
+KRONOS digester, signal qualification, deduplication. Use when user mentions 'KRONOS', 'digesteur', 'qualification'.
+
+### Skill: wiki-mimir
+Wiki back-office, MIMIR, Atomic, project management, cross-repo docs. Use when user mentions 'wiki back-office', 'MIMIR', 'Atomic', 'projets'.
+
+### Skill: workflow-debugger
+GitHub Actions debugging: startup_failure, permissions, PYTHONPATH. Use when user mentions 'startup_failure', 'permissions', 'PYTHONPATH'.
+
+### Skill: z600-hardware
+HP Z600, E5620, Fermi GPU, AVX limitations, WASM bypass, Zig, LXC. Use when user mentions 'Z600', 'E5620', 'Fermi', 'AVX', 'WASM', 'Zig', 'LXC'.
+
+</agent_skills>
