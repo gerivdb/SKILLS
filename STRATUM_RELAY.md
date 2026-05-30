@@ -1,6 +1,6 @@
 # STRATUM RELAY — SKILLS (L6)
 
-**VAGUE**: 3 | **Synchro**: 2026-05-30 | **Hub**: gerivdb/LLM-REPO
+**VAGUE**: 4 | **Synchro**: 2026-05-30 | **Hub**: gerivdb/LLM-REPO
 
 - **Strate** : `L6` — Memoire & Documentation
 - **Role canonique** : SOT capacites — registre des skills — structure tripartite
@@ -27,6 +27,25 @@
 - **Parents (Amont)** : MIMIR / L5 IA distribuee
 - **Enfants (Aval)** : L7 interfaces (lisent SKILLS)
 
+## Agents locaux (Vague 4)
+
+```yaml
+# .roomodes — profil agent SKILLS
+agent: skills-registrar
+strate: L6
+role: Skill capacity registry
+rules: SKILLS/rules/registry_rules.yaml
+hub_ref: MIMIR
+```
+
+L'agent `skills-registrar` maintient le registre tripartite des capacites et valide l'enregistrement de chaque nouveau skill.
+
+## Auto-conformite (Vague 4)
+
+- **Guard 1 — Registration mandatory** : Tout skill doit etre enregistre dans SKILLS avant usage par un L7.
+- **Guard 2 — Tripartite structure** : Chaque skill doit appartenir a exactement une categorie : natif, assimile, ou externe.
+- **Guard 3 — No ghost skills** : Les skills non utilises depuis 90j sont archives automatiquement.
+
 ## Vague de mise a jour
 
 | Vague | Date | Contenu |
@@ -34,4 +53,10 @@
 | V1 | 2026-05-28 | Initialisation structure Phase 7d — 5Q (P0) |
 | V2 | 2026-05-29 | Validation tripartite + dependances L5 (P1) |
 | V3 | 2026-05-30 | Extension 10Q + section Dependances directes (P1) |
-| V4 | — | Planifie — consolidation et expansion future |
+| **V4** | **2026-05-30** | **Agents locaux (.roomodes) + Auto-conformite (3 guards) deployes** |
+
+---
+
+*Genere par `VERSUS/urban_ontology_verse/TOOLS/relay_propagator.py` v4.0*
+*UrbanVerse v4.0.0 — gerivdb/VERSUS (L8)*
+*IntentHash: 0xPHASE8_SKILLS_V4_20260530*
