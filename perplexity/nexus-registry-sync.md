@@ -1,7 +1,12 @@
----
+﻿---
 name: nexus-registry-sync
 description: "ECOS_ROOT synchronization, autodiscover, missing repositories. Use when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'dépôts manquants'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # NEXUS Registry Sync
 

@@ -1,7 +1,12 @@
----
+﻿---
 name: adr-manager
 description: "Architecture Decision Records: validation, creation, lifecycle. Use when user mentions 'ADR', 'décision architecture', 'valider ADR', 'nexus jalon'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # ADR Manager
 

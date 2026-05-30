@@ -1,7 +1,12 @@
----
+﻿---
 name: boinc-p2p
 description: "BOINC-LLM distributed inference, DHT Kademlia, swarm, P2P computing. Use when user mentions 'BOINC-LLM', 'P2P', 'distribué', 'swarm'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # BOINC P2P
 

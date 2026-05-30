@@ -1,79 +1,740 @@
 {
-  "manifest_version": "1.0.0",
-  "ecosystem": "ecosystem-1",
-  "spec": "agentskills.io/v1",
-  "registry": "gerivdb/SKILLS",
-  "generated": "2026-03-17T22:00:00Z",
-  "intent_hash": "0xA3F2E891_SKILLS_REGISTRY_INIT_20260317",
-  
-  "compatibility": {
-    "agentskills_io": {
-      "version": "v1",
-      "status": "compatible",
-      "validation": "strict"
-    }
-  },
-  
-  "skills": {
-    "count": 6,
-    "native": 6,
-    "external": 0,
-    "assimilated": 0
-  },
-  
-  "metadata": {
-    "governance": {
-      "level": "L2",
-      "citizen": "skills-registry",
-      "lifecycle": "GENESIS"
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-05-30T19:45:12Z",
+  "skills": [
+    {
+      "name": "adr-manager",
+      "version": "1.0.0",
+      "description": "Architecture Decision Records: validation, creation, lifecycle. Use when user mentions 'ADR', 'décision architecture', 'valider ADR', 'nexus jalon'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
     },
-    "phi_cps": {
-      "contribution": 0.039,
-      "weight": 0.008
-    }
-  },
-  
-  "repositories": {
-    "native": {
-      "path": "native/",
-      "foundational": [
-        "product-context",
-        "ecosystem-principles"
+    {
+      "name": "argus-tracker",
+      "version": "1.0.0",
+      "description": "ARGUS project phases, delta registry, propagation, KIVA scheduler. Use when user mentions 'ARGUS', 'delta registry', 'propagation', 'Phase 4'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "base243",
+      "version": "1.0.0",
+      "description": "Base-243 converter, Ladybird, ternary, Tauri, portage. Use when user mentions 'base 243', 'convertisseur', 'Ladybird', 'ternaire'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "boinc-p2p",
+      "version": "1.0.0",
+      "description": "BOINC-LLM distributed inference, DHT Kademlia, swarm, P2P computing. Use when user mentions 'BOINC-LLM', 'P2P', 'distribué', 'swarm'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "claude-optimizer",
+      "version": "1.0.0",
+      "description": "18-step Claude optimization, custom instructions, projects, style cloning. Use when user mentions 'optimisation Claude', '18 étapes', 'custom instructions'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "comet-browser",
+      "version": "1.0.0",
+      "description": "COMET, BIRDY, headless browsers, CDP automation, browser extensions. Use when user mentions 'COMET', 'BIRDY', 'headless', 'CDP', 'navigateur IA'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "data-vector",
+      "version": "1.0.0",
+      "description": "VDB, TQL, embeddings, vector search, VEC-243, SparrowDB. Use when user mentions 'VDB', 'TQL', 'embedding', 'vector', 'VEC-243'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "deepwiki-ops",
+      "version": "1.0.0",
+      "description": "Fused skill combining DeepWiki-based repo analysis (analyse-repo-deepwiki) and DeepWiki repo enrichment (deepwiki_repo_enricher). Provides constitutional ECOS analysis, ENV2 scoring, GitHub issue coverage, alternatives comparison, and final recommendation. Use when user mentions any of the original triggers.",
+      "triggers": [
+        "/analyse-repo",
+        "évalue dépôt",
+        "DeepWiki",
+        "scoring ECOS",
+        "citoyennisation",
+        "DeepWiki Enricher",
+        "constitutionnelle ECOS",
+        "ENV2 compliance",
+        "GitHub coverage",
+        "alternatives"
       ],
-      "domain": [
-        "booking",
-        "recruitment",
-        "finance",
-        "content"
-      ]
+      "layer": "L5_META",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": null,
+      "slotWeight": 1,
+      "status": "active"
     },
-    "external": {
-      "path": "ext/",
-      "pending": [
-        "marketingskills"
-      ]
+    {
+      "name": "devtools-core",
+      "version": "1.0.0",
+      "description": "PowerShell modules, CI Gate, MCP, Fix-MCPConnection, cleanup. Use when user mentions 'DevTools', 'PowerShell', 'CI Gate', 'nettoyage'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "diagram-infographic",
+      "version": "1.0.0",
+      "description": "Infographics, KPI cards, mind maps, layered architecture. Use when user mentions 'infographie', 'KPI', 'carte mentale', 'architecture'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "diagram-infra",
+      "version": "1.0.0",
+      "description": "Infrastructure diagrams: cloud, network, security, AWS, Azure. Use when user mentions 'cloud', 'AWS', 'Azure', 'réseau', 'sécurité'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "diagram-mermaid",
+      "version": "1.0.0",
+      "description": "Mermaid diagrams, flowcharts, Gantt, ERD, gitgraph. Use when user mentions 'Mermaid', 'flowchart', 'Gantt', 'ERD'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "diagram-uml",
+      "version": "1.0.0",
+      "description": "UML diagrams, PlantUML, ArchiMate, BPMN. Use when user mentions 'UML', 'PlantUML', 'ArchiMate', 'BPMN'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "diagram-vega",
+      "version": "1.0.0",
+      "description": "Vega-Lite charts, data visualization, analytics. Use when user mentions 'Vega-Lite', 'graphique', 'data analytics'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "ecos-vision",
+      "version": "2.0.0",
+      "description": "Fused skill combining ECOS-VISION (cross‑repo visualization), ecosystem‑self (self‑learning / semantic cache / META‑CLUSTER GRAPH) and lecun‑vision (Yann LeCun’s AI vision – JEPA, world models, AMI, Tapestry). Use when user mentions any of the original triggers.",
+      "triggers": [
+        "ECOS-VISION",
+        "visualisation",
+        "diagrammes cross-repo",
+        "apprentissage interne",
+        "cache sémantique",
+        "META-CLUSTER",
+        "LeCun",
+        "JEPA",
+        "world model",
+        "AMI",
+        "Tapestry",
+        "débat IA"
+      ],
+      "layer": "L2_COMPOSITION",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": null,
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "github-config",
+      "version": "2.1.0",
+      "description": "GITHUB_TOKEN, gh auth, scopes, Actions settings, rate-limit, gestion des gros fichiers (push_files vs create_or_update, split‑payload, SHA‑management). Use when user mentions 'GITHUB_TOKEN', 'gh auth', 'scopes', 'Settings Actions', 'large files', 'push_files', 'create_or_update'.",
+      "triggers": [
+        "GITHUB_TOKEN",
+        "gh auth",
+        "scopes",
+        "Settings Actions",
+        "large files",
+        "push_files",
+        "create_or_update"
+      ],
+      "layer": "L1_CAUSALITY",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": "gh CLI >=2.0",
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "governance-formal",
+      "version": "1.0.0",
+      "description": "GOVERNANCE-HUB, REPO-STANDARDS, ONTOLOGY, RSS-v1 lifecycle. Use when user mentions 'GOVERNANCE-HUB', 'REPO-STANDARDS', 'ONTOLOGY', 'RSS-v1', 'lifecycle'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "hitl-core",
+      "version": "1.0.0",
+      "description": "Fused skill combining HITL Hub (review of signals, workflow building, world‑model review) and HITL Ops (governance audit, ecosystem health, token scope, permissions). Use when user mentions any of the original triggers.",
+      "triggers": [
+        "HITL",
+        "review signals",
+        "audit",
+        "workflow builder",
+        "gouvernance transverse",
+        "token scope",
+        "permissions",
+        "rapport d'état",
+        "ECOS_ROOT",
+        "priorisation"
+      ],
+      "layer": "L3_EMERGENCE",
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "HYPOTHÈSE_NON_CONFIRMÉE"
+      ],
+      "prerequisites": null,
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "ide-tools",
+      "version": "1.0.0",
+      "description": "KiloCode, Cline, VSIX, MCP Sequential Thinking, Rust alternatives. Use when user mentions 'KiloCode', 'Cline', 'VSIX', 'MCP Sequential Thinking', 'Rust'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "intent-bridge",
+      "version": "1.0.0",
+      "description": "Neurosymbolic bridge: INTENT-ENCODER, nomic-embed-text, 768-dim, ECOS v3.0. Use when user mentions 'INTENT-ENCODER', 'neurosymbolique', 'nomic-embed-text', 'BOINC-LLM'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "iot-diagram",
+      "version": "1.0.0",
+      "description": "IoT architecture diagrams, sensors, edge computing, MQTT. Use when user mentions 'IoT', 'capteurs', 'edge', 'MQTT'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "kiva-pipeline",
+      "version": "1.0.0",
+      "description": "KIVA-CLI pipelines, local CI, preflight, GitHub Actions migration. Use when user mentions 'KIVA', 'pipeline', 'CI locale', 'preflight'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "lecun-prd",
+      "version": "1.0.0",
+      "description": "Generate PRD from LeCun's positions, PLIX world model, Triade alignment. Use when user mentions 'PRD LeCun', 'plix world model', 'triade alignment'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "local-recovery",
+      "version": "1.0.0",
+      "description": "Disappeared local clones, WAZAA, git detective, restoration. Use when user mentions 'clone disparu', 'WAZAA', 'restauration', 'ecos repo'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "mcp-write-guard",
+      "version": "1.0.0",
+      "description": "Compétence couvrant la résilience d’écriture MCP : estimateur de taille de payload, stratégie de retry avec escalade, surveillance du contexte de session, gestion de la verbosité des échecs. Utiliser quand l’utilisateur mentionne 'MCP write resilience', 'payload size', 'retry strategy', 'session context', 'fail verbosity'.",
+      "triggers": [
+        "MCP write",
+        "payload size",
+        "retry strategy",
+        "session context",
+        "fail verbosity"
+      ],
+      "layer": "L2_RESILIENCE",
+      "nexusTags": "RESILIENCE_WRITE",
+      "prerequisites": null,
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "media-culture",
+      "version": "1.0.0",
+      "description": "",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "multi-repo-syncer",
+      "version": "1.0.0",
+      "description": "Cross-repo synchronization, KIVA, NEXUS, gateway GPU, ECOS_ROOT. Use when user mentions 'sync multi-dépôts', 'KIVA', 'NEXUS', 'gateway GPU'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "new-pillars",
+      "version": "1.0.0",
+      "description": "",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-auditor",
+      "version": "1.0.0",
+      "description": "Audit repository structure against DDD criteria, EPIC size, violations. Use when user mentions 'audit structure', 'DDD', 'EPIC volumineuse', 'taille'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-compliance",
+      "version": "1.0.0",
+      "description": "Branch governance, cherry-pick safety, hook validation. Use when user mentions 'conformité', 'gouvernance branche', 'cherry-pick safety'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-core",
+      "version": "1.0.0",
+      "description": "NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'φ-CPS'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-deps",
+      "version": "1.0.0",
+      "description": "Shadow dependency detection, dependency matrix, inter-layer coupling. Use when user mentions 'shadow dependency', 'matrice dépendances', 'inter-strates'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-map",
+      "version": "1.0.0",
+      "description": "",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-monitor",
+      "version": "1.0.0",
+      "description": "φ-CPS scoring, ecosystem health, production readiness, drift detection. Use when user mentions 'φ-CPS', 'santé écosystème', 'production readiness', 'drift'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-prd",
+      "version": "1.0.0",
+      "description": "Magistral PRD synthesis, ASCII diagrams, recommendations. Use when user mentions 'PRD magistral', 'synthèse', 'diagramme ASCII', 'recommandations'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-reformer",
+      "version": "1.0.0",
+      "description": "Refactoring, migration, cleanup, extraction of responsibilities. Use when user mentions 'refactoring', 'migration', 'nettoyage résidus', 'extraction'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-registry-sync",
+      "version": "1.0.0",
+      "description": "ECOS_ROOT synchronization, autodiscover, missing repositories. Use when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'dépôts manquants'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "nexus-registry-view",
+      "version": "1.0.0",
+      "description": "Dashboard, herd view, registry status. Use when user mentions 'dashboard troupeau', 'vue registre', 'tableau de bord'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "plix-core",
+      "version": "2.0.0",
+      "description": "PLIX video substrate, CODEC-243, PLAYER-243, PLIXVAULT, OCTOPUS, BitNet mapping, ThermoGate, VDB. Use when user mentions 'PLIX', 'CODEC-243', 'PLAYER-243', 'PLIXVAULT', 'OCTOPUS', 'ThermoGate', 'VDB'.",
+      "triggers": [
+        "PLIX",
+        "CODEC-243",
+        "PLAYER-243",
+        "PLIXVAULT",
+        "OCTOPUS",
+        "ThermoGate",
+        "VDB"
+      ],
+      "layer": "L3_EMERGENCE",
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "DÉRIVÉ"
+      ],
+      "prerequisites": null,
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "prd-factory",
+      "version": "1.0.0",
+      "description": "Compétence pour la production complète d’un PRD : validation croisée des spécifications, vérification de la cohérence OKR, guide de rédaction selon le format canonique (sections 1→17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur mentionne 'PRD production', 'spec cross‑validator', 'OKR consistency', 'PRD canonique'.",
+      "triggers": [
+        "PRD production",
+        "spec cross-validator",
+        "OKR consistency",
+        "PRD canonique",
+        "PRD factory"
+      ],
+      "layer": "L2_PRODUCTION",
+      "nexusTags": "PRD_FACTORY",
+      "prerequisites": null,
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "pruning-explainer",
+      "version": "1.0.0",
+      "description": "Pruning in dev and Git, git remote prune, optimization. Use when user mentions 'pruning', 'élagage', 'git remote prune'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "pulse-infra",
+      "version": "1.0.0",
+      "description": "",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "reasoning-toolkit",
+      "version": "1.0.0",
+      "description": "Fused skill combining Fermi‑legacy (hardware/performance expert for FERMI‑EVER, CodeDB‑E5620, LYCOS) and Scientific Method (hypothesis validation, NEXUS protocol). Use when user mentions any of the original triggers.",
+      "triggers": [
+        "FERMI",
+        "CodeDB-E5620",
+        "LYCOS",
+        "Xeon E5620",
+        "GPU Fermi",
+        "AVX",
+        "LXC Z600",
+        "SSE4.2",
+        "Poincaré",
+        "Feynman",
+        "méthode scientifique",
+        "hypothèse"
+      ],
+      "layer": "L5_META",
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "HYPOTHÈSE_NON_CONFIRMÉE"
+      ],
+      "prerequisites": null,
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "reposcope-process",
+      "version": "1.0.0",
+      "description": "Signal scoring, cross-artefact correlation, timeline, discovery sheets. Use when user mentions 'scoring', 'corrélation', 'timeline', 'fiche découverte'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "PENDING_ASSIMILATION"
+    },
+    {
+      "name": "reposcope-publish",
+      "version": "1.0.0",
+      "description": "Brain-feed publication, signal clustering, dashboards, alerts. Use when user mentions 'brain‑feed', 'clusters', 'dashboard', 'alertes'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "reposcope-run",
+      "version": "1.0.0",
+      "description": "Digestion engine execution, long scans, ingestion pipeline. Use when user mentions 'digestion', 'scan long', 'ingestion', 'pipeline'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "reposcope-watch",
+      "version": "1.0.0",
+      "description": "External surveillance: signals, flags, env vars, API endpoints, secrets. Use when user mentions 'surveillance', 'signal', 'hidden flag', 'API endpoint', 'secret CI'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "scaffold-pipeline",
+      "version": "1.0.0",
+      "description": "SCAFFOLD governance flow: issue→intent, WAL, constitutional validation, artifact cataloging. Use when user mentions 'SCAFFOLD', 'pipeline gouvernance', 'WAL', 'issue to intent'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "skill-tester",
+      "version": "1.0.0",
+      "description": "Skill testing, validation, trigger verification, matrix. Use when user mentions 'test skill', 'validation', 'déclenchement', 'matrice'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "skills-manager",
+      "version": "1.0.0",
+      "description": "Skill creation, fusion, format canonical, refactoring, analysis. Use when user mentions 'skill', 'format canonique', 'refonte', 'fusion', 'analyse'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "swarm-cli",
+      "version": "1.0.0",
+      "description": "",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "task-automator",
+      "version": "1.0.0",
+      "description": "Windows Task Scheduler, schtasks, polling automation. Use when user mentions 'Task Scheduler', 'schtasks', 'polling'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "triade-flux",
+      "version": "1.0.0",
+      "description": "FLUX review, HITL promotion, assimilation into NEXUS. Use when user mentions 'FLUX', 'review', 'HITL', 'promotion'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "triade-hub",
+      "version": "1.0.0",
+      "description": "Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX. Use when user mentions 'triade cognitive', 'orchestration', 'end‑to‑end'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "triade-iris",
+      "version": "1.0.0",
+      "description": "IRIS external sensor, polling, GitHub Actions workflow, target YAML. Use when user mentions 'IRIS', 'polling', 'capteur externe'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "triade-kronos",
+      "version": "1.0.0",
+      "description": "KRONOS digester, signal qualification, deduplication. Use when user mentions 'KRONOS', 'digesteur', 'qualification'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "wiki-mimir",
+      "version": "1.0.0",
+      "description": "Wiki back-office, MIMIR, Atomic, project management, cross-repo docs. Use when user mentions 'wiki back-office', 'MIMIR', 'Atomic', 'projets'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "workflow-debugger",
+      "version": "1.0.0",
+      "description": "GitHub Actions debugging: startup_failure, permissions, PYTHONPATH. Use when user mentions 'startup_failure', 'permissions', 'PYTHONPATH'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "z600-hardware",
+      "version": "1.0.0",
+      "description": "HP Z600, E5620, Fermi GPU, AVX limitations, WASM bypass, Zig, LXC. Use when user mentions 'Z600', 'E5620', 'Fermi', 'AVX', 'WASM', 'Zig', 'LXC'.",
+      "triggers": null,
+      "layer": "L0_UNKNOWN",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active"
     }
-  },
-  
-  "validation": {
-    "frontmatter_required": true,
-    "yaml_schema": "strict",
-    "duplicates_check": true,
-    "links_check": true
-  },
-  
-  "integration": {
-    "ecoystem": {
-      "submodule_path": ".skills-hub",
-      "clinerules_reference": ".skills-hub/REGISTRY.yaml",
-      "status": "pending_integration"
-    },
-    "consumers": [
-      "FLUENCE",
-      "BRAIN",
-      "CANDIDATOR",
-      "GERIBOOKING",
-      "BANK-BUSTER"
-    ]
-  }
+  ]
 }

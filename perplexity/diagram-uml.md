@@ -1,7 +1,12 @@
----
+﻿---
 name: diagram-uml
 description: "UML diagrams, PlantUML, ArchiMate, BPMN. Use when user mentions 'UML', 'PlantUML', 'ArchiMate', 'BPMN'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Diagram UML
 

@@ -1,7 +1,12 @@
----
+﻿---
 name: nexus-prd
 description: "Magistral PRD synthesis, ASCII diagrams, recommendations. Use when user mentions 'PRD magistral', 'synthèse', 'diagramme ASCII', 'recommandations'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # NEXUS PRD
 

@@ -1,7 +1,12 @@
----
+﻿---
 name: lecun-prd
 description: "Generate PRD from LeCun's positions, PLIX world model, Triade alignment. Use when user mentions 'PRD LeCun', 'plix world model', 'triade alignment'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # LeCun PRD
 

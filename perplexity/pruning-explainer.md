@@ -1,7 +1,12 @@
----
+﻿---
 name: pruning-explainer
 description: "Pruning in dev and Git, git remote prune, optimization. Use when user mentions 'pruning', 'élagage', 'git remote prune'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Pruning Explainer
 

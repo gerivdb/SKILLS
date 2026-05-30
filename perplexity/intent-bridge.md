@@ -1,7 +1,12 @@
----
+﻿---
 name: intent-bridge
 description: "Neurosymbolic bridge: INTENT-ENCODER, nomic-embed-text, 768-dim, ECOS v3.0. Use when user mentions 'INTENT-ENCODER', 'neurosymbolique', 'nomic-embed-text', 'BOINC-LLM'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Intent Bridge
 

@@ -1,7 +1,12 @@
----
+﻿---
 name: argus-tracker
 description: "ARGUS project phases, delta registry, propagation, KIVA scheduler. Use when user mentions 'ARGUS', 'delta registry', 'propagation', 'Phase 4'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Argus Tracker
 

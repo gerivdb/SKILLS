@@ -1,7 +1,12 @@
----
+﻿---
 name: nexus-core
 description: "NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'φ-CPS'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # NEXUS Core
 

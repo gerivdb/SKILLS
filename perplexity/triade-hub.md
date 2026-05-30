@@ -1,7 +1,12 @@
----
+﻿---
 name: triade-hub
 description: "Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX. Use when user mentions 'triade cognitive', 'orchestration', 'end‑to‑end'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Triade Hub
 

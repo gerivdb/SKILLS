@@ -1,7 +1,12 @@
----
+﻿---
 name: claude-optimizer
 description: "18-step Claude optimization, custom instructions, projects, style cloning. Use when user mentions 'optimisation Claude', '18 étapes', 'custom instructions'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Claude Optimizer
 

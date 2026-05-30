@@ -57,7 +57,7 @@ Le résultat visé est **50 compétences actives** laissant **50 slots libres** 
 2. **Format** : Chaque compétence doit contenir le front‑matter YAML requis (`name`, `version`, `description`, `triggers`, `layer`, `nexusTags`, `prerequisites`, `slotWeight`, `status`, `changelog`).  
 3. **CI vert** : Le workflow `validate-skills.yml` doit s’exécuter avec succès (code de sortie 0) sur la branche `main`.  
 4. **Documentation** : Le `MANIFEST.json` et le `skills‑dashboard.md` doivent être présents et à jour après chaque merge.  
-5. **Absence d’artefacts de sur‑engineering** : Aucun dossier `versus/`, aucun champ `slotWeight` utilisé pour le calcul de slots SaaS, aucune dépendance lourde (sentence‑transformers, etc.) dans les workflows CI.
+5. **Absence d’artefacts de sur‑engineering** : Aucun dossier `versus/`, aucun champ `slotWeight` utilisé pour le calcul de slots SaaS, aucune dépendance lourde (sentence‑transformers, etc.) dans les workflows CI.  
 
 ---
 
@@ -102,4 +102,4 @@ Le résultat visé est **50 compétences actives** laissant **50 slots libres** 
 
 --- 
 
-*Fin du PRD*
+*Fin du PRD*  

@@ -1,7 +1,12 @@
----
+﻿---
 name: z600-hardware
 description: "HP Z600, E5620, Fermi GPU, AVX limitations, WASM bypass, Zig, LXC. Use when user mentions 'Z600', 'E5620', 'Fermi', 'AVX', 'WASM', 'Zig', 'LXC'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Z600 Hardware
 

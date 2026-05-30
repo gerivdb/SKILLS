@@ -1,7 +1,12 @@
----
+﻿---
 name: skill-tester
 description: "Skill testing, validation, trigger verification, matrix. Use when user mentions 'test skill', 'validation', 'déclenchement', 'matrice'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Skill Tester
 

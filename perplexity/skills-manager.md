@@ -1,7 +1,12 @@
----
+﻿---
 name: skills-manager
 description: "Skill creation, fusion, format canonical, refactoring, analysis. Use when user mentions 'skill', 'format canonique', 'refonte', 'fusion', 'analyse'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Skills Manager
 

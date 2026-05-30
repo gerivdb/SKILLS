@@ -1,8 +1,13 @@
----
+﻿---
 name: pulse-infra
 description: Monitoring and infrastructure expert for PULSE, KIVA, KIVA-CLI, ATLAS, FORGE, CONTAINER-ORCHESTRATOR. Use when user mentions
   "PULSE", "KIVA", "ATLAS", "FORGE", "container", "pipeline", "métriques", "LXC".
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 
 # Pulse Infra
 

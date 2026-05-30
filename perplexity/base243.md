@@ -1,7 +1,12 @@
----
+﻿---
 name: base243
 description: "Base-243 converter, Ladybird, ternary, Tauri, portage. Use when user mentions 'base 243', 'convertisseur', 'Ladybird', 'ternaire'."
----
+version: "1.0.0"
+changelog:
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+triggers: []
+layer: "L0_UNKNOWN"
+nexusTags: ["CONFORME_NEXUS"]---
 |
 # Base 243
 

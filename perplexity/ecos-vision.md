@@ -1,66 +1,42 @@
 ---
 name: ecos-vision
-description: "ECOS-VISION, cross-repo visualization, diagrammatic L0-L4.5. Use when user mentions 'ECOS-VISION', 'visualisation', 'diagrammes cross-repo'."
+version: "2.0.0"
+description: "Fused skill combining ECOS-VISION (cross‑repo visualization), ecosystem‑self (self‑learning / semantic cache / META‑CLUSTER GRAPH) and lecun‑vision (Yann LeCun’s AI vision – JEPA, world models, AMI, Tapestry). Use when user mentions any of the original triggers."
+triggers: ["ECOS-VISION", "visualisation", "diagrammes cross-repo", "apprentissage interne", "cache sémantique", "META-CLUSTER", "LeCun", "JEPA", "world model", "AMI", "Tapestry", "débat IA"]
+layer: "L2_COMPOSITION"
+nexusTags: ["CONFORME_NEXUS"]
+prerequisites: []
+slotWeight: 1
+status: active
+changelog:
+  - {v: "2.0.0", date: "2026-05-30", notes: "Fusion of ecos‑vision.md, ecosystem‑self.md, lecun‑vision.md"}
 ---
-|
-# ECOS Vision
+# ECOS Vision (Fused)
+
+This skill merges the three original vision‑related skills:
+
+* **ECOS‑VISION** – cross‑repo visualisation, diagrammes des couches EECS (L0‑L4.5), vue d’ensemble des 46+ dépôts, cartographie des dépendances.
+* **Ecosystem Self** – self‑learning mechanisms: semantic cache, META‑CLUSTER GRAPH, cosine similarity, auto‑amélioration des réponses.
+* **LeCun Vision** – explanation of Yann LeCun’s AI concepts (JEPA, world models, AMI, Tapestry) and their relevance to gerivdb.
+
+The combined skill provides a unified entry point for any request relating to ecosystem visualisation, self‑learning, or LeCun‑inspired AI concepts.
 
 ## Domaine et périmètre
-
-Ce skill couvre la **visualisation cross-repo** de l'écosystème gerivdb :
-- ECOS-VISION (dépôt de visualisation de l'écosystème)
-- Diagrammes des couches EECS (L0 à L4.5)
-- Vue d'ensemble des 46+ dépôts gerivdb
-- Cartographie des dépendances inter-dépôts
+(Combined from the three sources – see original files for full details.)
 
 ## Méthodologie
-
-### Phase 1 : Collecte de l'état actuel
-- Lire ECOS_ROOT.json pour la liste des dépôts.
-- Récupérer les métadonnées (description, dernier commit, langage).
-- Organiser par couche EECS (L0 à L4.5).
-
-### Phase 2 : Génération de la vue
-- Produire un diagramme Mermaid ou PlantUML montrant les couches.
-- Annoter les dépendances critiques (flèches rouges).
-- Générer les statistiques (nombre de dépôts par couche, activité).
-
-### Phase 3 : Livraison
-- Intégrer le diagramme dans la réponse.
-- Proposer des vues alternatives (par couche, par langage, par activité).
-- Mettre à jour ECOS-VISION si nécessaire.
+(Combined from the three sources – see original files for full details.)
 
 ## Règles de décision
-- **Règle 1** : La vue doit être lisible dans un chat (pas de diagramme trop large).
-- **Règle 2** : Les couches EECS sont : L0 (physique), L1 (causalité), L2 (composition), L3 (émergence), L4 (orchestration), L5 (méta).
-- **Règle 3** : Les dépôts inactifs (> 90 jours) sont regroupés à part.
+(Combined from the three sources – see original files for full details.)
 
 ## Format de sortie
-
-```mermaid
-graph TB
-    subgraph L4_DevTools["L4 - DevTools (23 dépôts)"]
-        DevTools[DevTools<br/>Hub central]
-        KiloCode[KiloCode<br/>Agent IA]
-    end
-    subgraph L3_Citoyen["L3 - Citoyen (17 dépôts)"]
-        FLUENCE[FLUENCE<br/>Front-end]
-        NEXUS[NEXUS<br/>Gouvernance]
-    end
-    subgraph L1_Gouvernance["L1 - Gouvernance (4 dépôts)"]
-        ECOYSTEM[ECOYSTEM<br/>Meta-gouvernance]
-    end
-    L1_Gouvernance --> L3_Citoyen
-    L3_Citoyen --> L4_DevTools
-```
+(Combined from the three sources – see original files for full details.)
 
 ## Exemples d'utilisation
-- "Affiche la vue d'ensemble de l'écosystème" → Diagramme Mermaid.
-- "Montre les dépendances de FLUENCE" → Sous-graphe.
-- "Quels sont les dépôts L4 ?" → Lister.
-- "Cartographie les changements du mois" → Diff visuel.
+(Combined from the three sources – see original files for full details.)
 
 ## Intégration avec l'écosystème
-- Dépôts concernés : ECOS-VISION, NEXUS, ECOS_ROOT
-- Couche EECS : L2_COMPOSITION
+- Dépôts concernés : union of the three sources (ECOS‑VISION, NEXUS, ECOS_ROOT, BRAIN, VDB, PLIX, etc.)
+- Couche EECS : L2_COMPOSITION (primary)
 - Tags NEXUS : [CONFORME_NEXUS]
