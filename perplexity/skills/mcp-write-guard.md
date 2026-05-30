@@ -1,4 +1,4 @@
----
+﻿---
 name: mcp-write-guard
 version: "1.0.0"
 description: "Compétence couvrant la résilience d’écriture MCP : estimateur de taille de payload, stratégie de retry avec escalade, surveillance du contexte de session, gestion de la verbosité des échecs. Utiliser quand l’utilisateur mentionne 'MCP write resilience', 'payload size', 'retry strategy', 'session context', 'fail verbosity'."

@@ -1,4 +1,4 @@
----
+﻿---
 name: ecos-vision
 version: "2.0.0"
 description: "Fused skill combining ECOS-VISION (cross‑repo visualization), ecosystem‑self (self‑learning / semantic cache / META‑CLUSTER GRAPH) and lecun‑vision (Yann LeCun’s AI vision – JEPA, world models, AMI, Tapestry). Use when user mentions any of the original triggers."

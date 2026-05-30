@@ -1,4 +1,4 @@
----
+﻿---
 name: deepwiki-ops
 version: "1.0.0"
 description: "Fused skill combining DeepWiki-based repo analysis (analyse-repo-deepwiki) and DeepWiki repo enrichment (deepwiki_repo_enricher). Provides constitutional ECOS analysis, ENV2 scoring, GitHub issue coverage, alternatives comparison, and final recommendation. Use when user mentions any of the original triggers."

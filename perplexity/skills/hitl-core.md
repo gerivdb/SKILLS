@@ -1,4 +1,4 @@
----
+﻿---
 name: hitl-core
 version: "1.0.0"
 description: "Fused skill combining HITL Hub (review of signals, workflow building, world‑model review) and HITL Ops (governance audit, ecosystem health, token scope, permissions). Use when user mentions any of the original triggers."
