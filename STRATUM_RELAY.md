@@ -1,62 +1,98 @@
+---
+relay_version: 5
+repo: gerivdb/SKILLS
+strate: L6
+lifecycle: ACTIVE
+vague: 5
+synchro: '2026-05-30'
+hub: gerivdb/GOVERNANCE-HUB
+intent_hash: '0x41071D70366123F8'
+phi_cps:
+  value: null
+  source: NOT_MEASURED
+  valid: false
+  note: 3.697 was a mass placeholder — replaced by null
+rules:
+- id: R1
+  assertion: MIMIR est la SOT visuelle — roadmaps et diagrammes uniquement.
+  eval_cmd: null
+  status: UNVERIFIED
+  severity: MEDIUM
+- id: R2
+  assertion: BRAIN-DOCS documente BRAIN uniquement — pas d'autres repos.
+  eval_cmd: null
+  status: UNVERIFIED
+  severity: MEDIUM
+- id: R3
+  assertion: SKILLS = registry tripartite natifs/assimiles/externes.
+  eval_cmd: null
+  status: UNVERIFIED
+  severity: LOW
+---
+
 # STRATUM RELAY — SKILLS (L6)
 
-**VAGUE**: 4 | **Synchro**: 2026-05-30 | **Hub**: gerivdb/LLM-REPO
+**VAGUE**: 5 | **Synchro**: 2026-05-30 | **Hub**: gerivdb/GOVERNANCE-HUB
+
+---
+
+## Identite stratique
 
 - **Strate** : `L6` — Memoire & Documentation
-- **Role canonique** : SOT capacites — registre des skills — structure tripartite
-- **Parent** : L5 (IA distribuee)
+- **Role canonique** : SOT capacites Ã”Ã‡Ã¶ registre des skills Ã”Ã‡Ã¶ structure tripartite
+- **Parent** : L5
+- **Enfants** : L7
+- **phi-CPS** : null (NOT_MEASURED)
+
+## Navigation rapide
+
+- PRD canonique : `GOVERNANCE-HUB/PRD/PRD_ECOSYSTEM_SUPERSTRUCTURE_L0-L9_V1.md`
+- Substrat cognitif : `gerivdb/LLM-REPO` (L1b — prive)
+- Standards repo : `REPO-STANDARDS` (RSS-v1)
+- Transit map : `VERSUS/urban_ontology_verse/TRANSIT/transit_map.yaml`
+- Cadastre : `VERSUS/urban_ontology_verse/CADASTRE/cadastre_full.yaml`
 
 ## Regles locales
-- R1 — SKILLS est le registre des capacites — tout skill y est enregistre.
-- R2 — Structure tripartite : natifs/assimiles/externes.
-- Anti-pattern: creer un skill sans l'enregistrer dans SKILLS.
 
-## Karpathy-Recall local (Vague 3 — 10Q)
-1. MIMIR est decrire comme 'Wiki Atomique Diamond' — qu'est-ce que cela signifie ?
-2. BRAIN-DOCS documente uniquement BRAIN — ou va la doc des autres repos ?
-3. SKILLS contient 28 skills actifs — quelle est leur structure tripartite ?
-4. DOC-UNIV-DEV est une 'base de connaissances R&D' — en quoi differe-t-il de MIMIR ?
-5. Quel repo visualise l'architecture L0->L4.5 sous forme diagrammatique ?
-6. Quelles sont les 3 categories de skills enregistre dans SKILLS et qui repond a chaque categorie ?
-7. Comment un skill enregistre dans SKILLS doit-il etre reference par un L7 interface lors de son execution ?
-8. Quelle est la phrase-cle qui differencie un skill natif d'un skill assimile dans le registre ?
-9. Dans quelle situation un skill externe devrait-il etre exclu du registre selon la regle R2 ?
-10. Quel L7 interface lit et consomme directement les skills enregistres dans SKILLS ?
+- **R1** — MIMIR est la SOT visuelle — roadmaps et diagrammes uniquement.  [UNVERIFIED]
+- **R2** — BRAIN-DOCS documente BRAIN uniquement — pas d'autres repos.  [UNVERIFIED]
+- **R3** — SKILLS = registry tripartite natifs/assimiles/externes.  [UNVERIFIED]
+
+## Karpathy-Recall etendu (Vague 5 — 10Q)
+
+> Reponds mentalement a ces questions avant d'agir dans ce repo.
+
+1. Q: MIMIR est decrire comme 'Wiki Atomique Diamond' — qu'est-ce que cela signifie ?
+2. Q: BRAIN-DOCS documente uniquement BRAIN — ou va la doc des autres repos ?
+3. Q: SKILLS contient 28 skills actifs — quelle est leur structure tripartite ?
+4. Q: DOC-UNIV-DEV est une 'base de connaissances R&D' — en quoi differe-t-il de MIMIR ?
+5. Q: Quel repo visualise l'architecture L0->L4.5 sous forme diagrammatique ?
+6. Q: Quels repos dependent directement de L6 ?
+7. Q: Quel est le role de la memoire dans l'ecosysteme gerivdb ?
+8. Q: Pourquoi MIMIR ne doit pas contenir de documentation de repos individuels ?
+9. Q: Quelle est la difference entre MIMIR et BRAIN-DOCS ?
+10. Q: Dans quelle phase UrbanVerse le STRATUM_RELAY de ce repo a-t-il ete deploye ?
 
 ## Dependances directes
-- **Parents (Amont)** : MIMIR / L5 IA distribuee
-- **Enfants (Aval)** : L7 interfaces (lisent SKILLS)
 
-## Agents locaux (Vague 4)
+**Parents (amont) :**
+- vsix-ai-orchestrator
+- vscode-lm-proxy
+- PLIX
 
-```yaml
-# .roomodes — profil agent SKILLS
-agent: skills-registrar
-strate: L6
-role: Skill capacity registry
-rules: SKILLS/rules/registry_rules.yaml
-hub_ref: MIMIR
-```
-
-L'agent `skills-registrar` maintient le registre tripartite des capacites et valide l'enregistrement de chaque nouveau skill.
-
-## Auto-conformite (Vague 4)
-
-- **Guard 1 — Registration mandatory** : Tout skill doit etre enregistre dans SKILLS avant usage par un L7.
-- **Guard 2 — Tripartite structure** : Chaque skill doit appartenir a exactement une categorie : natif, assimile, ou externe.
-- **Guard 3 — No ghost skills** : Les skills non utilises depuis 90j sont archives automatiquement.
+**Enfants (aval) :**
+- BRAIN-DOCS
+- MIMIR
+- DOC-UNIV-DEV
 
 ## Vague de mise a jour
 
-| Vague | Date | Contenu |
-|-------|------|---------|
-| V1 | 2026-05-28 | Initialisation structure Phase 7d — 5Q (P0) |
-| V2 | 2026-05-29 | Validation tripartite + dependances L5 (P1) |
-| V3 | 2026-05-30 | Extension 10Q + section Dependances directes (P1) |
-| **V4** | **2026-05-30** | **Agents locaux (.roomodes) + Auto-conformite (3 guards) deployes** |
+| Vague | Contenu | Statut |
+|-------|---------|--------|
+| **5 (courante)** | Frontmatter YAML + regles structurees + phi_cps null honnete | Deploye |
+| 6 (suivante) | Eval cmd sandbox + HMAC + hardware constraints | Planifie |
 
 ---
 
 *Genere par `VERSUS/urban_ontology_verse/TOOLS/relay_propagator.py` v4.0*
-*UrbanVerse v4.0.0 — gerivdb/VERSUS (L8)*
-*IntentHash: 0xPHASE8_SKILLS_V4_20260530*
+*UrbanVerse v1.0.0 — gerivdb/VERSUS (L8)*
