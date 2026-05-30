@@ -4,7 +4,7 @@ repo: gerivdb/SKILLS
 strate: L6
 lifecycle: ACTIVE
 vague: 5
-synchro: '2026-05-30'
+synchro: '2026-05-31'
 hub: gerivdb/GOVERNANCE-HUB
 intent_hash: '0x41071D70366123F8'
 phi_cps:
@@ -32,14 +32,14 @@ rules:
 
 # STRATUM RELAY — SKILLS (L6)
 
-**VAGUE**: 5 | **Synchro**: 2026-05-30 | **Hub**: gerivdb/GOVERNANCE-HUB
+**VAGUE**: 5 | **Synchro**: 2026-05-31 | **Hub**: gerivdb/GOVERNANCE-HUB
 
 ---
 
 ## Identite stratique
 
 - **Strate** : `L6` — Memoire & Documentation
-- **Role canonique** : SOT capacites Ã”Ã‡Ã¶ registre des skills Ã”Ã‡Ã¶ structure tripartite
+- **Role canonique** : SOT capacites  -  registre des skills  -  structure tripartite
 - **Parent** : L5
 - **Enfants** : L7
 - **phi-CPS** : null (NOT_MEASURED)
