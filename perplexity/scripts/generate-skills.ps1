@@ -1,48 +1,64 @@
 # ============================================================
-# generate-skills.ps1  v2.0
-# Packager ZIP depuis perplexity/skills/*.md → ZIP à plat
-# Règle 8 : les .md doivent être à la racine du ZIP (pas de sous-dossier)
+# generate-skills.ps1  v3.0
+# Generate Perplexity-compliant ZIP with skill-name/SKILL.md structure
 # ============================================================
+param(
+    [string]$SourceDir = ".\perplexity\skills",
+    [string]$OutputPath = ".\perplexity\build\Skills.zip",
+    [switch]$SingleSkill = $false,
+    [string]$SingleSkillName = "nexus-core"
+)
+
 $ErrorActionPreference = "Stop"
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
 
-$repoRoot   = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
-$skillsDir  = Join-Path $repoRoot "perplexity\skills"
-$buildDir   = Join-Path $repoRoot "perplexity\build"
-$zipPath    = Join-Path $buildDir "Skills.zip"
+# Clean output
+if (Test-Path $OutputPath) { Remove-Item $OutputPath -Force }
 
-# Vérification source
-if (-not (Test-Path $skillsDir)) {
-    Write-Error "Dossier source introuvable : $skillsDir"
-    exit 1
-}
-
-$files = Get-ChildItem -Path $skillsDir -Filter "*.md"
-if ($files.Count -eq 0) {
-    Write-Error "Aucun fichier .md dans $skillsDir"
-    exit 1
-}
-
-Write-Host "  $($files.Count) skills trouves dans $skillsDir"
-
-# Créer build/ si absent
-New-Item -ItemType Directory -Force -Path $buildDir | Out-Null
-
-# Supprimer le ZIP précédent
-if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
-
-# Copie à plat dans un temp (règle 8 : pas de sous-dossier dans le ZIP)
-$tempDir = Join-Path $env:TEMP "SkillsZipTemp_$(Get-Random)"
+$tempDir = Join-Path $env:TEMP "SkillsGen_$(Get-Random)"
 New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
 
-foreach ($f in $files) {
-    Copy-Item $f.FullName -Destination (Join-Path $tempDir $f.Name)
+if ($SingleSkill) {
+    $files = Get-ChildItem -Path $SourceDir -Filter "$SingleSkillName*.md" -File
+} else {
+    $files = Get-ChildItem -Path $SourceDir -Filter "*.md" | Sort-Object Name
 }
 
-# Compression à plat
-Compress-Archive -Path (Join-Path $tempDir "*.md") -DestinationPath $zipPath -Force
+$processed = 0
+foreach ($f in $files) {
+    $name = $f.BaseName
+    $raw = [System.IO.File]::ReadAllBytes($f.FullName)
+    
+    # Skip BOM
+    $off = 0
+    if ($raw.Length -ge 3 -and $raw[0] -eq 0xEF -and $raw[1] -eq 0xBB -and $raw[2] -eq 0xBF) { $off = 3 }
+    $txt = [System.Text.Encoding]::UTF8.GetString($raw, $off, $raw.Length - $off)
+    
+    # Extract description
+    $desc = ""
+    if ($txt -match 'description:\s*"([^"]+)"') { $desc = $matches[1] -replace '\s+', ' ' }
+    
+    # Extract body after second ---
+    $parts = $txt -split "---", 4
+    $body = if ($parts.Count -ge 4) { $parts[3].Trim() } else { "" }
+    
+    # Remove ### subsections (Perplexity rule 5)
+    $body = ($body -split "`n" | Where-Object { $_ -notmatch '^### ' }) -join "`n"
+    
+    # Create skill folder
+    $skillDir = Join-Path $tempDir $name
+    New-Item -ItemType Directory -Force -Path $skillDir | Out-Null
+    
+    # Build clean SKILL.md
+    $out = @("---", "name: $name", "description: `"$desc`"", "---", "", $body)
+    [System.IO.File]::WriteAllText((Join-Path $skillDir "SKILL.md"), ($out -join "`r`n"), $utf8NoBom)
+    $processed++
+}
+
+# Create ZIP
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::CreateFromDirectory($tempDir, $OutputPath, "Optimal", $false)
 Remove-Item $tempDir -Recurse -Force
 
-# Résumé
-$zipSize = (Get-Item $zipPath).Length
-Write-Host "ZIP cree : $zipPath ($($files.Count) skills, $([math]::Round($zipSize/1024,1)) KB)"
-Write-Host "Importer ce ZIP dans Perplexity > Space > Skills."
+$z = Get-Item $OutputPath
+Write-Host "Generated: $($z.Name) | $([math]::Round($z.Length/1024,1)) KB | $processed skills"
