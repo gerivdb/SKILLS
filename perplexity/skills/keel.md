@@ -1,14 +1,19 @@
 ---
 name: keel
 description: >-
-  KEEL — Knowledge Encoding & Execution Language. Langue de flux ternaire,
-  Thought-Commits (◈), TQL (Ternary Query Language), profondeur PLIX ×5 (T1→T5),
-  base-243, opérateurs ETE (⊕⊗⊘). Utiliser quand l'utilisateur mentionne
-  'KEEL', 'Thought-Commit', 'TQL', 'trit-node', 'flux ternaire', 'PLIX profondeur',
-  'base-243 flux', 'DSL ternaire', '◈ commit', 'IntentHash flux'.
-version: "1.0.0"
+  KEEL — Knowledge Encoding & Execution Language. Langue de la complexité
+  historique, métacognitive et métamorphique du métacluster gerivdb.
+  Thought-Commits (◈), TQL, PLIX×5, base-243, ETE (⊕⊗⊘),
+  ◈-DAG (histoire vivante), META-LOOP (réflexivité BRAIN↔KEEL),
+  VERSE-MORPH (transformation Verses VERSUS), HARNESS (plasticité BRAIN + BLO).
+  Utiliser quand l'utilisateur mentionne 'KEEL', 'Thought-Commit', 'TQL',
+  'trit-node', 'flux ternaire', 'PLIX profondeur', 'DSL ternaire',
+  '◈-DAG', 'META-LOOP', 'VERSE-MORPH', 'HARNESS', 'plasticité BRAIN',
+  'registre BLO', 'Verse émergence', 'dérive φ-CPS', 'boucle réflexive'.
+version: "1.1.0"
 changelog:
-  - {v: "1.0.0", date: "2026-06-02", notes: "Création initiale — KEEL v0.3 stabilisé, repo créé, GOVERNANCE-HUB enregistré"}
+  - {v: "1.0.0", date: "2026-06-02", notes: "Création initiale — KEEL v0.3"}
+  - {v: "1.1.0", date: "2026-06-02", notes: "KEEL v0.4 : ◈-DAG + META-LOOP + VERSE-MORPH + HARNESS — 8 règles, 15Q Karpathy"}
 triggers:
   - KEEL
   - Thought-Commit
@@ -17,53 +22,54 @@ triggers:
   - flux ternaire
   - PLIX profondeur
   - DSL ternaire
+  - ◈-DAG
+  - META-LOOP
+  - VERSE-MORPH
+  - HARNESS
+  - plasticité BRAIN
+  - registre BLO
+  - Verse émergence
+  - dérive phi-CPS
 layer: "L1b"
 nexusTags: ["CONFORME_NEXUS"]
-intent_hash: "0xKEEL_NAMING_20260602"
+intent_hash: "0xKEEL_V04_20260602"
 repo: https://github.com/gerivdb/KEEL
 ---
 
-# KEEL — Knowledge Encoding & Execution Language
+# KEEL — Knowledge Encoding & Execution Language (v0.4)
 
 ## Domaine et périmètre
 
-KEEL est la **langue de représentation de flux** de l'écosystème gerivdb (L1b).
-Elle permet d'articuler, historiser et versionner tout flux — raisonnement,
-architecture, signal, opération — comme des commits Git, avec :
-- Substrat **ternaire base-243** (−/○/+, pentades 5 trits)
-- **Thought-Commits** (◈) : unités atomiques de raisonnement versionné
-- **TQL** (Ternary Query Language) : requêtes natives sur base-243 + LYCOS + VDB
-- **Profondeur PLIX ×5** : T1 surface → T5 temporel
-- **Opérateurs ETE** : ⊕ FUSION, ⊗ FISSION, ⊘ CONTINGENCE
+KEEL est la **langue de la complexité vivante** de l'écosystème gerivdb (L1b).
+Elle articule, historise et versionne tout flux — raisonnement, architecture,
+métamorphose — en 4 couches :
 
-KEEL **n'est pas** un exécuteur — c'est un DSL. L'exécution appartient à BRAIN.
+| Couche | Bloc | Adresse |
+|--------|------|---------|
+| Fondation v0.3 | Trit-Node · ◈ · TQL · PLIX×5 | base-243 + LYCOS + VDB |
+| Histoire | **◈-DAG** | dérive φ-CPS, replay, fantômes |
+| Métacognition | **META-LOOP** | BRAIN s'observe via KEEL |
+| Métamorphose | **VERSE-MORPH** | composition/émergence Verses VERSUS |
+| Plasticité | **HARNESS** | plug/unplug BRAIN + registres BLO |
 
----
-
-## Triangle fondateur
-
-```
-        KEEL (description + exécution future)
-           /              |              \
-    base-243          LYCOS             VDB/PLIX
-  (valeur ternaire)  (index structurel) (profondeur vectorielle)
-           \              |              /
-                  TQL (requêtes)
-```
+KEEL **n'est pas** un exécuteur — DSL pur. L'exécution appartient à BRAIN.
 
 ---
 
-## Règles critiques (toujours actives)
+## Règles critiques (8 actives — toujours appliquer)
 
-- **KEEL-R1** — KEEL est un DSL de description. L'exécution = BRAIN. `[CRITICAL]`
-- **KEEL-R2** — Tout diagnostic T1-seul est INTERDIT. Minimum T1+T3 croisés. `[CRITICAL]`
-- **KEEL-R3** — Tout ◈ doit avoir un IntentHash dans NEXUS. `[HIGH]`
-- **KEEL-R4** — TQL ne promeut vers NEXUS que via gate D4 (⊷! FLUX). `[CRITICAL]`
-- **KEEL-R5** — Noms dans [NOM] validés par ONTOLOGY avant usage. `[HIGH]`
+- **R1** — KEEL = DSL. Exécution = BRAIN. `[CRITICAL]`
+- **R2** — T1-seul INTERDIT. Minimum T1+T3 croisés. `[CRITICAL]`
+- **R3** — Tout ◈ → IntentHash dans NEXUS. `[HIGH]`
+- **R4** — TQL + META-LOOP + HARNESS → gate D4 (⊷! FLUX) pour promotion NEXUS. `[CRITICAL]`
+- **R5** — Noms dans [NOM] validés par ONTOLOGY. `[HIGH]`
+- **R6** — META-LOOP ⟳ : agent ne peut pas auto-valider sa propre réflexion. `[CRITICAL]`
+- **R7** — VERSE-MORPH ◈↗ (nouveau Verse) → ⊷! FLUX + IntentHash. `[HIGH]`
+- **R8** — HARNESS ⊲ (BLO) → ⊷! FLUX. Zéro auto-modification BRAIN. `[CRITICAL]`
 
 ---
 
-## Primitives KEEL v0.3
+## Primitives v0.3 (fondation)
 
 ### Trit-Node
 ```
@@ -78,105 +84,118 @@ KEEL **n'est pas** un exécuteur — c'est un DSL. L'exécution appartient à BR
   ∷ strate: L<N>   @ENV: ENV<N>
   ≡ IntentHash: 0x...
   Δ {
-     T1: [surface_observée]
-     T2: [structure_déclarée]        # LYCOS.outline
-     T3: [intention_git]             # git log
-     T4: [couplage_réel]  I_local=N  # LYCOS.deps
-     T5: [thermodynamique]  T=N/sem  # LYCOS.hot
+     T1: [surface]       # LYCOS.tree
+     T2: [structure]     # LYCOS.outline
+     T3: [intention]     # git log
+     T4: I_local=N       # LYCOS.deps
+     T5: T=N/sem         # LYCOS.hot
   }
   tag: [CONFORME_NEXUS | À_VALIDER | HORS_NEXUS]
 ```
 
-### Opérateurs principaux
-```
-# Flux
-→  ⇒  ⟲  ∿       # directionnel, conditionnel, rétroaction, signal faible
-⊳  ⊲  ⊷!           # émission IRIS, qualification KRONOS, gate D4 FLUX
-⊕  ⊗  ⊘  ▲  ▼    # FUSION, FISSION, CONTINGENCE, ESCALADE, DÉGRADATION
-◈  ⌥  ⌀  ⊛  ⟳    # commit, branch, revert, cherry-pick, rebase
-⌖  ⊞  ⊟            # requête LYCOS, index snapshot, invalidate
-?→  ?~             # requête TQL flux, requête TQL similarité
-```
-
----
-
-## TQL — Ternary Query Language
-
+### TQL
 ```tql
-FIND  <cible>
-WHERE <prédicats>
-DEPTH <T1..T5>
-AT    <@ENV>
-SINCE <sha7 | vague | date>
-
-# Prédicats ternaires
-:+  :−  :○  :?   (état inconnu → P1 obligatoire)
-
-# Structurels (LYCOS)
-.symbol:<nom>   .import:<mod>   .outline:<type>   .trigram:<q>
-
-# Vectoriels (VDB)
-~sim:<sha7>     ~cluster:<tag>
+FIND <cible> WHERE <prédicats> DEPTH <T1..T5> AT <@ENV> SINCE <ref>
+# :+  :−  :○  :?  | .trigram: .symbol: .import: | ~sim: ~cluster:
+# Nouveau v0.4 : .drift:∿>  .verse:<nom>  .harness:<module>  .blo:<path>
 ```
 
-### Exemples TQL
-```tql
-# Repos actifs alimentant BRAIN
-FIND [*:+:*] WHERE →* [BRAIN:+:*] DEPTH T4 AT @ENV2
-
-# Repos inconnus — P1 requise
-FIND [*:?:*] WHERE DEPTH T1 ONLY
-EMIT WARNING "passe P1 obligatoire"
-
-# Violation gate D4
-FIND [IRIS:+:*] →* [NEXUS:+:*]
-WHERE NOT ⊷! [FLUX]
-EMIT ERROR "violation D4"
-```
+### PLIX ×5
+| T1 SURFACE | T2 STRUCTURE | T3 INTENTION | T4 COUPLAGE | T5 TEMPOREL |
+|------------|--------------|--------------|-------------|-------------|
+| `codedb_tree` | `codedb_outline` | `git log` | `codedb_deps` | `codedb_hot` |
 
 ---
 
-## Profondeur PLIX ×5
+## Bloc I — ◈-DAG (Histoire vivante)
 
-| Trit | Nom | Question | Outil LYCOS |
-|------|-----|----------|-------------|
-| T1 | SURFACE | Qu'est-ce qui est observable ? | `codedb_tree` |
-| T2 | STRUCTURE | Qu'est-ce qui est organisé ? | `codedb_outline` |
-| T3 | INTENTION | Qu'est-ce qui est voulu ? | `git log` + IntentHash |
-| T4 | COUPLAGE | Qu'est-ce qui est connecté ? | `codedb_deps` |
-| T5 | TEMPOREL | Qu'est-ce qui a évolué ? | `codedb_hot` |
+```keel
+◈-DAG [NEXUS] {
+  ⟲ vague V1→V4                # rejouer l'histoire
+  ∿> drift [BRAIN:φ3.2→φ4.65]  # dérive positive mesurée
+  ◈↺ [7b5c100] @ENV2            # replay d'un ◈ dans nouveau contexte
+  ◈⊗ [ATHENA←BRAIN]            # conflit fantôme non résolu
+}
+```
+
+Opérateurs : `∿< ∿> ∿= ◈↺ ◈⊗ ◈∅ ⟲`
 
 ---
 
-## Méthodologie d'utilisation
+## Bloc II — META-LOOP (Métacognition)
 
-### Exprimer un état de repo
-1. Identifier le Trit-Node : `[NOM:état:VAGUE@ENV]`
-2. Vérifier le nom dans ONTOLOGY (KEEL-R5)
-3. Croiser T1+T3 minimum (KEEL-R2)
-4. Ancrer avec IntentHash si action ◈ (KEEL-R3)
+```keel
+META-LOOP [BRAIN:+:V4@ENV2] {
+  ⟳ self-observe :: « BRAIN analyse son propre φ-CPS »
+    ≡ IntentHash: 0xBRAIN_SELFWATCH_V4
+    Δ { T1: [WAL actif] T3: [φ4.650] T4: I_local=KIVA+ECOS-CLI T5: ∿> }
 
-### Formuler une requête TQL
-1. Choisir la cible (`FIND`)
-2. Définir les prédicats ternaires + structurels
-3. Fixer la profondeur PLIX (`DEPTH T1..T5`)
-4. Vérifier gate D4 si promotion NEXUS (KEEL-R4)
+  ⟳ reflect-on :: [KEEL:design:V1@ENV2]
+    « BRAIN doit implémenter ce qui le décrit »
+    ⊷! [FLUX]   # gate D4 : humain valide le paradoxe
+}
+```
 
-### Décider une opération ETE
-1. ⊕ FUSION : deux repos fusionnent en un nouveau
-2. ⊗ FISSION : un repo se scinde en deux
-3. ⊘ CONTINGENCE : un repo passe en DORMANT/DEPRECATED
-4. Toujours exprimer avec `≡ IntentHash` et `⊷! FLUX`
+Opérateurs : `⟳ ⟳² ↯ ⟳→`
+
+> Règle R6 : toute boucle `⟳` → `⊷! FLUX` obligatoire.
+
+---
+
+## Bloc III — VERSE-MORPH (Métamorphose Verses)
+
+```keel
+VERSE-MORPH [political_compass_verse → urban_ontology_verse] {
+  ⊞ [VERSUS/socioverse]    # composition
+  ◉ [BATVERSE]             # projection narrative
+  ≋ topology               # invariant conservé
+  Δ-verse { T1: [(S,M,E,I)=(2,0,2,1)] T4: I_cross=VERSUS+BRAIN }
+}
+
+# Émergence d'un nouveau Verse
+VERSE-MORPH {
+  ◈↗ [poincare_topology_verse] @L5
+    ≋ topology: manifold_ternaire
+    ⊞ [BRAIN:attention:UAE]
+    ≡ IntentHash: 0xPOINCARE_VERSE_EMERGENCE
+    ⊷! [FLUX]   # R7 : obligatoire
+}
+```
+
+Opérateurs : `⊞ ◉ ≋ ◈↗ ◈↘ ⊷~ ⊛`
+
+---
+
+## Bloc IV — HARNESS (Plasticité BRAIN + BLO)
+
+```keel
+HARNESS [BRAIN:+:V4@ENV2] {
+  ⌥ plug   [UAE:attention:1/√d]     # brancher module
+  ⌥ unplug [cache_manager:LRU]      # débrancher
+  ⌥ rewire [KIVA → ECOS-CLI]        # recâbler
+  ⌾ φ-CPS: 4.650                    # ancre plasticité
+
+  BLO-sync {
+    ⊳ read  [ECOYSTEM/BLO/current]
+    ⊲ write [ECOYSTEM/BLO/KEEL-patch-001]   # R8 : ⊷! FLUX obligatoire
+    ≡ IntentHash: 0xBRAIN_HARNESS_V4
+    ⊷! [FLUX]
+  }
+}
+```
+
+Opérateurs : `⌥ plug/unplug/rewire ⌾ ⊳ ⊲ ⌥↯ ⌾↑ ⌾↓`
 
 ---
 
 ## Format de sortie recommandé
 
 ```markdown
-## Analyse KEEL — [NOM:ÉTAT:VAGUE@ENV]
+## Analyse KEEL v0.4 — [NOM:ÉTAT:VAGUE@ENV]
 
-### Trit-Nodes concernés
-- [REPO_A:+:V4@ENV2] → [REPO_B:○:V3@ENV2]
+### ◈-DAG (histoire)
+- dérive : ∿> φX→φY sur N vagues
+- fantômes : ◈⊗ [...]
 
 ### Thought-Commit proposé
 ◈ [sha7] scope :: « intent »
@@ -184,8 +203,14 @@ EMIT ERROR "violation D4"
   Δ { T1: ... T3: ... T4: I_local=N }
   tag: [CONFORME_NEXUS]
 
-### TQL si requis
-FIND [...] WHERE [...] DEPTH T4
+### META-LOOP (si réflexion requise)
+⟳ self-observe :: « ... »  ⊷! [FLUX]
+
+### VERSE-MORPH (si Verse concerné)
+VERSE-MORPH { ... ≋ topology }
+
+### HARNESS (si plasticité requise)
+HARNESS { ⌥ plug/unplug/rewire ... ⊷! [FLUX] }
 
 ### Verdict
 [CONFORME_NEXUS | À_VALIDER_NEXUS | HORS_NEXUS]
@@ -193,24 +218,26 @@ FIND [...] WHERE [...] DEPTH T4
 
 ---
 
-## Intégration écosystème
+## Intégration écosystème v0.4
 
-| Brique | Rôle dans KEEL |
-|--------|----------------|
-| `gerivdb/BRAIN` | Interpréteur cible — parser PEG (v0.4 planifié) |
-| `gerivdb/LYCOS` | Runtime structurel : trigram ×538, deps, outline |
-| `gerivdb/VDB` | Stockage vectoriel des ◈ Thought-Commits |
-| `gerivdb/PLIX` | Substrat profondeur 5 trits T1→T5 |
-| `gerivdb/UAE` | Moteur d'attention sur le DAG de ◈ |
-| `gerivdb/ONTOLOGY` | Dictionnaire des noms légitimes dans [NOM] |
-| `gerivdb/NEXUS` | Registre des ≡ IntentHash |
-| `gerivdb/TOPOS` | Contexte @ENV (souveraineté territoriale) |
-| `IRIS·KRONOS·FLUX` | Opérateurs ⊳⊲⊷! — Triade + gate D4 |
-| `gerivdb/base-243` | Système de valeur (−/○/+), pentades |
+| Brique | Rôle |
+|--------|------|
+| `gerivdb/BRAIN` | Interpréteur + plasticité HARNESS + META-LOOP ⟳ |
+| `gerivdb/LYCOS` | Runtime structurel (trigram×538, deps, outline) |
+| `gerivdb/VDB` | Stockage vectoriel ◈ |
+| `gerivdb/PLIX` | Substrat T1→T5 |
+| `gerivdb/UAE` | Attention DAG ◈ + plug HARNESS |
+| `gerivdb/ONTOLOGY` | Dictionnaire [NOM] |
+| `gerivdb/NEXUS` | Registre IntentHash |
+| `gerivdb/TOPOS` | Contexte @ENV |
+| `gerivdb/VERSUS` | Source Verses pour VERSE-MORPH |
+| `gerivdb/ECOYSTEM` | Registres BLO pour HARNESS ⊳⊲ |
+| `IRIS·KRONOS·FLUX` | Triade + gate D4 ⊷! |
+| `gerivdb/base-243` | Système de valeur −/○/+ |
 
-## Exemples d'utilisation
-- "Décris l'état de BRAIN" → Exprimer `[BRAIN:+:V4@ENV2]` + Thought-Commit T1→T4
-- "KEEL commente cette décision d'architecture" → ETE avec ≡ IntentHash + ⊷! FLUX
-- "Requête sur les repos actifs" → TQL `FIND [*:+:*] DEPTH T4`
-- "Analyse LYCOS du code BRAIN" → `⌖ .trigram:"ternary" IN [BRAIN:+:V4@ENV2]`
-- "Historique de raisonnement" → `?~ [sha7] IN VDB DEPTH T3+T5`
+## Exemples d'utilisation v0.4
+- "Quelle est l'histoire de BRAIN ?" → `◈-DAG [BRAIN] { ∿> drift φ3.2→φ4.65 }`
+- "BRAIN s'observe" → `META-LOOP ⟳ self-observe :: « ... » ⊷! [FLUX]`
+- "Nouveau Verse émerge" → `VERSE-MORPH { ◈↗ [...] ≋ topology ⊷! [FLUX] }`
+- "Brancher le parser KEEL dans BRAIN" → `HARNESS { ⌥ plug [KEEL:parser:v0.5] ⊷! [FLUX] }`
+- "Lire BLO courant" → `HARNESS { ⊳ read [ECOYSTEM/BLO/current] }`
