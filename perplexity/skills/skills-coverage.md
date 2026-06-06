@@ -1,7 +1,7 @@
 ---
 name: skills-coverage
-version: "1.0.0"
-description: "Vérificateur de couverture fonctionnelle pour le pipeline SKILLS_AGENTIC. Évalue si l'ensemble des skills sélectionnés couvre tous les intents d'une requête. Détecte les gaps de compétences et génère le feedback d'itération. Équivalent adapté du Sufficient Context Agent de Google pour le métacluster gerivdb. Utiliser quand l'utilisateur mentionne 'couverture', 'gap skills', 'vérifier couverture', 'COVERAGE Agent', 'sufficient context'."
+version: "2.0.0"
+description: "Vérificateur de couverture fonctionnelle v2 pour le pipeline SKILLS_AGENTIC. Évalue si l'ensemble des skills sélectionnés couvre tous les intents (4 critères). Produit un brouillon intermédiaire (Draft Agent) et un feedback ciblé sur les pièces manquantes (Gap Analyzer). Équivalent enrichi du Sufficient Context Agent de Google. Utiliser quand l'utilisateur mentionne 'couverture', 'gap skills', 'vérifier couverture', 'COVERAGE Agent', 'sufficient context', 'brouillon', 'draft', 'gap analyzer', 'pièces manquantes'."
 triggers:
   - "couverture"
   - "gap skills"
@@ -10,6 +10,11 @@ triggers:
   - "sufficient context"
   - "compétence manquante"
   - "skill manquant"
+  - "brouillon"
+  - "draft"
+  - "gap analyzer"
+  - "pièces manquantes"
+  - "feedback ciblé"
 layer: "L4_ORCHESTRATION"
 nexusTags: ["CONFORME_NEXUS", "SKILLS_AGENTIC"]
 prerequisites:
@@ -19,15 +24,21 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-06", notes: "Version initiale — 4 critères de couverture"}
+  - {v: "2.0.0", date: "2026-06-07", notes: "v2 — + Draft Agent (brouillon intermédiaire) + Gap Analyzer (feedback ciblé)"}
 ---
 
-# SKILLS_COVERAGE — Vérificateur de Couverture Fonctionnelle
+# SKILLS_COVERAGE v2 — Vérificateur de Couverture Fonctionnelle
 
 ## Domaine et périmètre
 
-Ce skill est le **gardien de qualité** du pipeline SKILLS_AGENTIC. Il évalue si l'ensemble des skills sélectionnés par le PLANNER couvre **tous les intents** de la requête utilisateur. C'est l'équivalent adapté du **Sufficient Context Agent** de Google — mais au lieu de vérifier la complétude des données, il vérifie la **complétude des capacités**.
+Ce skill est le **gardien de qualité** du pipeline SKILLS_AGENTIC v2. Il évalue si l'ensemble des skills sélectionnés par le PLANNER couvre **tous les intents** de la requête. La v2 ajoute le **Draft Agent** (brouillon intermédiaire) et le **Gap Analyzer** (feedback ciblé sur les pièces manquantes).
 
-**Différence fondamentale avec Google** : Google vérifie si le contexte informationnel est suffisant pour répondre. Nous, on vérifie si l'ensemble de skills activés est suffisant pour **traiter** la requête.
+**3 composants** :
+1. **Coverage Checker** (4 critères) — vérifie exhaustivité, compétence, strate, dépendance
+2. **Draft Agent** (nouveau v2) — produit un brouillon de réponse avant exécution
+3. **Gap Analyzer** (nouveau v2) — compare le brouillon à la requête et génère un feedback ciblé
+
+**Différence fondamentale avec Google** : Google vérifie si le contexte informationnel est suffisant. Nous, on vérifie si l'ensemble de skills activés est suffisant **et** on produit un brouillon pour identifier exactement ce qui manque.
 
 ## Les 4 Critères de Couverture
 
@@ -103,50 +114,101 @@ Plan : [nexus-auditor (step 1), reposcope-run (step 2)]
 Gap  : nexus-auditor dépend de reposcope-run → ordre inversé
 ```
 
-## Méthodologie
+## Méthodologie v2
 
 ### Phase 1 — Collecte des données
 
 1. Recevoir le plan routé du ROUTER (skills + repos + strates)
 2. Recevoir les intents originaux du PARSER
-3. Charger le `MANIFEST.json` pour les métadonnées des skills
-4. Charger `known_repositories.yaml` pour les strates des repos
+3. Recevoir les sous-quêtes du REWRITER (v2)
+4. Charger le `MANIFEST.json` pour les métadonnées des skills
+5. Charger `known_repositories.yaml` pour les strates des repos
 
-### Phase 2 — Évaluation des 4 critères
+### Phase 2 — Évaluation des 4 critères (Coverage Checker)
 
 Pour chaque critère :
 1. Appliquer la méthode décrite ci-dessus
 2. Produire un verdict partiel : PASS / FAIL
 3. En cas de FAIL, lister les gaps identifiés
 
-### Phase 3 — Verdict global
+### Phase 3 — Verdict global (Coverage Checker)
 
 ```
 Si les 4 critères PASS → verdict = SUFFICIENT
 Si au moins 1 critère FAIL → verdict = INSUFFICIENT
 ```
 
-### Phase 4 — Génération du feedback (si INSUFFICIENT)
+### Phase 4 — Draft Agent (nouveau v2)
 
-Pour chaque gap identifié :
-1. Identifier le type de gap (exhaustivité, compétence, strate, dépendance)
-2. Identifier le(s) skill(s) manquant(s) ou incorrect(s)
-3. Proposer un skill de remplacement (depuis le `MANIFEST.json`)
-4. Générer un feedback structuré pour l'ITERATOR
+**Objectif** : Produire un brouillon de réponse basé sur les skills activés, avant l'exécution réelle.
 
-**Format du feedback** :
+**Déclenchement** : Systématique pour les requêtes de niveau 2 et 3.
+
+**Méthode** :
+1. Pour chaque skill du plan, générer une section de brouillon basée sur la `description` du skill
+2. Identifier les intents couverts et les intents non couverts
+3. Produire un brouillon structuré
+
+**Format du brouillon** :
+```markdown
+## Brouillon — [Titre]
+
+### Couverture
+- Skills activés : [liste]
+- Intents couverts : [liste]
+- Intents non couverts : [liste]
+
+### Résultats attendus
+#### [skill-1] — [intent]
+- Résultat attendu : [description basée sur la description du skill]
+- Source : [repo]
+
+#### [skill-2] — [intent]
+...
+
+### Lacunes identifiées
+[Liste des intents sans skill assigné]
+```
+
+### Phase 5 — Gap Analyzer (nouveau v2)
+
+**Objectif** : Comparer le brouillon à la requête originale et générer un feedback ciblé sur les pièces manquantes.
+
+**Méthode** :
+1. Comparer chaque section du brouillon à l'intent correspondant
+2. Identifier les pièces manquantes (intents non couverts, compétences manquantes)
+3. Recommander des skills spécifiques pour combler les gaps
+4. Générer un feedback structuré et ciblé
+
+**Format du feedback ciblé** :
 ```json
 {
   "coverage_verdict": "INSUFFICIENT",
-  "covered_intents": ["audit_structure", "verifier_conformite"],
-  "missing_intents": ["generer_rapport"],
-  "missing_skills": ["workflow-orchestration"],
-  "incorrect_assignments": [],
-  "strate_violations": [],
-  "dependency_violations": [],
-  "feedback": "Le plan couvre l'audit et la conformité, mais ne génère pas de rapport. Ajouter workflow-orchestration."
+  "draft_summary": "Le brouillon couvre l'audit structurel et la conformité NEXUS",
+  "missing_pieces": [
+    {
+      "intent": "generer_rapport",
+      "reason": "Aucun skill de génération de rapport n'est activé",
+      "recommended_skills": ["workflow-orchestration", "prd-factory"],
+      "priority": "HIGH",
+      "targeted_feedback": "Le skill reposcope-run couvre l'audit structurel, mais il manque un skill pour générer le rapport final. Ajouter workflow-orchestration (L4) ou prd-factory (L2)."
+    }
+  ],
+  "draft_quality": "PARTIAL",
+  "iteration_recommendation": "Ajouter workflow-orchestration au plan et relancer la vérification"
 }
 ```
+
+### Phase 6 — Génération du feedback pour l'ITERATOR
+
+Si INSUFFICIENT :
+1. Combiner les résultats du Coverage Checker + Draft Agent + Gap Analyzer
+2. Générer un feedback structuré pour l'ITERATOR
+3. Le feedback inclut : verdict, brouillon, pièces manquantes, skills recommandés
+
+Si SUFFICIENT :
+1. Transmettre le brouillon au FANOUT comme référence
+2. Passer à l'exécution
 
 ## Règles de décision
 
@@ -157,10 +219,10 @@ Pour chaque gap identifié :
 - **Règle 5** : En cas de doute sur la compétence → consulter la `description` du skill dans le MANIFEST
 - **Règle 6** : Le verdict doit être binaire (SUFFICIENT / INSUFFICIENT) — pas de "partiel"
 
-## Format de sortie
+## Format de sortie v2
 
 ```markdown
-## SKILLS_COVERAGE — Rapport de couverture
+## SKILLS_COVERAGE v2 — Rapport de couverture
 
 ### Verdict : [SUFFICIENT / INSUFFICIENT]
 
@@ -172,18 +234,23 @@ Pour chaque gap identifié :
 | Strate | [PASS / FAIL] | [Détails] |
 | Dépendance | [PASS / FAIL] | [Détails] |
 
-### Gaps identifiés
-[Liste des gaps avec type et skill manquant]
+### Brouillon (Draft Agent)
+[Structure du brouillon]
 
-### Recommandation
-[Feedback structuré pour l'ITERATOR]
+### Pièces manquantes (Gap Analyzer)
+| Intent | Raison | Skills recommandés | Priorité |
+|--------|--------|--------------------|----------|
+| ... | ... | ... | ... |
+
+### Feedback ciblé
+[Feedback structuré pour l'ITERATOR avec skills recommandés]
 ```
 
 ## Intégration avec l'écosystème
 
 - **Dépôts concernés** : SKILLS (MANIFEST.json), GOVERNANCE-HUB (known_repositories.yaml)
 - **Couche EECS** : L4_ORCHESTRATION
-- **Skills dépendants** : skills-agentic.md (orchestrateur), skills-router.md (routeur)
+- **Skills dépendants** : skills-agentic.md (orchestrateur), skills-router.md (routeur), skills-rewriter.md (rewriter)
 - **Tags NEXUS** : [CONFORME_NEXUS], [SKILLS_AGENTIC]
 
 ## Contraintes
@@ -195,3 +262,6 @@ Pour chaque gap identifié :
 | Seuil de strate | 100% |
 | Seuil de dépendance | 100% |
 | Verdict | Binaire (SUFFICIENT / INSUFFICIENT) |
+| Brouillon | Systématique pour niveaux 2 et 3 |
+| Feedback ciblé | Skills recommandés avec priorité |
+| Max skills recommandés par gap | 3 |

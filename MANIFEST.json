@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-05-30T20:24:28Z",
-  "skillsCount": 63,
+  "skillsCount": 64,
   "skills": [
     {
       "name": "adr-manager",
@@ -739,8 +739,8 @@
     },
     {
       "name": "skills-agentic",
-      "version": "1.0.0",
-      "description": "Orchestrateur agentic du pipeline SKILLS_AGENTIC. Décompose les requêtes complexes en intents, sélectionne les skills pertinents, route vers les repos cibles, vérifie la couverture fonctionnelle, et synthétise les résultats. Équivalent adapté du Google Agentic RAG pour le métacluster gerivdb (185 repos, strates L0-L9).",
+      "version": "2.0.0",
+      "description": "Orchestrateur agentic v2 du pipeline SKILLS_AGENTIC. Coordonne 9 agents spécialisés (DELEGATOR, PARSER, REWRITER, PLANNER, ROUTER, COVERAGE+DRAFT+GAP, FANOUT, SYNTH, ITERATOR). Orchestration conditionnelle à 3 niveaux de complexité.",
       "triggers": ["orchestrer", "pipeline agentic", "multi-skill", "couverture skills", "SKILLS_AGENTIC", "décomposer requête", "activer skills"],
       "layer": "L4_ORCHESTRATION",
       "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
@@ -750,8 +750,8 @@
     },
     {
       "name": "skills-coverage",
-      "version": "1.0.0",
-      "description": "Vérificateur de couverture fonctionnelle pour le pipeline SKILLS_AGENTIC. Évalue si l'ensemble des skills sélectionnés couvre tous les intents d'une requête. Détecte les gaps de compétences et génère le feedback d'itération. Équivalent adapté du Sufficient Context Agent de Google.",
+      "version": "2.0.0",
+      "description": "Vérificateur de couverture fonctionnelle v2 pour le pipeline SKILLS_AGENTIC. Évalue si l'ensemble des skills sélectionnés couvre tous les intents (4 critères). Produit un brouillon intermédiaire (Draft Agent) et un feedback ciblé sur les pièces manquantes (Gap Analyzer).",
       "triggers": ["couverture", "gap skills", "vérifier couverture", "COVERAGE Agent", "sufficient context", "compétence manquante", "skill manquant"],
       "layer": "L4_ORCHESTRATION",
       "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
@@ -772,12 +772,23 @@
     },
     {
       "name": "skills-agentic-test",
-      "version": "1.0.0",
-      "description": "Suite de tests pour valider le pipeline SKILLS_AGENTIC. Contient 20 requêtes de test couvrant les cas nominaux, multi-intents, complexes cross-strate, edge cases, et non-régression.",
-      "triggers": ["test agentic", "valider pipeline", "SKILLS_AGENTIC test", "couverture test", "test coverage", "test multi-skill"],
+      "version": "2.0.0",
+      "description": "Suite de tests v2 pour valider le pipeline SKILLS_AGENTIC. Contient 30 requêtes de test (20 v1 + 10 v2) couvrant les cas nominaux, multi-intents, complexes cross-strate, edge cases, non-régression, et tests spécifiques v2 (délégation, reformulation, brouillon, feedback ciblé).",
+      "triggers": ["test agentic", "valider pipeline", "SKILLS_AGENTIC test", "couverture test", "test coverage", "test multi-skill", "test v2", "test délégation", "test reformulation", "test brouillon"],
       "layer": "L4_ORCHESTRATION",
       "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
-      "prerequisites": ["skills-agentic.md (orchestrateur)", "skills-coverage.md (vérificateur)", "skills-router.md (routeur)", "MANIFEST.json (SKILLS)"],
+      "prerequisites": ["skills-agentic.md (orchestrateur)", "skills-coverage.md (vérificateur)", "skills-router.md (routeur)", "skills-rewriter.md (rewriter)", "MANIFEST.json (SKILLS)"],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "skills-rewriter",
+      "version": "1.0.0",
+      "description": "Reformulation des intents en sous-quêtes atomiques optimisées pour le retrieval dans le MANIFEST. Équivalent adapté du Query Rewriter de Google Agentic RAG. Transforme chaque intent en sous-quêtes recherchables dans les triggers/descriptions des skills.",
+      "triggers": ["reformuler", "sous-quêtes", "REWRITER", "query rewrite", "optimiser requête", "atomiser intent", "enrichir intent", "décomposer intent"],
+      "layer": "L4_ORCHESTRATION",
+      "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
+      "prerequisites": ["MANIFEST.json (SKILLS)", "skills-agentic.md (orchestrateur)"],
       "slotWeight": 1,
       "status": "active"
     }

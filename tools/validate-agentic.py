@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate agentic skills frontmatter and structure."""
+"""Validate agentic skills frontmatter and structure (v2)."""
 
 import json
 import os
@@ -71,6 +71,55 @@ def validate_agentic_skill(skill_path):
     return errors
 
 
+def validate_v2_specific(skill_path, skill_name):
+    """Validate v2-specific patterns: Draft, Gap Analyzer, Delegation, Rewriter."""
+    errors = []
+    with open(skill_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # v2 skills should have version 2.x.x
+    import yaml
+    match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+    if match:
+        frontmatter = yaml.safe_load(match.group(1))
+        version = frontmatter.get('version', '1.0.0')
+        if not version.startswith('2.'):
+            errors.append(f"v2 skill should have version 2.x.x (found {version})")
+
+    # Check for v2-specific sections
+    if skill_name == 'skills-coverage':
+        if 'Draft Agent' not in content and 'draft' not in content.lower():
+            errors.append("v2 coverage skill missing 'Draft Agent' section")
+        if 'Gap Analyzer' not in content and 'gap analyzer' not in content.lower():
+            errors.append("v2 coverage skill missing 'Gap Analyzer' section")
+        if 'feedback ciblé' not in content.lower() and 'targeted feedback' not in content.lower():
+            errors.append("v2 coverage skill missing 'feedback ciblé' / 'targeted feedback' section")
+
+    if skill_name == 'skills-agentic':
+        if 'DELEGATOR' not in content and 'delegator' not in content.lower():
+            errors.append("v2 agentic skill missing 'DELEGATOR' section")
+        if 'REWRITER' not in content and 'rewriter' not in content.lower():
+            errors.append("v2 agentic skill missing 'REWRITER' section")
+        if 'niveau' not in content.lower() and 'level' not in content.lower():
+            errors.append("v2 agentic skill missing delegation levels (niveau 1/2/3)")
+
+    if skill_name == 'skills-rewriter':
+        if 'sous-quête' not in content.lower() and 'sub_query' not in content.lower() and 'sub-query' not in content.lower():
+            errors.append("rewriter skill missing 'sous-quêtes' / 'sub-queries' section")
+        if 'reformul' not in content.lower():
+            errors.append("rewriter skill missing 'reformulation' section")
+
+    if skill_name == 'skills-agentic-test':
+        if 'v2' not in content.lower() and 'F1' not in content:
+            errors.append("v2 test skill missing v2 test queries (Category F/G/H)")
+        if 'délégation' not in content.lower() and 'delegation' not in content.lower():
+            errors.append("v2 test skill missing delegation tests")
+        if 'brouillon' not in content.lower() and 'draft' not in content.lower():
+            errors.append("v2 test skill missing draft tests")
+
+    return errors
+
+
 def main():
     errors = []
 
@@ -92,10 +141,18 @@ def main():
             errors.append(f"Agentic skill '{skill_name}' in manifest but file not found: {skill_path}")
             continue
 
+        # v1 validation
         skill_errors = validate_agentic_skill(skill_path)
         if skill_errors:
-            errors.append(f"Agentic skill '{skill_name}':")
+            errors.append(f"Agentic skill '{skill_name}' (v1 validation):")
             for err in skill_errors:
+                errors.append(f"  - {err}")
+
+        # v2 validation
+        v2_errors = validate_v2_specific(skill_path, skill_name)
+        if v2_errors:
+            errors.append(f"Agentic skill '{skill_name}' (v2 validation):")
+            for err in v2_errors:
                 errors.append(f"  - {err}")
 
     if errors:
@@ -104,7 +161,7 @@ def main():
             print(f"  ❌ {err}")
         sys.exit(1)
     else:
-        print("✅ All agentic skills validated successfully")
+        print("✅ All agentic skills validated successfully (v1 + v2)")
         sys.exit(0)
 
 

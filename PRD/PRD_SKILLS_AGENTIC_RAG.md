@@ -1,10 +1,17 @@
 # PRD — SKILLS_AGENTIC : Architecture Agentic RAG pour le Métacluster gerivdb
 
-**Version** : 1.0
+**Version** : 2.0
 **Date** : 2026-06-06
 **Auteur** : OPS-ENGINE (inspiré de l'analyse Google Agentic RAG, adapté au métacluster gerivdb)
-**Statut** : DRAFT — soumis à revue SCO7 + Selena + Alfred + Riddler
-**IntentHash** : `0xSKILLS_AGENTIC_RAG_20260606`
+**Statut** : DRAFT v2 — intégration des 3 patterns Google manquants
+**IntentHash** : `0xSKILLS_AGENTIC_RAG_v2_20260606`
+**Changelog v2** :
+- Ajout Agent 0 — DELEGATOR (délégation conditionnelle)
+- Ajout Agent 1b — REWRITER (reformulation des intents)
+- Enrichissement Agent 4 — COVERAGE avec Draft + Gap Analyzer
+- Mise à jour architecture : 9 agents (vs 7 en v1)
+- Mise à jour livrables : +1 slot (skills-rewriter.md)
+- Mise à jour planning : 4 phases (vs 3 en v1)
 
 ---
 
@@ -12,270 +19,317 @@
 
 ### 1.1 Le problème actuel
 
-Le repo `gerivdb/SKILLS` contient **59 skills** spécialisés couvrant les strates L0-L9 du métacluster gerivdb (185 repos). Chaque skill est un fichier Markdown autonome avec un frontmatter YAML. Le système actuel est **statique et mono-skill** :
+Le repo `gerivdb/SKILLS` contient **63 skills** spécialisés couvrant les strates L0-L9 du métacluster gerivdb (185 repos). La v1 du pipeline SKILLS_AGENTIC a posé les fondations (7 agents) mais **3 patterns Google** n'ont pas été exploités :
 
-- **Sélection manuelle** : l'utilisateur (ou l'LLM) doit identifier le bon skill pour sa requête
-- **Pas de composition** : aucune mécanique pour activer plusieurs skills en parallèle
-- **Pas de vérification de couverture** : aucun mécanisme pour détecter qu'un skill manque pour traiter complètement une requête
-- **Pas de routing cross-repo** : un skill sait quoi faire, mais pas dans quel repo chercher
-- **Pas d'itération** : si un skill produit un résultat incomplet, pas de boucle de correction
+1. **Query Rewriter** — les intents ne sont pas reformulés en sous-quêtes atomiques optimisées
+2. **Intermediate Draft + Missing Pieces** — le COVERAGE Agent ne produit pas de brouillon intermédiaire ni de feedback ciblé
+3. **Orchestration conditionnelle** — le pipeline est toujours linéaire, même pour les requêtes simples
 
-### 1.2 L'inspiration : Google Agentic RAG
+### 1.2 L'inspiration : Google Agentic RAG (relecture)
 
-L'article Google Research (5 juin 2026) introduit un framework multi-agent RAG avec un **Sufficient Context Agent** qui vérifie la complétude du contexte avant de générer une réponse. Nous adaptons ce pattern à notre problématique : **non pas vérifier la complétude des données, mais la complétude de la couverture des skills**.
+L'article Google Research (5 juin 2026) contient **6 patterns** exploitables. La v1 en a implémenté 3. La v2 complète avec les 3 restants :
+
+| # | Pattern Google | v1 | v2 | Adaptation gerivdb |
+|---|----------------|----|----|--------------------|
+| 1 | Sufficient Context Agent | ✅ | ✅ Enrichi | COVERAGE Agent + Draft + Gap Analyzer |
+| 2 | Cross-Corpus Retrieval | ✅ | ✅ | ROUTER Agent (185 repos) |
+| 3 | Search Fanout + Iteration | ✅ | ✅ | FANOUT + ITERATOR |
+| 4 | Query Rewriter | ❌ | ✅ Nouveau | REWRITER Agent — reformule les intents |
+| 5 | Intermediate Draft + Missing Pieces | ❌ | ✅ Nouveau | Draft Agent + Gap Analyzer dans COVERAGE |
+| 6 | Orchestrator conditionnel | ❌ | ✅ Nouveau | DELEGATOR Agent — activation sélective |
 
 ### 1.3 Différence fondamentale
 
-| Dimension | Google Agentic RAG | SKILLS_AGENTIC (gerivdb) |
+| Dimension | Google Agentic RAG | SKILLS_AGENTIC v2 (gerivdb) |
 |-----------|---------------------|---------------------------|
 | **Objet du retrieval** | Documents (PDFs, DB) | Skills (capacités) |
-| **Corpus** | 2 676 PDFs statiques | 59 skills dynamiques + 185 repos |
-| **Critère de suffisance** | Contexte informationnel complet | Couverture fonctionnelle complète |
+| **Corpus** | 2 676 PDFs statiques | 63 skills dynamiques + 185 repos |
+| **Critère de suffisance** | Contexte informationnel complet | Couverture fonctionnelle complète + brouillon validé |
 | **Routing** | Cross-corpus (4 datasets) | Cross-repo (185 repos, strates L0-L9) |
 | **Itération** | Recherche de données manquantes | Activation de skills manquants |
+| **Orchestration** | Linéaire | Conditionnelle (3 niveaux) |
 | **Contrainte unique** | Latence < 12s | Conformité BDCP, φ-CPS, strates L |
 
 ---
 
 ## 2. Objectif
 
-Concevoir et implémenter **SKILLS_AGENTIC**, une couche d'orchestration agentique au-dessus des 59 skills existants, qui :
+Concevoir et implémenter **SKILLS_AGENTIC v2**, une couche d'orchestration agentique complète au-dessus des 63 skills, qui :
 
-1. **Analyse** la requête utilisateur et décompose les besoins en sous-tâches
-2. **Sélectionne** les skills pertinents (mono ou multi-skill)
-3. **Route** chaque skill vers le(s) repo(s) cible(s) approprié(s)
-4. **Vérifie** la couverture fonctionnelle (équivalent du Sufficient Context Agent)
-5. **Itère** si des skills manquants sont détectés
-6. **Synthétise** les résultats en un livrable cohérent
+1. **Évalue** la complexité de la requête et **délègue** conditionnellement (DELEGATOR)
+2. **Analyse** la requête et **reformule** les intents en sous-quêtes atomiques (PARSER + REWRITER)
+3. **Sélectionne** les skills pertinents (PLANNER)
+4. **Route** chaque skill vers le(s) repo(s) cible(s) (ROUTER)
+5. **Vérifie** la couverture fonctionnelle avec **brouillon intermédiaire** et **analyse des pièces manquantes** (COVERAGE enrichi)
+6. **Exécute** les skills en parallèle (FANOUT)
+7. **Agrège** les résultats (SYNTH)
+8. **Itère** si des gaps sont détectés (ITERATOR)
 
-Le résultat visé : **zéro skill manquant** pour toute requête complexe, avec traçabilité complète de la chaîne d'activation.
+Le résultat visé : **zéro skill manquant** + **feedback ciblé** sur les pièces manquantes + **latence adaptée** à la complexité.
 
 ---
 
-## 3. Architecture
-
-### 3.1 Vue d'ensemble — Les 5 Agents SKILLS_AGENTIC
+## 3. Architecture v2 — Les 9 Agents
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                    SKILLS_AGENTIC Pipeline                       │
-│                                                                  │
-│  Requête utilisateur                                             │
-│       │                                                          │
-│       ▼                                                          │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐          │
-│  │ 1. PARSER   │───▶│ 2. PLANNER  │───▶│ 3. ROUTER   │          │
-│  │ Agent       │    │ Agent       │    │ Agent       │          │
-│  │             │    │             │    │             │          │
-│  │ Décompose   │    │ Sélectionne │    │ Mappe skill │          │
-│  │ la requête  │    │ les skills  │    │ → repo cible│          │
-│  │ en intents  │    │ nécessaires │    │ (L0-L9)     │          │
-│  └─────────────┘    └─────────────┘    └─────────────┘          │
-│                                               │                  │
-│                                               ▼                  │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐          │
-│  │ 6. SYNTH    │◀───│ 5. FANOUT   │◀───│ 4. COVERAGE │          │
-│  │ Agent       │    │ Agent       │    │ Agent       │          │
-│  │             │    │             │    │             │          │
-│  │ Agrège les  │    │ Exécute les │    │ Vérifie la  │          │
-│  │ résultats   │    │ skills en   │    │ couverture  │          │
-│  │ en réponse  │    │ parallèle   │    │ fonctionnelle│         │
-│  │ finale      │    │             │    │             │          │
-│  └─────────────┘    └─────────────┘    └──────┬──────┘          │
-│       ▲                                       │                  │
-│       │         ┌─────────────┐               │                  │
-│       └─────────│ 7. ITERATOR │◀──────────────┘                  │
-│                 │ Agent       │  (si couverture insuffisante)    │
-│                 │             │                                  │
-│                 │ Relance le  │                                  │
-│                 │ Planner avec│                                  │
-│                 │ feedback    │                                  │
-│                 └─────────────┘                                  │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    SKILLS_AGENTIC v2 — Pipeline                              │
+│                                                                              │
+│  Requête utilisateur                                                         │
+│       │                                                                      │
+│       ▼                                                                      │
+│  ┌─────────────────┐                                                         │
+│  │ 0. DELEGATOR    │  Évalue la complexité → choisit le niveau d'activation │
+│  │ Agent           │                                                         │
+│  │                 │  Niveau 1 (simple)  → skill direct                     │
+│  │                 │  Niveau 2 (moyen)   → pipeline court (4 agents)         │
+│  │                 │  Niveau 3 (complexe) → pipeline complet (9 agents)      │
+│  └────────┬────────┘                                                         │
+│           │                                                                  │
+│           ▼ (Niveau 2 ou 3)                                                  │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                      │
+│  │ 1. PARSER   │───▶│ 1b. REWRITER│───▶│ 2. PLANNER  │                      │
+│  │ Agent       │    │ Agent       │    │ Agent       │                      │
+│  │             │    │             │    │             │                      │
+│  │ Décompose   │    │ Reformule   │    │ Sélectionne │                      │
+│  │ en intents  │    │ en sous-    │    │ les skills  │                      │
+│  │             │    │ quêtes      │    │ nécessaires │                      │
+│  └─────────────┘    └─────────────┘    └──────┬──────┘                      │
+│                                               │                              │
+│                                               ▼                              │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                      │
+│  │ 6. SYNTH    │◀───│ 5. FANOUT   │◀───│ 3. ROUTER   │                      │
+│  │ Agent       │    │ Agent       │    │ Agent       │                      │
+│  │             │    │             │    │             │                      │
+│  │ Agrège les  │    │ Exécute les │    │ Mappe skill │                      │
+│  │ résultats   │    │ skills en   │    │ → repo cible│                      │
+│  │             │    │ parallèle   │    │ (L0-L9)     │                      │
+│  └─────────────┘    └─────────────┘    └──────┬──────┘                      │
+│       ▲                                       │                              │
+│       │         ┌─────────────────────────────┘                              │
+│       │         │                                                             │
+│       │         ▼                                                             │
+│       │  ┌─────────────────────────────────────────────┐                     │
+│       │  │ 4. COVERAGE Agent (enrichi v2)              │                     │
+│       │  │                                             │                     │
+│       │  │  4a. Coverage Checker (4 critères)          │                     │
+│       │  │  4b. Draft Agent (brouillon intermédiaire)  │                     │
+│       │  │  4c. Gap Analyzer (analyse pièces manquantes)│                    │
+│       │  │                                             │                     │
+│       │  │  Sortie : verdict + brouillon + feedback     │                     │
+│       │  │         ciblé                                │                     │
+│       │  └──────────────────┬──────────────────────────┘                     │
+│       │                     │                                                │
+│       │                     ▼ (si INSUFFICIENT)                              │
+│       │  ┌─────────────┐                                                    │
+│       │  │ 7. ITERATOR │───▶ Relance REWRITER + PLANNER avec feedback       │
+│       │  │ Agent       │     ciblé du Gap Analyzer                           │
+│       │  └─────────────┘                                                    │
+│       │                                                                     │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 3.2 Description des Agents
+### 3.1 Matrice de Délégation (DELEGATOR)
 
-#### Agent 1 — PARSER
-**Rôle** : Décomposer la requête utilisateur en intents atomiques.
+| Complexe | Critères | Niveau | Agents activés | Latence cible |
+|----------|----------|--------|----------------|---------------|
+| **Simple** | 1 intent, 1 strate, 1 skill | 1 | Skill direct | < 2s |
+| **Moyen** | 2-3 intents, 1-2 strates | 2 | PARSER → REWRITER → PLANNER → ROUTER → FANOUT → SYNTH | < 8s |
+| **Complexe** | 4+ intents, cross-strate, ou requête ambiguë | 3 | Pipeline complet (9 agents) | < 15s |
 
-**Entrée** : Requête libre (ex: "Audit complet du repo FLUENCE avec vérification conformité NEXUS et génération du rapport")
-**Sortie** : Liste d'intents structurés
-```json
-{
-  "intents": [
-    {"action": "audit_structure", "scope": "FLUENCE", "strate": "L1"},
-    {"action": "verifier_conformite", "scope": "NEXUS", "strate": "L0"},
-    {"action": "generer_rapport", "scope": "FLUENCE", "strate": "L1"}
-  ]
-}
+### 3.2 Description des Nouveaux Agents (v2)
+
+#### Agent 0 — DELEGATOR (nouveau)
+**Rôle** : Évaluer la complexité de la requête et décider du niveau d'activation.
+
+**Entrée** : Requête utilisateur
+**Sortie** : Niveau de complexité (1, 2, ou 3) + justification
+
+**Critères d'évaluation** :
+1. **Nombre d'intents** : 1 → niveau 1 ; 2-3 → niveau 2 ; 4+ → niveau 3
+2. **Nombre de strates** : 1 → niveau 1-2 ; 2+ → niveau 3
+3. **Ambiguïté** : requête vague → niveau 3 (nécessite REWRITER)
+4. **Mots-clés de complexité** : "complet", "global", "cross-repo" → niveau 3
+
+**Règles** :
+- Niveau 1 : activer directement le skill identifié (pas de pipeline)
+- Niveau 2 : pipeline court (pas de DELEGATOR, pas de ITERATOR)
+- Niveau 3 : pipeline complet avec itération
+
+#### Agent 1b — REWRITER (nouveau)
+**Rôle** : Reformuler chaque intent en sous-quêtes atomiques optimisées pour le retrieval dans le MANIFEST.
+
+**Entrée** : Liste d'intents (du PARSER)
+**Sortie** : Liste de sous-quêtes enrichies
+
+**Exemple** :
+```
+Intent : audit_structure (FLUENCE)
+Sous-quêtes :
+  - scan_repo_structure (reposcope-run)
+  - check_ddd_compliance (nexus-auditor)
+  - detect_epic_size_violations (nexus-auditor)
+  - validate_naming_conventions (nexus-compliance)
 ```
 
-**Mapping skills** : `reposcope-run`, `nexus-auditor`, `adr-manager`
+**Règles** :
+1. Chaque sous-quête doit correspondre à un skill existant dans le MANIFEST
+2. Maximum 5 sous-quêtes par intent (au-delà → découper en sous-intents)
+3. Les sous-quêtes doivent être **recherchables** dans les `triggers` ou `description` des skills
+4. Conserver le mapping intent → sous-quêtes pour la traçabilité
 
-#### Agent 2 — PLANNER
-**Rôle** : Sélectionner les skills nécessaires et définir l'ordre d'exécution.
+#### Agent 4b — DRAFT AGENT (nouveau, dans COVERAGE)
+**Rôle** : Produire un brouillon de réponse basé sur les skills activés, avant l'exécution réelle.
 
-**Entrée** : Liste d'intents
-**Sortie** : Plan d'exécution ordonné avec dépendances
-```json
-{
-  "plan": [
-    {"step": 1, "skill": "reposcope-run", "intents": ["audit_structure"], "deps": []},
-    {"step": 2, "skill": "nexus-auditor", "intents": ["verifier_conformite"], "deps": [1]},
-    {"step": 3, "skill": "adr-manager", "intents": ["verifier_conformite"], "deps": [1]},
-    {"step": 4, "skill": "workflow-orchestration", "intents": ["generer_rapport"], "deps": [2, 3]}
-  ]
-}
+**Entrée** : Plan routé (skills + repos + intents)
+**Sortie** : Brouillon de réponse structuré
+
+**Format** :
+```markdown
+## Brouillon — [Titre]
+
+### Couverture
+- Skills activés : [liste]
+- Intents couverts : [liste]
+- Intents non couverts : [liste]
+
+### Résultats attendus
+#### [skill-1] — [intent]
+- Résultat attendu : [description]
+- Source : [repo]
+
+#### [skill-2] — [intent]
+...
+
+### Lacunes identifiées
+[Liste des intents sans skill assigné]
 ```
 
-**Règle clé** : Respecter la hiérarchie L0→L9. Un skill L0 (gouvernance) ne peut pas dépendre d'un skill L3+ (outil).
+#### Agent 4c — GAP ANALYZER (nouveau, dans COVERAGE)
+**Rôle** : Comparer le brouillon à la requête originale et générer un feedback ciblé sur les pièces manquantes.
 
-#### Agent 3 — ROUTER
-**Rôle** : Mapper chaque skill vers le(s) repo(s) cible(s) en utilisant `known_repositories.yaml`.
+**Entrée** : Brouillon (Draft Agent) + Requête originale
+**Sortie** : Feedback structuré avec pièces manquantes et skills recommandés
 
-**Entrée** : Plan d'exécution
-**Sortie** : Plan enrichi avec repos cibles
-```json
-{
-  "routed_plan": [
-    {"step": 1, "skill": "reposcope-run", "repo": "D:\\DO\\WEB\\FLUENCE", "strate": "L1"},
-    {"step": 2, "skill": "nexus-auditor", "repo": "D:\\DO\\WEB\\TOOLS\\L0-CANON\\NEXUS", "strate": "L0"},
-    {"step": 3, "skill": "adr-manager", "repo": "D:\\DO\\WEB\\TOOLS\\L0-CANON\\GOVERNANCE-HUB", "strate": "L0"},
-    {"step": 4, "skill": "workflow-orchestration", "repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS", "strate": "L4"}
-  ]
-}
-```
-
-**Source de vérité** : `gerivdb/GOVERNANCE-HUB/known_repositories.yaml` (GATE-0/1/2/3 obligatoire)
-
-#### Agent 4 — COVERAGE (l'innovation clé — équivalent du Sufficient Context Agent)
-**Rôle** : Vérifier que l'ensemble des skills sélectionnés couvre tous les intents de la requête.
-
-**Entrée** : Plan routé + intents originaux
-**Sortie** : Verdict de couverture + gaps identifiés
-
+**Format** :
 ```json
 {
   "coverage_verdict": "INSUFFICIENT",
-  "covered_intents": ["audit_structure", "verifier_conformite"],
-  "missing_intents": ["generer_rapport"],
-  "missing_skills": ["prd-factory"],
-  "feedback": "Le plan couvre l'audit et la conformité, mais ne génère pas de rapport. Ajouter prd-factory ou workflow-orchestration."
+  "draft_summary": "Le brouillon couvre l'audit structurel et la conformité NEXUS",
+  "missing_pieces": [
+    {
+      "intent": "generer_rapport",
+      "reason": "Aucun skill de génération de rapport n'est activé",
+      "recommended_skills": ["workflow-orchestration", "prd-factory"],
+      "priority": "HIGH"
+    }
+  ],
+  "targeted_feedback": "Le skill reposcope-run couvre l'audit structurel, mais il manque un skill pour générer le rapport final. Ajouter workflow-orchestration (L4) ou prd-factory (L2)."
 }
 ```
 
-**Critères de couverture** :
-1. **Exhaustivité** : Chaque intent a-t-il au moins un skill assigné ?
-2. **Compétence** : Le skill assigné a-t-il la capacité de traiter l'intention ? (vérification via le frontmatter `description` du skill)
-3. **Strate** : Le skill est-il dans la bonne strate L0-L9 pour le repo cible ?
-4. **Dépendance** : Les dépendances inter-skills sont-elles respectées ?
+### 3.3 Agents v1 (inchangés mais enrichis)
 
-#### Agent 5 — FANOUT
-**Rôle** : Exécuter les skills en parallèle quand c'est possible (pas de dépendances entre eux).
-
-**Entrée** : Plan routé validé par le COVERAGE Agent
-**Sortie** : Résultats bruts de chaque skill
-
-**Stratégie** :
-- Skills sans dépendances mutuelles → exécution parallèle (via `task` tool)
-- Skills avec dépendances → exécution séquentielle
-- Maximum 5 skills en parallèle (contrainte SLM)
-
-#### Agent 6 — SYNTH
-**Rôle** : Agréger les résultats de tous les skills en un livrable cohérent.
-
-**Entrée** : Résultats bruts du FANOUT
-**Sortie** : Réponse finale structurée
-
-**Format** : Markdown avec sections par skill, tags de conformité NEXUS, et traçabilité complète.
-
-#### Agent 7 — ITERATOR
-**Rôle** : Relancer le pipeline si le COVERAGE Agent a détecté des gaps.
-
-**Entrée** : Verdict INSUFFICIENT + feedback du COVERAGE Agent
-**Sortie** : Nouveau plan enrichi avec les skills manquants
-
-**Condition d'arrêt** :
-- Couverture SUFFICIENT → passer à FANOUT
-- 3 itérations max → si toujours INSUFFICIENT, escalade HITL
+| Agent | v1 | v2 | Changement |
+|-------|----|----|------------|
+| PARSER | Décompose en intents | Décompose en intents | Enrichi : passe les intents au REWRITER |
+| PLANNER | Sélectionne les skills | Sélectionne les skills | Enrichi : utilise les sous-quêtes du REWRITER |
+| ROUTER | Mappe skill→repo | Mappe skill→repo | Inchangé |
+| COVERAGE | 4 critères | 4 critères + Draft + Gap Analyzer | **Enrichi** |
+| FANOUT | Exécution parallèle | Exécution parallèle | Inchangé |
+| SYNTH | Agrège les résultats | Agrège les résultats | Inchangé |
+| ITERATOR | Relance si gaps | Relance avec feedback ciblé | Enrichi : utilise le feedback du Gap Analyzer |
 
 ---
 
-## 4. Livrables
+## 4. Livrables v2
 
-| ID | Livrable | Description | Impact |
-|----|----------|-------------|--------|
-| **L1** | `skills-agentic.md` | Nouveau skill principal orchestrant le pipeline 5 agents | +1 slot |
-| **L2` | `skills-coverage.md` | Skill dédié à la vérification de couverture (équivalent Sufficient Context Agent) | +1 slot |
-| **L3** | `skills-router.md` | Skill de routing cross-repo utilisant known_repositories.yaml | +1 slot |
-| **L4** | `MANIFEST.json` v2 | Manifest enrichi avec métadonnées agentic (intents, coverage_rules, strate_constraints) | 0 slot |
-| **L5** | `skills-agentic-test.md` | Suite de tests pour valider le pipeline agentic | +1 slot |
-| **L6** | `registry-sync.yml` v2 | CI enrichie avec validation de couverture | 0 slot |
+| ID | Livrable | Description | Impact | Statut |
+|----|----------|-------------|--------|--------|
+| **L1** | `skills-agentic.md` | Orchestrateur principal — pipeline 9 agents (v2) | +1 slot | ✅ Créé v1, à enrichir v2 |
+| **L2** | `skills-coverage.md` | Vérification de couverture + Draft + Gap Analyzer | +1 slot | ✅ Créé v1, à enrichir v2 |
+| **L3** | `skills-router.md` | Routing cross-repo via known_repositories.yaml | +1 slot | ✅ Créé v1 |
+| **L4** | `skills-rewriter.md` | **NOUVEAU** — Reformulation des intents en sous-quêtes | +1 slot | ❌ À créer |
+| **L5** | `MANIFEST.json` v2 | Manifest enrichi avec métadonnées agentic | 0 slot | ✅ Créé v1 |
+| **L6** | `skills-agentic-test.md` | Suite de tests — 20 requêtes + tests v2 | +1 slot | ✅ Créé v1, à enrichir v2 |
+| **L7** | `validate-skills.yml` v2 | CI avec validation agentic v2 | 0 slot | ✅ Créé v1, à enrichir v2 |
+| **L8** | `validate-agentic.py` v2 | Validation agentic avec Draft + Gap Analyzer | 0 slot | ✅ Créé v1, à enrichir v2 |
 
-**Impact slots** : +4 slots (de 59 → 63, marge de 37 slots restants sur 100)
-
----
-
-## 5. Critères d'acceptation
-
-1. **Couverture** : Toute requête multi-intents (≥3 intents) doit déclencher automatiquement les skills pertinents sans intervention manuelle
-2. **Suffisance** : Le COVERAGE Agent doit détecter 100% des gaps de skills sur un jeu de test de 20 requêtes complexes
-3. **Traçabilité** : Chaque activation de skill doit être loggée avec intent, repo cible, strate L, et résultat
-4. **Itération** : Le pipeline doit converger en ≤3 itérations pour toute requête
-5. **Conformité** : Aucun skill L0 ne peut être activé sans contexte GOVERNANCE-HUB chargé (GATE-0)
-6. **BDCP** : Aucun appel réseau sortant non autorisé (conformité règle BDCP inviolable)
-7. **CI vert** : `registry-sync.yml` doit valider le frontmatter agentic de chaque skill
+**Impact slots v2** : +5 slots (de 59 → 64, marge de 36 slots restants sur 100)
 
 ---
 
-## 6. Planning
+## 5. Critères d'acceptation v2
 
-| Phase | Objectif | Livrables | Durée |
-|-------|----------|-----------|-------|
-| **Phase 1** | Créer les 3 nouveaux skills agentic | L1, L2, L3 | 1 jour |
-| **Phase 2** | Enrichir le manifest et la CI | L4, L6 | 0.5 jour |
-| **Phase 3** | Tests et validation | L5 | 1 jour |
-| **Phase 4** | Revue croisée SCO7+Selena+Alfred+Riddler | Rapport consolidé | 0.5 jour |
+### Critères v1 (conservés)
+1. **Couverture** : Toute requête multi-intents (≥3) déclenche automatiquement les skills pertinents
+2. **Suffisance** : Le COVERAGE Agent détecte 100% des gaps sur 20 requêtes
+3. **Traçabilité** : Chaque activation de skill est loggée
+4. **Itération** : Convergence en ≤3 itérations
+5. **Conformité** : Aucun skill L0 sans contexte GOVERNANCE-HUB
+6. **BDCP** : Aucun appel réseau sortant non autorisé
+7. **CI vert** : `registry-sync.yml` valide le frontmatter agentic
 
-**Total** : 3 jours
+### Critères v2 (nouveaux)
+8. **Délégation** : Le DELEGATOR identifie correctement le niveau de complexité sur 10 requêtes test (5 simples, 3 moyennes, 2 complexes)
+9. **Reformulation** : Le REWRITER produit des sous-quêtes qui matchent des skills existants dans le MANIFEST (100% de match sur 10 intents test)
+10. **Brouillon** : Le DRAFT AGENT produit un brouillon structuré pour toute requête de niveau 2+
+11. **Feedback ciblé** : Le GAP ANALYZER génère un feedback avec skills recommandés pour 100% des gaps injectés
+12. **Latence adaptée** : Niveau 1 < 2s, Niveau 2 < 8s, Niveau 3 < 15s (mesuré sur 5 requêtes par niveau)
 
 ---
 
-## 7. Risques et Mitigations
+## 6. Planning v2
+
+| Phase | Objectif | Livrables | Durée | Statut |
+|-------|----------|-----------|-------|--------|
+| **Phase 1** | Créer les 3 skills agentic v1 | L1, L2, L3 | 1 jour | ✅ Fait |
+| **Phase 2** | Enrichir le manifest et la CI | L5, L7 | 0.5 jour | ✅ Fait |
+| **Phase 3** | Tests et validation v1 | L6 | 1 jour | ✅ Fait |
+| **Phase 4** | **NOUVELLE** — Implémenter les 3 patterns v2 | L4, L8, enrichir L1/L2/L6/L7 | 1 jour | ❌ À faire |
+| **Phase 5** | Revue croisée + merge v2 | Rapport consolidé | 0.5 jour | ❌ À faire |
+
+**Total v2** : 4 jours (vs 3 jours en v1)
+
+---
+
+## 7. Risques et Mitigations v2
 
 | Risque | Probabilité | Impact | Mitigation |
 |--------|--------------|--------|------------|
-| **Explosion combinatoire** (trop de skills activés simultanément) | Moyenne | Haut | Limiter à 5 skills parallèles ; budget d'itérations max = 3 |
-| **Coverage Agent circulaire** (détecte des gaps qui n'en sont pas) | Moyenne | Moyen | Jeu de test de 20 requêtes pour calibrer les seuils |
-| **Latence excessive** (7 agents = 7 appels LLM) | Haute | Haut | Utiliser des modèles légers (Flash) pour les agents simples ; cache des plans |
-| **Conflit de strate** (skill L0 activé après L3) | Faible | Haut | Règle dure dans le ROUTER : respect strict L0→L9 |
-| **Dérive BDCP** (appel réseau non autorisé) | Faible | Critique | Audit de chaque skill agentic par Alfred avant merge |
+| **Explosion combinatoire** | Moyenne | Haut | Limiter à 5 skills parallèles ; budget d'itérations max = 3 |
+| **Coverage Agent circulaire** | Moyenne | Moyen | Jeu de test de 20 requêtes pour calibrer |
+| **Latence excessive** | Haute | Haut | Délégation conditionnelle (niveau 1 = pas de pipeline) |
+| **Conflit de strate** | Faible | Haut | Règle dure dans le ROUTER : respect strict L0→L9 |
+| **Dérive BDCP** | Faible | Critique | Audit de chaque skill agentic par Alfred |
+| **REWRITER trop agressif** (trop de sous-quêtes) | Moyenne | Moyen | Limiter à 5 sous-quêtes par intent |
+| **DRAFT AGIONT trop lent** | Faible | Moyen | Brouillon léger (structure seulement, pas de contenu détaillé) |
 
 ---
 
-## 8. Différences clés avec Google Agentic RAG
+## 8. Comparaison v1 vs v2
 
-| Aspect | Google | SKILLS_AGENTIC |
-|--------|--------|----------------|
-| **Ce qu'on retrieve** | Documents | Skills (capacités) |
-| **Critère d'arrêt** | Contexte suffisant | Couverture fonctionnelle suffisante |
-| **Source de vérité** | Corpus statique | `known_repositories.yaml` dynamique |
-| **Contrainte de strate** | Aucune | L0→L9 obligatoire |
-| **Itération max** | Non spécifiée | 3 (puis HITL) |
-| **Parallélisme** | Fanout illimité | Max 5 skills |
-| **Compliance** | Standard enterprise | BDCP inviolable + φ-CPS |
+| Dimension | v1 | v2 |
+|-----------|----|----|
+| **Agents** | 7 | 9 (+ DELEGATOR, + REWRITER, + DRAFT/GAP dans COVERAGE) |
+| **Slots** | 63/100 | 64/100 |
+| **Orchestration** | Linéaire | Conditionnelle (3 niveaux) |
+| **Reformulation** | Non | Oui (REWRITER) |
+| **Brouillon** | Non | Oui (DRAFT AGENT) |
+| **Feedback gaps** | Générique | Ciblé (GAP ANALYZER) |
+| **Latence** | Fixe (~15s) | Adaptée (2s-15s selon complexité) |
+| **Tests** | 20 requêtes | 30 requêtes (+10 pour v2) |
 
 ---
 
 ## 9. Prochaines étapes
 
-1. **Revue technique SCO7** — Valider l'architecture des 7 agents
-2. **Revue stratégique Selena** — Évaluer l'impact sur le métacluster
-3. **Revue risques Alfred** — Auditer les vulnérabilités du pipeline agentic
-4. **Revue critique Riddler** — Identifier les failles logiques et les biais
-5. **Implémentation Phase 1** — Créer les 3 skills agentic
+1. **Implémenter Phase 4** — Créer `skills-rewriter.md`, enrichir `skills-coverage.md` (Draft + Gap Analyzer), enrichir `skills-agentic.md` (DELEGATOR)
+2. **Enrichir les tests** — Ajouter 10 requêtes de test spécifiques à v2 (délégation, reformulation, brouillon)
+3. **Mettre à jour la CI** — Enrichir `validate-agentic.py` pour valider les nouveaux champs v2
+4. **Revue croisée** — SCO7 + Selena + Alfred + Riddler sur la v2
+5. **Merge** — Tous les livrables v2 mergés sur `main`
 
 ---
 
-*Fin du PRD | IntentHash : `0xSKILLS_AGENTIC_RAG_20260606`*
+*Fin du PRD v2 | IntentHash : `0xSKILLS_AGENTIC_RAG_v2_20260606`*
