@@ -5,10 +5,10 @@
 # Previous: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
 
 registry:
-  version: "1.0.4"
+  version: "1.0.5"
   ecosystem: "ecosystem-1"
   last_updated: "2026-06-06"
-  total_skills: 51
+  total_skills: 53
 
 skills:
     # ========================================
@@ -1193,6 +1193,57 @@ skills:
     consumes_from:
       - git-hooks-manager
 
+  # ========================================
+  # ORPHAN BRANCH SKILLS (2026-06-06)
+  # ========================================
+
+  - name: orphan-branch-dispatcher
+    description: "Analyzes orphan/closed-PR branches and dispatches: cherry-pick, delete, or escalate"
+    type: foundational
+    triggers:
+      - /orphan-dispatch
+      - orphan branches
+      - closed pr branches
+      - dispatch orphans
+      - triage orphan branches
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.007
+    path: native/foundational/orphan-branch-dispatcher/SKILL.md
+    source: native
+    depends_on:
+      - branch-lifecycle
+    provides_to:
+      - batch-cherry-pick-executor
+
+  - name: batch-cherry-pick-executor
+    description: "Executes cherry-pick of unique commits from multiple orphan branches with dedup"
+    type: foundational
+    triggers:
+      - /batch-cherry-pick
+      - cherry-pick orphans
+      - cherry-pick multiple branches
+      - bulk cherry-pick
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.007
+    path: native/foundational/batch-cherry-pick-executor/SKILL.md
+    source: native
+    depends_on:
+      - orphan-branch-dispatcher
+      - cherry-pick-batch
+      - cherry-pick-conflict-resolver
+
 external_pending:
   - name: marketingskills
     description: Compétences marketing externalisées
@@ -1209,16 +1260,16 @@ external_pending:
 # ========================================
 
 metadata:
-  phi_cps_contribution: 0.145
+  phi_cps_contribution: 0.159
   governance_level: L2
   citizen: skills-registry
   lifecycle: ACTIVE
   next_review: "2026-06-25"
   changelog:
-    - version: "1.0.4"
+    - version: "1.0.5"
       date: "2026-06-06"
-      change: "Add 17 new git flow skills: git-flow-manager, merge-conflict-resolver, rebase-workflow, tag-release-manager, rollback-strategy, git-hooks-manager, stash-workflow, conventional-commit-validator, bisect-forensics, cherry-pick-conflict-resolver, submodule-manager, fork-sync-workflow, worktree-manager, branch-protection-config, wal-reconciler, network-resilient-sync, cross-repo-hooks. Merge sync-branches into branch-lifecycle. Update kiva-pr-workflow deps. Fix kiva-pr-workflow frontmatter."
-      intent_hash: "0xPRD_GIT_FLOW_SKILLS_V2_20260606"
+      change: "Add orphan-branch-dispatcher + batch-cherry-pick-executor. BRAIN cleanup: 33 orphan branches processed (8 cherry-picked, 25 deleted)."
+      intent_hash: "0xORPHAN_BRANCH_SKILLS_20260606"
       date: "2026-04-19"
       change: "Add epic-forge skill for EPIC management"
       intent_hash: "0xEPIC_FORGE_SKILL_20260419"
