@@ -5,10 +5,10 @@
 # Previous: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
 
 registry:
-  version: "1.0.2"
+  version: "1.0.3"
   ecosystem: "ecosystem-1"
-  last_updated: "2026-04-19"
-  total_skills: 28
+  last_updated: "2026-06-06"
+  total_skills: 34
 
 skills:
     # ========================================
@@ -699,6 +699,138 @@ skills:
     phi_weight: 0.005
     provides_to: [ECOS-CLI, ECOYSTEM]
 
+  # ========================================
+  # GIT WORKFLOW SKILLS (2026-06-06)
+  # ========================================
+
+  - name: branch-lifecycle
+    description: Analyzes all branches and recommends PR merge / cherry-pick / delete strategy
+    type: foundational
+    triggers:
+      - /branch-lifecycle
+      - analyze branches
+      - branch strategy
+      - branch cleanup
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/branch-lifecycle/SKILL.md
+    source: native
+    provides_to:
+      - cherry-pick-batch
+      - kiva-pr-workflow
+      - sync-branches
+
+  - name: cherry-pick-batch
+    description: Cherry-picks multiple commits with conflict detection and reporting
+    type: foundational
+    triggers:
+      - /cherry-pick-batch
+      - cherry-pick multiple commits
+      - batch cherry-pick
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/cherry-pick-batch/SKILL.md
+    source: native
+    consumes_from:
+      - branch-lifecycle
+    provides_to:
+      - kiva-pr-workflow
+
+  - name: kiva-pr-workflow
+    description: Complete KIVA-CLI PR merge workflow (rollback, review, merge, WAL, citizen)
+    type: foundational
+    triggers:
+      - /kiva-pr-workflow
+      - kiva merge pr
+      - merge with kiva
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.008
+    path: native/foundational/kiva-pr-workflow/SKILL.md
+    source: native
+    consumes_from:
+      - branch-lifecycle
+      - cherry-pick-batch
+      - diffscope-review
+
+  - name: diffscope-review
+    description: Reviews a PR using diffscope (or gh fallback on Windows)
+    type: foundational
+    triggers:
+      - /diffscope-review
+      - review pr with diffscope
+      - diffscope pr
+      - automated pr review
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/diffscope-review/SKILL.md
+    source: native
+    provides_to:
+      - kiva-pr-workflow
+
+  - name: clean-pycache
+    description: Removes __pycache__ from working tree and git index, ensures .gitignore coverage
+    type: foundational
+    triggers:
+      - /clean-pycache
+      - clean pycache
+      - remove pyc files
+      - pycache cleanup
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.003
+    path: native/foundational/clean-pycache/SKILL.md
+    source: native
+
+  - name: sync-branches
+    description: Syncs local/remote branches, detects merged branches, cleans up stale refs
+    type: foundational
+    triggers:
+      - /sync-branches
+      - sync branches local remote
+      - cleanup merged branches
+      - delete merged branches
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/sync-branches/SKILL.md
+    source: native
+    consumes_from:
+      - branch-lifecycle
+
 external_pending:
   - name: marketingskills
     description: Compétences marketing externalisées
@@ -715,13 +847,16 @@ external_pending:
 # ========================================
 
 metadata:
-  phi_cps_contribution: 0.046
+  phi_cps_contribution: 0.077
   governance_level: L2
   citizen: skills-registry
   lifecycle: ACTIVE
   next_review: "2026-06-25"
   changelog:
-    - version: "1.0.2"
+    - version: "1.0.3"
+      date: "2026-06-06"
+      change: "Add 6 git workflow skills: branch-lifecycle, cherry-pick-batch, kiva-pr-workflow, diffscope-review, clean-pycache, sync-branches"
+      intent_hash: "0xPRD_GIT_WORKFLOW_SKILLS_20260606"
       date: "2026-04-19"
       change: "Add epic-forge skill for EPIC management"
       intent_hash: "0xEPIC_FORGE_SKILL_20260419"
