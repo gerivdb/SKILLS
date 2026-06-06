@@ -5,10 +5,10 @@
 # Previous: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
 
 registry:
-  version: "1.0.6"
+  version: "1.0.7"
   ecosystem: "ecosystem-1"
   last_updated: "2026-06-06"
-  total_skills: 54
+  total_skills: 58
 
 skills:
     # ========================================
@@ -1273,6 +1273,93 @@ skills:
       - stash-workflow
       - conventional-commit-validator
 
+  # ========================================
+  # BRANCH ANALYSIS SKILLS (2026-06-06 v3)
+  # ========================================
+
+  - name: branch-content-analyzer
+    description: "Detects if branch content already in main (0 unique files = safe to delete)"
+    type: foundational
+    triggers:
+      - /analyze-branch-content
+      - branch content analysis
+      - is branch merged
+      - branch overlap
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.006
+    path: native/foundational/branch-content-analyzer/SKILL.md
+    source: native
+    provides_to:
+      - orphan-branch-dispatcher
+      - branch-merge-strategy
+
+  - name: branch-merge-strategy
+    description: "Decides optimal merge strategy: cherry-pick, squash, rebase, or delete"
+    type: foundational
+    triggers:
+      - /merge-strategy
+      - branch merge strategy
+      - how to merge branch
+      - cherry-pick or squash
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.006
+    path: native/foundational/branch-merge-strategy/SKILL.md
+    source: native
+    depends_on:
+      - branch-content-analyzer
+
+  - name: eecs-migration-handler
+    description: "Handles EECS migration branches: validates, checks conflicts, integrates"
+    type: foundational
+    triggers:
+      - /eecs-migration
+      - eecs migration
+      - eecs branch
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/eecs-migration-handler/SKILL.md
+    source: native
+    depends_on:
+      - branch-content-analyzer
+
+  - name: citizen-module-integrator
+    description: "Handles Jules citizen modules: validates structure, checks duplicates, integrates"
+    type: foundational
+    triggers:
+      - /citizen-integrate
+      - citizen module
+      - jules citizen
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/citizen-module-integrator/SKILL.md
+    source: native
+    depends_on:
+      - branch-content-analyzer
+
 external_pending:
   - name: marketingskills
     description: Compétences marketing externalisées
@@ -1289,16 +1376,16 @@ external_pending:
 # ========================================
 
 metadata:
-  phi_cps_contribution: 0.169
+  phi_cps_contribution: 0.189
   governance_level: L2
   citizen: skills-registry
   lifecycle: ACTIVE
   next_review: "2026-06-25"
   changelog:
-    - version: "1.0.6"
+    - version: "1.0.7"
       date: "2026-06-06"
-      change: "Add git-assainissement orchestrator. BRAIN fully sanitized: 47→11 branches, 36 deleted, 10 cherry-picked."
-      intent_hash: "0xGIT_ASSAINISSEMENT_SKILL_20260606"
+      change: "Add 4 branch analysis skills: branch-content-analyzer, branch-merge-strategy, eecs-migration-handler, citizen-module-integrator. BRAIN fully sanitized: 47→0 remote branches."
+      intent_hash: "0xBRANCH_ANALYSIS_SKILLS_20260606"
       date: "2026-04-19"
       change: "Add epic-forge skill for EPIC management"
       intent_hash: "0xEPIC_FORGE_SKILL_20260419"
