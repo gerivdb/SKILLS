@@ -2,89 +2,50 @@ name: Validate Skills
 
 on:
   push:
-    branches: [main, develop]
-  pull_request:
     branches: [main]
+    paths:
+      - 'perplexity/**/*.md'
+      - 'MANIFEST.json'
+  pull_request:
+    paths:
+      - 'perplexity/**/*.md'
+      - 'MANIFEST.json'
+  workflow_dispatch:
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          
+
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pyyaml
-          
-      - name: Run Validation Script
-        run: |
-          chmod +x tools/validate-skills.sh
-          bash tools/validate-skills.sh
-          
-      - name: Validate YAML Syntax
-        run: |
-          python -c "import yaml; yaml.safe_load(open('REGISTRY.yaml'))"
-          
-      - name: Check for Duplicate Skills
-        run: |
-          python tools/check-duplicates.py || true
-          
-      - name: Validate Frontmatter Completeness
-        run: |
-          python tools/validate-frontmatter.py || true
 
-      - name: Validate CognitivePatterns
-        run: python validators/validate_cognitive.py cognitive
-
-  lint:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        
-      - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@master
-        
-      - name: Check Bash Scripts
+      - name: Validate Skill Format
         run: |
-          shellcheck tools/validate-skills.sh || true
+          python tools/validate-skills.py
 
-  test:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-          
-      - name: Test Registry Generator
+      - name: Validate Agentic Skills
         run: |
-          pip install pyyaml
-          python tools/registry-gen.py --output /tmp/test-registry.yaml
-          diff REGISTRY.yaml /tmp/test-registry.yaml || echo "Registry may need regeneration"
+          python tools/validate-agentic.py
 
-  notify:
-    needs: [validate, lint, test]
-    runs-on: ubuntu-latest
-    if: always()
-    
-    steps:
-      - name: Summary
+      - name: Check Slot Count
+        run: |
+          python tools/check-slots.py --max 100
+
+      - name: Report Results
+        if: always()
         run: |
           echo "## Validation Results" >> $GITHUB_STEP_SUMMARY
-          echo "- Validate: ${{ needs.validate.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Lint: ${{ needs.lint.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Test: ${{ needs.test.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Skill format: ${{ steps.validate.outcome }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Agentic validation: ${{ steps.validate-agentic.outcome }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Slot count: ${{ steps.check-slots.outcome }}" >> $GITHUB_STEP_SUMMARY
