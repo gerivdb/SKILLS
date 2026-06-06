@@ -1,15 +1,21 @@
 ---
 name: branch-lifecycle
-description: Analyzes all branches in a git repository and recommends PR merge / cherry-pick / delete strategy for each
+description: "Analyzes all branches, recommends PR merge / cherry-pick / delete strategy, and executes sync/cleanup (merged with sync-branches)"
 triggers:
   - /branch-lifecycle
+  - /sync-branches
   - analyze branches
   - branch strategy
   - which branches to merge
   - branch cleanup
   - branch analysis
+  - sync branches local remote
+  - cleanup merged branches
+  - delete merged branches
+  - branch sync
+  - prune branches
 domain: foundational
-version: "1.0.0"
+version: "1.1.0"
 author: gerivdb
 license: MIT
 status: active
@@ -21,22 +27,29 @@ tags:
   - workflow
   - pr
   - cherry-pick
-phi_weight: 0.005
+  - sync
+  - cleanup
+phi_weight: 0.008
 ---
 
 # Branch Lifecycle Skill
 
-> **IntentHash**: `0xBRANCH_LIFECYCLE_SKILL_20260606`  
-> **Version**: 1.0.0  
-> **Domain**: foundational  
-> **Type**: foundational  
+> **IntentHash**: `0xBRANCH_LIFECYCLE_SKILL_20260606_v1.1`
+> **Version**: 1.1.0
+> **Domain**: foundational
+> **Type**: foundational
 > **Status**: active
 
 ---
 
 ## Synopsis
 
-Analyzes all branches (local + remote + stash) in a git repository and recommends a strategy for each: **PR_MERGE** | **CHERRY_PICK** | **DELETE** | **KEEP**.
+Analyzes all branches (local + remote + stash), recommends a strategy for each (PR_MERGE / CHERRY_PICK / DELETE / KEEP), and **executes** the recommended actions including sync and cleanup. This skill merges the former `sync-branches` skill.
+
+**Modes**:
+- `--analyze` — Analysis only (default)
+- `--sync` — Execute cleanup of merged/stale branches
+- `--filter <type>` — Filter by classification
 
 ---
 

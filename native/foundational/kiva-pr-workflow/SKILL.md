@@ -189,7 +189,7 @@ WORKFLOW COMPLETE ✅
 
 ## Dependencies
 
-- **Depends on**: `branch-lifecycle`, `cherry-pick-batch`, `diffscope-review`
+- **Depends on**: `branch-lifecycle`, `diffscope-review`, `create-pull-request`, `wal-reconciler`
 - **Provides to**: None (terminal skill)
 
 ---
@@ -197,5 +197,8 @@ WORKFLOW COMPLETE ✅
 ## Changelog
 
 | Version | Date | Change | IntentHash |
+|---------|------|--------|------------|
+| 1.1.0 | 2026-06-06 | Removed cherry-pick-batch dep, added create-pull-request + wal-reconciler deps | `0xKIVA_PR_WORKFLOW_SKILL_20260606_v1.1` |
+| 1.0.0 | 2026-06-06 | Initial version | `0xKIVA_PR_WORKFLOW_SKILL_20260606` |
 |---------|------|--------|------------|
 | 1.0.0 | 2026-06-06 | Initial version | `0xKIVA_PR_WORKFLOW_SKILL_20260606` |

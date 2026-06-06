@@ -5,10 +5,10 @@
 # Previous: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
 
 registry:
-  version: "1.0.3"
+  version: "1.0.4"
   ecosystem: "ecosystem-1"
   last_updated: "2026-06-06"
-  total_skills: 34
+  total_skills: 51
 
 skills:
     # ========================================
@@ -704,27 +704,32 @@ skills:
   # ========================================
 
   - name: branch-lifecycle
-    description: Analyzes all branches and recommends PR merge / cherry-pick / delete strategy
+    description: "Analyzes all branches, recommends PR merge / cherry-pick / delete strategy, and executes sync/cleanup"
     type: foundational
     triggers:
       - /branch-lifecycle
+      - /sync-branches
       - analyze branches
       - branch strategy
       - branch cleanup
+      - branch analysis
+      - sync branches local remote
+      - cleanup merged branches
+      - delete merged branches
+      - prune branches
     domain: git-workflow
-    version: "1.0.0"
+    version: "1.1.0"
     author: gerivdb
     license: MIT
     status: active
     created: "2026-06-06"
     updated: "2026-06-06"
-    phi_weight: 0.005
+    phi_weight: 0.008
     path: native/foundational/branch-lifecycle/SKILL.md
     source: native
     provides_to:
       - cherry-pick-batch
       - kiva-pr-workflow
-      - sync-branches
 
   - name: cherry-pick-batch
     description: Cherry-picks multiple commits with conflict detection and reporting
@@ -756,7 +761,7 @@ skills:
       - kiva merge pr
       - merge with kiva
     domain: git-workflow
-    version: "1.0.0"
+    version: "1.1.0"
     author: gerivdb
     license: MIT
     status: active
@@ -767,8 +772,9 @@ skills:
     source: native
     consumes_from:
       - branch-lifecycle
-      - cherry-pick-batch
       - diffscope-review
+      - create-pull-request
+      - wal-reconciler
 
   - name: diffscope-review
     description: Reviews a PR using diffscope (or gh fallback on Windows)
@@ -831,6 +837,362 @@ skills:
     consumes_from:
       - branch-lifecycle
 
+  # ========================================
+  # GIT FLOW SKILLS v2 (2026-06-06)
+  # ========================================
+
+  - name: git-flow-manager
+    description: "Implements git-flow branching model: feature, release, hotfix, develop, main"
+    type: foundational
+    triggers:
+      - /git-flow
+      - git flow
+      - gitflow
+      - branch naming convention
+      - create feature branch
+      - create release branch
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.008
+    path: native/foundational/git-flow-manager/SKILL.md
+    source: native
+    provides_to:
+      - branch-lifecycle
+      - tag-release-manager
+
+  - name: merge-conflict-resolver
+    description: "Interactive merge conflict resolution: ours/theirs/manual/binary guidance"
+    type: foundational
+    triggers:
+      - /resolve-conflicts
+      - merge conflict
+      - resolve merge conflict
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.008
+    path: native/foundational/merge-conflict-resolver/SKILL.md
+    source: native
+    provides_to:
+      - cherry-pick-conflict-resolver
+
+  - name: rebase-workflow
+    description: "Interactive rebase, rebase vs. merge decision tree, squashing, reordering"
+    type: foundational
+    triggers:
+      - /rebase
+      - interactive rebase
+      - squash commits
+      - rebase vs merge
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.007
+    path: native/foundational/rebase-workflow/SKILL.md
+    source: native
+    provides_to:
+      - create-pull-request
+
+  - name: tag-release-manager
+    description: "Semantic versioning, git tag creation, release branch management"
+    type: foundational
+    triggers:
+      - /release
+      - create release
+      - tag release
+      - semantic version
+      - bump version
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.007
+    path: native/foundational/tag-release-manager/SKILL.md
+    source: native
+    consumes_from:
+      - changelog-generator
+
+  - name: rollback-strategy
+    description: "Guides git revert vs. git reset decisions, safe rollback procedures"
+    type: foundational
+    triggers:
+      - /rollback
+      - git revert
+      - git reset
+      - undo commit
+      - undo merge
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.007
+    path: native/foundational/rollback-strategy/SKILL.md
+    source: native
+
+  - name: git-hooks-manager
+    description: "Create, install, debug, and manage git hooks (pre-commit, pre-push, commit-msg)"
+    type: foundational
+    triggers:
+      - /hooks
+      - git hooks
+      - install hooks
+      - pre-commit hook
+      - commit-msg hook
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.006
+    path: native/foundational/git-hooks-manager/SKILL.md
+    source: native
+    provides_to:
+      - conventional-commit-validator
+
+  - name: stash-workflow
+    description: "Stash save, pop, apply, drop, branch-from-stash, partial stashes"
+    type: foundational
+    triggers:
+      - /stash
+      - git stash
+      - stash save
+      - stash pop
+      - stash branch
+      - partial stash
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/stash-workflow/SKILL.md
+    source: native
+
+  - name: conventional-commit-validator
+    description: "Enforces Conventional Commits specification with commit-msg hook"
+    type: foundational
+    triggers:
+      - /commit-msg
+      - conventional commit
+      - commit message format
+      - commit lint
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.006
+    path: native/foundational/conventional-commit-validator/SKILL.md
+    source: native
+    consumes_from:
+      - git-hooks-manager
+
+  - name: bisect-forensics
+    description: "Git bisect for regression hunting, git blame for forensic analysis"
+    type: foundational
+    triggers:
+      - /bisect
+      - git bisect
+      - find regression
+      - git blame
+      - who changed this
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/bisect-forensics/SKILL.md
+    source: native
+
+  - name: cherry-pick-conflict-resolver
+    description: "Extends cherry-pick-batch with conflict resolution (binary files, rerere)"
+    type: foundational
+    triggers:
+      - /cherry-pick-resolve
+      - cherry-pick conflict
+      - git rerere
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.006
+    path: native/foundational/cherry-pick-conflict-resolver/SKILL.md
+    source: native
+    consumes_from:
+      - cherry-pick-batch
+      - merge-conflict-resolver
+
+  - name: submodule-manager
+    description: "Git submodule lifecycle: add, update, sync, remove, fix broken refs"
+    type: foundational
+    triggers:
+      - /submodule
+      - git submodule
+      - add submodule
+      - broken submodule
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/submodule-manager/SKILL.md
+    source: native
+
+  - name: fork-sync-workflow
+    description: "Fork-based contribution workflow: sync upstream, PR from fork"
+    type: foundational
+    triggers:
+      - /fork-sync
+      - sync fork
+      - fork workflow
+      - upstream sync
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.004
+    path: native/foundational/fork-sync-workflow/SKILL.md
+    source: native
+
+  - name: worktree-manager
+    description: "Git worktree management: create, list, remove for parallel branch work"
+    type: foundational
+    triggers:
+      - /worktree
+      - git worktree
+      - create worktree
+      - parallel branches
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.003
+    path: native/foundational/worktree-manager/SKILL.md
+    source: native
+
+  - name: branch-protection-config
+    description: "Configure branch protection rules, required reviews via gh CLI"
+    type: foundational
+    triggers:
+      - /branch-protection
+      - protect branch
+      - prevent force push
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.004
+    path: native/foundational/branch-protection-config/SKILL.md
+    source: native
+    provides_to:
+      - branch-lifecycle
+
+  - name: wal-reconciler
+    description: "Validates WAL integrity against actual git state, detects orphaned entries"
+    type: foundational
+    triggers:
+      - /wal-reconcile
+      - wal integrity
+      - wal validation
+      - wal compact
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.006
+    path: native/foundational/wal-reconciler/SKILL.md
+    source: native
+    provides_to:
+      - kiva-pr-workflow
+
+  - name: network-resilient-sync
+    description: "Network-resilient git sync: pre-check reachability, retry, offline mode"
+    type: foundational
+    triggers:
+      - /sync
+      - git sync
+      - network sync
+      - offline sync
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.004
+    path: native/foundational/network-resilient-sync/SKILL.md
+    source: native
+    provides_to:
+      - branch-lifecycle
+
+  - name: cross-repo-hooks
+    description: "Cross-repo hook analysis and orchestration (merged analyzer + orchestration)"
+    type: foundational
+    triggers:
+      - /cross-repo-hooks
+      - cross-repo hooks
+      - analyze hooks
+      - deploy hooks
+    domain: git-workflow
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-06"
+    updated: "2026-06-06"
+    phi_weight: 0.005
+    path: native/foundational/cross-repo-hooks/SKILL.md
+    source: native
+    consumes_from:
+      - git-hooks-manager
+
 external_pending:
   - name: marketingskills
     description: Compétences marketing externalisées
@@ -847,16 +1209,16 @@ external_pending:
 # ========================================
 
 metadata:
-  phi_cps_contribution: 0.077
+  phi_cps_contribution: 0.145
   governance_level: L2
   citizen: skills-registry
   lifecycle: ACTIVE
   next_review: "2026-06-25"
   changelog:
-    - version: "1.0.3"
+    - version: "1.0.4"
       date: "2026-06-06"
-      change: "Add 6 git workflow skills: branch-lifecycle, cherry-pick-batch, kiva-pr-workflow, diffscope-review, clean-pycache, sync-branches"
-      intent_hash: "0xPRD_GIT_WORKFLOW_SKILLS_20260606"
+      change: "Add 17 new git flow skills: git-flow-manager, merge-conflict-resolver, rebase-workflow, tag-release-manager, rollback-strategy, git-hooks-manager, stash-workflow, conventional-commit-validator, bisect-forensics, cherry-pick-conflict-resolver, submodule-manager, fork-sync-workflow, worktree-manager, branch-protection-config, wal-reconciler, network-resilient-sync, cross-repo-hooks. Merge sync-branches into branch-lifecycle. Update kiva-pr-workflow deps. Fix kiva-pr-workflow frontmatter."
+      intent_hash: "0xPRD_GIT_FLOW_SKILLS_V2_20260606"
       date: "2026-04-19"
       change: "Add epic-forge skill for EPIC management"
       intent_hash: "0xEPIC_FORGE_SKILL_20260419"
