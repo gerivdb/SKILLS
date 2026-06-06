@@ -5,10 +5,10 @@
 # Previous: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
 
 registry:
-  version: "1.0.5"
+  version: "1.0.6"
   ecosystem: "ecosystem-1"
   last_updated: "2026-06-06"
-  total_skills: 53
+  total_skills: 54
 
 skills:
     # ========================================
@@ -1012,15 +1012,15 @@ skills:
     consumes_from:
       - git-hooks-manager
 
-  - name: bisect-forensics
-    description: "Git bisect for regression hunting, git blame for forensic analysis"
+  - name: git-assainissement
+    description: "Complete git repository sanitization orchestrator (branch, stash, submodule, tags, cleanup)"
     type: foundational
     triggers:
-      - /bisect
-      - git bisect
-      - find regression
-      - git blame
-      - who changed this
+      - /assainir
+      - git cleanup
+      - sanitize git
+      - repository cleanup
+      - full git audit
     domain: git-workflow
     version: "1.0.0"
     author: gerivdb
@@ -1028,221 +1028,18 @@ skills:
     status: active
     created: "2026-06-06"
     updated: "2026-06-06"
-    phi_weight: 0.005
-    path: native/foundational/bisect-forensics/SKILL.md
-    source: native
-
-  - name: cherry-pick-conflict-resolver
-    description: "Extends cherry-pick-batch with conflict resolution (binary files, rerere)"
-    type: foundational
-    triggers:
-      - /cherry-pick-resolve
-      - cherry-pick conflict
-      - git rerere
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.006
-    path: native/foundational/cherry-pick-conflict-resolver/SKILL.md
+    phi_weight: 0.010
+    path: native/foundational/git-assainissement/SKILL.md
     source: native
     consumes_from:
-      - cherry-pick-batch
-      - merge-conflict-resolver
-
-  - name: submodule-manager
-    description: "Git submodule lifecycle: add, update, sync, remove, fix broken refs"
-    type: foundational
-    triggers:
-      - /submodule
-      - git submodule
-      - add submodule
-      - broken submodule
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.005
-    path: native/foundational/submodule-manager/SKILL.md
-    source: native
-
-  - name: fork-sync-workflow
-    description: "Fork-based contribution workflow: sync upstream, PR from fork"
-    type: foundational
-    triggers:
-      - /fork-sync
-      - sync fork
-      - fork workflow
-      - upstream sync
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.004
-    path: native/foundational/fork-sync-workflow/SKILL.md
-    source: native
-
-  - name: worktree-manager
-    description: "Git worktree management: create, list, remove for parallel branch work"
-    type: foundational
-    triggers:
-      - /worktree
-      - git worktree
-      - create worktree
-      - parallel branches
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.003
-    path: native/foundational/worktree-manager/SKILL.md
-    source: native
-
-  - name: branch-protection-config
-    description: "Configure branch protection rules, required reviews via gh CLI"
-    type: foundational
-    triggers:
-      - /branch-protection
-      - protect branch
-      - prevent force push
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.004
-    path: native/foundational/branch-protection-config/SKILL.md
-    source: native
-    provides_to:
       - branch-lifecycle
-
-  - name: wal-reconciler
-    description: "Validates WAL integrity against actual git state, detects orphaned entries"
-    type: foundational
-    triggers:
-      - /wal-reconcile
-      - wal integrity
-      - wal validation
-      - wal compact
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.006
-    path: native/foundational/wal-reconciler/SKILL.md
-    source: native
-    provides_to:
-      - kiva-pr-workflow
-
-  - name: network-resilient-sync
-    description: "Network-resilient git sync: pre-check reachability, retry, offline mode"
-    type: foundational
-    triggers:
-      - /sync
-      - git sync
-      - network sync
-      - offline sync
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.004
-    path: native/foundational/network-resilient-sync/SKILL.md
-    source: native
-    provides_to:
-      - branch-lifecycle
-
-  - name: cross-repo-hooks
-    description: "Cross-repo hook analysis and orchestration (merged analyzer + orchestration)"
-    type: foundational
-    triggers:
-      - /cross-repo-hooks
-      - cross-repo hooks
-      - analyze hooks
-      - deploy hooks
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.005
-    path: native/foundational/cross-repo-hooks/SKILL.md
-    source: native
-    consumes_from:
-      - git-hooks-manager
-
-  # ========================================
-  # ORPHAN BRANCH SKILLS (2026-06-06)
-  # ========================================
-
-  - name: orphan-branch-dispatcher
-    description: "Analyzes orphan/closed-PR branches and dispatches: cherry-pick, delete, or escalate"
-    type: foundational
-    triggers:
-      - /orphan-dispatch
-      - orphan branches
-      - closed pr branches
-      - dispatch orphans
-      - triage orphan branches
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.007
-    path: native/foundational/orphan-branch-dispatcher/SKILL.md
-    source: native
-    depends_on:
-      - branch-lifecycle
-    provides_to:
-      - batch-cherry-pick-executor
-
-  - name: batch-cherry-pick-executor
-    description: "Executes cherry-pick of unique commits from multiple orphan branches with dedup"
-    type: foundational
-    triggers:
-      - /batch-cherry-pick
-      - cherry-pick orphans
-      - cherry-pick multiple branches
-      - bulk cherry-pick
-    domain: git-workflow
-    version: "1.0.0"
-    author: gerivdb
-    license: MIT
-    status: active
-    created: "2026-06-06"
-    updated: "2026-06-06"
-    phi_weight: 0.007
-    path: native/foundational/batch-cherry-pick-executor/SKILL.md
-    source: native
-    depends_on:
       - orphan-branch-dispatcher
       - cherry-pick-batch
-      - cherry-pick-conflict-resolver
+      - sync-branches
+      - submodule-manager
+      - tag-release-manager
+      - stash-workflow
+      - conventional-commit-validator
 
 external_pending:
   - name: marketingskills
@@ -1260,16 +1057,16 @@ external_pending:
 # ========================================
 
 metadata:
-  phi_cps_contribution: 0.159
+  phi_cps_contribution: 0.169
   governance_level: L2
   citizen: skills-registry
   lifecycle: ACTIVE
   next_review: "2026-06-25"
   changelog:
-    - version: "1.0.5"
+    - version: "1.0.6"
       date: "2026-06-06"
-      change: "Add orphan-branch-dispatcher + batch-cherry-pick-executor. BRAIN cleanup: 33 orphan branches processed (8 cherry-picked, 25 deleted)."
-      intent_hash: "0xORPHAN_BRANCH_SKILLS_20260606"
+      change: "Add git-assainissement orchestrator. BRAIN fully sanitized: 47→11 branches, 36 deleted, 10 cherry-picked."
+      intent_hash: "0xGIT_ASSAINISSEMENT_SKILL_20260606"
       date: "2026-04-19"
       change: "Add epic-forge skill for EPIC management"
       intent_hash: "0xEPIC_FORGE_SKILL_20260419"
