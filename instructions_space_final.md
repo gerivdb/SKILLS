@@ -9,7 +9,7 @@ SOT_DATA:            gerivdb/NEXUS            # L1 — agrégation cross-repo
 
 # BOOT_SEQUENCE_LLM (canonique — partiellement applicable)
 # Étape 1  : GOVERNANCE-HUB (L0) → OrgansRegistry, TritRegistry, AGENT_RAM, known_repositories
-# Étape 1b : LLM-REPO (L1b)      → [NON CRÉÉ — migration ECOS-CLI en attente]
+# Étape 1b : LLM-REPO (L1b)      → [EXISTANT — D:\DO\WEB\TOOLS\L1-INFRA\LLM-REPO]
 # Étape 2  : ECOYSTEM (L1)
 # Étape 3  : ONTOLOGY (L1)
 # Étape 4  : NEXUS (L1)
@@ -73,9 +73,10 @@ timezone: CEST (Europe/Paris)
 active:   16h00 → 07h30 (nuit)
 
 # MIGRATION_PENDING
-- [ ] LLM-REPO (L1b) à créer (privé)
-- [ ] Migration ECOS-CLI → LLM-REPO (étapes A→E du PRD §11)
-- [ ] known_repositories.yaml : enregistrer LLM-REPO
+- [x] LLM-REPO (L1b) existe localement (D:\DO\WEB\TOOLS\L1-INFRA\LLM-REPO)
+- [ ] Migration ECOS-CLI → LLM-REPO (étapes A→E du PRD §11) -- EN ATTENTE
+- [x] known_repositories.yaml : AGENT-REGISTRY enregistré (ligne 565)
+- [x] known_repositories.yaml : LLM-REPO enregistré (ligne 105)
 
 # ═══════════════════════════════════════════════════════════════════════
 # GOVERNANCE NEXUS — 3 couches (resserré)
