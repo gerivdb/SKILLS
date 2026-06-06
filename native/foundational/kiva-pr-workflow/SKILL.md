@@ -1,6 +1,6 @@
 ---
 name: kiva-pr-workflow
-description: Executes the complete KIVA-CLI PR merge workflow: rollback point, review, merge, WAL update, drift check, citizen promotion
+description: "Executes the complete KIVA-CLI PR merge workflow: rollback point, review, merge, WAL update, drift check, citizen promotion"
 triggers:
   - /kiva-pr-workflow
   - kiva merge pr
