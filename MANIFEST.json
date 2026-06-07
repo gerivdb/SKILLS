@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-05-30T20:24:28Z",
-  "skillsCount": 64,
+  "skillsCount": 65,
   "skills": [
     {
       "name": "adr-manager",
@@ -789,6 +789,17 @@
       "layer": "L4_ORCHESTRATION",
       "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
       "prerequisites": ["MANIFEST.json (SKILLS)", "skills-agentic.md (orchestrateur)"],
+      "slotWeight": 1,
+      "status": "active"
+    },
+    {
+      "name": "skill-router-uae",
+      "version": "2.0.0",
+      "description": "Routeur UAE pour le pipeline SKILLS_AGENTIC. Route les requêtes vers les skills pertinents via les coordonnées UAE 5D — sans règles codées en dur. Utilise TAXONOMY/coords.yaml comme source de vérité.",
+      "triggers": ["router UAE", "routing géométrique", "skill-router", "UAE routing", "distance UAE", "router skill", "trouver skill"],
+      "layer": "L4_ORCHESTRATION",
+      "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC", "UAE"],
+      "prerequisites": ["TAXONOMY/coords.yaml (SKILLS)", "skills-agentic.md (orchestrateur)"],
       "slotWeight": 1,
       "status": "active"
     }

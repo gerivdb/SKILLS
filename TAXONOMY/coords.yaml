@@ -1,0 +1,517 @@
+# TAXONOMY/coords.yaml
+# Généré automatiquement par scripts/generate_coords.py
+# Ne pas éditer manuellement — relancer le script
+
+skills:
+  adr-manager:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: audit
+    urgence: P3
+    uae_score: 79.9
+    zone: STANDARD
+  argus-tracker:
+    strate: L0
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 39.1
+    zone: BASIC
+  base243:
+    strate: L0
+    domaine: sot
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 76.2
+    zone: STANDARD
+  boinc-p2p:
+    strate: L0
+    domaine: automation
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 65.2
+    zone: STANDARD
+  claude-optimizer:
+    strate: L0
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 39.1
+    zone: BASIC
+  comet-browser:
+    strate: L0
+    domaine: automation
+    env: BOTH
+    phase: create
+    urgence: P2
+    uae_score: 68.9
+    zone: STANDARD
+  data-vector:
+    strate: L0
+    domaine: sot
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 76.2
+    zone: STANDARD
+  deepwiki-ops:
+    strate: L5
+    domaine: agentic
+    env: BOTH
+    phase: close
+    urgence: P2
+    uae_score: 76.2
+    zone: STANDARD
+  devtools-core:
+    strate: L0
+    domaine: automation
+    env: ENV2
+    phase: fix
+    urgence: P3
+    uae_score: 66.4
+    zone: STANDARD
+  diagram-infographic:
+    strate: L0
+    domaine: domain
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 41.8
+    zone: BASIC
+  diagram-infra:
+    strate: L0
+    domaine: domain
+    env: ENV2
+    phase: create
+    urgence: P1
+    uae_score: 47.6
+    zone: BASIC
+  diagram-mermaid:
+    strate: L0
+    domaine: git
+    env: BOTH
+    phase: create
+    urgence: P2
+    uae_score: 60.9
+    zone: STANDARD
+  diagram-uml:
+    strate: L0
+    domaine: domain
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 41.8
+    zone: BASIC
+  diagram-vega:
+    strate: L0
+    domaine: domain
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 41.8
+    zone: BASIC
+  ecos-vision:
+    strate: L2
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 47.6
+    zone: BASIC
+  github-config:
+    strate: L1
+    domaine: git
+    env: BOTH
+    phase: create
+    urgence: P2
+    uae_score: 59.8
+    zone: BASIC
+  governance-formal:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: create
+    urgence: P1
+    uae_score: 87.3
+    zone: LADYBIRD
+  hitl-core:
+    strate: L3
+    domaine: governance
+    env: BOTH
+    phase: audit
+    urgence: P1
+    uae_score: 71.6
+    zone: STANDARD
+  ide-tools:
+    strate: L0
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 39.1
+    zone: BASIC
+  intent-bridge:
+    strate: L0
+    domaine: automation
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 65.2
+    zone: STANDARD
+  iot-diagram:
+    strate: L0
+    domaine: domain
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 41.8
+    zone: BASIC
+  kiva-pipeline:
+    strate: L0
+    domaine: git
+    env: BOTH
+    phase: create
+    urgence: P2
+    uae_score: 60.9
+    zone: STANDARD
+  lecun-prd:
+    strate: L0
+    domaine: cognition
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 71.6
+    zone: STANDARD
+  local-recovery:
+    strate: L0
+    domaine: git
+    env: BOTH
+    phase: fix
+    urgence: P2
+    uae_score: 60.9
+    zone: STANDARD
+  mcp-write-guard:
+    strate: L2
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 47.6
+    zone: BASIC
+  media-culture:
+    strate: L0
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 39.1
+    zone: BASIC
+  multi-repo-syncer:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: route
+    urgence: P3
+    uae_score: 66.4
+    zone: STANDARD
+  new-pillars:
+    strate: L0
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 39.1
+    zone: BASIC
+  nexus-auditor:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: audit
+    urgence: P1
+    uae_score: 91.0
+    zone: LADYBIRD
+  nexus-compliance:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: audit
+    urgence: P1
+    uae_score: 91.0
+    zone: LADYBIRD
+  nexus-core:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: create
+    urgence: P1
+    uae_score: 87.3
+    zone: LADYBIRD
+  nexus-deps:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: close
+    urgence: P3
+    uae_score: 73.1
+    zone: STANDARD
+  nexus-map:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 78.0
+    zone: STANDARD
+  nexus-monitor:
+    strate: L0
+    domaine: governance
+    env: ENV2
+    phase: audit
+    urgence: P1
+    uae_score: 100.0
+    zone: LADYBIRD
+  nexus-prd:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: close
+    urgence: P3
+    uae_score: 73.1
+    zone: STANDARD
+  nexus-reformer:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: fix
+    urgence: P3
+    uae_score: 78.0
+    zone: STANDARD
+  nexus-registry-sync:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 78.0
+    zone: STANDARD
+  nexus-registry-view:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 78.0
+    zone: STANDARD
+  plix-core:
+    strate: L3
+    domaine: sot
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 64.1
+    zone: STANDARD
+  prd-factory:
+    strate: L2
+    domaine: governance
+    env: ENV2
+    phase: audit
+    urgence: P3
+    uae_score: 74.6
+    zone: STANDARD
+  pruning-explainer:
+    strate: L0
+    domaine: git
+    env: ENV2
+    phase: fix
+    urgence: P2
+    uae_score: 61.9
+    zone: STANDARD
+  pulse-infra:
+    strate: L0
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 39.1
+    zone: BASIC
+  reasoning-toolkit:
+    strate: L5
+    domaine: governance
+    env: BOTH
+    phase: audit
+    urgence: P3
+    uae_score: 50.8
+    zone: BASIC
+  reposcope-process:
+    strate: L0
+    domaine: cognition
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 71.6
+    zone: STANDARD
+  reposcope-publish:
+    strate: L0
+    domaine: cognition
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 71.6
+    zone: STANDARD
+  reposcope-run:
+    strate: L0
+    domaine: cognition
+    env: BOTH
+    phase: audit
+    urgence: P2
+    uae_score: 78.0
+    zone: STANDARD
+  reposcope-watch:
+    strate: L0
+    domaine: cognition
+    env: BOTH
+    phase: audit
+    urgence: P3
+    uae_score: 73.1
+    zone: STANDARD
+  scaffold-pipeline:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: audit
+    urgence: P1
+    uae_score: 91.0
+    zone: LADYBIRD
+  skill-tester:
+    strate: L0
+    domaine: external
+    env: BOTH
+    phase: audit
+    urgence: P3
+    uae_score: 43.9
+    zone: BASIC
+  skills-manager:
+    strate: L0
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 39.1
+    zone: BASIC
+  swarm-cli:
+    strate: L0
+    domaine: automation
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 65.2
+    zone: STANDARD
+  task-automator:
+    strate: L0
+    domaine: automation
+    env: BOTH
+    phase: create
+    urgence: P2
+    uae_score: 68.9
+    zone: STANDARD
+  triade-flux:
+    strate: L0
+    domaine: governance
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 78.0
+    zone: STANDARD
+  triade-hub:
+    strate: L0
+    domaine: agentic
+    env: BOTH
+    phase: close
+    urgence: P3
+    uae_score: 53.3
+    zone: BASIC
+  triade-iris:
+    strate: L0
+    domaine: cognition
+    env: BOTH
+    phase: create
+    urgence: P2
+    uae_score: 76.2
+    zone: STANDARD
+  triade-kronos:
+    strate: L0
+    domaine: cognition
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 71.6
+    zone: STANDARD
+  wiki-mimir:
+    strate: L0
+    domaine: domain
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 41.8
+    zone: BASIC
+  workflow-debugger:
+    strate: L0
+    domaine: git
+    env: BOTH
+    phase: fix
+    urgence: P2
+    uae_score: 60.9
+    zone: STANDARD
+  z600-hardware:
+    strate: L0
+    domaine: external
+    env: BOTH
+    phase: create
+    urgence: P3
+    uae_score: 39.1
+    zone: BASIC
+  skills-agentic:
+    strate: L4
+    domaine: agentic
+    env: BOTH
+    phase: route
+    urgence: P0
+    uae_score: 91.0
+    zone: LADYBIRD
+  skills-coverage:
+    strate: L4
+    domaine: agentic
+    env: ENV2
+    phase: create
+    urgence: P0
+    uae_score: 64.1
+    zone: STANDARD
+  skills-router:
+    strate: L4
+    domaine: agentic
+    env: BOTH
+    phase: route
+    urgence: P0
+    uae_score: 91.0
+    zone: LADYBIRD
+  skills-agentic-test:
+    strate: L4
+    domaine: agentic
+    env: BOTH
+    phase: fix
+    urgence: P0
+    uae_score: 79.9
+    zone: STANDARD
+  skills-rewriter:
+    strate: L4
+    domaine: agentic
+    env: BOTH
+    phase: fix
+    urgence: P0
+    uae_score: 79.9
+    zone: STANDARD

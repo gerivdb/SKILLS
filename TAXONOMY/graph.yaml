@@ -1,0 +1,451 @@
+# TAXONOMY/graph.yaml
+# Foncteurs KEEL entre skills — adjonctions, conditions, coûts énergétiques
+# Syntaxe KEEL v0.5
+# Généré le 2026-06-07
+# IntentHash: 0xSKILLS_GRAPH_V1_20260607
+#
+# Structure:
+#   adjonctions:
+#     <skill_source>:
+#       adjoints:
+#         - skill: <skill_cible>
+#           condition: "<condition_keel>"
+#           cost: <float 0.0-1.0>
+#           functor: "𝔽|<nom>"
+#       composition: "≋"
+#       identite: "≋"
+#       poincaré: { β₀: 1, β₁: 0 }
+
+adjunctions:
+
+  # ═══════════════════════════════════════════════════════════════
+  # AGENTIC ORCHESTRATION (skills-agentic est le racine)
+  # ═══════════════════════════════════════════════════════════════
+
+  skills-agentic:
+    adjoints:
+      - skill: skills-coverage
+        condition: "intent_count >= 1"
+        cost: 0.05
+        functor: "𝔽|orchestrate→coverage"
+      - skill: skills-router
+        condition: "repo_scope != null"
+        cost: 0.05
+        functor: "𝔽|orchestrate→router"
+      - skill: skills-rewriter
+        condition: "intent_complexity >= MEDIUM"
+        cost: 0.08
+        functor: "𝔽|orchestrate→rewriter"
+      - skill: skills-agentic-test
+        condition: "phase == audit"
+        cost: 0.10
+        functor: "𝔽|orchestrate→test"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  skills-coverage:
+    adjoints:
+      - skill: skills-agentic
+        condition: "coverage_verdict == INSUFFICIENT"
+        cost: 0.15
+        functor: "𝔽|coverage→iterate"
+      - skill: nexus-auditor
+        condition: "strate == L0 AND phase == audit"
+        cost: 0.12
+        functor: "𝔽|coverage→audit"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  skills-router:
+    adjoints:
+      - skill: reposcope-run
+        condition: "domaine == cognition AND phase == audit"
+        cost: 0.10
+        functor: "𝔽|router→reposcope"
+      - skill: nexus-auditor
+        condition: "strate == L0 AND domaine == governance"
+        cost: 0.10
+        functor: "𝔽|router→nexus-auditor"
+      - skill: devtools-core
+        condition: "repo_path == C:\\DevTools"
+        cost: 0.08
+        functor: "𝔽|router→devtools"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  skills-rewriter:
+    adjoints:
+      - skill: skills-agentic
+        condition: "sub_queries_generated > 0"
+        cost: 0.05
+        functor: "𝔽|rewriter→orchestrate"
+      - skill: prd-factory
+        condition: "intent == create_prd"
+        cost: 0.12
+        functor: "𝔽|rewriter→prd"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  # ═══════════════════════════════════════════════════════════════
+  # GOVERNANCE (L0 — NEXUS family)
+  # ═══════════════════════════════════════════════════════════════
+
+  nexus-auditor:
+    adjoints:
+      - skill: nexus-compliance
+        condition: "audit_findings > 0"
+        cost: 0.15
+        functor: "𝔽|audit→compliance"
+      - skill: nexus-reformer
+        condition: "violations > 0 AND phase == fix"
+        cost: 0.20
+        functor: "𝔽|audit→reform"
+      - skill: adr-manager
+        condition: "architecture_decision_required == true"
+        cost: 0.18
+        functor: "𝔽|audit→adr"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  nexus-compliance:
+    adjoints:
+      - skill: nexus-registry-sync
+        condition: "registry_drift == true"
+        cost: 0.12
+        functor: "𝔽|compliance→sync"
+      - skill: scaffold-pipeline
+        condition: "governance_flow_required == true"
+        cost: 0.15
+        functor: "𝔽|compliance→scaffold"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  nexus-core:
+    adjoints:
+      - skill: nexus-auditor
+        condition: "phase == audit"
+        cost: 0.10
+        functor: "𝔽|core→audit"
+      - skill: nexus-monitor
+        condition: "phase == audit AND env == ENV2"
+        cost: 0.12
+        functor: "𝔽|core→monitor"
+      - skill: nexus-deps
+        condition: "dependency_analysis == true"
+        cost: 0.15
+        functor: "𝔽|core→deps"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  nexus-monitor:
+    adjoints:
+      - skill: triade-iris
+        condition: "drift_detected == true"
+        cost: 0.18
+        functor: "𝔽|monitor→iris"
+      - skill: nexus-registry-view
+        condition: "dashboard_request == true"
+        cost: 0.08
+        functor: "𝔽|monitor→dashboard"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  nexus-reformer:
+    adjoints:
+      - skill: nexus-auditor
+        condition: "post_reform_validation == true"
+        cost: 0.10
+        functor: "𝔽|reform→audit"
+      - skill: local-recovery
+        condition: "data_loss_risk == true"
+        cost: 0.20
+        functor: "𝔽|reform→recovery"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  adr-manager:
+    adjoints:
+      - skill: governance-formal
+        condition: "governance_doc_required == true"
+        cost: 0.12
+        functor: "𝔽|adr→governance"
+      - skill: lecun-prd
+        condition: "prd_from_adr == true"
+        cost: 0.15
+        functor: "𝔽|adr→prd"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  # ═══════════════════════════════════════════════════════════════
+  # COGNITION (L3 — TRIADE + REPOSCOPE)
+  # ═══════════════════════════════════════════════════════════════
+
+  triade-hub:
+    adjoints:
+      - skill: triade-iris
+        condition: "external_sensor_required == true"
+        cost: 0.15
+        functor: "𝔽|hub→iris"
+      - skill: triade-kronos
+        condition: "signal_digestion == true"
+        cost: 0.15
+        functor: "𝔽|hub→kronos"
+      - skill: triade-flux
+        condition: "hitl_promotion == true"
+        cost: 0.18
+        functor: "𝔽|hub→flux"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  triade-iris:
+    adjoints:
+      - skill: triade-kronos
+        condition: "signal_qualified == true"
+        cost: 0.12
+        functor: "𝔽|iris→kronos"
+      - skill: reposcope-watch
+        condition: "external_surveillance == true"
+        cost: 0.10
+        functor: "𝔽|iris→watch"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  triade-kronos:
+    adjoints:
+      - skill: triade-flux
+        condition: "signal_deduplicated == true"
+        cost: 0.12
+        functor: "𝔽|kronos→flux"
+      - skill: reposcope-process
+        condition: "signal_correlation == true"
+        cost: 0.15
+        functor: "𝔽|kronos→process"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  triade-flux:
+    adjoints:
+      - skill: nexus-core
+        condition: "nexus_promotion == true"
+        cost: 0.20
+        functor: "𝔽|flux→nexus"
+      - skill: hitl-core
+        condition: "human_review_required == true"
+        cost: 0.10
+        functor: "𝔽|flux→hitl"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  reposcope-run:
+    adjoints:
+      - skill: reposcope-process
+        condition: "digestion_complete == true"
+        cost: 0.10
+        functor: "𝔽|run→process"
+      - skill: reposcope-publish
+        condition: "publication_required == true"
+        cost: 0.12
+        functor: "𝔽|run→publish"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  reposcope-process:
+    adjoints:
+      - skill: reposcope-publish
+        condition: "correlation_complete == true"
+        cost: 0.10
+        functor: "𝔽|process→publish"
+      - skill: data-vector
+        condition: "vector_indexing == true"
+        cost: 0.15
+        functor: "𝔽|process→vector"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  hitl-core:
+    adjoints:
+      - skill: triade-flux
+        condition: "flux_review == true"
+        cost: 0.12
+        functor: "𝔽|hitl→flux"
+      - skill: adr-manager
+        condition: "architecture_decision == true"
+        cost: 0.15
+        functor: "𝔽|hitl→adr"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  # ═══════════════════════════════════════════════════════════════
+  # PRODUCTION (L2 — PRD + SCAFFOLD)
+  # ═══════════════════════════════════════════════════════════════
+
+  prd-factory:
+    adjoints:
+      - skill: adr-manager
+        condition: "adr_required == true"
+        cost: 0.12
+        functor: "𝔽|prd→adr"
+      - skill: nexus-prd
+        condition: "nexus_synthesis == true"
+        cost: 0.10
+        functor: "𝔽|prd→nexus-prd"
+      - skill: skills-rewriter
+        condition: "intent_enrichment == true"
+        cost: 0.08
+        functor: "𝔽|prd→rewriter"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  scaffold-pipeline:
+    adjoints:
+      - skill: prd-factory
+        condition: "prd_creation == true"
+        cost: 0.10
+        functor: "𝔽|scaffold→prd"
+      - skill: nexus-compliance
+        condition: "compliance_check == true"
+        cost: 0.12
+        functor: "𝔽|scaffold→compliance"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  # ═══════════════════════════════════════════════════════════════
+  # GIT + AUTOMATION (L3)
+  # ═══════════════════════════════════════════════════════════════
+
+  github-config:
+    adjoints:
+      - skill: workflow-debugger
+        condition: "workflow_failure == true"
+        cost: 0.15
+        functor: "𝔽|github→debug"
+      - skill: kiva-pipeline
+        condition: "ci_migration == true"
+        cost: 0.18
+        functor: "𝔽|github→kiva"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  kiva-pipeline:
+    adjoints:
+      - skill: workflow-debugger
+        condition: "pipeline_failure == true"
+        cost: 0.12
+        functor: "𝔽|kiva→debug"
+      - skill: multi-repo-syncer
+        condition: "cross_repo_sync == true"
+        cost: 0.15
+        functor: "𝔽|kiva→syncer"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  local-recovery:
+    adjoints:
+      - skill: nexus-reformer
+        condition: "reform_after_recovery == true"
+        cost: 0.15
+        functor: "𝔽|recovery→reform"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  # ═══════════════════════════════════════════════════════════════
+  # META (L5)
+  # ═══════════════════════════════════════════════════════════════
+
+  deepwiki-ops:
+    adjoints:
+      - skill: reposcope-run
+        condition: "repo_analysis == true"
+        cost: 0.10
+        functor: "𝔽|deepwiki→reposcope"
+      - skill: nexus-map
+        condition: "repo_mapping == true"
+        cost: 0.12
+        functor: "𝔽|deepwiki→map"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  reasoning-toolkit:
+    adjoints:
+      - skill: skills-agentic
+        condition: "agentic_reasoning == true"
+        cost: 0.08
+        functor: "𝔽|reasoning→agentic"
+      - skill: hitl-core
+        condition: "human_reasoning_review == true"
+        cost: 0.10
+        functor: "𝔽|reasoning→hitl"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  # ═══════════════════════════════════════════════════════════════
+  # EXTERNAL (L3 — boinc, comet, ide, z600)
+  # ═══════════════════════════════════════════════════════════════
+
+  boinc-p2p:
+    adjoints:
+      - skill: data-vector
+        condition: "vector_storage == true"
+        cost: 0.15
+        functor: "𝔽|boinc→vector"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  comet-browser:
+    adjoints:
+      - skill: triade-iris
+        condition: "browser_automation == true"
+        cost: 0.12
+        functor: "𝔽|comet→iris"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+  ide-tools:
+    adjoints:
+      - skill: devtools-core
+        condition: "devtools_integration == true"
+        cost: 0.10
+        functor: "𝔽|ide→devtools"
+    composition: "≋"
+    identite: "≋"
+    poincaré: { β₀: 1, β₁: 0 }
+
+# ═══════════════════════════════════════════════════════════════
+# MÉTADONNÉES DU GRAPHE
+# ═══════════════════════════════════════════════════════════════
+
+graph_metadata:
+  version: "1.0"
+  generated: "2026-06-07"
+  total_adjunctions: 22
+  total_adjoints: 56
+  max_depth: 3
+  acyclic: true
+  keel_version: "0.5"
+  intent_hash: 0xSKILLS_GRAPH_V1_20260607
