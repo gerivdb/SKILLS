@@ -69,3 +69,28 @@ Cette compétence fournit des mécanismes pour garantir la résilience des écri
 - Dépôts concernés : tous les repos qui utilisent le MCP (ex. : `gateway-manager`, `brain-clients`, `data-miner`).
 - Couche EECS : L2_RESILIENCE
 - Tags NEXUS : [RESILIENCE_WRITE], [IDEM_POTENT]
+
+## READ-BEFORE-WRITE RULE (ECOS_ROOT.json) — Ajout 2026-06-07
+
+**Contexte** : lors de la session MC-RNN, les entrees CodeDB-E5620 et VDB ont ete perdues
+dans ECOS_ROOT.json car le fichier a ete reecrit sans etre lu d'abord (lacune L5).
+
+**Regle** : avant tout appel a create_or_update_file sur **ECOS_ROOT.json** (ou tout
+fichier de registre JSON/YAML) :
+
+1. **LIRE** d'abord avec get_file_contents pour obtenir la version courante
+2. **PARSER** le JSON/YAML
+3. **MERGER** les nouvelles entrees dans l'objet parse
+4. **VERIFIER** qu'aucune entree existante n'a ete perdue
+5. **SEULEMENT ALORS** appeler create_or_update_file avec le contenu complet
+
+**Verification post-write** :
+- Relire le fichier avec get_file_contents
+- Verifier que toutes les cles attendues sont presentes
+- Si une cle manque -> ERREUR, restaurer la version precedente
+
+**Format de log** :
+[MCP_WRITE_GUARD] ECOS_ROOT.json: read OK, merge OK, write OK, verify OK
+[MCP_WRITE_GUARD] ECOS_ROOT.json: FAIL - cle manquante: <key>
+
+Reference ADR : adr-mc-rnn-closure-20260607.md (lacune L5)
