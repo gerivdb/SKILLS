@@ -1,7 +1,18 @@
+---
+type: GUI
+version: "2.0.0"
+date: "2026-06-08"
+intent_hash: 0xREPO_PATH_RESOLVER_V2_20260608
+status: active
+---
+
 # Skill: repo-path-resolver
 
-## Contexte
-Tout agent Kilo opérant cross-repo doit résoudre le chemin canonique d'un repo avant toute opération. La knowledge base des chemins est `known_repositories.yaml`.
+## Purpose
+Resolve canonical local paths for any repository in the gerivdb ecosystem. ALWAYS use this skill before any cross-repo operation. NEVER guess paths.
+
+## Context
+All repos are organized in strata directories (L0-L5) under `D:\DO\WEB\TOOLS\`. The authoritative source for paths is `known_repositories.yaml`. Use the 3-Level Lazy Search: INDEX → STRATA → RECURSIVE.
 
 ## Règle — 3-Level Lazy Search
 

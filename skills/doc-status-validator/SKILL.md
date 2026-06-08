@@ -1,38 +1,14 @@
-# Skill: doc-status-validator
+---
+type: GUI
+version: 1.0.0
+date: "2026-06-08"
+intent_hash: 0xDEPRECATED_20260608
+status: deprecated
+---
 
-## Contexte
-Les hooks pre-commit de GOVERNANCE-HUB valident les statuts autorisés par type de document. Écrire un statut invalide cause un rejet systématique du commit.
+> **DEPRECATED** — Merged into `doc-gate` skill. Use `doc-gate` instead.
 
-## Règles par type
-- **PRD** : `draft` | `in_review` | `approved` | `archived`
-- **EPIC** : `planned` | `active` | `completed` | `archived`
-- **INTENT** : `proposed` | `active` | `completed` | `archived`
+# Skill: doc-status-validator (DEPRECATED)
 
-## Mécanisme
-1. Avant écriture d'un PRD/EPIC/INTENT, lire le fichier `.githooks/` ou la documentation de validation du repo cible
-2. Extraire les valeurs autorisées pour le type
-3. Valider le champ `status` contre cette liste
-4. Si invalide : proposer la valeur la plus proche (ex: `implemented` → `approved`, `pending` → `active`, `in_progress` → `active`)
-5. Refuser l'écriture si pas de correspondance
-
-## Mapping de secours (si hook non lisible)
-- `implemented` → `approved`
-- `in_progress` → `active`
-- `pending` → `active`
-- `Active` (casse) → `active`
-- `Done` → `completed`
-
-## Anti-pattern interdit
-- Écrire un statut inventé sans validation
-- Ignorer le rejet pre-commit et tenter `--no-verify` sans ordre explicite
-- Copier un statut d'un autre document sans vérifier le type cible
-
-## Exemple d'application
-```
-Type : EPIC
-Status tenté : Active
-→ Validation : FAIL (camelCase interdit)
-→ Correction automatique : active
-→ Réécriture du fichier
-→ Re-validation : OK
-```
+This skill has been merged into `doc-gate` which combines doc-status-validator + git-hook-enforcer.
+See `doc-gate/SKILL.md` for the current version.
