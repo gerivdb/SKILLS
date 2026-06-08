@@ -45,7 +45,31 @@ Le Z600 (HP workstation, 2010) est la machine principale pour KiloCode et les ag
 | Prompt max | 200 tokens (fiable), 500 (limite) |
 | Batch | Privilégier batch > séquentiel |
 
-## Règles de décision
+## SLM Local — Owl Alpha sur Z600
+
+Owl Alpha est le modèle SLM local opérant sur le Z600. Caractéristiques :
+
+| Paramètre | Valeur | Impact |
+|-----------|--------|--------|
+| Modèle | Owl Alpha (kilo/openrouter/owl-alpha) | CPU-only, pas de GPU |
+| RAM par agent | ~4-6 GB | 4 agents max = ~16-24 GB |
+| Context window | ~4000 tokens | Pratique: 2000 tokens |
+| Vitesse | ~200 tokens/sec | Prompts courts obligatoires |
+| Type | SLM (Small Language Model) | Tâches atomiques, déterministes |
+
+### Budget RAM détaillé (24 GB DDR3 ECC)
+
+| Configuration | RAM agents | RAM OS | Marge |
+|---------------|-----------|--------|-------|
+| 1 agent | ~4 GB | ~20 GB | ✅ Confortable |
+| 2 agents | ~8 GB | ~16 GB | ✅ Bon |
+| 3 agents | ~12 GB | ~12 GB | ✅ Acceptable |
+| 4 agents | ~16-24 GB | ~0-8 GB | ⚠️ Limite |
+| 5+ agents | >24 GB | <0 GB | ❌ SWAP → crash |
+
+**Règle P15 : ne jamais dépasser 4 agents simultanés sur Z600.**
+
+### Règles de décision
 
 - **Règle 1** : 4 agents max en parallèle (RAM)
 - **Règle 2** : Prompts < 200 tokens (contexte SLM)
@@ -63,3 +87,5 @@ Le Z600 (HP workstation, 2010) est la machine principale pour KiloCode et les ag
 
 - Skill : `L4-TOOLS/SKILLS/skills/kilocode-worktree-agent/SKILL.md`
 - Prompt design : `L4-TOOLS/SKILLS/skills/slm-local-prompt-design/SKILL.md`
+- P15 flat reference : `L4-TOOLS/SKILLS/perplexity/skills/kilocode-worktree-agent.md`
+- P15 flat reference : `L4-TOOLS/SKILLS/perplexity/skills/slm-local-prompt-design.md`

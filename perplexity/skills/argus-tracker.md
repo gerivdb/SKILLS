@@ -67,8 +67,46 @@ TINA SymbolGraph (209 nodes, 73 primitives)
 # 4. Archive → NEXUS/reports/
 ```
 
+## Declarative Runner (declarative_runner)
+
+The `declarative_runner` engine executes scanner YAML files without Python coding:
+
+```powershell
+# Run a single scanner
+python -m engine.declarative_runner scanners/declared/kiva_pipeline_health.yaml `
+  kiva_root=D:\DO\WEB\TOOLS\L1-INFRA\KIVA-CLI `
+  reports_root=D:\DO\WEB\TOOLS\reports
+
+# Run with parametric placeholders
+python -m engine.declarative_runner scanners/declared/repo_coverage_health.yaml `
+  repo_name=CANDIDATOR `
+  repo_root=D:\DO\WEB\TOOLS\L3-CITIZENS\CANDIDATOR `
+  gov_root=D:\DO\WEB\TOOLS\L0-CANON\GOVERNANCE-HUB
+```
+
+### Parametric scanners
+
+Scanners with `{placeholder}` variables are `parametric: true` — they can be reused across multiple repos by passing different values at runtime. The `repo_coverage_health` scanner is parametric and covers all 47+ repos.
+
+### CHECK_TYPE: composite
+
+The `composite` type combines multiple checks with AND/OR logic:
+
+```yaml
+checks:
+  - id: COV-001
+    type: composite
+    operator: OR
+    checks:
+      - type: file_exists
+        path: "{root}/STRATUM_RELAY.md"
+      - type: file_exists
+        path: "{root}/ECOS_ROOT.json"
+```
+
 ## Référence
 
 - Moteur : `ARGUS/engine/declarative_runner.py`
 - Config : `ARGUS/config/argus.yaml`
 - Declarative scanners : `ARGUS/scanners/declared/`
+- P15 flat reference : `L4-TOOLS/SKILLS/perplexity/skills/argus-pipeline-runner.md`

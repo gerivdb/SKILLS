@@ -56,9 +56,46 @@ Fichier : `KIVA-CLI/pipelines/tina-sgr-daily.yaml`
 - Fichiers YAML dans `ARGUS/scanners/declared/`
 - Test : `python -m engine.declarative_runner {scanner}.yaml`
 
+## CHECK_INFERENCE_RULES
+
+When creating scanners from gaps, the scaffold_scanner infers CHECK_TYPE from gap pattern:
+
+| Gap pattern | Inferred CHECK_TYPE | Params |
+|-------------|---------------------|--------|
+| `REPO_UNCOVERED_*` | `composite` (OR) | Sub-checks: STRATUM_RELAY, ECOS_ROOT, README |
+| `SKILL_ORPHAN_*` | `command` | Count orphans via Python |
+| `TRIT_ORPHAN_*` | `yaml_query` | Query SymbolGraph edges |
+| `CITIZEN_UNBACKED_*` | `yaml_query` | Query citizens.yaml |
+| `*_STALE_*` | `file_age` | glob + max_age_hours |
+| `*_MISSING_*` | `file_exists` | path |
+
+## Scaffold Scanner (scaffold_scanner)
+
+The `scaffold_scanner` CLI command creates a declarative scanner YAML from a SGR gap:
+
+```powershell
+# Single gap → single scanner
+python -m kiva scaffold scanner --gap-id SGR-TEST-001 `
+  --from-report GAP_REPORT.yaml `
+  --output-dir ARGUS/scanners/declared/
+
+# Batch: all P1 gaps → multiple scanners
+python -m kiva scaffold scanner --all-p1 `
+  --from-report GAP_REPORT.yaml
+
+# With custom template
+python -m kiva scaffold scanner --gap-id SGR-TEST-001 `
+  --from-report GAP_REPORT.yaml `
+  --template composite_or `
+  --register  # auto-register in argus.yaml
+```
+
+Output: `ARGUS/scanners/declared/{slug}_health.yaml` ready for `declarative_runner`.
+
 ## Référence
 
 - Pipeline : `KIVA-CLI/pipelines/tina-sgr-daily.yaml`
 - Scaffold CLI : `KIVA-CLI/kiva_cli/commands/scaffold_scanner.py`
 - Moteur : `ARGUS/engine/declarative_runner.py`
 - Skills : `L4-TOOLS/SKILLS/skills/scaffold-scanner/SKILL.md`
+- P15 flat reference : `L4-TOOLS/SKILLS/perplexity/skills/scaffold-scanner.md`
