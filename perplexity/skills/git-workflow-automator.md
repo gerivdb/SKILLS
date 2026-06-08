@@ -1,3 +1,6 @@
+---
+trit_primitive: TritDocumentTrace
+---
 # git-workflow-automator
 
 ## Objectif

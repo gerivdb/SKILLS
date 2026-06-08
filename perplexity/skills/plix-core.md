@@ -10,6 +10,7 @@ slotWeight: 1
 status: active
 changelog:
   - {v: "2.0.0", date: "2026-05-30", notes: "Ajout couverture ThermoGate et VDB"}
+trit_primitive: TritDocumentClassify
 ---
 # PLIX Core
 

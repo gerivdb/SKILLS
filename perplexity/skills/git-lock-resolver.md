@@ -1,3 +1,6 @@
+---
+trit_primitive: TritDocumentTrace
+---
 # git-lock-resolver
 
 ## Objectif

@@ -23,6 +23,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Version initiale — référence SKILLS_AGENTIC v2"}
+trit_primitive: TritDocumentClassify
 ---
 
 # SKILLS-AGENTIC-REF — Référence du pipeline agentic v2

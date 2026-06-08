@@ -17,6 +17,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Version initiale — gestion du budget 100 slots"}
+trit_primitive: TritHierarchize
 ---
 
 # SKILL-SLOT-GOVERNOR — Gestion du budget 100 slots

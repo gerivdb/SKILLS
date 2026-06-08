@@ -1,3 +1,6 @@
+---
+trit_primitive: TritScanRegistry
+---
 # NEXUS Drift Scan Skill
 
 ## Purpose

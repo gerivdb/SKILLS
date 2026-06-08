@@ -21,6 +21,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Version initiale — parser PEG KEEL v0.5"}
+trit_primitive: TritIsolate
 ---
 
 # KEEL-PEG-PARSER — Parser PEG pour KEEL v0.5

@@ -10,6 +10,7 @@ slotWeight: 1
 status: active
 changelog:
   - {v: "1.0.0", date: "2026-05-30", notes: "Fusion of fermi-legacy.md and scientific-method.md"}
+trit_primitive: TritDecompose
 ---
 # Reasoning Toolkit (Fused)
 

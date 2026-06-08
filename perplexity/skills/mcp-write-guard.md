@@ -10,6 +10,7 @@ slotWeight: 1
 status: active
 changelog:
   - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
+trit_primitive: TritEnforcePolicy
 ---
 # MCP Write Guard
 

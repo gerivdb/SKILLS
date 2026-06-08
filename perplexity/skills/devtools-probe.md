@@ -21,6 +21,7 @@ prerequisites:
   - "Acces C:\DevTools (via script hors MCP si hors workspace)"
 slotWeight: 1
 adr_ref: "adr-llm-intent-gate-20260607"
+trit_primitive: TritCheckPrerequisites
 ---
 
 # DEVTOOLS-PROBE — Sonde C:\DevTools\bin avant toute action

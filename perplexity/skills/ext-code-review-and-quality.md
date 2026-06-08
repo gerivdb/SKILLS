@@ -9,6 +9,7 @@ prerequisites: []
 slotWeight: 1
 status: active
 upstream: https://github.com/addyosmani/agent-skills/blob/main/skills/code-review-and-quality/SKILL.md
+trit_primitive: TritScanRegistry
 ---
 # ext-code-review-and-quality
 

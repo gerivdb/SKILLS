@@ -1,3 +1,6 @@
+---
+trit_primitive: TritObserve
+---
 # contextual-stash-manager
 
 ## Objectif

@@ -18,6 +18,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Version initiale — analyse croisée Google Agentic RAG"}
+trit_primitive: TritDiscoverArtifact
 ---
 
 # GOOGLE-AGENTIC-RAG — Analyse croisée de patterns externes

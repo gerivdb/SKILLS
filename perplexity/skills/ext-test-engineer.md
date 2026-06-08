@@ -9,6 +9,7 @@ prerequisites: []
 slotWeight: 1
 status: active
 upstream: https://github.com/addyosmani/agent-skills/blob/main/agents/test-engineer.md
+trit_primitive: TritRunTests
 ---
 # ext-test-engineer
 

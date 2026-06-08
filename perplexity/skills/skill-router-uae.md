@@ -20,6 +20,7 @@ status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-06", notes: "Version initiale — routing cross-repo via known_repositories.yaml"}
   - {v: "2.0.0", date: "2026-06-07", notes: "v2 — routing UAE géométrique via coords.yaml, plus de règles en dur"}
+trit_primitive: TritResolvePath
 ---
 
 # SKILL-ROUTER v2 — Routing UAE Géométrique

@@ -19,6 +19,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Version initiale — UAE coords + KEEL graph"}
+trit_primitive: TritIsolate
 ---
 
 # UAE-KEEL-COORDS — Coordonnées UAE + Graphe KEEL

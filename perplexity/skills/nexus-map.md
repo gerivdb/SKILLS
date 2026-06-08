@@ -8,6 +8,7 @@ changelog:
 triggers: []
 layer: "L0_UNKNOWN"
 nexusTags: ["CONFORME_NEXUS"]
+trit_primitive: TritDiscover
 ---
 
 # NEXUS Map

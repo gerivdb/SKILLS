@@ -16,6 +16,7 @@ changelog:
 prerequisites:
   - "Acces shell PowerShell (ENV2) ou bash (ENV3)"
 slotWeight: 1
+trit_primitive: TritCheckPrerequisites
 ---
 
 # ENV-CAPABILITY-PROBE — Sonde de capacités'environnement

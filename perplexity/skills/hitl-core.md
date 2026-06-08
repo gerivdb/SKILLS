@@ -10,6 +10,7 @@ slotWeight: 1
 status: active
 changelog:
   - {v: "1.0.0", date: "2026-05-30", notes: "Fusion of hitl‑hub.md and hitl‑ops.md"}
+trit_primitive: TritNotify
 ---
 # HITL Core (Fused)
 

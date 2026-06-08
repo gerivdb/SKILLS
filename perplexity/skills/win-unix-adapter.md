@@ -1,3 +1,6 @@
+---
+trit_primitive: TritResolvePath
+---
 # win-unix-adapter
 
 ## Objectif

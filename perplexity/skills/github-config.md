@@ -11,6 +11,7 @@ status: active
 changelog:
   - {v: "2.2.0", date: "2026-06-03", notes: "Ajout SCAN_GATE — règle obligatoire avant tout listing de repos (anti-ERR_001/ERR_002)"}
   - {v: "2.1.0", date: "2026-05-30", notes: "Ajout gestion rate‑limit avec repli et stratégie gros fichiers"}
+trit_primitive: TritDocumentTrace
 ---
 # GitHub Config
 

@@ -20,6 +20,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-06", notes: "Version initiale — routing cross-repo avec contraintes L0-L9"}
+trit_primitive: TritResolvePath
 ---
 
 # SKILLS_ROUTER — Routeur Cross-Repo

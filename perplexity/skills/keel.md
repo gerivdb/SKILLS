@@ -42,6 +42,7 @@ layer: "L1b"
 nexusTags: ["CONFORME_NEXUS"]
 intent_hash: "0xKEEL_V05_FUNCTOR_20260602"
 repo: https://github.com/gerivdb/KEEL
+trit_primitive: TritIsolate
 ---
 
 # KEEL — Knowledge Encoding & Execution Language (v0.5)

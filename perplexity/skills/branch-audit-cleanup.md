@@ -13,6 +13,7 @@ status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Creation — remede L6/L9 ADR MC-RNN closure"}
 slotWeight: 1
+trit_primitive: TritCheckConfig
 ---
 
 # BRANCH-AUDIT-CLEANUP — Audit des branches locales

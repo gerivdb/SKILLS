@@ -9,6 +9,7 @@ prerequisites: []
 slotWeight: 1
 status: active
 upstream: https://github.com/addyosmani/agent-skills/blob/main/skills/security-and-hardening/SKILL.md
+trit_primitive: TritQuarantine
 ---
 # ext-security-and-hardening
 

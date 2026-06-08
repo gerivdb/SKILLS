@@ -1,3 +1,6 @@
+---
+trit_primitive: TritDecompose
+---
 # prd-frontmatter-validator
 
 ## Objectif

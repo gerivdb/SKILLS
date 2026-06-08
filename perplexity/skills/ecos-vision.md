@@ -10,6 +10,7 @@ slotWeight: 1
 status: active
 changelog:
   - {v: "2.0.0", date: "2026-05-30", notes: "Fusion of ecos‑vision.md, ecosystem‑self.md, lecun‑vision.md"}
+trit_primitive: TritCheckDependencies
 ---
 # ECOS Vision (Fused)
 

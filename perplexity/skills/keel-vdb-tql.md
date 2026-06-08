@@ -20,6 +20,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Version initiale — VDB indexation + TQL live KEEL v0.7"}
+trit_primitive: TritIsolate
 ---
 
 # KEEL-VDB-TQL — Indexation VDB + TQL live

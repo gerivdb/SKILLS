@@ -23,6 +23,7 @@ status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-06", notes: "Version initiale — pipeline 7 agents"}
   - {v: "2.0.0", date: "2026-06-07", notes: "v2 — + DELEGATOR (Agent 0), + REWRITER (Agent 1b), orchestration conditionnelle 3 niveaux"}
+trit_primitive: TritDocumentClassify
 ---
 
 # SKILLS_AGENTIC — Orchestrateur Agentic v2

@@ -14,6 +14,7 @@ status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Creation — remede L4 ADR MC-RNN closure"}
 slotWeight: 1
+trit_primitive: TritDocumentRegister
 ---
 
 # SESSION-CLOSET — Checklist de cloture multi-repo (Gate D5)

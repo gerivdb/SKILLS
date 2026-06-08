@@ -10,6 +10,7 @@ slotWeight: 1
 status: active
 changelog:
   - {v: "1.0.0", date: "2026-05-30", notes: "Fusion of analyse-repo-deepwiki.md and deepwiki_repo_enricher.md"}
+trit_primitive: TritDiscoverArtifact
 ---
 # DeepWiki Ops (Fused)
 

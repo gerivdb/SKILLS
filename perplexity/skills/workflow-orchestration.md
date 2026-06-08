@@ -1,3 +1,6 @@
+---
+trit_primitive: TritDocumentTrace
+---
 # WAZAA Dynamic Workflow Orchestration -- Skill Reference
 # IntentHash: 0xSKILL_WAZAA_WORKFLOWS_20260603
 # Source: PRD_DYNAMIC_WORKFLOW_ORCHESTRATION_V1

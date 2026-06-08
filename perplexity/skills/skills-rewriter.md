@@ -20,6 +20,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Version initiale — reformulation intents → sous-quêtes"}
+trit_primitive: TritDocumentClassify
 ---
 
 # SKILLS_REWRITER — Reformulation des Intents

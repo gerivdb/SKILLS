@@ -16,6 +16,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Version initiale — template MADR KEEL"}
+trit_primitive: TritDecompose
 ---
 
 # PRD-KEEL-FACTORY — Template MADR pour PRDs KEEL

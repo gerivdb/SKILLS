@@ -1,3 +1,6 @@
+---
+trit_primitive: TritCheckEncoding
+---
 # encoding-normalizer
 
 ## Objectif

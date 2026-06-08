@@ -9,6 +9,7 @@ prerequisites: []
 slotWeight: 1
 status: active
 upstream: https://github.com/addyosmani/agent-skills/blob/main/agents/security-auditor.md
+trit_primitive: TritCheckConfig
 ---
 # ext-security-auditor
 

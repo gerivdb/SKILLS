@@ -9,6 +9,7 @@ prerequisites: []
 slotWeight: 1
 status: active
 upstream: https://github.com/addyosmani/agent-skills/blob/main/skills/test-driven-development/SKILL.md
+trit_primitive: TritRunTests
 ---
 # ext-test-driven-development
 

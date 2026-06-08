@@ -19,6 +19,7 @@ slotWeight: 1
 status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-07", notes: "Version initiale — capture structurée de session"}
+trit_primitive: TritDocumentRegister
 ---
 
 # SESSION-SNAPSHOT — Capture structurée de session

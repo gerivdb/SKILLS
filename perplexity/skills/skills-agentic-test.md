@@ -28,6 +28,7 @@ changelog:
   - {v: "2.0.0", date: "2026-06-07", notes: "v2 — +10 requêtes (délégation, reformulation, brouillon, feedback ciblé)"}
 changelog:
   - {v: "1.0.0", date: "2026-06-06", notes: "Version initiale — 20 requêtes de test"}
+trit_primitive: TritRunTests
 ---
 
 # SKILLS_AGENTIC_TEST — Suite de Tests

@@ -1,3 +1,6 @@
+---
+trit_primitive: TritRunTests
+---
 # WAZAA Bus Test Generator Skill
 
 ## Purpose

@@ -25,6 +25,7 @@ status: "active"
 changelog:
   - {v: "1.0.0", date: "2026-06-06", notes: "Version initiale — 4 critères de couverture"}
   - {v: "2.0.0", date: "2026-06-07", notes: "v2 — + Draft Agent (brouillon intermédiaire) + Gap Analyzer (feedback ciblé)"}
+trit_primitive: TritScanRegistry
 ---
 
 # SKILLS_COVERAGE v2 — Vérificateur de Couverture Fonctionnelle

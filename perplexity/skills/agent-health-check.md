@@ -1,3 +1,6 @@
+---
+trit_primitive: TritCheckPrerequisites
+---
 # Agent Health Check Skill
 
 ## Purpose

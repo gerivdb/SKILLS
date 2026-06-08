@@ -19,6 +19,7 @@ prerequisites:
   - "Acces a repo-matrix.json (scripts/)"
   - "git remote -v fonctionnel sur les clones locaux"
 slotWeight: 1
+trit_primitive: TritCheckConfig
 ---
 
 # PRE-PUSH-PATH-AUDIT — Verification d'integrite local↔remote
