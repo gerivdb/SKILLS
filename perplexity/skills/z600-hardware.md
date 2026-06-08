@@ -1,59 +1,65 @@
 ---
 name: z600-hardware
-description: "HP Z600, E5620, Fermi GPU, AVX limitations, WASM bypass, Zig, LXC. Use when user mentions 'Z600', 'E5620', 'Fermi', 'AVX', 'WASM', 'Zig', 'LXC'."
+description: "HP Z600 constraints (2× Xeon E5620, 18 GB DDR3, no GPU), Owl Alpha SLM CPU-only, RAM budget 4 agents. Use when user mentions 'Z600', 'RAM', 'CPU-only', 'Owl Alpha', 'parallel agents', 'worktrees'."
 version: "1.0.0"
 changelog:
-  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
-triggers: []
-layer: "L0_UNKNOWN"
+  - {v: "1.0.0", date: "2026-06-08", notes: "Créé — contraintes hardware Z600 pour KiloCode"}
+triggers: ["Z600", "RAM", "CPU-only", "Owl Alpha", "parallel agents", "worktrees"]
+layer: "L4_TOOL"
 nexusTags: ["CONFORME_NEXUS"]
-trit_primitive: TritTernaryStateRust
+trit_primitive: TritOptimize
 ---
-# Z600 Hardware
+# Z600 Hardware Constraints
 
-## Domaine et périmètre
+## Contexte
 
-Ce skill couvre le **matériel HP Z600** et ses contraintes :
-- HP Z600 (Xeon E5620, 24 GB RAM ECC DDR3, pas d'AVX)
-- GPU Quadro 4000 Fermi 2 Go (à éviter, no-gpu par défaut)
-- Compilation Zig sans AVX (CodeDB-E5620, LYCOS)
-- VM1 (VirtualBox, Ubuntu 22.04, LXC)
-- KIVA-CLI comme pipeline CI local
-- Tâches planifiées Windows (Task Scheduler)
+Le Z600 (HP workstation, 2010) est la machine principale pour KiloCode et les agents SLM. Contraintes matérielles strictes.
 
-## Méthodologie
+## Spécifications
 
-### Phase 1 : Diagnostic matériel
-- Vérifier la compatibilité CPU (E5620 = Westmere, pas d'AVX, SSE4.2 seulement).
-- Vérifier l'état du GPU (Quadro 4000 Fermi, souvent en erreur).
-- Vérifier la RAM disponible (< 8 GB pour les applis légères).
+| Composant | Valeur | Impact |
+|-----------|--------|--------|
+| CPU | 2× Xeon E5620 (8C/16T @ 2.4 GHz) | Pas d'AVX, pas de GPU |
+| RAM | 18 GB DDR3 ECC | Max 4 agents simultanés (~3 GB/agent) |
+| Stockage | SSD 1 To (C:), SSD 2 To (D:) | Worktrees sur D:\, source sur C: |
+| GPU | Quadro 4000 (Fermi) | Inutilisable pour ML moderne |
+| OS | Windows 10 | PowerShell 7+, git, Python 3.12 |
 
-### Phase 2 : Optimisation
-- Proposer des solutions CPU-only (llama.cpp, Zig no-AVX).
-- Configurer les bypass WASM-SIMD pour le matériel legacy.
-- Activer KIVA-CLI pour la CI locale (pas GitHub Actions).
+## Budget RAM pour agents
+
+| Configuration | RAM utilisée | Restant OS |
+|---------------|-------------|-----------|
+| 1 agent | ~3 GB | ~15 GB |
+| 2 agents | ~6 GB | ~12 GB |
+| 4 agents | ~12 GB | ~6 GB ← limite pratique |
+| 6 agents | ~18 GB | ~0 GB ← RISQUE SWAP |
+
+**Règle : ne jamais dépasser 4 agents simultanés.**
+
+## Contraintes Owl Alpha (SLM local)
+
+| Paramètre | Limite |
+|-----------|--------|
+| Context window | ~4000 tokens (pratique: 2000) |
+| Vitesse inférence | ~200 tokens/sec CPU-only |
+| Prompt max | 200 tokens (fiable), 500 (limite) |
+| Batch | Privilégier batch > séquentiel |
 
 ## Règles de décision
-- **Règle 1** : Toujours privilégier le CPU sur GPU Fermi (trop instable).
-- **Règle 2** : Zig sans AVX = CodeDB-E5620 ou LYCOS.
-- **Règle 3** : KIVA-CLI remplace GitHub Actions pour la CI locale.
 
-## Format de sortie
+- **Règle 1** : 4 agents max en parallèle (RAM)
+- **Règle 2** : Prompts < 200 tokens (contexte SLM)
+- **Règle 3** : Tâches atomiques, déterministes (pas d'inférence complexe)
+- **Règle 4** : Worktrees sur D:\ (pas C:\ — espace disque)
+- **Règle 5** : Supprimer les worktrees après merge
 
-```markdown
-## Diagnostic matériel
-- CPU : ...
-- RAM : ...
-- GPU : ...
-- Recommandation : ...
-```
+## Intégration
 
-## Exemples d'utilisation
-- "Mon Z600 peut-il faire tourner un LLM ?" → Évaluer les options CPU.
-- "Corrige le crash WASM-SIMD" → Appliquer les bypass Zig.
-- "Configure KIVA-CLI pour la CI locale" → Activer le pipeline.
+- KiloCode Agent Manager : `maxAgents: 4` dans kilo.json
+- Worktrees git : `git worktree add ../WORKTREE-{name} main`
+- RAM monitoring : `Get-CimInstance Win32_OperatingSystem | Select FreePhysicalMemory`
 
-## Intégration avec l'écosystème
-- Dépôts concernés : KIVA-CLI, CodeDB-E5620, LYCOS, FERMI-EVER
-- Couche EECS : L1_CAUSALITY
-- Tags NEXUS : [CONFORME_NEXUS], [DÉRIVÉ]
+## Référence
+
+- Skill : `L4-TOOLS/SKILLS/skills/kilocode-worktree-agent/SKILL.md`
+- Prompt design : `L4-TOOLS/SKILLS/skills/slm-local-prompt-design/SKILL.md`

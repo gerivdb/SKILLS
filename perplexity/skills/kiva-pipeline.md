@@ -1,49 +1,64 @@
 ---
 name: kiva-pipeline
-description: "KIVA-CLI pipelines, local CI, preflight, GitHub Actions migration. Use when user mentions 'KIVA', 'pipeline', 'CI locale', 'preflight'."
-version: "1.0.0"
+description: "KIVA-CLI pipeline cron 06h00, TINA→SGR→ARGUS, scaffold scanner CLI, declarative engine. Use when user mentions 'KIVA pipeline', 'cron', 'scaffold scanner', 'declarative_runner'."
+version: "2.0.0"
 changelog:
-  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale"}
-triggers: []
-layer: "L0_UNKNOWN"
+  - {v: "1.0.0", date: "2026-05-30", notes: "Version initiale — diagnostic matériel Z600"}
+  - {v: "2.0.0", date: "2026-06-08", notes: "Refonte — pipeline cron, scaffold CLI, moteur déclaratif"}
+triggers: ["KIVA pipeline", "cron 06h00", "scaffold scanner", "declarative_runner"]
+layer: "L3_CITIZEN"
 nexusTags: ["CONFORME_NEXUS"]
 trit_primitive: TritIsolate
 ---
-# KIVA Pipeline
+# KIVA Pipeline v2
 
 ## Domaine et périmètre
 
-Ce skill couvre le pipeline CI local KIVA-CLI et les adaptations matérielles HP Z600.
+KIVA-CLI orchestre le pipeline quotidien TINA→SGR→ARGUS. v2 = cron 06h00 + scaffold scanner CLI + moteur déclaratif YAML.
 
-## Méthodologie
+## Architecture v2
 
-### Phase 1 : Diagnostic matériel
-- Vérifier la compatibilité CPU (Xeon E5620, pas d'AVX)
-- Vérifier l'état du GPU (Quadro 4000 Fermi, souvent en erreur)
-- Vérifier la RAM disponible (< 8 GB pour les applis légères)
+```
+Cron 06h00 (KIVA-CLI pipelines/tina-sgr-daily.yaml)
+  │
+  ├─ Step 1: TINA --ingest-all (73 primitives, 209 nodes)
+  ├─ Step 2: SGR v2 --full (gap detection → 6 exceptions)
+  ├─ Step 3: ARGUS 5 scanners (score 1.00)
+  └─ Step 4: Archive → NEXUS/reports/
+```
 
-### Phase 2 : Configuration du pipeline
-- Activer KIVA-CLI avec la commande `kiva init --no-avx`
-- Configurer les tâches planifiées Windows (schtasks) pour la CI locale
-- Désactiver les workflows GitHub Actions qui nécessitent un GPU
+## Scaffold Scanner CLI
 
-### Phase 3 : Exécution et validation
-- Lancer un preflight avec `kiva preflight --target all`
-- Analyser les logs, corriger les erreurs de compilation Zig (CodeDB-E5620)
-- Valider la conformité NEXUS via `kiva validate`
+```powershell
+# Créer un scanner depuis un gap SGR
+python -m kiva scaffold scanner --gap-id SGR-TEST-001 `
+  --from-report GAP_REPORT.yaml `
+  --output-dir ARGUS/scanners/declared/
 
-## Règles de décision
-- **Règle 1** : Toujours privilégier le CPU sur GPU Fermi (trop instable)
-- **Règle 2** : Zig sans AVX = utiliser CodeDB-E5620 ou LYCOS
-- **Règle 3** : KIVA-CLI remplace GitHub Actions pour la CI locale
+# Batch : tous les P1 ouverts
+python -m kiva scaffold scanner --all-p1 `
+  --from-report GAP_REPORT.yaml
+```
 
-## Format de sortie
-```markdown
-## Diagnostic pipeline
-- État KIVA : ...
-- Dernier run : ...
-- Anomalies : ...
+## Pipeline YAML
 
-## Actions recommandées
-1. ...
-2. ...
+Fichier : `KIVA-CLI/pipelines/tina-sgr-daily.yaml`
+
+Étapes :
+1. `tina_ingest` — python -m symbol_graph --ingest-all
+2. `sgr_run` — python -m sgr --full
+3. `check-p1-gaps` — Gate 0 P1 tolérés
+4. `push-report` — Archive NEXUS/reports/
+
+## Moteur déclaratif
+
+- 8 CHECK_TYPES : file_exists, file_age, yaml_query, yaml_contains, key_present, command, composite
+- Fichiers YAML dans `ARGUS/scanners/declared/`
+- Test : `python -m engine.declarative_runner {scanner}.yaml`
+
+## Référence
+
+- Pipeline : `KIVA-CLI/pipelines/tina-sgr-daily.yaml`
+- Scaffold CLI : `KIVA-CLI/kiva_cli/commands/scaffold_scanner.py`
+- Moteur : `ARGUS/engine/declarative_runner.py`
+- Skills : `L4-TOOLS/SKILLS/skills/scaffold-scanner/SKILL.md`
