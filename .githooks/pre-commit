@@ -1,26 +1,197 @@
-#!/bin/bash
-# ECOS Test Hook - Runs test daemon on every commit
-# Ensures all scripts pass before allowing commit
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+pre-commit — SKILLS
+Pipeline de validation pre-commit:
+  1. Validation frontmatter YAML de chaque skill (name, description, triggers, domain, version)
+  2. Coherence REGISTRY.yaml (tout skill dans native/ ou ext/ doit etre indexe)
+  3. Pas de skills dupliques dans REGISTRY.yaml
+  4. Encoding check (hors U+0100+)
 
-echo "=== ECOS Test Hook ==="
+IntentHash: 0xSKILLS_PRE_COMMIT_20260610
+Version: 1.0.0
+Standard: gerivdb/REPO-STANDARDS RSS-v2
 
-TEST_DAEMON="C:/DevTools/bin/ecos-test-daemon.ps1"
+Installation:
+    git config core.hooksPath .githooks
+"""
 
-if [ -f "$TEST_DAEMON" ]; then
-    powershell -Command "& '$TEST_DAEMON'"
-    EXIT_CODE=$?
-    
-    if [ $EXIT_CODE -ne 0 ]; then
-        echo ""
-        echo "[FAILED] Tests failed. Commit aborted."
-        echo "Fix the errors and try again."
-        exit 1
-    fi
-    
-    echo ""
-    echo "[OK] All tests passed"
-else
-    echo "[WARNING] Test daemon not found: $TEST_DAEMON"
-fi
+import os
+import re
+import sys
+import subprocess
+from pathlib import Path
 
-exit 0
+try:
+    import yaml
+    YAML_AVAILABLE = True
+except ImportError:
+    YAML_AVAILABLE = False
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+INTENT_HASH = "0xSKILLS_PRE_COMMIT_20260610"
+
+# Champs obligatoires dans le frontmatter d'un skill
+REQUIRED_FRONTMATTER = {'name', 'description', 'triggers', 'domain', 'version'}
+
+# Encoding
+NON_CP1252_PATTERN = re.compile(r'[\u0100-\uFFFF]')
+TOLERATED_NARRATIFS = {'README.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'TAXONOMY.md'}
+CHECKED_EXT_ENCODING = {'.yaml', '.yml', '.py', '.sh', '.ps1'}
+
+# Pattern extraction frontmatter YAML (---\n...\n---)
+FRONTMATTER_PATTERN = re.compile(r'^---\s*\n(.*?)\n---', re.DOTALL)
+
+
+def staged_files():
+    r = subprocess.run(
+        ['git', 'diff', '--cached', '--name-only', '--diff-filter=ACM'],
+        capture_output=True, text=True
+    )
+    return [f.strip() for f in r.stdout.splitlines() if f.strip()] if r.returncode == 0 else []
+
+
+def is_skill_file(filepath):
+    """Un skill est un .md ou .yaml dans native/ ou ext/ (pas README ni TAXONOMY)."""
+    fname = os.path.basename(filepath)
+    if fname in TOLERATED_NARRATIFS:
+        return False
+    return (
+        (filepath.startswith('native/') or filepath.startswith('ext/'))
+        and Path(filepath).suffix.lower() in {'.md', '.yaml', '.yml'}
+    )
+
+
+def check_skill_frontmatter(filepath):
+    """Verifie que le skill a tous les champs obligatoires dans son frontmatter."""
+    errors = []
+    p = REPO_ROOT / filepath
+    if not p.exists():
+        return errors
+
+    content = p.read_text(encoding='utf-8', errors='replace')
+
+    # Extraction frontmatter
+    m = FRONTMATTER_PATTERN.match(content)
+    if not m:
+        errors.append(f'  FRONTMATTER_ABSENT: aucun bloc --- ... --- trouve')
+        return errors
+
+    if YAML_AVAILABLE:
+        try:
+            fm = yaml.safe_load(m.group(1)) or {}
+        except yaml.YAMLError as e:
+            errors.append(f'  YAML_INVALIDE: {e}')
+            return errors
+    else:
+        # Fallback: verifier les cles par regex si yaml non dispo
+        fm = {}
+        for line in m.group(1).splitlines():
+            if ':' in line:
+                key = line.split(':', 1)[0].strip()
+                fm[key] = True
+
+    missing = REQUIRED_FRONTMATTER - set(fm.keys())
+    if missing:
+        errors.append(f'  FRONTMATTER_INCOMPLET: champs manquants: {sorted(missing)}')
+        errors.append(f'    => Requis: {sorted(REQUIRED_FRONTMATTER)}')
+
+    # Verifier que triggers est une liste non-vide
+    triggers = fm.get('triggers')
+    if YAML_AVAILABLE and (not triggers or not isinstance(triggers, list)):
+        errors.append(f'  TRIGGERS_INVALIDE: doit etre une liste non-vide')
+
+    return errors
+
+
+def check_registry_sync(staged):
+    """
+    Si un skill est modifie/ajoute mais REGISTRY.yaml n'est pas stage, warning.
+    """
+    skill_files = [f for f in staged if is_skill_file(f)]
+    if not skill_files:
+        return []
+
+    registry_staged = 'REGISTRY.yaml' in staged
+    if not registry_staged:
+        return [
+            f'  [WARN] {len(skill_files)} skill(s) modifie(s) sans maj de REGISTRY.yaml',
+            f'    => Lancer: python tools/registry-gen.py'
+        ]
+    return []
+
+
+def check_encoding(filepath):
+    """Bloque U+0100+ dans fichiers config/code."""
+    fname = os.path.basename(filepath)
+    if fname in TOLERATED_NARRATIFS:
+        return []
+    ext = Path(filepath).suffix.lower()
+    if ext not in CHECKED_EXT_ENCODING:
+        return []
+
+    p = REPO_ROOT / filepath
+    if not p.exists():
+        return []
+
+    errors = []
+    try:
+        for i, line in enumerate(p.read_text(encoding='utf-8', errors='replace').splitlines(), 1):
+            bad = set(NON_CP1252_PATTERN.findall(line))
+            if bad:
+                chars = ', '.join(f'U+{ord(c):04X}' for c in sorted(bad))
+                errors.append(f'  ENCODING L{i}: [{chars}] {line[:60]}')
+    except IOError:
+        pass
+    return errors
+
+
+def main():
+    files = staged_files()
+    if not files:
+        sys.exit(0)
+
+    all_errors = {}
+    global_warnings = []
+
+    # Check global: sync registry
+    global_warnings += check_registry_sync(files)
+
+    for f in files:
+        errs = []
+
+        # 1. Frontmatter skill
+        if is_skill_file(f):
+            errs += check_skill_frontmatter(f)
+
+        # 2. Encoding
+        errs += check_encoding(f)
+
+        if errs:
+            all_errors[f] = errs
+
+    # Warnings globaux (non-bloquants)
+    if global_warnings:
+        print('[SKILLS pre-commit] AVERTISSEMENTS:')
+        for w in global_warnings:
+            print(w)
+        print()
+
+    if not all_errors:
+        print(f'[SKILLS pre-commit] OK — {len(files)} fichier(s) valide(s)')
+        sys.exit(0)
+
+    print(f'[SKILLS pre-commit] BLOQUE — {sum(len(v) for v in all_errors.values())} violation(s)')
+    print(f'[SKILLS pre-commit] IntentHash: {INTENT_HASH}')
+    print()
+    for filepath, errs in all_errors.items():
+        print(f'  {filepath}')
+        for e in errs:
+            print(e)
+        print()
+    print('Pour ignorer (deconseille): git commit --no-verify')
+    sys.exit(1)
+
+
+if __name__ == '__main__':
+    main()
