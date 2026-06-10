@@ -1,0 +1,64 @@
+# SCOPE.yaml — SKILLS
+# Contrat de conformité inter-écosystème gerivdb
+# RSS-v2 §5 — requis dans tout repo Diamond actif
+
+repo: gerivdb/SKILLS
+type: core
+rss_depth: 4
+activation_phase: 2
+layer: L2-SKILLS
+
+# ── Standards de structure ──────────────────────────────────────────────────
+standards:
+  repo: gerivdb/REPO-STANDARDS
+  version: "v2.0"
+  lint: rss_lint.py
+  lint_cmd: "python rss_lint.py --repo . --depth 4 --strict"
+  last_lint: null
+
+# ── Gouvernance ─────────────────────────────────────────────────────────────
+governance:
+  hub: gerivdb/GOVERNANCE-HUB
+  glossary: GOVERNANCE-HUB/SKILLS_GLOSSARY.md
+  trit_registry: GOVERNANCE-HUB/TritRegistry.yaml
+  citizens: ./citizens.yaml
+
+# ── Ontologie ───────────────────────────────────────────────────────────────
+ontology:
+  repo: gerivdb/ONTOLOGY
+  spec: null  # à créer : ONTOLOGY/SKILLS_ARCHITECTURE.md
+
+# ── Mémoire écosystème ───────────────────────────────────────────────────────
+memory:
+  repo: gerivdb/MIMIR
+  index_key: SKILLS
+  tags: [skills, registry, cognitive, verse_context, skill_loader, ctulu_resolver]
+
+# ── Contrat technique ─────────────────────────────────────────────────────────────
+contract:
+  registry_type: "canonical"       # Source of Truth de tous les skills ecosystem-1
+  submodule_target: ECOYSTEM       # intégré dans ECOYSTEM comme submodule .skills-hub/
+  citizen_layer: L2                # φ-CPS Weight: 0.008
+  lifecycle: GENESIS               # GENESIS → ACTIVE
+
+# ── Dépendances ────────────────────────────────────────────────────────────────
+producers:
+  - repo: gerivdb/PRIMUS
+    usage: "primitives appelées directement dans les skills cognitifs"
+  - repo: gerivdb/CTULU
+    usage: "tools résolus via CTULUResolver dans skill_loader.py"
+  - repo: gerivdb/VERSES
+    usage: "VERSEContext injecté par from_verse_detector() dans verse_context.py"
+
+consumers:
+  - repo: gerivdb/ECOYSTEM
+    usage: "SKILLS intégré comme submodule .skills-hub/"
+  - repo: gerivdb/NEXUS
+    usage: "engines métier consomment les skills foundational"
+
+# ── Hooks CI ────────────────────────────────────────────────────────────────
+ci:
+  pre_commit_hook: .githooks/pre-commit
+  lint_rss: true
+  validate_skills_cmd: "bash tools/validate-skills.sh"
+  registry_gen_cmd: "python tools/registry-gen.py"
