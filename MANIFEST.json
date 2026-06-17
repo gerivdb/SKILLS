@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-05-30T20:24:28Z",
-  "skillsCount": 73,
+  "generatedAt": "2026-06-17T07:11:27Z",
+  "skillsCount": 78,
   "skills": [
     {
       "name": "adr-manager",
@@ -741,10 +741,24 @@
       "name": "skills-agentic",
       "version": "2.0.0",
       "description": "Orchestrateur agentic v2 du pipeline SKILLS_AGENTIC. Coordonne 9 agents spécialisés (DELEGATOR, PARSER, REWRITER, PLANNER, ROUTER, COVERAGE+DRAFT+GAP, FANOUT, SYNTH, ITERATOR). Orchestration conditionnelle à 3 niveaux de complexité.",
-      "triggers": ["orchestrer", "pipeline agentic", "multi-skill", "couverture skills", "SKILLS_AGENTIC", "décomposer requête", "activer skills"],
+      "triggers": [
+        "orchestrer",
+        "pipeline agentic",
+        "multi-skill",
+        "couverture skills",
+        "SKILLS_AGENTIC",
+        "décomposer requête",
+        "activer skills"
+      ],
       "layer": "L4_ORCHESTRATION",
-      "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
-      "prerequisites": ["known_repositories.yaml (GOVERNANCE-HUB)", "MANIFEST.json (SKILLS)"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "SKILLS_AGENTIC"
+      ],
+      "prerequisites": [
+        "known_repositories.yaml (GOVERNANCE-HUB)",
+        "MANIFEST.json (SKILLS)"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -752,10 +766,24 @@
       "name": "skills-coverage",
       "version": "2.0.0",
       "description": "Vérificateur de couverture fonctionnelle v2 pour le pipeline SKILLS_AGENTIC. Évalue si l'ensemble des skills sélectionnés couvre tous les intents (4 critères). Produit un brouillon intermédiaire (Draft Agent) et un feedback ciblé sur les pièces manquantes (Gap Analyzer).",
-      "triggers": ["couverture", "gap skills", "vérifier couverture", "COVERAGE Agent", "sufficient context", "compétence manquante", "skill manquant"],
+      "triggers": [
+        "couverture",
+        "gap skills",
+        "vérifier couverture",
+        "COVERAGE Agent",
+        "sufficient context",
+        "compétence manquante",
+        "skill manquant"
+      ],
       "layer": "L4_ORCHESTRATION",
-      "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
-      "prerequisites": ["MANIFEST.json (SKILLS)", "skills-agentic.md (orchestrateur)"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "SKILLS_AGENTIC"
+      ],
+      "prerequisites": [
+        "MANIFEST.json (SKILLS)",
+        "skills-agentic.md (orchestrateur)"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -763,10 +791,25 @@
       "name": "skills-router",
       "version": "1.0.0",
       "description": "Routeur cross-repo pour le pipeline SKILLS_AGENTIC. Mappe chaque skill vers le(s) repo(s) cible(s) en utilisant known_repositories.yaml comme source de vérité. Applique les contraintes de strate L0-L9.",
-      "triggers": ["routing", "cross-repo", "mapper skill", "repo cible", "known_repositories", "strates L0-L9", "router skill"],
+      "triggers": [
+        "routing",
+        "cross-repo",
+        "mapper skill",
+        "repo cible",
+        "known_repositories",
+        "strates L0-L9",
+        "router skill"
+      ],
       "layer": "L4_ORCHESTRATION",
-      "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
-      "prerequisites": ["known_repositories.yaml (GOVERNANCE-HUB)", "MANIFEST.json (SKILLS)", "skills-agentic.md (orchestrateur)"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "SKILLS_AGENTIC"
+      ],
+      "prerequisites": [
+        "known_repositories.yaml (GOVERNANCE-HUB)",
+        "MANIFEST.json (SKILLS)",
+        "skills-agentic.md (orchestrateur)"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -774,10 +817,30 @@
       "name": "skills-agentic-test",
       "version": "2.0.0",
       "description": "Suite de tests v2 pour valider le pipeline SKILLS_AGENTIC. Contient 30 requêtes de test (20 v1 + 10 v2) couvrant les cas nominaux, multi-intents, complexes cross-strate, edge cases, non-régression, et tests spécifiques v2 (délégation, reformulation, brouillon, feedback ciblé).",
-      "triggers": ["test agentic", "valider pipeline", "SKILLS_AGENTIC test", "couverture test", "test coverage", "test multi-skill", "test v2", "test délégation", "test reformulation", "test brouillon"],
+      "triggers": [
+        "test agentic",
+        "valider pipeline",
+        "SKILLS_AGENTIC test",
+        "couverture test",
+        "test coverage",
+        "test multi-skill",
+        "test v2",
+        "test délégation",
+        "test reformulation",
+        "test brouillon"
+      ],
       "layer": "L4_ORCHESTRATION",
-      "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
-      "prerequisites": ["skills-agentic.md (orchestrateur)", "skills-coverage.md (vérificateur)", "skills-router.md (routeur)", "skills-rewriter.md (rewriter)", "MANIFEST.json (SKILLS)"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "SKILLS_AGENTIC"
+      ],
+      "prerequisites": [
+        "skills-agentic.md (orchestrateur)",
+        "skills-coverage.md (vérificateur)",
+        "skills-router.md (routeur)",
+        "skills-rewriter.md (rewriter)",
+        "MANIFEST.json (SKILLS)"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -785,10 +848,25 @@
       "name": "skills-rewriter",
       "version": "1.0.0",
       "description": "Reformulation des intents en sous-quêtes atomiques optimisées pour le retrieval dans le MANIFEST. Équivalent adapté du Query Rewriter de Google Agentic RAG. Transforme chaque intent en sous-quêtes recherchables dans les triggers/descriptions des skills.",
-      "triggers": ["reformuler", "sous-quêtes", "REWRITER", "query rewrite", "optimiser requête", "atomiser intent", "enrichir intent", "décomposer intent"],
+      "triggers": [
+        "reformuler",
+        "sous-quêtes",
+        "REWRITER",
+        "query rewrite",
+        "optimiser requête",
+        "atomiser intent",
+        "enrichir intent",
+        "décomposer intent"
+      ],
       "layer": "L4_ORCHESTRATION",
-      "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
-      "prerequisites": ["MANIFEST.json (SKILLS)", "skills-agentic.md (orchestrateur)"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "SKILLS_AGENTIC"
+      ],
+      "prerequisites": [
+        "MANIFEST.json (SKILLS)",
+        "skills-agentic.md (orchestrateur)"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -796,10 +874,25 @@
       "name": "skill-router-uae",
       "version": "2.0.0",
       "description": "Routeur UAE pour le pipeline SKILLS_AGENTIC. Route les requêtes vers les skills pertinents via les coordonnées UAE 5D — sans règles codées en dur. Utilise TAXONOMY/coords.yaml comme source de vérité.",
-      "triggers": ["router UAE", "routing géométrique", "skill-router", "UAE routing", "distance UAE", "router skill", "trouver skill"],
+      "triggers": [
+        "router UAE",
+        "routing géométrique",
+        "skill-router",
+        "UAE routing",
+        "distance UAE",
+        "router skill",
+        "trouver skill"
+      ],
       "layer": "L4_ORCHESTRATION",
-      "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC", "UAE"],
-      "prerequisites": ["TAXONOMY/coords.yaml (SKILLS)", "skills-agentic.md (orchestrateur)"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "SKILLS_AGENTIC",
+        "UAE"
+      ],
+      "prerequisites": [
+        "TAXONOMY/coords.yaml (SKILLS)",
+        "skills-agentic.md (orchestrateur)"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -807,10 +900,23 @@
       "name": "session-snapshot",
       "version": "1.0.0",
       "description": "Capture structurée de session : commits, fichiers, métriques, phases bloquantes. Utiliser en fin de session pour produire un bilan vérifiable.",
-      "triggers": ["résumé session", "snapshot", "bilan", "clôturer session", "vérifier que tout est terminé", "session complète"],
+      "triggers": [
+        "résumé session",
+        "snapshot",
+        "bilan",
+        "clôturer session",
+        "vérifier que tout est terminé",
+        "session complète"
+      ],
       "layer": "L4_ORCHESTRATION",
-      "nexusTags": ["CONFORME_NEXUS", "SESSION_MANAGEMENT"],
-      "prerequisites": ["git log accessible", "Accès aux fichiers créés"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "SESSION_MANAGEMENT"
+      ],
+      "prerequisites": [
+        "git log accessible",
+        "Accès aux fichiers créés"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -818,10 +924,24 @@
       "name": "keel-peg-parser",
       "version": "1.0.0",
       "description": "Parser PEG pour KEEL v0.5 dans BRAIN. Parse Trit-Nodes, Thought-Commits, TQL, foncteurs, D4 Gate en AST + IR. Valide lois R9/R10.",
-      "triggers": ["parser KEEL", "implémenter foncteur", "KEEL PEG", "AST KEEL", "Thought-Commit", "TQL live", "keel parser"],
+      "triggers": [
+        "parser KEEL",
+        "implémenter foncteur",
+        "KEEL PEG",
+        "AST KEEL",
+        "Thought-Commit",
+        "TQL live",
+        "keel parser"
+      ],
       "layer": "L1_SOT",
-      "nexusTags": ["CONFORME_NEXUS", "KEEL"],
-      "prerequisites": ["gerivdb/BRAIN/src/brain/parsers/", "gerivdb/KEEL/README.md v0.5"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "KEEL"
+      ],
+      "prerequisites": [
+        "gerivdb/BRAIN/src/brain/parsers/",
+        "gerivdb/KEEL/README.md v0.5"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -829,10 +949,22 @@
       "name": "keel-vdb-tql",
       "version": "1.0.0",
       "description": "Indexation VDB des Thought-Commits KEEL + TQL live (~sim, path_from, .functor:, .adjoint:). Sync bidirectionnelle graph.yaml ↔ VDB.",
-      "triggers": ["TQL live", "indexer graph KEEL", "VDB KEEL", "recherche similarité KEEL", "path_from"],
+      "triggers": [
+        "TQL live",
+        "indexer graph KEEL",
+        "VDB KEEL",
+        "recherche similarité KEEL",
+        "path_from"
+      ],
       "layer": "L1_SOT",
-      "nexusTags": ["CONFORME_NEXUS", "KEEL"],
-      "prerequisites": ["gerivdb/BRAIN/src/brain/vdb/", "gerivdb/BRAIN/src/brain/parsers/"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "KEEL"
+      ],
+      "prerequisites": [
+        "gerivdb/BRAIN/src/brain/vdb/",
+        "gerivdb/BRAIN/src/brain/parsers/"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -840,10 +972,21 @@
       "name": "prd-keel-factory",
       "version": "1.0.0",
       "description": "Template MADR pour les PRDs KEEL. Format standard v0.6/v0.7 avec IntentHash 0xKEEL_*, sections contexte/grammaire/API/tests/estimations.",
-      "triggers": ["rédige PRD KEEL", "PRD parser", "PRD KEEL", "nouveau PRD KEEL", "template PRD KEEL"],
+      "triggers": [
+        "rédige PRD KEEL",
+        "PRD parser",
+        "PRD KEEL",
+        "nouveau PRD KEEL",
+        "template PRD KEEL"
+      ],
       "layer": "L0_GOVERNANCE",
-      "nexusTags": ["CONFORME_NEXUS", "KEEL"],
-      "prerequisites": ["gerivdb/GOVERNANCE-HUB/PRD/"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "KEEL"
+      ],
+      "prerequisites": [
+        "gerivdb/GOVERNANCE-HUB/PRD/"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -851,10 +994,22 @@
       "name": "google-agentic-rag",
       "version": "1.0.0",
       "description": "Analyse des patterns Google Agentic RAG croisée avec SCO7/Selena/Alfred/Riddler. Produit un rapport de synthèse avec matrice de convergence et gaps.",
-      "triggers": ["analyse RAG", "patterns Google agentic", "article Google RAG", "cross-analysis agents", "rapport analytique"],
+      "triggers": [
+        "analyse RAG",
+        "patterns Google agentic",
+        "article Google RAG",
+        "cross-analysis agents",
+        "rapport analytique"
+      ],
       "layer": "L2_COGNITION",
-      "nexusTags": ["CONFORME_NEXUS", "ANALYSIS"],
-      "prerequisites": ["Accès à l'article source", "Connaissance des agents SCO7/Selena/Alfred/Riddler"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "ANALYSIS"
+      ],
+      "prerequisites": [
+        "Accès à l'article source",
+        "Connaissance des agents SCO7/Selena/Alfred/Riddler"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -862,10 +1017,21 @@
       "name": "skill-slot-governor",
       "version": "1.0.0",
       "description": "Gestion du budget 100 slots SKILLS : audit courant, projection, règles LADYBIRD/STANDARD/BASIC, anti-dépassement.",
-      "triggers": ["combien de slots restants", "peut-on ajouter un skill", "budget slots", "slot count", "skillsCount"],
+      "triggers": [
+        "combien de slots restants",
+        "peut-on ajouter un skill",
+        "budget slots",
+        "slot count",
+        "skillsCount"
+      ],
       "layer": "L0_GOVERNANCE",
-      "nexusTags": ["CONFORME_NEXUS", "GOVERNANCE"],
-      "prerequisites": ["gerivdb/SKILLS/MANIFEST.json"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "GOVERNANCE"
+      ],
+      "prerequisites": [
+        "gerivdb/SKILLS/MANIFEST.json"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -873,10 +1039,24 @@
       "name": "uae-keel-coords",
       "version": "1.0.0",
       "description": "Génération de coords.yaml + graph.yaml pour les skills UAE. Formule embedding 1/√d, zones LADYBIRD/STANDARD/BASIC, 5 axes UAE.",
-      "triggers": ["coordonner les skills", "UAE layout", "coords.yaml", "graph.yaml UAE", "KEEL functor", "UAE score"],
+      "triggers": [
+        "coordonner les skills",
+        "UAE layout",
+        "coords.yaml",
+        "graph.yaml UAE",
+        "KEEL functor",
+        "UAE score"
+      ],
       "layer": "L1_SOT",
-      "nexusTags": ["CONFORME_NEXUS", "UAE", "KEEL"],
-      "prerequisites": ["gerivdb/SKILLS/MANIFEST.json", "gerivdb/SKILLS/TAXONOMY/"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "UAE",
+        "KEEL"
+      ],
+      "prerequisites": [
+        "gerivdb/SKILLS/MANIFEST.json",
+        "gerivdb/SKILLS/TAXONOMY/"
+      ],
       "slotWeight": 1,
       "status": "active"
     },
@@ -884,12 +1064,114 @@
       "name": "skills-agentic-ref",
       "version": "1.0.0",
       "description": "Référence vers le pipeline SKILLS_AGENTIC v2 — 9 agents (DELEGATOR, PARSER, REWRITER, PLANNER, ROUTER, COVERAGE+DRAFT+GAP, FANOUT, SYNTH, ITERATOR). 8 patterns Google RAG.",
-      "triggers": ["pipeline agentic", "SKILLS_AGENTIC", "orchestrer skills", "DELEGATOR", "REWRITER", "DRAFT agent", "GAP analyzer"],
+      "triggers": [
+        "pipeline agentic",
+        "SKILLS_AGENTIC",
+        "orchestrer skills",
+        "DELEGATOR",
+        "REWRITER",
+        "DRAFT agent",
+        "GAP analyzer"
+      ],
       "layer": "L4_ORCHESTRATION",
-      "nexusTags": ["CONFORME_NEXUS", "SKILLS_AGENTIC"],
-      "prerequisites": ["perplexity/skills/skills-agentic.md v2", "perplexity/skills/skills-coverage.md v2"],
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "SKILLS_AGENTIC"
+      ],
+      "prerequisites": [
+        "perplexity/skills/skills-agentic.md v2",
+        "perplexity/skills/skills-coverage.md v2"
+      ],
       "slotWeight": 1,
       "status": "active"
+    },
+    {
+      "layer": "L3_EMERGENCE",
+      "nexusTags": "CONFORME_NEXUS",
+      "slotWeight": 1,
+      "description": "CAPTA-4D domain: cable kinematics, 4D positioning, scene modeling. Use when user mentions 'CAPTA', 'cable', 'kinematics', '4D positioning', 'scene', 'anchor'.",
+      "prerequisites": [],
+      "name": "capta-4d-core",
+      "status": "active",
+      "version": "1.0.0",
+      "triggers": [
+        "CAPTA",
+        "cable",
+        "kinematics",
+        "4D",
+        "scene",
+        "anchor",
+        "positioning"
+      ]
+    },
+    {
+      "layer": "L3_EMERGENCE",
+      "nexusTags": "CONFORME_NEXUS",
+      "slotWeight": 1,
+      "description": "Safety protocols for cable systems under tension - limits, emergency stops, thresholds. Use when user mentions 'safety', 'tension', 'threshold', 'emergency stop', 'safety'.",
+      "prerequisites": [],
+      "name": "capta-safety-protocol",
+      "status": "active",
+      "version": "1.0.0",
+      "triggers": [
+        "safety",
+        "tension",
+        "threshold",
+        "emergency stop",
+        "safety monitor"
+      ]
+    },
+    {
+      "layer": "L3_EMERGENCE",
+      "nexusTags": "CONFORME_NEXUS",
+      "slotWeight": 1,
+      "description": "Scene modeling for cable systems - anchor points, motor positions, workspace zones. Use when user mentions 'scene', 'layout', 'anchor', 'workspace', 'motor position'.",
+      "prerequisites": [],
+      "name": "capta-scene-layout",
+      "status": "active",
+      "version": "1.0.0",
+      "triggers": [
+        "scene",
+        "layout",
+        "anchor",
+        "workspace",
+        "motor position"
+      ]
+    },
+    {
+      "layer": "L2_COMPOSITION",
+      "nexusTags": "CONFORME_NEXUS",
+      "slotWeight": 1,
+      "description": "Standard Python CLI architecture - src/cli/ + src/core/ with Click entry point, pyproject.toml. Use when creating new Python CLI tools in the gerivdb ecosystem.",
+      "prerequisites": [],
+      "name": "python-cli-structure",
+      "status": "active",
+      "version": "1.0.0",
+      "triggers": [
+        "python cli",
+        "click",
+        "pyproject.toml",
+        "src/cli",
+        "src/core",
+        "entry point"
+      ]
+    },
+    {
+      "layer": "L1_INFRA",
+      "nexusTags": "CONFORME_NEXUS",
+      "slotWeight": 1,
+      "description": "Complete RSS-v2 bootstrap procedure for new gerivdb repos - structure, files, frontmatter, verification. Use when creating a new repo or bootstrapping RSS-v2 compliance.",
+      "prerequisites": [],
+      "name": "rss-v2-bootstrap",
+      "status": "active",
+      "version": "1.0.0",
+      "triggers": [
+        "rss-v2",
+        "bootstrap",
+        "new repo",
+        "rss compliance",
+        "repo structure"
+      ]
     }
   ]
 }
