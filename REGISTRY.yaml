@@ -1,14 +1,14 @@
 # SKILLS Registry — Index Canonical
 # Generated: 2026-03-25
-# Version: 1.0.1
-# IntentHash: 0xB7C4D902_GRILL_ME_DESIGN_VALIDATION_20260325
-# Previous: 0xA3F2E891_SKILLS_REGISTRY_INIT_20260317
+# Version: 1.0.8
+# IntentHash: 0xSKILLS_REGISTRY_ENGINES_20260617
+# Previous: 0xBRANCH_ANALYSIS_SKILLS_20260606
 
 registry:
-  version: "1.0.7"
+  version: "1.0.8"
   ecosystem: "ecosystem-1"
-  last_updated: "2026-06-06"
-  total_skills: 58
+  last_updated: "2026-06-17"
+  total_skills: 63
 
 skills:
     # ========================================
@@ -1360,6 +1360,159 @@ skills:
     depends_on:
       - branch-content-analyzer
 
+  # ========================================
+  # ENGINE SKILLS — CTULU (2026-06-17)
+  # ========================================
+
+  - name: causal-chain
+    description: "Engine causalite CTULU — NOTEARS/FCI/LiNGAM + DoWhy Pearl L1-L3. Produit DAGs consommables par tout citizen."
+    type: engine
+    triggers:
+      - causal-chain
+      - cause drift resolve
+      - causal dag
+      - counterfactual
+      - intervention
+      - notears
+      - lingam
+      - fci
+    domain: engines
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-17"
+    updated: "2026-06-17"
+    phi_weight: 0.012
+    path: native/engines/causal-chain/SKILL.md
+    source: native
+    source_engine: CTULU/src/causal_chain_orchestrator
+    api_endpoint: ctulu:8080/engines/causal-chain
+    strata: L2_CAUSAL_ENGINE
+    consumes_from:
+      - ecosystem-principles
+    provides_to:
+      - CAPTA-4D
+      - TINA
+      - BRAIN
+
+  - name: polymorphic-pipeline
+    description: "Engine composition polymorphique CTULU OAE v2 — 8 modes, couverture L0->L9."
+    type: engine
+    triggers:
+      - polymorphic-pipeline
+      - oae
+      - pipeline modes
+      - L0 L9 pipeline
+      - multi-mode orchestration
+    domain: engines
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-17"
+    updated: "2026-06-17"
+    phi_weight: 0.011
+    path: native/engines/polymorphic-pipeline/SKILL.md
+    source: native
+    source_engine: CTULU/src/polymorphic_pipeline
+    api_endpoint: ctulu:8080/engines/polymorphic-pipeline
+    strata: L2_COMPOSITION
+    consumes_from:
+      - ecosystem-principles
+    provides_to:
+      - BRAIN
+      - AUTO-DEV
+      - CAPTA-4D
+
+  - name: dag-rag
+    description: "Engine traversal DAG + RAG integre (CTULU epic_074) — KV cache 3600s, retrieval semantique enrichi."
+    type: engine
+    triggers:
+      - dag-rag
+      - dag traversal
+      - rag
+      - kv cache
+      - retrieval augmented
+      - epic 074
+    domain: engines
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-17"
+    updated: "2026-06-17"
+    phi_weight: 0.010
+    path: native/engines/dag-rag/SKILL.md
+    source: native
+    source_engine: CTULU/src/epic_074_dag_rag
+    api_endpoint: ctulu:8080/engines/dag-rag
+    strata: L2_COMPOSITION
+    consumes_from:
+      - semantic-search
+      - embedding
+    provides_to:
+      - BRAIN
+      - MIMIR
+      - NEXUS
+
+  - name: moe-router
+    description: "Engine routage intelligent CTULU (MoE) — GATE-0->4, JEPA scoring, energy-trit. Dispatch optimal entre engines."
+    type: engine
+    triggers:
+      - moe-router
+      - routing intelligence
+      - gate routing
+      - jepa
+      - energy-trit
+      - dispatch engine
+    domain: engines
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-17"
+    updated: "2026-06-17"
+    phi_weight: 0.013
+    path: native/engines/moe-router/SKILL.md
+    source: native
+    source_engine: CTULU/src/moe_router_intelligence
+    api_endpoint: ctulu:8080/engines/moe-router
+    strata: L2_COMPOSITION
+    consumes_from:
+      - ecosystem-principles
+    provides_to:
+      - CITIZENS
+      - BRAIN
+      - WAZAA
+
+  - name: safety-guard
+    description: "Engine validation securite et gouvernance — phi-CPS >= 4.559. Instancie par TOUS les citizens sans exception."
+    type: engine
+    triggers:
+      - safety-guard
+      - phi-cps validation
+      - governance rules
+      - garde-fous
+      - safety validate
+    domain: engines
+    version: "1.0.0"
+    author: gerivdb
+    license: MIT
+    status: active
+    created: "2026-06-17"
+    updated: "2026-06-17"
+    phi_weight: 0.015
+    path: native/engines/safety-guard/SKILL.md
+    source: native
+    source_engine: GOVERNANCE-HUB/rules
+    api_endpoint: ctulu:8080/engines/safety-guard
+    strata: L0_CONSTITUTIONAL
+    consumes_from:
+      - ecosystem-principles
+    provides_to:
+      - "*"
+
 external_pending:
   - name: marketingskills
     description: Compétences marketing externalisées
@@ -1376,19 +1529,20 @@ external_pending:
 # ========================================
 
 metadata:
-  phi_cps_contribution: 0.189
+  phi_cps_contribution: 0.250
   governance_level: L2
   citizen: skills-registry
   lifecycle: ACTIVE
-  next_review: "2026-06-25"
+  next_review: "2026-07-01"
   changelog:
+    - version: "1.0.8"
+      date: "2026-06-17"
+      change: "Add 5 ENGINE SKILLS (CTULU): causal-chain, polymorphic-pipeline, dag-rag, moe-router, safety-guard. New type=engine, strata, source_engine, api_endpoint fields. total_skills 58->63."
+      intent_hash: "0xSKILLS_REGISTRY_ENGINES_20260617"
     - version: "1.0.7"
       date: "2026-06-06"
-      change: "Add 4 branch analysis skills: branch-content-analyzer, branch-merge-strategy, eecs-migration-handler, citizen-module-integrator. BRAIN fully sanitized: 47→0 remote branches."
+      change: "Add 4 branch analysis skills: branch-content-analyzer, branch-merge-strategy, eecs-migration-handler, citizen-module-integrator. BRAIN fully sanitized: 47->0 remote branches."
       intent_hash: "0xBRANCH_ANALYSIS_SKILLS_20260606"
-      date: "2026-04-19"
-      change: "Add epic-forge skill for EPIC management"
-      intent_hash: "0xEPIC_FORGE_SKILL_20260419"
     - version: "1.0.1"
       date: "2026-03-25"
       change: "Add design-validation foundational skill (grill-me)"
