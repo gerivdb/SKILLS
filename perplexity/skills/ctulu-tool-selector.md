@@ -1,6 +1,6 @@
 ---
 type: skill
-version: "1.0.0"
+version: "1.0.1"
 date: "2026-06-18"
 intent_hash: 0xCTULU_TOOL_SELECTOR_φ1.000
 status: active
@@ -11,13 +11,14 @@ nexusTags: ["CONFORME_NEXUS", "CTULU", "TOOL_ROUTING"]
 slotWeight: 1
 changelog:
   - {v: "1.0.0", date: "2026-06-18", notes: "Creation — passe 9 ECOS-CLI — gap sélection outil CTULU vs mcp_github"}
+  - {v: "1.0.1", date: "2026-06-18", notes: "passe 10 — intent_hash φ1.000 validé conforme φ[X.XXX]"}
 ---
 
 # ctulu-tool-selector
 
 ## Purpose
 
-Guide de sélection des outils [gerivdb/CTULU/tools](https://github.com/gerivdb/CTULU/tree/main/tools) selon le contexte de la tâche, l'ENV actif et le budget tool_calls. Fournit une **matrice de décision** `[tâche] × [ENV] × [budget]` pour choisir entre outil CTULU, mcp_github, fetch_url, ou shell local.
+Guide de sélection des outils [gerivdb/CTULU/tools](https://github.com/gerivdb/CTULU/tree/main/tools) selon le contexte de la tâche, l'ENV actif et le budget tool_calls. Fournit une **matrice de décision** `[tâche] x [ENV] x [budget]` pour choisir entre outil CTULU, mcp_github, fetch_url, ou shell local.
 
 ## Trigger
 
@@ -85,17 +86,17 @@ Utiliser quand :
 ## Matrice de décision
 
 ```
-TÂCHE                     | ENV1 (Perplexity)      | ENV2 (Z600 local)      | Priorité
+TACHE                     | ENV1 (Perplexity)      | ENV2 (Z600 local)      | Priorite
 --------------------------|------------------------|------------------------|----------
 Lecture fichier GitHub    | mcp_github (direct)    | shell git              | mcp_github > fetch_url
 Suppression branches      | mcp_github natif       | branch-cleaner CTULU   | selon ENV
-Création PR              | mcp_github natif       | pr-anything CTULU      | mcp_github > CTULU
-Audit multi-repo          | audit-anything CTULU   | audit-anything CTULU   | CTULU ≡
-Batch patch frontmatter   | patch-anything CTULU   | patch-anything CTULU   | CTULU ≡
-Détection drift NEXUS     | drift-detect CTULU     | drift-detect CTULU     | CTULU ≡
-Création ADR              | adr-anything CTULU     | adr-anything CTULU     | CTULU ≡
-Opérations SLM chain     | N/A (pas de SLM)       | slm-chain-runner CTULU | ENV2 only
-Gestion capital tokens    | token-capital CTULU    | token-capital CTULU    | CTULU ≡
+Creation PR              | mcp_github natif       | pr-anything CTULU      | mcp_github > CTULU
+Audit multi-repo          | audit-anything CTULU   | audit-anything CTULU   | CTULU =
+Batch patch frontmatter   | patch-anything CTULU   | patch-anything CTULU   | CTULU =
+Detection drift NEXUS     | drift-detect CTULU     | drift-detect CTULU     | CTULU =
+Creation ADR              | adr-anything CTULU     | adr-anything CTULU     | CTULU =
+Operations SLM chain     | N/A (pas de SLM)       | slm-chain-runner CTULU | ENV2 only
+Gestion capital tokens    | token-capital CTULU    | token-capital CTULU    | CTULU =
 ```
 
 **Règle générale** :
@@ -107,26 +108,26 @@ Gestion capital tokens    | token-capital CTULU    | token-capital CTULU    | CT
 ## Protocole de sélection
 
 ```
-[CTULU_SELECTOR] Tâche: {description}
+[CTULU_SELECTOR] Tache: {description}
 [CTULU_SELECTOR] ENV actif: {ENV1|ENV2|ENV3}
 [CTULU_SELECTOR] Budget tool_calls restants: {N}/3
-[CTULU_SELECTOR] Outil sélectionné: {outil} (raison: {raison})
-[CTULU_SELECTOR] Fallback si échec: {fallback}
+[CTULU_SELECTOR] Outil selectionne: {outil} (raison: {raison})
+[CTULU_SELECTOR] Fallback si echec: {fallback}
 ```
 
 ## Cas d'usage de cette session (2026-06-18)
 
 Durant la session ECOS-CLI branche-cleanup :
-- Suppression des 5 branches : `mcp_github` natif ✅ (opération GitHub native, budget 3/tour suffisant)
+- Suppression des 5 branches : `mcp_github` natif (opération GitHub native, budget 3/tour suffisant)
 - Audit des branches orphelines : aurait pu utiliser `branch-cleaner` CTULU pour automatiser la détection des branches > 30j sans PR
-- Création des skills SKILLS : `mcp_github push_files` ✅ (opération natale)
+- Création des skills SKILLS : `mcp_github push_files` (opération natale)
 
 Lesson : CTULU est pertinent quand l'opération est **répétitive, multi-repo, ou nécessite une logique métier** au-delà du CRUD GitHub de base.
 
 ## Intégration écosystème
 
 - **Précède** : `ctulu-result-integrator` (normalisation de la sortie)
-- **Complémente** : `ctulu-tool-factory` (si l'outil n'existe pas encore)
+- **Complèmente** : `ctulu-tool-factory` (si l'outil n'existe pas encore)
 - **Référence** : `llm-tool-budget-guard` (budget disponible avant appel)
 - **Source** : [gerivdb/CTULU/tools](https://github.com/gerivdb/CTULU/tree/main/tools)
 - **Lien CITIZENS** : vérifier `gerivdb/CITIZENS` pour les citizens CTULU enregistrés (`citizen-anything`)

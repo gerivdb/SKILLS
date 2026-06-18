@@ -1,6 +1,6 @@
 ---
 type: skill
-version: "1.0.0"
+version: "1.0.1"
 date: "2026-06-18"
 intent_hash: 0xCTULU_RESULT_INTEGRATOR_φ1.000
 status: active
@@ -11,6 +11,7 @@ nexusTags: ["CONFORME_NEXUS", "CTULU", "OUTPUT_NORMALIZATION"]
 slotWeight: 1
 changelog:
   - {v: "1.0.0", date: "2026-06-18", notes: "Creation — passe 9 ECOS-CLI — gap normalisation output CTULU dans séquence de passes"}
+  - {v: "1.0.1", date: "2026-06-18", notes: "passe 10 — intent_hash φ1.000 validé conforme φ[X.XXX]"}
 ---
 
 # ctulu-result-integrator
@@ -37,7 +38,7 @@ Utiliser quand :
 | Diff unifié | `diff-anything`, `patch-anything` | Résumer : N fichiers, +X/-Y lignes, lister les écarts critiques |
 | Markdown rapport | `plan-anything`, `adr-anything` | Passer inline si < 2k tokens, sinon stash + référence |
 | Liste brute | `branch-cleaner`, `batch-anything` | Convertir en tableau markdown avec statut par item |
-| Graphe JSON | `intent-graph-builder`, `graph-builder` | Résumer : N nœuds, M arêtes, clusters détectés |
+| Graphe JSON | `intent-graph-builder`, `graph-builder` | Résumer : N noeuds, M arêtes, clusters détectés |
 | Code / script | `scaffold-anything`, `workflow-anything` | Vérifier syntaxe, extraire structure, ne pas inclure inline |
 
 ## Protocole d'intégration
@@ -54,60 +55,60 @@ Utiliser quand :
 ### Étape 2 — Appliquer la stratégie
 
 ```
-Si taille ≤ 500 tokens:
-  → INTÉGRATION INLINE — inclure directement dans le contexte de passe N+1
+Si taille <= 500 tokens:
+  -> INTEGRATION INLINE — inclure directement dans le contexte de passe N+1
 
-Si 500 < taille ≤ 2000 tokens:
-  → INTÉGRATION RÉSUMÉE — résumer en ≤ 200 tokens + conserver référence complète
+Si 500 < taille <= 2000 tokens:
+  -> INTEGRATION RESUMEE — résumer en <= 200 tokens + conserver référence complète
 
 Si taille > 2000 tokens:
-  → STASH CONTEXTUEL
+  -> STASH CONTEXTUEL
      1. Appeler skill contextual-stash-manager
-     2. Émettre référence stash: [STASH:{id}]
+     2. Emettre référence stash: [STASH:{id}]
      3. Passe N+1 reçoit uniquement: stash_id + résumé 100 tokens
 ```
 
 ### Étape 3 — Normaliser selon le format cible
 
-**JSON → Markdown table :**
+**JSON -> Markdown table :**
 ```
-[à partir de]
+[a partir de]
 {"repos": [{"name": "ECOS-CLI", "score": 0.87}, ...]}
 
-[émettre]
+[emettre]
 | Repo | Score | Statut |
 |---|---|---|
-| ECOS-CLI | 0.87 | ✅ OK |
+| ECOS-CLI | 0.87 | OK |
 ```
 
-**Diff → Résumé :**
+**Diff -> Resume :**
 ```
-[à partir de]
+[a partir de]
 --- a/file.py +++ b/file.py @@ -12,4 +12,6 @@...
 
-[émettre]
-[DIFF_SUMMARY] 1 fichier modifié | +6 / -4 lignes | section: init_config
+[emettre]
+[DIFF_SUMMARY] 1 fichier modifie | +6 / -4 lignes | section: init_config
 ```
 
-**Liste brute → Tableau statut :**
+**Liste brute -> Tableau statut :**
 ```
-[à partir de]
+[a partir de]
 branch-1 deleted
 branch-2 deleted
 branch-3 error: not found
 
-[émettre]
+[emettre]
 | Branche | Statut |
 |---|---|
-| branch-1 | ✅ Supprimée |
-| branch-2 | ✅ Supprimée |
-| branch-3 | ❌ Erreur: not found |
+| branch-1 | Supprimee |
+| branch-2 | Supprimee |
+| branch-3 | Erreur: not found |
 ```
 
-### Étape 4 — Émettre le bloc d'intégration
+### Étape 4 — Emettre le bloc d'intégration
 
 ```
-[CTULU_INTEGRATOR] ✅ Sortie normalisée
+[CTULU_INTEGRATOR] Sortie normalisée
 [CTULU_INTEGRATOR] Format émis: {markdown_table|inline|stash_ref}
 [CTULU_INTEGRATOR] Prêt pour: passe {N+1} — {objectif}
 [CTULU_INTEGRATOR] Données perdues: {aucune|{liste des champs écartés}}
@@ -117,7 +118,7 @@ branch-3 error: not found
 
 | Situation | Action |
 |---|---|
-| Sortie vide ou `null` | Émettre `[CTULU_INTEGRATOR] ⚠️ SORTIE VIDE` + vérifier si l'outil a échoué silencieusement |
+| Sortie vide ou `null` | Emettre `[CTULU_INTEGRATOR] WARN SORTIE VIDE` + vérifier si l'outil a échoué silencieusement |
 | Format non reconnu | Traiter comme texte brut, stasher si > 1k tokens |
 | Sortie JSON malformé | Tenter parsing partiel + signaler les champs manquants |
 | Sortie contient des secrets | Déclencher `run_secret_scanning` avant intégration |
@@ -125,7 +126,7 @@ branch-3 error: not found
 ## Intégration écosystème
 
 - **Précédé par** : `ctulu-tool-selector` (sélection de l'outil)
-- **Complémente** : `contextual-stash-manager` (stash si sortie volumineuse)
-- **Complémente** : `adaptive-passe-sequencer` (passe N+1 reçoit la sortie normalisée)
+- **Complèmente** : `contextual-stash-manager` (stash si sortie volumineuse)
+- **Complèmente** : `adaptive-passe-sequencer` (passe N+1 reçoit la sortie normalisée)
 - **Déclenche si nécessaire** : `run_secret_scanning` (secrets potentiels dans la sortie)
 - **Source CTULU** : [gerivdb/CTULU/tools](https://github.com/gerivdb/CTULU/tree/main/tools)

@@ -1,6 +1,6 @@
 ---
 type: skill
-version: "1.0.0"
+version: "1.0.1"
 date: "2026-06-18"
 intent_hash: 0xBRANCH_LIFECYCLE_INTENT_φ1.000
 status: active
@@ -11,6 +11,7 @@ nexusTags: ["CONFORME_NEXUS", "GIT_HYGIENE", "BRANCH_MANAGEMENT"]
 slotWeight: 1
 changelog:
   - {v: "1.0.0", date: "2026-06-18", notes: "Creation — passe 9 clôture axe C — gap tracking cycle de vie branches avec intention"}
+  - {v: "1.0.1", date: "2026-06-18", notes: "passe 10 — intent_hash φ1.000 validé conforme φ[X.XXX]"}
 ---
 
 # branch-lifecycle-intent-tracker
@@ -31,9 +32,9 @@ Utiliser quand :
 ## États du cycle de vie
 
 ```
-[CRÉÉE] → [ACTIVE] → [MERGÉE] → [ARCHIVÉE] → [SUPPRIMÉE]
-            ↓
-         [ABANDONNÉE] → [À_NETTOYER]
+[CREEE] -> [ACTIVE] -> [MERGEE] -> [ARCHIVEE] -> [SUPPRIMEE]
+            |
+         [ABANDONNEE] -> [A_NETTOYER]
 ```
 
 | État | Critères | Action recommandée |
@@ -50,26 +51,26 @@ Utiliser quand :
 Convention de nommage attendue (RSS-v1) :
 
 ```
-feature/{slug}     →  intent: NOUVELLE_FONCTIONNALITÉ
-fix/{slug}         →  intent: CORRECTION_BUG
-adr-{N}-{slug}     →  intent: DÉCISION_ARCHITECTURE
-refactor/{slug}    →  intent: REFACTORING
-hotfix/{slug}      →  intent: CORRECTIF_URGENCE
-chore/{slug}       →  intent: MAINTENANCE
-epic/{slug}        →  intent: EPIC_EN_COURS
+feature/{slug}     ->  intent: NOUVELLE_FONCTIONNALITE
+fix/{slug}         ->  intent: CORRECTION_BUG
+adr-{N}-{slug}     ->  intent: DECISION_ARCHITECTURE
+refactor/{slug}    ->  intent: REFACTORING
+hotfix/{slug}      ->  intent: CORRECTIF_URGENCE
+chore/{slug}       ->  intent: MAINTENANCE
+epic/{slug}        ->  intent: EPIC_EN_COURS
 ```
 
-Branche sans préfixe reconnu → intent: INCONNU → déclencher clarification avant suppression.
+Branche sans préfixe reconnu -> intent: INCONNU -> déclencher clarification avant suppression.
 
 ## Protocole de décision suppression
 
 ```
 [BRANCH_TRACKER] Branche: {nom}
-[BRANCH_TRACKER] Âge: {N} jours | Dernier commit: {date}
+[BRANCH_TRACKER] Age: {N} jours | Dernier commit: {date}
 [BRANCH_TRACKER] PR associée: {numéro|aucune} | Statut PR: {open|merged|closed|aucune}
 [BRANCH_TRACKER] Intent détecté: {intent} (depuis nom de branche)
 [BRANCH_TRACKER] Intent vivant (issue/epic ouverte): {oui|non}
-[BRANCH_TRACKER] DÉCISION: {SUPPRIMER|PROTÉGER|CLARIFIER}
+[BRANCH_TRACKER] DECISION: {SUPPRIMER|PROTEGER|CLARIFIER}
 [BRANCH_TRACKER] Raison: {raison}
 ```
 
@@ -77,19 +78,19 @@ Branche sans préfixe reconnu → intent: INCONNU → déclencher clarification 
 
 ```
 Si PR merged + branche non supprimée:
-  → SUPPRIMER (nettoyage post-merge)
+  -> SUPPRIMER (nettoyage post-merge)
 
 Si âge > 30j + PR aucune + intent non vivant:
-  → SUPPRIMER (branche abandonnée)
+  -> SUPPRIMER (branche abandonnée)
 
 Si âge > 30j + intent vivant (issue/epic ouverte):
-  → PROTÉGER + ajouter commentaire sur issue liée
+  -> PROTEGER + ajouter commentaire sur issue liée
 
 Si nom sans préfixe connu:
-  → CLARIFIER avant toute action
+  -> CLARIFIER avant toute action
 
 Si branche = main|master|develop|staging:
-  → JAMAIS SUPPRIMER (branche protégée)
+  -> JAMAIS SUPPRIMER (branche protégée)
 ```
 
 ## Application session 2026-06-18 (ECOS-CLI)
@@ -98,11 +99,11 @@ Branches supprimées durant la session :
 
 | Branche | Intent détecté | État | Décision |
 |---|---|---|---|
-| `feature/remove-llm-rules` | NOUVELLE_FONCTIONNALITÉ | Mergée (PR #34) | ✅ SUPPRIMER |
-| `feature/audit-branch-cleanup` | NOUVELLE_FONCTIONNALITÉ | Mergée (PR #35) | ✅ SUPPRIMER |
-| `refactor/restructure-docs` | REFACTORING | Abandonnée > 30j | ✅ SUPPRIMER |
-| `feature/sync-improvements` | NOUVELLE_FONCTIONNALITÉ | Abandonnée > 30j | ✅ SUPPRIMER |
-| `fix/token-expiry` | CORRECTION_BUG | Abandonnée > 30j | ✅ SUPPRIMER |
+| `feature/remove-llm-rules` | NOUVELLE_FONCTIONNALITE | Mergée (PR #34) | SUPPRIMER |
+| `feature/audit-branch-cleanup` | NOUVELLE_FONCTIONNALITE | Mergée (PR #35) | SUPPRIMER |
+| `refactor/restructure-docs` | REFACTORING | Abandonnée > 30j | SUPPRIMER |
+| `feature/sync-improvements` | NOUVELLE_FONCTIONNALITE | Abandonnée > 30j | SUPPRIMER |
+| `fix/token-expiry` | CORRECTION_BUG | Abandonnée > 30j | SUPPRIMER |
 
 ## Intégration écosystème
 
