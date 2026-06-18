@@ -1,6 +1,6 @@
 ---
 type: skill
-version: "1.0.0"
+version: "1.0.1"
 date: "2026-06-18"
 intent_hash: 0xADAPTIVE_PASSE_SEQUENCER_φ1.000
 status: active
@@ -11,6 +11,7 @@ nexusTags: ["CONFORME_NEXUS", "SESSION_MANAGEMENT", "ADAPTIVE_SEQUENCING"]
 slotWeight: 2
 changelog:
   - {v: "1.0.0", date: "2026-06-18", notes: "Creation — passe 9 clôture axe C — gap séquençage adaptatif des passes selon contexte et budget"}
+  - {v: "1.0.1", date: "2026-06-18", notes: "passe 10 — intent_hash φ1.000 validé conforme φ[X.XXX]"}
 ---
 
 # adaptive-passe-sequencer
@@ -60,7 +61,7 @@ passe:
 ### Phase 2 — Graphe de dépendances
 
 ```
-Construction DAG: passes comme nœuds, dépendances comme arêtes
+Construction DAG: passes comme noeuds, dépendances comme arêtes
 Calcul du chemin critique: séquence de passes qui détermine la durée minimale
 Identification des passes parallélisables: sans dépendance mutuelle
 ```
@@ -80,12 +81,12 @@ Identification des passes parallélisables: sans dépendance mutuelle
 
 ```
 [SEQUENCER] PLAN ADAPTATIF
-  P{N} → {label}           [budget: {T}t/{C}k] [priorité: {P}] [status: {s}]
-  P{N} → {label}           [budget: {T}t/{C}k] [priorité: {P}] [status: {s}]
+  P{N} -> {label}           [budget: {T}t/{C}k] [priorité: {P}] [status: {s}]
+  P{N} -> {label}           [budget: {T}t/{C}k] [priorité: {P}] [status: {s}]
   ...
-[SEQUENCER] Chemin critique: P{a} → P{b} → P{c}
-[SEQUENCER] Passes reportées: {liste} → session N+1
-[SEQUENCER] Passes fusionnées: {P_a + P_b → P_ab}
+[SEQUENCER] Chemin critique: P{a} -> P{b} -> P{c}
+[SEQUENCER] Passes reportées: {liste} -> session N+1
+[SEQUENCER] Passes fusionnées: {P_a + P_b -> P_ab}
 [SEQUENCER] Prochain appel: {skill ou outil recommandé pour passe suivante}
 ```
 
@@ -98,22 +99,22 @@ Séquençage réel de la passe 9 :
 [SEQUENCER] Passes planifiées: 9 skills en 3 groupes
 
 Groupe A (L2) — llm-pass-sizer + llm-tool-budget-guard
-  P1 → llm-pass-sizer            [2t/800k] [P1] ✅ done
-  P2 → llm-tool-budget-guard     [2t/900k] [P1] ✅ done
-  → push batch: 1 appel mcp_github
+  P1 -> llm-pass-sizer            [2t/800k] [P1] done
+  P2 -> llm-tool-budget-guard     [2t/900k] [P1] done
+  -> push batch: 1 appel mcp_github
 
 Groupe B (L3-CTULU) — ctulu-tool-selector + ctulu-result-integrator
-  P3 → ctulu-tool-selector       [1t/1200k][P2] ✅ done
-  P4 → ctulu-result-integrator   [1t/1100k][P2] ✅ done
-  → push batch: 1 appel mcp_github
+  P3 -> ctulu-tool-selector       [1t/1200k][P2] done
+  P4 -> ctulu-result-integrator   [1t/1100k][P2] done
+  -> push batch: 1 appel mcp_github
 
 Groupe C (L3-axe C) — branch-lifecycle + hook-validation + adaptive-sequencer
-  P5 → branch-lifecycle-intent-tracker  [1t/900k] [P3] ✅ done
-  P6 → hook-validation-reporter         [1t/1000k][P3] ✅ done
-  P7 → adaptive-passe-sequencer         [1t/1100k][P3] ✅ done (ce skill)
-  → push batch: 1 appel mcp_github
+  P5 -> branch-lifecycle-intent-tracker  [1t/900k] [P3] done
+  P6 -> hook-validation-reporter         [1t/1000k][P3] done
+  P7 -> adaptive-passe-sequencer         [1t/1100k][P3] done (ce skill)
+  -> push batch: 1 appel mcp_github
 
-[SEQUENCER] Chemin critique: Groupe A → B → C (séquentiel, sans parallélisme ENV1)
+[SEQUENCER] Chemin critique: Groupe A -> B -> C (séquentiel, sans parallélisme ENV1)
 [SEQUENCER] Budget consommé: ~9 tool_calls sur session
 [SEQUENCER] Passes reportées: aucune — 9/9 complétées
 ```
@@ -134,7 +135,7 @@ Efficacité session = passes_complétées / passes_planifiées
 Densité utile = valeur_livrée / tool_calls_consommés
 Taux de report = passes_reportées / passes_totales
 
-Cible: efficacité ≥ 0.85 | densité ≥ 0.7 | taux_report ≤ 0.2
+Cible: efficacité >= 0.85 | densité >= 0.7 | taux_report <= 0.2
 ```
 
 ## Intégration écosystème

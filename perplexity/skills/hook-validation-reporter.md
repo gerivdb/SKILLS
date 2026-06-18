@@ -1,6 +1,6 @@
 ---
 type: skill
-version: "1.0.0"
+version: "1.0.1"
 date: "2026-06-18"
 intent_hash: 0xHOOK_VALIDATION_REPORTER_φ1.000
 status: active
@@ -11,6 +11,7 @@ nexusTags: ["CONFORME_NEXUS", "HOOK_VALIDATION", "REPORTING"]
 slotWeight: 1
 changelog:
   - {v: "1.0.0", date: "2026-06-18", notes: "Creation — passe 9 clôture axe C — gap rapport validation hooks post-opération"}
+  - {v: "1.0.1", date: "2026-06-18", notes: "passe 10 — intent_hash φ1.000 validé conforme φ[X.XXX] — correction note interne erronée"}
 ---
 
 # hook-validation-reporter
@@ -100,8 +101,8 @@ Utiliser quand :
 ║  RÉSULTAT GLOBAL: ✅ PASS                                     ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  CRITÈRES                                                    ║
-║  ✅ PASS  11  critères                                       ║
-║  ⚠️  WARN   2  critères                                      ║
+║  ✅ PASS  12  critères                                       ║
+║  ⚠️  WARN   1  critères                                      ║
 ║  ❌ FAIL   0  critères                                       ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  DÉTAIL                                                      ║
@@ -110,18 +111,17 @@ Utiliser quand :
 ║  ✅ Git — PR associée vérifiée: 2 post-merge, 3 abandonnées  ║
 ║  ✅ Fichiers — Frontmatter présent: 9/9 skills               ║
 ║  ✅ Fichiers — SHA fourni: N/A (création, pas update)        ║
+║  ✅ Fichiers — intent_hash: format φ1.000 = conforme         ║
+║     φ[X.XXX] validé passe 10 — aucune action requise         ║
 ║  ✅ Governance — Tags NEXUS: CONFORME_NEXUS sur tous         ║
 ║  ✅ Governance — Strate L assignée: L2/L3 selon skill        ║
 ║  ✅ Skills — Fichier dans bon dossier: 9/9                   ║
 ║  ✅ Skills — version sémantique: 9/9                         ║
 ║  ✅ Skills — changelog présent: 9/9                          ║
 ║  ✅ Skills — trit_primitive: 9/9                             ║
-║  ⚠️  Fichiers — intent_hash: format φ non normalisé (φ1.000  ║
-║     vs φ[X.XXX] attendu — acceptable passe 9)                ║
 ║  ⚠️  Git — Nommage RSS-v1: 1 branche sans préfixe standard  ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  ACTIONS REQUISES                                            ║
-║  → Harmoniser format intent_hash en passe 10                 ║
 ║  → Identifier branche non-standard et clarifier intent       ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
