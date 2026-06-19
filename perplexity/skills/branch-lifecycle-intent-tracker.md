@@ -1,114 +1,99 @@
 ---
 type: skill
 version: "1.0.1"
-date: "2026-06-18"
-intent_hash: 0xBRANCH_LIFECYCLE_INTENT_φ1.000
+date: "2026-06-19"
+intent_hash: 0xBRANCH_LIFECYCLE_INTENT_TRACKER_phi1.000
 status: active
 trit_primitive: TritTrackBranch
-tags: [branch, lifecycle, intent, git-hygiene, l3-tooling]
-layer: "L3_TOOLING"
-nexusTags: ["CONFORME_NEXUS", "GIT_HYGIENE", "BRANCH_MANAGEMENT"]
+tags: [branch, lifecycle, intent, git-governance, orphan-detection]
+layer: "L3_DEVTOOLS"
+nexusTags: ["CONFORME_NEXUS", "BRANCH_GOVERNANCE", "INTENT_TRACKING"]
 slotWeight: 1
 changelog:
-  - {v: "1.0.0", date: "2026-06-18", notes: "Creation — passe 9 clôture axe C — gap tracking cycle de vie branches avec intention"}
-  - {v: "1.0.1", date: "2026-06-18", notes: "passe 10 — intent_hash φ1.000 validé conforme φ[X.XXX]"}
+  - {v: "1.0.0", date: "2026-06-18", notes: "Creation — passe 9 — gap lifecycle branches detecte (feat/marrpc-v3 4 mois orpheline)"}
+  - {v: "1.0.1", date: "2026-06-19", notes: "Harmonisation intent_hash phi convention (phi vs φ unicode)"}
 ---
 
 # branch-lifecycle-intent-tracker
 
 ## Purpose
 
-Traque le **cycle de vie complet** d'une branche Git en l'associant à son intention d'origine (feature, fix, adr, refactor, hotfix) et déclenche les actions appropriées selon l'état courant. Complète `branch-cleaner` CTULU en ajoutant la dimension sémantique : une branche sans PR depuis > 30j **et** sans intent actif est candidate à la suppression ; une branche avec intent vivant est à protéger même orpheline.
+Associe chaque branche git à son **EPIC d'origine**, sa **passe de création**, et une **date de péremption estimée**. Alerte si une branche dépasse N jours sans PR ouverte. Complément de `branch-audit-cleanup` pour la dimension intentionnelle — répond à la question "*pourquoi cette branche existe-t-elle ?*" avant de la supprimer.
 
 ## Trigger
 
 Utiliser quand :
-- une branche est créée, fusionnée ou supprimée sur `gerivdb/*`
-- `list_branches` retourne > 10 branches sur un repo
-- une PR est mergée et la branche source n'est pas auto-supprimée
-- un audit de branches orphelines est demandé
-- besoin de savoir si supprimer une branche est sûr
+- création d'une nouvelle branche `feature/`, `fix/`, `adr-`, `refactor/`
+- branche > 30 jours sans PR ouverte
+- audit branches orphelines détecté
+- validation BRGS pre-push
+- question "peut-on supprimer cette branche ?"
 
-## États du cycle de vie
+## Modèle d'intent par branche
 
-```
-[CREEE] -> [ACTIVE] -> [MERGEE] -> [ARCHIVEE] -> [SUPPRIMEE]
-            |
-         [ABANDONNEE] -> [A_NETTOYER]
-```
-
-| État | Critères | Action recommandée |
-|---|---|---|
-| CRÉÉE | branch existe, 0 commit depuis fork | Vérifier si intent déclaré |
-| ACTIVE | commits récents (≤ 7j) ou PR open | Protéger |
-| MERGÉE | PR merged, branch non supprimée | Supprimer via mcp_github |
-| ABANDONNÉE | > 30j sans commit, sans PR open | Audit intent avant suppression |
-| À_NETTOYER | Abandonnée + pas d'intent vivant | Supprimer |
-| ARCHIVÉE | Taguée, figée volontairement | Ne pas supprimer |
-
-## Nomenclature des intentions
-
-Convention de nommage attendue (RSS-v1) :
-
-```
-feature/{slug}     ->  intent: NOUVELLE_FONCTIONNALITE
-fix/{slug}         ->  intent: CORRECTION_BUG
-adr-{N}-{slug}     ->  intent: DECISION_ARCHITECTURE
-refactor/{slug}    ->  intent: REFACTORING
-hotfix/{slug}      ->  intent: CORRECTIF_URGENCE
-chore/{slug}       ->  intent: MAINTENANCE
-epic/{slug}        ->  intent: EPIC_EN_COURS
+```yaml
+branch:
+  name: feature/t32-cas-gh-passe6
+  repo: gerivdb/ECOS-CLI
+  created: 2026-06-17
+  created_by: ENV1 (Perplexity passe 6)
+  epic_origin: T32 — CAS GitHub integration
+  passe_origin: PASSE-6 LORE transposition
+  expected_lifetime_days: 7
+  pr_number: 962
+  pr_status: merged
+  verdict: SAFE_DELETE
 ```
 
-Branche sans préfixe reconnu -> intent: INCONNU -> déclencher clarification avant suppression.
+## Classification des branches
 
-## Protocole de décision suppression
+| Type | Préfixe attendu | Lifetime max | Règle |
+|---|---|---|---|
+| Feature EPIC | `feature/` | 14 jours | PR obligatoire < 7 jours |
+| Correctif | `fix/` | 7 jours | PR obligatoire < 3 jours |
+| ADR | `adr-` | 30 jours | Review NEXUS requise |
+| Refactor | `refactor/` | 21 jours | PR + validation strate |
+| Feature non-std | Tout autre | 0 jours | WARN immédiat → vérifier |
+
+## Protocole d'audit
+
+### Pour chaque branche active
 
 ```
 [BRANCH_TRACKER] Branche: {nom}
-[BRANCH_TRACKER] Age: {N} jours | Dernier commit: {date}
-[BRANCH_TRACKER] PR associée: {numéro|aucune} | Statut PR: {open|merged|closed|aucune}
-[BRANCH_TRACKER] Intent détecté: {intent} (depuis nom de branche)
-[BRANCH_TRACKER] Intent vivant (issue/epic ouverte): {oui|non}
-[BRANCH_TRACKER] DECISION: {SUPPRIMER|PROTEGER|CLARIFIER}
-[BRANCH_TRACKER] Raison: {raison}
+[BRANCH_TRACKER] Age: {N} jours
+[BRANCH_TRACKER] PR associée: {numéro} | ORPHELINE
+[BRANCH_TRACKER] Epic/Passe: {contexte} | INCONNU
+[BRANCH_TRACKER] Verdict: ACTIVE | PÉRIMÉE | SAFE_DELETE | ORPHELINE_CRITIQUE
 ```
 
-### Règles de décision
+### Règles de verdict
 
 ```
-Si PR merged + branche non supprimée:
-  -> SUPPRIMER (nettoyage post-merge)
-
-Si âge > 30j + PR aucune + intent non vivant:
-  -> SUPPRIMER (branche abandonnée)
-
-Si âge > 30j + intent vivant (issue/epic ouverte):
-  -> PROTEGER + ajouter commentaire sur issue liée
-
-Si nom sans préfixe connu:
-  -> CLARIFIER avant toute action
-
-Si branche = main|master|develop|staging:
-  -> JAMAIS SUPPRIMER (branche protégée)
+PR mergée                   → SAFE_DELETE (supprimer immédiatement)
+PR ouverte                  → ACTIVE (conserver)
+Pas de PR + age < 7j        → RÉCENTE (surveiller)
+Pas de PR + age 7-30j       → PÉRIMÉE (demander intention)
+Pas de PR + age > 30j       → ORPHELINE_CRITIQUE (action requise)
+Préfixe non-standard        → WARN + vérification manuelle
 ```
 
-## Application session 2026-06-18 (ECOS-CLI)
+## Cas réel — session ECOS-CLI 2026-06-18
 
-Branches supprimées durant la session :
+```
+feat/marrpc-v3-consolidation
+  Age: ~4 mois (créée 2026-02-22)
+  PR: AUCUNE
+  Verdict: ORPHELINE_CRITIQUE
+  Action: supprimée après vérification du message commit
+  ("validé en review" → travail déjà intégré ailleurs)
+```
 
-| Branche | Intent détecté | État | Décision |
-|---|---|---|---|
-| `feature/remove-llm-rules` | NOUVELLE_FONCTIONNALITE | Mergée (PR #34) | SUPPRIMER |
-| `feature/audit-branch-cleanup` | NOUVELLE_FONCTIONNALITE | Mergée (PR #35) | SUPPRIMER |
-| `refactor/restructure-docs` | REFACTORING | Abandonnée > 30j | SUPPRIMER |
-| `feature/sync-improvements` | NOUVELLE_FONCTIONNALITE | Abandonnée > 30j | SUPPRIMER |
-| `fix/token-expiry` | CORRECTION_BUG | Abandonnée > 30j | SUPPRIMER |
+Ce skill aurait détecté cette branche à J+30 et généré une alerte préventive.
 
 ## Intégration écosystème
 
-- **Avant** : `ctulu-tool-selector` (choisir `branch-cleaner` vs mcp_github natif)
-- **Après** : `hook-validation-reporter` (rapport post-nettoyage)
-- **Outil CTULU** : `branch-cleaner` pour le nettoyage batch
-- **Outil GitHub** : `mcp_github delete_branch` pour suppressions ponctuelles
-- **Règle** : ne jamais supprimer sans ce protocole sur les repos CRITICAL/HIGH
+- **Complèmente** : `branch-audit-cleanup` (action de suppression)
+- **Alimente** : `hook-validation-reporter` (rapport BRGS enrichi avec intent)
+- **Référence** : `BRIDGES.yaml` (pre_decision_checks avant toute suppression)
+- **Déclenche** : HITL si branche `adr-*` périmée (impact gouvernance L0)
