@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 pre-commit-encoding-check — Bloque les commits contenant des caracteres hors CP1252
