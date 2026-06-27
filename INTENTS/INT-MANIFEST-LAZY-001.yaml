@@ -1,0 +1,33 @@
+# INTENT — INT-MANIFEST-LAZY-001
+# IntentHash: 0xSKILLS_MANIFEST_LAZY_LOAD_20260627
+# Strata: L3 (DevTools / SKILLS)
+# Status: proposed
+
+intent:
+  id: INT-MANIFEST-LAZY-001
+  title: "Lazy loading du MANIFEST via menu compact"
+  created: "2026-06-27"
+  author: gerivdb
+  priority: P0
+  phi_cps: 4.7
+
+problem: |
+  MANIFEST.json (~40 Ko, ~10 000 tokens) est injecté intégralement à chaque session LLM.
+  Cela consomme ~8% du budget de contexte disponible (128K) avant toute interaction.
+  Résultat : context anxiety accrue, tokens brûlés sur du bruit, velocity nulle.
+
+hypothesis: |
+  Remplacer l'injection massive par un menu compact (<200 tokens) + chargement à la demande
+  via ctulu_resolver.py réduit de 78% les tokens/session (référence : harness-engineering-guide).
+
+success_criteria:
+  - menu.yaml existe et tient en <200 tokens
+  - ctulu_resolver.py expose get_menu() et load_skill(name)
+  - MANIFEST.json n'est plus injecté en entier au boot
+  - Aucune régression sur les 63 skills existantes
+
+refs:
+  - guide: https://github.com/nexu-io/harness-engineering-guide/blob/main/guide/skill-system.md
+  - prd: PRD/PRD-MANIFEST-LAZY-001.md
+  - epic: EPICS/EPIC-MANIFEST-LAZY-001.md
+  - adr: ADR/ADR-001-lazy-skill-menu.md
