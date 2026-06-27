@@ -1,17 +1,25 @@
+date: '2026-06-27'
+intent_hash: 0XSKILLS_ROADMAP_V1_20260627
+milestones:
+- dependencies: []
+  description: Création de la structure ROADMAPS/ (phase 2)
+  id: M-001
+  name: ROADMAPS/ initial
+  owner: SKILLS core
+  reference: ADR-20260625-003-VECTUS
+  status: done
+  target_date: '2026-06-27'
+  unlocks:
+  - INTENT_COLLECTOR
+- dependencies:
+  - M-001
+  description: Créer les intents manquants pour ce repo
+  id: M-002
+  name: Formalisation des intents
+  owner: SKILLS core
+  status: not_started
+  target_date: '2026-07-26'
+  unlocks: []
+repo: gerivdb/SKILLS
 type: ROADMAP_MILESTONES
 version: '1.0'
-intent_hash: 0XSKILLS_ROADMAP_V1_20260626
-date: '2026-06-26'
-repo: gerivdb/SKILLS
-milestones:
-- id: M-001
-  name: ROADMAPS/ initial
-  description: Deploiement RSS-v3 via generate_roadmap_template.py
-  owner: SCO7
-  status: done
-  target_date: '2026-06-26'
-  dependencies: []
-  unlocks:
-  - VECTOR_COLLECTOR
-  - RESULTANTE_ENGINE
-  reference: ADR-20260625-003-VECTUS
