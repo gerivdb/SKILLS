@@ -1,0 +1,37 @@
+# Fallback model configuration for llm-rate-limit-fallback skill
+# Source: D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\skills\llm-rate-limit-fallback\fallback.yaml
+
+fallback_models:
+  - id: "z.ai/glm-4.5"
+    provider: "openrouter"
+    free: true
+    priority: 1
+    reasoning: "high"
+    context_window: 131072
+    notes: "GLM-4.5 -- free, high limits, strong reasoning"
+  
+  - id: "qwen/qwen3-coder"
+    provider: "openrouter"
+    free: true
+    priority: 2
+    reasoning: "high"
+    context_window: 32768
+    notes: "Qwen3-Coder -- free, code-specialized, high limits"
+  
+  - id: "nvidia/nemotron-3-ultra-550b-a55b"
+    provider: "openrouter"
+    free: false
+    priority: 3
+    reasoning: "high"
+    context_window: 131072
+    notes: "Nemotron 3 Ultra (paid) -- same model, no rate limit"
+
+rate_limit_pattern: "Worker local total request limit reached \\(\\d+/32\\)"
+max_retries: 1
+log_to_wal: true
+
+# Detection signatures (backup to regex)
+error_signatures:
+  - "ResourceExhausted: Worker local total request limit reached"
+  - "Upstream error from Nvidia: ResourceExhausted"
+  - "Worker local total request limit reached (32/32)"
