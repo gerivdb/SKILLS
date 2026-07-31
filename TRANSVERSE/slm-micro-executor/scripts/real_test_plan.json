@@ -1,0 +1,21 @@
+{
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "read",
+      "input": {"path": "D:/DO/WEB/TOOLS/L4-TOOLS/SKILLS/TRANSVERSE/atomic-task-planner/scripts/plan.py"},
+      "output": "Lire le script plan.py",
+      "verify": "python -c \"import sys; sys.exit(0 if __import__('pathlib').Path(r'D:/DO/WEB/TOOLS/L4-TOOLS/SKILLS/TRANSVERSE/atomic-task-planner/scripts/plan.py').exists() else 1)\"",
+      "tokens_est": 80
+    },
+    {
+      "id": "step-2",
+      "tool": "bash",
+      "input": {"command": "echo 'Verification complete'"},
+      "output": "Verifier creation",
+      "verify": "echo 'Verification complete'",
+      "tokens_est": 50
+    }
+  ],
+  "deps": [{"from": "step-1", "to": "step-2"}]
+}
