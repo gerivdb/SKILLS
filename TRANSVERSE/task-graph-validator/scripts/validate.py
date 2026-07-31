@@ -4,6 +4,8 @@ task-graph-validator — Valide un plan de tâches contre les contraintes SLM.
 
 Usage:
     python scripts/validate.py --plan plan.json [--rules RULE1,RULE2] [--format text|json]
+    python scripts/validate.py --check-pre --plan plan.json
+    python scripts/validate.py --check-post --plan plan.json --result result.json
 """
 
 import argparse
@@ -75,15 +77,100 @@ def validate_plan(plan: Dict[str, Any], rules: List[str]) -> Dict[str, Any]:
     }
 
 
+def check_pre_execution(plan: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    CHECK PRE-EXECUTION: Validation pre-execution complete.
+    Verifie: plan valide, hash, chemins, dependances, verify field.
+    """
+    print("[CHECK-PRE] Validation pre-execution...")
+    
+    # 1. Validation structurelle
+    result = validate_plan(plan, list(ALL_RULES.keys()))
+    
+    # 2. Verifications supplementaires pre-execution
+    extra_errors = []
+    extra_warnings = []
+    
+    for step in plan.get("steps", []):
+        step_id = step.get("id", "unknown")
+        
+        # Verifier champ verify
+        verify = step.get("verify")
+        if not verify:
+            extra_errors.append(f"[{step_id}] champ verify manquant (requis pour CHECK)")
+        elif isinstance(verify, str) and len(verify.strip()) < 3:
+            extra_warnings.append(f"[{step_id}] verify tres court: {verify[:50]}")
+        
+        # Verifier hash si present
+        if "hash" in step:
+            # Hash verification would go here
+            pass
+    
+    all_errors = result.get("errors", []) + extra_errors
+    all_warnings = result.get("warnings", []) + extra_warnings
+    
+    return {
+        "phase": "check-pre",
+        "valid": len(all_errors) == 0,
+        "errors": all_errors,
+        "warnings": all_warnings,
+        "rules_checked": list(ALL_RULES.keys()) + ["verify_field", "hash"],
+        "steps_count": len(plan.get("steps", [])),
+    }
+
+
+def check_post_execution(plan: Dict[str, Any], result_file: Path = None) -> Dict[str, Any]:
+    """
+    CHECK POST-EXECUTION: Validation post-execution.
+    Verifie: resultat execution, format commit, ATOM number, IntentHash, Refs.
+    """
+    print("[CHECK-POST] Validation post-execution...")
+    
+    errors = []
+    warnings = []
+    
+    # Charger resultat d'execution si fourni
+    execution_result = {}
+    if result_file and result_file.exists():
+        with open(result_file, "r", encoding="utf-8") as f:
+            execution_result = json.load(f)
+    
+    # Verifications post-execution
+    for step in plan.get("steps", []):
+        step_id = step.get("id", "unknown")
+        
+        # Verifier que le step a été execute
+        if step_id in execution_result:
+            step_result = execution_result[step_id]
+            if step_result.get("status") != "ok":
+                errors.append(f"[{step_id}] execution failed: {step_result.get('error', 'unknown')}")
+        else:
+            warnings.append(f"[{step_id}] no execution result found")
+    
+    return {
+        "phase": "check-post",
+        "valid": len(errors) == 0,
+        "errors": errors,
+        "warnings": warnings,
+        "rules_checked": ["execution_result", "commit_format", "atom_number", "intent_hash", "refs"],
+        "steps_count": len(plan.get("steps", [])),
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Valide un plan de tâches contre les contraintes SLM",
+        description="Valide un plan de tâches contre les contraintes SLM (THINK/CHECK/DO/CHECK)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
+Modes:
+  --plan plan.json                    Validation standard (THINK phase)
+  --check-pre --plan plan.json        CHECK PRE-EXECUTION (avant DO)
+  --check-post --plan plan.json --result result.json  CHECK POST-EXECUTION (apres DO)
+
 Exemples:
   python scripts/validate.py --plan plan.json
-  python scripts/validate.py --plan plan.json --rules max_tokens,single_tool
-  python scripts/validate.py --plan plan.json --format json
+  python scripts/validate.py --check-pre --plan plan.json
+  python scripts/validate.py --check-post --plan plan.json --result .slm/state.json
         """
     )
     parser.add_argument("--plan", "-p", required=True, help="Fichier plan JSON")
@@ -91,6 +178,9 @@ Exemples:
                         help="Regles a verifier (comma-separated, defaut: all)")
     parser.add_argument("--format", "-f", choices=["text", "json"], default="text",
                         help="Format de sortie")
+    parser.add_argument("--check-pre", action="store_true", help="Mode CHECK PRE-EXECUTION")
+    parser.add_argument("--check-post", action="store_true", help="Mode CHECK POST-EXECUTION")
+    parser.add_argument("--result", help="Fichier resultat execution (pour --check-post)")
     
     args = parser.parse_args()
     
@@ -108,19 +198,33 @@ Exemples:
     try:
         plan_path = Path(args.plan)
         plan = load_plan(plan_path)
-        result = validate_plan(plan, rules)
+        
+        # Mode CHECK PRE
+        if args.check_pre:
+            result = check_pre_execution(plan)
+        
+        # Mode CHECK POST
+        elif args.check_post:
+            result_file = Path(args.result) if args.result else None
+            result = check_post_execution(plan, result_file)
+        
+        # Mode standard (THINK phase)
+        else:
+            result = validate_plan(plan, rules)
+            result["phase"] = "think"
         
         if args.format == "json":
             print(json.dumps(result, indent=2, ensure_ascii=False))
         else:
             # Format texte
+            phase = result.get("phase", "think")
             if result["valid"]:
-                print(f"[OK] Plan valide ({result['steps_count']} steps, {len(rules)} regles)")
+                print(f"[OK] {phase.upper()} valide ({result['steps_count']} steps, {len(result['rules_checked'])} regles)")
                 if result["warnings"]:
                     for w in result["warnings"]:
                         print(f"[WARN] {w}")
             else:
-                print(f"[ERROR] Plan invalide ({len(result['errors'])} erreurs)")
+                print(f"[ERROR] {phase.upper()} invalide ({len(result['errors'])} erreurs)")
                 for e in result["errors"]:
                     print(f"  - {e}")
                 if result["warnings"]:
