@@ -1,0 +1,11 @@
+{
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "read",
+      "input": {"path": "relative/path.py"},
+      "output": "content",
+      "tokens_est": 200
+    }
+  ]
+}
