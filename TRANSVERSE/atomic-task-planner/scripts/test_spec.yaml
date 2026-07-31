@@ -1,0 +1,8 @@
+task: "Creer validateur frontmatter pour atoms.md"
+context: "Repo ECOS-CLI, besoin validation YAML frontmatter"
+template: "A"
+constraints:
+  max_tokens: 150
+  single_tool: true
+  absolute_paths: true
+  verify_included: true
