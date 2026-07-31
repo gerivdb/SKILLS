@@ -135,13 +135,16 @@ def check_post_execution(plan: Dict[str, Any], result_file: Path = None) -> Dict
         with open(result_file, "r", encoding="utf-8") as f:
             execution_result = json.load(f)
     
+    # Obtenir les resultats d'etape
+    step_results = execution_result.get("step_results", {})
+    
     # Verifications post-execution
     for step in plan.get("steps", []):
         step_id = step.get("id", "unknown")
         
-        # Verifier que le step a été execute
-        if step_id in execution_result:
-            step_result = execution_result[step_id]
+        # Verifier que le step a ete execute
+        if step_id in step_results:
+            step_result = step_results[step_id]
             if step_result.get("status") != "ok":
                 errors.append(f"[{step_id}] execution failed: {step_result.get('error', 'unknown')}")
         else:
