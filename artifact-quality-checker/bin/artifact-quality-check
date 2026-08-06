@@ -2,9 +2,18 @@
 """artifact-quality-check — Check artifact quality with probes P-101..P-109."""
 
 import sys
+import io
+import json
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+# Fix Windows console encoding
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
+# Add mox-validator parent to path so mox_validator package is importable
+mox_validator_parent = Path(__file__).resolve().parent.parent.parent / "mox-validator"
+sys.path.insert(0, str(mox_validator_parent))
 from mox_validator import MOXValidator
 
 
@@ -48,7 +57,6 @@ def main():
         ],
     }
     
-    import json
     print(json.dumps(report, indent=2, ensure_ascii=False))
     
     sys.exit(0 if result.valid else 1)

@@ -130,8 +130,43 @@ class MOXValidator:
         for line in content.splitlines():
             if line.startswith("## "):
                 section = line[3:].strip().lower().replace(" ", "_")
+                # Strip leading numbering like "1. ", "2. ", etc.
+                section = re.sub(r'^\d+\.\s*', '', section)
+                # Normalize accents
+                section = self._normalize_accents(section)
                 sections.append(section)
         return sections
+
+    @staticmethod
+    def _normalize_accents(text: str) -> str:
+        """Normalize accented characters to ASCII equivalents."""
+        accents = {
+            'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a',
+            'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e',
+            'ì': 'i', 'í': 'i', 'î': 'i', 'ï': 'i',
+            'ò': 'o', 'ó': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o',
+            'ù': 'u', 'ú': 'u', 'û': 'u', 'ü': 'u',
+            'ý': 'y', 'ÿ': 'y',
+            'ç': 'c',
+            'ñ': 'n',
+            'œ': 'oe', 'æ': 'ae',
+        }
+        result = []
+        for char in text:
+            result.append(accents.get(char, char))
+        return ''.join(result)
+
+    @staticmethod
+    def _normalize_section_name(name: str) -> str:
+        """Normalize section name for comparison: lowercase, strip accents, remove stop words, remove extra underscores."""
+        # Lowercase and normalize accents
+        name = name.lower()
+        name = MOXValidator._normalize_accents(name)
+        # Remove common French stop words
+        stop_words = {'de', 'du', 'des', 'le', 'la', 'les', 'un', 'une', 'et', 'au', 'aux', 'par', 'pour', 'vers', 'avec', 'sans', 'sous', 'sur', 'dans', 'entre', 'contre', 'avant', 'apres', 'depuis', 'pendant', 'jusqua', 'chez'}
+        words = name.split('_')
+        words = [w for w in words if w not in stop_words]
+        return '_'.join(words)
 
     def _check_frontmatter_complete(self, frontmatter: Dict[str, Any]) -> bool:
         """Check if all required frontmatter fields are present."""
@@ -353,11 +388,14 @@ class MOXValidator:
             "INTENT": ["objectif", "contexte", "perimetre", "execution_plan"],
         }
         
-        sections = [s.lower().replace(" ", "_") for s in self._detect_sections(content)]
+        sections = [self._normalize_section_name(s) for s in self._detect_sections(content)]
         required = required_sections.get(doc_type, required_sections["PRD"])
         
         for section in required:
-            if section not in sections:
+            # Normalize required section name too
+            normalized_required = self._normalize_section_name(section)
+            found = any(normalized_required == detected or normalized_required in detected or detected in normalized_required for detected in sections)
+            if not found:
                 result.add_issue("WARN", "detect-gaps", f"Missing section: {section}", fix=f"Add {section} section")
         
         return result
