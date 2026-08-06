@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+"""mox-classify — Classify a document by type."""
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from mox_validator import MOXValidator
+
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: mox-classify <document_path>")
+        sys.exit(1)
+    
+    document_path = Path(sys.argv[1])
+    if not document_path.exists():
+        print(f"[ERROR] Document not found: {document_path}")
+        sys.exit(1)
+    
+    mox = MOXValidator()
+    result = mox.classify_document(document_path)
+    
+    print(f"[MOX] Classification: {result['type']}")
+    print(f"[MOX] Valid: {result['valid']}")
+    print(f"[MOX] Sections: {', '.join(result['sections_present'])}")
+    print(f"[MOX] Frontmatter complete: {result['frontmatter_complete']}")
+    
+    sys.exit(0 if result["valid"] else 1)
+
+
+if __name__ == "__main__":
+    main()
