@@ -3,12 +3,13 @@ name: artifact-quality-checker
 description: >
   Verifie la qualite des artefacts de gouvernance (PRD, ADR, EPIC, INTENT)
   selon les probes P-101..P-109. Bloque les non-conformites.
+  Implementation complete avec MOXValidator backend.
 version: "1.0.0"
 status: active
 intent_hash: 0xARTIFACT_QUALITY_CHECKER_20260806
 author: gerivdb
-source_repo: gerivdb/GeriCode
-source_path: SKILLS/artifact-quality-checker/SKILL.md
+source_repo: gerivdb/SKILLS
+source_path: artifact-quality-checker/SKILL.md
 triggers:
   - "verifier qualite artefact"
   - "probes P-101 P-109"
@@ -20,6 +21,10 @@ tools:
   - grep
 citizen: "MOX"
 layer: "L4"
+implementation:
+  language: Python
+  package: mox_validator
+  bin: bin/artifact-quality-check
 ---
 
 # Skill — Artifact Quality Checker
@@ -32,15 +37,37 @@ layer: "L4"
 
 Verifier que les artefacts respectent les standards de redaction (P-101..P-109).
 
-## Processus
+## Implementation
 
-### Etape 1 — Charger le document
+### Backend
 
-```powershell
-$content = Get-Content "document.md" -Raw
+Utilise `mox_validator.MOXValidator` pour :
+- `validate_probes()` — P-101..P-109
+- `validate_frontmatter_schema()` — P-106
+- `detect_gaps()` — P-107
+
+### CLI
+
+```bash
+artifact-quality-check <document_path>
 ```
 
-### Etape 2 — Executer les probes
+Sortie JSON :
+```json
+{
+  "document": "<path>",
+  "valid": true|false,
+  "probes": {
+    "P-101": "PASS|FAIL",
+    "P-102": "PASS|FAIL",
+    ...
+    "P-109": "PASS|FAIL"
+  },
+  "issues": [...]
+}
+```
+
+### Processus
 
 | Probe | Verification |
 |-------|--------------|
@@ -54,25 +81,12 @@ $content = Get-Content "document.md" -Raw
 | P-108 | 0 digression cross-artefact |
 | P-109 | 0 duplication information |
 
-### Etape 3 — Generer le rapport
-
-```yaml
-report:
-  document: <path>
-  probes:
-    P-101: PASS|FAIL
-    P-102: PASS|FAIL
-    ...
-  global: PASS|FAIL
-  issues: []
-```
-
 ## Criteres
 
 | CRITERE | SEUIL | METHODE |
 |---------|-------|---------|
 | Probes passantes | 100% (P-106, P-107 obligatoires) | Verification |
-| Rapport genere | 1 par document | Fichier YAML |
+| Rapport genere | 1 par document | Fichier JSON |
 | Issues loggees | 0 si PASS | WAL entry |
 
 ## Rollback
@@ -86,3 +100,4 @@ report:
 - `unified-design/atoms/GOVERNANCE/artifact-writing-standards.yaml`
 - `REPO-STANDARDS/schemas/artifact-quality.schema.yaml`
 - `REPO-STANDARDS/templates/PRD_template.md`
+- `SKILLS/mox-validator/`

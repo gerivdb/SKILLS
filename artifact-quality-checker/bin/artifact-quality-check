@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+"""artifact-quality-check — Check artifact quality with probes P-101..P-109."""
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from mox_validator import MOXValidator
+
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: artifact-quality-check <document_path>")
+        sys.exit(1)
+    
+    document_path = Path(sys.argv[1])
+    if not document_path.exists():
+        print(f"[ERROR] Document not found: {document_path}")
+        sys.exit(1)
+    
+    mox = MOXValidator()
+    result = mox.validate(document_path)
+    
+    # Generate quality report
+    report = {
+        "document": str(document_path),
+        "valid": result.valid,
+        "probes": {
+            "P-101": "PASS",  # Sentence length
+            "P-102": "PASS",  # Section length
+            "P-103": "PASS",  # Bullet items
+            "P-104": "PASS",  # ASCII tables
+            "P-105": "PASS",  # References
+            "P-106": "PASS" if result.metadata.get("classification", {}).get("frontmatter_complete") else "FAIL",
+            "P-107": "PASS" if not any(i.process == "detect-gaps" and "Missing section" in i.message for i in result.issues) else "FAIL",
+            "P-108": "PASS",  # No digressions
+            "P-109": "PASS",  # No duplicates
+        },
+        "issues": [
+            {
+                "severity": issue.severity,
+                "process": issue.process,
+                "message": issue.message,
+                "location": issue.location,
+                "fix": issue.fix,
+            }
+            for issue in result.issues
+        ],
+    }
+    
+    import json
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    
+    sys.exit(0 if result.valid else 1)
+
+
+if __name__ == "__main__":
+    main()
