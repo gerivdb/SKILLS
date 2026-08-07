@@ -1,0 +1,5 @@
+service:
+  name: harness-probes
+  probes:
+    start_id: P-701
+    end_id: P-711
