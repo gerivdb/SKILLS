@@ -10,7 +10,7 @@ adr_ref: adr-preflight-pipeline-20260608
 
 ## Objectif
 Remplace 2 appels `git status --short` par 1 seul.
-Vérifie working tree propre ET fichiers untracked en une passe.
+Verifie working tree propre ET fichiers untracked en une passe.
 
 ## Protocole
 
@@ -18,7 +18,7 @@ Vérifie working tree propre ET fichiers untracked en une passe.
 # 1 seul appel git
 $status = git status --short 2>&1
 
-# Séparer modified/staged vs untracked
+# Separer modified/staged vs untracked
 $modified  = $status | Where-Object { $_ -match "^[MAD ]" }
 $untracked = $status | Where-Object { $_ -match "^\?\?" }
 
@@ -32,11 +32,11 @@ if ($modified -or $untracked) { exit 1 }   # bloquant
 ```
 
 ## Migration
-- Remplacer tout appel à `workspace-sanitizer` par `workspace-audit`
-- Remplacer tout appel à `untracked-auditor` par `workspace-audit`
-- Mettre à jour `pre-flight-orchestrator` steps 3+4 → step 3 unique
+- Remplacer tout appel a `workspace-sanitizer` par `workspace-audit`
+- Remplacer tout appel a `untracked-auditor` par `workspace-audit`
+- Mettre a jour `pre-flight-orchestrator` steps 3+4 -> step 3 unique
 
-## Log unifié
+## Log unifie
 ```
 [WORKSPACE_AUDIT] CLEAN
 [WORKSPACE_AUDIT] DIRTY: 2 modified

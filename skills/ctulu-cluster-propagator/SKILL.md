@@ -13,11 +13,11 @@ Le stage PROPAGATE du pipeline REPOSCOPE-COMPARE. Propage les partitions Louvain
 cluster-propagator --partitions partitions/louvain_20260616.json --scores scores/scores_20260616.json --out NEXUS/metacluster/ --output json
 ```
 
-## Métadonnées de cluster
-Pour chaque cluster détecté:
-- `cluster_id`: identifiant numérique
+## Metadonnees de cluster
+Pour chaque cluster detecte:
+- `cluster_id`: identifiant numerique
 - `repos`: liste des repos membres
-- `centroid_phi`: φ-CPS moyen du cluster
+- `centroid_phi`: phi-CPS moyen du cluster
 - `dominant_strate`: strate majoritaire (L0-L9)
 - `size`: nombre de repos
 
@@ -39,11 +39,11 @@ Pour chaque cluster détecté:
 }
 ```
 
-## Dépendances
-- `louvain-clusterer` (PRD-082): doit avoir tourné avant
+## Dependances
+- `louvain-clusterer` (PRD-082): doit avoir tourne avant
 - `reposcope-scorer` (PRD-081): optionnel, pour centroid_phi
 
 ## Anti-patterns
 - Ne JAMAIS propager sans partitions Louvain valides
-- Ne JAMAIS écraser un clusters_<date>.json existant (immuabilité)
+- Ne JAMAIS ecraser un clusters_<date>.json existant (immuabilite)
 - Ne JAMAIS utiliser centroid_phi sans scores (sera 0.0)

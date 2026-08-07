@@ -1,6 +1,6 @@
 ---
 name: kiva-ci-local
-description: "Template et validation de .kiva/ci.yaml pour pipelines CI locales KIVA-CLI. Génère le template et valide la conformité."
+description: "Template et validation de .kiva/ci.yaml pour pipelines CI locales KIVA-CLI. Genere le template et valide la conformite."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_KIVA_CI_LOCAL_20260807
@@ -19,30 +19,30 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — kiva-ci-local
+# Skill - kiva-ci-local
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Template et validation de `.kiva/ci.yaml`.
+> **Verdict** : **SKILL D'EXECUTION** - Template et validation de `.kiva/ci.yaml`.
 
 ---
 
 ## Objectif
 
-Générer et valider le fichier `.kiva/ci.yaml` pour pipelines CI locales.
+Generer et valider le fichier `.kiva/ci.yaml` pour pipelines CI locales.
 
 ---
 
-## Déclencheur
+## Declencheur
 
-- Création d'un nouveau pipeline CI
+- Creation d'un nouveau pipeline CI
 - Validation d'un pipeline existant
 
 ---
 
-## Entrées
+## Entrees
 
-| Entrée | Type | Description |
+| Entree | Type | Description |
 |--------|------|-------------|
-| `target_dir` | Path | Répertoire du repo |
+| `target_dir` | Path | Repertoire du repo |
 | `stages` | list | Stages du pipeline |
 
 ---
@@ -55,11 +55,11 @@ Générer et valider le fichier `.kiva/ci.yaml` pour pipelines CI locales.
 
 ---
 
-## Règles
+## Regles
 
 1. Stages obligatoires : lint, test, typecheck, validate
 2. Hooks : pre_commit, post_merge
-3. Aucune dépendance cloud
+3. Aucune dependance cloud
 
 ---
 
@@ -78,24 +78,24 @@ generate_ci_yaml(Path("."))
 
 | Test | Description | Attend |
 |------|-------------|--------|
-| `test_generate_ci_yaml` | Génère `.kiva/ci.yaml` | Fichier créé |
-| `test_ci_yaml_has_stages` | Vérifie les stages | 4 stages |
-| `test_ci_yaml_has_hooks` | Vérifie les hooks | 2 hooks |
+| `test_generate_ci_yaml` | Genere `.kiva/ci.yaml` | Fichier cree |
+| `test_ci_yaml_has_stages` | Verifie les stages | 4 stages |
+| `test_ci_yaml_has_hooks` | Verifie les hooks | 2 hooks |
 
 ---
 
-## Référence ADR
+## Reference ADR
 
 - **ADR** : ADR-2026-08-07-007-KIVA_CI_LOCAL
 - **IntentHash** : 0xADR_KIVA_CI_LOCAL_20260807
-- **Dépôt** : gerivdb/GOVERNANCE-HUB
+- **Depot** : gerivdb/GOVERNANCE-HUB
 - **Statut ADR** : proposed
 
 ---
 
-## Rôles
+## Roles
 
-| Rôle | Responsabilité |
+| Role | Responsabilite |
 |------|----------------|
 | `DEV-EXPERIENCE` | Garant de la CI locale |
 
@@ -105,25 +105,25 @@ generate_ci_yaml(Path("."))
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+| PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
 +-----------------------------------------------------------------------------+
 | P-730    .kiva/ci.yaml existe                                                |
-| P-731    Stages lint/test/typecheck/validate présents                       |
-| P-732    Hooks pre_commit/post_merge configurés                              |
+| P-731    Stages lint/test/typecheck/validate presents                       |
+| P-732    Hooks pre_commit/post_merge configures                              |
 +-----------------------------------------------------------------------------+
 ```
 
 ---
 
-## Critères
+## Criteres
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| CRITÈRE    DESCRIPTION                                                      |
+| CRITERE    DESCRIPTION                                                      |
 +-----------------------------------------------------------------------------+
-| ✓          .kiva/ci.yaml présent                                             |
-| ✓          4 stages définis                                                  |
-| ✓          2 hooks configurés                                                |
+| [OK]          .kiva/ci.yaml present                                             |
+| [OK]          4 stages definis                                                  |
+| [OK]          2 hooks configures                                                |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -136,7 +136,7 @@ generate_ci_yaml(Path("."))
 
 ---
 
-## Références
+## References
 
 - `local-kiva-ci-template.yaml`
 - `skill-creation-tdd.yaml`

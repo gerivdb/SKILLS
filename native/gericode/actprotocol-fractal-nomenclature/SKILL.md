@@ -1,10 +1,10 @@
 ---
 name: actprotocol-fractal-nomenclature
 description: >
-  Exécution du design unified-design/designs/actprotocol-fractal-nomenclature.yaml.
-  Applique la nomenclature verrouillée PRD-MOC-{CONTEXT}/ pour éliminer la confusion
-  ontologique N243 (repo/EPIC/dossier). Utiliser pour créer, valider et migrer
-  les structures PRD-MOC selon les règles AEP.
+  Execution du design unified-design/designs/actprotocol-fractal-nomenclature.yaml.
+  Applique la nomenclature verrouillee PRD-MOC-{CONTEXT}/ pour eliminer la confusion
+  ontologique N243 (repo/EPIC/dossier). Utiliser pour creer, valider et migrer
+  les structures PRD-MOC selon les regles AEP.
 version: "1.0.0"
 status: active
 intent_hash: 0xACTPROTOCOL_FRACTAL_NOMENCLATURE_SKILL_20260806
@@ -27,73 +27,73 @@ citizen: "PRIMUS"
 layer: "L4"
 ---
 
-# Skill — ACTPROTOCOL Fractal Nomenclature
+# Skill - ACTPROTOCOL Fractal Nomenclature
 
-> **Verdict** : **SKILL D’EXÉCUTION** — Applique la nomenclature verrouillée
-> `PRD-MOC-{CONTEXT}/` pour éliminer la confusion ontologique `N243`.
+> **Verdict** : **SKILL D'EXECUTION** - Applique la nomenclature verrouillee
+> `PRD-MOC-{CONTEXT}/` pour eliminer la confusion ontologique `N243`.
 
 ---
 
 ## Objectif
 
-Exécuter le design `unified-design/designs/actprotocol-fractal-nomenclature.yaml` pour :
-1. Créer de nouveaux PRD-MOC selon la nomenclature canonique
+Executer le design `unified-design/designs/actprotocol-fractal-nomenclature.yaml` pour :
+1. Creer de nouveaux PRD-MOC selon la nomenclature canonique
 2. Valider les structures existantes
-3. Migrer les anciens termes vers les nouveaux (ex: `PRD-MOC-N243` → `PRD-MOC-ACTPROTOCOL`)
+3. Migrer les anciens termes vers les nouveaux (ex: `PRD-MOC-N243` -> `PRD-MOC-ACTPROTOCOL`)
 
 ---
 
 ## Principes
 
-| Principe | Règle d’application |
+| Principe | Regle d'application |
 |----------|---------------------|
-| **Nomenclature verrouillée** | `PRD-MOC-{CONTEXT}/` uniquement |
+| **Nomenclature verrouillee** | `PRD-MOC-{CONTEXT}/` uniquement |
 | **Pas de nom repo dans MOC** | `N243`, `VERSES`, etc. interdits comme nom de dossier MOC |
-| **Auto-similarité** | Chaque repo applique le même motif AEP |
-| **Ontologie d’abord** | Tous les termes doivent être dans `ONTOLOGY/ONTOLOGY.yaml` |
+| **Auto-similarite** | Chaque repo applique le meme motif AEP |
+| **Ontologie d'abord** | Tous les termes doivent etre dans `ONTOLOGY/ONTOLOGY.yaml` |
 
 ---
 
 ## Processus
 
-### Création d’un nouveau PRD-MOC
+### Creation d'un nouveau PRD-MOC
 
-1. **Créer la structure**
+1. **Creer la structure**
    ```powershell
    New-Item -ItemType Directory -Path "PRD-MOC-{CONTEXT}/fractal" -Force
    New-Item -ItemType Directory -Path "PRD-MOC-{CONTEXT}/components" -Force
    ```
 
-2. **Créer README.md**
+2. **Creer README.md**
    ```markdown
    # PRD-MOC-{CONTEXT}
    ```
 
-3. **Créer les fractals**
+3. **Creer les fractals**
    ```
    PRD-MOC-{CONTEXT}/fractal/PRD-MOC-{CONTEXT}-{SLUG}.md
    ```
 
-4. **Ajouter à l’index**
+4. **Ajouter a l'index**
    ```powershell
-   # Mettre à jour PRD-000-index.md
+   # Mettre a jour PRD-000-index.md
    ```
 
-### Validation d’un PRD-MOC existant
+### Validation d'un PRD-MOC existant
 
-1. **Vérifier la structure**
+1. **Verifier la structure**
    ```powershell
    Test-Path "PRD-MOC-{CONTEXT}/README.md"
    Test-Path "PRD-MOC-{CONTEXT}/fractal/"
    Test-Path "PRD-MOC-{CONTEXT}/components/"
    ```
 
-2. **Vérifier les noms**
+2. **Verifier les noms**
    ```powershell
    Get-ChildItem "PRD-MOC-{CONTEXT}/fractal" -File | Where-Object { $_.Name -notmatch "^PRD-MOC-{CONTEXT}-" }
    ```
 
-3. **Vérifier les termes**
+3. **Verifier les termes**
    ```powershell
    python .kilo/scripts/verify-terms.py
    ```
@@ -112,7 +112,7 @@ Exécuter le design `unified-design/designs/actprotocol-fractal-nomenclature.yam
 
 3. **Renommage** (utiliser `git-atomic-rename` skill)
 
-4. **Vérification**
+4. **Verification**
    ```powershell
    # 0 occurrence des anciens termes
    ```
@@ -126,13 +126,13 @@ Exécuter le design `unified-design/designs/actprotocol-fractal-nomenclature.yam
 
 ---
 
-## Rôles
+## Roles
 
-| Rôle | Responsabilité |
+| Role | Responsabilite |
 |------|----------------|
-| `PRIMUS` | Orchestre la création/maintenance des PRD-MOC/ |
+| `PRIMUS` | Orchestre la creation/maintenance des PRD-MOC/ |
 | `MOX` | Valide la structure AEP |
-| `ARGUS` | Détecte les termes litigieux |
+| `ARGUS` | Detecte les termes litigieux |
 | `TOPOS` | Valide les chemins et strates |
 | `NEXUS` | Trace les modifications dans WAL |
 
@@ -142,12 +142,12 @@ Exécuter le design `unified-design/designs/actprotocol-fractal-nomenclature.yam
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+| PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
 +-----------------------------------------------------------------------------+
 | P-1101   PRD-MOC-{CONTEXT}/ existe                                           |
 | P-1102   fractal/ contient uniquement PRD-MOC-{CONTEXT}-*.md                 |
 | P-1103   components/ contient uniquement templates/composants               |
-| P-1104   README.md présent et à jour                                         |
+| P-1104   README.md present et a jour                                         |
 | P-1105   Aucun terme interdit dans les noms/chemins/contenu                 |
 | P-1106   verify-terms.py passe                                               |
 +-----------------------------------------------------------------------------+
@@ -155,17 +155,17 @@ Exécuter le design `unified-design/designs/actprotocol-fractal-nomenclature.yam
 
 ---
 
-## Critères
+## Criteres
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| CRITÈRE    DESCRIPTION                                                      |
+| CRITERE    DESCRIPTION                                                      |
 +-----------------------------------------------------------------------------+
-| ✓          PRD-MOC-{CONTEXT}/ présent et valide                             |
-| ✓          Structure AEP conforme (fractal/, components/, README.md)        |
-| ✓          Nomenclature cohérente (PRD-MOC-{CONTEXT}-{SLUG}.md)            |
-| ✓          0 terme interdit dans tout le sous-arbre                         |
-| ✓          verify-terms.py passe                                            |
+| [OK]          PRD-MOC-{CONTEXT}/ present et valide                             |
+| [OK]          Structure AEP conforme (fractal/, components/, README.md)        |
+| [OK]          Nomenclature coherente (PRD-MOC-{CONTEXT}-{SLUG}.md)            |
+| [OK]          0 terme interdit dans tout le sous-arbre                         |
+| [OK]          verify-terms.py passe                                            |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -179,7 +179,7 @@ Exécuter le design `unified-design/designs/actprotocol-fractal-nomenclature.yam
 
 ---
 
-## Références
+## References
 
 - Design : `unified-design/designs/actprotocol-fractal-nomenclature.yaml`
 - Ontologie : `ONTOLOGY/ONTOLOGY.yaml`

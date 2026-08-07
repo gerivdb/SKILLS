@@ -4,39 +4,39 @@ version: "1.0.0"
 intent_hash: 0xSKILL_YAML_DEBUG_FORENSIC_20260807
 ---
 
-# Skill — yaml-debug-forensic
+# Skill - yaml-debug-forensic
 
 ## Objectif
 
 Diagnostiquer les erreurs YAML courantes sans modifier le fichier.
-Génère un rapport de corruption.
+Genere un rapport de corruption.
 
-## Déclencheur
+## Declencheur
 
 - Fichier YAML qui refuse de parser
-- Erreur après tentative d'injection
-- Audit préventif de `known_repositories.yaml`
-- Vérification avant commit
+- Erreur apres tentative d'injection
+- Audit preventif de `known_repositories.yaml`
+- Verification avant commit
 
-## Entrées
+## Entrees
 
-| Entrée | Type | Description |
+| Entree | Type | Description |
 |--------|------|-------------|
-| `yaml_path` | Path | Chemin du fichier YAML à diagnostiquer |
+| `yaml_path` | Path | Chemin du fichier YAML a diagnostiquer |
 
 ## Sorties
 
 | Sortie | Type | Description |
 |--------|------|-------------|
-| `report` | YAMLCorruptionReport | Rapport de corruption détaillé |
+| `report` | YAMLCorruptionReport | Rapport de corruption detaille |
 
-## Vérifications
+## Verifications
 
-| Vérification | Description |
+| Verification | Description |
 |--------------|-------------|
 | Parse YAML | Le fichier parse-t-il correctement ? |
-| Clés dupliquées | Y a-t-il des clés dupliquées dans un mapping ? |
-| Quotes cassées | Les quoted strings sont-elles fermées ? |
+| Cles dupliquees | Y a-t-il des cles dupliquees dans un mapping ? |
+| Quotes cassees | Les quoted strings sont-elles fermees ? |
 | Ancres invalides | Les alias `*anchor` existent-ils ? |
 
 ## Exemple d'usage
@@ -59,15 +59,15 @@ else:
 
 | Test | Description |
 |------|-------------|
-| `test_valid_yaml` | YAML valide → rapport clean |
-| `test_parse_error` | YAML invalide → parse_ok=False |
-| `test_duplicate_keys` | Détecte les clés dupliquées |
-| `test_broken_quotes` | Détecte les quotes cassées |
-| `test_invalid_anchors` | Détecte les ancres invalides |
+| `test_valid_yaml` | YAML valide -> rapport clean |
+| `test_parse_error` | YAML invalide -> parse_ok=False |
+| `test_duplicate_keys` | Detecte les cles dupliquees |
+| `test_broken_quotes` | Detecte les quotes cassees |
+| `test_invalid_anchors` | Detecte les ancres invalides |
 
-## Référence ADR
+## Reference ADR
 
 - **ADR** : ADR-2026-08-07-003-YAML-DEBUG-FORENSIC
 - **IntentHash** : 0xADR_YAML_DEBUG_FORENSIC_20260807
-- **Dépôt** : gerivdb/GOVERNANCE-HUB
+- **Depot** : gerivdb/GOVERNANCE-HUB
 - **Statut ADR** : proposed

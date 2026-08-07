@@ -6,7 +6,7 @@ intent_hash: 0xSKL006_SPIDX_PROOF_READER_20260802
 status: active
 ---
 
-# Skill: SKL006 — SPIDX Proof Reader (ADMG/TALEX)
+# Skill: SKL006 - SPIDX Proof Reader (ADMG/TALEX)
 
 ## Purpose
 Validates SPIDX (Structured Proof Index) causal rewrites for narrative coherence. Reads SPIDX documents, verifies causal chain integrity, checks IntentHash locks, and produces validation reports with ternary diagnostics.
@@ -139,18 +139,18 @@ def validate_spidx_document(spidx: dict) -> tuple[bool, dict]:
 
 ```
 SPIDX Document (YAML/JSON)
-        │
-        ▼
+        |
+        v
 Parse & Structure Check
-        │
-        ├──► IntentHash Verification (per entry + root)
-        ├──► Causal DAG Check (no cycles, deps exist)
-        ├──► Operator Validity (BATVERSE 7)
-        ├──► Ternary State Format (243 trits each)
-        ├──► Confidence Propagation (K3 logic)
-        └──► Lore Compliance (SKL002)
-                    │
-                    ▼
+        |
+        |----> IntentHash Verification (per entry + root)
+        |----> Causal DAG Check (no cycles, deps exist)
+        |----> Operator Validity (BATVERSE 7)
+        |----> Ternary State Format (243 trits each)
+        |----> Confidence Propagation (K3 logic)
+        `----> Lore Compliance (SKL002)
+                    |
+                    v
 Validation Report + IntentHash Lock
 ```
 

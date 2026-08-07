@@ -20,12 +20,12 @@ Base skill (repo-ref-validator) validates single-file references. This skill add
 - Cross-repo BRIDGES.yaml validation
 - Deployment target verification (ECOS_ROOT.json)
 - Stratum compliance (L0-L4 paths)
-- Registry consistency (repos.json ↔ known_repositories.yaml)
+- Registry consistency (repos.json <-> known_repositories.yaml)
 
 ## Validation Targets
 
 ### 1. BRIDGES.yaml
-- Every rom_repo → 	o_repo pair must exist in both registries
+- Every rom_repo -> 	o_repo pair must exist in both registries
 - interface field must match actual API/contract
 - status: active/deprecated must match git tags
 
@@ -35,12 +35,14 @@ Base skill (repo-ref-validator) validates single-file references. This skill add
 - No orphan deployments (target not in registry)
 
 ### 3. Import/Dependency Graph
-- Python/JS imports across repos resolved via epo-path-resolver
+- Python/JS imports across repos resolved via 
+epo-path-resolver
 - Version compatibility: pyproject.toml / package.json cross-check
 - Circular dependency detection
 
 ### 4. Registry Consistency
-- epos.json (TOPOS) ↔ known_repositories.yaml (GOVERNANCE-HUB) sync
+- 
+epos.json (TOPOS) <-> known_repositories.yaml (GOVERNANCE-HUB) sync
 - local_path must exist and be under correct stratum
 - status field: active/dormant/deprecated/archived consistency
 
@@ -65,7 +67,7 @@ status: PASS
 - Validating single repo without cross-repo context
 - Ignoring BRIDGES.yaml in multi-repo changes
 - Deployment to non-registered targets
-- Registry drift (repos.json ≠ known_repositories.yaml)
+- Registry drift (repos.json != known_repositories.yaml)
 
 ## References
 - Base: repo-ref-validator (skill)

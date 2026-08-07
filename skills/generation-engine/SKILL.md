@@ -6,7 +6,7 @@ intent_hash: 0xSKL003_GENERATION_ENGINE_20260802
 status: active
 ---
 
-# Skill: SKL003 — Generation Engine (ADMG/TALEX)
+# Skill: SKL003 - Generation Engine (ADMG/TALEX)
 
 ## Purpose
 Generates narrative content (events, dialogue, descriptions) from ternary state using causal chains and lore constraints. Operates as a ternary-state-driven generator that produces coherent narrative sequences locked by IntentHash.
@@ -16,13 +16,13 @@ TALEX needs to generate narrative from causal hypotheses. The Generation Engine 
 
 ## Kernel Components
 
-### 1. Ternary State → Text Decoder
-- Input: `TernaryState` (vector + memory + program, 3×81 trits)
-- Process: Each WaveArray slot → token via frequency-band vocabulary
+### 1. Ternary State -> Text Decoder
+- Input: `TernaryState` (vector + memory + program, 3x81 trits)
+- Process: Each WaveArray slot -> token via frequency-band vocabulary
 - Output: Token sequence with ternary metadata
 
 ### 2. Causal Chain Narrativizer
-- Input: Validated hypothesis chain (Event → Cause → Effect)
+- Input: Validated hypothesis chain (Event -> Cause -> Effect)
 - Process: Map ternary causal links to narrative beats
 - Output: Structured narrative beats with ternary anchors
 
@@ -63,12 +63,12 @@ def generate_from_state(state: TernaryState, max_tokens: int = 256) -> str:
     return text, intent_hash
 
 def decode_slot(slot: int, band: FrequencyBand, trit: Trit) -> str:
-    # Vocabulary mapping (slot × band × trit → token)
+    # Vocabulary mapping (slot x band x trit -> token)
     vocab = {
         (0, FrequencyBand.ALPHA, Trit.POS): "The detective",
         (1, FrequencyBand.BETA, Trit.POS): "observed",
         (2, FrequencyBand.THETA, Trit.POS): "a clue",
-        # ... full vocabulary 81×5×3
+        # ... full vocabulary 81x5x3
     }
     return vocab.get((slot, band, trit), f"[slot{slot}]")
 ```
@@ -76,18 +76,18 @@ def decode_slot(slot: int, band: FrequencyBand, trit: Trit) -> str:
 ## Generation Pipeline
 
 ```
-TernaryState (3×81 trits)
-        │
-        ├──► Vector (current focus) ──► Token decoder ──►
-        ├──► Memory (context) ──────────► Context injector ──► Combined tokens
-        └──► Program (generation rules) ──► Rule applier ──►
-                        │
-                        ▼
+TernaryState (3x81 trits)
+        |
+        |----> Vector (current focus) --> Token decoder -->
+        |----> Memory (context) ----------> Context injector --> Combined tokens
+        `----> Program (generation rules) --> Rule applier -->
+                        |
+                        v
             Lore Validator (SKL002) check
-                        │
-                        ├── VIOLATION → Regenerate with constraints
-                        │
-                        └── PASS ──► Final text + IntentHash
+                        |
+                        |---- VIOLATION -> Regenerate with constraints
+                        |
+                        `---- PASS --> Final text + IntentHash
 ```
 
 ## Narrative Modes
@@ -114,7 +114,7 @@ assert validate_intent_hash(hash1)
 ## Build Requirements
 - Python 3.10+
 - PRIMUS core
-- Vocabulary database (slot × band × trit → token)
+- Vocabulary database (slot x band x trit -> token)
 - Lore Validator (SKL002) for constraint checking
 
 ## Validation

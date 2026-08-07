@@ -5,7 +5,7 @@ registry:
   total_skills: 194
 skills:
 - name: booking
-  description: Orchestration des réservations et planification pour services
+  description: Orchestration des reservations et planification pour services
   type: domain
   triggers:
   - booking
@@ -49,14 +49,14 @@ skills:
   source: native
   assimilation_status: N/A
 - name: finance
-  description: Analyse financière et banking pour décisions métier
+  description: Analyse financiere et banking pour decisions metier
   type: domain
   triggers:
   - finance
   - banking
   - analysis
   - transactions
-  - budgétaire
+  - budgetaire
   - investissement
   domain: finance
   version: 1.0.0
@@ -163,8 +163,8 @@ skills:
   source: native
   assimilation_status: N/A
 - name: design-validation
-  description: Interview socratique relentless sur tout plan ou design jusqu'à résolution
-    complète de chaque branche de l'arbre de décisions
+  description: Interview socratique relentless sur tout plan ou design jusqu'a resolution
+    complete de chaque branche de l'arbre de decisions
   type: foundational
   triggers:
   - grill-me
@@ -187,7 +187,7 @@ skills:
   source: native
   assimilation_status: N/A
 - name: ecosystem-principles
-  description: Principes architecturaux ONTOLOGY, DRY, KISS, φ-CPS pour ecosystem-1
+  description: Principes architecturaux ONTOLOGY, DRY, KISS, phi-CPS pour ecosystem-1
   type: foundational
   triggers:
   - ontology
@@ -279,7 +279,7 @@ skills:
   source: native
   assimilation_status: N/A
 - name: product-context
-  description: Contextualisation produit et audience pour optimisation marché
+  description: Contextualisation produit et audience pour optimisation marche
   type: foundational
   triggers:
   - product-context
@@ -353,7 +353,7 @@ skills:
   - notion-connector
   - perplexity-sourcer
 - name: close-loop-detector
-  description: Détecte la fin d'une session et les boucles sémantiques dans l'écosystème
+  description: Detecte la fin d'une session et les boucles semantiques dans l'ecosysteme
   type: external
   triggers: []
   domain: ''
@@ -368,7 +368,7 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: booking
-  description: Orchestration des réservations et planification pour services
+  description: Orchestration des reservations et planification pour services
   type: domain
   triggers:
   - booking
@@ -412,14 +412,14 @@ skills:
   source: native
   assimilation_status: N/A
 - name: finance
-  description: Analyse financière et banking pour décisions métier
+  description: Analyse financiere et banking pour decisions metier
   type: domain
   triggers:
   - finance
   - banking
   - analysis
   - transactions
-  - budgétaire
+  - budgetaire
   - investissement
   domain: finance
   version: 1.0.0
@@ -616,8 +616,8 @@ skills:
   source: native
   assimilation_status: N/A
 - name: talex
-  description: Moteur narratif X-FORGE — convertit graphes de réécriture (SPIDX, DAG-3)
-    en récits cohérents et génère des scénarios narratifs
+  description: Moteur narratif X-FORGE - convertit graphes de reecriture (SPIDX, DAG-3)
+    en recits coherents et genere des scenarios narratifs
   type: native
   triggers:
   - narrate
@@ -938,8 +938,8 @@ skills:
   source: native
   assimilation_status: N/A
 - name: design-validation
-  description: Interview socratique relentless sur tout plan ou design jusqu'à résolution
-    complète de chaque branche de l'arbre de décisions
+  description: Interview socratique relentless sur tout plan ou design jusqu'a resolution
+    complete de chaque branche de l'arbre de decisions
   type: foundational
   triggers:
   - grill-me
@@ -983,7 +983,7 @@ skills:
   source: native
   assimilation_status: N/A
 - name: ecosystem-principles
-  description: Principes architecturaux ONTOLOGY, DRY, KISS, φ-CPS pour ecosystem-1
+  description: Principes architecturaux ONTOLOGY, DRY, KISS, phi-CPS pour ecosystem-1
   type: foundational
   triggers:
   - ontology
@@ -1101,7 +1101,7 @@ skills:
   assimilation_status: N/A
 - name: git-flow-manager
   description: 'Implements git-flow branching model: feature, release, hotfix, develop,
-    main — guides branch creation, merging, and deletion per git-flow conventions'
+    main - guides branch creation, merging, and deletion per git-flow conventions'
   type: foundational
   triggers:
   - /git-flow
@@ -1277,7 +1277,7 @@ skills:
   source: native
   assimilation_status: N/A
 - name: product-context
-  description: Contextualisation produit et audience pour optimisation marché
+  description: Contextualisation produit et audience pour optimisation marche
   type: foundational
   triggers:
   - product-context
@@ -1400,7 +1400,7 @@ skills:
   source: native
   assimilation_status: N/A
 - name: submodule-manager
-  description: 'Git submodule lifecycle: add, update, sync, remove — validates submodule
+  description: 'Git submodule lifecycle: add, update, sync, remove - validates submodule
     health and handles broken references'
   type: foundational
   triggers:
@@ -1553,7 +1553,7 @@ skills:
   assimilation_status: N/A
 - name: nexus-core
   description: Load when user mentions "NEXUS governance", "SOT conformity", "ECOS_ROOT",
-    "φ-CPS", "ADR validation", "EPIC compliance".
+    "phi-CPS", "ADR validation", "EPIC compliance".
   type: external
   triggers: []
   domain: ''
@@ -1568,7 +1568,7 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: skills-pack
-  description: Pack de 59 skills Perplexity pour l'écosystème gerivdb (ENV1 - DEV-COMET).
+  description: Pack de 59 skills Perplexity pour l'ecosysteme gerivdb (ENV1 - DEV-COMET).
     Use when user mentions any skill name.
   type: external
   triggers: []
@@ -1585,7 +1585,7 @@ skills:
   assimilation_status: pending
 - name: adr-manager
   description: 'Architecture Decision Records: validation, creation, lifecycle. Use
-    when user mentions ''ADR'', ''décision architecture'', ''valider ADR'', ''nexus
+    when user mentions ''ADR'', ''decision architecture'', ''valider ADR'', ''nexus
     jalon''.'
   type: external
   triggers: []
@@ -1634,7 +1634,7 @@ skills:
   assimilation_status: pending
 - name: boinc-p2p
   description: BOINC-LLM distributed inference, DHT Kademlia, swarm, P2P computing.
-    Use when user mentions 'BOINC-LLM', 'P2P', 'distribué', 'swarm'.
+    Use when user mentions 'BOINC-LLM', 'P2P', 'distribue', 'swarm'.
   type: external
   triggers: []
   domain: ''
@@ -1650,7 +1650,7 @@ skills:
   assimilation_status: pending
 - name: claude-optimizer
   description: 18-step Claude optimization, custom instructions, projects, style cloning.
-    Use when user mentions 'optimisation Claude', '18 étapes', 'custom instructions'.
+    Use when user mentions 'optimisation Claude', '18 etapes', 'custom instructions'.
   type: external
   triggers: []
   domain: ''
@@ -1704,7 +1704,7 @@ skills:
   type: external
   triggers:
   - /analyse-repo
-  - évalue dépôt
+  - evalue depot
   - DeepWiki
   - scoring ECOS
   - citoyennisation
@@ -1758,7 +1758,7 @@ skills:
   assimilation_status: pending
 - name: diagram-infra
   description: 'Infrastructure diagrams: cloud, network, security, AWS, Azure. Use
-    when user mentions ''cloud'', ''AWS'', ''Azure'', ''réseau'', ''sécurité''.'
+    when user mentions ''cloud'', ''AWS'', ''Azure'', ''reseau'', ''securite''.'
   type: external
   triggers: []
   domain: ''
@@ -1821,9 +1821,9 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: ecos-vision
-  description: Fused skill combining ECOS-VISION (cross‑repo visualization), ecosystem‑self
-    (self‑learning / semantic cache / META‑CLUSTER GRAPH) and lecun‑vision (Yann LeCun’s
-    AI vision – JEPA, world models, AMI, Tapestry). Use when user mentions any of
+  description: Fused skill combining ECOS-VISION (cross-repo visualization), ecosystem-self
+    (self-learning / semantic cache / META-CLUSTER GRAPH) and lecun-vision (Yann LeCun's
+    AI vision - JEPA, world models, AMI, Tapestry). Use when user mentions any of
     the original triggers.
   type: external
   triggers:
@@ -1831,14 +1831,14 @@ skills:
   - visualisation
   - diagrammes cross-repo
   - apprentissage interne
-  - cache sémantique
+  - cache semantique
   - META-CLUSTER
   - LeCun
   - JEPA
   - world model
   - AMI
   - Tapestry
-  - débat IA
+  - debat IA
   domain: ''
   version: 2.0.0
   author: gerivdb
@@ -1852,7 +1852,7 @@ skills:
   assimilation_status: pending
 - name: github-config
   description: GITHUB_TOKEN, gh auth, scopes, Actions settings, rate-limit, gestion
-    des gros fichiers (push_files vs create_or_update, split‑payload, SHA‑management).
+    des gros fichiers (push_files vs create_or_update, split-payload, SHA-management).
     Use when user mentions 'GITHUB_TOKEN', 'gh auth', 'scopes', 'Settings Actions',
     'large files', 'push_files', 'create_or_update'.
   type: external
@@ -1893,7 +1893,7 @@ skills:
   assimilation_status: pending
 - name: hitl-core
   description: Fused skill combining HITL Hub (review of signals, workflow building,
-    world‑model review) and HITL Ops (governance audit, ecosystem health, token scope,
+    world-model review) and HITL Ops (governance audit, ecosystem health, token scope,
     permissions). Use when user mentions any of the original triggers.
   type: external
   triggers:
@@ -1904,7 +1904,7 @@ skills:
   - gouvernance transverse
   - token scope
   - permissions
-  - rapport d'état
+  - rapport d'etat
   - ECOS_ROOT
   - priorisation
   domain: ''
@@ -2017,9 +2017,9 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: mcp-write-guard
-  description: 'Compétence couvrant la résilience d’écriture MCP : estimateur de taille
-    de payload, stratégie de retry avec escalade, surveillance du contexte de session,
-    gestion de la verbosité des échecs. Utiliser quand l’utilisateur mentionne ''MCP
+  description: 'Competence couvrant la resilience d'ecriture MCP : estimateur de taille
+    de payload, strategie de retry avec escalade, surveillance du contexte de session,
+    gestion de la verbosite des echecs. Utiliser quand l'utilisateur mentionne ''MCP
     write resilience'', ''payload size'', ''retry strategy'', ''session context'',
     ''fail verbosity''.'
   type: external
@@ -2043,7 +2043,7 @@ skills:
 - name: media-culture
   description: Media, culture and booking expert for ROCK-REIMS-AGENDA, GVDB-MEDIA,
     GERI-VON-DER-BITSH. Use when user mentions "ROCK-REIMS", "GVDB-MEDIA", "GERI-VON-DER-BITSH",
-    "agenda", "booking", "médias", "culture rémoise".
+    "agenda", "booking", "medias", "culture remoise".
   type: external
   triggers: []
   domain: ''
@@ -2059,7 +2059,7 @@ skills:
   assimilation_status: pending
 - name: multi-repo-syncer
   description: Cross-repo synchronization, KIVA, NEXUS, gateway GPU, ECOS_ROOT. Use
-    when user mentions 'sync multi-dépôts', 'KIVA', 'NEXUS', 'gateway GPU'.
+    when user mentions 'sync multi-depots', 'KIVA', 'NEXUS', 'gateway GPU'.
   type: external
   triggers: []
   domain: ''
@@ -2108,7 +2108,7 @@ skills:
   assimilation_status: pending
 - name: nexus-compliance
   description: Branch governance, cherry-pick safety, hook validation. Use when user
-    mentions 'conformité', 'gouvernance branche', 'cherry-pick safety'.
+    mentions 'conformite', 'gouvernance branche', 'cherry-pick safety'.
   type: external
   triggers: []
   domain: ''
@@ -2124,7 +2124,7 @@ skills:
   assimilation_status: pending
 - name: nexus-core
   description: NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use
-    when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'φ-CPS'.
+    when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'phi-CPS'.
   type: external
   triggers: []
   domain: ''
@@ -2140,7 +2140,7 @@ skills:
   assimilation_status: pending
 - name: nexus-deps
   description: Shadow dependency detection, dependency matrix, inter-layer coupling.
-    Use when user mentions 'shadow dependency', 'matrice dépendances', 'inter-strates'.
+    Use when user mentions 'shadow dependency', 'matrice dependances', 'inter-strates'.
   type: external
   triggers: []
   domain: ''
@@ -2172,8 +2172,8 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: nexus-monitor
-  description: φ-CPS scoring, ecosystem health, production readiness, drift detection.
-    Use when user mentions 'φ-CPS', 'santé écosystème', 'production readiness', 'drift'.
+  description: phi-CPS scoring, ecosystem health, production readiness, drift detection.
+    Use when user mentions 'phi-CPS', 'sante ecosysteme', 'production readiness', 'drift'.
   type: external
   triggers: []
   domain: ''
@@ -2189,7 +2189,7 @@ skills:
   assimilation_status: pending
 - name: nexus-prd
   description: Magistral PRD synthesis, ASCII diagrams, recommendations. Use when
-    user mentions 'PRD magistral', 'synthèse', 'diagramme ASCII', 'recommandations'.
+    user mentions 'PRD magistral', 'synthese', 'diagramme ASCII', 'recommandations'.
   type: external
   triggers: []
   domain: ''
@@ -2205,7 +2205,7 @@ skills:
   assimilation_status: pending
 - name: nexus-reformer
   description: Refactoring, migration, cleanup, extraction of responsibilities. Use
-    when user mentions 'refactoring', 'migration', 'nettoyage résidus', 'extraction'.
+    when user mentions 'refactoring', 'migration', 'nettoyage residus', 'extraction'.
   type: external
   triggers: []
   domain: ''
@@ -2221,7 +2221,7 @@ skills:
   assimilation_status: pending
 - name: nexus-registry-sync
   description: ECOS_ROOT synchronization, autodiscover, missing repositories. Use
-    when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'dépôts manquants'.
+    when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'depots manquants'.
   type: external
   triggers: []
   domain: ''
@@ -2276,10 +2276,10 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: prd-factory
-  description: 'Compétence pour la production complète d’un PRD : validation croisée
-    des spécifications, vérification de la cohérence OKR, guide de rédaction selon
-    le format canonique (sections 1→17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur
-    mentionne ''PRD production'', ''spec cross‑validator'', ''OKR consistency'', ''PRD
+  description: 'Competence pour la production complete d'un PRD : validation croisee
+    des specifications, verification de la coherence OKR, guide de redaction selon
+    le format canonique (sections 1->17, OKRs, ADRs, etc.). Utiliser quand l'utilisateur
+    mentionne ''PRD production'', ''spec cross-validator'', ''OKR consistency'', ''PRD
     canonique''.'
   type: external
   triggers:
@@ -2301,7 +2301,7 @@ skills:
   assimilation_status: pending
 - name: pruning-explainer
   description: Pruning in dev and Git, git remote prune, optimization. Use when user
-    mentions 'pruning', 'élagage', 'git remote prune'.
+    mentions 'pruning', 'elagage', 'git remote prune'.
   type: external
   triggers: []
   domain: ''
@@ -2318,7 +2318,7 @@ skills:
 - name: pulse-infra
   description: Monitoring and infrastructure expert for PULSE, KIVA, KIVA-CLI, ATLAS,
     FORGE, CONTAINER-ORCHESTRATOR. Use when user mentions "PULSE", "KIVA", "ATLAS",
-    "FORGE", "container", "pipeline", "métriques", "LXC".
+    "FORGE", "container", "pipeline", "metriques", "LXC".
   type: external
   triggers: []
   domain: ''
@@ -2333,8 +2333,8 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: reasoning-toolkit
-  description: Fused skill combining Fermi‑legacy (hardware/performance expert for
-    FERMI‑EVER, CodeDB‑E5620, LYCOS) and Scientific Method (hypothesis validation,
+  description: Fused skill combining Fermi-legacy (hardware/performance expert for
+    FERMI-EVER, CodeDB-E5620, LYCOS) and Scientific Method (hypothesis validation,
     NEXUS protocol). Use when user mentions any of the original triggers.
   type: external
   triggers:
@@ -2346,10 +2346,10 @@ skills:
   - AVX
   - LXC Z600
   - SSE4.2
-  - Poincaré
+  - Poincare
   - Feynman
-  - méthode scientifique
-  - hypothèse
+  - methode scientifique
+  - hypothese
   domain: ''
   version: 1.0.0
   author: gerivdb
@@ -2363,7 +2363,7 @@ skills:
   assimilation_status: pending
 - name: reposcope-process
   description: Signal scoring, cross-artefact correlation, timeline, discovery sheets.
-    Use when user mentions 'scoring', 'corrélation', 'timeline', 'fiche découverte'.
+    Use when user mentions 'scoring', 'correlation', 'timeline', 'fiche decouverte'.
   type: external
   triggers: []
   domain: ''
@@ -2379,7 +2379,7 @@ skills:
   assimilation_status: pending
 - name: reposcope-publish
   description: Brain-feed publication, signal clustering, dashboards, alerts. Use
-    when user mentions 'brain‑feed', 'clusters', 'dashboard', 'alertes'.
+    when user mentions 'brain-feed', 'clusters', 'dashboard', 'alertes'.
   type: external
   triggers: []
   domain: ''
@@ -2427,7 +2427,7 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: scaffold-pipeline
-  description: 'SCAFFOLD governance flow: issue→intent, WAL, constitutional validation,
+  description: 'SCAFFOLD governance flow: issue->intent, WAL, constitutional validation,
     artifact cataloging. Use when user mentions ''SCAFFOLD'', ''pipeline gouvernance'',
     ''WAL'', ''issue to intent''.'
   type: external
@@ -2445,7 +2445,7 @@ skills:
   assimilation_status: pending
 - name: skill-tester
   description: Skill testing, validation, trigger verification, matrix. Use when user
-    mentions 'test skill', 'validation', 'déclenchement', 'matrice'.
+    mentions 'test skill', 'validation', 'declenchement', 'matrice'.
   type: external
   triggers: []
   domain: ''
@@ -2478,7 +2478,7 @@ skills:
 - name: swarm-cli
   description: Swarm, bus ternaire and governance CLI expert for WAZAA, OPENCLAW-CLI,
     BLO, GOVERNANCE-HUB. Use when user mentions "WAZAA", "OPENCLAW", "BLO", "GOVERNANCE-HUB",
-    "bus ternaire", "swarm", "φ-CPS", "TritRegistry".
+    "bus ternaire", "swarm", "phi-CPS", "TritRegistry".
   type: external
   triggers: []
   domain: ''
@@ -2526,7 +2526,7 @@ skills:
   assimilation_status: pending
 - name: triade-hub
   description: Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX.
-    Use when user mentions 'triade cognitive', 'orchestration', 'end‑to‑end'.
+    Use when user mentions 'triade cognitive', 'orchestration', 'end-to-end'.
   type: external
   triggers: []
   domain: ''
@@ -3050,7 +3050,7 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: close-loop-detector
-  description: Détecte la fin d'une session et les boucles sémantiques dans l'écosystème
+  description: Detecte la fin d'une session et les boucles semantiques dans l'ecosysteme
   type: external
   triggers: []
   domain: ''
@@ -3081,7 +3081,7 @@ skills:
   source: unknown
   assimilation_status: pending
 - name: yaml-safe-injector
-  description: Injection sécurisée de champs YAML dans known_repositories.yaml
+  description: Injection securisee de champs YAML dans known_repositories.yaml
   type: foundational
   triggers:
   - yaml
@@ -3103,7 +3103,7 @@ skills:
   consumes_from:
   - sot-registry-guardian
 - name: sot-registry-guardian
-  description: Validation des chemins et métadonnées des repos dans known_repositories.yaml
+  description: Validation des chemins et metadonnees des repos dans known_repositories.yaml
   type: foundational
   triggers:
   - sot
@@ -3125,7 +3125,7 @@ skills:
   consumes_from:
   - yaml-safe-injector
 - name: n243-graph-builder
-  description: Construction du graphe N243 de dépendances entre repos
+  description: Construction du graphe N243 de dependances entre repos
   type: foundational
   triggers:
   - n243
@@ -3147,7 +3147,7 @@ skills:
   consumes_from:
   - sot-registry-guardian
 - name: skill-scaffold
-  description: Générateur de skill conforme aux conventions TDD/BDD/ATDD/DDD/DbC/Hexagonal
+  description: Generateur de skill conforme aux conventions TDD/BDD/ATDD/DDD/DbC/Hexagonal
   type: foundational
   triggers:
   - scaffold

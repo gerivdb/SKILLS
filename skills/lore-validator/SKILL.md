@@ -6,7 +6,7 @@ intent_hash: 0xSKL002_LORE_VALIDATOR_20260802
 status: active
 ---
 
-# Skill: SKL002 — Lore Validator (ADMG/TALEX)
+# Skill: SKL002 - Lore Validator (ADMG/TALEX)
 
 ## Purpose
 Validates narrative lore consistency against Victorian-era canon (or any defined lore corpus). Uses ternary logic to represent lore rules as constraints, computes satisfaction via ternary matrix operations, and produces validation reports with IntentHash locking.
@@ -18,11 +18,11 @@ TALEX narratives must maintain coherence with established lore (Victorian London
 
 ### 1. Lore Rule Encoder
 - Input: Lore rules (natural language or structured)
-- Process: Each rule → ternary constraint vector (243 trits)
+- Process: Each rule -> ternary constraint vector (243 trits)
 - Storage: Rule registry as `WaveArray` collection
 
 ### 2. Constraint Matrix
-- 81×81 matrix where M[i,j] = rule i constrains slot j
+- 81x81 matrix where M[i,j] = rule i constrains slot j
 - Values: POS (requires), NEG (forbids), ZERO (neutral)
 - Built via `TernaryMatrix.from_trits()`
 
@@ -71,19 +71,19 @@ violations = constraint_matrix.matvec(event)
 
 ```
 Narrative Event (81 trits)
-        │
-        ▼
-Constraint Matrix (81×81)
-        │
-        ▼
+        |
+        v
+Constraint Matrix (81x81)
+        |
+        v
 Matrix-Vector Product (SparseRolling)
-        │
-        ▼
+        |
+        v
 Violation Check: any(trit == NEG)
-        │
-        ├── YES → LoreViolation(details, intent_hash)
-        │
-        └── NO  → Valid + SupportingEvidence(count_POS)
+        |
+        |---- YES -> LoreViolation(details, intent_hash)
+        |
+        `---- NO  -> Valid + SupportingEvidence(count_POS)
 ```
 
 ## IntentHash Locking

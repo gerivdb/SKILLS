@@ -1,6 +1,6 @@
 ---
 name: registry-prune
-description: "Nettoie les entrées orphelines dans tous les registres : REGISTRY.yaml, registry.json, citizens.yaml, BRIDGES.yaml."
+description: "Nettoie les entrees orphelines dans tous les registres : REGISTRY.yaml, registry.json, citizens.yaml, BRIDGES.yaml."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_REGISTRY_PRUNE_20260807
@@ -19,29 +19,29 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — registry-prune
+# Skill - registry-prune
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Nettoie les registres.
+> **Verdict** : **SKILL D'EXECUTION** - Nettoie les registres.
 
 ---
 
 ## Objectif
 
-Supprimer les entrées orphelines dans tous les registres.
+Supprimer les entrees orphelines dans tous les registres.
 
 ---
 
-## Déclencheur
+## Declencheur
 
-- Détection d'orphelins par bridge-auditor
-- Détection de skills orphelins par skills-validator
-- Nettoyage périodique
+- Detection d'orphelins par bridge-auditor
+- Detection de skills orphelins par skills-validator
+- Nettoyage periodique
 
 ---
 
-## Entrées
+## Entrees
 
- | Entrée | Type | Description |
+ | Entree | Type | Description |
  |--------|------|-------------|
  | `registry_yaml_path` | Path | Chemin vers REGISTRY.yaml |
  | `registry_json_path` | Path | Chemin vers registry.json |
@@ -56,12 +56,12 @@ Supprimer les entrées orphelines dans tous les registres.
 
  | Sortie | Type | Description |
  |--------|------|-------------|
- | `pruned_entries` | dict | Entrées supprimées par registre |
+ | `pruned_entries` | dict | Entrees supprimees par registre |
  | `errors` | list | Erreurs |
 
 ---
 
-## Règles
+## Regles
 
 1. Ne jamais supprimer sans confirmation explicite (sauf dry_run)
 2. Toujours sauvegarder avant suppression
@@ -92,8 +92,8 @@ print(report)
 
  | Test | Description | Attend |
  |------|-------------|--------|
- | `test_prune_orphan_skills` | Skills orphelins | Supprimés |
- | `test_prune_orphan_citizens` | Citizens orphelins | Supprimés |
+ | `test_prune_orphan_skills` | Skills orphelins | Supprimes |
+ | `test_prune_orphan_citizens` | Citizens orphelins | Supprimes |
  | `test_dry_run_no_changes` | dry_run=True | Aucune modification |
 
 ---
@@ -102,32 +102,32 @@ print(report)
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+ | PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
  +-----------------------------------------------------------------------------+
- | P-913    0 entrée orpheline dans REGISTRY.yaml                             |
- | P-914    0 entrée orpheline dans citizens.yaml                             |
- | P-915    0 entrée orpheline dans BRIDGES.yaml                              |
+ | P-913    0 entree orpheline dans REGISTRY.yaml                             |
+ | P-914    0 entree orpheline dans citizens.yaml                             |
+ | P-915    0 entree orpheline dans BRIDGES.yaml                              |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Critères
+ ## Criteres
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | CRITÈRE    DESCRIPTION                                                      |
+ | CRITERE    DESCRIPTION                                                      |
  +-----------------------------------------------------------------------------+
- | ✓          registry-prune fonctionne                                        |
- | ✓          P-913 passe                                                      |
- | ✓          P-914 passe                                                      |
- | ✓          P-915 passe                                                      |
+ | [OK]          registry-prune fonctionne                                        |
+ | [OK]          P-913 passe                                                      |
+ | [OK]          P-914 passe                                                      |
+ | [OK]          P-915 passe                                                      |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Références
+ ## References
 
  - `PRD-MOC-AUTOMATED-DEVELOPMENT-FRAMEWORK-2026-08-07.md`
  - `bridge-auditor`

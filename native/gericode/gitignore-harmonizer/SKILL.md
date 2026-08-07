@@ -19,34 +19,34 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — gitignore-harmonizer
+# Skill - gitignore-harmonizer
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Harmonise les `.gitignore`.
+> **Verdict** : **SKILL D'EXECUTION** - Harmonise les `.gitignore`.
 
 ---
 
 ## Objectif
 
-Remplacer les patterns trop larges par des patterns précis pour supporter Hexagonal/BDD/ATDD.
+Remplacer les patterns trop larges par des patterns precis pour supporter Hexagonal/BDD/ATDD.
 
 ---
 
-## Déclencheur
+## Declencheur
 
 - Nouveau skill avec structure Hexagonal
-- Ajout de répertoires `out/`, `infrastructure/adapters/`
-- CI/CD : détection de `git add -f` nécessaire
+- Ajout de repertoires `out/`, `infrastructure/adapters/`
+- CI/CD : detection de `git add -f` necessaire
 
 ---
 
-## Patterns à corriger
+## Patterns a corriger
 
 ```
-# ❌ AVANT
+# [KO] AVANT
 out/
 infrastructure/adapters/
 
-# ✅ APRÈS
+# [OK] APRES
 infrastructure/adapters/out/
 infrastructure/adapters/in/
 tests/__pycache__/
@@ -55,9 +55,9 @@ tests/__pycache__/
 
 ---
 
-## Entrées
+## Entrees
 
- | Entrée | Type | Description |
+ | Entree | Type | Description |
  |--------|------|-------------|
  | `repo_path` | Path | Chemin du repo |
  | `dry_run` | bool | Si True, ne modifie rien |
@@ -69,17 +69,17 @@ tests/__pycache__/
  | Sortie | Type | Description |
  |--------|------|-------------|
  | `report` | dict | Rapport d'harmonisation |
- | `fixed` | list | Fichiers modifiés |
+ | `fixed` | list | Fichiers modifies |
  | `errors` | list | Erreurs |
 
 ---
 
-## Règles
+## Regles
 
 1. Jamais `out/` seul (trop large)
 2. Jamais `infrastructure/adapters/` (bloque Hexagonal)
 3. Autoriser explicitement `infrastructure/adapters/in/` et `infrastructure/adapters/out/`
-4. `__pycache__/` autorisé seulement dans `.kilo/skills/*/` et `tests/`
+4. `__pycache__/` autorise seulement dans `.kilo/skills/*/` et `tests/`
 
 ---
 
@@ -100,9 +100,9 @@ print(report)
 
  | Test | Description | Attend |
  |------|-------------|--------|
- | `test_harmonize_gitignore` | Correction patterns | Patterns corrigés |
+ | `test_harmonize_gitignore` | Correction patterns | Patterns corriges |
  | `test_dry_run_no_changes` | dry_run=True | Aucune modification |
- | `test_detect_broad_patterns` | Détection patterns larges | Patterns détectés |
+ | `test_detect_broad_patterns` | Detection patterns larges | Patterns detectes |
 
 ---
 
@@ -110,30 +110,30 @@ print(report)
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+ | PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
  +-----------------------------------------------------------------------------+
  | P-908    Aucun .gitignore ne contient le pattern `out/` seul                |
- | P-909    infrastructure/adapters/in/ et out/ ne sont pas ignorés           |
+ | P-909    infrastructure/adapters/in/ et out/ ne sont pas ignores           |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Critères
+ ## Criteres
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | CRITÈRE    DESCRIPTION                                                      |
+ | CRITERE    DESCRIPTION                                                      |
  +-----------------------------------------------------------------------------+
- | ✓          gitignore-harmonizer fonctionne                                  |
- | ✓          P-908 passe                                                      |
- | ✓          P-909 passe                                                      |
+ | [OK]          gitignore-harmonizer fonctionne                                  |
+ | [OK]          P-908 passe                                                      |
+ | [OK]          P-909 passe                                                      |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Références
+ ## References
 
  - `PRD-MOC-AUTOMATED-DEVELOPMENT-FRAMEWORK-2026-08-07.md`
  - `.gitignore` de GeriCode

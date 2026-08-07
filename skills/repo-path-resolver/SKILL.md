@@ -12,11 +12,11 @@ status: active
 Resolve canonical local paths for any repository in the gerivdb ecosystem. ALWAYS use this skill before any cross-repo operation. NEVER guess paths.
 
 ## Context
-All repos are organized in strata directories (L0-L5) under `D:\DO\WEB\TOOLS\`. The authoritative source for paths is `known_repositories.yaml`. Use the 3-Level Lazy Search: INDEX → STRATA → RECURSIVE.
+All repos are organized in strata directories (L0-L5) under `D:\DO\WEB\TOOLS\`. The authoritative source for paths is `known_repositories.yaml`. Use the 3-Level Lazy Search: INDEX -> STRATA -> RECURSIVE.
 
-## Règle — 3-Level Lazy Search
+## Regle - 3-Level Lazy Search
 
-### Level 1 — INDEX (toujours en premier)
+### Level 1 - INDEX (toujours en premier)
 
 ```powershell
 $yaml  = "D:\DO\WEB\TOOLS\L0-CANON\GOVERNANCE-HUB\known_repositories.yaml"
@@ -27,7 +27,7 @@ foreach ($section in @("P0_CONSTITUTIONAL","P1_STRATEGIC","P2_SUPPORT","P3_DORMA
 }
 ```
 
-### Level 2 — STRATA (si Level 1 échoue)
+### Level 2 - STRATA (si Level 1 echoue)
 
 ```powershell
 $strata = @(
@@ -44,7 +44,7 @@ foreach ($s in $strata) {
 }
 ```
 
-### Level 3 — RECURSIO (dernier recours, lent)
+### Level 3 - RECURSIO (dernier recours, lent)
 
 ```powershell
 Get-ChildItem "D:\DO\WEB\TOOLS" -Recurse -Directory -Depth 2 |
@@ -54,31 +54,31 @@ Get-ChildItem "D:\DO\WEB\TOOLS" -Recurse -Directory -Depth 2 |
 
 ## Anti-patterns interdits
 
-- **Déduire le chemin depuis le nom du repo** — toujours chercher
-- **Chercher uniquement à la racine** `D:\DO\WEB\TOOLS\$repo` — les repos sont dans L0-L5
-- **Utiliser `C:\DevTools\<repo>` sans vérification**
-- **Créer un répertoire si le chemin n'existe pas** sans ordre explicite
-- **Recherche récursive en premier** — gaspille des ressources sur 177+ repos
+- **Deduire le chemin depuis le nom du repo** - toujours chercher
+- **Chercher uniquement a la racine** `D:\DO\WEB\TOOLS\$repo` - les repos sont dans L0-L5
+- **Utiliser `C:\DevTools\<repo>` sans verification**
+- **Creer un repertoire si le chemin n'existe pas** sans ordre explicite
+- **Recherche recursive en premier** - gaspille des ressources sur 177+ repos
 
-## Checklist pré-opération
+## Checklist pre-operation
 
-- [ ] Level 1 : `known_repositories.yaml` lu → `local_path` extrait
-- [ ] Level 2 : Strata L0-L5 itérés si Level 1 échoue
-- [ ] Level 3 : Recherche récursive Depth 2 si Level 2 échoue
-- [ ] `Test-Path` confirmé avant toute opération
-- [ ] Si introuvable après 3 niveaux → `REPO_PATH_NOT_FOUND`, ne pas deviner
+- [ ] Level 1 : `known_repositories.yaml` lu -> `local_path` extrait
+- [ ] Level 2 : Strata L0-L5 iteres si Level 1 echoue
+- [ ] Level 3 : Recherche recursive Depth 2 si Level 2 echoue
+- [ ] `Test-Path` confirme avant toute operation
+- [ ] Si introuvable apres 3 niveaux -> `REPO_PATH_NOT_FOUND`, ne pas deviner
 
 ## Exemple
 
 ```
-Repo demandé : KIVA-CLI
-→ Level 1: known_repositories.yaml → P1_STRATEGIC → local_path: D:\DO\WEB\TOOLS\L1-INFRA\KIVA-CLI
-→ Test-Path : OK
-→ Opérations sur D:\DO\WEB\TOOLS\L1-INFRA\KIVA-CLI
+Repo demande : KIVA-CLI
+-> Level 1: known_repositories.yaml -> P1_STRATEGIC -> local_path: D:\DO\WEB\TOOLS\L1-INFRA\KIVA-CLI
+-> Test-Path : OK
+-> Operations sur D:\DO\WEB\TOOLS\L1-INFRA\KIVA-CLI
 ```
 
 ```
-Repo demandé : FLUENCE
-→ Level 1: known_repositories.yaml → P1_STRATEGIC → local_path: D:\DO\WEB\TOOLS\L1-INFRA\FLUENCE
-→ Test-Path : OK
+Repo demande : FLUENCE
+-> Level 1: known_repositories.yaml -> P1_STRATEGIC -> local_path: D:\DO\WEB\TOOLS\L1-INFRA\FLUENCE
+-> Test-Path : OK
 ```

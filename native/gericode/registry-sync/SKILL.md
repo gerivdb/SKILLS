@@ -1,6 +1,6 @@
 ---
 name: registry-sync
-description: "Synchronise REGISTRY.yaml, registry.json et citizens.yaml pour garantir la cohérence multi-registres de l'écosystème."
+description: "Synchronise REGISTRY.yaml, registry.json et citizens.yaml pour garantir la coherence multi-registres de l'ecosysteme."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_REGISTRY_SYNC_20260807
@@ -20,29 +20,29 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — registry-sync
+# Skill - registry-sync
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Synchronise les registres de l'écosystème.
+> **Verdict** : **SKILL D'EXECUTION** - Synchronise les registres de l'ecosysteme.
 
 ---
 
 ## Objectif
 
-Garantir la cohérence entre `REGISTRY.yaml`, `registry.json` et `citizens.yaml`.
+Garantir la coherence entre `REGISTRY.yaml`, `registry.json` et `citizens.yaml`.
 
 ---
 
-## Déclencheur
+## Declencheur
 
-- Désynchronisation détectée entre registres
+- Desynchronisation detectee entre registres
 - CI/CD : validation avant commit
-- ARGUS : détection de gaps
+- ARGUS : detection de gaps
 
 ---
 
-## Entrées
+## Entrees
 
- | Entrée | Type | Description |
+ | Entree | Type | Description |
  |--------|------|-------------|
  | `registry_yaml_path` | Path | Chemin vers `SKILLS/REGISTRY.yaml` |
  | `registry_json_path` | Path | Chemin vers `SKILLS/registry.json` |
@@ -56,17 +56,17 @@ Garantir la cohérence entre `REGISTRY.yaml`, `registry.json` et `citizens.yaml`
  | Sortie | Type | Description |
  |--------|------|-------------|
  | `sync_report` | dict | Rapport de synchronisation |
- | `errors` | list | Erreurs détectées |
- | `fixed` | bool | True si des corrections ont été appliquées |
+ | `errors` | list | Erreurs detectees |
+ | `fixed` | bool | True si des corrections ont ete appliquees |
 
 ---
 
-## Règles
+## Regles
 
-1. `REGISTRY.yaml` est la source de vérité
-2. `registry.json` est régénéré à partir de `REGISTRY.yaml`
+1. `REGISTRY.yaml` est la source de verite
+2. `registry.json` est regenere a partir de `REGISTRY.yaml`
 3. `citizens.yaml` est enrichi avec les repo citizens de `REGISTRY.yaml`
-4. Toute modification est tracée dans WAL
+4. Toute modification est tracee dans WAL
 
 ---
 
@@ -92,8 +92,8 @@ print(report)
 
  | Test | Description | Attend |
  |------|-------------|--------|
- | `test_sync_registry_yaml_to_json` | REGISTRY.yaml → registry.json | JSON mis à jour |
- | `test_sync_citizens_from_registry` | REGISTRY.yaml → citizens.yaml | Citizens enrichis |
+ | `test_sync_registry_yaml_to_json` | REGISTRY.yaml -> registry.json | JSON mis a jour |
+ | `test_sync_citizens_from_registry` | REGISTRY.yaml -> citizens.yaml | Citizens enrichis |
  | `test_dry_run_no_changes` | dry_run=True | Aucune modification |
  | `test_detect_missing_source_repo` | Skill sans source_repo | Erreur P-807 |
 
@@ -103,24 +103,24 @@ print(report)
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+ | PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
  +-----------------------------------------------------------------------------+
- | P-901    REGISTRY.yaml et registry.json ont même nombre de skills          |
+ | P-901    REGISTRY.yaml et registry.json ont meme nombre de skills          |
  | P-902    citizens.yaml contient tous les repo citizens de REGISTRY.yaml    |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Critères
+ ## Criteres
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | CRITÈRE    DESCRIPTION                                                      |
+ | CRITERE    DESCRIPTION                                                      |
  +-----------------------------------------------------------------------------+
- | ✓          registry-sync fonctionne                                         |
- | ✓          P-901 passe                                                      |
- | ✓          P-902 passe                                                      |
+ | [OK]          registry-sync fonctionne                                         |
+ | [OK]          P-901 passe                                                      |
+ | [OK]          P-902 passe                                                      |
  +-----------------------------------------------------------------------------+
  ```
 
@@ -133,7 +133,7 @@ print(report)
 
  ---
 
- ## Références
+ ## References
 
  - `PRD-MOC-AUTOMATED-DEVELOPMENT-FRAMEWORK-2026-08-07.md`
  - `yaml-safe-injector`

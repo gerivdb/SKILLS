@@ -6,7 +6,7 @@ intent_hash: 0xSKL004_BATVERSE_OPERATORS_20260802
 status: active
 ---
 
-# Skill: SKL004 — BATVERSE 7 Operators (ADMG/TALEX)
+# Skill: SKL004 - BATVERSE 7 Operators (ADMG/TALEX)
 
 ## Purpose
 Implements the 7 fundamental BATVERSE narrative operators as ternary logic gates. These operators form the computational basis for TALEX narrative manipulation, operating on base-243 ternary states.
@@ -18,13 +18,13 @@ BATVERSE defines 7 primitive operators for narrative transformation. Each maps t
 
 | # | Operator | Symbol | Ternary Gate | Description |
 |---|----------|--------|--------------|-------------|
-| 1 | **INVERT** | ¬ | `not_k3` | Polarity inversion (truth ↔ falsehood) |
-| 2 | **CONJOIN** | ∧ | `and_k3` | Causal conjunction (both must hold) |
-| 3 | **DISJOIN** | ∨ | `or_k3` | Alternative causality (either holds) |
-| 4 | **IMPLY** | → | `implies` | Causal implication (if A then B) |
-| 5 | **EQUIV** | ↔ | `equiv` | Bidirectional causality (A iff B) |
+| 1 | **INVERT** | NOT | `not_k3` | Polarity inversion (truth <-> falsehood) |
+| 2 | **CONJOIN** | AND | `and_k3` | Causal conjunction (both must hold) |
+| 3 | **DISJOIN** | OR | `or_k3` | Alternative causality (either holds) |
+| 4 | **IMPLY** | -> | `implies` | Causal implication (if A then B) |
+| 5 | **EQUIV** | <-> | `equiv` | Bidirectional causality (A iff B) |
 | 6 | **SELECT** | ? : | `mux` | Conditional narrative branching |
-| 7 | **SPLIT** | ⇢ | `demux` | Narrative fork (one input → two paths) |
+| 7 | **SPLIT** | -> | `demux` | Narrative fork (one input -> two paths) |
 
 ## PRIMUS Integration
 
@@ -79,9 +79,9 @@ def op_vector_imply(a: WaveArray, b: WaveArray) -> WaveArray:
 ### Causal Chain Construction
 ```python
 # Event A implies Event B, which implies Event C
-# Chain: A → B → C
+# Chain: A -> B -> C
 chain = op_imply(event_a, op_imply(event_b, event_c))
-# Equivalent: (¬A ∨ (¬B ∨ C))
+# Equivalent: (NOTA OR (NOTB OR C))
 ```
 
 ### Narrative Branching
@@ -92,14 +92,14 @@ path = op_select(clue_found, investigation_path, dead_end)
 
 ### Contradiction Detection
 ```python
-# A and ¬A cannot both be true
+# A and NOTA cannot both be true
 contradiction = op_conjoin(proposition, op_invert(proposition))
 # Result: ZERO (unknown) in K3, not NEG (false)
 ```
 
 ## Truth Tables (Kleene K3)
 
-| A | B | ¬A | A∧B | A∨B | A→B | A↔B |
+| A | B | NOTA | AANDB | AORB | A->B | A<->B |
 |---|---|----|-----|-----|-----|-----|
 | T | T | F  | T   | T   | T   | T   |
 | T | U | F  | U   | T   | U   | U   |

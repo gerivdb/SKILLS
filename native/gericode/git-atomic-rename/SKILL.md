@@ -1,9 +1,9 @@
 ---
 name: git-atomic-rename
 description: >
-  Renommage atomique de fichiers/dossiers git avec backup et vérification post-migration.
+  Renommage atomique de fichiers/dossiers git avec backup et verification post-migration.
   Remplace batch les anciens termes par les nouveaux, trace les changements dans WAL,
-  et commit/push atomiquement. Utiliser pour les migrations de nomenclature à grande échelle.
+  et commit/push atomiquement. Utiliser pour les migrations de nomenclature a grande echelle.
 version: "1.0.0"
 status: active
 intent_hash: 0xGIT_ATOMIC_RENAME_20260806
@@ -22,47 +22,47 @@ citizen: "PRIMUS"
 layer: "L4"
 ---
 
-# Skill — Git Atomic Rename
+# Skill - Git Atomic Rename
 
-> **Verdict** : **SKILL D’EXÉCUTION** — Renommage atomique avec backup et vérification,
-> pour migrations de nomenclature à grande échelle.
+> **Verdict** : **SKILL D'EXECUTION** - Renommage atomique avec backup et verification,
+> pour migrations de nomenclature a grande echelle.
 
 ---
 
 ## Objectif
 
 Effectuer un renommage batch de fichiers/dossiers en respectant :
-- la création d’un backup avant migration
-- le remplacement des références dans le contenu
-- la vérification post-migration
+- la creation d'un backup avant migration
+- le remplacement des references dans le contenu
+- la verification post-migration
 - le commit/push atomique
 
 ---
 
 ## Principes
 
-| Principe | Règle d’application |
+| Principe | Regle d'application |
 |----------|---------------------|
-| **Backup d’abord** | Sauvegarder tous les fichiers avant modification |
-| **Atomicité** | Un commit = une migration complète |
-| **Vérification systématique** | Post-migration : 0 occurrence des anciens termes |
-| **Traçabilité** | Logger dans WAL chaque étape |
+| **Backup d'abord** | Sauvegarder tous les fichiers avant modification |
+| **Atomicite** | Un commit = une migration complete |
+| **Verification systematique** | Post-migration : 0 occurrence des anciens termes |
+| **Tracabilite** | Logger dans WAL chaque etape |
 
 ---
 
 ## Processus
 
-### Étape 1 — Audit
+### Etape 1 - Audit
 
 ```powershell
-# Lister les fichiers à renommer
+# Lister les fichiers a renommer
 $files = Get-ChildItem -Recurse -File | Where-Object { $_.Name -match "OLD_TERM" }
 
-# Vérifier l’ontologie
+# Verifier l'ontologie
 python ONTOLOGY/validate_term_registry.py --check NEW_TERM
 ```
 
-### Étape 2 — Backup
+### Etape 2 - Backup
 
 ```powershell
 $backupDir = ".rename-backup-$(Get-Date -Format yyyyMMdd-HHmmss)"
@@ -72,7 +72,7 @@ foreach ($f in $files) {
 }
 ```
 
-### Étape 3 — Renommage
+### Etape 3 - Renommage
 
 ```powershell
 # Renommage fichiers
@@ -82,10 +82,10 @@ Get-ChildItem -Recurse -File | Where-Object { $_.Name -match "OLD_TERM" } | ForE
 }
 
 # Renommage dossiers
-# (utiliser robocopy ou PowerShell selon la complexité)
+# (utiliser robocopy ou PowerShell selon la complexite)
 ```
 
-### Étape 4 — Remplacement contenu
+### Etape 4 - Remplacement contenu
 
 ```powershell
 $files = Get-ChildItem -Recurse -File -Include *.md,*.yaml,*.yml,*.json
@@ -98,10 +98,10 @@ foreach ($f in $files) {
 }
 ```
 
-### Étape 5 — Vérification
+### Etape 5 - Verification
 
 ```powershell
-# Vérifier qu’aucun ancien terme ne subsiste
+# Verifier qu'aucun ancien terme ne subsiste
 $oldTerms = @("OLD_TERM", "ANCIEN_TERME")
 foreach ($term in $oldTerms) {
   $matches = Get-ChildItem -Recurse -File | Select-String -Pattern $term
@@ -112,7 +112,7 @@ foreach ($term in $oldTerms) {
 }
 ```
 
-### Étape 6 — Commit atomique
+### Etape 6 - Commit atomique
 
 ```powershell
 git add -A
@@ -122,12 +122,12 @@ git push origin main
 
 ---
 
-## Rôles
+## Roles
 
-| Rôle | Responsabilité |
+| Role | Responsabilite |
 |------|----------------|
 | `PRIMUS` | Orchestre le renommage |
-| `NEXUS` | Trace les étapes dans WAL |
+| `NEXUS` | Trace les etapes dans WAL |
 | `TOPOS` | Valide les chemins et strates |
 | `MOX` | Valide la structure AEP post-migration |
 
@@ -137,29 +137,29 @@ git push origin main
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+| PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
 +-----------------------------------------------------------------------------+
-| P-1001   Backup créé avant migration                                        |
-| P-1002   Tous les fichiers renommés                                          |
-| P-1003   Toutes les références mises à jour                                 |
+| P-1001   Backup cree avant migration                                        |
+| P-1002   Tous les fichiers renommes                                          |
+| P-1003   Toutes les references mises a jour                                 |
 | P-1004   0 occurrence des anciens termes post-migration                     |
-| P-1005   Commit atomique réussi                                              |
+| P-1005   Commit atomique reussi                                              |
 +-----------------------------------------------------------------------------+
 ```
 
 ---
 
-## Critères
+## Criteres
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| CRITÈRE    DESCRIPTION                                                      |
+| CRITERE    DESCRIPTION                                                      |
 +-----------------------------------------------------------------------------+
-| ✓          Backup créé et complet                                           |
-| ✓          Tous les fichiers/dossiers renommés                              |
-| ✓          Toutes les références mises à jour                               |
-| ✓          0 ancien terme restant                                           |
-| ✓          Commit + push atomiques                                          |
+| [OK]          Backup cree et complet                                           |
+| [OK]          Tous les fichiers/dossiers renommes                              |
+| [OK]          Toutes les references mises a jour                               |
+| [OK]          0 ancien terme restant                                           |
+| [OK]          Commit + push atomiques                                          |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -175,7 +175,7 @@ Remove-Item $backupDir -Recurse -Force
 
 ---
 
-## Références
+## References
 
 - `unified-design/designs/actprotocol-fractal-nomenclature.yaml`
 - `.kilo/scripts/setup-unified-design-junction.ps1`

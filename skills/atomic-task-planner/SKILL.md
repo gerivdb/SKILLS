@@ -12,18 +12,18 @@ status: active
 Transform free-form task descriptions into structured atomic execution plans (JSON) for SLM micro-executor. 4 templates covering all task types.
 
 ## Context
-SLM execution requires atomic steps (1 tool call, ≤150 tokens). This skill decomposes complex requests into executable plans.
+SLM execution requires atomic steps (1 tool call, <=150 tokens). This skill decomposes complex requests into executable plans.
 
 ## Input
 - Natural language task description
 - Context: available tools, current repo state
 
 ## Output
-- .kilo/plan/execution_plan.json — structured plan
+- .kilo/plan/execution_plan.json - structured plan
 
 ## 4 Plan Templates
 
-### Template A — Inspection (Pattern A)
+### Template A - Inspection (Pattern A)
 `json
 {
   "template": "inspection",
@@ -35,7 +35,7 @@ SLM execution requires atomic steps (1 tool call, ≤150 tokens). This skill dec
 }
 `
 
-### Template B — Creation (Pattern C)
+### Template B - Creation (Pattern C)
 `json
 {
   "template": "creation",
@@ -46,7 +46,7 @@ SLM execution requires atomic steps (1 tool call, ≤150 tokens). This skill dec
 }
 `
 
-### Template C — Modification (Pattern D)
+### Template C - Modification (Pattern D)
 `json
 {
   "template": "modification",
@@ -58,7 +58,7 @@ SLM execution requires atomic steps (1 tool call, ≤150 tokens). This skill dec
 }
 `
 
-### Template D — Multi-repo Deployment (Pattern E)
+### Template D - Multi-repo Deployment (Pattern E)
 `json
 {
   "template": "deployment",
@@ -72,7 +72,7 @@ SLM execution requires atomic steps (1 tool call, ≤150 tokens). This skill dec
 `
 
 ## Planning Algorithm
-1. Classify task → select template
+1. Classify task -> select template
 2. Extract parameters (paths, patterns, content)
 3. Generate step sequence
 4. Estimate tokens per step

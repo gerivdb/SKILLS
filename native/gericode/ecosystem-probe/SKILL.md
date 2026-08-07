@@ -1,6 +1,6 @@
 ---
 name: ecosystem-probe
-description: "Découverte automatique de l'écosystème avant toute session. Scanne skills, workflows, citizens, designs et produit ecosystem-index.json."
+description: "Decouverte automatique de l'ecosysteme avant toute session. Scanne skills, workflows, citizens, designs et produit ecosystem-index.json."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_ECOSYSTEM_PROBE_20260807
@@ -8,7 +8,7 @@ author: gerivdb
 source_repo: gerivdb/GeriCode
 source_path: .kilo/skills/ecosystem-probe/SKILL.md
 triggers:
-  - "découvrir écosystème"
+  - "decouvrir ecosysteme"
   - "scan skills"
   - "scan workflows"
   - "ecosystem-index"
@@ -20,9 +20,9 @@ citizen: "ECOSYSTEM-BRAIN"
 layer: "L4"
 ---
 
-# Skill — ecosystem-probe
+# Skill - ecosystem-probe
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Découverte automatique de l'écosystème.
+> **Verdict** : **SKILL D'EXECUTION** - Decouverte automatique de l'ecosysteme.
 
 ---
 
@@ -32,17 +32,17 @@ Scanner skills, workflows, citizens, designs et produire `ecosystem-index.json`.
 
 ---
 
-## Déclencheur
+## Declencheur
 
-- Début de session multi-skill
+- Debut de session multi-skill
 - BOOT-0 (session-boot-sequence)
-- Avant toute création de skill/workflow/citizen
+- Avant toute creation de skill/workflow/citizen
 
 ---
 
-## Entrées
+## Entrees
 
-| Entrée | Type | Description |
+| Entree | Type | Description |
 |--------|------|-------------|
 | `repo_root` | Path | Racine du repo GeriCode |
 
@@ -52,12 +52,12 @@ Scanner skills, workflows, citizens, designs et produire `ecosystem-index.json`.
 
 | Sortie | Type | Description |
 |--------|------|-------------|
-| `index` | EcosystemIndex | Index de l'écosystème |
-| `ecosystem-index.json` | file | Index sauvegardé |
+| `index` | EcosystemIndex | Index de l'ecosysteme |
+| `ecosystem-index.json` | file | Index sauvegarde |
 
 ---
 
-## Règles
+## Regles
 
 1. Scanner `.kilo/skills/` pour les skills
 2. Scanner `.kilo/workflows/` pour les workflows
@@ -84,28 +84,28 @@ probe.save(Path("ecosystem-index.json"))
 
 | Test | Description | Attend |
 |------|-------------|--------|
-| `test_scan_skills` | Scan skills | Skills détectés |
-| `test_scan_workflows` | Scan workflows | Workflows détectés |
-| `test_scan_citizens` | Scan citizens | Citizens détectés |
-| `test_scan_designs` | Scan designs | Designs détectés |
-| `test_save_index` | Sauvegarde index | Fichier JSON créé |
+| `test_scan_skills` | Scan skills | Skills detectes |
+| `test_scan_workflows` | Scan workflows | Workflows detectes |
+| `test_scan_citizens` | Scan citizens | Citizens detectes |
+| `test_scan_designs` | Scan designs | Designs detectes |
+| `test_save_index` | Sauvegarde index | Fichier JSON cree |
 
 ---
 
-## Référence ADR
+## Reference ADR
 
 - **ADR** : ADR-2026-08-07-006-ECOSYSTEM_PROBE
 - **IntentHash** : 0xADR_ECOSYSTEM_PROBE_20260807
-- **Dépôt** : gerivdb/GOVERNANCE-HUB
+- **Depot** : gerivdb/GOVERNANCE-HUB
 - **Statut ADR** : proposed
 
 ---
 
-## Rôles
+## Roles
 
-| Rôle | Responsabilité |
+| Role | Responsabilite |
 |------|----------------|
-| `ECOSYSTEM-BRAIN` | Découverte automatique |
+| `ECOSYSTEM-BRAIN` | Decouverte automatique |
 
 ---
 
@@ -113,25 +113,25 @@ probe.save(Path("ecosystem-index.json"))
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+| PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
 +-----------------------------------------------------------------------------+
 | P-720    ecosystem-index.json existe                                        |
-| P-721    Tous les skills sont découverts                                    |
-| P-722    Tous les workflows sont découverts                                 |
+| P-721    Tous les skills sont decouverts                                    |
+| P-722    Tous les workflows sont decouverts                                 |
 +-----------------------------------------------------------------------------+
 ```
 
 ---
 
-## Critères
+## Criteres
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| CRITÈRE    DESCRIPTION                                                      |
+| CRITERE    DESCRIPTION                                                      |
 +-----------------------------------------------------------------------------+
-| ✓          ecosystem-index.json présent                                      |
-| ✓          Scan complet en < 30s                                             |
-| ✓          Zéro élément orphelin                                             |
+| [OK]          ecosystem-index.json present                                      |
+| [OK]          Scan complet en < 30s                                             |
+| [OK]          Zero element orphelin                                             |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -144,7 +144,7 @@ probe.save(Path("ecosystem-index.json"))
 
 ---
 
-## Références
+## References
 
 - `ecosystem-discovery-boot.yaml`
 - `.kilo/skills/ecosystem-brain/SKILL.md`

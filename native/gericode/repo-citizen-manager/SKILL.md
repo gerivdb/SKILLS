@@ -1,6 +1,6 @@
 ---
 name: repo-citizen-manager
-description: "Gère la citoyennisation des repos de l'écosystème gerivdb. Transforme chaque repo en citoyen doté d'une identité ontologique, d'un verse VERSES, de bridges cross-repo et de plans consultables par MOX."
+description: "Gere la citoyennisation des repos de l'ecosysteme gerivdb. Transforme chaque repo en citoyen dote d'une identite ontologique, d'un verse VERSES, de bridges cross-repo et de plans consultables par MOX."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_REPO_CITIZEN_MANAGER_20260807
@@ -19,40 +19,40 @@ citizen: "ECOSYSTEM-BRAIN"
 layer: "L4"
 ---
 
-# Skill — repo-citizen-manager
+# Skill - repo-citizen-manager
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Gère la citoyennisation des repos.
+> **Verdict** : **SKILL D'EXECUTION** - Gere la citoyennisation des repos.
 
 ---
 
 ## Objectif
 
-Gérer la citoyennisation des repos et l'enregistrement des skills :
-- déclarer le repo dans `citizens.yaml`,
-- créer le verse dans `VERSES/verses/`,
-- créer le bridge dans `BRIDGES.yaml`,
+Gerer la citoyennisation des repos et l'enregistrement des skills :
+- declarer le repo dans `citizens.yaml`,
+- creer le verse dans `VERSES/verses/`,
+- creer le bridge dans `BRIDGES.yaml`,
 - enregistrer le skill dans `D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\REGISTRY.yaml`.
 
  ---
 
- ## Déclencheur
+ ## Declencheur
 
  - Citoyennisation d'un nouveau repo
- - Création d'un nouveau skill dans `.kilo/skills/<repo>/`
+ - Creation d'un nouveau skill dans `.kilo/skills/<repo>/`
  - MOX doit consulter les plans d'un repo
- - ARGUS détecte un gap de citoyennisation ou d'enregistrement de skill
+ - ARGUS detecte un gap de citoyennisation ou d'enregistrement de skill
 
  ---
 
- ## Entrées
+ ## Entrees
 
- | Entrée | Type | Description |
+ | Entree | Type | Description |
  |--------|------|-------------|
  | `repo_name` | str | Nom du repo |
- | `skill_name` | str \| None | Nom du skill à enregistrer |
+ | `skill_name` | str \| None | Nom du skill a enregistrer |
  | `known_repositories_path` | Path | Chemin vers known_repositories.yaml |
  | `citizens_path` | Path | Chemin vers citizens.yaml |
- | `verses_dir` | Path | Répertoire des verses VERSES |
+ | `verses_dir` | Path | Repertoire des verses VERSES |
  | `skills_registry_path` | Path | Chemin vers SKILLS/REGISTRY.yaml |
 
  ---
@@ -61,20 +61,20 @@ Gérer la citoyennisation des repos et l'enregistrement des skills :
 
  | Sortie | Type | Description |
  |--------|------|-------------|
- | `verse_path` | Path | Chemin du verse créé |
- | `citizen_registered` | bool | Citizen déclaré |
- | `bridge_created` | bool | Bridge créé |
- | `skill_registered` | bool | Skill enregistré dans REGISTRY.yaml |
+ | `verse_path` | Path | Chemin du verse cree |
+ | `citizen_registered` | bool | Citizen declare |
+ | `bridge_created` | bool | Bridge cree |
+ | `skill_registered` | bool | Skill enregistre dans REGISTRY.yaml |
 
  ---
 
- ## Règles
+ ## Regles
 
- 1. Vérifier que le repo existe dans `known_repositories.yaml`
- 2. Vérifier que le repo n'est pas déjà un citoyen
- 3. Créer le verse dans `VERSES/verses/`
- 4. Déclarer le citizen dans `citizens.yaml`
- 5. Créer le bridge dans `BRIDGES.yaml`
+ 1. Verifier que le repo existe dans `known_repositories.yaml`
+ 2. Verifier que le repo n'est pas deja un citoyen
+ 3. Creer le verse dans `VERSES/verses/`
+ 4. Declarer le citizen dans `citizens.yaml`
+ 5. Creer le bridge dans `BRIDGES.yaml`
  6. **Si un skill est fourni, l'enregistrer dans `SKILLS/REGISTRY.yaml` avec `source_repo`, `path` relatif et `source: native`**
  7. Logger dans WAL
 
@@ -111,29 +111,29 @@ Gérer la citoyennisation des repos et l'enregistrement des skills :
  | `test_verify_repo_missing` | Repo n'existe pas | False |
  | `test_check_citizen_true` | Citizen existe | True |
  | `test_check_citizen_false` | Citizen n'existe pas | False |
- | `test_create_verse` | Verse créé | Fichier existe |
- | `test_register_citizen` | Citizen déclaré | Ajouté dans YAML |
- | `test_register_skill` | Skill enregistré | Entrée ajoutée dans REGISTRY.yaml |
+ | `test_create_verse` | Verse cree | Fichier existe |
+ | `test_register_citizen` | Citizen declare | Ajoute dans YAML |
+ | `test_register_skill` | Skill enregistre | Entree ajoutee dans REGISTRY.yaml |
 
  ---
 
- ## Référence ADR
+ ## Reference ADR
 
 - **ADR** : ADR-2026-08-07-008-REPO_CITIZEN_MANAGER
 - **IntentHash** : 0xADR_REPO_CITIZEN_MANAGER_20260807
-- **Dépôt** : gerivdb/GOVERNANCE-HUB
+- **Depot** : gerivdb/GOVERNANCE-HUB
 - **Statut ADR** : proposed
 
 ---
 
-## Rôles
+## Roles
 
-| Rôle | Responsabilité |
+| Role | Responsabilite |
 |------|----------------|
-| `ECOSYSTEM-BRAIN` | Découverte et citoyennisation |
+| `ECOSYSTEM-BRAIN` | Decouverte et citoyennisation |
 | `PRIMUS` | Orchestration |
 | `MOX` | Validation des citoyens |
-| `ARGUS` | Détection des gaps |
+| `ARGUS` | Detection des gaps |
 
 ---
 
@@ -141,11 +141,11 @@ Gérer la citoyennisation des repos et l'enregistrement des skills :
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+| PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
 +-----------------------------------------------------------------------------+
-| P-720    verify_repo détecte le repo dans known_repositories.yaml          |
-| P-721    check_citizen détecte les citoyens déclarés                       |
-| P-722    create_verse crée le fichier verse                                |
+| P-720    verify_repo detecte le repo dans known_repositories.yaml          |
+| P-721    check_citizen detecte les citoyens declares                       |
+| P-722    create_verse cree le fichier verse                                |
 | P-723    register_citizen ajoute le citizen dans citizens.yaml              |
 | P-724    register_skill ajoute le skill dans SKILLS/REGISTRY.yaml          |
 +-----------------------------------------------------------------------------+
@@ -153,17 +153,17 @@ Gérer la citoyennisation des repos et l'enregistrement des skills :
 
  ---
 
- ## Critères
+ ## Criteres
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | CRITÈRE    DESCRIPTION                                                      |
+ | CRITERE    DESCRIPTION                                                      |
  +-----------------------------------------------------------------------------+
- | ✓          verify_repo fonctionne                                          |
- | ✓          check_citizen fonctionne                                         |
- | ✓          create_verse crée le fichier                                     |
- | ✓          register_citizen met à jour citizens.yaml                        |
- | ✓          register_skill met à jour REGISTRY.yaml                          |
+ | [OK]          verify_repo fonctionne                                          |
+ | [OK]          check_citizen fonctionne                                         |
+ | [OK]          create_verse cree le fichier                                     |
+ | [OK]          register_citizen met a jour citizens.yaml                        |
+ | [OK]          register_skill met a jour REGISTRY.yaml                          |
  +-----------------------------------------------------------------------------+
  ```
 
@@ -178,7 +178,7 @@ Gérer la citoyennisation des repos et l'enregistrement des skills :
 
 ---
 
-## Références
+## References
 
 - `repo-citizen-registry.yaml`
 - `PRD-MOC-ACTPROTOCOL-HARNESS-ENGINEERING-2026-08-07.md`

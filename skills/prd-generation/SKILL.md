@@ -23,7 +23,7 @@ Generate PRD from EPIC + INTENT + gap report using governance-doc-writer.
 4. Write to PRD/<slug>.md
 
 ## Verify
-rontmatter-guardian validate PRD/<slug>.md → PASS
+rontmatter-guardian validate PRD/<slug>.md -> PASS
 
 ## Ref
 governance-doc-writer skill

@@ -73,10 +73,10 @@ Check for:
 ### Phase 3: Check Coherence
 
 For each event type:
-- ✓ Has at least one consumer
-- ✓ Logged with structured info
-- ✓ Exposed in /metrics endpoint
-- ✓ Stored for audit (if critical)
+- [OK] Has at least one consumer
+- [OK] Logged with structured info
+- [OK] Exposed in /metrics endpoint
+- [OK] Stored for audit (if critical)
 
 ---
 
@@ -91,21 +91,21 @@ class ActivityEvent:
 # In Watchdog:
 def record_activity(self, event_type: str, **data):
     event = ActivityEvent(...)
-    self._activity_history.append(event)  # ← Appended, never read!
+    self._activity_history.append(event)  # <- Appended, never read!
 ```
 
 ### Issue 2: Silent Logging
 ```python
 # Logged but not actionable
 async def dispatch(self, event: Event):
-    logger.info(f"Event: {event}")  # ← Just info, no metric
+    logger.info(f"Event: {event}")  # <- Just info, no metric
 ```
 
 ### Issue 3: Missing Metrics
 ```python
 # Event emitted but no prometheus counter
 def on_request(self, request):
-    event_counter.inc()  # ← Not implemented!
+    event_counter.inc()  # <- Not implemented!
 ```
 
 ---

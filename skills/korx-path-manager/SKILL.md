@@ -13,12 +13,12 @@ Manage KORX semantic paths: resolve, validate, version.
 
 ## Action
 1. Read korx/paths.yaml (semantic path registry)
-2. Resolve korx://<domain>/<entity> → local path
+2. Resolve korx://<domain>/<entity> -> local path
 3. Validate existence + version match
 4. Cache: .kilo/cache/korx/
 
 ## Verify
-All korx:// refs in codebase resolve → PASS
+All korx:// refs in codebase resolve -> PASS
 
 ## Ref
 D-010: vft-fractal-ternary.design.yaml

@@ -6,7 +6,7 @@ intent_hash: 0xSKL008_ZIG_PYTHON_BRIDGE_20260802
 status: active
 ---
 
-# Skill: SKL008 — Zig↔Python Bridge (ADMG/TALEX)
+# Skill: SKL008 - Zig<->Python Bridge (ADMG/TALEX)
 
 ## Purpose
 Provides bidirectional communication between Zig (TRIX kernel, bare-metal) and Python (PRIMUS core, TALEX narrative layer). Enables high-performance ternary operations in Zig with Python orchestration.
@@ -20,47 +20,47 @@ TALEX architecture splits compute:
 ## Bridge Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    PYTHON (TALEX/PRIMUS)                    │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │ Causal Engine│  │ Lore Valid.  │  │ Gen Engine   │      │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘      │
-│         │                 │                 │               │
-│         ▼                 ▼                 ▼               │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              BRIDGE LAYER (Python)                   │   │
-│  │  • Type translation (Trit↔i8, WaveArray↔bytes)      │   │
-│  │  • Syscall wrapper (TRIX syscall 21: MATRIX_RUN)    │   │
-│  │  • Async event loop (trio/asyncio)                  │   │
-│  │  • IntentHash verification                          │   │
-│  └─────────────────────┬───────────────────────────────┘   │
-└────────────────────────┼────────────────────────────────────┘
-                         │ FFI / Shared Memory / IPC
-                         ▼
-┌─────────────────────────────────────────────────────────────┐
-│                      ZIG (TRIX KERNEL)                      │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │ ExaGEMM      │  │ SparseRolling│  │ Syscall 21   │      │
-│  │ (SSE4.2)     │  │ (CSR)        │  │ MATRIX_RUN   │      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-└─────────────────────────────────────────────────────────────┘
+-----------------------------------------------------------------
+|                    PYTHON (TALEX/PRIMUS)                    |
+|  ------------------  ------------------  ------------------      |
+|  | Causal Engine|  | Lore Valid.  |  | Gen Engine   |      |
+|  `--------+---------+--  `--------+---------+--  `--------+---------+--      |
+|         |                 |                 |               |
+|         v                 v                 v               |
+|  ---------------------------------------------------------   |
+|  |              BRIDGE LAYER (Python)                   |   |
+|  |  * Type translation (Trit<->i8, WaveArray<->bytes)      |   |
+|  |  * Syscall wrapper (TRIX syscall 21: MATRIX_RUN)    |   |
+|  |  * Async event loop (trio/asyncio)                  |   |
+|  |  * IntentHash verification                          |   |
+|  `-----------------------+---------------------------------+--   |
+`--------------------------+------------------------------------+--
+                         | FFI / Shared Memory / IPC
+                         v
+-----------------------------------------------------------------
+|                      ZIG (TRIX KERNEL)                      |
+|  ------------------  ------------------  ------------------      |
+|  | ExaGEMM      |  | SparseRolling|  | Syscall 21   |      |
+|  | (SSE4.2)     |  | (CSR)        |  | MATRIX_RUN   |      |
+|  `----------------+--  `----------------+--  `----------------+--      |
+`---------------------------------------------------------------+--
 ```
 
 ## Type Translation
 
-### Zig → Python
+### Zig -> Python
 ```zig
 // Zig types (src/trix/matrix/types.zig)
 pub const Trit = enum(i8) { NEG = -1, ZERO = 0, POS = 1 };
 pub const Wave = struct {
     band: u8,      // FrequencyBand (0-4)
     trit: Trit,
-    phase: f32,    // [0, 2π)
+    phase: f32,    // [0, 2pi)
     amplitude: f32 // [0, 1]
 };
 pub const WaveArray = [81]Wave;
 pub const TernaryMatrix = struct {
-    data: [1641]u8,  // 6561 trits × 2 bits = 1641 bytes
+    data: [1641]u8,  // 6561 trits x 2 bits = 1641 bytes
 };
 ```
 

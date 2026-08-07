@@ -1,6 +1,6 @@
 ---
 name: citizenship-auditor
-description: "Valide la cohérence de la citoyenneté : citizens.yaml ↔ known_repositories.yaml ↔ VERSES ↔ REGISTRY.yaml."
+description: "Valide la coherence de la citoyennete : citizens.yaml <-> known_repositories.yaml <-> VERSES <-> REGISTRY.yaml."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_CITIZENSHIP_AUDITOR_20260807
@@ -19,29 +19,29 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — citizenship-auditor
+# Skill - citizenship-auditor
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Audite la cohérence de la citoyenneté.
+> **Verdict** : **SKILL D'EXECUTION** - Audite la coherence de la citoyennete.
 
 ---
 
 ## Objectif
 
-Valider P-801 à P-807 : tous les repos sont citoyens, tous les citoyens ont un verse, tous les skills sont dans REGISTRY.yaml.
+Valider P-801 a P-807 : tous les repos sont citoyens, tous les citoyens ont un verse, tous les skills sont dans REGISTRY.yaml.
 
 ---
 
-## Déclencheur
+## Declencheur
 
 - CI/CD : audit automatique
-- ARGUS : détection de gaps
-- MOX : vérification avant merge
+- ARGUS : detection de gaps
+- MOX : verification avant merge
 
 ---
 
-## Entrées
+## Entrees
 
- | Entrée | Type | Description |
+ | Entree | Type | Description |
  |--------|------|-------------|
  | `known_repositories_path` | Path | `known_repositories.yaml` |
  | `citizens_yaml_path` | Path | `citizens.yaml` |
@@ -61,12 +61,12 @@ Valider P-801 à P-807 : tous les repos sont citoyens, tous les citoyens ont un 
 
 ---
 
-## Règles
+## Regles
 
-1. P-801 : Tous les repos actifs sont des citoyens déclarés
+1. P-801 : Tous les repos actifs sont des citoyens declares
 2. P-802 : Tous les citoyens ont un verse dans VERSES/verses/
-3. P-806 : Tout skill dans .kilo/skills/<repo>/ est déclaré dans REGISTRY.yaml
-4. P-807 : REGISTRY.yaml référence source_repo pour chaque skill
+3. P-806 : Tout skill dans .kilo/skills/<repo>/ est declare dans REGISTRY.yaml
+4. P-807 : REGISTRY.yaml reference source_repo pour chaque skill
 
 ---
 
@@ -95,9 +95,9 @@ print(report)
  | Test | Description | Attend |
  |------|-------------|--------|
  | `test_audit_p801_pass` | Tous repos sont citizens | Passe |
- | `test_audit_p802_fail` | Citizen sans verse | Échec |
- | `test_audit_p806_fail` | Skill non enregistré | Échec |
- | `test_audit_p807_fail` | Skill sans source_repo | Échec |
+ | `test_audit_p802_fail` | Citizen sans verse | Echec |
+ | `test_audit_p806_fail` | Skill non enregistre | Echec |
+ | `test_audit_p807_fail` | Skill sans source_repo | Echec |
 
 ---
 
@@ -105,34 +105,34 @@ print(report)
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+ | PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
  +-----------------------------------------------------------------------------+
- | P-801    Tous les repos actifs sont des citoyens déclarés                   |
+ | P-801    Tous les repos actifs sont des citoyens declares                   |
  | P-802    Tous les citoyens ont un verse dans VERSES/verses/                |
- | P-806    Tout skill dans .kilo/skills/<repo>/ est déclaré dans REGISTRY.yaml |
- | P-807    REGISTRY.yaml référence source_repo pour les skills externes      |
+ | P-806    Tout skill dans .kilo/skills/<repo>/ est declare dans REGISTRY.yaml |
+ | P-807    REGISTRY.yaml reference source_repo pour les skills externes      |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Critères
+ ## Criteres
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | CRITÈRE    DESCRIPTION                                                      |
+ | CRITERE    DESCRIPTION                                                      |
  +-----------------------------------------------------------------------------+
- | ✓          citizenship-auditor fonctionne                                   |
- | ✓          P-801 passe                                                      |
- | ✓          P-802 passe                                                      |
- | ✓          P-806 passe                                                      |
- | ✓          P-807 passe                                                      |
+ | [OK]          citizenship-auditor fonctionne                                   |
+ | [OK]          P-801 passe                                                      |
+ | [OK]          P-802 passe                                                      |
+ | [OK]          P-806 passe                                                      |
+ | [OK]          P-807 passe                                                      |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Références
+ ## References
 
  - `PRD-MOC-AUTOMATED-DEVELOPMENT-FRAMEWORK-2026-08-07.md`
  - `repo-citizen-manager`

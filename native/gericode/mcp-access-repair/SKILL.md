@@ -1,8 +1,8 @@
 ---
 name: mcp-access-repair
 description: >
-  Réparation causale des accès MCP filesystem refusés pour chemins hors workspace root.
-  Crée une jonction NTFS `unified-design` vers `L0-CANON/unified-design` pour rendre
+  Reparation causale des acces MCP filesystem refuses pour chemins hors workspace root.
+  Cree une jonction NTFS `unified-design` vers `L0-CANON/unified-design` pour rendre
   les chemins L0 accessibles au MCP sans modifier allowedDirectories.
   Utiliser quand le MCP filesystem renvoie "Access denied" pour un chemin sous D:\DO\WEB\TOOLS\L0-CANON\.
 version: "1.0.0"
@@ -12,7 +12,7 @@ author: gerivdb
 source_repo: gerivdb/GeriCode
 source_path: .kilo/skills/mcp-access-repair/SKILL.md
 triggers:
-  - "accès refusé MCP"
+  - "acces refuse MCP"
   - "MCP access denied"
   - "unified-design inaccessible"
   - "allowedDirectories"
@@ -25,16 +25,16 @@ citizen: "NEXUS"
 layer: "L4"
 ---
 
-# Skill — MCP Access Repair
+# Skill - MCP Access Repair
 
-> **Verdict** : **SKILL D’EXÉCUTION** — Réparation causale des refus d’accès MCP filesystem
+> **Verdict** : **SKILL D'EXECUTION** - Reparation causale des refus d'acces MCP filesystem
 > pour chemins hors workspace root, par jonction NTFS.
 
 ---
 
 ## Objectif
 
-Quand le MCP filesystem refuse l’accès à `D:\DO\WEB\TOOLS\L0-CANON\unified-design\` parce que le workspace root est `D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode`, ce skill crée une jonction NTFS à l’intérieur du workspace pour rendre le chemin accessible **sans modifier** `allowedDirectories`.
+Quand le MCP filesystem refuse l'acces a `D:\DO\WEB\TOOLS\L0-CANON\unified-design\` parce que le workspace root est `D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode`, ce skill cree une jonction NTFS a l'interieur du workspace pour rendre le chemin accessible **sans modifier** `allowedDirectories`.
 
 ---
 
@@ -45,25 +45,25 @@ GeriCode\unified-design  --(jonction NTFS)-->  L0-CANON\unified-design
 ```
 
 Le MCP filesystem voit `unified-design/` comme un chemin local sous le workspace root.
-L’écriture/lecture passe donc sans restriction.
+L'ecriture/lecture passe donc sans restriction.
 
 ---
 
-## Prérequis
+## Prerequis
 
-- Windows avec droits d’écriture sur `D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\`
+- Windows avec droits d'ecriture sur `D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\`
 - PowerShell 7+ (pwsh)
-- Git Bash ou PowerShell pour exécuter le script
-- Aucune modification de `mcp.json` nécessaire
+- Git Bash ou PowerShell pour executer le script
+- Aucune modification de `mcp.json` necessaire
 
 ---
 
 ## Processus
 
-### Étape 1 — Diagnostic
+### Etape 1 - Diagnostic
 
 ```powershell
-# Vérifier que la jonction n’existe pas déjà
+# Verifier que la jonction n'existe pas deja
 $junction = "D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\unified-design"
 if (Test-Path $junction) {
   $item = Get-Item $junction -Force
@@ -74,26 +74,26 @@ if (Test-Path $junction) {
 }
 ```
 
-### Étape 2 — Création de la jonction
+### Etape 2 - Creation de la jonction
 
 ```powershell
-# Exécuter le script de setup
+# Executer le script de setup
 .\.kilo\scripts\setup-unified-design-junction.ps1
 ```
 
-### Étape 3 — Vérification
+### Etape 3 - Verification
 
 ```powershell
 # Test lecture MCP
 Get-Content "D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\unified-design\designs\actprotocol-fractal-nomenclature.yaml" -Head 5
 
-# Test écriture via bash
+# Test ecriture via bash
 $test = "test-mcp-access-repair"
 Set-Content -Path "D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\unified-design\$test.txt" -Value "OK"
 Remove-Item "D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\unified-design\$test.txt"
 ```
 
-### Étape 4 — Nettoyage (optionnel)
+### Etape 4 - Nettoyage (optionnel)
 
 ```powershell
 # Supprimer la jonction
@@ -102,12 +102,12 @@ Remove-Item "D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\unified-design" -Force
 
 ---
 
-## Rôles
+## Roles
 
-| Rôle | Responsabilité |
+| Role | Responsabilite |
 |------|----------------|
-| `NEXUS` | Trace la création/suppression de jonction dans WAL |
-| `PRIMUS` | Orchestre la réparation MCP |
+| `NEXUS` | Trace la creation/suppression de jonction dans WAL |
+| `PRIMUS` | Orchestre la reparation MCP |
 | `TOPOS` | Valide que la cible `L0-CANON/unified-design` existe |
 
 ---
@@ -116,29 +116,29 @@ Remove-Item "D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\unified-design" -Force
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+| PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
 +-----------------------------------------------------------------------------+
 | P-801    Junction "unified-design" existe et pointe vers L0-CANON           |
 | P-802    Lecture MCP via unified-design/ fonctionne                         |
-| P-803    Écriture MCP via unified-design/ fonctionne                        |
-| P-804    Aucune modification de mcp.json nécessaire                         |
+| P-803    Ecriture MCP via unified-design/ fonctionne                        |
+| P-804    Aucune modification de mcp.json necessaire                         |
 | P-805    Pas de elevation/admin requis                                      |
 +-----------------------------------------------------------------------------+
 ```
 
 ---
 
-## Critères
+## Criteres
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| CRITÈRE    DESCRIPTION                                                      |
+| CRITERE    DESCRIPTION                                                      |
 +-----------------------------------------------------------------------------+
-| ✓          Junction créée et fonctionnelle                                  |
-| ✓          MCP filesystem lit unified-design/ sans erreur                   |
-| ✓          MCP filesystem écrit dans unified-design/ sans erreur            |
-| ✓          Aucun reboot de serveur MCP nécessaire                           |
-| ✓          Procédure réversible (suppression jonction)                      |
+| [OK]          Junction creee et fonctionnelle                                  |
+| [OK]          MCP filesystem lit unified-design/ sans erreur                   |
+| [OK]          MCP filesystem ecrit dans unified-design/ sans erreur            |
+| [OK]          Aucun reboot de serveur MCP necessaire                           |
+| [OK]          Procedure reversible (suppression jonction)                      |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -150,18 +150,18 @@ Remove-Item "D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\unified-design" -Force
 # Supprimer la jonction
 Remove-Item "D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\unified-design" -Force
 
-# Vérifier
+# Verifier
 Test-Path "D:\DO\WEB\TOOLS\L2-PLATFORM\GeriCode\unified-design"  # Doit retourner False
 ```
 
 ---
 
-## Références
+## References
 
 - Script : `.kilo/scripts/setup-unified-design-junction.ps1`
 - Design : `unified-design/designs/actprotocol-fractal-nomenclature.yaml`
 - PRD MOC : `act-protocol/PRD/PRD-MOC-ACTPROTOCOL/fractal/PRD-MOC-ACTPROTOCOL-SKILLS-CITIZENS-2026-08-06.md`
-- Règle : `.kilocode/rules/ecos-cli-launcher.md`
+- Regle : `.kilocode/rules/ecos-cli-launcher.md`
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: skills-validator
-description: "Valide tous les skills de l'écosystème contre la taxonomie SKILLS/TAXONOMY.md et détecte les anomalies de frontmatter, chemins et doublons."
+description: "Valide tous les skills de l'ecosysteme contre la taxonomie SKILLS/TAXONOMY.md et detecte les anomalies de frontmatter, chemins et doublons."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_SKILLS_VALIDATOR_20260807
@@ -19,9 +19,9 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — skills-validator
+# Skill - skills-validator
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Valide la conformité des skills à la taxonomie.
+> **Verdict** : **SKILL D'EXECUTION** - Valide la conformite des skills a la taxonomie.
 
 ---
 
@@ -31,19 +31,19 @@ Valider tous les skills contre `SKILLS/TAXONOMY.md` : frontmatter, champs obliga
 
 ---
 
-## Déclencheur
+## Declencheur
 
 - CI/CD : validation avant commit
-- ARGUS : détection d'anomalies
-- MOX : vérification avant merge
+- ARGUS : detection d'anomalies
+- MOX : verification avant merge
 
 ---
 
-## Entrées
+## Entrees
 
- | Entrée | Type | Description |
+ | Entree | Type | Description |
  |--------|------|-------------|
- | `skills_dir` | Path | Répertoire `.kilo/skills/` |
+ | `skills_dir` | Path | Repertoire `.kilo/skills/` |
  | `taxonomy_path` | Path | Chemin vers `SKILLS/TAXONOMY.md` |
  | `registry_path` | Path | Chemin vers `SKILLS/REGISTRY.yaml` |
 
@@ -59,13 +59,13 @@ Valider tous les skills contre `SKILLS/TAXONOMY.md` : frontmatter, champs obliga
 
 ---
 
-## Règles
+## Regles
 
 1. Frontmatter YAML valide
-2. Champs obligatoires présents : `name`, `description`, `triggers`, `domain`, `version`, `author`, `license`, `status`
+2. Champs obligatoires presents : `name`, `description`, `triggers`, `domain`, `version`, `author`, `license`, `status`
 3. `triggers` non vide
-4. `type` ∈ {foundational, domain, external}
-5. `status` ∈ {active, draft, deprecated}
+4. `type` in {foundational, domain, external}
+5. `status` in {active, draft, deprecated}
 6. Pas de doublons de `name`
 7. `path` existe dans le filesystem
 
@@ -94,8 +94,8 @@ print(report)
  | Test | Description | Attend |
  |------|-------------|--------|
  | `test_validate_valid_skill` | Skill valide | 0 erreur |
- | `test_validate_missing_field` | Champ manquant | Erreur détectée |
- | `test_detect_duplicate_names` | Doublon de nom | Erreur détectée |
+ | `test_validate_missing_field` | Champ manquant | Erreur detectee |
+ | `test_detect_duplicate_names` | Doublon de nom | Erreur detectee |
  | `test_validate_all_skills` | Tous les skills | Rapport complet |
 
 ---
@@ -104,7 +104,7 @@ print(report)
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+ | PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
  +-----------------------------------------------------------------------------+
  | P-903    100% des skills ont un frontmatter valide                          |
  | P-904    0 doublon de nom                                                  |
@@ -113,21 +113,21 @@ print(report)
 
  ---
 
- ## Critères
+ ## Criteres
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | CRITÈRE    DESCRIPTION                                                      |
+ | CRITERE    DESCRIPTION                                                      |
  +-----------------------------------------------------------------------------+
- | ✓          skills-validator fonctionne                                      |
- | ✓          P-903 passe                                                      |
- | ✓          P-904 passe                                                      |
+ | [OK]          skills-validator fonctionne                                      |
+ | [OK]          P-903 passe                                                      |
+ | [OK]          P-904 passe                                                      |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Références
+ ## References
 
  - `PRD-MOC-AUTOMATED-DEVELOPMENT-FRAMEWORK-2026-08-07.md`
  - `SKILLS/TAXONOMY.md`

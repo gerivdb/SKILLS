@@ -1,106 +1,106 @@
 ---
 name: governance-architect
 description: >
-  Questionnement architectural par 4 mathèmes attracteurs (M1-M4).
-  Active ce skill avant toute création d'artefact de gouvernance (PRD, ADR, INTENT, EPIC,
-  design, workflow) pour vérifier les liens causaux entre mathématiques, personas L0,
-  repos et patterns. Remplace la hiérarchie N-1->N6 par un topos de constellations.
+  Questionnement architectural par 4 mathemes attracteurs (M1-M4).
+  Active ce skill avant toute creation d'artefact de gouvernance (PRD, ADR, INTENT, EPIC,
+  design, workflow) pour verifier les liens causaux entre mathematiques, personas L0,
+  repos et patterns. Remplace la hierarchie N-1->N6 par un topos de constellations.
 version: 1.0.0
 intent_hash: 0xSKILL_GOVERNANCE_ARCHITECT_20260805
 ---
 
 # Governance Architect
 
-## Déclencheur
+## Declencheur
 
 Toute action qui :
-- Crée ou modifie un artefact de gouvernance (PRD, ADR, INTENT, EPIC, MOC)
-- Définit une architecture ou un design
-- Crée un workflow, un pipeline, un script d'orchestration
+- Cree ou modifie un artefact de gouvernance (PRD, ADR, INTENT, EPIC, MOC)
+- Definit une architecture ou un design
+- Cree un workflow, un pipeline, un script d'orchestration
 - Ajoute ou modifie un pattern, un atome, un citizen
-- Nécessite une validation cross-repo
+- Necessite une validation cross-repo
 
-## Protocole — 4 Questions Obligatoires
+## Protocole - 4 Questions Obligatoires
 
-### Q1 (M1 — Continuité) : Topologie
+### Q1 (M1 - Continuite) : Topologie
 
 ```
-Quelle est la structure du problème ?
+Quelle est la structure du probleme ?
 - Quels sont les objets (ENV, repos, artifacts) ?
-- Quels sont les morphismes (déploiements, transformations, workflows) ?
-- Quels sont les invariants (symétries, cycles, points fixes) ?
-- Comment les objets se recollent-ils en un faisceau cohérent ?
+- Quels sont les morphismes (deploiements, transformations, workflows) ?
+- Quels sont les invariants (symetries, cycles, points fixes) ?
+- Comment les objets se recollent-ils en un faisceau coherent ?
 ```
 
 **Livrable** : Graphe ASCII ou Mermaid des objets/morphismes.
 
-### Q2 (M2 — Information) : Mesure
+### Q2 (M2 - Information) : Mesure
 
 ```
 Quelle est la mesure d'information pertinente ?
-- Où est l'entropie ? (H = -Σ p_m log₂ p_m)
-- Quelle est la complexité ? (Kolmogorov)
+- Ou est l'entropie ? (H = -Sigma p_m log2 p_m)
+- Quelle est la complexite ? (Kolmogorov)
 - Quels sont les signaux vs le bruit ?
-- Comment mesurer la dérive sémantique ?
+- Comment mesurer la derive semantique ?
 ```
 
-**Livrable** : Métriques H, K, seuils d'alerte.
+**Livrable** : Metriques H, K, seuils d'alerte.
 
-### Q3 (M3 — Transformation) : Exécution
+### Q3 (M3 - Transformation) : Execution
 
 ```
-Comment transformer l'information en action vérifiable ?
-- Quel est le morphisme d'exécution ?
-- Comment vérifier la correctitude ? (Hoare, Milner)
-- Quel est le rollback ? (F⁻¹∘F = id)
+Comment transformer l'information en action verifiable ?
+- Quel est le morphisme d'execution ?
+- Comment verifier la correctitude ? (Hoare, Milner)
+- Quel est le rollback ? (F-1oF = id)
 - Quelles sont les contraintes ENV2 ? (SSE4.2, 24Go, <50ms)
 ```
 
-**Livrable** : Spécification d'exécution + rollback + contraintes.
+**Livrable** : Specification d'execution + rollback + contraintes.
 
-### Q4 (M4 — Finalité) : Gouvernance
+### Q4 (M4 - Finalite) : Gouvernance
 
 ```
 Quel est le contrat de gouvernance et de transmission ?
-- Quelles personas L0 sont activées ?
+- Quelles personas L0 sont activees ?
 - Quel est le contrat Default-FAIL ?
 - Comment transmettre le savoir ? (documentation, verse, atome)
 - Quel est le lien ADR/INTENT/PRD ?
 ```
 
-**Livrable** : Mapping personas → mathèmes → repos → patterns.
+**Livrable** : Mapping personas -> mathemes -> repos -> patterns.
 
-## Règles Causalité
+## Regles Causalite
 
-1. **Tout artifact DOIT être rattachable à un mathème.**
-   Si aucun M1-M4 ne s'applique → STOP, demander HITL.
+1. **Tout artifact DOIT etre rattachable a un matheme.**
+   Si aucun M1-M4 ne s'applique -> STOP, demander HITL.
 
-2. **Tout mathème DOIT avoir au moins une persona L0 dans VERSES/verses/.**
-   Si persona manquante → créer verse + atome + citizen avant de continuer.
+2. **Tout matheme DOIT avoir au moins une persona L0 dans VERSES/verses/.**
+   Si persona manquante -> creer verse + atome + citizen avant de continuer.
 
-3. **Toute persona L0 DOIT être référencée dans unified-design/atoms/ ET REPO-STANDARDS/norms/.**
-   Si référence manquante → créer/mettre à jour.
+3. **Toute persona L0 DOIT etre referencee dans unified-design/atoms/ ET REPO-STANDARDS/norms/.**
+   Si reference manquante -> creer/mettre a jour.
 
-4. **Aucun workflow ne peut démarrer sans calcul de quorum par mathème.**
+4. **Aucun workflow ne peut demarrer sans calcul de quorum par matheme.**
    ```
-   Q(R) = ceil(Σ_{i=1..4} w_i(M_i activés) × 0.75)
+   Q(R) = ceil(Sigma_{i=1..4} w_i(M_i actives) x 0.75)
    ```
-   Si Q(R) < seuil → STOP.
+   Si Q(R) < seuil -> STOP.
 
-5. **La distance de Wasserstein entre distributions de patterns activés**
-   **dans chaque couple de mathèmes DOIT être ≤ 0.5.**
-   Si W > 0.5 → alerte, demander médiateur.
+5. **La distance de Wasserstein entre distributions de patterns actives**
+   **dans chaque couple de mathemes DOIT etre <= 0.5.**
+   Si W > 0.5 -> alerte, demander mediateur.
 
-6. **La topologie grothendieckienne est l'orchestration par défaut.**
-   Chaque ENV = objet, chaque déploiement = morphisme,
-   `𝔽_KEEL` = faisceau cohérent sur le site TOPOS.
+6. **La topologie grothendieckienne est l'orchestration par defaut.**
+   Chaque ENV = objet, chaque deploiement = morphisme,
+   `F_KEEL` = faisceau coherent sur le site TOPOS.
 
-7. **Default-FAIL** : Un critère ne passe à `true` QUE si preuve tangible
+7. **Default-FAIL** : Un critere ne passe a `true` QUE si preuve tangible
    (hash, log, diff, test_output).
 
-## Mapping Patterns → Mathèmes
+## Mapping Patterns -> Mathemes
 
-| Pattern | Mathème(s) |
+| Pattern | Matheme(s) |
 |---------|------------|
 | @constructive | M3 |
 | @entropy | M2 |
@@ -149,7 +149,7 @@ Quel est le contrat de gouvernance et de transmission ?
 | @crm_workflow_v1.0 | M4 |
 | @office_export_v1.0 | M4 |
 
-## Workflow d'Implémentation
+## Workflow d'Implementation
 
 ```yaml
 wf create_artifact
@@ -161,18 +161,18 @@ audit check_quorum
 merge go
 ```
 
-## Vérification
+## Verification
 
-Avant toute implémentation, exécuter `architectural-questionnaire.ps1` :
+Avant toute implementation, executer `architectural-questionnaire.ps1` :
 - Q1 : Topologie
-- Q2 : Entropie H ≤ 0.6
-- Q3 : Rollback F⁻¹∘F = id
-- Q4 : Personas L0 présentes
+- Q2 : Entropie H <= 0.6
+- Q3 : Rollback F-1oF = id
+- Q4 : Personas L0 presentes
 
-## Références
+## References
 
 - **ADR** : ADR-MATHEMES-PERSONAS-ORCHESTRATION-2026-08-05
 - **INTENT** : INTENT-MATHEMES-PERSONAS-ORCHESTRATION-2026-08-05
 - **META-DESIGN** : unified-design/docs/MATHEMES-FRAMEWORK.md
-- **KEEL PRD-005** : TOPOS comme catégorie de sites Grothendieck
+- **KEEL PRD-005** : TOPOS comme categorie de sites Grothendieck
 - **SCI-VERSE** : VERSES/verses/sci-verse.md

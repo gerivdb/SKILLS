@@ -18,7 +18,7 @@ Validate RSS-v2 feed compliance across all citizen repos.
 4. Report: .kilo/rss-compliance.yaml
 
 ## Verify
-All 17 citizen feeds validate → PASS
+All 17 citizen feeds validate -> PASS
 
 ## Ref
 D-008: verses-architecture.design.yaml

@@ -1,7 +1,7 @@
 # Skill: ctulu-louvain-clusterer
 
 ## Contexte
-Détection de communautés Louvain sur le graphe écosystème. Produit les partitions de clusters avec vérification de stabilité (< 5% variation run-to-run).
+Detection de communautes Louvain sur le graphe ecosysteme. Produit les partitions de clusters avec verification de stabilite (< 5% variation run-to-run).
 
 ## Outil CTULU
 - **Package**: `louvain_clusterer` (PRD-082)
@@ -16,7 +16,7 @@ louvain-clusterer --graph graphs/graph_20260616.graphml --out partitions/ --outp
 ## Algorithme
 - **Principal**: `python-louvain` (`community.best_partition()`)
 - **Fallback**: `networkx.algorithms.community.greedy_modularity_communities`
-- **Stabilité**: N=5 runs, variation < 5% cible
+- **Stabilite**: N=5 runs, variation < 5% cible
 
 ## Sortie JSON
 ```json
@@ -36,4 +36,4 @@ louvain-clusterer --graph graphs/graph_20260616.graphml --out partitions/ --outp
 ## Anti-patterns
 - Ne JAMAIS utiliser des partitions avec variation > 5%
 - Ne JAMAIS clusteriser un graphe disconnected sans composantes connexes
-- Ne JAMAIS écraser des partitions existantes (immuabilité)
+- Ne JAMAIS ecraser des partitions existantes (immuabilite)

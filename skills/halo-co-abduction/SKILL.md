@@ -18,7 +18,7 @@ Co-abductive reasoning halo: infer missing context from partial observations.
 4. Output: .kilo/halo/hypotheses.yaml
 
 ## Verify
-Top hypothesis validated by cfmi-scanner → PASS
+Top hypothesis validated by cfmi-scanner -> PASS
 
 ## Ref
 ATOM-065: co-abductive-halo

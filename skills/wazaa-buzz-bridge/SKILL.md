@@ -12,11 +12,11 @@ status: active
 Bridge WAZAA event stream to BUZZ runtime for reactive execution.
 
 ## Context
-WAZAA emits events; BUZZ executes blocks. Bridge maps events→blocks.
+WAZAA emits events; BUZZ executes blocks. Bridge maps events->blocks.
 
 ## Action
 1. Read wazaa/events/*.json stream
-2. Map vent.type → uzz.block_id via config/bridge-map.yaml
+2. Map vent.type -> uzz.block_id via config/bridge-map.yaml
 3. Inject into BUZZ queue: uzz enqueue <block_id> --payload <event>
 4. Log to .kilo/wal/bridge.wal
 

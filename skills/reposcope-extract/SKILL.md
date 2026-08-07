@@ -8,38 +8,38 @@ intent_hash: 0xSKILL_REPOSCOPE_EXTRACT_20260615
 
 ## Quand l'utiliser
 
-- L'utilisateur fournit une URL GitHub (`<owner>/<repo>`) et veut en extraire les dimensions clés
-- Le pipeline REPOSCOPE-COMPARE nécessite un artefact d'extraction en entrée
-- ECOS-CLI `reposcope-extract <url>` est appelé
+- L'utilisateur fournit une URL GitHub (`<owner>/<repo>`) et veut en extraire les dimensions cles
+- Le pipeline REPOSCOPE-COMPARE necessite un artefact d'extraction en entree
+- ECOS-CLI `reposcope-extract <url>` est appele
 
-**NE PAS utiliser** pour l'analyse de code source local (utiliser `reposcope-run` à la place).
+**NE PAS utiliser** pour l'analyse de code source local (utiliser `reposcope-run` a la place).
 
-## Références
+## References
 
 - **INTENT** : INTENT-041a (GOVERNANCE-HUB)
 - **PRD** : PRD-REPOSCOPE-EXTRACTOR-2026-06-15
 - **EPIC** : EPIC-REPOSCOPE-EXTRACTOR
-- **Schéma de sortie** : `extraction` (YAML)
+- **Schema de sortie** : `extraction` (YAML)
 
 ## Pipeline d'extraction
 
-### Étape 1 — Valider l'entrée
+### Etape 1 - Valider l'entree
 
 ```powershell
-# Vérifier que l'URL est bien formatée
+# Verifier que l'URL est bien formatee
 if ($url -notmatch '^[\w-]+/[\w-]+$') {
     Write-Output "[ERROR] URL invalide. Format attendu: <owner>/<repo>"
     exit 1
 }
 ```
 
-### Étape 2 — Appels GitHub API
+### Etape 2 - Appels GitHub API
 
 ```powershell
 # Base URL
 $base = "https://api.github.com/repos/$url"
 
-# 1. Métadonnées principales
+# 1. Metadonnees principales
 $repo = Invoke-RestMethod -Uri $base -Headers @{Accept = "application/vnd.github.v3+json"}
 
 # 2. Langages
@@ -53,15 +53,15 @@ $topics = $topicsResp.names
 $tree = Invoke-RestMethod -Uri "$base/git/trees/main?recursive=1" -Headers @{Accept = "application/vnd.github.v3+json"}
 $dirs = $tree.tree | Where-Object { $_.type -eq "tree" } | Select-Object -First 20 path
 
-# 5. README (tronqué)
+# 5. README (tronque)
 $readme = Invoke-RestMethod -Uri "$base/readme" -Headers @{Accept = "application/vnd.github.v3+json"}
 $readmeContent = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($readme.content)).Substring(0, [Math]::Min(2000, $readmeContent.Length))
 ```
 
-### Étape 3 — Classification technique
+### Etape 3 - Classification technique
 
 ```powershell
-# Détection frameworks via fichiers de config détectés dans le tree
+# Detection frameworks via fichiers de config detectes dans le tree
 $frameworks = @()
 $configFiles = $tree.tree.path | Where-Object { $_ -match "(package\.json|Cargo\.toml|requirements\.txt|go\.mod|pom\.xml|build\.gradle|pyproject\.toml|Gemfile)" }
 
@@ -79,7 +79,7 @@ elseif ($paths -match "lib/|src/" -and $paths -notmatch "main\.go|main\.py|index
 elseif ($paths -match "cmd/|bin/|main\.go|main\.py") { $pattern = "cli" }
 elseif ($paths -match "frontend/|ui/|static/") { $pattern = "webapp" }
 
-# Maturité score [0.0-1.0]
+# Maturite score [0.0-1.0]
 $starsScore = [Math]::Min($repo.stargazers_count / 100, 1.0) * 0.3
 $recency = if ($repo.updated_at -gt (Get-Date).AddMonths(-3)) { 1.0 } elseif ($repo.updated_at -gt (Get-Date).AddYears(-1)) { 0.5 } else { 0.2 }
 $recencyScore = $recency * 0.4
@@ -88,10 +88,10 @@ $issuesScore *= 0.3
 $maturity = [Math]::Round($starsScore + $recencyScore + $issuesScore, 3)
 ```
 
-### Étape 4 — Classification architecturale
+### Etape 4 - Classification architecturale
 
 ```powershell
-# Mapping topics → strate L0→L9
+# Mapping topics -> strate L0->L9
 $stratMap = @{
     "governance" = "L0_CONSTITUTIONAL"; "constitution" = "L0_CONSTITUTIONAL"
     "ontology" = "L1_CAUSALITY"; "causality" = "L1_CAUSALITY"; "semantic" = "L1_CAUSALITY"
@@ -110,13 +110,13 @@ foreach ($topic in $topics) {
     }
 }
 
-# Inférence rôle Trit
+# Inference role Trit
 $tritRole = "E"
 if ($repo.description -match "governance|registry|policy|standard") { $tritRole = "C" }
 if ($repo.description -match "monitor|analytics|observe|observab") { $tritRole = "Obs" }
 ```
 
-### Étape 5 — Sortie YAML
+### Etape 5 - Sortie YAML
 
 ```powershell
 $extraction = @{
@@ -143,7 +143,7 @@ $extraction = @{
     }
 }
 
-# Peupler les données
+# Peupler les donnees
 $extraction.extraction.semantic.topics = $topics
 $extraction.extraction.semantic.languages = $langs
 $extraction.extraction.semantic.readme_summary = $readmeContent
@@ -154,7 +154,7 @@ $extraction.extraction.technical.maturity_score = $maturity
 $extraction.extraction.architectural.inferred_strata = $inferredStrata
 $extraction.extraction.architectural.inferred_trit_role = $tritRole
 
-# Écrire le YAML
+# Ecrire le YAML
 $yaml = $extraction | ConvertTo-Yaml -Depth 10
 $slug = $url.Replace("/", "_")
 $outputPath = "NEXUS/reposcope/extract_${slug}_$(Get-Date -Format 'yyyyMMdd').yaml"
@@ -169,18 +169,18 @@ Write-Output $yaml
 |---|---|---|
 | Repo inexistant | 404 | `Write-Output "[ERROR] Repo introuvable: $url"` + exit 1 |
 | Rate limit | 403 | Lire `Retry-After` header, attendre, retry (max 3) |
-| Timeout | — | 30s timeout sur chaque appel API |
+| Timeout | - | 30s timeout sur chaque appel API |
 | README inaccessible | 404 | Ignorer (readme_summary = "") |
 | Pas de tree `main` | 404 | Essayer `master`, puis `HEAD` |
 
-## Critères de succès
+## Criteres de succes
 
 - [ ] YAML valide produit pour tout repo GitHub accessible
-- [ ] Toutes les 3 dimensions peuplées (même partiellement)
+- [ ] Toutes les 3 dimensions peuplees (meme partiellement)
 - [ ] Timeout < 30s par repo
 - [ ] Gestion erreurs 404/403/timeout
 
-## Skills liés
+## Skills lies
 
 - **reposcope-score** : consume l'artefact d'extraction pour le scoring
 - **reposcope-compare** : orchestre le pipeline complet

@@ -9,19 +9,19 @@ intent_hash: 0xSKILL_REPOSCOPE_SCORE_20260615
 ## Quand l'utiliser
 
 - Un artefact d'extraction YAML (produit par `reposcope-extract`) est disponible
-- Le pipeline REPOSCOPE-COMPARE nécessite un scoring multi-échelle
-- ECOS-CLI `reposcope-score --input <extract.yaml>` est appelé
+- Le pipeline REPOSCOPE-COMPARE necessite un scoring multi-echelle
+- ECOS-CLI `reposcope-score --input <extract.yaml>` est appele
 
-**NE PAS utiliser** sans un artefact d'extraction valide en entrée.
+**NE PAS utiliser** sans un artefact d'extraction valide en entree.
 
-## Références
+## References
 
 - **INTENT** : INTENT-041b (GOVERNANCE-HUB)
 - **PRD** : PRD-REPOSCOPE-SCORING-2026-06-15
 - **EPIC** : EPIC-REPOSCOPE-SCORING
-- **Schéma de sortie** : `scoring` (YAML)
+- **Schema de sortie** : `scoring` (YAML)
 
-## Sources de vérité requises
+## Sources de verite requises
 
 | Fichier | Chemin GOVERNANCE-HUB | Usage |
 |---|---|---|
@@ -32,13 +32,13 @@ intent_hash: 0xSKILL_REPOSCOPE_SCORE_20260615
 
 ## Pipeline de scoring
 
-### Étape 1 — Charger l'extraction + SOT
+### Etape 1 - Charger l'extraction + SOT
 
 ```powershell
 # Charger l'artefact d'extraction
 $extract = Get-Content $InputPath | ConvertFrom-Yaml
 
-# Charger les SOT (cache si déjà chargé)
+# Charger les SOT (cache si deja charge)
 if (-not $global:KNOWN_REPOS) {
     $global:KNOWN_REPOS = Get-Content "GOVERNANCE-HUB/known_repositories.yaml" | ConvertFrom-Yaml
 }
@@ -47,7 +47,7 @@ if (-not $global:ORGANS) {
 }
 ```
 
-### Étape 2 — Scoring MACRO (vue cluster)
+### Etape 2 - Scoring MACRO (vue cluster)
 
 ```powershell
 $allRepos = $global:KNOWN_REPOS.P0_CONSTITUTIONAL + $global:KNOWN_REPOS.P1_OPERATIONAL +
@@ -71,7 +71,7 @@ $targetStrate = if ($extStrata.Count -gt 0) { $extStrata[0] } else { "UNKNOWN" }
 $coverage = if ($stratCoverage.ContainsKey($targetStrate)) { $stratCoverage[$targetStrate] / $totalRepos } else { 0 }
 $gap = [Math]::Round(1.0 - $coverage, 3)
 
-# Unicité : combien de repos gerivdb couvrent le même domaine
+# Unicite : combien de repos gerivdb couvrent le meme domaine
 $matchingRepos = $allRepos | Where-Object { $_.role -match ($extract.extraction.semantic.topics -join "|") }
 $uniqueness = [Math]::Round(1.0 - ($matchingRepos.Count / $totalRepos), 3)
 
@@ -82,7 +82,7 @@ $macro = @{
 }
 ```
 
-### Étape 3 — Scoring MESO (vue organe)
+### Etape 3 - Scoring MESO (vue organe)
 
 ```powershell
 $mesoMatches = @()
@@ -108,7 +108,7 @@ foreach ($organ in $global:ORGANS.organs) {
 }
 ```
 
-### Étape 4 — Scoring ATOMIQUE (vue repo-à-repo)
+### Etape 4 - Scoring ATOMIQUE (vue repo-a-repo)
 
 ```powershell
 $atomicScores = @()
@@ -131,7 +131,7 @@ foreach ($gerivdbRepo in $allRepos) {
     $gerivdbMaturity = if ($gerivdbRepo.phi_cps) { [Math]::Min($gerivdbRepo.phi_cps / 5.0, 1.0) } else { 0.5 }
     $simMaturity = [Math]::Round(1.0 - [Math]::Abs($extMaturity - $gerivdbMaturity), 3)
 
-    # φ-delta composite
+    # phi-delta composite
     $weights = @{ semantic = 0.35; technical = 0.25; architectural = 0.25; maturity = 0.15 }
     $phiDelta = [Math]::Round(
         $weights.semantic * $simSemantic +
@@ -159,11 +159,11 @@ foreach ($gerivdbRepo in $allRepos) {
     }
 }
 
-# Trier par score décroissant
+# Trier par score decroissant
 $top20 = $atomicScores | Sort-Object { $_.score } -Descending | Select-Object -First 20
 ```
 
-### Étape 5 — Sortie YAML
+### Etape 5 - Sortie YAML
 
 ```powershell
 $scoring = @{
@@ -197,18 +197,18 @@ $top20 | Select-Object -First 5 | ForEach-Object { Write-Output "  $($_.repo): $
 |---|---|
 | Artefact d'extraction invalide | `Write-Output "[ERROR] Artefact invalide: $InputPath"` + exit 1 |
 | SOT manquant | `Write-Output "[ERROR] Fichier SOT introuvable"` + exit 2 |
-| YAML mal formé | Capturer exception, afficher ligne erreur |
+| YAML mal forme | Capturer exception, afficher ligne erreur |
 
-## Critères de succès
+## Criteres de succes
 
 - [ ] Chaque strate a un score de gap
 - [ ] Chaque organe a un score de projection
-- [ ] Top-20 repos triés par φ-delta décroissant
+- [ ] Top-20 repos tries par phi-delta decroissant
 - [ ] Classification collision/synergie/neutre correcte
-- [ ] Exécution < 60s pour 181 repos
+- [ ] Execution < 60s pour 181 repos
 
-## Skills liés
+## Skills lies
 
-- **reposcope-extract** : produit l'artefact d'extraction en entrée
+- **reposcope-extract** : produit l'artefact d'extraction en entree
 - **reposcope-propagate** : consume le scoring pour la propagation
 - **reposcope-compare** : orchestre le pipeline complet

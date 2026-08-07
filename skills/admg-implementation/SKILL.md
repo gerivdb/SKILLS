@@ -18,7 +18,7 @@ Implement ADMG (Architecture Decision Meta-Graph) from design.
 4. Generate src/admg/query.py (path, impact, cycle)
 
 ## Verify
-python -m pytest tests/admg/ → all pass
+python -m pytest tests/admg/ -> all pass
 
 ## Ref
 D-002: admg-state-model.yaml

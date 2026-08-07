@@ -1,11 +1,11 @@
 ---
 name: ecosystem-brain
 description: >
-  Système de découverte automatique de l'écosystème GeriCode.
+  Systeme de decouverte automatique de l'ecosysteme GeriCode.
   Scanne designs, skills, citizens, workflows, MCP et personae pour construire
-  un index unifié interrogeable. Réduit la surcharge cognitive en éliminant
+  un index unifie interrogeable. Reduit la surcharge cognitive en eliminant
   la recherche manuelle.
-  Utiliser pour toute action nécessitant de découvrir des éléments de l'écosystème.
+  Utiliser pour toute action necessitant de decouvrir des elements de l'ecosysteme.
 version: "1.0.0"
 status: active
 intent_hash: 0xECOSYSTEM_BRAIN_20260806
@@ -13,7 +13,7 @@ author: gerivdb
 source_repo: gerivdb/GeriCode
 source_path: .kilo/skills/ecosystem-brain/SKILL.md
 triggers:
-  - "découvrir"
+  - "decouvrir"
   - "rechercher element"
   - "index ecosystem"
   - "quel skill"
@@ -27,32 +27,32 @@ citizen: "PRIMUS"
 layer: "L4"
 ---
 
-# Skill — Ecosystem Brain
+# Skill - Ecosystem Brain
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Système de découverte automatique
-> de l'écosystème pour éliminer la surcharge cognitive.
+> **Verdict** : **SKILL D'EXECUTION** - Systeme de decouverte automatique
+> de l'ecosysteme pour eliminer la surcharge cognitive.
 
 ---
 
 ## Objectif
 
-Scanne automatiquement tous les éléments de l'écosystème et construit un index unifié interrogeable.
+Scanne automatiquement tous les elements de l'ecosysteme et construit un index unifie interrogeable.
 
 ---
 
 ## Processus
 
-### Étape 1 — Découvrir
+### Etape 1 - Decouvrir
 
 ```powershell
 # Lancer le scan complet
 python .kilo/scripts/index-ecosystem.py --scan-all
 ```
 
-### Étape 2 — Requêter
+### Etape 2 - Requeter
 
 ```powershell
-# Rechercher un élément
+# Rechercher un element
 python .kilo/scripts/index-ecosystem.py --query "nomenclature PRD-MOC"
 
 # Rechercher un skill
@@ -62,22 +62,22 @@ python .kilo/scripts/index-ecosystem.py --query "skill verify-terms"
 python .kilo/scripts/index-ecosystem.py --query "citizen MOX"
 ```
 
-### Étape 3 — Exécuter
+### Etape 3 - Executer
 
 ```powershell
-# Obtenir le plan d'exécution
+# Obtenir le plan d'execution
 python .kilo/scripts/index-ecosystem.py --plan "renommer PRD-MOC-N243"
 ```
 
 ---
 
-## Rôles
+## Roles
 
-| Rôle | Responsabilité |
+| Role | Responsabilite |
 |------|----------------|
-| `PRIMUS` | Orchestre la découverte et l'exécution |
-| `NEXUS` | Trace les événements dans WAL |
-| `ARGUS` | Détecte les gaps dans l'index |
+| `PRIMUS` | Orchestre la decouverte et l'execution |
+| `NEXUS` | Trace les evenements dans WAL |
+| `ARGUS` | Detecte les gaps dans l'index |
 
 ---
 
@@ -85,16 +85,16 @@ python .kilo/scripts/index-ecosystem.py --plan "renommer PRD-MOC-N243"
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+| PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
 +-----------------------------------------------------------------------------+
-| P-1101   ecosystem-index.json existe et est à jour                          |
-| P-1102   Tous les designs sont découverts                                   |
-| P-1103   Tous les skills sont découverts                                    |
-| P-1104   Tous les citizens sont découverts                                  |
-| P-1105   Tous les workflows sont découverts                                 |
-| P-1106   Tous les MCP sont découverts                                       |
-| P-1107   Tous les personae sont découverts                                  |
-| P-1108   IntentHash unique pour chaque élément                              |
+| P-1101   ecosystem-index.json existe et est a jour                          |
+| P-1102   Tous les designs sont decouverts                                   |
+| P-1103   Tous les skills sont decouverts                                    |
+| P-1104   Tous les citizens sont decouverts                                  |
+| P-1105   Tous les workflows sont decouverts                                 |
+| P-1106   Tous les MCP sont decouverts                                       |
+| P-1107   Tous les personae sont decouverts                                  |
+| P-1108   IntentHash unique pour chaque element                              |
 | P-1109   WAL trace toutes les actions                                       |
 | P-1110   Topologie globalisante disponible                                  |
 +-----------------------------------------------------------------------------+
@@ -102,18 +102,18 @@ python .kilo/scripts/index-ecosystem.py --plan "renommer PRD-MOC-N243"
 
 ---
 
-## Critères
+## Criteres
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| CRITÈRE    DESCRIPTION                                                      |
+| CRITERE    DESCRIPTION                                                      |
 +-----------------------------------------------------------------------------+
-| ✓          ecosystem-index.json présent et complet                          |
-| ✓          Tous les éléments découverts sans manque                         |
-| ✓          Causalité tracée pour chaque action                              |
-| ✓          Topologie globalisante disponible                                |
-| ✓          Zéro élément orphelin                                            |
-| ✓          Zéro duplication non détectée                                    |
+| [OK]          ecosystem-index.json present et complet                          |
+| [OK]          Tous les elements decouverts sans manque                         |
+| [OK]          Causalite tracee pour chaque action                              |
+| [OK]          Topologie globalisante disponible                                |
+| [OK]          Zero element orphelin                                            |
+| [OK]          Zero duplication non detectee                                    |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -122,13 +122,13 @@ python .kilo/scripts/index-ecosystem.py --plan "renommer PRD-MOC-N243"
 ## Rollback
 
 1. Supprimer `ecosystem-index.json`.
-2. Revenir à l'index précédent.
+2. Revenir a l'index precedent.
 3. Logger dans WAL.
 4. Corriger via PR review ARGUS.
 
 ---
 
-## Références
+## References
 
 - `unified-design/designs/actprotocol-fractal-nomenclature.yaml`
 - `unified-design/designs/aep-fractal-repo-structure.yaml`

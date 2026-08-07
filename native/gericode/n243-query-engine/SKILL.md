@@ -1,4 +1,4 @@
-# Skill — n243-query-engine
+# Skill - n243-query-engine
 
 > **IntentHash** : 0xSKILL_N243_QUERY_ENGINE_20260806  
 > **Citizen** : L2-PLATFORM  
@@ -7,95 +7,95 @@
 
 ## Objectif
 
-Répondre aux requêtes cross-repo sur le graphe N243 via CTULU et TQL,
-avec support temporel N+2, détection de contradictions et traçabilité WAL.
+Repondre aux requetes cross-repo sur le graphe N243 via CTULU et TQL,
+avec support temporel N+2, detection de contradictions et tracabilite WAL.
 
-## Déclencheur
+## Declencheur
 
-- Requête utilisateur vers N243
+- Requete utilisateur vers N243
 - Appel depuis `n243-query.yaml` workflow
-- Requête auto-dev pour analyse de graphe
+- Requete auto-dev pour analyse de graphe
 
-## Entrées
+## Entrees
 
-| Entrée | Type | Description |
+| Entree | Type | Description |
 |--------|------|-------------|
-| `query` | object | Requête TQL : `type`, `target`, `filters` |
-| `scope` | object | Périmètre : `strates`, `repos`, `time_range` |
+| `query` | object | Requete TQL : `type`, `target`, `filters` |
+| `scope` | object | Perimetre : `strates`, `repos`, `time_range` |
 | `options` | object | Options : `trace_sources`, `detect_contradictions`, `max_results` |
 
 ## Sorties
 
 | Sortie | Type | Description |
 |--------|------|-------------|
-| `result` | JSON | Résultat de la requête |
-| `sources` | list | Sources tracées (repo, strate, document) |
-| `contradictions` | list | Contradictions détectées |
-| `wal_entry` | JSON | Entrée WAL pour traçabilité |
+| `result` | JSON | Resultat de la requete |
+| `sources` | list | Sources tracees (repo, strate, document) |
+| `contradictions` | list | Contradictions detectees |
+| `wal_entry` | JSON | Entree WAL pour tracabilite |
 
-## Étapes
+## Etapes
 
-### 1. Valider la requête
+### 1. Valider la requete
 
 - Valider contre `n243-query.schema.yaml`
-- Vérifier que le type est dans : `search`, `crossref`, `topology`, `temporal`, `contradiction`
-- Vérifier que les strates sont valides
+- Verifier que le type est dans : `search`, `crossref`, `topology`, `temporal`, `contradiction`
+- Verifier que les strates sont valides
 
 ### 2. Interroger CTULU
 
-- Formuler la requête TQL selon le type :
+- Formuler la requete TQL selon le type :
   - `search` : recherche plein texte dans les embeddings
   - `crossref` : liens entre artefacts
   - `topology` : structure du graphe
-  - `temporal` : requête sur canal `time` de `.piano-diff`
-  - `contradiction` : détection de contradictions
-- Exécuter via CTULU avec timeout 2s
+  - `temporal` : requete sur canal `time` de `.piano-diff`
+  - `contradiction` : detection de contradictions
+- Executer via CTULU avec timeout 2s
 - Si CTULU indisponible : fallback cache KORX
 
-### 3. Détecter les contradictions (si demandé)
+### 3. Detecter les contradictions (si demande)
 
 - Si `detect_contradictions: true` :
-  - Comparer les résultats cross-repo
-  - Détecter les incohérences de frontmatter, IntentHash, références
+  - Comparer les resultats cross-repo
+  - Detecter les incoherences de frontmatter, IntentHash, references
   - Logger dans WAL via NEXUS
 
 ### 4. Tracer les sources
 
-- Pour chaque résultat : lier au repo, strate, document source
-- Générer le chemin de source : `gerivdb/<repo>/<path>#<intent_hash>`
+- Pour chaque resultat : lier au repo, strate, document source
+- Generer le chemin de source : `gerivdb/<repo>/<path>#<intent_hash>`
 
-### 5. Sérialiser la réponse
+### 5. Serialiser la reponse
 
 - Format : Markdown, ASCII, ou JSON selon `options.output_format`
-- Inclure : résultats, sources, contradictions, métadonnées N+2
+- Inclure : resultats, sources, contradictions, metadonnees N+2
 
 ### 6. Logger dans WAL
 
-- Entrée WAL : timestamp, query_hash, repos touchés, contradictions, durée
+- Entree WAL : timestamp, query_hash, repos touches, contradictions, duree
 
-## Dépendances
+## Dependances
 
-| Dépendance | Rôle | Version |
+| Dependance | Role | Version |
 |------------|------|---------|
-| CTULU | Exécution TQL | Latest |
-| TQL | 12 opérateurs requête fractal | Latest |
-| KORX | Cache .kbin, φ-CPS | Latest |
+| CTULU | Execution TQL | Latest |
+| TQL | 12 operateurs requete fractal | Latest |
+| KORX | Cache .kbin, phi-CPS | Latest |
 | PLIX | Codec `.piano-diff` | Latest |
-| NEXUS | WAL, traçabilité | Latest |
-| n243-query.schema.yaml | Validation requête | Latest |
+| NEXUS | WAL, tracabilite | Latest |
+| n243-query.schema.yaml | Validation requete | Latest |
 
 ## Tests
 
 | Test | Description | Attend |
 |------|-------------|--------|
-| `test_search_query` | Requête search | < 2s, sources tracées |
-| `test_crossref_query` | Requête crossref | 0 contradiction |
-| `test_temporal_query` | Requête temporelle | Support canal time |
-| `test_contradiction_query` | Requête contradiction | Détectée en < 1s |
+| `test_search_query` | Requete search | < 2s, sources tracees |
+| `test_crossref_query` | Requete crossref | 0 contradiction |
+| `test_temporal_query` | Requete temporelle | Support canal time |
+| `test_contradiction_query` | Requete contradiction | Detectee en < 1s |
 
-## Références
+## References
 
 - PRD MOC : `PRD-MOC-ACTPROTOCOL-SOVEREIGN-CROSS-REPO-GRAPH-2026-08-04.md`
 - ONTOLOGY : `ONTOLOGY.yaml > concepts > N243, CTULU, TQL, KORX`
 - Atom : `unified-design/atoms/governance/n243-sovereign-reasoning.yaml`
-- Schéma : `REPO-STANDARDS/schemas/n243-query.schema.yaml`
+- Schema : `REPO-STANDARDS/schemas/n243-query.schema.yaml`

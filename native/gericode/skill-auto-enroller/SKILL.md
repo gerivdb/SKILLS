@@ -1,6 +1,6 @@
 ---
 name: skill-auto-enroller
-description: "Pipeline 1-clic : vérifie le repo, crée le verse, enregistre le citizen, crée le bridge, inscrit le skill dans REGISTRY.yaml, et optionnellement corrige le .gitignore."
+description: "Pipeline 1-clic : verifie le repo, cree le verse, enregistre le citizen, cree le bridge, inscrit le skill dans REGISTRY.yaml, et optionnellement corrige le .gitignore."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_SKILL_AUTO_ENROLLER_20260807
@@ -20,42 +20,42 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — skill-auto-enroller
+# Skill - skill-auto-enroller
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Pipeline automatisé d'enrôlement de skill.
+> **Verdict** : **SKILL D'EXECUTION** - Pipeline automatise d'enrolement de skill.
 
 ---
 
 ## Objectif
 
-Exécuter les étapes 1-6 d Automated Citizenship en une seule commande.
+Executer les etapes 1-6 d Automated Citizenship en une seule commande.
 
 ---
 
-## Déclencheur
+## Declencheur
 
-- Création d'un nouveau skill dans `.kilo/skills/<repo>/`
+- Creation d'un nouveau skill dans `.kilo/skills/<repo>/`
 - Ajout d'un skill externe dans un repo citoyen
-- Synchronisation complète après ajout manuel
+- Synchronisation complete apres ajout manuel
 
 ---
 
-## Étapes
+## Etapes
 
-| Étape | Action | Dépend |
+| Etape | Action | Depend |
 |-------|--------|--------|
-| 1 | Vérifier le repo dans known_repositories.yaml | - |
-| 2 | Créer le verse dans VERSES/verses/ | Étape 1 |
-| 3 | Enregistrer le citizen dans citizens.yaml | Étape 1 |
-| 4 | Créer le bridge dans TOPOS/BRIDGES.yaml | Étape 1 |
-| 5 | Inscrire le skill dans SKILLS/REGISTRY.yaml | Étape 1 |
-| 6 | Mettre à jour .gitignore si nécessaire | Étape 5 |
+| 1 | Verifier le repo dans known_repositories.yaml | - |
+| 2 | Creer le verse dans VERSES/verses/ | Etape 1 |
+| 3 | Enregistrer le citizen dans citizens.yaml | Etape 1 |
+| 4 | Creer le bridge dans TOPOS/BRIDGES.yaml | Etape 1 |
+| 5 | Inscrire le skill dans SKILLS/REGISTRY.yaml | Etape 1 |
+| 6 | Mettre a jour .gitignore si necessaire | Etape 5 |
 
 ---
 
-## Entrées
+## Entrees
 
- | Entrée | Type | Description |
+ | Entree | Type | Description |
  |--------|------|-------------|
  | `skill_name` | str | Nom du skill |
  | `repo_name` | str | Nom du repo |
@@ -70,18 +70,18 @@ Exécuter les étapes 1-6 d Automated Citizenship en une seule commande.
 
  | Sortie | Type | Description |
  |--------|------|-------------|
- | `pipeline_report` | dict | Rapport d'exécution |
+ | `pipeline_report` | dict | Rapport d'execution |
  | `errors` | list | Erreurs critiques |
  | `warnings` | list | Avertissements |
 
 ---
 
-## Règles
+## Regles
 
-1. Chaque étape est atomique et tracée dans WAL
-2. En cas d'échec, rollback automatique des étapes précédentes
-3. Post-validation : exécuter probes P-801..P-907
-4. Le skill doit être enregistré dans REGISTRY.yaml avec source_repo
+1. Chaque etape est atomique et tracee dans WAL
+2. En cas d'echec, rollback automatique des etapes precedentes
+3. Post-validation : executer probes P-801..P-907
+4. Le skill doit etre enregistre dans REGISTRY.yaml avec source_repo
 
 ---
 
@@ -116,10 +116,10 @@ print(report)
 
  | Test | Description | Attend |
  |------|-------------|--------|
- | `test_enroll_new_skill` | Enrôlement complet | Toutes étapes réussies |
+ | `test_enroll_new_skill` | Enrolement complet | Toutes etapes reussies |
  | `test_enroll_duplicate_skill` | Skill existant | Erreur P-806 |
  | `test_enroll_missing_repo` | Repo inconnu | Erreur P-801 |
- | `test_rollback_on_failure` | Échec étape 3 | Rollback étapes 1-2 |
+ | `test_rollback_on_failure` | Echec etape 3 | Rollback etapes 1-2 |
 
 ---
 
@@ -127,9 +127,9 @@ print(report)
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+ | PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
  +-----------------------------------------------------------------------------+
- | P-901    REGISTRY.yaml et registry.json synchronisés                         |
+ | P-901    REGISTRY.yaml et registry.json synchronises                         |
  | P-902    citizens.yaml enrichi                                              |
  | P-903    100% skills ont frontmatter valide                                 |
  | P-904    0 doublon nom                                                     |
@@ -141,21 +141,21 @@ print(report)
 
  ---
 
- ## Critères
+ ## Criteres
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | CRITÈRE    DESCRIPTION                                                      |
+ | CRITERE    DESCRIPTION                                                      |
  +-----------------------------------------------------------------------------+
- | ✓          skill-auto-enroller fonctionne                                   |
- | ✓          Toutes probes P-901..P-907 passent                               |
- | ✓          Pipeline atomique avec rollback                                  |
+ | [OK]          skill-auto-enroller fonctionne                                   |
+ | [OK]          Toutes probes P-901..P-907 passent                               |
+ | [OK]          Pipeline atomique avec rollback                                  |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Références
+ ## References
 
  - `PRD-MOC-AUTOMATED-DEVELOPMENT-FRAMEWORK-2026-08-07.md`
  - `repo-citizen-manager`

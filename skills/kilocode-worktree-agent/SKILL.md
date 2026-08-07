@@ -12,20 +12,20 @@ status: active
 Orchestrate parallel KiloCode Agent Manager sessions using VS Code worktrees for multi-repo batch operations on Z600 (CPU-only, 18 GB RAM).
 
 ## Context
-KiloCode Agent Manager launches separate KiloCode sessions with their own context. Each session consumes RAM and CPU. On Z600 (2× Xeon E5620, 18 GB DDR3, no GPU), the practical limit is **4 simultaneous agents** before memory pressure.
+KiloCode Agent Manager launches separate KiloCode sessions with their own context. Each session consumes RAM and CPU. On Z600 (2x Xeon E5620, 18 GB DDR3, no GPU), the practical limit is **4 simultaneous agents** before memory pressure.
 
 ## Hardware constraints (Z600)
 
 | Resource | Limit | Implication |
 |----------|-------|-------------|
-| RAM | 18 GB DDR3 | 4 agents × ~3 GB = 12 GB, leaves 6 GB for OS |
-| CPU | 8 cores / 16 threads | 4 agents × 2 threads = 8 threads, leaves 8 for OS |
+| RAM | 18 GB DDR3 | 4 agents x ~3 GB = 12 GB, leaves 6 GB for OS |
+| CPU | 8 cores / 16 threads | 4 agents x 2 threads = 8 threads, leaves 8 for OS |
 | No GPU | CPU-only inference | SLM Owl Alpha ~200 tokens/sec, prompts must be short (< 200 tokens) |
 | Disk | SSD 1 To (C:), SSD 2 To (D:) | Worktrees on D:\, source on C:\DevTools |
 
 ## Protocol
 
-### Step 1 — Plan worktree allocation
+### Step 1 - Plan worktree allocation
 
 Group repos by stratum to minimize cross-repo jumps:
 
@@ -36,7 +36,7 @@ Worktree 3: L2-PLATFORM repos (GeriCode, KEEL)
 Worktree 4: L0-CANON repos (GOVERNANCE-HUB, NEXUS, ONTOLOGY, BRAIN)
 ```
 
-### Step 2 — Create worktrees
+### Step 2 - Create worktrees
 
 ```powershell
 # From the main repo
@@ -46,14 +46,14 @@ git worktree add ..\WORKTREE-L2-PLATFORM main
 git worktree add ..\WORKTREE-L0-CANON main
 ```
 
-### Step 3 — Launch Agent Manager sessions
+### Step 3 - Launch Agent Manager sessions
 
 In VS Code KiloCode:
 1. Open each worktree as a separate workspace
 2. Launch Agent Manager with `mode: "local"` (not worktree-isolated)
 3. Set `maxAgents: 4` in kilo.json
 
-### Step 4 — Write agent prompts (short, < 200 tokens)
+### Step 4 - Write agent prompts (short, < 200 tokens)
 
 Each prompt must be:
 - **Atomic**: one task, one expected output
@@ -68,7 +68,7 @@ Output: {repo_root}/STRATUM_RELAY.md with layer + role
 Verify: Test-Path {repo_root}/STRATUM_RELAY.md
 ```
 
-### Step 5 — Monitor and collect results
+### Step 5 - Monitor and collect results
 
 ```powershell
 # Check all worktrees completed
@@ -78,7 +78,7 @@ foreach ($wt in @("WORKTREE-L3-CITIZENS","WORKTREE-L1-INFRA","WORKTREE-L2-PLATFO
 }
 ```
 
-### Step 6 — Merge and cleanup
+### Step 6 - Merge and cleanup
 
 ```powershell
 # Merge each worktree back to main
@@ -93,10 +93,10 @@ git worktree remove ..\WORKTREE-L0-CANON
 
 ## Anti-patterns
 
-- **DON'T** exceed 4 simultaneous agents on Z600 (RAM exhaustion → silent failures)
+- **DON'T** exceed 4 simultaneous agents on Z600 (RAM exhaustion -> silent failures)
 - **DON'T** use `mode: "worktree"` for batch operations (creates nested worktrees, confusing)
 - **DON'T** write prompts > 200 tokens (SLM context limit on CPU-only)
-- **DON'T** skip verification — always check output files exist before merging
+- **DON'T** skip verification - always check output files exist before merging
 - **DON'T** forget to remove worktrees after merge (disk accumulation)
 
 ## Prompt design rules for Owl Alpha (Z600)

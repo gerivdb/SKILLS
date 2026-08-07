@@ -18,7 +18,7 @@ Generate Rust scaffold for N243 meta-engine (243 dispatch slots).
 4. Generate Cargo.toml with zig build dependency
 
 ## Verify
-cargo check → clean compile
+cargo check -> clean compile
 
 ## Ref
 D-012: n243-meta-engine.design.yaml

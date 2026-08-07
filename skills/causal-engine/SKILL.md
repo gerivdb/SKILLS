@@ -6,33 +6,33 @@ intent_hash: 0xSKL001_CAUSAL_ENGINE_20260802
 status: active
 ---
 
-# Skill: SKL001 — Causal Engine (ADMG/TALEX)
+# Skill: SKL001 - Causal Engine (ADMG/TALEX)
 
 ## Purpose
-Implements the core causal inference engine for TALEX narratives. Operates on base-243 ternary logic (3^5) to compute causal relationships between narrative events, generate hypothesis chains, and validate causal coherence across 16×16 coupling matrix.
+Implements the core causal inference engine for TALEX narratives. Operates on base-243 ternary logic (3^5) to compute causal relationships between narrative events, generate hypothesis chains, and validate causal coherence across 16x16 coupling matrix.
 
 ## Context
 TALEX (Ternary Adaptive Logic Engine) requires a causal engine that can:
 - Encode narrative events as ternary vectors (243 trits)
 - Compute causal adjacency via ternary matrix operations
-- Generate and validate hypothesis chains (Clue → Hypothesis → Validation)
+- Generate and validate hypothesis chains (Clue -> Hypothesis -> Validation)
 - Interface with PRIMUS core (TernaryMatrix, SparseRolling, TernaryState)
 
 ## Kernel Components
 
 ### 1. Causal Event Encoder
 - Input: Natural language event description
-- Process: Hash → 243 trits via `ternary_hash_to_intent_hash`
+- Process: Hash -> 243 trits via `ternary_hash_to_intent_hash`
 - Output: `WaveArray` (81 slots) for matrix runner
 
 ### 2. Causal Adjacency Matrix
-- 16×16 coupling matrix expanded to 81×81 via `create_coupling_matrix`
+- 16x16 coupling matrix expanded to 81x81 via `create_coupling_matrix`
 - Represents causal strength between narrative domains
 - Operates via `SparseRolling` for O(nnz) performance
 
 ### 3. Hypothesis Chain Generator
-- Forward chaining: Event → possible causes → hypotheses
-- Backward chaining: Hypothesis → required evidence → validation
+- Forward chaining: Event -> possible causes -> hypotheses
+- Backward chaining: Hypothesis -> required evidence -> validation
 - Uses ternary logic gates (Kleene K3) for uncertainty propagation
 
 ### 4. Coherence Validator
@@ -69,16 +69,16 @@ sm = TernaryStateMachine(state)
 | Event (Clue) | WaveArray (81 trits) |
 | Hypothesis | WaveArray + confidence trit |
 | Causal Link | Matrix entry (POS/NEG/ZERO) |
-| Narrative State | TernaryState (3×81 + phase) |
+| Narrative State | TernaryState (3x81 + phase) |
 | Validation | IntentHash (243 trits) |
 
 ## BATVERSE Operators Used
 
 From `TernaryGates` (Kleene K3 logic):
-- `implies(a, b)` — Causal implication
-- `equiv(a, b)` — Bidirectional causality
-- `mux(cond, a, b)` — Conditional branching
-- `and_k3 / or_k3` — Conjunction/disjunction with uncertainty
+- `implies(a, b)` - Causal implication
+- `equiv(a, b)` - Bidirectional causality
+- `mux(cond, a, b)` - Conditional branching
+- `and_k3 / or_k3` - Conjunction/disjunction with uncertainty
 
 ## Build Requirements
 - Python 3.10+ (for PRIMUS core)

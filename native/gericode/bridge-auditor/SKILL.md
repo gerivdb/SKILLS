@@ -1,6 +1,6 @@
 ---
 name: bridge-auditor
-description: "Valide BRIDGES.yaml : détecte les bridges orphelins, manquants et les cycles."
+description: "Valide BRIDGES.yaml : detecte les bridges orphelins, manquants et les cycles."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_BRIDGE_AUDITOR_20260807
@@ -19,29 +19,29 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — bridge-auditor
+# Skill - bridge-auditor
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Audite les bridges cross-repo.
+> **Verdict** : **SKILL D'EXECUTION** - Audite les bridges cross-repo.
 
 ---
 
 ## Objectif
 
-Valider BRIDGES.yaml : détecter les bridges orphelins, manquants et les cycles.
+Valider BRIDGES.yaml : detecter les bridges orphelins, manquants et les cycles.
 
 ---
 
-## Déclencheur
+## Declencheur
 
 - CI/CD : validation avant commit
-- ARGUS : détection d'anomalies topologiques
-- MOX : vérification avant merge
+- ARGUS : detection d'anomalies topologiques
+- MOX : verification avant merge
 
 ---
 
-## Entrées
+## Entrees
 
- | Entrée | Type | Description |
+ | Entree | Type | Description |
  |--------|------|-------------|
  | `bridges_path` | Path | Chemin vers `TOPOS/BRIDGES.yaml` |
  | `known_repositories_path` | Path | Chemin vers `known_repositories.yaml` |
@@ -55,13 +55,13 @@ Valider BRIDGES.yaml : détecter les bridges orphelins, manquants et les cycles.
  | `audit_report` | dict | Rapport d'audit |
  | `orphaned_bridges` | list | Bridges orphelins |
  | `missing_bridges` | list | Repos sans bridge |
- | `cycles` | list | Cycles détectés |
+ | `cycles` | list | Cycles detectes |
 
 ---
 
-## Règles
+## Regles
 
-1. Tous les bridges référencent des repos existants dans known_repositories.yaml
+1. Tous les bridges referencent des repos existants dans known_repositories.yaml
 2. Tous les repos actifs ont un bridge
 3. Pas de cycles dans les bridges
 
@@ -91,7 +91,7 @@ print(report)
  | `test_audit_no_orphans` | Pas d'orphelins | Liste vide |
  | `test_audit_no_missing` | Pas de manquants | Liste vide |
  | `test_audit_no_cycles` | Pas de cycles | Liste vide |
- | `test_audit_with_orphans` | Avec orphelins | Détectés |
+ | `test_audit_with_orphans` | Avec orphelins | Detectes |
 
 ---
 
@@ -99,7 +99,7 @@ print(report)
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+ | PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
  +-----------------------------------------------------------------------------+
  | P-905    0 bridge orphelin                                                  |
  | P-906    0 cycle dans BRIDGES.yaml                                          |
@@ -108,21 +108,21 @@ print(report)
 
  ---
 
- ## Critères
+ ## Criteres
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | CRITÈRE    DESCRIPTION                                                      |
+ | CRITERE    DESCRIPTION                                                      |
  +-----------------------------------------------------------------------------+
- | ✓          bridge-auditor fonctionne                                        |
- | ✓          P-905 passe                                                      |
- | ✓          P-906 passe                                                      |
+ | [OK]          bridge-auditor fonctionne                                        |
+ | [OK]          P-905 passe                                                      |
+ | [OK]          P-906 passe                                                      |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Références
+ ## References
 
  - `PRD-MOC-AUTOMATED-DEVELOPMENT-FRAMEWORK-2026-08-07.md`
  - `sot-registry-guardian`

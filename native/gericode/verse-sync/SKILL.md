@@ -1,6 +1,6 @@
 ---
 name: verse-sync
-description: "Synchronise VERSES/verses/ ↔ ONTOLOGY/glossary.yaml ↔ TQL."
+description: "Synchronise VERSES/verses/ <-> ONTOLOGY/glossary.yaml <-> TQL."
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_VERSE_SYNC_20260807
@@ -19,19 +19,19 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — verse-sync
+# Skill - verse-sync
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Synchronise les verses avec l'ontologie.
+> **Verdict** : **SKILL D'EXECUTION** - Synchronise les verses avec l'ontologie.
 
 ---
 
 ## Objectif
 
-Garantir la cohérence entre VERSES/verses/, ONTOLOGY/glossary.yaml et TQL.
+Garantir la coherence entre VERSES/verses/, ONTOLOGY/glossary.yaml et TQL.
 
 ---
 
-## Déclencheur
+## Declencheur
 
 - Nouveau concept dans ONTOLOGY
 - Nouveau verse dans VERSES
@@ -39,11 +39,11 @@ Garantir la cohérence entre VERSES/verses/, ONTOLOGY/glossary.yaml et TQL.
 
 ---
 
-## Entrées
+## Entrees
 
- | Entrée | Type | Description |
+ | Entree | Type | Description |
  |--------|------|-------------|
- | `verses_dir` | Path | Répertoire VERSES/verses/ |
+ | `verses_dir` | Path | Repertoire VERSES/verses/ |
  | `ontology_path` | Path | Chemin vers ONTOLOGY/glossary.yaml |
  | `tql_path` | Path | Chemin vers TQL (optionnel) |
 
@@ -59,11 +59,11 @@ Garantir la cohérence entre VERSES/verses/, ONTOLOGY/glossary.yaml et TQL.
 
 ---
 
-## Règles
+## Regles
 
 1. Tout concept dans ONTOLOGY doit avoir un verse
-2. Tout verse doit référencer un concept ontologique
-3. TQL peut requêter tous les concepts
+2. Tout verse doit referencer un concept ontologique
+3. TQL peut requeter tous les concepts
 
 ---
 
@@ -87,9 +87,9 @@ print(report)
 
  | Test | Description | Attend |
  |------|-------------|--------|
- | `test_sync_missing_verse` | Concept sans verse | Détecté |
- | `test_sync_missing_concept` | Verse sans concept | Détecté |
- | `test_sync_complete` | Synchronisation complète | 0 missing |
+ | `test_sync_missing_verse` | Concept sans verse | Detecte |
+ | `test_sync_missing_concept` | Verse sans concept | Detecte |
+ | `test_sync_complete` | Synchronisation complete | 0 missing |
 
 ---
 
@@ -97,30 +97,30 @@ print(report)
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+ | PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
  +-----------------------------------------------------------------------------+
  | P-916    100% concepts ontologiques ont un verse                           |
- | P-917    100% repo-citizen verses référencent un repo connu                 |
+ | P-917    100% repo-citizen verses referencent un repo connu                 |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Critères
+ ## Criteres
 
  ```ascii
  +-----------------------------------------------------------------------------+
- | CRITÈRE    DESCRIPTION                                                      |
+ | CRITERE    DESCRIPTION                                                      |
  +-----------------------------------------------------------------------------+
- | ✓          verse-sync fonctionne                                            |
- | ✓          P-916 passe                                                      |
- | ✓          P-917 passe                                                      |
+ | [OK]          verse-sync fonctionne                                            |
+ | [OK]          P-916 passe                                                      |
+ | [OK]          P-917 passe                                                      |
  +-----------------------------------------------------------------------------+
  ```
 
  ---
 
- ## Références
+ ## References
 
  - `PRD-MOC-AUTOMATED-DEVELOPMENT-FRAMEWORK-2026-08-07.md`
  - `VERSES/verses/`

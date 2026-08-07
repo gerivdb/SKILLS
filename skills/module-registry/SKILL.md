@@ -6,7 +6,7 @@ intent_hash: 0xSKL007_MODULE_REGISTRY_20260802
 status: active
 ---
 
-# Skill: SKL007 — Module Registry (ADMG/TALEX)
+# Skill: SKL007 - Module Registry (ADMG/TALEX)
 
 ## Purpose
 Manages registration, discovery, and versioning of TALEX narrative modules. Each module is a self-contained narrative unit (character arc, location story, faction plotline) with ternary metadata, IntentHash locking, and dependency resolution.
@@ -143,11 +143,11 @@ def compute_composite_state(module_ids: list[str]) -> TernaryState:
 ## Module Lifecycle
 
 ```
-CREATE → REGISTER → VALIDATE → RESOLVE DEPS → LOAD → EXECUTE → VERSION BUMP
-                │
-                ├── FAIL: Invalid IntentHash
-                ├── FAIL: Circular dependency
-                └── FAIL: Lore violation (SKL002)
+CREATE -> REGISTER -> VALIDATE -> RESOLVE DEPS -> LOAD -> EXECUTE -> VERSION BUMP
+                |
+                |---- FAIL: Invalid IntentHash
+                |---- FAIL: Circular dependency
+                `---- FAIL: Lore violation (SKL002)
 ```
 
 ## API Interface

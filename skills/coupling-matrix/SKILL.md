@@ -6,10 +6,10 @@ intent_hash: 0xSKL005_COUPLING_MATRIX_20260802
 status: active
 ---
 
-# Skill: SKL005 — Coupling Matrix 16×16 (ADMG/TALEX)
+# Skill: SKL005 - Coupling Matrix 16x16 (ADMG/TALEX)
 
 ## Purpose
-Manages the 16×16 narrative domain coupling matrix, expanded to 81×81 for PRIMUS matrix runner. Represents causal coupling strengths between 16 narrative domains (characters, locations, themes, factions, etc.).
+Manages the 16x16 narrative domain coupling matrix, expanded to 81x81 for PRIMUS matrix runner. Represents causal coupling strengths between 16 narrative domains (characters, locations, themes, factions, etc.).
 
 ## Context
 TALEX narratives operate across 16 semantic domains. The coupling matrix encodes how strongly each domain influences others, used by Causal Engine (SKL001) for hypothesis generation and by Generation Engine (SKL003) for coherent narrative flow.
@@ -37,7 +37,7 @@ TALEX narratives operate across 16 semantic domains. The coupling matrix encodes
 
 ## Matrix Structure
 
-### 16×16 Base Matrix (Float [-1, 1])
+### 16x16 Base Matrix (Float [-1, 1])
 ```
 coupling[i][j] = influence of domain i on domain j
 -1.0 = strong negative coupling (suppresses)
@@ -45,10 +45,10 @@ coupling[i][j] = influence of domain i on domain j
 +1.0 = strong positive coupling (amplifies)
 ```
 
-### 81×81 Expanded Matrix (Ternary)
+### 81x81 Expanded Matrix (Ternary)
 Via `create_coupling_matrix()`:
-- Each 16×16 cell → 5×5 block in 81×81
-- Float → Trit: POS (>0.33), ZERO (-0.33 to 0.33), NEG (<-0.33)
+- Each 16x16 cell -> 5x5 block in 81x81
+- Float -> Trit: POS (>0.33), ZERO (-0.33 to 0.33), NEG (<-0.33)
 - Used directly by `SparseRolling` for O(nnz) matrix-vector product
 
 ## PRIMUS Integration
@@ -80,7 +80,7 @@ base_16x16 = [
     [ 0.2, -0.2,  0.1,  0.0,  0.1, -0.2,  0.4,  0.4, -0.3,  0.5,  0.7,  0.2, -0.3,  0.4,  0.6,  0.0],  # Future
 ]
 
-# Expand to 81×81 ternary matrix
+# Expand to 81x81 ternary matrix
 ternary_matrix = create_coupling_matrix(base_16x16)
 
 # Create sparse version for fast computation
@@ -114,7 +114,7 @@ def update_coupling(matrix: TernaryMatrix, d1: int, d2: int, value: float):
     """Update coupling from narrative events."""
     trit = Trit.from_int(int(value * 2))  # [-1,1] -> {-1,0,1}
     if trit != Trit.ZERO:
-        # Update 5×5 block
+        # Update 5x5 block
         block = 5
         for i in range(block):
             for j in range(block):
@@ -126,7 +126,7 @@ def update_coupling(matrix: TernaryMatrix, d1: int, d2: int, value: float):
 ## Build Requirements
 - Python 3.10+
 - PRIMUS core: matrix, types, ternary_ops
-- Base 16×16 matrix (JSON/config)
+- Base 16x16 matrix (JSON/config)
 
 ## Validation
 
@@ -149,10 +149,10 @@ result = sparse.matvec(v)
 ```
 
 ## Anti-patterns
-- Using raw 16×16 without expansion (dimension mismatch)
-- Ignoring block structure (5×5 blocks must align)
+- Using raw 16x16 without expansion (dimension mismatch)
+- Ignoring block structure (5x5 blocks must align)
 - Hardcoding values (load from narrative analysis)
-- Not using sparse version (81×81 dense is slow)
+- Not using sparse version (81x81 dense is slow)
 
 ## References
 - PRD-MOC-INVENTORY-SYNTHESIS.md (SKL005)

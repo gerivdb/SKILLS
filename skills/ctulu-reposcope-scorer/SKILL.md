@@ -1,7 +1,7 @@
 # Skill: ctulu-reposcope-scorer
 
 ## Contexte
-Le stage SCORE du pipeline REPOSCOPE-COMPARE. Calcule les scores multicritères pondérés pour chaque repo et génère le classement.
+Le stage SCORE du pipeline REPOSCOPE-COMPARE. Calcule les scores multicriteres ponderes pour chaque repo et genere le classement.
 
 ## Outil CTULU
 - **Package**: `reposcope_scorer` (PRD-081)
@@ -13,19 +13,19 @@ Le stage SCORE du pipeline REPOSCOPE-COMPARE. Calcule les scores multicritères 
 reposcope-scorer --data data/reposcope_data_20260616.parquet --weights config/scorer_weights.yaml --out scores/ --output json
 ```
 
-## Pondération par défaut
-| Critère | Poids | Description |
+## Ponderation par defaut
+| Critere | Poids | Description |
 |---|---|---|
-| `phi_cps` | 0.30 | Score φ-CPS (calculé par scorer) |
-| `commits_30d` | 0.20 | Activité récente |
-| `has_tests` | 0.15 | Présence de tests |
-| `open_issues_ratio` | 0.15 | Ratio inversé (moins = mieux) |
-| `deps_count` | 0.10 | Nombre de dépendances |
-| `stars` | 0.10 | Popularité |
+| `phi_cps` | 0.30 | Score phi-CPS (calcule par scorer) |
+| `commits_30d` | 0.20 | Activite recente |
+| `has_tests` | 0.15 | Presence de tests |
+| `open_issues_ratio` | 0.15 | Ratio inverse (moins = mieux) |
+| `deps_count` | 0.10 | Nombre de dependances |
+| `stars` | 0.10 | Popularite |
 
 ## Classification
-- **Collision** (score ≥ 0.50): doublon potentiel, même strate
-- **Synergie** (score ∈ [0.30, 0.50]): complémentarité entre strates
+- **Collision** (score >= 0.50): doublon potentiel, meme strate
+- **Synergie** (score in [0.30, 0.50]): complementarite entre strates
 - **Neutre** (score < 0.30): pas d'interaction significative
 
 ## Configuration YAML
@@ -47,5 +47,5 @@ threshold_synergie: 0.30
 
 ## Anti-patterns
 - Ne JAMAIS modifier les poids sans recalculer tous les scores
-- Ne JAMAIS classifier sans normalisation min-max préalable
+- Ne JAMAIS classifier sans normalisation min-max prealable
 - Ne JAMAIS utiliser un seuil collision < 0.30 (faux positifs)

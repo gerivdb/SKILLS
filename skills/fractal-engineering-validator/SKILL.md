@@ -27,7 +27,7 @@ The ecosystem follows fractal engineering: each stratum L0-L4 mirrors the same t
 ### 2. Self-similarity verification
 For each stratum, verify:
 - Triad exists: primitives/, structural/, namorphic/ (or equivalent)
-- DAG-3 hierarchy depth ≤ 3
+- DAG-3 hierarchy depth <= 3
 - Cross-stratum references resolve correctly
 
 ### 3. Recursion depth check

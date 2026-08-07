@@ -6,7 +6,7 @@ intent_hash: 0xDEPRECATED_20260608
 status: deprecated
 ---
 
-> **DEPRECATED** — Merged into `workspace-audit` skill. Use `workspace-audit` instead.
+> **DEPRECATED** - Merged into `workspace-audit` skill. Use `workspace-audit` instead.
 
 # Skill: workspace-sanitizer (DEPRECATED)
 

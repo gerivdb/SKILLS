@@ -1,4 +1,4 @@
-# Skill — mox-validator
+# Skill - mox-validator
 
 > **IntentHash** : 0xSKILL_MOX_VALIDATOR_20260806  
 > **Citizen** : L2-PLATFORM  
@@ -7,21 +7,21 @@
 
 ## Objectif
 
-Garantir la méta-cohérence des documents markdown de l'écosystème en validant
-frontmatter, cross-references, bridges, RSS-v2.1 et qualité d'artefact via MOX.
+Garantir la meta-coherence des documents markdown de l'ecosysteme en validant
+frontmatter, cross-references, bridges, RSS-v2.1 et qualite d'artefact via MOX.
 
-## Déclencheur
+## Declencheur
 
 - Pre-commit hook sur tout document de gouvernance
 - Validation avant merge PR
-- Audit cross-repo périodique
-- Requête N243 nécessitant une validation de cohérence
+- Audit cross-repo periodique
+- Requete N243 necessitant une validation de coherence
 
-## Entrées
+## Entrees
 
-| Entrée | Type | Description |
+| Entree | Type | Description |
 |--------|------|-------------|
-| `document` | object | Document à valider : `path`, `type`, `intent_hash` |
+| `document` | object | Document a valider : `path`, `type`, `intent_hash` |
 | `layers` | list | Couches de validation : `frontmatter`, `crossrefs`, `bridges`, `rss_v23`, `artifact_quality` |
 | `mode` | string | `STRICT` (fail) ou `WARN` (avertissement) |
 
@@ -29,67 +29,67 @@ frontmatter, cross-references, bridges, RSS-v2.1 et qualité d'artefact via MOX.
 
 | Sortie | Type | Description |
 |--------|------|-------------|
-| `validation` | object | Résultat par couche : `PASS`/`FAIL`/`WARN` + issues |
-| `result` | string | Résultat global : `PASS`/`FAIL`/`WARN` |
-| `wal_entry` | JSON | Entrée WAL pour traçabilité |
+| `validation` | object | Resultat par couche : `PASS`/`FAIL`/`WARN` + issues |
+| `result` | string | Resultat global : `PASS`/`FAIL`/`WARN` |
+| `wal_entry` | JSON | Entree WAL pour tracabilite |
 
-## Étapes
+## Etapes
 
 ### 1. Valider le frontmatter
 
-- Vérifier les champs obligatoires : `type`, `version`, `status`, `date`, `intent_hash`, `citizen`, `layer`, `author`, `source_repo`, `source_path`
+- Verifier les champs obligatoires : `type`, `version`, `status`, `date`, `intent_hash`, `citizen`, `layer`, `author`, `source_repo`, `source_path`
 - Valider contre `artifact-quality.schema.yaml`
-- Vérifier que `intent_hash` est unique (pas de collision)
-- Vérifier que `source_repo` est déclaré dans ONTOLOGY.yaml
+- Verifier que `intent_hash` est unique (pas de collision)
+- Verifier que `source_repo` est declare dans ONTOLOGY.yaml
 
 ### 2. Valider la structure
 
-- Vérifier les sections obligatoires : `objectif`, `contexte`, `perimetre`, `architecture`, `regles`, `roles`, `processus`, `probes`, `criteres`, `rollback`, `references`
-- Vérifier la longueur max des sections
-- Vérifier la présence des probes P-106 et P-107 (obligatoires)
+- Verifier les sections obligatoires : `objectif`, `contexte`, `perimetre`, `architecture`, `regles`, `roles`, `processus`, `probes`, `criteres`, `rollback`, `references`
+- Verifier la longueur max des sections
+- Verifier la presence des probes P-106 et P-107 (obligatoires)
 
 ### 3. Valider les cross-references
 
-- Vérifier que tous les IntentHash référencés existent
-- Vérifier que les chemins `source_path` sont valides
-- Détecter les références circulaires
-- Vérifier que les bridges cross-repo sont déclarés dans `ECOS_ROOT.json`
+- Verifier que tous les IntentHash references existent
+- Verifier que les chemins `source_path` sont valides
+- Detecter les references circulaires
+- Verifier que les bridges cross-repo sont declares dans `ECOS_ROOT.json`
 
 ### 4. Valider les bridges
 
-- Vérifier que les bridges déclarés dans le document existent dans ONTOLOGY
-- Vérifier la cohérence des directions (source → target)
-- Détecter les bridges orphelins
+- Verifier que les bridges declares dans le document existent dans ONTOLOGY
+- Verifier la coherence des directions (source -> target)
+- Detecter les bridges orphelins
 
-### 5. Valider la conformité RSS-v2.1
+### 5. Valider la conformite RSS-v2.1
 
-- Vérifier le format des commits (Conventional Commits)
-- Vérifier la structure des dossiers (PRD/, INTENTS/, ADR/, etc.)
-- Vérifier les hooks git (pre-commit, commit-msg)
+- Verifier le format des commits (Conventional Commits)
+- Verifier la structure des dossiers (PRD/, INTENTS/, ADR/, etc.)
+- Verifier les hooks git (pre-commit, commit-msg)
 
-### 6. Détecter les contradictions
+### 6. Detecter les contradictions
 
-- Comparer le document avec les documents liés
-- Détecter les contradictions de frontmatter (intent_hash, status)
-- Détecter les contradictions de contenu (définitions, rôles)
+- Comparer le document avec les documents lies
+- Detecter les contradictions de frontmatter (intent_hash, status)
+- Detecter les contradictions de contenu (definitions, roles)
 - Logger les contradictions dans WAL
 
-### 7. Générer le rapport
+### 7. Generer le rapport
 
 - Rapport par couche : `PASS`/`FAIL`/`WARN`
-- Liste des issues avec sévérité
+- Liste des issues avec severite
 - Recommandations de correction
-- Entrée WAL avec IntentHash du document validé
+- Entree WAL avec IntentHash du document valide
 
-## Dépendances
+## Dependances
 
-| Dépendance | Rôle | Version |
+| Dependance | Role | Version |
 |------------|------|---------|
-| ONTOLOGY.yaml | Définitions concepts, entités | Latest |
+| ONTOLOGY.yaml | Definitions concepts, entites | Latest |
 | REPO-STANDARDS/schemas | artifact-quality.schema.yaml, mox-coherence.schema.yaml | Latest |
-| NEXUS | WAL, traçabilité | Latest |
+| NEXUS | WAL, tracabilite | Latest |
 | PLIX | Codec `.piano-diff` pour propagation corrections | Latest |
-| KIX | Application politiques de cohérence | Latest |
+| KIX | Application politiques de coherence | Latest |
 
 ## Tests
 
@@ -97,13 +97,13 @@ frontmatter, cross-references, bridges, RSS-v2.1 et qualité d'artefact via MOX.
 |------|-------------|--------|
 | `test_frontmatter_valid` | Frontmatter valide | PASS |
 | `test_frontmatter_invalid` | Frontmatter invalide | FAIL |
-| `test_structure_complete` | Structure complète | PASS |
+| `test_structure_complete` | Structure complete | PASS |
 | `test_structure_missing` | Section manquante | FAIL |
-| `test_crossref_contradiction` | Contradiction cross-repo | Détectée |
+| `test_crossref_contradiction` | Contradiction cross-repo | Detectee |
 
-## Références
+## References
 
 - PRD MOC : `PRD-MOC-ACTPROTOCOL-SOVEREIGN-CROSS-REPO-GRAPH-2026-08-04.md`
 - ONTOLOGY : `ONTOLOGY.yaml > concepts > MOX, NEXUS, KIX, PLIX`
 - Atom : `unified-design/atoms/governance/mox-meta-coherence.yaml`
-- Schéma : `REPO-STANDARDS/schemas/mox-coherence.schema.yaml`
+- Schema : `REPO-STANDARDS/schemas/mox-coherence.schema.yaml`

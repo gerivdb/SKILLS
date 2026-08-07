@@ -18,7 +18,7 @@ Capture, structure, and index insights from sessions into MDU.
 4. Write: .kilo/insights/<timestamp>_<hash>.yaml
 
 ## Verify
-Insight linked to ≥1 existing artifact → PASS
+Insight linked to >=1 existing artifact -> PASS
 
 ## Ref
 S-011: atomic-task-planner (pattern extraction)

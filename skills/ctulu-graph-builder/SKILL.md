@@ -1,7 +1,7 @@
 # Skill: ctulu-graph-builder
 
 ## Contexte
-Construit le graphe NetworkX DiGraph G(V,E) depuis la structure NEXUS. Nœuds: repos + INTENTs + PRDs + EPICs. Edges: depends_on, intent_to_prd, prd_to_epic.
+Construit le graphe NetworkX DiGraph G(V,E) depuis la structure NEXUS. Noeuds: repos + INTENTs + PRDs + EPICs. Edges: depends_on, intent_to_prd, prd_to_epic.
 
 ## Outil CTULU
 - **Package**: `graph_builder` (PRD-082)
@@ -13,7 +13,7 @@ Construit le graphe NetworkX DiGraph G(V,E) depuis la structure NEXUS. Nœuds: r
 graph-builder --nexus D:\DO\WEB\TOOLS\L1-INFRA\NEXUS --out graphs/ --output json
 ```
 
-## Types de nœuds
+## Types de noeuds
 | Type | Source | Attributs |
 |---|---|---|
 | `repo` | `NEXUS/repos/*.yaml` | id, label, path |
@@ -22,9 +22,9 @@ graph-builder --nexus D:\DO\WEB\TOOLS\L1-INFRA\NEXUS --out graphs/ --output json
 | `epic` | `NEXUS/EPICS/*.md` | id, label |
 
 ## Types d'edges
-- `intent_to_prd`: INTENT → PRD (même préfixe de stem)
-- `intent_to_epic`: INTENT → EPIC (même préfixe de stem)
-- `prd_to_epic`: PRD → EPIC (même préfixe de stem)
+- `intent_to_prd`: INTENT -> PRD (meme prefixe de stem)
+- `intent_to_epic`: INTENT -> EPIC (meme prefixe de stem)
+- `prd_to_epic`: PRD -> EPIC (meme prefixe de stem)
 
 ## Sorties
 - `graph_<timestamp>.graphml`: format GraphML (NetworkX)
@@ -32,5 +32,5 @@ graph-builder --nexus D:\DO\WEB\TOOLS\L1-INFRA\NEXUS --out graphs/ --output json
 
 ## Anti-patterns
 - Ne JAMAIS construire un graphe sans NEXUS valide
-- Ne JAMAIS inclure des nœuds sans type
-- Ne JAMAIS écraser un graph existant (immuabilité)
+- Ne JAMAIS inclure des noeuds sans type
+- Ne JAMAIS ecraser un graph existant (immuabilite)

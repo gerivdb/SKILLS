@@ -9,7 +9,7 @@ status: active
 # Skill: argus-pipeline-runner
 
 ## Purpose
-Orchestrate the full ARGUS pipeline: Impense detection → Qualification → Orientation → Closure.
+Orchestrate the full ARGUS pipeline: Impense detection -> Qualification -> Orientation -> Closure.
 
 ## Context
 ARGUS est la couche de surveillance des interstices du metacluster gerivdb. Le pipeline
@@ -17,12 +17,12 @@ detecte les impenses (gaps entre objets de gouvernance), les qualifie, oriente v
 artefact de resolution, et trace la fermeture dans `gap_registry.yaml`.
 
 Ce skill couvre deux pipelines:
-1. **Legacy pipeline** (v1.0): TINA → SGR → ARGUS scanners → Archive
-2. **Impense pipeline** (v1.1): detect → qualifier → orienter → fermer
+1. **Legacy pipeline** (v1.0): TINA -> SGR -> ARGUS scanners -> Archive
+2. **Impense pipeline** (v1.1): detect -> qualifier -> orienter -> fermer
 
-## ARGUS Impense Pipeline (v1.1 — 2026-06-28)
+## ARGUS Impense Pipeline (v1.1 - 2026-06-28)
 
-### Detect → Qualify → Orienter → Fermer
+### Detect -> Qualify -> Orienter -> Fermer
 
 Reference: ADR-2026-06-27-001-ARGUS-INTERSTICES (NEXUS/ADR/)
 
@@ -88,14 +88,14 @@ gaps:
 
 ### Current registry
 
-`NEXUS/ARGUS/gap_registry.yaml` — 3 gaps tous `closed` (GAP-001, GAP-002, GAP-003):
-- GAP-001: INTENT-069 sans definition canonique dans ONTOLOGY → resolu par concepts/impense.md
-- GAP-002: ADR ARGUS-INTERSTICES sans schema gap_registry → resolu par schema/gap_registry.schema.yaml
-- GAP-003: CTULU PR#81 mergee sans tests → resolu par 35/35 tests governance verifs (2026-06-28)
+`NEXUS/ARGUS/gap_registry.yaml` - 3 gaps tous `closed` (GAP-001, GAP-002, GAP-003):
+- GAP-001: INTENT-069 sans definition canonique dans ONTOLOGY -> resolu par concepts/impense.md
+- GAP-002: ADR ARGUS-INTERSTICES sans schema gap_registry -> resolu par schema/gap_registry.schema.yaml
+- GAP-003: CTULU PR#81 mergee sans tests -> resolu par 35/35 tests governance verifs (2026-06-28)
 
 ---
 
-## Legacy Pipeline (v1.0 — TINA/SGR/ARGUS scanners)
+## Legacy Pipeline (v1.0 - TINA/SGR/ARGUS scanners)
 
 ### Pipeline steps
 
@@ -166,6 +166,6 @@ After full pipeline run:
 
 - **DON'T** run SGR before TINA ingest completes
 - **DON'T** skip scanner validation after pipeline run
-- **DON'T** modify reports manually — always re-run the pipeline
+- **DON'T** modify reports manually - always re-run the pipeline
 - **DON'T** leave gaps in `oriented` status without resolution target
 - **DON'T** create gaps without validating against `gap_registry.schema.yaml`

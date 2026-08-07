@@ -18,7 +18,7 @@ Extend BatMCP with custom tools for gerivdb ecosystem.
 4. Test: atmcp call <name> --dry-run
 
 ## Verify
-New tool appears in atmcp list → PASS
+New tool appears in atmcp list -> PASS
 
 ## Ref
 S-012: matrix-runner (tool pattern)

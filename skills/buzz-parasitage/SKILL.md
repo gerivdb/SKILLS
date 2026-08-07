@@ -21,7 +21,7 @@ BUZZ execution shows unexpected blocks, latency spikes, or state corruption.
 4. Auto-fix: strip parasite flag, restore original block
 
 ## Verify
-uzz validate --no-parasites → PASS
+uzz validate --no-parasites -> PASS
 
 ## Ref
 ATOM-065: co-abductive-halo

@@ -1,10 +1,10 @@
 ---
 name: mcp-guardian
 description: >
-  Gestion, découverte et validation des serveurs MCP installés et déclarés.
-  Détecte les MCP dans .kilocode/mcp.json, .kilo/mcp.json, et les binaires installés.
-  Valide la connectivité, la configuration et les chemins autorisés.
-  Utiliser pour toute opération liée aux MCP : installation, diagnostic, audit.
+  Gestion, decouverte et validation des serveurs MCP installes et declares.
+  Detecte les MCP dans .kilocode/mcp.json, .kilo/mcp.json, et les binaires installes.
+  Valide la connectivite, la configuration et les chemins autorises.
+  Utiliser pour toute operation liee aux MCP : installation, diagnostic, audit.
 version: "1.0.0"
 status: active
 intent_hash: 0xMCP_GUARDIAN_20260806
@@ -15,7 +15,7 @@ triggers:
   - "mcp"
   - "codebase manager"
   - "cbm"
-  - "mcp installé"
+  - "mcp installe"
   - "mcp config"
   - "serveur mcp"
   - "diagnostic mcp"
@@ -27,29 +27,29 @@ citizen: "PRIMUS"
 layer: "L4"
 ---
 
-# Skill — MCP Guardian
+# Skill - MCP Guardian
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Gestion, découverte et validation des serveurs MCP.
+> **Verdict** : **SKILL D'EXECUTION** - Gestion, decouverte et validation des serveurs MCP.
 
 ---
 
 ## Objectif
 
-Centraliser la découverte, la validation et la gestion des serveurs MCP
-installés et déclarés dans l'écosystème Kilocode/GeriCode.
+Centraliser la decouverte, la validation et la gestion des serveurs MCP
+installes et declares dans l'ecosysteme Kilocode/GeriCode.
 
 ---
 
-## Scan et découverte
+## Scan et decouverte
 
-### Sources scannées
+### Sources scannees
 
 | Source | Chemin |
 |--------|--------|
 | **mcp.json principal** | `C:\DevTools\.kilocode\mcp.json` |
 | **mcp.json utilisateur** | `C:\Users\GG\.kilocode\mcp.json` |
 | **Binaire CBM** | `C:\DevTools\bin\codebase-memory-mcp\codebase-memory-mcp.exe` |
-| **Index écosystème** | `ecosystem-index.json` → `installed_mcps` |
+| **Index ecosysteme** | `ecosystem-index.json` -> `installed_mcps` |
 
 ### Commandes de scan
 
@@ -66,18 +66,18 @@ python .kilo/scripts/index-ecosystem.py --query "mcp"
 
 ### Checklist MCP
 
-| Vérification | Commande |
+| Verification | Commande |
 |--------------|----------|
 | Fichier mcp.json existe | `Test-Path C:\DevTools\.kilocode\mcp.json` |
-| Serveur déclaré | `python -c "import json; json.load(open('C:\DevTools\.kilocode\mcp.json'))['mcpServers']"` |
+| Serveur declare | `python -c "import json; json.load(open('C:\DevTools\.kilocode\mcp.json'))['mcpServers']"` |
 | Binaire CBM existe | `Test-Path C:\DevTools\bin\codebase-memory-mcp\codebase-memory-mcp.exe` |
-| Cache CBM présent | `Test-Path C:\DevTools\.cache\codebase-memory-mcp` |
+| Cache CBM present | `Test-Path C:\DevTools\.cache\codebase-memory-mcp` |
 | Processus MCP actif | `Get-Process -Name "codebase-memory-mcp*" -ErrorAction SilentlyContinue` |
 
-### Probe de connectivité
+### Probe de connectivite
 
 ```powershell
-# Vérifier que le MCP filesystem répond
+# Verifier que le MCP filesystem repond
 $mcp = Get-Content "C:\DevTools\.kilocode\mcp.json" -Raw | ConvertFrom-Json
 $filesystem = $mcp.mcpServers.filesystem
 Write-Output "[MCP-GUARDIAN] filesystem command: $($filesystem.command)"
@@ -86,13 +86,13 @@ Write-Output "[MCP-GUARDIAN] allowed dirs: $($filesystem.allowedDirectories -joi
 
 ---
 
-## Rôles
+## Roles
 
-| Rôle | Responsabilité |
+| Role | Responsabilite |
 |------|----------------|
-| `PRIMUS` | Orchestre la découverte et la validation MCP |
-| `NEXUS` | Trace les événements dans WAL |
-| `ARGUS` | Détecte les MCP manquants ou mal configurés |
+| `PRIMUS` | Orchestre la decouverte et la validation MCP |
+| `NEXUS` | Trace les evenements dans WAL |
+| `ARGUS` | Detecte les MCP manquants ou mal configures |
 
 ---
 
@@ -100,32 +100,32 @@ Write-Output "[MCP-GUARDIAN] allowed dirs: $($filesystem.allowedDirectories -joi
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+| PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
 +-----------------------------------------------------------------------------+
 | P-1201   C:\DevTools\.kilocode\mcp.json existe et est valide JSON           |
-| P-1202   Tous les serveurs déclarés ont une commande/args valide             |
+| P-1202   Tous les serveurs declares ont une commande/args valide             |
 | P-1203   codebase-memory-mcp.exe existe dans C:\DevTools\bin\               |
 | P-1204   CBM_CACHE_DIR existe et est accessible                             |
 | P-1205   C:\Users\GG\.kilocode\mcp.json existe et est valide JSON           |
-| P-1206   Aucun processus MCP fantôme (zombie)                               |
-| P-1207   allowedDirectories cohérents entre mcp.json et globalSettings      |
+| P-1206   Aucun processus MCP fantome (zombie)                               |
+| P-1207   allowedDirectories coherents entre mcp.json et globalSettings      |
 +-----------------------------------------------------------------------------+
 ```
 
 ---
 
-## Critères
+## Criteres
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| CRITÈRE    DESCRIPTION                                                      |
+| CRITERE    DESCRIPTION                                                      |
 +-----------------------------------------------------------------------------+
-| ✓          mcp.json valide et lisible                                       |
-| ✓          Tous les serveurs déclarés sont installés                        |
-| ✓          Codebase Manager MCP opérationnel                                |
-| ✓          Cache CBM accessible                                             |
-| ✓          Zéro processus MCP fantôme                                       |
-| ✓          allowedDirectories cohérents                                    |
+| [OK]          mcp.json valide et lisible                                       |
+| [OK]          Tous les serveurs declares sont installes                        |
+| [OK]          Codebase Manager MCP operationnel                                |
+| [OK]          Cache CBM accessible                                             |
+| [OK]          Zero processus MCP fantome                                       |
+| [OK]          allowedDirectories coherents                                    |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -134,16 +134,16 @@ Write-Output "[MCP-GUARDIAN] allowed dirs: $($filesystem.allowedDirectories -joi
 ## Rollback
 
 1. Sauvegarder `mcp.json` avant modification.
-2. Restaurer la version précédente en cas d'erreur.
+2. Restaurer la version precedente en cas d'erreur.
 3. Logger dans WAL.
 4. Valider par PR review PRIMUS.
 
 ---
 
-## Références
+## References
 
 - `C:\DevTools\.kilocode\mcp.json`
 - `C:\Users\GG\.kilocode\mcp.json`
 - `C:\DevTools\bin\codebase-memory-mcp\codebase-memory-mcp.exe`
-- `ecosystem-index.json` → `installed_mcps`
+- `ecosystem-index.json` -> `installed_mcps`
 - `unified-design/designs/mcp-integration.yaml`

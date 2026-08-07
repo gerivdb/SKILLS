@@ -1,6 +1,6 @@
 ---
 name: skill-scaffold
-description: "Générateur de skill respectant le design skill-creation-tdd. Crée la structure complète : SKILL.md, module.py, tests/conftest.py, tests/test_<module>.py"
+description: "Generateur de skill respectant le design skill-creation-tdd. Cree la structure complete : SKILL.md, module.py, tests/conftest.py, tests/test_<module>.py"
 version: "1.0.0"
 status: active
 intent_hash: 0xSKILL_SKILL_SCAFFOLD_20260807
@@ -8,7 +8,7 @@ author: gerivdb
 source_repo: gerivdb/GeriCode
 source_path: .kilo/skills/skill-scaffold/SKILL.md
 triggers:
-  - "créer skill"
+  - "creer skill"
   - "nouveau skill"
   - "scaffold skill"
 tools:
@@ -18,28 +18,28 @@ citizen: "DEV-EXPERIENCE"
 layer: "L4"
 ---
 
-# Skill — skill-scaffold
+# Skill - skill-scaffold
 
-> **Verdict** : **SKILL D'EXÉCUTION** — Générateur de skill respectant TDD.
+> **Verdict** : **SKILL D'EXECUTION** - Generateur de skill respectant TDD.
 
 ---
 
 ## Objectif
 
-Créer la structure complète d'un skill en respectant le design `skill-creation-tdd`.
+Creer la structure complete d'un skill en respectant le design `skill-creation-tdd`.
 
 ---
 
-## Déclencheur
+## Declencheur
 
-- Création d'un nouveau skill
-- Génération de squelette de skill
+- Creation d'un nouveau skill
+- Generation de squelette de skill
 
 ---
 
-## Entrées
+## Entrees
 
-| Entrée | Type | Description |
+| Entree | Type | Description |
 |--------|------|-------------|
 | `skill_name` | str | Nom du skill (ex: my-skill) |
 | `description` | str | Description courte |
@@ -52,15 +52,15 @@ Créer la structure complète d'un skill en respectant le design `skill-creation
 
 | Sortie | Type | Description |
 |--------|------|-------------|
-| `skill_dir` | Path | Répertoire du skill créé |
+| `skill_dir` | Path | Repertoire du skill cree |
 
 ---
 
-## Règles
+## Regles
 
-1. Frontmatter étendu obligatoire
-2. Sections obligatoires pré-remplies
-3. Tests de base générés
+1. Frontmatter etendu obligatoire
+2. Sections obligatoires pre-remplies
+3. Tests de base generes
 4. Registration automatique dans `registry.yaml`
 
 ---
@@ -85,24 +85,24 @@ scaffold_skill(
 
 | Test | Description | Attend |
 |------|-------------|--------|
-| `test_scaffold_creates_directory` | Crée le répertoire du skill | Répertoire existe |
-| `test_scaffold_creates_files` | Crée SKILL.md, module.py, tests | Tous les fichiers existent |
-| `test_scaffold_raises_if_exists` | Lève erreur si skill existe | SkillScaffoldError |
+| `test_scaffold_creates_directory` | Cree le repertoire du skill | Repertoire existe |
+| `test_scaffold_creates_files` | Cree SKILL.md, module.py, tests | Tous les fichiers existent |
+| `test_scaffold_raises_if_exists` | Leve erreur si skill existe | SkillScaffoldError |
 
 ---
 
-## Référence ADR
+## Reference ADR
 
 - **ADR** : ADR-2026-08-07-005-SKILL_SCAFFOLD
 - **IntentHash** : 0xADR_SKILL_SCAFFOLD_20260807
-- **Dépôt** : gerivdb/GOVERNANCE-HUB
+- **Depot** : gerivdb/GOVERNANCE-HUB
 - **Statut ADR** : proposed
 
 ---
 
-## Rôles
+## Roles
 
-| Rôle | Responsabilité |
+| Role | Responsabilite |
 |------|----------------|
 | `DEV-EXPERIENCE` | Garant des conventions TDD |
 
@@ -112,26 +112,26 @@ scaffold_skill(
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| PROBE    CONDITION → COMPORTEMENT ATTENDU                                   |
+| PROBE    CONDITION -> COMPORTEMENT ATTENDU                                   |
 +-----------------------------------------------------------------------------+
-| P-710    scaffold_skill crée un répertoire valide                           |
-| P-711    SKILL.md avec frontmatter étendu généré                            |
-| P-712    tests/conftest.py généré                                          |
+| P-710    scaffold_skill cree un repertoire valide                           |
+| P-711    SKILL.md avec frontmatter etendu genere                            |
+| P-712    tests/conftest.py genere                                          |
 +-----------------------------------------------------------------------------+
 ```
 
 ---
 
-## Critères
+## Criteres
 
 ```ascii
 +-----------------------------------------------------------------------------+
-| CRITÈRE    DESCRIPTION                                                      |
+| CRITERE    DESCRIPTION                                                      |
 +-----------------------------------------------------------------------------+
-| ✓          Répertoire skill créé                                            |
-| ✓          SKILL.md avec frontmatter étendu                                 |
-| ✓          tests/conftest.py présent                                        |
-| ✓          pytest vert                                                      |
+| [OK]          Repertoire skill cree                                            |
+| [OK]          SKILL.md avec frontmatter etendu                                 |
+| [OK]          tests/conftest.py present                                        |
+| [OK]          pytest vert                                                      |
 +-----------------------------------------------------------------------------+
 ```
 
@@ -139,12 +139,12 @@ scaffold_skill(
 
 ## Rollback
 
-1. Supprimer le répertoire du skill.
+1. Supprimer le repertoire du skill.
 2. Logger dans WAL.
 
 ---
 
-## Références
+## References
 
 - `skill-creation-tdd.yaml`
 - `mcp-access-repair/SKILL.md`

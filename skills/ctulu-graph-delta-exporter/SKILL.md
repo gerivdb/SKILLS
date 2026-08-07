@@ -1,7 +1,7 @@
 # Skill: ctulu-graph-delta-exporter
 
 ## Contexte
-Calcule le diff entre deux snapshots du graphe écosystème. Détecte les nœuds/arêtes ajoutés/supprimés/modifiés. Zéro faux positifs sur graphes identiques.
+Calcule le diff entre deux snapshots du graphe ecosysteme. Detecte les noeuds/aretes ajoutes/supprimes/modifies. Zero faux positifs sur graphes identiques.
 
 ## Outil CTULU
 - **Package**: `graph_delta_exporter` (PRD-082)
@@ -16,11 +16,11 @@ graph-delta-exporter --t0 graphs/graph_t0.graphml --t1 graphs/graph_t1.graphml -
 ## Types de delta
 | Type | Description |
 |---|---|
-| `added_nodes` | Nœuds présents dans t1 mais pas t0 |
-| `removed_nodes` | Nœuds présents dans t0 mais pas t1 |
-| `added_edges` | Arêtes présentes dans t1 mais pas t0 |
-| `removed_edges` | Arêtes présentes dans t0 mais pas t1 |
-| `modified_nodes` | Nœuds dans les deux mais attributs différents |
+| `added_nodes` | Noeuds presents dans t1 mais pas t0 |
+| `removed_nodes` | Noeuds presents dans t0 mais pas t1 |
+| `added_edges` | Aretes presentes dans t1 mais pas t0 |
+| `removed_edges` | Aretes presentes dans t0 mais pas t1 |
+| `modified_nodes` | Noeuds dans les deux mais attributs differents |
 
 ## Sortie JSON
 ```json
@@ -39,6 +39,6 @@ graph-delta-exporter --t0 graphs/graph_t0.graphml --t1 graphs/graph_t1.graphml -
 ```
 
 ## Anti-patterns
-- Ne JAMAIS comparer des graphes de formats différents
-- Ne JAMAIS utiliser un delta avec faux positifs (vérifier t0=t1 d'abord)
-- Ne JAMAIS écraser un delta existant (immuabilité)
+- Ne JAMAIS comparer des graphes de formats differents
+- Ne JAMAIS utiliser un delta avec faux positifs (verifier t0=t1 d'abord)
+- Ne JAMAIS ecraser un delta existant (immuabilite)

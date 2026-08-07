@@ -1,16 +1,16 @@
 # Skill: powershell-writer
 
 ## Contexte
-PowerShell exige une syntaxe stricte pour les here-strings. Un header `@'` mal placé casse l'écriture et génère des `ParserError`.
+PowerShell exige une syntaxe stricte pour les here-strings. Un header `@'` mal place casse l'ecriture et genere des `ParserError`.
 
-## Règles
+## Regles
 1. **Toujours** utiliser la forme : `$content = @'...'@` (variable d'abord, here-string ensuite)
-2. **Toujours** finir la ligne du header `@'` par `-Value` ou affectation, pas de caractères après
+2. **Toujours** finir la ligne du header `@'` par `-Value` ou affectation, pas de caracteres apres
 3. Interdire : `Set-Content -Value @'...'` inline
-4. Si le fichier cible existe, faire un `Read` préalable pour vérifier le contenu avant `Write`
-5. Pour les fichiers longs (> 100 lignes), utiliser `write` via outil natif plutôt que `bash`
+4. Si le fichier cible existe, faire un `Read` prealable pour verifier le contenu avant `Write`
+5. Pour les fichiers longs (> 100 lignes), utiliser `write` via outil natif plutot que `bash`
 
-## Formes autorisées
+## Formes autorisees
 ```powershell
 # Forme 1 : variable + Set-Content
 $content = @'
@@ -28,24 +28,24 @@ ligne 2
 # Forme interdite
 Set-Content -Value @'
 ...
-'@ 'chemin'  # ❌ ParserError
+'@ 'chemin'  # [KO] ParserError
 ```
 
 ## Anti-pattern interdit
-- Header `@'` en début de ligne de commande
-- Mélanger here-string et paramètres sur la même ligne
+- Header `@'` en debut de ligne de commande
+- Melanger here-string et parametres sur la meme ligne
 - Utiliser `Out-File` avec here-string sans encodage explicite
 
 ## Exemple d'application
 ```
-# AVANT (échec)
+# AVANT (echec)
 Set-Content -Value @'
 ---
 type: PRD
 ...
 '@ 'PRD\file.md'
 
-# APRÈS (succès)
+# APRES (succes)
 $content = @'
 ---
 type: PRD
