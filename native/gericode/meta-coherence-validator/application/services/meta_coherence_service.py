@@ -46,9 +46,13 @@ class MetaCoherenceService:
         """Extract reference strings from PRD MOC markdown content."""
         refs = []
         # Match canonical format: type:path
-        pattern = r"`([a-z]+:[^`]+)`"
+        # Skip template placeholders like [chemin], [id], [step]
+        # Require at least 1 char after colon
+        pattern = r"`([a-z]+:[^`][^`]*?)`"
         matches = re.findall(pattern, content)
-        refs.extend(matches)
+        for m in matches:
+            if "[" not in m and "]" not in m:
+                refs.append(m)
         return refs
 
     def _parse_frontmatter(self, content: str) -> Dict[str, str]:

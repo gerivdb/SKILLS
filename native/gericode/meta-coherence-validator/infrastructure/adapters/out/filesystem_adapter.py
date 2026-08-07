@@ -6,9 +6,16 @@ Implements reference checking by reading actual files from the filesystem.
 
 import os
 import re
+import sys
 from pathlib import Path
 from typing import List, Dict, Set, Optional
-from ...domain.value_objects.reference_vo import Reference
+
+# Add skill root to path for imports
+SKILL_ROOT = Path(__file__).parent.parent.parent.parent
+if str(SKILL_ROOT) not in sys.path:
+    sys.path.insert(0, str(SKILL_ROOT))
+
+from domain.value_objects.reference_vo import Reference
 
 
 class FilesystemPrdMocReader:
@@ -82,8 +89,11 @@ class FilesystemReferenceChecker:
         # Cache skills
         if self.skills_base_path.exists():
             for d in self.skills_base_path.rglob("SKILL.md"):
+                # Skip worktrees and hidden directories
+                if ".kilo" in d.parts or ".git" in d.parts:
+                    continue
                 rel = d.parent.relative_to(self.skills_base_path)
-                self._skill_cache.add(str(rel))
+                self._skill_cache.add(str(rel).replace("\\", "/"))
 
         # Cache boot steps
         if self.boot_sequence_path.exists():
@@ -132,9 +142,10 @@ class FilesystemReferenceChecker:
 
     def check_skill_exists(self, skill_path: str) -> bool:
         """Check if a skill directory exists."""
-        # Normalize path
-        normalized = skill_path.replace("D:/DO/WEB/TOOLS/L4-TOOLS/SKILLS/native/gericode/", "")
-        normalized = normalized.replace("D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS\\native\\gericode\\", "")
+        # Normalize path: remove base prefixes and normalize separators
+        normalized = skill_path.replace("D:/DO/WEB/TOOLS/L4-TOOLS/SKILLS/", "")
+        normalized = normalized.replace("D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS\\", "")
+        normalized = normalized.replace("\\", "/").strip("/")
         return normalized in self._skill_cache
 
     def check_citizen_exists(self, citizen_id: str) -> bool:
