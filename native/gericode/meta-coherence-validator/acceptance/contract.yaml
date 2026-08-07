@@ -1,0 +1,14 @@
+Feature: Meta Coherence Validation
+
+  Scenario: Valid PRD MOC with all references existing
+    Given a set of PRD MOC documents with valid references
+    When I validate meta coherence
+    Then the global score should be >= 0.8
+    And the validation should not be blocked
+
+  Scenario: PRD MOC with missing references
+    Given a set of PRD MOC documents with missing references
+    When I validate meta coherence
+    Then the global score should be < 0.8
+    And the validation should be blocked
+    And missing references should be reported

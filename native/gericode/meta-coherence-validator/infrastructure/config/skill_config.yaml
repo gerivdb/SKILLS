@@ -1,0 +1,32 @@
+skill:
+  name: meta-coherence-validator
+  version: "1.0.0"
+  citizen: ECOSYSTEM-BRAIN
+  layer: L4
+
+validation:
+  min_score: 0.8
+  max_contradictions: 0
+  timeout_seconds: 10
+
+paths:
+  unified_design: "D:/DO/WEB/TOOLS/L0-CANON/unified-design/designs/"
+  ontology: "D:/DO/WEB/TOOLS/L0-CANON/ONTOLOGY/"
+  skills_registry: "D:/DO/WEB/TOOLS/L4-TOOLS/SKILLS/REGISTRY.yaml"
+  boot_sequence: ".kilo/workflows/session-boot-sequence.md"
+  governance_hub: "D:/DO/WEB/TOOLS/L0-CANON/GOVERNANCE-HUB/"
+  base_path: "D:/DO/WEB/TOOLS/L2-PLATFORM/GeriCode"
+
+report:
+  output_dir: "act-protocol/reports/meta-coherence/"
+  format: "yaml"
+
+reference_types:
+  - design
+  - concept
+  - skill
+  - citizen
+  - boot
+  - prd-moc
+  - adr
+  - ontology
