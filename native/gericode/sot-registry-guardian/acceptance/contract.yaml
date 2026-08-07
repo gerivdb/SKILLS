@@ -1,0 +1,16 @@
+---
+skill: sot-registry-guardian
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-401: 0 mismatch local_path/full_name"
+  - "P-402: toutes les strates valides"
+  - "P-403: rapport de drift < 200 lignes"
+  - "P-404: rollback en < 30s"
+probes:
+  - P-401
+  - P-402
+  - P-403
+  - P-404
+---

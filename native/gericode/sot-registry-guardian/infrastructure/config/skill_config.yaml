@@ -1,0 +1,18 @@
+---
+type: SKILL_CONFIG
+version: "1.0.0"
+skill: sot-registry-guardian
+layer: L4
+citizen: DEV-EXPERIENCE
+---
+
+# sot-registry-guardian config
+
+## Parameters
+- full_name: str
+- local_path: str
+- layer: str
+
+## Constraints
+- full_name must be owner/repo
+- local_path must be under D:\DO\WEB\TOOLS\L<digit>

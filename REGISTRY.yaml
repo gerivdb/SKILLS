@@ -2,7 +2,7 @@ registry:
   version: 1.0.0
   ecosystem: ecosystem-1
   last_updated: '2026-08-07'
-  total_skills: 169
+  total_skills: 194
 skills:
 - name: booking
   description: Orchestration des réservations et planification pour services
@@ -3096,7 +3096,7 @@ skills:
   created: '2026-08-07'
   updated: '2026-08-07'
   phi_weight: 0.005
-  path: ..\L2-PLATFORM\GeriCode\.kilo\skills\yaml-safe-injector\SKILL.md
+  path: native/gericode/yaml-safe-injector/SKILL.md
   source: native
   assimilation_status: N/A
   source_repo: gerivdb/GeriCode
@@ -3118,7 +3118,7 @@ skills:
   created: '2026-08-07'
   updated: '2026-08-07'
   phi_weight: 0.005
-  path: ..\L2-PLATFORM\GeriCode\.kilo\skills\sot-registry-guardian\SKILL.md
+  path: native/gericode/sot-registry-guardian/SKILL.md
   source: native
   assimilation_status: N/A
   source_repo: gerivdb/GeriCode
@@ -3140,7 +3140,7 @@ skills:
   created: '2026-08-07'
   updated: '2026-08-07'
   phi_weight: 0.005
-  path: ..\L2-PLATFORM\GeriCode\.kilo\skills\n243-graph-builder\SKILL.md
+  path: native/gericode/n243-graph-builder/SKILL.md
   source: native
   assimilation_status: N/A
   source_repo: gerivdb/GeriCode
@@ -3162,12 +3162,462 @@ skills:
   created: '2026-08-07'
   updated: '2026-08-07'
   phi_weight: 0.005
-  path: ..\L2-PLATFORM\GeriCode\.kilo\skills\skill-scaffold\SKILL.md
+  path: native/gericode/skill-scaffold/SKILL.md
   source: native
   assimilation_status: N/A
   source_repo: gerivdb/GeriCode
   consumes_from:
   - ecosystem-principles
+- name: repo-citizen-manager
+  description: Skill repo-citizen-manager for ecosystem management
+  type: foundational
+  triggers:
+  - repo citizen manager
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/repo-citizen-manager/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: registry-sync
+  description: Skill registry-sync for ecosystem management
+  type: foundational
+  triggers:
+  - registry sync
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/registry-sync/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: skill-auto-enroller
+  description: Skill skill-auto-enroller for ecosystem management
+  type: foundational
+  triggers:
+  - skill auto enroller
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/skill-auto-enroller/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: citizenship-auditor
+  description: Skill citizenship-auditor for ecosystem management
+  type: foundational
+  triggers:
+  - citizenship auditor
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/citizenship-auditor/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: bridge-auditor
+  description: Skill bridge-auditor for ecosystem management
+  type: foundational
+  triggers:
+  - bridge auditor
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/bridge-auditor/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: skills-validator
+  description: Skill skills-validator for ecosystem management
+  type: foundational
+  triggers:
+  - skills validator
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/skills-validator/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: gitignore-harmonizer
+  description: Skill gitignore-harmonizer for ecosystem management
+  type: foundational
+  triggers:
+  - gitignore harmonizer
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/gitignore-harmonizer/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: harness-bootstrapper
+  description: Skill harness-bootstrapper for ecosystem management
+  type: foundational
+  triggers:
+  - harness bootstrapper
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/harness-bootstrapper/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: known-repositories-updater
+  description: Skill known-repositories-updater for ecosystem management
+  type: foundational
+  triggers:
+  - known repositories updater
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/known-repositories-updater/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: registry-prune
+  description: Skill registry-prune for ecosystem management
+  type: foundational
+  triggers:
+  - registry prune
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/registry-prune/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: verse-sync
+  description: Skill verse-sync for ecosystem management
+  type: foundational
+  triggers:
+  - verse sync
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/verse-sync/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: ecosystem-probe
+  description: Skill ecosystem-probe for ecosystem management
+  type: foundational
+  triggers:
+  - ecosystem probe
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/ecosystem-probe/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: ontology-guardian
+  description: Skill ontology-guardian for ecosystem management
+  type: foundational
+  triggers:
+  - ontology guardian
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/ontology-guardian/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: verify-terms
+  description: Skill verify-terms for ecosystem management
+  type: foundational
+  triggers:
+  - verify terms
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/verify-terms/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: mcp-guardian
+  description: Skill mcp-guardian for ecosystem management
+  type: foundational
+  triggers:
+  - mcp guardian
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/mcp-guardian/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: mcp-access-repair
+  description: Skill mcp-access-repair for ecosystem management
+  type: foundational
+  triggers:
+  - mcp access repair
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/mcp-access-repair/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: ecosystem-brain
+  description: Skill ecosystem-brain for ecosystem management
+  type: foundational
+  triggers:
+  - ecosystem brain
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/ecosystem-brain/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: mox-validator
+  description: Skill mox-validator for ecosystem management
+  type: foundational
+  triggers:
+  - mox validator
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/mox-validator/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: kiva-ci-local
+  description: Skill kiva-ci-local for ecosystem management
+  type: foundational
+  triggers:
+  - kiva ci local
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/kiva-ci-local/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: artifact-quality-checker
+  description: Skill artifact-quality-checker for ecosystem management
+  type: foundational
+  triggers:
+  - artifact quality checker
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/artifact-quality-checker/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: git-atomic-rename
+  description: Skill git-atomic-rename for ecosystem management
+  type: foundational
+  triggers:
+  - git atomic rename
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/git-atomic-rename/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: ci-nomenclature-guard
+  description: Skill ci-nomenclature-guard for ecosystem management
+  type: foundational
+  triggers:
+  - ci nomenclature guard
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/ci-nomenclature-guard/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: n243-query-engine
+  description: Skill n243-query-engine for ecosystem management
+  type: foundational
+  triggers:
+  - n243 query engine
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/n243-query-engine/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: yaml-debug-forensic
+  description: Skill yaml-debug-forensic for ecosystem management
+  type: foundational
+  triggers:
+  - yaml debug forensic
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/yaml-debug-forensic/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+- name: actprotocol-fractal-nomenclature
+  description: Skill actprotocol-fractal-nomenclature for ecosystem management
+  type: foundational
+  triggers:
+  - actprotocol fractal nomenclature
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-07'
+  updated: '2026-08-07'
+  phi_weight: 0.005
+  path: native/gericode/actprotocol-fractal-nomenclature/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
 metadata:
   phi_cps_contribution: 0.521
   governance_level: L2

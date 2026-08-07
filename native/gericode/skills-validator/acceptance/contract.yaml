@@ -1,0 +1,12 @@
+---
+skill: skills-validator
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-903: 100% des skills ont un frontmatter valide"
+  - "P-904: 0 doublon de nom"
+probes:
+  - P-903
+  - P-904
+---

@@ -1,0 +1,16 @@
+---
+skill: yaml-safe-injector
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-301: 100% tests passants"
+  - "P-302: 0 corruption sur jeu de tests représentatif"
+  - "P-303: dry-run ne modifie pas le fichier"
+  - "P-304: rollback en < 30s"
+probes:
+  - P-301
+  - P-302
+  - P-303
+  - P-304
+---

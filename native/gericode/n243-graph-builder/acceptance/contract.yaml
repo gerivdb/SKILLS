@@ -1,0 +1,16 @@
+---
+skill: n243-graph-builder
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-501: graphe N243 construit sans erreur"
+  - "P-502: tous les repos actifs sont dans le graphe"
+  - "P-503: cycles détectés et remontés"
+  - "P-504: bridges préservés"
+probes:
+  - P-501
+  - P-502
+  - P-503
+  - P-504
+---

@@ -1,0 +1,14 @@
+---
+skill: skill-scaffold
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-601: scaffold complet généré"
+  - "P-602: structure TDD/BDD/ATDD/DDD/DbC/Hexagonal conforme"
+  - "P-603: tests templates passants"
+probes:
+  - P-601
+  - P-602
+  - P-603
+---

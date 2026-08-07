@@ -1,0 +1,12 @@
+---
+name: gitignore-harmonizer
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-908: Aucun .gitignore ne contient le pattern out/ seul"
+  - "P-909: infrastructure/adapters/in/ et out/ ne sont pas ignorés"
+probes:
+  - P-908
+  - P-909
+---

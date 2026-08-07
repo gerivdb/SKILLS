@@ -1,0 +1,15 @@
+---
+type: SKILL_CONFIG
+version: "1.0.0"
+skill: n243-graph-builder
+layer: L4
+citizen: L2-PLATFORM
+---
+
+# n243-graph-builder config
+
+## Parameters
+- repositories: list[dict]
+
+## Constraints
+- graph must not be empty

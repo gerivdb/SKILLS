@@ -1,0 +1,14 @@
+---
+skill: registry-sync
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-901: REGISTRY.yaml et registry.json ont même nombre de skills"
+  - "P-902: citizens.yaml contient tous les repo citizens de REGISTRY.yaml"
+  - "P-903: dry-run ne modifie aucun fichier"
+probes:
+  - P-901
+  - P-902
+  - P-903
+---
