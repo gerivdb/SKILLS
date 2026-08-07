@@ -82,8 +82,9 @@ class CitizenshipAuditor:
     def _check_p802(self) -> dict:
         citizens = self._load_citizens()
         verses = self._load_verses()
-        # Match citizen ID to verse stem
-        missing = [c for c in citizens if c.lower() not in verses]
+        # Match citizen ID to verse stem (case-insensitive)
+        verses_lower = {v.lower() for v in verses}
+        missing = [c for c in citizens if c.lower() not in verses_lower]
         return {"passed": len(missing) == 0, "missing": missing}
 
     def _check_p806(self) -> dict:

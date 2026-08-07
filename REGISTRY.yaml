@@ -5,7 +5,7 @@ registry:
   total_skills: 194
 skills:
 - name: booking
-  description: Orchestration des réservations et planification pour services
+  description: Orchestration des reservations et planification pour services
   type: domain
   triggers:
   - booking
@@ -27,6 +27,7 @@ skills:
   assimilation_status: N/A
   consumes_from:
   - product-context
+  source_repo: external
 - name: audit-trail
   description: Skill for tracking and auditing financial transactions and operations
   type: domain
@@ -48,15 +49,16 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\domain\finance\audit-trail\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: finance
-  description: Analyse financière et banking pour décisions métier
+  description: Analyse financiere et banking pour decisions metier
   type: domain
   triggers:
   - finance
   - banking
   - analysis
   - transactions
-  - budgétaire
+  - budgetaire
   - investissement
   domain: finance
   version: 1.0.0
@@ -71,6 +73,7 @@ skills:
   assimilation_status: N/A
   consumes_from:
   - ecosystem-principles
+  source_repo: external
 - name: alive-check
   description: Skill for verifying if individuals in genealogy records are still alive
   type: domain
@@ -92,6 +95,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\domain\genealogy\alive-check\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: gedcom-parser
   description: Skill for parsing and analyzing GEDCOM genealogy files
   type: domain
@@ -112,6 +116,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\domain\genealogy\gedcom-parser\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: cv-parser
   description: Skill for parsing and extracting structured data from CV/resume documents
   type: domain
@@ -132,6 +137,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\domain\recruitment\cv-parser\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: ''
   description: ''
   type: domain
@@ -147,6 +153,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\domain\recruitment\template-render\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: foundational
@@ -162,9 +169,10 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\csv-extract\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: design-validation
-  description: Interview socratique relentless sur tout plan ou design jusqu'à résolution
-    complète de chaque branche de l'arbre de décisions
+  description: Interview socratique relentless sur tout plan ou design jusqu'a resolution
+    complete de chaque branche de l'arbre de decisions
   type: foundational
   triggers:
   - grill-me
@@ -186,8 +194,9 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\design-validation\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: ecosystem-principles
-  description: Principes architecturaux ONTOLOGY, DRY, KISS, φ-CPS pour ecosystem-1
+  description: Principes architecturaux ONTOLOGY, DRY, KISS, phi-CPS pour ecosystem-1
   type: foundational
   triggers:
   - ontology
@@ -208,6 +217,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\ecosystem-principles\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: ''
   description: ''
   type: foundational
@@ -223,6 +233,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\email-sender\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: foundational
@@ -238,6 +249,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\embedding\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: notion-connector
   description: Skill for connecting to Notion API and retrieving data from databases
   type: foundational
@@ -258,6 +270,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\notion-connector\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: perplexity-sourcer
   description: Skill for automated job sourcing using Perplexity API
   type: foundational
@@ -278,8 +291,9 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\perplexity-sourcer\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: product-context
-  description: Contextualisation produit et audience pour optimisation marché
+  description: Contextualisation produit et audience pour optimisation marche
   type: foundational
   triggers:
   - product-context
@@ -299,6 +313,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\product-context\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: ''
   description: ''
   type: foundational
@@ -314,6 +329,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\rate-limiter\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: foundational
@@ -329,6 +345,7 @@ skills:
   path: .kilo\worktrees\fire-omelet\native\foundational\semantic-search\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: workflow-orchestrator
   description: Skill for orchestrating daily automated workflows
   type: foundational
@@ -352,8 +369,9 @@ skills:
   consumes_from:
   - notion-connector
   - perplexity-sourcer
+  source_repo: external
 - name: close-loop-detector
-  description: Détecte la fin d'une session et les boucles sémantiques dans l'écosystème
+  description: Detecte la fin d'une session et les boucles semantiques dans l'ecosysteme
   type: external
   triggers: []
   domain: ''
@@ -367,8 +385,9 @@ skills:
   path: close-loop-detector\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: booking
-  description: Orchestration des réservations et planification pour services
+  description: Orchestration des reservations et planification pour services
   type: domain
   triggers:
   - booking
@@ -390,6 +409,7 @@ skills:
   assimilation_status: N/A
   consumes_from:
   - product-context
+  source_repo: external
 - name: audit-trail
   description: Skill for tracking and auditing financial transactions and operations
   type: domain
@@ -411,15 +431,16 @@ skills:
   path: native\domain\finance\audit-trail\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: finance
-  description: Analyse financière et banking pour décisions métier
+  description: Analyse financiere et banking pour decisions metier
   type: domain
   triggers:
   - finance
   - banking
   - analysis
   - transactions
-  - budgétaire
+  - budgetaire
   - investissement
   domain: finance
   version: 1.0.0
@@ -434,6 +455,7 @@ skills:
   assimilation_status: N/A
   consumes_from:
   - ecosystem-principles
+  source_repo: external
 - name: alive-check
   description: Skill for verifying if individuals in genealogy records are still alive
   type: domain
@@ -455,6 +477,7 @@ skills:
   path: native\domain\genealogy\alive-check\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: gedcom-parser
   description: Skill for parsing and analyzing GEDCOM genealogy files
   type: domain
@@ -475,6 +498,7 @@ skills:
   path: native\domain\genealogy\gedcom-parser\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: cv-parser
   description: Skill for parsing and extracting structured data from CV/resume documents
   type: domain
@@ -495,6 +519,7 @@ skills:
   path: native\domain\recruitment\cv-parser\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: ''
   description: ''
   type: domain
@@ -510,6 +535,7 @@ skills:
   path: native\domain\recruitment\template-render\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: causal-chain
   description: ''
   type: external
@@ -533,6 +559,7 @@ skills:
   path: native\engines\causal-chain\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: dag-rag
   description: ''
   type: external
@@ -554,6 +581,7 @@ skills:
   path: native\engines\dag-rag\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: moe-router
   description: ''
   type: external
@@ -575,6 +603,7 @@ skills:
   path: native\engines\moe-router\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: polymorphic-pipeline
   description: ''
   type: external
@@ -595,6 +624,7 @@ skills:
   path: native\engines\polymorphic-pipeline\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: safety-guard
   description: ''
   type: external
@@ -615,9 +645,10 @@ skills:
   path: native\engines\safety-guard\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: talex
-  description: Moteur narratif X-FORGE — convertit graphes de réécriture (SPIDX, DAG-3)
-    en récits cohérents et génère des scénarios narratifs
+  description: Moteur narratif X-FORGE - convertit graphes de reecriture (SPIDX, DAG-3)
+    en recits coherents et genere des scenarios narratifs
   type: native
   triggers:
   - narrate
@@ -656,6 +687,7 @@ skills:
   - BUZZ-X
   - FLUX
   - BRAIN
+  source_repo: external
 - name: batch-cherry-pick-executor
   description: Executes cherry-pick of unique commits from multiple orphan branches
     with conflict detection, deduplication, and reporting
@@ -677,6 +709,7 @@ skills:
   path: native\foundational\batch-cherry-pick-executor\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: bisect-forensics
   description: Guides git bisect for regression hunting, automated bisect scripts,
     and git blame for forensic analysis
@@ -701,6 +734,7 @@ skills:
   path: native\foundational\bisect-forensics\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: branch-content-analyzer
   description: Detects if branch content is already in main (0 unique files = safe
     to delete), analyzes file overlap and commit ancestry
@@ -722,6 +756,7 @@ skills:
   path: native\foundational\branch-content-analyzer\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: branch-lifecycle
   description: Analyzes all branches, recommends PR merge / cherry-pick / delete strategy,
     and executes sync/cleanup (merged with sync-branches)
@@ -750,6 +785,7 @@ skills:
   path: native\foundational\branch-lifecycle\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: branch-merge-strategy
   description: 'Decides optimal merge strategy per branch: cherry-pick, squash merge,
     rebase, or delete based on content analysis'
@@ -771,6 +807,7 @@ skills:
   path: native\foundational\branch-merge-strategy\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: branch-protection-config
   description: Configure branch protection rules, required reviews, status checks
     via gh CLI
@@ -793,6 +830,7 @@ skills:
   path: native\foundational\branch-protection-config\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: cherry-pick-batch
   description: Cherry-picks multiple commits with automatic conflict detection, skip/abort
     decisions, and reporting
@@ -814,6 +852,7 @@ skills:
   path: native\foundational\cherry-pick-batch\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: cherry-pick-conflict-resolver
   description: Extends cherry-pick-batch with conflict resolution during cherry-pick
     operations (binary files, rerere, manual resolve)
@@ -836,6 +875,7 @@ skills:
   path: native\foundational\cherry-pick-conflict-resolver\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: citizen-module-integrator
   description: 'Handles Jules citizen modules integration: validates citizen structure,
     checks for conflicts, integrates new citizens'
@@ -857,6 +897,7 @@ skills:
   path: native\foundational\citizen-module-integrator\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: clean-pycache
   description: Removes __pycache__ directories and .pyc files from working tree and
     git index, ensures .gitignore coverage
@@ -878,6 +919,7 @@ skills:
   path: native\foundational\clean-pycache\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: conventional-commit-validator
   description: Enforces Conventional Commits specification (feat, fix, docs, chore,
     refactor, etc.) with commit-msg hook integration
@@ -900,6 +942,7 @@ skills:
   path: native\foundational\conventional-commit-validator\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: cross-repo-hooks
   description: 'Cross-repo hook analysis and orchestration: identify missing hooks,
     deploy hooks across repos, validate integration'
@@ -922,6 +965,7 @@ skills:
   path: native\foundational\cross-repo-hooks\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: foundational
@@ -937,9 +981,10 @@ skills:
   path: native\foundational\csv-extract\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: design-validation
-  description: Interview socratique relentless sur tout plan ou design jusqu'à résolution
-    complète de chaque branche de l'arbre de décisions
+  description: Interview socratique relentless sur tout plan ou design jusqu'a resolution
+    complete de chaque branche de l'arbre de decisions
   type: foundational
   triggers:
   - grill-me
@@ -961,6 +1006,7 @@ skills:
   path: native\foundational\design-validation\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: diffscope-review
   description: Reviews a pull request using diffscope (or gh fallback on Windows)
     and posts review comments
@@ -982,8 +1028,9 @@ skills:
   path: native\foundational\diffscope-review\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: ecosystem-principles
-  description: Principes architecturaux ONTOLOGY, DRY, KISS, φ-CPS pour ecosystem-1
+  description: Principes architecturaux ONTOLOGY, DRY, KISS, phi-CPS pour ecosystem-1
   type: foundational
   triggers:
   - ontology
@@ -1004,6 +1051,7 @@ skills:
   path: native\foundational\ecosystem-principles\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: eecs-migration-handler
   description: 'Handles EECS migration branches: validates migration files, checks
     for conflicts with existing EECS config, integrates safely'
@@ -1025,6 +1073,7 @@ skills:
   path: native\foundational\eecs-migration-handler\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: foundational
@@ -1040,6 +1089,7 @@ skills:
   path: native\foundational\email-sender\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: foundational
@@ -1055,6 +1105,7 @@ skills:
   path: native\foundational\embedding\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: fork-sync-workflow
   description: 'Fork-based contribution workflow: sync upstream, manage remotes, PR
     from fork'
@@ -1077,6 +1128,7 @@ skills:
   path: native\foundational\fork-sync-workflow\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: git-assainissement
   description: 'Complete git repository sanitization: branch lifecycle, orphan dispatch,
     cherry-pick, cleanup, tags, submodules, reporting'
@@ -1099,9 +1151,10 @@ skills:
   path: native\foundational\git-assainissement\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: git-flow-manager
   description: 'Implements git-flow branching model: feature, release, hotfix, develop,
-    main — guides branch creation, merging, and deletion per git-flow conventions'
+    main - guides branch creation, merging, and deletion per git-flow conventions'
   type: foundational
   triggers:
   - /git-flow
@@ -1125,6 +1178,7 @@ skills:
   path: native\foundational\git-flow-manager\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: git-hooks-manager
   description: Create, install, debug, and manage git hooks (pre-commit, pre-push,
     commit-msg) with templates and testing
@@ -1149,6 +1203,7 @@ skills:
   path: native\foundational\git-hooks-manager\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: kiva-pr-workflow
   description: 'Executes the complete KIVA-CLI PR merge workflow: rollback point,
     review, merge, WAL update, drift check, citizen promotion'
@@ -1170,6 +1225,7 @@ skills:
   path: native\foundational\kiva-pr-workflow\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: merge-conflict-resolver
   description: 'Interactive merge conflict resolution: detects conflicts, presents
     options (ours/theirs/manual), guides resolution, validates result'
@@ -1192,6 +1248,7 @@ skills:
   path: native\foundational\merge-conflict-resolver\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: network-resilient-sync
   description: 'Network-resilient git sync: pre-checks reachability, retry with backoff,
     offline mode, queued pushes'
@@ -1214,6 +1271,7 @@ skills:
   path: native\foundational\network-resilient-sync\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: notion-connector
   description: Skill for connecting to Notion API and retrieving data from databases
   type: foundational
@@ -1234,6 +1292,7 @@ skills:
   path: native\foundational\notion-connector\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: orphan-branch-dispatcher
   description: 'Analyzes orphan/closed-PR branches and dispatches: cherry-pick valuable
     commits, delete stale ones, escalate ambiguous cases'
@@ -1256,6 +1315,7 @@ skills:
   path: native\foundational\orphan-branch-dispatcher\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: perplexity-sourcer
   description: Skill for automated job sourcing using Perplexity API
   type: foundational
@@ -1276,8 +1336,9 @@ skills:
   path: native\foundational\perplexity-sourcer\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: product-context
-  description: Contextualisation produit et audience pour optimisation marché
+  description: Contextualisation produit et audience pour optimisation marche
   type: foundational
   triggers:
   - product-context
@@ -1297,6 +1358,7 @@ skills:
   path: native\foundational\product-context\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: external
 - name: ''
   description: ''
   type: foundational
@@ -1312,6 +1374,7 @@ skills:
   path: native\foundational\rate-limiter\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: rebase-workflow
   description: Covers interactive rebase, rebase vs. merge decision tree, squashing,
     reordering, and safe rebase practices
@@ -1335,6 +1398,7 @@ skills:
   path: native\foundational\rebase-workflow\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: rollback-strategy
   description: Guides git revert vs. git reset decisions, safe rollback procedures,
     and post-rollback validation
@@ -1359,6 +1423,7 @@ skills:
   path: native\foundational\rollback-strategy\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: foundational
@@ -1374,6 +1439,7 @@ skills:
   path: native\foundational\semantic-search\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: stash-workflow
   description: Covers stash save, pop, apply, drop, branch-from-stash, partial stashes,
     and stash conflict handling
@@ -1399,8 +1465,9 @@ skills:
   path: native\foundational\stash-workflow\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: submodule-manager
-  description: 'Git submodule lifecycle: add, update, sync, remove — validates submodule
+  description: 'Git submodule lifecycle: add, update, sync, remove - validates submodule
     health and handles broken references'
   type: foundational
   triggers:
@@ -1423,6 +1490,7 @@ skills:
   path: native\foundational\submodule-manager\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: sync-branches
   description: Synchronizes local and remote branches, detects already-merged branches,
     and cleans up stale references
@@ -1445,6 +1513,7 @@ skills:
   path: native\foundational\sync-branches\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: tag-release-manager
   description: Semantic versioning, git tag creation, release branch management, release
     automation, and changelog integration
@@ -1469,6 +1538,7 @@ skills:
   path: native\foundational\tag-release-manager\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: wal-reconciler
   description: Validates WAL integrity against actual git state, detects orphaned
     entries, compacts old entries
@@ -1491,6 +1561,7 @@ skills:
   path: native\foundational\wal-reconciler\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: foundational
@@ -1506,6 +1577,7 @@ skills:
   path: native\foundational\web-scraper\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: workflow-orchestrator
   description: Skill for orchestrating daily automated workflows
   type: foundational
@@ -1529,6 +1601,7 @@ skills:
   consumes_from:
   - notion-connector
   - perplexity-sourcer
+  source_repo: external
 - name: worktree-manager
   description: 'Git worktree management: create, list, remove worktrees for parallel
     branch work'
@@ -1551,9 +1624,10 @@ skills:
   path: native\foundational\worktree-manager\SKILL.md
   source: native
   assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
 - name: nexus-core
   description: Load when user mentions "NEXUS governance", "SOT conformity", "ECOS_ROOT",
-    "φ-CPS", "ADR validation", "EPIC compliance".
+    "phi-CPS", "ADR validation", "EPIC compliance".
   type: external
   triggers: []
   domain: ''
@@ -1567,8 +1641,9 @@ skills:
   path: perplexity\build\nexus-core\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: skills-pack
-  description: Pack de 59 skills Perplexity pour l'écosystème gerivdb (ENV1 - DEV-COMET).
+  description: Pack de 59 skills Perplexity pour l'ecosysteme gerivdb (ENV1 - DEV-COMET).
     Use when user mentions any skill name.
   type: external
   triggers: []
@@ -1583,9 +1658,10 @@ skills:
   path: perplexity\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/SKILLS
 - name: adr-manager
   description: 'Architecture Decision Records: validation, creation, lifecycle. Use
-    when user mentions ''ADR'', ''décision architecture'', ''valider ADR'', ''nexus
+    when user mentions ''ADR'', ''decision architecture'', ''valider ADR'', ''nexus
     jalon''.'
   type: external
   triggers: []
@@ -1600,6 +1676,7 @@ skills:
   path: perplexity\skills_pack\adr-manager\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GOVERNANCE-HUB
 - name: argus-tracker
   description: ARGUS project phases, delta registry, propagation, KIVA scheduler.
     Use when user mentions 'ARGUS', 'delta registry', 'propagation', 'Phase 4'.
@@ -1616,6 +1693,7 @@ skills:
   path: perplexity\skills_pack\argus-tracker\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/ARGUS
 - name: base243
   description: Base-243 converter, Ladybird, ternary, Tauri, portage. Use when user
     mentions 'base 243', 'convertisseur', 'Ladybird', 'ternaire'.
@@ -1632,9 +1710,10 @@ skills:
   path: perplexity\skills_pack\base243\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/BASE243
 - name: boinc-p2p
   description: BOINC-LLM distributed inference, DHT Kademlia, swarm, P2P computing.
-    Use when user mentions 'BOINC-LLM', 'P2P', 'distribué', 'swarm'.
+    Use when user mentions 'BOINC-LLM', 'P2P', 'distribue', 'swarm'.
   type: external
   triggers: []
   domain: ''
@@ -1648,9 +1727,10 @@ skills:
   path: perplexity\skills_pack\boinc-p2p\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/BOINC-P2P
 - name: claude-optimizer
   description: 18-step Claude optimization, custom instructions, projects, style cloning.
-    Use when user mentions 'optimisation Claude', '18 étapes', 'custom instructions'.
+    Use when user mentions 'optimisation Claude', '18 etapes', 'custom instructions'.
   type: external
   triggers: []
   domain: ''
@@ -1664,6 +1744,7 @@ skills:
   path: perplexity\skills_pack\claude-optimizer\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/CLAUDE-OPTIMIZER
 - name: comet-browser
   description: COMET, BIRDY, headless browsers, CDP automation, browser extensions.
     Use when user mentions 'COMET', 'BIRDY', 'headless', 'CDP', 'navigateur IA'.
@@ -1680,6 +1761,7 @@ skills:
   path: perplexity\skills_pack\comet-browser\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/COMET
 - name: data-vector
   description: VDB, TQL, embeddings, vector search, VEC-243, SparrowDB. Use when user
     mentions 'VDB', 'TQL', 'embedding', 'vector', 'VEC-243'.
@@ -1696,6 +1778,7 @@ skills:
   path: perplexity\skills_pack\data-vector\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/DATA-VECTOR
 - name: deepwiki-ops
   description: Fused skill combining DeepWiki-based repo analysis (analyse-repo-deepwiki)
     and DeepWiki repo enrichment (deepwiki_repo_enricher). Provides constitutional
@@ -1704,7 +1787,7 @@ skills:
   type: external
   triggers:
   - /analyse-repo
-  - évalue dépôt
+  - evalue depot
   - DeepWiki
   - scoring ECOS
   - citoyennisation
@@ -1724,6 +1807,7 @@ skills:
   path: perplexity\skills_pack\deepwiki-ops\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/DEEPWIKI-OPS
 - name: devtools-core
   description: PowerShell modules, CI Gate, MCP, Fix-MCPConnection, cleanup. Use when
     user mentions 'DevTools', 'PowerShell', 'CI Gate', 'nettoyage'.
@@ -1740,6 +1824,7 @@ skills:
   path: perplexity\skills_pack\devtools-core\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/DevTools
 - name: diagram-infographic
   description: Infographics, KPI cards, mind maps, layered architecture. Use when
     user mentions 'infographie', 'KPI', 'carte mentale', 'architecture'.
@@ -1756,9 +1841,10 @@ skills:
   path: perplexity\skills_pack\diagram-infographic\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/DIAGRAM-INFOGRAPHIC
 - name: diagram-infra
   description: 'Infrastructure diagrams: cloud, network, security, AWS, Azure. Use
-    when user mentions ''cloud'', ''AWS'', ''Azure'', ''réseau'', ''sécurité''.'
+    when user mentions ''cloud'', ''AWS'', ''Azure'', ''reseau'', ''securite''.'
   type: external
   triggers: []
   domain: ''
@@ -1772,6 +1858,7 @@ skills:
   path: perplexity\skills_pack\diagram-infra\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/DIAGRAM-INFRA
 - name: diagram-mermaid
   description: Mermaid diagrams, flowcharts, Gantt, ERD, gitgraph. Use when user mentions
     'Mermaid', 'flowchart', 'Gantt', 'ERD'.
@@ -1788,6 +1875,7 @@ skills:
   path: perplexity\skills_pack\diagram-mermaid\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/DIAGRAM-MERMAID
 - name: diagram-uml
   description: UML diagrams, PlantUML, ArchiMate, BPMN. Use when user mentions 'UML',
     'PlantUML', 'ArchiMate', 'BPMN'.
@@ -1804,6 +1892,7 @@ skills:
   path: perplexity\skills_pack\diagram-uml\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/DIAGRAM-UML
 - name: diagram-vega
   description: Vega-Lite charts, data visualization, analytics. Use when user mentions
     'Vega-Lite', 'graphique', 'data analytics'.
@@ -1820,10 +1909,11 @@ skills:
   path: perplexity\skills_pack\diagram-vega\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/DIAGRAM-VEGA
 - name: ecos-vision
-  description: Fused skill combining ECOS-VISION (cross‑repo visualization), ecosystem‑self
-    (self‑learning / semantic cache / META‑CLUSTER GRAPH) and lecun‑vision (Yann LeCun’s
-    AI vision – JEPA, world models, AMI, Tapestry). Use when user mentions any of
+  description: Fused skill combining ECOS-VISION (cross-repo visualization), ecosystem-self
+    (self-learning / semantic cache / META-CLUSTER GRAPH) and lecun-vision (Yann LeCun's
+    AI vision - JEPA, world models, AMI, Tapestry). Use when user mentions any of
     the original triggers.
   type: external
   triggers:
@@ -1831,14 +1921,14 @@ skills:
   - visualisation
   - diagrammes cross-repo
   - apprentissage interne
-  - cache sémantique
+  - cache semantique
   - META-CLUSTER
   - LeCun
   - JEPA
   - world model
   - AMI
   - Tapestry
-  - débat IA
+  - debat IA
   domain: ''
   version: 2.0.0
   author: gerivdb
@@ -1850,9 +1940,10 @@ skills:
   path: perplexity\skills_pack\ecos-vision\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/ECOS-VISION
 - name: github-config
   description: GITHUB_TOKEN, gh auth, scopes, Actions settings, rate-limit, gestion
-    des gros fichiers (push_files vs create_or_update, split‑payload, SHA‑management).
+    des gros fichiers (push_files vs create_or_update, split-payload, SHA-management).
     Use when user mentions 'GITHUB_TOKEN', 'gh auth', 'scopes', 'Settings Actions',
     'large files', 'push_files', 'create_or_update'.
   type: external
@@ -1875,6 +1966,7 @@ skills:
   path: perplexity\skills_pack\github-config\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GITHUB-CONFIG
 - name: governance-formal
   description: GOVERNANCE-HUB, REPO-STANDARDS, ONTOLOGY, RSS-v1 lifecycle. Use when
     user mentions 'GOVERNANCE-HUB', 'REPO-STANDARDS', 'ONTOLOGY', 'RSS-v1', 'lifecycle'.
@@ -1891,9 +1983,10 @@ skills:
   path: perplexity\skills_pack\governance-formal\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GOVERNANCE-HUB
 - name: hitl-core
   description: Fused skill combining HITL Hub (review of signals, workflow building,
-    world‑model review) and HITL Ops (governance audit, ecosystem health, token scope,
+    world-model review) and HITL Ops (governance audit, ecosystem health, token scope,
     permissions). Use when user mentions any of the original triggers.
   type: external
   triggers:
@@ -1904,7 +1997,7 @@ skills:
   - gouvernance transverse
   - token scope
   - permissions
-  - rapport d'état
+  - rapport d'etat
   - ECOS_ROOT
   - priorisation
   domain: ''
@@ -1918,6 +2011,7 @@ skills:
   path: perplexity\skills_pack\hitl-core\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/HITL-CORE
 - name: ide-tools
   description: KiloCode, Cline, VSIX, MCP Sequential Thinking, Rust alternatives.
     Use when user mentions 'KiloCode', 'Cline', 'VSIX', 'MCP Sequential Thinking',
@@ -1935,6 +2029,7 @@ skills:
   path: perplexity\skills_pack\ide-tools\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/IDE-TOOLS
 - name: intent-bridge
   description: 'Neurosymbolic bridge: INTENT-ENCODER, nomic-embed-text, 768-dim, ECOS
     v3.0. Use when user mentions ''INTENT-ENCODER'', ''neurosymbolique'', ''nomic-embed-text'',
@@ -1952,6 +2047,7 @@ skills:
   path: perplexity\skills_pack\intent-bridge\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/INTENT-BRIDGE
 - name: iot-diagram
   description: IoT architecture diagrams, sensors, edge computing, MQTT. Use when
     user mentions 'IoT', 'capteurs', 'edge', 'MQTT'.
@@ -1968,6 +2064,7 @@ skills:
   path: perplexity\skills_pack\iot-diagram\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/IOT-DIAGRAM
 - name: kiva-pipeline
   description: KIVA-CLI pipelines, local CI, preflight, GitHub Actions migration.
     Use when user mentions 'KIVA', 'pipeline', 'CI locale', 'preflight'.
@@ -1984,6 +2081,7 @@ skills:
   path: perplexity\skills_pack\kiva-pipeline\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/KIVA-CLI
 - name: lecun-prd
   description: Generate PRD from LeCun's positions, PLIX world model, Triade alignment.
     Use when user mentions 'PRD LeCun', 'plix world model', 'triade alignment'.
@@ -2000,6 +2098,7 @@ skills:
   path: perplexity\skills_pack\lecun-prd\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/LECUN-PRD
 - name: local-recovery
   description: Disappeared local clones, WAZAA, git detective, restoration. Use when
     user mentions 'clone disparu', 'WAZAA', 'restauration', 'ecos repo'.
@@ -2016,10 +2115,11 @@ skills:
   path: perplexity\skills_pack\local-recovery\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/LOCAL-RECOVERY
 - name: mcp-write-guard
-  description: 'Compétence couvrant la résilience d’écriture MCP : estimateur de taille
-    de payload, stratégie de retry avec escalade, surveillance du contexte de session,
-    gestion de la verbosité des échecs. Utiliser quand l’utilisateur mentionne ''MCP
+  description: 'Competence couvrant la resilience d'ecriture MCP : estimateur de taille
+    de payload, strategie de retry avec escalade, surveillance du contexte de session,
+    gestion de la verbosite des echecs. Utiliser quand l'utilisateur mentionne ''MCP
     write resilience'', ''payload size'', ''retry strategy'', ''session context'',
     ''fail verbosity''.'
   type: external
@@ -2040,10 +2140,11 @@ skills:
   path: perplexity\skills_pack\mcp-write-guard\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/MCP-WRITE-GUARD
 - name: media-culture
   description: Media, culture and booking expert for ROCK-REIMS-AGENDA, GVDB-MEDIA,
     GERI-VON-DER-BITSH. Use when user mentions "ROCK-REIMS", "GVDB-MEDIA", "GERI-VON-DER-BITSH",
-    "agenda", "booking", "médias", "culture rémoise".
+    "agenda", "booking", "medias", "culture remoise".
   type: external
   triggers: []
   domain: ''
@@ -2057,9 +2158,10 @@ skills:
   path: perplexity\skills_pack\media-culture\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/MEDIA-CULTURE
 - name: multi-repo-syncer
   description: Cross-repo synchronization, KIVA, NEXUS, gateway GPU, ECOS_ROOT. Use
-    when user mentions 'sync multi-dépôts', 'KIVA', 'NEXUS', 'gateway GPU'.
+    when user mentions 'sync multi-depots', 'KIVA', 'NEXUS', 'gateway GPU'.
   type: external
   triggers: []
   domain: ''
@@ -2073,6 +2175,7 @@ skills:
   path: perplexity\skills_pack\multi-repo-syncer\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/MULTI-REPO-SYNCER
 - name: new-pillars
   description: New ecosystem pillars expert for PLIX, GOST, TINA, TRANSCENDANCE, VERSUS,
     BATVERSE. Use when user mentions "PLIX", "GOST", "TINA", "TRANSCENDANCE", "VERSUS",
@@ -2090,6 +2193,7 @@ skills:
   path: perplexity\skills_pack\new-pillars\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEW-PILLARS
 - name: nexus-auditor
   description: Audit repository structure against DDD criteria, EPIC size, violations.
     Use when user mentions 'audit structure', 'DDD', 'EPIC volumineuse', 'taille'.
@@ -2106,9 +2210,10 @@ skills:
   path: perplexity\skills_pack\nexus-auditor\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: nexus-compliance
   description: Branch governance, cherry-pick safety, hook validation. Use when user
-    mentions 'conformité', 'gouvernance branche', 'cherry-pick safety'.
+    mentions 'conformite', 'gouvernance branche', 'cherry-pick safety'.
   type: external
   triggers: []
   domain: ''
@@ -2122,9 +2227,10 @@ skills:
   path: perplexity\skills_pack\nexus-compliance\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: nexus-core
   description: NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use
-    when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'φ-CPS'.
+    when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'phi-CPS'.
   type: external
   triggers: []
   domain: ''
@@ -2138,9 +2244,10 @@ skills:
   path: perplexity\skills_pack\nexus-core\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: nexus-deps
   description: Shadow dependency detection, dependency matrix, inter-layer coupling.
-    Use when user mentions 'shadow dependency', 'matrice dépendances', 'inter-strates'.
+    Use when user mentions 'shadow dependency', 'matrice dependances', 'inter-strates'.
   type: external
   triggers: []
   domain: ''
@@ -2154,6 +2261,7 @@ skills:
   path: perplexity\skills_pack\nexus-deps\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: nexus-map
   description: Universal navigation map for all active gerivdb repos (168 total, geri-cms-*
     excluded). Use when user mentions "where is", "quel repo", "cluster", "liste des
@@ -2171,9 +2279,10 @@ skills:
   path: perplexity\skills_pack\nexus-map\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: nexus-monitor
-  description: φ-CPS scoring, ecosystem health, production readiness, drift detection.
-    Use when user mentions 'φ-CPS', 'santé écosystème', 'production readiness', 'drift'.
+  description: phi-CPS scoring, ecosystem health, production readiness, drift detection.
+    Use when user mentions 'phi-CPS', 'sante ecosysteme', 'production readiness', 'drift'.
   type: external
   triggers: []
   domain: ''
@@ -2187,9 +2296,10 @@ skills:
   path: perplexity\skills_pack\nexus-monitor\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: nexus-prd
   description: Magistral PRD synthesis, ASCII diagrams, recommendations. Use when
-    user mentions 'PRD magistral', 'synthèse', 'diagramme ASCII', 'recommandations'.
+    user mentions 'PRD magistral', 'synthese', 'diagramme ASCII', 'recommandations'.
   type: external
   triggers: []
   domain: ''
@@ -2203,9 +2313,10 @@ skills:
   path: perplexity\skills_pack\nexus-prd\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: nexus-reformer
   description: Refactoring, migration, cleanup, extraction of responsibilities. Use
-    when user mentions 'refactoring', 'migration', 'nettoyage résidus', 'extraction'.
+    when user mentions 'refactoring', 'migration', 'nettoyage residus', 'extraction'.
   type: external
   triggers: []
   domain: ''
@@ -2219,9 +2330,10 @@ skills:
   path: perplexity\skills_pack\nexus-reformer\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: nexus-registry-sync
   description: ECOS_ROOT synchronization, autodiscover, missing repositories. Use
-    when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'dépôts manquants'.
+    when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'depots manquants'.
   type: external
   triggers: []
   domain: ''
@@ -2235,6 +2347,7 @@ skills:
   path: perplexity\skills_pack\nexus-registry-sync\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: nexus-registry-view
   description: Dashboard, herd view, registry status. Use when user mentions 'dashboard
     troupeau', 'vue registre', 'tableau de bord'.
@@ -2251,6 +2364,7 @@ skills:
   path: perplexity\skills_pack\nexus-registry-view\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/NEXUS
 - name: plix-core
   description: PLIX video substrate, CODEC-243, PLAYER-243, PLIXVAULT, OCTOPUS, BitNet
     mapping, ThermoGate, VDB. Use when user mentions 'PLIX', 'CODEC-243', 'PLAYER-243',
@@ -2275,11 +2389,12 @@ skills:
   path: perplexity\skills_pack\plix-core\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/PLIX
 - name: prd-factory
-  description: 'Compétence pour la production complète d’un PRD : validation croisée
-    des spécifications, vérification de la cohérence OKR, guide de rédaction selon
-    le format canonique (sections 1→17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur
-    mentionne ''PRD production'', ''spec cross‑validator'', ''OKR consistency'', ''PRD
+  description: 'Competence pour la production complete d'un PRD : validation croisee
+    des specifications, verification de la coherence OKR, guide de redaction selon
+    le format canonique (sections 1->17, OKRs, ADRs, etc.). Utiliser quand l'utilisateur
+    mentionne ''PRD production'', ''spec cross-validator'', ''OKR consistency'', ''PRD
     canonique''.'
   type: external
   triggers:
@@ -2299,9 +2414,10 @@ skills:
   path: perplexity\skills_pack\prd-factory\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/PRD-FACTORY
 - name: pruning-explainer
   description: Pruning in dev and Git, git remote prune, optimization. Use when user
-    mentions 'pruning', 'élagage', 'git remote prune'.
+    mentions 'pruning', 'elagage', 'git remote prune'.
   type: external
   triggers: []
   domain: ''
@@ -2315,10 +2431,11 @@ skills:
   path: perplexity\skills_pack\pruning-explainer\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/PRUNING-EXPLAINER
 - name: pulse-infra
   description: Monitoring and infrastructure expert for PULSE, KIVA, KIVA-CLI, ATLAS,
     FORGE, CONTAINER-ORCHESTRATOR. Use when user mentions "PULSE", "KIVA", "ATLAS",
-    "FORGE", "container", "pipeline", "métriques", "LXC".
+    "FORGE", "container", "pipeline", "metriques", "LXC".
   type: external
   triggers: []
   domain: ''
@@ -2332,9 +2449,10 @@ skills:
   path: perplexity\skills_pack\pulse-infra\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/PULSE-INFRA
 - name: reasoning-toolkit
-  description: Fused skill combining Fermi‑legacy (hardware/performance expert for
-    FERMI‑EVER, CodeDB‑E5620, LYCOS) and Scientific Method (hypothesis validation,
+  description: Fused skill combining Fermi-legacy (hardware/performance expert for
+    FERMI-EVER, CodeDB-E5620, LYCOS) and Scientific Method (hypothesis validation,
     NEXUS protocol). Use when user mentions any of the original triggers.
   type: external
   triggers:
@@ -2346,10 +2464,10 @@ skills:
   - AVX
   - LXC Z600
   - SSE4.2
-  - Poincaré
+  - Poincare
   - Feynman
-  - méthode scientifique
-  - hypothèse
+  - methode scientifique
+  - hypothese
   domain: ''
   version: 1.0.0
   author: gerivdb
@@ -2361,9 +2479,10 @@ skills:
   path: perplexity\skills_pack\reasoning-toolkit\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/REASONING-TOOLKIT
 - name: reposcope-process
   description: Signal scoring, cross-artefact correlation, timeline, discovery sheets.
-    Use when user mentions 'scoring', 'corrélation', 'timeline', 'fiche découverte'.
+    Use when user mentions 'scoring', 'correlation', 'timeline', 'fiche decouverte'.
   type: external
   triggers: []
   domain: ''
@@ -2377,9 +2496,10 @@ skills:
   path: perplexity\skills_pack\reposcope-process\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/REPOSCOPE
 - name: reposcope-publish
   description: Brain-feed publication, signal clustering, dashboards, alerts. Use
-    when user mentions 'brain‑feed', 'clusters', 'dashboard', 'alertes'.
+    when user mentions 'brain-feed', 'clusters', 'dashboard', 'alertes'.
   type: external
   triggers: []
   domain: ''
@@ -2393,6 +2513,7 @@ skills:
   path: perplexity\skills_pack\reposcope-publish\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/REPOSCOPE
 - name: reposcope-run
   description: Digestion engine execution, long scans, ingestion pipeline. Use when
     user mentions 'digestion', 'scan long', 'ingestion', 'pipeline'.
@@ -2409,6 +2530,7 @@ skills:
   path: perplexity\skills_pack\reposcope-run\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/REPOSCOPE
 - name: reposcope-watch
   description: 'External surveillance: signals, flags, env vars, API endpoints, secrets.
     Use when user mentions ''surveillance'', ''signal'', ''hidden flag'', ''API endpoint'',
@@ -2426,8 +2548,9 @@ skills:
   path: perplexity\skills_pack\reposcope-watch\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/REPOSCOPE
 - name: scaffold-pipeline
-  description: 'SCAFFOLD governance flow: issue→intent, WAL, constitutional validation,
+  description: 'SCAFFOLD governance flow: issue->intent, WAL, constitutional validation,
     artifact cataloging. Use when user mentions ''SCAFFOLD'', ''pipeline gouvernance'',
     ''WAL'', ''issue to intent''.'
   type: external
@@ -2443,9 +2566,10 @@ skills:
   path: perplexity\skills_pack\scaffold-pipeline\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/SCAFFOLD-PIPELINE
 - name: skill-tester
   description: Skill testing, validation, trigger verification, matrix. Use when user
-    mentions 'test skill', 'validation', 'déclenchement', 'matrice'.
+    mentions 'test skill', 'validation', 'declenchement', 'matrice'.
   type: external
   triggers: []
   domain: ''
@@ -2459,6 +2583,7 @@ skills:
   path: perplexity\skills_pack\skill-tester\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/SKILL-TESTER
 - name: skills-manager
   description: Skill creation, fusion, format canonical, refactoring, analysis. Use
     when user mentions 'skill', 'format canonique', 'refonte', 'fusion', 'analyse'.
@@ -2475,10 +2600,11 @@ skills:
   path: perplexity\skills_pack\skills-manager\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/SKILLS
 - name: swarm-cli
   description: Swarm, bus ternaire and governance CLI expert for WAZAA, OPENCLAW-CLI,
     BLO, GOVERNANCE-HUB. Use when user mentions "WAZAA", "OPENCLAW", "BLO", "GOVERNANCE-HUB",
-    "bus ternaire", "swarm", "φ-CPS", "TritRegistry".
+    "bus ternaire", "swarm", "phi-CPS", "TritRegistry".
   type: external
   triggers: []
   domain: ''
@@ -2492,6 +2618,7 @@ skills:
   path: perplexity\skills_pack\swarm-cli\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/SWARM-CLI
 - name: task-automator
   description: Windows Task Scheduler, schtasks, polling automation. Use when user
     mentions 'Task Scheduler', 'schtasks', 'polling'.
@@ -2508,6 +2635,7 @@ skills:
   path: perplexity\skills_pack\task-automator\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/TASK-AUTOMATOR
 - name: triade-flux
   description: FLUX review, HITL promotion, assimilation into NEXUS. Use when user
     mentions 'FLUX', 'review', 'HITL', 'promotion'.
@@ -2524,9 +2652,10 @@ skills:
   path: perplexity\skills_pack\triade-flux\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/TRIADE-FLUX
 - name: triade-hub
   description: Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX.
-    Use when user mentions 'triade cognitive', 'orchestration', 'end‑to‑end'.
+    Use when user mentions 'triade cognitive', 'orchestration', 'end-to-end'.
   type: external
   triggers: []
   domain: ''
@@ -2540,6 +2669,7 @@ skills:
   path: perplexity\skills_pack\triade-hub\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/TRIADE-HUB
 - name: triade-iris
   description: IRIS external sensor, polling, GitHub Actions workflow, target YAML.
     Use when user mentions 'IRIS', 'polling', 'capteur externe'.
@@ -2556,6 +2686,7 @@ skills:
   path: perplexity\skills_pack\triade-iris\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/TRIADE-IRIS
 - name: triade-kronos
   description: KRONOS digester, signal qualification, deduplication. Use when user
     mentions 'KRONOS', 'digesteur', 'qualification'.
@@ -2572,6 +2703,7 @@ skills:
   path: perplexity\skills_pack\triade-kronos\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/TRIADE-KRONOS
 - name: wiki-mimir
   description: Wiki back-office, MIMIR, Atomic, project management, cross-repo docs.
     Use when user mentions 'wiki back-office', 'MIMIR', 'Atomic', 'projets'.
@@ -2588,6 +2720,7 @@ skills:
   path: perplexity\skills_pack\wiki-mimir\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/WIKI-MIMIR
 - name: workflow-debugger
   description: 'GitHub Actions debugging: startup_failure, permissions, PYTHONPATH.
     Use when user mentions ''startup_failure'', ''permissions'', ''PYTHONPATH''.'
@@ -2604,6 +2737,7 @@ skills:
   path: perplexity\skills_pack\workflow-debugger\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/WORKFLOW-DEBUGGER
 - name: z600-hardware
   description: HP Z600, E5620, Fermi GPU, AVX limitations, WASM bypass, Zig, LXC.
     Use when user mentions 'Z600', 'E5620', 'Fermi', 'AVX', 'WASM', 'Zig', 'LXC'.
@@ -2620,6 +2754,7 @@ skills:
   path: perplexity\skills_pack\z600-hardware\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/Z600-HARDWARE
 - name: ''
   description: ''
   type: external
@@ -2635,6 +2770,7 @@ skills:
   path: skills\argus-pipeline-runner\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -2650,6 +2786,7 @@ skills:
   path: skills\bdcp-mode-verification\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -2665,6 +2802,7 @@ skills:
   path: skills\declarative-scanner-builder\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: dependency-injection
   description: Implement dependency injection container for Python async applications.
     Enables testable code through mock injection, detects circular dependencies, and
@@ -2682,6 +2820,7 @@ skills:
   path: skills\dependency-injection\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: ''
   description: ''
   type: external
@@ -2697,6 +2836,7 @@ skills:
   path: skills\doc-gate\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -2712,6 +2852,7 @@ skills:
   path: skills\doc-status-validator\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: event-system-coherence
   description: Verify that every emitted event has a corresponding consumer, logger,
     or metric. Detects orphan events, missing audit trails, and unexposed event endpoints.
@@ -2729,6 +2870,7 @@ skills:
   path: skills\event-system-coherence\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: ''
   description: ''
   type: external
@@ -2744,6 +2886,7 @@ skills:
   path: skills\gap-report-lifecycle\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -2759,6 +2902,7 @@ skills:
   path: skills\gap-report-parser\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -2774,6 +2918,7 @@ skills:
   path: skills\git-hook-enforcer\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -2789,6 +2934,7 @@ skills:
   path: skills\kilocode-worktree-agent\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: lifecycle-state-machine
   description: Validate async component lifecycle patterns - verify proper initialization,
     error handling, shutdown timeouts, and state transitions. Detects missing try/except
@@ -2806,6 +2952,7 @@ skills:
   path: skills\lifecycle-state-machine\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: pr-review-resolver
   description: Review + resolve PR via diffscope + auto-merge gate + cleanup across
     all ecosystem repos
@@ -2822,6 +2969,7 @@ skills:
   path: skills\pr-review-resolver\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: ''
   description: ''
   type: external
@@ -2837,6 +2985,7 @@ skills:
   path: skills\pre-flight-orchestrator\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -2852,6 +3001,7 @@ skills:
   path: skills\repo-coverage-batch\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -2867,6 +3017,7 @@ skills:
   path: skills\repo-path-resolver\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: reposcope-artefact
   description: ''
   type: external
@@ -2882,6 +3033,7 @@ skills:
   path: skills\reposcope-artefact\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: reposcope-compare
   description: ''
   type: external
@@ -2897,6 +3049,7 @@ skills:
   path: skills\reposcope-compare\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: reposcope-extract
   description: ''
   type: external
@@ -2912,6 +3065,7 @@ skills:
   path: skills\reposcope-extract\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: reposcope-propagate
   description: ''
   type: external
@@ -2927,6 +3081,7 @@ skills:
   path: skills\reposcope-propagate\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: reposcope-score
   description: ''
   type: external
@@ -2942,6 +3097,7 @@ skills:
   path: skills\reposcope-score\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: ''
   description: ''
   type: external
@@ -2957,6 +3113,7 @@ skills:
   path: skills\scaffold-scanner\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: singleton-thread-safety
   description: Detect and fix singleton patterns that lack thread-safety. Identifies
     race conditions in __new__(), missing locks, and non-thread-safe state mutations.
@@ -2974,6 +3131,7 @@ skills:
   path: skills\singleton-thread-safety\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: ''
   description: ''
   type: external
@@ -2989,6 +3147,7 @@ skills:
   path: skills\skill-trit-patcher\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -3004,6 +3163,7 @@ skills:
   path: skills\slm-local-prompt-design\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -3019,6 +3179,7 @@ skills:
   path: skills\untracked-auditor\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -3034,6 +3195,7 @@ skills:
   path: skills\workspace-audit\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: ''
   description: ''
   type: external
@@ -3049,8 +3211,9 @@ skills:
   path: skills\workspace-sanitizer\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: gerivdb/GeriCode
 - name: close-loop-detector
-  description: Détecte la fin d'une session et les boucles sémantiques dans l'écosystème
+  description: Detecte la fin d'une session et les boucles semantiques dans l'ecosysteme
   type: external
   triggers: []
   domain: ''
@@ -3064,6 +3227,7 @@ skills:
   path: TRANSVERSE\close-loop-detector\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: pr-review-resolver
   description: Review + resolve PR via diffscope + auto-merge gate + cleanup across
     all ecosystem repos
@@ -3080,8 +3244,9 @@ skills:
   path: TRANSVERSE\pr-review-resolver\SKILL.md
   source: unknown
   assimilation_status: pending
+  source_repo: external
 - name: yaml-safe-injector
-  description: Injection sécurisée de champs YAML dans known_repositories.yaml
+  description: Injection securisee de champs YAML dans known_repositories.yaml
   type: foundational
   triggers:
   - yaml
@@ -3103,7 +3268,7 @@ skills:
   consumes_from:
   - sot-registry-guardian
 - name: sot-registry-guardian
-  description: Validation des chemins et métadonnées des repos dans known_repositories.yaml
+  description: Validation des chemins et metadonnees des repos dans known_repositories.yaml
   type: foundational
   triggers:
   - sot
@@ -3125,7 +3290,7 @@ skills:
   consumes_from:
   - yaml-safe-injector
 - name: n243-graph-builder
-  description: Construction du graphe N243 de dépendances entre repos
+  description: Construction du graphe N243 de dependances entre repos
   type: foundational
   triggers:
   - n243
@@ -3147,7 +3312,7 @@ skills:
   consumes_from:
   - sot-registry-guardian
 - name: skill-scaffold
-  description: Générateur de skill conforme aux conventions TDD/BDD/ATDD/DDD/DbC/Hexagonal
+  description: Generateur de skill conforme aux conventions TDD/BDD/ATDD/DDD/DbC/Hexagonal
   type: foundational
   triggers:
   - scaffold
