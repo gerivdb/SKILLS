@@ -1,0 +1,12 @@
+---
+name: verse-sync
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-916: 100% concepts ontologiques ont un verse"
+  - "P-917: 100% repo-citizen verses référencent un repo connu"
+probes:
+  - P-916
+  - P-917
+---

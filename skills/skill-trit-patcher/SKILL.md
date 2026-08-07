@@ -9,7 +9,7 @@ status: active
 # Skill: skill-trit-patcher
 
 ## Purpose
-Batch patch `trit_primitive` field into skill file frontmatters — close all SKILL_ORPHEL gaps from SGR.
+Batch patch `trit_primitive` field into skill file frontmatters - close all SKILL_ORPHEL gaps from SGR.
 
 ## Context
 SGR detects `SKILL_ORPHAN_*` gaps when skill `.md` files lack `trit_primitive:` in their YAML frontmatter. This skill infers the correct TritRegistry-compliant primitive name from the skill filename using a keyword mapping table.
@@ -72,7 +72,7 @@ Infer `trit_primitive` from keyword matches in skill name:
 
 ## Protocol
 
-### Step 1 — Dry run
+### Step 1 - Dry run
 
 ```powershell
 python scripts/patch_skill_frontmatter.py `
@@ -82,14 +82,14 @@ python scripts/patch_skill_frontmatter.py `
 
 Review output. All 95 orphan skills should appear with assigned trits.
 
-### Step 2 — Real run
+### Step 2 - Real run
 
 ```powershell
 python scripts/patch_skill_frontmatter.py `
   --skills-dir D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\perplexity\skills
 ```
 
-### Step 3 — Force re-patch (if mapping changed)
+### Step 3 - Force re-patch (if mapping changed)
 
 ```powershell
 python scripts/patch_skill_frontmatter.py `
@@ -97,7 +97,7 @@ python scripts/patch_skill_frontmatter.py `
   --force
 ```
 
-### Step 4 — Validate with scanner
+### Step 4 - Validate with scanner
 
 ```powershell
 python -m engine.declarative_runner `
@@ -110,6 +110,6 @@ Expected: score 1.0, SKL-001 healthy (0 orphans).
 
 ## Anti-patterns
 
-- **DON'T** assign non-TritRegistry names (e.g., `TritDecide`, `TritExpress`, `TritBuild`) — only use exact names from `TritRegistry.yaml`
+- **DON'T** assign non-TritRegistry names (e.g., `TritDecide`, `TritExpress`, `TritBuild`) - only use exact names from `TritRegistry.yaml`
 - **DON'T** run without `--dry-run` first when modifying existing values
 - **DON'T** forget to check `TritRegistry.yaml` for exact primitive names before assigning

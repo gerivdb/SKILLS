@@ -1,0 +1,16 @@
+---
+skill: citizenship-auditor
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-801: Tous les repos actifs sont des citoyens déclarés"
+  - "P-802: Tous les citoyens ont un verse dans VERSES/verses/"
+  - "P-806: Tout skill dans .kilo/skills/<repo>/ est déclaré dans REGISTRY.yaml"
+  - "P-807: REGISTRY.yaml référence source_repo pour les skills externes"
+probes:
+  - P-801
+  - P-802
+  - P-806
+  - P-807
+---

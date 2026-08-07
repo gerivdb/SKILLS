@@ -1,0 +1,10 @@
+---
+name: known-repositories-updater
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-912: known_repositories.yaml synchronisé avec GitHub"
+probes:
+  - P-912
+---

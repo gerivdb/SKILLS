@@ -1,0 +1,14 @@
+---
+name: registry-prune
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-913: 0 entrée orpheline dans REGISTRY.yaml"
+  - "P-914: 0 entrée orpheline dans citizens.yaml"
+  - "P-915: 0 entrée orpheline dans BRIDGES.yaml"
+probes:
+  - P-913
+  - P-914
+  - P-915
+---

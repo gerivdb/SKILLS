@@ -10,7 +10,7 @@ adr_ref: adr-tina-001-symbolgraph-mc-rnn
 # Skill: declarative-scanner-builder
 
 ## Purpose
-Create an ARGUS scanner from a YAML declarative file — no Python coding required.
+Create an ARGUS scanner from a YAML declarative file - no Python coding required.
 
 ## Context
 ARGUS scanners can be defined entirely in YAML using the `declarative_runner` engine. A scanner = one YAML file with `scanner_id`, `citizen`, `trit`, and a list of `checks`. Each check uses a `CHECK_TYPE` from the engine's built-in library.
@@ -29,7 +29,7 @@ ARGUS scanners can be defined entirely in YAML using the `declarative_runner` en
 
 ## Protocol
 
-### Step 1 — Define the scanner
+### Step 1 - Define the scanner
 
 ```yaml
 scanner_id: my_scanner_health
@@ -46,13 +46,13 @@ checks:
     remediation: "How to fix if failing"
 ```
 
-### Step 2 — Place in correct directory
+### Step 2 - Place in correct directory
 
 ```
 ARGUS/scanners/declared/{scanner_id}.yaml
 ```
 
-### Step 3 — Register in argus.yaml
+### Step 3 - Register in argus.yaml
 
 ```yaml
 scanners:
@@ -61,7 +61,7 @@ scanners:
     type: declarative
 ```
 
-### Step 4 — Test
+### Step 4 - Test
 
 ```powershell
 python -m engine.declarative_runner scanners/declared/my_scanner_health.yaml `
@@ -71,7 +71,7 @@ python -m engine.declarative_runner scanners/declared/my_scanner_health.yaml `
 
 Expected: `{"healthy": true, "score": 1.0}`
 
-### Step 5 — Verify in SGR
+### Step 5 - Verify in SGR
 
 After adding to `argus.yaml`, run SGR to confirm the gap is closed:
 ```powershell
@@ -82,13 +82,13 @@ python run_sgr.py
 ## Anti-patterns
 
 - **DON'T** create a Python scanner when YAML suffices
-- **DON'T** hardcode paths — use `{root}`, `{gov_root}`, `{reports_root}` placeholders
+- **DON'T** hardcode paths - use `{root}`, `{gov_root}`, `{reports_root}` placeholders
 - **DON'T** forget to register in `argus.yaml` after creating the YAML
 - **DON'T** use `command` type when a built-in CHECK_TYPE exists
 
 ## Examples
 
 See existing declarative scanners:
-- `ARGUS/scanners/declared/repo_coverage_health.yaml` — parametric, covers all repos
-- `ARGUS/scanners/declared/skill_trit_coverage.yaml` — command-based validation
-- `ARGUS/scanners/declared/kiva_pipeline_health.yaml` — composite checks
+- `ARGUS/scanners/declared/repo_coverage_health.yaml` - parametric, covers all repos
+- `ARGUS/scanners/declared/skill_trit_coverage.yaml` - command-based validation
+- `ARGUS/scanners/declared/kiva_pipeline_health.yaml` - composite checks

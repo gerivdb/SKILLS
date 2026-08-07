@@ -1,0 +1,46 @@
+---
+name: SKILLS
+description: "Skills Registry Ecosystem-1 — registre canonical de tous les skills de l'écosystème."
+version: "1.0.0"
+date: "2026-07-16"
+status: active
+layer: L4-TOOLS
+section: P1_STRATEGIC
+intent_hash: 0xSKILLS_REGISTRY_20260317
+---
+
+# SKILLS Design
+
+## Rôle
+
+SKILLS est le **registre unique** des skills de l'écosystème :
+- Foundational skills (cross-cutting)
+- Domain skills (métier)
+- External skills (assimilées)
+
+## Flux inter-dépôts
+
+Ce dépôt est **provider** de l'atome `skill-orchestration` et **consumer** de `primitive-flow` :
+- `skill-orchestration` : SKILLS → CTULU, PRIMUS, Kilo Agent
+- `primitive-flow` : PRIMUS → SKILLS (consumer)
+
+## Relations
+
+| Repo | Relation | Type |
+|---|---|---|
+| CTULU | Consumer | skill-orchestration |
+| PRIMUS | Provider | primitive-flow |
+| Kilo Agent | Consumer | skill-orchestration |
+
+## Contraintes
+
+- Tous les skills DOIVENT avoir un `trit_primitive` dans le frontmatter
+- Le `REGISTRY.yaml` est la source de vérité
+- Les skills externes DOIVENT être versionnés
+
+## Références
+
+- `unified-design/atoms/skill-orchestration.yaml`
+- `unified-design/atoms/primitive-flow.yaml`
+- `unified-design/atoms/cross-repo-flow.yaml`
+- `D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\README.md`

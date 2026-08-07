@@ -1,0 +1,45 @@
+{
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "read",
+      "input": {
+        "path": "D:/DO/WEB/TOOLS/L1-INFRA/ECOS-CLI/TODO"
+      },
+      "output": "Lire fichier existant ou template",
+      "verify": "Test-Path D:/DO/WEB/TOOLS/L1-INFRA/ECOS-CLI/TODO",
+      "tokens_est": 80
+    },
+    {
+      "id": "step-2",
+      "tool": "write",
+      "input": {
+        "path": "D:/DO/WEB/TOOLS/L1-INFRA/ECOS-CLI/NEW_FILE.py",
+        "content": "# TODO"
+      },
+      "output": "Creer nouveau fichier",
+      "verify": "Test-Path D:/DO/WEB/TOOLS/L1-INFRA/ECOS-CLI/NEW_FILE.py",
+      "tokens_est": 120
+    },
+    {
+      "id": "step-3",
+      "tool": "bash",
+      "input": {
+        "command": "echo 'TODO: implement verification'"
+      },
+      "output": "Verifier creation",
+      "verify": "echo 'Verification complete'",
+      "tokens_est": 50
+    }
+  ],
+  "deps": [
+    {
+      "from": "step-1",
+      "to": "step-2"
+    },
+    {
+      "from": "step-2",
+      "to": "step-3"
+    }
+  ]
+}

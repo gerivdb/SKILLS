@@ -1,0 +1,12 @@
+---
+skill: bridge-auditor
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-905: 0 bridge orphelin"
+  - "P-906: 0 cycle dans BRIDGES.yaml"
+probes:
+  - P-905
+  - P-906
+---

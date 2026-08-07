@@ -1,0 +1,21 @@
+{
+  "steps": [
+    {
+      "id": "step-1",
+      "tool": "read",
+      "input": {"path": "D:/DO/WEB/TOOLS/L1-INFRA/ECOS-CLI/src/ecos_cli/commands/graph.py"},
+      "output": "content",
+      "verify": "Test-Path D:/DO/WEB/TOOLS/L1-INFRA/ECOS-CLI/src/ecos_cli/commands/graph.py",
+      "tokens_est": 80
+    },
+    {
+      "id": "step-2",
+      "tool": "edit",
+      "input": {"path": "D:/DO/WEB/TOOLS/L1-INFRA/ECOS-CLI/src/ecos_cli/commands/graph.py", "old": "foo", "new": "bar"},
+      "output": "patched",
+      "verify": "Select-String 'bar' D:/DO/WEB/TOOLS/L1-INFRA/ECOS-CLI/src/ecos_cli/commands/graph.py",
+      "tokens_est": 120
+    }
+  ],
+  "deps": [{"from": "step-1", "to": "step-2"}]
+}

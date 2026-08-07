@@ -1,0 +1,18 @@
+---
+name: skill-auto-enroller
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "Pipeline complet exécuté sans erreur"
+  - "Toutes probes P-901..P-907 passent"
+  - "Rollback fonctionne en cas d'échec"
+probes:
+  - P-901
+  - P-902
+  - P-903
+  - P-904
+  - P-905
+  - P-906
+  - P-907
+---

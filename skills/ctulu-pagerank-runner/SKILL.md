@@ -1,7 +1,7 @@
 # Skill: ctulu-pagerank-runner
 
 ## Contexte
-Calcule le Personalized PageRank sur le graphe écosystème. Les nœuds strate L0/L1 reçoivent un poids 2× pour refléter leur importance architecturale.
+Calcule le Personalized PageRank sur le graphe ecosysteme. Les noeuds strate L0/L1 recoivent un poids 2x pour refleter leur importance architecturale.
 
 ## Outil CTULU
 - **Package**: `pagerank_runner` (PRD-082)
@@ -13,17 +13,17 @@ Calcule le Personalized PageRank sur le graphe écosystème. Les nœuds strate L
 pagerank-runner --graph graphs/graph_20260616.graphml --alpha 0.85 --out scores/ --output json
 ```
 
-## Paramètres
-| Paramètre | Défaut | Description |
+## Parametres
+| Parametre | Defaut | Description |
 |---|---|---|
 | `--graph` | requis | Path vers fichier GraphML |
 | `--alpha` | 0.85 | Facteur d'amortissement (damping) |
-| `--out` | `scores/` | Répertoire de sortie |
+| `--out` | `scores/` | Repertoire de sortie |
 
 ## Personnalisation
-- Nœuds L0/L1: poids 2× dans le vecteur de personnalisation
+- Noeuds L0/L1: poids 2x dans le vecteur de personnalisation
 - Algorithme: `networkx.pagerank()` avec `personalization=` dict
-- Scores normalisés (somme = 1.0)
+- Scores normalises (somme = 1.0)
 
 ## Sortie JSON
 ```json

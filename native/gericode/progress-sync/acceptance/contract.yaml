@@ -1,0 +1,9 @@
+contract_version: 1.0.0
+skill_name: progress-sync
+acceptance_criteria:
+  - name: structure_valid
+    description: "Skill has valid BDD/DDD/Hexagonal structure"
+  - name: contracts_present
+    description: "Acceptance contract and domain contracts exist"
+  - name: tests_pass
+    description: "All pytest tests pass"

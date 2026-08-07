@@ -6,7 +6,7 @@ intent_hash: 0xDEPRECATED_20260608
 status: deprecated
 ---
 
-> **DEPRECATED** — Merged into `doc-gate` skill. Use `doc-gate` instead.
+> **DEPRECATED** - Merged into `doc-gate` skill. Use `doc-gate` instead.
 
 # Skill: git-hook-enforcer (DEPRECATED)
 

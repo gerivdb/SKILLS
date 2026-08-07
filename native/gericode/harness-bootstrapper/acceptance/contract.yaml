@@ -1,0 +1,12 @@
+---
+name: harness-bootstrapper
+version: "1.0.0"
+citizen: L2-PLATFORM
+layer: L4
+acceptance_criteria:
+  - "P-910: Structure Hexagonal complète créée"
+  - "P-911: Tous les fichiers DbC/BDD présents"
+probes:
+  - P-910
+  - P-911
+---

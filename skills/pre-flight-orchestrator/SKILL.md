@@ -14,47 +14,47 @@ Orchestrate mandatory pre-flight checks before any multi-repo session. Ensures a
 ## Context
 Multi-repo sessions systematically forget prerequisite checks (path, remote, branch, status, untracked, doc-format). This orchestrator chains the 8 existing skills in mandatory sequence. Steps updated to reflect merged skills (v2).
 
-## Règle
-Toute session impliquant 2+ repos ou un plan multi-phase DOIT exécuter le pre-flight avant toute action.
+## Regle
+Toute session impliquant 2+ repos ou un plan multi-phase DOIT executer le pre-flight avant toute action.
 
-## Séquence obligatoire
+## Sequence obligatoire
 
-1. `repo-path-resolver` — valider tous les chemins cibles (L0-L5 strata)
-2. `ARGUS-REMOTE-AUDITOR` — valider tous les remotes
-3. `branch-guard` — vérifier la branche courante vs attendue
-4. `workspace-audit` — vérifier working tree propre + lister untracked (merged: workspace-sanitizer + untracked-auditor)
-5. `doc-gate` — vérifier les statuts PRD/EPIC/INTENT + lire règles hooks (merged: doc-status-validator + git-hook-enforcer)
+1. `repo-path-resolver` - valider tous les chemins cibles (L0-L5 strata)
+2. `ARGUS-REMOTE-AUDITOR` - valider tous les remotes
+3. `branch-guard` - verifier la branche courante vs attendue
+4. `workspace-audit` - verifier working tree propre + lister untracked (merged: workspace-sanitizer + untracked-auditor)
+5. `doc-gate` - verifier les statuts PRD/EPIC/INTENT + lire regles hooks (merged: doc-status-validator + git-hook-enforcer)
 
-⚠️ **Changes from v1:**
+[WARN] **Changes from v1:**
 - Step 4: use `workspace-audit` (replaces `workspace-sanitizer` + `untracked-auditor`)
 - Step 5: use `doc-gate` (replaces `doc-status-validator` + `git-hook-enforcer`)
 - Old skills still work but are deprecated
 
 ## Rapport
-Générer `.kilo/preflight/PREFLIGHT_REPORT.yaml` :
+Generer `.kilo/preflight/PREFLIGHT_REPORT.yaml` :
 - `timestamp`
 - `repo` + `branch`
 - `checks` : liste des 6 checks avec `status: PASS|FAIL|WARN`
-- `blockers` : liste des échecs bloquants
-- `actions` : liste des actions autorisées post-pre-flight
+- `blockers` : liste des echecs bloquants
+- `actions` : liste des actions autorisees post-pre-flight
 
-## Règles de blocage
-- Si `workspace-sanitizer` détecte > 10 fichiers modifiés non liés → STOP
-- Si `branch-guard` détecte mismatch sur branche feature → STOP
-- Si `repo-path-resolver` trouve un chemin manquant → STOP
-- Si `doc-status-validator` trouve un statut invalide → STOP
+## Regles de blocage
+- Si `workspace-sanitizer` detecte > 10 fichiers modifies non lies -> STOP
+- Si `branch-guard` detecte mismatch sur branche feature -> STOP
+- Si `repo-path-resolver` trouve un chemin manquant -> STOP
+- Si `doc-status-validator` trouve un statut invalide -> STOP
 
 ## Anti-pattern interdit
-- Exécuter le plan sans pre-flight
+- Executer le plan sans pre-flight
 - Ignorer un FAIL et continuer
-- Générer un rapport sans exécuter les 6 checks
+- Generer un rapport sans executer les 6 checks
 
 ## Exemple d'application
 ```
-Session : implémentation métacluster PR (3 repos)
-→ Pre-flight exécuté sur KIVA-CLI, diff0-fork, NEXUS
-→ Checks : PASS / PASS / PASS / PASS / WARN / PASS
-→ WARN : 2 untracked dans KIVA-CLI (review.py, tql.py)
-→ Action : demander instruction avant création fichier dans cli/commands/
-→ Plan autorisé sur diff0-fork et NEXUS uniquement
+Session : implementation metacluster PR (3 repos)
+-> Pre-flight execute sur KIVA-CLI, diff0-fork, NEXUS
+-> Checks : PASS / PASS / PASS / PASS / WARN / PASS
+-> WARN : 2 untracked dans KIVA-CLI (review.py, tql.py)
+-> Action : demander instruction avant creation fichier dans cli/commands/
+-> Plan autorise sur diff0-fork et NEXUS uniquement
 ```

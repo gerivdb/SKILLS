@@ -1,7 +1,7 @@
 # Skill: ctulu-artifact-builder
 
 ## Contexte
-Le stage ARTEFACT du pipeline REPOSCOPE-COMPARE. Génère le rapport final Markdown + JSON + Mermaid diagram.
+Le stage ARTEFACT du pipeline REPOSCOPE-COMPARE. Genere le rapport final Markdown + JSON + Mermaid diagram.
 
 ## Outil CTULU
 - **Package**: `artifact_builder` (PRD-081)
@@ -14,22 +14,22 @@ artifact-builder --scores scores/scores_20260616.json --clusters clusters/cluste
 ```
 
 ## Sections du rapport Markdown
-1. **Summary**: métriques globales (repo_count, top_score, action, cluster_count)
-2. **Top 20 Repos**: tableau classé par score avec classification
-3. **Clusters**: tableau des clusters (ID, size, dominant strate, centroid φ)
-4. **Recommandation**: action suggérée (archive/promote/escalate)
-5. **Diagram**: Mermaid `graph TD` avec repos colorés par cluster
+1. **Summary**: metriques globales (repo_count, top_score, action, cluster_count)
+2. **Top 20 Repos**: tableau classe par score avec classification
+3. **Clusters**: tableau des clusters (ID, size, dominant strate, centroid phi)
+4. **Recommandation**: action suggeree (archive/promote/escalate)
+5. **Diagram**: Mermaid `graph TD` avec repos colores par cluster
 
 ## Recommandation d'action
-- **escalate** (top_score ≥ 0.70): collision forte, décision humaine requise
-- **promote** (top_score ∈ [0.30, 0.70)): match modéré, review recommandée
+- **escalate** (top_score >= 0.70): collision forte, decision humaine requise
+- **promote** (top_score in [0.30, 0.70)): match modere, review recommandee
 - **archive** (top_score < 0.30): pas de match significatif
 
 ## Sorties
 - `reposcope_report_<timestamp>.md`: rapport Markdown complet
-- `report_<timestamp>.json`: données structurées
+- `report_<timestamp>.json`: donnees structurees
 
 ## Anti-patterns
-- Ne JAMAIS générer de rapport sans scores valides
-- Ne JAMAIS inclure >50 nœuds Mermaid (limite de lisibilité)
-- Ne JAMAIS écraser un rapport existant (immuabilité)
+- Ne JAMAIS generer de rapport sans scores valides
+- Ne JAMAIS inclure >50 noeuds Mermaid (limite de lisibilite)
+- Ne JAMAIS ecraser un rapport existant (immuabilite)

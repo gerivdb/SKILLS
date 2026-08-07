@@ -33,10 +33,10 @@ Use this skill when:
 
 | Pattern | Required | Check |
 |---------|----------|-------|
-| `async def initialize()` | try/except | ✓ Logging + state on error |
-| `async def close()` | timeout | ✓ Max 30s, graceful cleanup |
-| State transitions | valid only | ✓ UNINIT → INIT → READY → SHUTDOWN |
-| Double-init | prevented | ✓ Idempotent initialization |
+| `async def initialize()` | try/except | [OK] Logging + state on error |
+| `async def close()` | timeout | [OK] Max 30s, graceful cleanup |
+| State transitions | valid only | [OK] UNINIT -> INIT -> READY -> SHUTDOWN |
+| Double-init | prevented | [OK] Idempotent initialization |
 
 ---
 
@@ -72,18 +72,18 @@ class GatewayServer:
 ### Phase 2: Validate Error Handling
 
 Check each `initialize()` method for:
-- ✓ try/except block present
-- ✓ Error logged with context
-- ✓ State set to FAILED on error
-- ✓ Exception re-raised or handled
+- [OK] try/except block present
+- [OK] Error logged with context
+- [OK] State set to FAILED on error
+- [OK] Exception re-raised or handled
 
 ### Phase 3: Validate Shutdown
 
 Check each `close()` method for:
-- ✓ asyncio.wait_with_timeout() used
-- ✓ Timeout ≤ 30 seconds
-- ✓ Cleanup happens in finally block
-- ✓ Partial cleanup handled
+- [OK] asyncio.wait_with_timeout() used
+- [OK] Timeout <= 30 seconds
+- [OK] Cleanup happens in finally block
+- [OK] Partial cleanup handled
 
 ### Phase 4: Detect Issues
 

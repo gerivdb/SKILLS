@@ -1,0 +1,17 @@
+---
+type: SKILL_CONFIG
+version: "1.0.0"
+skill: skill-scaffold
+layer: L4
+citizen: L2-PLATFORM
+---
+
+# skill-scaffold config
+
+## Parameters
+- name: str
+- citizen: str
+- layer: str
+
+## Constraints
+- name must be non-empty string

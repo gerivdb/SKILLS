@@ -113,7 +113,7 @@ def main():
         sys.exit(0)
 
     # Rapport
-    print(f"[ENCODING BLOCK] {total_violation} caractere(s) hors CP1252 detecte(s)")
+    print(f"[ENCODING BLOCK] {total_violations} caractere(s) hors CP1252 detecte(s)")
     print(f"[ENCODING BLOCK] IntentHash: {INTENT_HASH}")
     print()
 
@@ -121,7 +121,8 @@ def main():
         print(f"  {filepath}")
         for line_num, line_content, bad_chars in violations[:5]:  # Max 5 par fichier
             chars_str = ", ".join(f"U+{ord(c):04X}" for c in sorted(bad_chars))
-            print(f"    L{line_num}: [{chars_str}] {line_content[:80]}")
+            safe_line = line_content[:80].encode("ascii", errors="replace").decode("ascii")
+            print(f"    L{line_num}: [{chars_str}] {safe_line}")
         if len(violations) > 5:
             print(f"    ... et {len(violations) - 5} autres lignes")
         print()

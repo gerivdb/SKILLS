@@ -69,10 +69,10 @@ class HealthMonitor:
 ### Phase 2: Identify Thread-Safety Issues
 
 Check each singleton for:
-- ❌ No `threading.Lock` in `__new__`
-- ❌ `if _instance is None` not protected
-- ❌ Mutable state without lock protection
-- ❌ Lazy initialization not atomic
+- [KO] No `threading.Lock` in `__new__`
+- [KO] `if _instance is None` not protected
+- [KO] Mutable state without lock protection
+- [KO] Lazy initialization not atomic
 
 ### Phase 3: Provide Fixes
 

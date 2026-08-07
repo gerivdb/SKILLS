@@ -9,12 +9,12 @@ intent_hash: 0xSKILL_REPOSCOPE_ARTEFACT_20260615
 ## Quand l'utiliser
 
 - Les artefacts d'extraction, de scoring et de propagation sont disponibles
-- Le pipeline REPOSCOPE-COMPARE nécessite la génération de l'artefact final
-- ECOS-CLI `reposcope-artefact` est appelé avec les chemins des 3 artefacts
+- Le pipeline REPOSCOPE-COMPARE necessite la generation de l'artefact final
+- ECOS-CLI `reposcope-artefact` est appele avec les chemins des 3 artefacts
 
-**NE PAS utiliser** sans les 3 artefacts d'entrée valides.
+**NE PAS utiliser** sans les 3 artefacts d'entree valides.
 
-## Références
+## References
 
 - **INTENT** : INTENT-041d (GOVERNANCE-HUB)
 - **PRD** : PRD-REPOSCOPE-ARTEFACT-2026-06-15
@@ -22,7 +22,7 @@ intent_hash: 0xSKILL_REPOSCOPE_ARTEFACT_20260615
 
 ## Pipeline d'artefact
 
-### Étape 1 — Charger les 3 artefacts
+### Etape 1 - Charger les 3 artefacts
 
 ```powershell
 param(
@@ -36,7 +36,7 @@ $score = Get-Content $ScorePath | ConvertFrom-Yaml
 $propagate = Get-Content $PropagatePath | ConvertFrom-Yaml
 ```
 
-### Étape 2 — Assembler l'artefact final
+### Etape 2 - Assembler l'artefact final
 
 ```powershell
 $artefact = @{
@@ -56,7 +56,7 @@ $artefact = @{
                 maturity_score = $extract.extraction.technical.maturity_score
             }
             architectural = @{
-                strata_coverage = @{} # À enrichir par scoring.macro si nécessaire
+                strata_coverage = @{} # A enrichir par scoring.macro si necessaire
                 inferred_role = $extract.extraction.architectural.inferred_trit_role
             }
         }
@@ -76,7 +76,7 @@ $artefact = @{
 }
 ```
 
-### Étape 3 — Peupler les matches MESO
+### Etape 3 - Peupler les matches MESO
 
 ```powershell
 foreach ($meso in $score.scoring.meso) {
@@ -88,7 +88,7 @@ foreach ($meso in $score.scoring.meso) {
 }
 ```
 
-### Étape 4 — Peupler les matches ATOMIQUE (top 5)
+### Etape 4 - Peupler les matches ATOMIQUE (top 5)
 
 ```powershell
 $top5 = $score.scoring.atomic.top_20 | Select-Object -First 5
@@ -101,7 +101,7 @@ foreach ($atomic in $top5) {
 }
 ```
 
-### Étape 5 — Calculer φ-delta max et recommandation d'action
+### Etape 5 - Calculer phi-delta max et recommandation d'action
 
 ```powershell
 $phiMax = $score.scoring.atomic.top_20 | Select-Object -First 1 -ExpandProperty score
@@ -116,7 +116,7 @@ if ($phiMax -gt 0.7) {
 }
 ```
 
-### Étape 6 — Sauvegarder l'artefact NEXUS
+### Etape 6 - Sauvegarder l'artefact NEXUS
 
 ```powershell
 $slug = $extract.extraction.source.Replace("/", "_")
@@ -126,20 +126,20 @@ $outputPath = "NEXUS/reposcope/reposcope_compare_${slug}_${dateStr}.yaml"
 $yaml = $artefact | ConvertTo-Yaml -Depth 10
 $yaml | Out-File -FilePath $outputPath -Encoding UTF8
 Write-Output "[reposcope-artefact] Artefact final ecrit: $outputPath"
-Write-Output "[reposcope-artefact] φ-delta max: $phiMax → Action: $($artefact.reposcope_compare.action)"
+Write-Output "[reposcope-artefact] phi-delta max: $phiMax -> Action: $($artefact.reposcope_compare.action)"
 ```
 
-### Étape 7 — Tracking ARGUS
+### Etape 7 - Tracking ARGUS
 
 ```powershell
-# Charger ou créer l'historique
+# Charger ou creer l'historique
 $historyPath = "ARGUS/reposcope-history.yaml"
 $history = @{ comparisons = @() }
 if (Test-Path $historyPath) {
     $history = Get-Content $historyPath | ConvertFrom-Yaml
 }
 
-# Ajouter l'entrée
+# Ajouter l'entree
 $history.comparisons += @{
     target_repo = $extract.extraction.source
     analyzed_at = (Get-Date -Format "o")
@@ -151,24 +151,24 @@ $history.comparisons += @{
 
 # Sauvegarder l'historique
 $history | ConvertTo-Yaml -Depth 5 | Out-File -FilePath $historyPath -Encoding UTF8
-Write-Output "[reposcope-artefact] Entrée ARGUS ajoutée"
+Write-Output "[reposcope-artefact] Entree ARGUS ajoutee"
 ```
 
-### Étape 8 — Détection de drift (optionnel)
+### Etape 8 - Detection de drift (optionnel)
 
 ```powershell
-# Rechercher l'analyse précédente pour ce même repo
+# Rechercher l'analyse precedente pour ce meme repo
 $previous = $history.comparisons | Where-Object { $_.target_repo -eq $extract.extraction.source } | 
             Sort-Object { $_.analyzed_at } -Descending | Select-Object -Skip 1 -First 1
 
 if ($previous) {
     $delta = [Math]::Abs($phiMax - $previous.phi_delta_max)
     if ($delta -gt 0.2) {
-        Write-Output "[reposcope-artefact] ⚠️ DRIFT DETECTED: Δφ-delta = $delta (> 0.2)"
-        # Notification FLUX optionnelle pourrait être ajoutée ici
+        Write-Output "[reposcope-artefact] [WARN] DRIFT DETECTED: Deltaphi-delta = $delta (> 0.2)"
+        # Notification FLUX optionnelle pourrait etre ajoutee ici
     }
 } else {
-    Write-Output "[reposcope-artefact] Première analyse pour ce repo"
+    Write-Output "[reposcope-artefact] Premiere analyse pour ce repo"
 }
 ```
 
@@ -177,18 +177,18 @@ if ($previous) {
 | Erreur | Action |
 |---|---|
 | Artefact manquant | `Write-Output "[ERROR] Fichier manquant: $path"` + exit 1 |
-| YAML mal formé | Capturer exception, afficher ligne erreur |
-| Répertoire de sortie absent | Créer récursivement avec `New-Item -ItemType Directory -Path (Split-Path $outputPath) -Force` |
+| YAML mal forme | Capturer exception, afficher ligne erreur |
+| Repertoire de sortie absent | Creer recursivement avec `New-Item -ItemType Directory -Path (Split-Path $outputPath) -Force` |
 
-## Critères de succès
+## Criteres de succes
 
 - [ ] Artefact YAML valide produit dans NEXUS
 - [ ] Recommandation d'action correcte (archive/promote/escalate)
 - [ ] ARGUS enregistre chaque comparaison
-- [ ] Détection de drift fonctionnelle (Δφ-delta > 0.2 → alerte)
+- [ ] Detection de drift fonctionnelle (Deltaphi-delta > 0.2 -> alerte)
 - [ ] Fichiers immuables (pas d'overwrite)
 
-## Skills liés
+## Skills lies
 
 - **reposcope-extract** : produit l'artefact d'extraction
 - **reposcope-score** : produit l'artefact de scoring

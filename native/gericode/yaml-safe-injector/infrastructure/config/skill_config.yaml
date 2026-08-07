@@ -1,0 +1,19 @@
+---
+type: SKILL_CONFIG
+version: "1.0.0"
+skill: yaml-safe-injector
+layer: L4
+citizen: DEV-EXPERIENCE
+---
+
+# yaml-safe-injector config
+
+## Parameters
+- target_path: str
+- updates: dict
+- repo_name: str
+- dry_run: bool = False
+
+## Constraints
+- target_path must end with .yaml
+- dry_run must not modify file

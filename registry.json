@@ -1,74 +1,2612 @@
 {
   "skills": [
     {
-      "name": "script-maturation",
+      "name": "booking",
       "version": "1.0.0",
-      "description": "Promotion automatique des scripts de Skeleton à Production",
-      "author": "ECOS Team",
-      "repository": "gerivdb/KIVA-CLI",
+      "description": "Orchestration des réservations et planification pour services",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [
+        "product-context"
+      ],
+      "capabilities": [
+        "booking",
+        "reservation",
+        "scheduling",
+        "calendar",
+        "rendez-vous",
+        "planification"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "audit-trail",
+      "version": "1.0.0",
+      "description": "Skill for tracking and auditing financial transactions and operations",
+      "author": "gerivdb",
+      "repository": "",
       "dependencies": [],
-      "capabilities": ["script_promotion", "queue_management", "worker_orchestration"],
-      "repos_served": ["DevTools", "KIVA-CLI"]
+      "capabilities": [
+        "audit",
+        "trail",
+        "tracking",
+        "finance",
+        "transactions",
+        "compliance"
+      ],
+      "repos_served": []
     },
     {
-      "name": "path-resolver",
+      "name": "finance",
       "version": "1.0.0",
-      "description": "Conversion de paths local/remote et détection de dépôt",
-      "author": "ECOS Team",
-      "repository": "gerivdb/KIVA-CLI",
+      "description": "Analyse financière et banking pour décisions métier",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [
+        "ecosystem-principles"
+      ],
+      "capabilities": [
+        "finance",
+        "banking",
+        "analysis",
+        "transactions",
+        "budgétaire",
+        "investissement"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "alive-check",
+      "version": "1.0.0",
+      "description": "Skill for verifying if individuals in genealogy records are still alive",
+      "author": "gerivdb",
+      "repository": "",
       "dependencies": [],
-      "capabilities": ["path_conversion", "repo_detection"],
-      "repos_served": ["DevTools", "KIVA-CLI", "ECOYSTEM"]
+      "capabilities": [
+        "alive",
+        "check",
+        "verification",
+        "genealogy",
+        "status",
+        "vital-records"
+      ],
+      "repos_served": []
     },
     {
-      "name": "context-manager",
+      "name": "gedcom-parser",
       "version": "1.0.0",
-      "description": "Gestion du contexte dépôt actif",
-      "author": "ECOS Team",
-      "repository": "gerivdb/KIVA-CLI",
-      "dependencies": ["path-resolver"],
-      "capabilities": ["context_management", "repo_switching"],
-      "repos_served": ["KIVA-CLI"]
-    },
-    {
-      "name": "windows-explorer",
-      "version": "1.0.0",
-      "description": "Intégration avec l'explorateur Windows",
-      "author": "ECOS Team",
-      "repository": "gerivdb/KIVA-CLI",
-      "dependencies": ["path-resolver"],
-      "capabilities": ["explorer_integration", "clipboard_operations"],
-      "repos_served": ["KIVA-CLI"]
-    },
-    {
-      "name": "entity-path-mapper",
-      "version": "1.0.0",
-      "description": "Mapping des citoyens KIVA aux paths locaux",
-      "author": "ECOS Team",
-      "repository": "gerivdb/KIVA-CLI",
+      "description": "Skill for parsing and analyzing GEDCOM genealogy files",
+      "author": "gerivdb",
+      "repository": "",
       "dependencies": [],
-      "capabilities": ["entity_mapping", "citizen_location"],
-      "repos_served": ["ECOYSTEM", "KIVA-CLI"]
+      "capabilities": [
+        "gedcom",
+        "genealogy",
+        "family-tree",
+        "parsing",
+        "ancestry"
+      ],
+      "repos_served": []
     },
     {
-      "name": "repo-discovery",
+      "name": "cv-parser",
       "version": "1.0.0",
-      "description": "Découverte automatique des dépôts git",
-      "author": "ECOS Team",
-      "repository": "gerivdb/KIVA-CLI",
-      "dependencies": ["path-resolver"],
-      "capabilities": ["repo_scanning", "auto_registration"],
-      "repos_served": ["KIVA-CLI"]
-    },
-    {
-      "name": "skill-discovery",
-      "version": "1.0.0",
-      "description": "Découverte et enregistrement de skills",
-      "author": "ECOS Team",
-      "repository": "gerivdb/KIVA-CLI",
+      "description": "Skill for parsing and extracting structured data from CV/resume documents",
+      "author": "gerivdb",
+      "repository": "",
       "dependencies": [],
-      "capabilities": ["skill_scanning", "ontology_management"],
-      "repos_served": ["SKILLS", "KIVA-CLI"]
+      "capabilities": [
+        "cv",
+        "resume",
+        "parsing",
+        "extraction",
+        "recruitment"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "design-validation",
+      "version": "1.0.0",
+      "description": "Interview socratique relentless sur tout plan ou design jusqu'à résolution complète de chaque branche de l'arbre de décisions",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "grill-me",
+        "stress-test",
+        "design-review",
+        "validate-plan",
+        "challenge",
+        "interview-design",
+        "decision-tree",
+        "validate-architecture"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "ecosystem-principles",
+      "version": "1.0.0",
+      "description": "Principes architecturaux ONTOLOGY, DRY, KISS, φ-CPS pour ecosystem-1",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "ontology",
+        "dry",
+        "kiss",
+        "phi-cps",
+        "principles",
+        "architecture",
+        "gouvernance"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "notion-connector",
+      "version": "1.0.0",
+      "description": "Skill for connecting to Notion API and retrieving data from databases",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "notion",
+        "api",
+        "database",
+        "data-retrieval",
+        "connector"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "perplexity-sourcer",
+      "version": "1.0.0",
+      "description": "Skill for automated job sourcing using Perplexity API",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "perplexity",
+        "job-sourcing",
+        "search",
+        "api",
+        "job-listings"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "product-context",
+      "version": "1.0.0",
+      "description": "Contextualisation produit et audience pour optimisation marché",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "product-context",
+        "audience",
+        "market-fit",
+        "positionnement",
+        "persona",
+        "cible"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "workflow-orchestrator",
+      "version": "1.0.0",
+      "description": "Skill for orchestrating daily automated workflows",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [
+        "notion-connector",
+        "perplexity-sourcer"
+      ],
+      "capabilities": [
+        "workflow",
+        "orchestration",
+        "automation",
+        "daily",
+        "process"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "close-loop-detector",
+      "version": "1.0.0",
+      "description": "Détecte la fin d'une session et les boucles sémantiques dans l'écosystème",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "booking",
+      "version": "1.0.0",
+      "description": "Orchestration des réservations et planification pour services",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [
+        "product-context"
+      ],
+      "capabilities": [
+        "booking",
+        "reservation",
+        "scheduling",
+        "calendar",
+        "rendez-vous",
+        "planification"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "audit-trail",
+      "version": "1.0.0",
+      "description": "Skill for tracking and auditing financial transactions and operations",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "audit",
+        "trail",
+        "tracking",
+        "finance",
+        "transactions",
+        "compliance"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "finance",
+      "version": "1.0.0",
+      "description": "Analyse financière et banking pour décisions métier",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [
+        "ecosystem-principles"
+      ],
+      "capabilities": [
+        "finance",
+        "banking",
+        "analysis",
+        "transactions",
+        "budgétaire",
+        "investissement"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "alive-check",
+      "version": "1.0.0",
+      "description": "Skill for verifying if individuals in genealogy records are still alive",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "alive",
+        "check",
+        "verification",
+        "genealogy",
+        "status",
+        "vital-records"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "gedcom-parser",
+      "version": "1.0.0",
+      "description": "Skill for parsing and analyzing GEDCOM genealogy files",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "gedcom",
+        "genealogy",
+        "family-tree",
+        "parsing",
+        "ancestry"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "cv-parser",
+      "version": "1.0.0",
+      "description": "Skill for parsing and extracting structured data from CV/resume documents",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "cv",
+        "resume",
+        "parsing",
+        "extraction",
+        "recruitment"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "causal-chain",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "causal-chain",
+        "cause drift resolve",
+        "causal dag",
+        "counterfactual",
+        "intervention",
+        "notears",
+        "lingam",
+        "fci"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "dag-rag",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "dag-rag",
+        "dag traversal",
+        "rag",
+        "kv cache",
+        "retrieval augmented",
+        "epic 074"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "moe-router",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "moe-router",
+        "routing intelligence",
+        "gate routing",
+        "jepa",
+        "energy-trit",
+        "dispatch engine"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "polymorphic-pipeline",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "polymorphic-pipeline",
+        "oae",
+        "pipeline modes",
+        "L0 L9 pipeline",
+        "multi-mode orchestration"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "safety-guard",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "safety-guard",
+        "phi-cps validation",
+        "governance rules",
+        "garde-fous",
+        "safety validate"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "talex",
+      "version": "1.0.0",
+      "description": "Moteur narratif X-FORGE — convertit graphes de réécriture (SPIDX, DAG-3) en récits cohérents et génère des scénarios narratifs",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [
+        "ecosystem-principles",
+        "spidx",
+        "dag-3",
+        "batverse",
+        "holmes"
+      ],
+      "capabilities": [
+        "narrate",
+        "forge",
+        "x-forge",
+        "tale",
+        "story",
+        "narrative",
+        "spidx",
+        "dag3",
+        "verse",
+        "spider-graph",
+        "rewriting"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "batch-cherry-pick-executor",
+      "version": "1.0.0",
+      "description": "Executes cherry-pick of unique commits from multiple orphan branches with conflict detection, deduplication, and reporting",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/batch-cherry-pick",
+        "cherry-pick orphans",
+        "cherry-pick multiple branches",
+        "execute cherry-pick plan",
+        "bulk cherry-pick"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "bisect-forensics",
+      "version": "1.0.0",
+      "description": "Guides git bisect for regression hunting, automated bisect scripts, and git blame for forensic analysis",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/bisect",
+        "git bisect",
+        "find regression",
+        "bisect start",
+        "git blame",
+        "who changed this",
+        "when was this introduced",
+        "forensic analysis"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "branch-content-analyzer",
+      "version": "1.0.0",
+      "description": "Detects if branch content is already in main (0 unique files = safe to delete), analyzes file overlap and commit ancestry",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/analyze-branch-content",
+        "branch content analysis",
+        "is branch merged",
+        "branch overlap",
+        "check branch files"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "branch-lifecycle",
+      "version": "1.1.0",
+      "description": "Analyzes all branches, recommends PR merge / cherry-pick / delete strategy, and executes sync/cleanup (merged with sync-branches)",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/branch-lifecycle",
+        "/sync-branches",
+        "analyze branches",
+        "branch strategy",
+        "which branches to merge",
+        "branch cleanup",
+        "branch analysis",
+        "sync branches local remote",
+        "cleanup merged branches",
+        "delete merged branches",
+        "branch sync",
+        "prune branches"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "branch-merge-strategy",
+      "version": "1.0.0",
+      "description": "Decides optimal merge strategy per branch: cherry-pick, squash merge, rebase, or delete based on content analysis",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/merge-strategy",
+        "branch merge strategy",
+        "how to merge branch",
+        "cherry-pick or squash",
+        "optimal merge"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "branch-protection-config",
+      "version": "1.0.0",
+      "description": "Configure branch protection rules, required reviews, status checks via gh CLI",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/branch-protection",
+        "protect branch",
+        "branch protection rules",
+        "required reviews",
+        "status checks",
+        "prevent force push"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "cherry-pick-batch",
+      "version": "1.0.0",
+      "description": "Cherry-picks multiple commits with automatic conflict detection, skip/abort decisions, and reporting",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/cherry-pick-batch",
+        "cherry-pick multiple commits",
+        "batch cherry-pick",
+        "cherry-pick from branch",
+        "cherry-pick range"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "cherry-pick-conflict-resolver",
+      "version": "1.0.0",
+      "description": "Extends cherry-pick-batch with conflict resolution during cherry-pick operations (binary files, rerere, manual resolve)",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/cherry-pick-resolve",
+        "cherry-pick conflict",
+        "resolve cherry-pick conflict",
+        "cherry-pick binary conflict",
+        "git rerere",
+        "reuse recorded resolution"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "citizen-module-integrator",
+      "version": "1.0.0",
+      "description": "Handles Jules citizen modules integration: validates citizen structure, checks for conflicts, integrates new citizens",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/citizen-integrate",
+        "citizen module",
+        "jules citizen",
+        "integrate citizen",
+        "citizen branch"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "clean-pycache",
+      "version": "1.0.0",
+      "description": "Removes __pycache__ directories and .pyc files from working tree and git index, ensures .gitignore coverage",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/clean-pycache",
+        "clean pycache",
+        "remove pyc files",
+        "pycache cleanup",
+        "clean python cache"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "conventional-commit-validator",
+      "version": "1.0.0",
+      "description": "Enforces Conventional Commits specification (feat, fix, docs, chore, refactor, etc.) with commit-msg hook integration",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/commit-msg",
+        "conventional commit",
+        "commit message format",
+        "validate commit message",
+        "commit lint",
+        "commit convention"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "cross-repo-hooks",
+      "version": "1.0.0",
+      "description": "Cross-repo hook analysis and orchestration: identify missing hooks, deploy hooks across repos, validate integration",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/cross-repo-hooks",
+        "cross-repo hooks",
+        "analyze hooks",
+        "deploy hooks",
+        "hook orchestration",
+        "hook analysis"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "design-validation",
+      "version": "1.0.0",
+      "description": "Interview socratique relentless sur tout plan ou design jusqu'à résolution complète de chaque branche de l'arbre de décisions",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "grill-me",
+        "stress-test",
+        "design-review",
+        "validate-plan",
+        "challenge",
+        "interview-design",
+        "decision-tree",
+        "validate-architecture"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "diffscope-review",
+      "version": "1.0.0",
+      "description": "Reviews a pull request using diffscope (or gh fallback on Windows) and posts review comments",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/diffscope-review",
+        "review pr with diffscope",
+        "diffscope pr",
+        "automated pr review",
+        "pr review auto"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "ecosystem-principles",
+      "version": "1.0.0",
+      "description": "Principes architecturaux ONTOLOGY, DRY, KISS, φ-CPS pour ecosystem-1",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "ontology",
+        "dry",
+        "kiss",
+        "phi-cps",
+        "principles",
+        "architecture",
+        "gouvernance"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "eecs-migration-handler",
+      "version": "1.0.0",
+      "description": "Handles EECS migration branches: validates migration files, checks for conflicts with existing EECS config, integrates safely",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/eecs-migration",
+        "eecs migration",
+        "migrate eecs",
+        "eecs branch",
+        "eecs integration"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "fork-sync-workflow",
+      "version": "1.0.0",
+      "description": "Fork-based contribution workflow: sync upstream, manage remotes, PR from fork",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/fork-sync",
+        "sync fork",
+        "fork workflow",
+        "upstream sync",
+        "pull from upstream",
+        "pr from fork"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "git-assainissement",
+      "version": "1.0.0",
+      "description": "Complete git repository sanitization: branch lifecycle, orphan dispatch, cherry-pick, cleanup, tags, submodules, reporting",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/assainir",
+        "git cleanup",
+        "sanitize git",
+        "repository cleanup",
+        "full git audit",
+        "assainissement git"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "git-flow-manager",
+      "version": "1.0.0",
+      "description": "Implements git-flow branching model: feature, release, hotfix, develop, main — guides branch creation, merging, and deletion per git-flow conventions",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/git-flow",
+        "git flow",
+        "gitflow",
+        "branch naming convention",
+        "create feature branch",
+        "create release branch",
+        "create hotfix branch",
+        "finish feature",
+        "finish release",
+        "finish hotfix"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "git-hooks-manager",
+      "version": "1.0.0",
+      "description": "Create, install, debug, and manage git hooks (pre-commit, pre-push, commit-msg) with templates and testing",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/hooks",
+        "git hooks",
+        "install hooks",
+        "pre-commit hook",
+        "pre-push hook",
+        "commit-msg hook",
+        "hook management",
+        "debug hooks"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "kiva-pr-workflow",
+      "version": "1.0.0",
+      "description": "Executes the complete KIVA-CLI PR merge workflow: rollback point, review, merge, WAL update, drift check, citizen promotion",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/kiva-pr-workflow",
+        "kiva merge pr",
+        "merge with kiva",
+        "pr workflow kiva",
+        "kiva pr merge"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "merge-conflict-resolver",
+      "version": "1.0.0",
+      "description": "Interactive merge conflict resolution: detects conflicts, presents options (ours/theirs/manual), guides resolution, validates result",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/resolve-conflicts",
+        "merge conflict",
+        "resolve merge conflict",
+        "conflict resolution",
+        "fix merge conflict",
+        "git conflict"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "network-resilient-sync",
+      "version": "1.0.0",
+      "description": "Network-resilient git sync: pre-checks reachability, retry with backoff, offline mode, queued pushes",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/sync",
+        "git sync",
+        "network sync",
+        "offline sync",
+        "retry push",
+        "remote unreachable"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "notion-connector",
+      "version": "1.0.0",
+      "description": "Skill for connecting to Notion API and retrieving data from databases",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "notion",
+        "api",
+        "database",
+        "data-retrieval",
+        "connector"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "orphan-branch-dispatcher",
+      "version": "1.0.0",
+      "description": "Analyzes orphan/closed-PR branches and dispatches: cherry-pick valuable commits, delete stale ones, escalate ambiguous cases",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/orphan-dispatch",
+        "orphan branches",
+        "closed pr branches",
+        "dispatch orphans",
+        "review closed branches",
+        "triage orphan branches"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "perplexity-sourcer",
+      "version": "1.0.0",
+      "description": "Skill for automated job sourcing using Perplexity API",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "perplexity",
+        "job-sourcing",
+        "search",
+        "api",
+        "job-listings"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "product-context",
+      "version": "1.0.0",
+      "description": "Contextualisation produit et audience pour optimisation marché",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "product-context",
+        "audience",
+        "market-fit",
+        "positionnement",
+        "persona",
+        "cible"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "rebase-workflow",
+      "version": "1.0.0",
+      "description": "Covers interactive rebase, rebase vs. merge decision tree, squashing, reordering, and safe rebase practices",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/rebase",
+        "interactive rebase",
+        "rebase workflow",
+        "squash commits",
+        "reorder commits",
+        "rebase vs merge",
+        "git rebase"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "rollback-strategy",
+      "version": "1.0.0",
+      "description": "Guides git revert vs. git reset decisions, safe rollback procedures, and post-rollback validation",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/rollback",
+        "git revert",
+        "git reset",
+        "undo commit",
+        "rollback commit",
+        "undo merge",
+        "revert merge",
+        "safe rollback"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "stash-workflow",
+      "version": "1.0.0",
+      "description": "Covers stash save, pop, apply, drop, branch-from-stash, partial stashes, and stash conflict handling",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/stash",
+        "git stash",
+        "stash save",
+        "stash pop",
+        "stash apply",
+        "stash list",
+        "stash branch",
+        "partial stash",
+        "stash untracked"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "submodule-manager",
+      "version": "1.0.0",
+      "description": "Git submodule lifecycle: add, update, sync, remove — validates submodule health and handles broken references",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/submodule",
+        "git submodule",
+        "add submodule",
+        "update submodule",
+        "sync submodule",
+        "remove submodule",
+        "broken submodule",
+        "submodule status"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "sync-branches",
+      "version": "1.0.0",
+      "description": "Synchronizes local and remote branches, detects already-merged branches, and cleans up stale references",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/sync-branches",
+        "sync branches local remote",
+        "cleanup merged branches",
+        "delete merged branches",
+        "branch sync",
+        "prune branches"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "tag-release-manager",
+      "version": "1.0.0",
+      "description": "Semantic versioning, git tag creation, release branch management, release automation, and changelog integration",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/release",
+        "create release",
+        "tag release",
+        "semantic version",
+        "bump version",
+        "create tag",
+        "release notes",
+        "publish release"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "wal-reconciler",
+      "version": "1.0.0",
+      "description": "Validates WAL integrity against actual git state, detects orphaned entries, compacts old entries",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/wal-reconcile",
+        "wal integrity",
+        "wal validation",
+        "wal compact",
+        "wal audit",
+        "wal vs git"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "workflow-orchestrator",
+      "version": "1.0.0",
+      "description": "Skill for orchestrating daily automated workflows",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [
+        "notion-connector",
+        "perplexity-sourcer"
+      ],
+      "capabilities": [
+        "workflow",
+        "orchestration",
+        "automation",
+        "daily",
+        "process"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "worktree-manager",
+      "version": "1.0.0",
+      "description": "Git worktree management: create, list, remove worktrees for parallel branch work",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/worktree",
+        "git worktree",
+        "create worktree",
+        "list worktrees",
+        "remove worktree",
+        "parallel branches"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-core",
+      "version": "1.0.0",
+      "description": "Load when user mentions \"NEXUS governance\", \"SOT conformity\", \"ECOS_ROOT\", \"φ-CPS\", \"ADR validation\", \"EPIC compliance\".",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "skills-pack",
+      "version": "1.0.0",
+      "description": "Pack de 59 skills Perplexity pour l'écosystème gerivdb (ENV1 - DEV-COMET). Use when user mentions any skill name.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "adr-manager",
+      "version": "1.0.0",
+      "description": "Architecture Decision Records: validation, creation, lifecycle. Use when user mentions 'ADR', 'décision architecture', 'valider ADR', 'nexus jalon'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "argus-tracker",
+      "version": "1.0.0",
+      "description": "ARGUS project phases, delta registry, propagation, KIVA scheduler. Use when user mentions 'ARGUS', 'delta registry', 'propagation', 'Phase 4'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "base243",
+      "version": "1.0.0",
+      "description": "Base-243 converter, Ladybird, ternary, Tauri, portage. Use when user mentions 'base 243', 'convertisseur', 'Ladybird', 'ternaire'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "boinc-p2p",
+      "version": "1.0.0",
+      "description": "BOINC-LLM distributed inference, DHT Kademlia, swarm, P2P computing. Use when user mentions 'BOINC-LLM', 'P2P', 'distribué', 'swarm'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "claude-optimizer",
+      "version": "1.0.0",
+      "description": "18-step Claude optimization, custom instructions, projects, style cloning. Use when user mentions 'optimisation Claude', '18 étapes', 'custom instructions'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "comet-browser",
+      "version": "1.0.0",
+      "description": "COMET, BIRDY, headless browsers, CDP automation, browser extensions. Use when user mentions 'COMET', 'BIRDY', 'headless', 'CDP', 'navigateur IA'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "data-vector",
+      "version": "1.0.0",
+      "description": "VDB, TQL, embeddings, vector search, VEC-243, SparrowDB. Use when user mentions 'VDB', 'TQL', 'embedding', 'vector', 'VEC-243'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "deepwiki-ops",
+      "version": "1.0.0",
+      "description": "Fused skill combining DeepWiki-based repo analysis (analyse-repo-deepwiki) and DeepWiki repo enrichment (deepwiki_repo_enricher). Provides constitutional ECOS analysis, ENV2 scoring, GitHub issue coverage, alternatives comparison, and final recommendation. Use when user mentions any of the original triggers.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "/analyse-repo",
+        "évalue dépôt",
+        "DeepWiki",
+        "scoring ECOS",
+        "citoyennisation",
+        "DeepWiki Enricher",
+        "constitutionnelle ECOS",
+        "ENV2 compliance",
+        "GitHub coverage",
+        "alternatives"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "devtools-core",
+      "version": "1.0.0",
+      "description": "PowerShell modules, CI Gate, MCP, Fix-MCPConnection, cleanup. Use when user mentions 'DevTools', 'PowerShell', 'CI Gate', 'nettoyage'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "diagram-infographic",
+      "version": "1.0.0",
+      "description": "Infographics, KPI cards, mind maps, layered architecture. Use when user mentions 'infographie', 'KPI', 'carte mentale', 'architecture'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "diagram-infra",
+      "version": "1.0.0",
+      "description": "Infrastructure diagrams: cloud, network, security, AWS, Azure. Use when user mentions 'cloud', 'AWS', 'Azure', 'réseau', 'sécurité'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "diagram-mermaid",
+      "version": "1.0.0",
+      "description": "Mermaid diagrams, flowcharts, Gantt, ERD, gitgraph. Use when user mentions 'Mermaid', 'flowchart', 'Gantt', 'ERD'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "diagram-uml",
+      "version": "1.0.0",
+      "description": "UML diagrams, PlantUML, ArchiMate, BPMN. Use when user mentions 'UML', 'PlantUML', 'ArchiMate', 'BPMN'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "diagram-vega",
+      "version": "1.0.0",
+      "description": "Vega-Lite charts, data visualization, analytics. Use when user mentions 'Vega-Lite', 'graphique', 'data analytics'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "ecos-vision",
+      "version": "2.0.0",
+      "description": "Fused skill combining ECOS-VISION (cross‑repo visualization), ecosystem‑self (self‑learning / semantic cache / META‑CLUSTER GRAPH) and lecun‑vision (Yann LeCun’s AI vision – JEPA, world models, AMI, Tapestry). Use when user mentions any of the original triggers.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "ECOS-VISION",
+        "visualisation",
+        "diagrammes cross-repo",
+        "apprentissage interne",
+        "cache sémantique",
+        "META-CLUSTER",
+        "LeCun",
+        "JEPA",
+        "world model",
+        "AMI",
+        "Tapestry",
+        "débat IA"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "github-config",
+      "version": "2.1.0",
+      "description": "GITHUB_TOKEN, gh auth, scopes, Actions settings, rate-limit, gestion des gros fichiers (push_files vs create_or_update, split‑payload, SHA‑management). Use when user mentions 'GITHUB_TOKEN', 'gh auth', 'scopes', 'Settings Actions', 'large files', 'push_files', 'create_or_update'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "GITHUB_TOKEN",
+        "gh auth",
+        "scopes",
+        "Settings Actions",
+        "large files",
+        "push_files",
+        "create_or_update"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "governance-formal",
+      "version": "1.0.0",
+      "description": "GOVERNANCE-HUB, REPO-STANDARDS, ONTOLOGY, RSS-v1 lifecycle. Use when user mentions 'GOVERNANCE-HUB', 'REPO-STANDARDS', 'ONTOLOGY', 'RSS-v1', 'lifecycle'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "hitl-core",
+      "version": "1.0.0",
+      "description": "Fused skill combining HITL Hub (review of signals, workflow building, world‑model review) and HITL Ops (governance audit, ecosystem health, token scope, permissions). Use when user mentions any of the original triggers.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "HITL",
+        "review signals",
+        "audit",
+        "workflow builder",
+        "gouvernance transverse",
+        "token scope",
+        "permissions",
+        "rapport d'état",
+        "ECOS_ROOT",
+        "priorisation"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "ide-tools",
+      "version": "1.0.0",
+      "description": "KiloCode, Cline, VSIX, MCP Sequential Thinking, Rust alternatives. Use when user mentions 'KiloCode', 'Cline', 'VSIX', 'MCP Sequential Thinking', 'Rust'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "intent-bridge",
+      "version": "1.0.0",
+      "description": "Neurosymbolic bridge: INTENT-ENCODER, nomic-embed-text, 768-dim, ECOS v3.0. Use when user mentions 'INTENT-ENCODER', 'neurosymbolique', 'nomic-embed-text', 'BOINC-LLM'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "iot-diagram",
+      "version": "1.0.0",
+      "description": "IoT architecture diagrams, sensors, edge computing, MQTT. Use when user mentions 'IoT', 'capteurs', 'edge', 'MQTT'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "kiva-pipeline",
+      "version": "1.0.0",
+      "description": "KIVA-CLI pipelines, local CI, preflight, GitHub Actions migration. Use when user mentions 'KIVA', 'pipeline', 'CI locale', 'preflight'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "lecun-prd",
+      "version": "1.0.0",
+      "description": "Generate PRD from LeCun's positions, PLIX world model, Triade alignment. Use when user mentions 'PRD LeCun', 'plix world model', 'triade alignment'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "local-recovery",
+      "version": "1.0.0",
+      "description": "Disappeared local clones, WAZAA, git detective, restoration. Use when user mentions 'clone disparu', 'WAZAA', 'restauration', 'ecos repo'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "mcp-write-guard",
+      "version": "1.0.0",
+      "description": "Compétence couvrant la résilience d’écriture MCP : estimateur de taille de payload, stratégie de retry avec escalade, surveillance du contexte de session, gestion de la verbosité des échecs. Utiliser quand l’utilisateur mentionne 'MCP write resilience', 'payload size', 'retry strategy', 'session context', 'fail verbosity'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "MCP write",
+        "payload size",
+        "retry strategy",
+        "session context",
+        "fail verbosity"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "media-culture",
+      "version": "1.0.0",
+      "description": "Media, culture and booking expert for ROCK-REIMS-AGENDA, GVDB-MEDIA, GERI-VON-DER-BITSH. Use when user mentions \"ROCK-REIMS\", \"GVDB-MEDIA\", \"GERI-VON-DER-BITSH\", \"agenda\", \"booking\", \"médias\", \"culture rémoise\".",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "multi-repo-syncer",
+      "version": "1.0.0",
+      "description": "Cross-repo synchronization, KIVA, NEXUS, gateway GPU, ECOS_ROOT. Use when user mentions 'sync multi-dépôts', 'KIVA', 'NEXUS', 'gateway GPU'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "new-pillars",
+      "version": "1.0.0",
+      "description": "New ecosystem pillars expert for PLIX, GOST, TINA, TRANSCENDANCE, VERSUS, BATVERSE. Use when user mentions \"PLIX\", \"GOST\", \"TINA\", \"TRANSCENDANCE\", \"VERSUS\", \"BATVERSE\", \"piliers\", \"ternaire\", \"grain\".",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-auditor",
+      "version": "1.0.0",
+      "description": "Audit repository structure against DDD criteria, EPIC size, violations. Use when user mentions 'audit structure', 'DDD', 'EPIC volumineuse', 'taille'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-compliance",
+      "version": "1.0.0",
+      "description": "Branch governance, cherry-pick safety, hook validation. Use when user mentions 'conformité', 'gouvernance branche', 'cherry-pick safety'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-core",
+      "version": "1.0.0",
+      "description": "NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'φ-CPS'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-deps",
+      "version": "1.0.0",
+      "description": "Shadow dependency detection, dependency matrix, inter-layer coupling. Use when user mentions 'shadow dependency', 'matrice dépendances', 'inter-strates'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-map",
+      "version": "1.0.0",
+      "description": "Universal navigation map for all active gerivdb repos (168 total, geri-cms-* excluded). Use when user mentions \"where is\", \"quel repo\", \"cluster\", \"liste des repos\", \"cartographie\", \"nexus-map\".",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-monitor",
+      "version": "1.0.0",
+      "description": "φ-CPS scoring, ecosystem health, production readiness, drift detection. Use when user mentions 'φ-CPS', 'santé écosystème', 'production readiness', 'drift'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-prd",
+      "version": "1.0.0",
+      "description": "Magistral PRD synthesis, ASCII diagrams, recommendations. Use when user mentions 'PRD magistral', 'synthèse', 'diagramme ASCII', 'recommandations'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-reformer",
+      "version": "1.0.0",
+      "description": "Refactoring, migration, cleanup, extraction of responsibilities. Use when user mentions 'refactoring', 'migration', 'nettoyage résidus', 'extraction'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-registry-sync",
+      "version": "1.0.0",
+      "description": "ECOS_ROOT synchronization, autodiscover, missing repositories. Use when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'dépôts manquants'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "nexus-registry-view",
+      "version": "1.0.0",
+      "description": "Dashboard, herd view, registry status. Use when user mentions 'dashboard troupeau', 'vue registre', 'tableau de bord'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "plix-core",
+      "version": "2.0.0",
+      "description": "PLIX video substrate, CODEC-243, PLAYER-243, PLIXVAULT, OCTOPUS, BitNet mapping, ThermoGate, VDB. Use when user mentions 'PLIX', 'CODEC-243', 'PLAYER-243', 'PLIXVAULT', 'OCTOPUS', 'ThermoGate', 'VDB'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "PLIX",
+        "CODEC-243",
+        "PLAYER-243",
+        "PLIXVAULT",
+        "OCTOPUS",
+        "ThermoGate",
+        "VDB"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "prd-factory",
+      "version": "1.0.0",
+      "description": "Compétence pour la production complète d’un PRD : validation croisée des spécifications, vérification de la cohérence OKR, guide de rédaction selon le format canonique (sections 1→17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur mentionne 'PRD production', 'spec cross‑validator', 'OKR consistency', 'PRD canonique'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "PRD production",
+        "spec cross-validator",
+        "OKR consistency",
+        "PRD canonique",
+        "PRD factory"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "pruning-explainer",
+      "version": "1.0.0",
+      "description": "Pruning in dev and Git, git remote prune, optimization. Use when user mentions 'pruning', 'élagage', 'git remote prune'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "pulse-infra",
+      "version": "1.0.0",
+      "description": "Monitoring and infrastructure expert for PULSE, KIVA, KIVA-CLI, ATLAS, FORGE, CONTAINER-ORCHESTRATOR. Use when user mentions \"PULSE\", \"KIVA\", \"ATLAS\", \"FORGE\", \"container\", \"pipeline\", \"métriques\", \"LXC\".",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "reasoning-toolkit",
+      "version": "1.0.0",
+      "description": "Fused skill combining Fermi‑legacy (hardware/performance expert for FERMI‑EVER, CodeDB‑E5620, LYCOS) and Scientific Method (hypothesis validation, NEXUS protocol). Use when user mentions any of the original triggers.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [
+        "FERMI",
+        "CodeDB-E5620",
+        "LYCOS",
+        "Xeon E5620",
+        "GPU Fermi",
+        "AVX",
+        "LXC Z600",
+        "SSE4.2",
+        "Poincaré",
+        "Feynman",
+        "méthode scientifique",
+        "hypothèse"
+      ],
+      "repos_served": []
+    },
+    {
+      "name": "reposcope-process",
+      "version": "1.0.0",
+      "description": "Signal scoring, cross-artefact correlation, timeline, discovery sheets. Use when user mentions 'scoring', 'corrélation', 'timeline', 'fiche découverte'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "reposcope-publish",
+      "version": "1.0.0",
+      "description": "Brain-feed publication, signal clustering, dashboards, alerts. Use when user mentions 'brain‑feed', 'clusters', 'dashboard', 'alertes'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "reposcope-run",
+      "version": "1.0.0",
+      "description": "Digestion engine execution, long scans, ingestion pipeline. Use when user mentions 'digestion', 'scan long', 'ingestion', 'pipeline'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "reposcope-watch",
+      "version": "1.0.0",
+      "description": "External surveillance: signals, flags, env vars, API endpoints, secrets. Use when user mentions 'surveillance', 'signal', 'hidden flag', 'API endpoint', 'secret CI'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "scaffold-pipeline",
+      "version": "1.0.0",
+      "description": "SCAFFOLD governance flow: issue→intent, WAL, constitutional validation, artifact cataloging. Use when user mentions 'SCAFFOLD', 'pipeline gouvernance', 'WAL', 'issue to intent'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "skill-tester",
+      "version": "1.0.0",
+      "description": "Skill testing, validation, trigger verification, matrix. Use when user mentions 'test skill', 'validation', 'déclenchement', 'matrice'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "skills-manager",
+      "version": "1.0.0",
+      "description": "Skill creation, fusion, format canonical, refactoring, analysis. Use when user mentions 'skill', 'format canonique', 'refonte', 'fusion', 'analyse'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "swarm-cli",
+      "version": "1.0.0",
+      "description": "Swarm, bus ternaire and governance CLI expert for WAZAA, OPENCLAW-CLI, BLO, GOVERNANCE-HUB. Use when user mentions \"WAZAA\", \"OPENCLAW\", \"BLO\", \"GOVERNANCE-HUB\", \"bus ternaire\", \"swarm\", \"φ-CPS\", \"TritRegistry\".",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "task-automator",
+      "version": "1.0.0",
+      "description": "Windows Task Scheduler, schtasks, polling automation. Use when user mentions 'Task Scheduler', 'schtasks', 'polling'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "triade-flux",
+      "version": "1.0.0",
+      "description": "FLUX review, HITL promotion, assimilation into NEXUS. Use when user mentions 'FLUX', 'review', 'HITL', 'promotion'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "triade-hub",
+      "version": "1.0.0",
+      "description": "Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX. Use when user mentions 'triade cognitive', 'orchestration', 'end‑to‑end'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "triade-iris",
+      "version": "1.0.0",
+      "description": "IRIS external sensor, polling, GitHub Actions workflow, target YAML. Use when user mentions 'IRIS', 'polling', 'capteur externe'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "triade-kronos",
+      "version": "1.0.0",
+      "description": "KRONOS digester, signal qualification, deduplication. Use when user mentions 'KRONOS', 'digesteur', 'qualification'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "wiki-mimir",
+      "version": "1.0.0",
+      "description": "Wiki back-office, MIMIR, Atomic, project management, cross-repo docs. Use when user mentions 'wiki back-office', 'MIMIR', 'Atomic', 'projets'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "workflow-debugger",
+      "version": "1.0.0",
+      "description": "GitHub Actions debugging: startup_failure, permissions, PYTHONPATH. Use when user mentions 'startup_failure', 'permissions', 'PYTHONPATH'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "z600-hardware",
+      "version": "1.0.0",
+      "description": "HP Z600, E5620, Fermi GPU, AVX limitations, WASM bypass, Zig, LXC. Use when user mentions 'Z600', 'E5620', 'Fermi', 'AVX', 'WASM', 'Zig', 'LXC'.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.1.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "dependency-injection",
+      "version": "1.0.0",
+      "description": "Implement dependency injection container for Python async applications. Enables testable code through mock injection, detects circular dependencies, and provides lazy loading with centralized configuration.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "event-system-coherence",
+      "version": "1.0.0",
+      "description": "Verify that every emitted event has a corresponding consumer, logger, or metric. Detects orphan events, missing audit trails, and unexposed event endpoints. Ensures events are not silently created and forgotten.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "2.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "lifecycle-state-machine",
+      "version": "1.0.0",
+      "description": "Validate async component lifecycle patterns - verify proper initialization, error handling, shutdown timeouts, and state transitions. Detects missing try/except in initialize(), missing timeout in close(), and invalid state access.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "pr-review-resolver",
+      "version": "1.0.0",
+      "description": "Review + resolve PR via diffscope + auto-merge gate + cleanup across all ecosystem repos",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "2.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "2.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "reposcope-artefact",
+      "version": "1.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "reposcope-compare",
+      "version": "1.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "reposcope-extract",
+      "version": "1.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "reposcope-propagate",
+      "version": "1.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "reposcope-score",
+      "version": "1.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "singleton-thread-safety",
+      "version": "1.0.0",
+      "description": "Detect and fix singleton patterns that lack thread-safety. Identifies race conditions in __new__(), missing locks, and non-thread-safe state mutations. Provides thread-safe implementations using locks or alternative patterns.",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "close-loop-detector",
+      "version": "1.0.0",
+      "description": "Détecte la fin d'une session et les boucles sémantiques dans l'écosystème",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "pr-review-resolver",
+      "version": "1.0.0",
+      "description": "Review + resolve PR via diffscope + auto-merge gate + cleanup across all ecosystem repos",
+      "author": "gerivdb",
+      "repository": "",
+      "dependencies": [],
+      "capabilities": [],
+      "repos_served": []
+    },
+    {
+      "name": "yaml-safe-injector",
+      "version": "1.0.0",
+      "description": "Injection sécurisée de champs YAML dans known_repositories.yaml",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [
+        "sot-registry-guardian"
+      ],
+      "capabilities": [
+        "yaml",
+        "inject",
+        "safe",
+        "known_repositories"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "sot-registry-guardian",
+      "version": "1.0.0",
+      "description": "Validation des chemins et métadonnées des repos dans known_repositories.yaml",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [
+        "yaml-safe-injector"
+      ],
+      "capabilities": [
+        "sot",
+        "registry",
+        "guardian",
+        "validation"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "n243-graph-builder",
+      "version": "1.0.0",
+      "description": "Construction du graphe N243 de dépendances entre repos",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [
+        "sot-registry-guardian"
+      ],
+      "capabilities": [
+        "n243",
+        "graph",
+        "dependencies",
+        "topology"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "skill-scaffold",
+      "version": "1.0.0",
+      "description": "Générateur de skill conforme aux conventions TDD/BDD/ATDD/DDD/DbC/Hexagonal",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [
+        "ecosystem-principles"
+      ],
+      "capabilities": [
+        "scaffold",
+        "generate",
+        "skill-creation",
+        "template"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "repo-citizen-manager",
+      "version": "1.0.0",
+      "description": "Skill repo-citizen-manager for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "repo citizen manager"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "registry-sync",
+      "version": "1.0.0",
+      "description": "Skill registry-sync for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "registry sync"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "skill-auto-enroller",
+      "version": "1.0.0",
+      "description": "Skill skill-auto-enroller for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "skill auto enroller"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "citizenship-auditor",
+      "version": "1.0.0",
+      "description": "Skill citizenship-auditor for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "citizenship auditor"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "bridge-auditor",
+      "version": "1.0.0",
+      "description": "Skill bridge-auditor for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "bridge auditor"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "skills-validator",
+      "version": "1.0.0",
+      "description": "Skill skills-validator for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "skills validator"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "gitignore-harmonizer",
+      "version": "1.0.0",
+      "description": "Skill gitignore-harmonizer for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "gitignore harmonizer"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "harness-bootstrapper",
+      "version": "1.0.0",
+      "description": "Skill harness-bootstrapper for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "harness bootstrapper"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "known-repositories-updater",
+      "version": "1.0.0",
+      "description": "Skill known-repositories-updater for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "known repositories updater"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "registry-prune",
+      "version": "1.0.0",
+      "description": "Skill registry-prune for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "registry prune"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "verse-sync",
+      "version": "1.0.0",
+      "description": "Skill verse-sync for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "verse sync"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "ecosystem-probe",
+      "version": "1.0.0",
+      "description": "Skill ecosystem-probe for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "ecosystem probe"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "ontology-guardian",
+      "version": "1.0.0",
+      "description": "Skill ontology-guardian for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "ontology guardian"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "verify-terms",
+      "version": "1.0.0",
+      "description": "Skill verify-terms for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "verify terms"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "mcp-guardian",
+      "version": "1.0.0",
+      "description": "Skill mcp-guardian for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "mcp guardian"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "mcp-access-repair",
+      "version": "1.0.0",
+      "description": "Skill mcp-access-repair for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "mcp access repair"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "ecosystem-brain",
+      "version": "1.0.0",
+      "description": "Skill ecosystem-brain for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "ecosystem brain"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "mox-validator",
+      "version": "1.0.0",
+      "description": "Skill mox-validator for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "mox validator"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "kiva-ci-local",
+      "version": "1.0.0",
+      "description": "Skill kiva-ci-local for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "kiva ci local"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "artifact-quality-checker",
+      "version": "1.0.0",
+      "description": "Skill artifact-quality-checker for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "artifact quality checker"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "git-atomic-rename",
+      "version": "1.0.0",
+      "description": "Skill git-atomic-rename for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "git atomic rename"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "ci-nomenclature-guard",
+      "version": "1.0.0",
+      "description": "Skill ci-nomenclature-guard for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "ci nomenclature guard"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "n243-query-engine",
+      "version": "1.0.0",
+      "description": "Skill n243-query-engine for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "n243 query engine"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "yaml-debug-forensic",
+      "version": "1.0.0",
+      "description": "Skill yaml-debug-forensic for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "yaml debug forensic"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
+    },
+    {
+      "name": "actprotocol-fractal-nomenclature",
+      "version": "1.0.0",
+      "description": "Skill actprotocol-fractal-nomenclature for ecosystem management",
+      "author": "gerivdb",
+      "repository": "gerivdb/GeriCode",
+      "dependencies": [],
+      "capabilities": [
+        "actprotocol fractal nomenclature"
+      ],
+      "repos_served": [
+        "gerivdb/GeriCode"
+      ]
     }
   ]
 }

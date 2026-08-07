@@ -9,21 +9,21 @@ status: active
 # Skill: gap-report-parser
 
 ## Purpose
-Parse SGR GAP_REPORT and manage the complete gap lifecycle — detection, triage, resolution, verification, and closure.
+Parse SGR GAP_REPORT and manage the complete gap lifecycle - detection, triage, resolution, verification, and closure.
 
 ## Context
 SGR produces `GAP_REPORT_{timestamp}.json` with `by_priority` sections (P1/P2/P3). Each gap has: `id`, `title`, `severity`, `source`, `trit`, `action`, `status`. This skill covers both parsing AND lifecycle management.
 
 ## Parsing protocol
 
-### Step 1 — Locate latest report
+### Step 1 - Locate latest report
 
 ```powershell
 $report = Get-ChildItem "D:\DO\WEB\TOOLS\L0-CANON\NEXUS\citizens\SystemicGapReasoner\reports\GAP_REPORT_*.json" |
     Sort-Object LastWriteTime -Descending | Select-Object -First 1
 ```
 
-### Step 2 — Parse with Python
+### Step 2 - Parse with Python
 
 ```python
 import json, yaml
@@ -43,7 +43,7 @@ skill_gaps = [g for g in report.get("by_priority", {}).get("P3", [])
               if g.get("id", "").startswith("SKILL_ORPHAN_")]
 ```
 
-### Step 3 — Determine action per gap type
+### Step 3 - Determine action per gap type
 
 | Gap prefix | Action | Skill to use |
 |------------|--------|--------------|
@@ -52,7 +52,7 @@ skill_gaps = [g for g in report.get("by_priority", {}).get("P3", [])
 | `TRIT_ORPHAN_*` | Link primitive to workflow/citizen | manual |
 | `CITIZEN_UNBACKED_*` | Create ADR backing | manual |
 
-### Step 4 — Check exceptions
+### Step 4 - Check exceptions
 
 Before acting, check if gap_id is in `sgr.yaml` exceptions list:
 
@@ -63,28 +63,28 @@ excepted_ids = {e["gap_id"] for e in exceptions}
 
 ## Gap lifecycle management
 
-### Phase 1 — Detection
+### Phase 1 - Detection
 SGR run produces GAP_REPORT. Parse and count.
 
-### Phase 2 — Triage
-For each gap: determine type → assign action → check exceptions.
+### Phase 2 - Triage
+For each gap: determine type -> assign action -> check exceptions.
 
-### Phase 3 — Resolution
-- **Scanner creation**: Use `scaffold-scanner` → test → register in argus.yaml
-- **Batch patch**: Use `patch_skill_frontmatter.py` → verify with scanner
+### Phase 3 - Resolution
+- **Scanner creation**: Use `scaffold-scanner` -> test -> register in argus.yaml
+- **Batch patch**: Use `patch_skill_frontmatter.py` -> verify with scanner
 - **Exception**: Document in sgr.yaml with reason + review date
 
-### Phase 4 — Verification
+### Phase 4 - Verification
 Re-run SGR. Compare with previous report. All targeted gaps should be gone.
 
-### Phase 5 — Closure
+### Phase 5 - Closure
 Archive report to NEXUS/reports/sgr/. Update session summary.
 
 ## Exception format
 
 ```yaml
 - gap_id: "REPO_UNCOVERED_NEXUS"
-  reason: "NEXUS est le SOT data — couverture deleguee"
+  reason: "NEXUS est le SOT data - couverture deleguee"
   approved_by: "HITL-2026-06-08"
   review_date: "2026-09-08"
 ```

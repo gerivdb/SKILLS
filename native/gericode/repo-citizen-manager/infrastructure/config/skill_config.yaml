@@ -1,0 +1,8 @@
+skill_name: repo-citizen-manager
+version: 1.0.0
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+paths:
+  input: null
+  output: null
