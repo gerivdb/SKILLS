@@ -3477,6 +3477,27 @@ skills:
   assimilation_status: N/A
   source_repo: gerivdb/GeriCode
   consumes_from: []
+- name: harness_probes
+  description: Harness probes P-701..P-711 for GeriCode stack validation (TDD/BDD/ATDD/DDD/DbC/Hexagonal/Harness compliance).
+  type: foundational
+  triggers:
+  - harness probes
+  - P-701
+  - P-711
+  - stack validation
+  domain: ecosystem-tools
+  version: 0.1.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: '2026-08-08'
+  updated: '2026-08-08'
+  phi_weight: 0.005
+  path: native/gericode/harness_probes/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
 - name: known-repositories-updater
   description: Skill known-repositories-updater for ecosystem management
   type: foundational
@@ -3784,7 +3805,9 @@ skills:
   source_repo: gerivdb/GeriCode
   consumes_from: []
 metadata:
-  phi_cps_contribution: 0.521
+  phi_cps_contribution: 0.683
   governance_level: L2
   citizen: skills-registry
   lifecycle: GENESIS
+
+
