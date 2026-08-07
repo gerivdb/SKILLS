@@ -1,0 +1,45 @@
+"""
+n243_graph_builder.cli — CLI entry point.
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+from .core import run_pipeline
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="N243 Graph Builder CLI")
+    parser.add_argument("--target", type=str, default="data", help="Output directory")
+    parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON summary")
+    args = parser.parse_args(argv)
+
+    target = Path(args.target)
+    result = run_pipeline(target)
+
+    if args.json:
+        payload = {
+            "valid": result.valid,
+            "stats": result.stats,
+            "issues": result.issues,
+            "outputs": {k: str(v) for k, v in result.outputs.items()},
+        }
+        print(json.dumps(payload, ensure_ascii=False))
+    else:
+        status = "OK" if result.valid else "FAIL"
+        print(f"[N243] status={status} nodes={len(result.nodes)} edges={len(result.edges)}")
+        for name, path in result.outputs.items():
+            print(f"[N243] {name} -> {path}")
+        if result.issues:
+            print("[N243] issues:")
+            for issue in result.issues:
+                print(f"  - {issue}")
+
+    return 0 if result.valid else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+"""
+n243-query-engine — CLI for N243 Query Engine.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+
+from n243_query_engine.core import run_query_pipeline
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="N243 Query Engine CLI")
+    parser.add_argument("query_type", choices=["search", "crossref", "topology", "temporal", "contradiction"])
+    parser.add_argument("--target", type=str, default="", help="Search target")
+    parser.add_argument("--json", action="store_true", help="JSON output")
+    args = parser.parse_args(argv)
+
+    payload = run_query_pipeline(args.query_type, args.target)
+
+    if args.json:
+        print(json.dumps(payload, ensure_ascii=False))
+    else:
+        status = "OK" if payload["ok"] else "FAIL"
+        print(f"[N243] status={status} query={payload['query_type']} matches={len(payload['items'])}")
+        if payload.get("error"):
+            print(f"[N243] error: {payload['error']}")
+        for item in payload["items"][:10]:
+            print(json.dumps(item, ensure_ascii=False))
+
+    return 0 if payload["ok"] else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

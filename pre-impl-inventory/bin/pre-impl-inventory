@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+"""pre-impl-inventory — Run pre-implementation asset inventory."""
+
+import sys
+import io
+from pathlib import Path
+
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from pre_impl_inventory import InventoryEngine
+
+
+def main() -> int:
+    if len(sys.argv) < 2:
+        print("Usage: pre-impl-inventory <prd_path>")
+        return 1
+    prd_path = Path(sys.argv[1])
+    if not prd_path.exists():
+        print(f"[ERROR] PRD not found: {prd_path}")
+        return 1
+    engine = InventoryEngine(prd_path)
+    result = engine.run(prd_path)
+    if not result.valid:
+        print(f"[ERROR] {result.issues}")
+        return 1
+    print(f"[INVENTORY] assets={result.stats['total_assets']} S={result.stats['S']} K={result.stats['K']} R={result.stats['R']}")
+    for name, path in result.outputs.items():
+        print(f"[INVENTORY] {name} -> {path}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
