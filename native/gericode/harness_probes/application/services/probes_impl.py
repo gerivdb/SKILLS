@@ -188,7 +188,7 @@ def probe_p712_triade_coherence(ctx: ProbeContext) -> ProbeResultVO:
         import yaml
         with open(skills_registry, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f) or {}
-        total_skills = int(data.get("total_skills", 0))
+        total_skills = int(data.get("registry", {}).get("total_skills", 0) or 0)
         passed = total_skills > 100
         detail = f"Skills registry found with {total_skills} skills (threshold > 100)"
     except Exception as exc:
