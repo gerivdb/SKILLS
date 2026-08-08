@@ -171,6 +171,31 @@ def probe_p710_verses(ctx: ProbeContext) -> ProbeResultVO:
     return ProbeResultVO(probe_id="P-710", passed=bool(verses), detail=detail)
 
 
+
+def probe_p712_triade_coherence(ctx: ProbeContext) -> ProbeResultVO:
+    tools_root = ctx.repo_root.parent.parent
+    checks = {
+        "skill-citizen-primus-triade.md": ctx.ontology_root / "concepts" / "skill-citizen-primus-triade.md",
+        "L4-TOOLS SKILLS REGISTRY.yaml": tools_root / "L4-TOOLS" / "SKILLS" / "REGISTRY.yaml",
+        "L4-TOOLS PRIMUS REGISTRY.yaml": tools_root / "L4-TOOLS" / "PRIMUS" / "REGISTRY.yaml",
+    }
+    missing = [str(path.relative_to(tools_root)) for name, path in checks.items() if not path.exists()]
+    if missing:
+        detail = f"Missing triade artifacts: {', '.join(missing)}"
+        return ProbeResultVO(probe_id="P-712", passed=False, detail=detail)
+    skills_registry = checks["L4-TOOLS SKILLS REGISTRY.yaml"]
+    try:
+        import yaml
+        with open(skills_registry, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f) or {}
+        total_skills = int(data.get("total_skills", 0))
+        passed = total_skills > 100
+        detail = f"Skills registry found with {total_skills} skills (threshold > 100)"
+    except Exception as exc:
+        passed = False
+        detail = f"Failed to parse skills registry: {exc}"
+    return ProbeResultVO(probe_id="P-712", passed=passed, detail=detail)
+
 def probe_p711_bridges(ctx: ProbeContext) -> ProbeResultVO:
     tools_root = ctx.repo_root.parent.parent
     candidates = [
@@ -195,9 +220,12 @@ PROBES = {
     "P-709": probe_p709_wal,
     "P-710": probe_p710_verses,
     "P-711": probe_p711_bridges,
+    "P-712": probe_p712_triade_coherence,
 }
 
 
 def run_all() -> list[ProbeResultVO]:
     ctx = _default_context()
     return [fn(ctx) for probe_id, fn in sorted(PROBES.items())]
+
+
