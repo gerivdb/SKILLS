@@ -1,8 +1,8 @@
-registry:
+﻿registry:
   version: 1.0.0
   ecosystem: ecosystem-1
   last_updated: '2026-08-07'
-  total_skills: 194
+  total_skills: 198
 skills:
 
 - name: booking
@@ -3991,11 +3991,101 @@ skills:
   assimilation_status: N/A
   source_repo: gerivdb/GeriCode
   consumes_from: []
+- name: git-lock-rescuer
+  description: Diagnostic et rÃ©solution sÃ©curisÃ©e des fichiers .lock git (.git/index.lock, etc.). Jamais de suppression aveugle.
+  type: foundational
+  triggers:
+    - git lock
+    - index.lock
+    - git add bloque
+    - git commit bloque
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: "2026-08-10"
+  updated: "2026-08-10"
+  phi_weight: 0.005
+  path: native/foundational/git-lock-rescuer/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+
+- name: kilo-rule-auditor
+  description: Audite et sanitize les rÃ¨gles Kilo dans C:\Users\GG\.kilocode\rules\ et .kilo/rules/. VÃ©rifie la cohÃ©rence avec les ADRs.
+  type: foundational
+  triggers:
+    - kilo rules audit
+    - rule sanitize
+    - ADR backing check
+    - pre-session audit
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: "2026-08-10"
+  updated: "2026-08-10"
+  phi_weight: 0.005
+  path: native/foundational/kilo-rule-auditor/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+
+- name: kilo-worktree-reconciler
+  description: RÃ©concilie uniquement les kilo worktrees d'Agent Manager avec .kilo/worktrees/ et .kilo/agent-manager.json.
+  type: foundational
+  triggers:
+    - kilo worktree reconcile
+    - agent-manager cleanup
+    - worktree orphan
+    - session cleanup
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: "2026-08-10"
+  updated: "2026-08-10"
+  phi_weight: 0.005
+  path: native/foundational/kilo-worktree-reconciler/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+
+- name: powershell-json-safe
+  description: Manipule du JSON complexe en PowerShell en prÃ©servant les clÃ©s originales via PSObject.Properties.
+  type: foundational
+  triggers:
+    - powershell json safe
+    - json corruption
+    - PSObject Properties
+    - ConvertTo-Json
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: "2026-08-10"
+  updated: "2026-08-10"
+  phi_weight: 0.005
+  path: native/foundational/powershell-json-safe/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
+
 metadata:
   phi_cps_contribution: 0.683
   governance_level: L2
   citizen: skills-registry
   lifecycle: GENESIS
+
+
 
 
 
