@@ -2,7 +2,7 @@
   version: 1.0.0
   ecosystem: ecosystem-1
   last_updated: '2026-08-07'
-  total_skills: 198
+  total_skills: 199
 skills:
 
 - name: booking
@@ -4079,11 +4079,34 @@ skills:
   source_repo: gerivdb/GeriCode
   consumes_from: []
 
+- name: forensic-runners
+  description: ImplÃ©mente et orchestre les runners forensiques (ROOTX, RLM-243, TLM-LANG, TIMX, SPIDX, LLUX) pour Agent Manager V9.9.
+  type: foundational
+  triggers:
+    - forensic investigation
+    - causal analysis
+    - ontological check
+    - temporal analysis
+    - runner invocation
+  domain: ecosystem-tools
+  version: 1.0.0
+  author: gerivdb
+  license: MIT
+  status: active
+  created: "2026-08-10"
+  updated: "2026-08-10"
+  phi_weight: 0.005
+  path: native/foundational/forensic-runners/SKILL.md
+  source: native
+  assimilation_status: N/A
+  source_repo: gerivdb/GeriCode
+  consumes_from: []
 metadata:
   phi_cps_contribution: 0.683
   governance_level: L2
   citizen: skills-registry
   lifecycle: GENESIS
+
 
 
 
