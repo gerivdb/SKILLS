@@ -1,0 +1,29 @@
+# Dossier scripts pour Mistral
+
+Ce dossier contient les **scripts exécutables** (Python, PowerShell, etc.) pour automatiser les skills Mistral.
+
+## Structure attendue
+- `*.py` : Scripts Python (ex: `mistral_skill_loader.py`).
+- `*.ps1` : Scripts PowerShell (ex: `mistral_nexus_sync.ps1`).
+
+## Conventions
+- Nommage : `snake_case.py` ou `kebab-case.ps1`.
+- **Shebang** : Ajouter `#!/usr/bin/env python3` pour les scripts Python.
+- **Métadonnées** : Inclure un docstring ou un en-tête avec :
+  ```python
+  """
+  Script: mistral_nexus_sync.py
+  Description: Synchronise les registres NEXUS via Mistral.
+  Strate: L1
+  Dépendances: mcp_github, code_interpreter
+  """
+  ```
+
+## Scripts à intégrer
+- [ ] `mistral_skill_loader.py` (chargeur de skills Mistral).
+- [ ] `mistral_nexus_sync.ps1` (synchronisation NEXUS via `mcp_github`).
+- [ ] `mistral_governance_audit.py` (audit des règles de gouvernance).
+
+## Exécution
+- **Mode dry-run** : Toujours tester avec `--dry-run` ou `-WhatIf` avant exécution réelle.
+- **Logs** : Rediriger les sorties vers `logs/mistral_*.log`.

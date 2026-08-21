@@ -1,0 +1,28 @@
+# Dossier devtools pour Mistral
+
+Ce dossier contient les **skills liés aux outils de développement (L3)** pour Mistral, alignés sur `ECOS-CLI`.
+
+## Structure attendue
+- `mistral-*.md` : Skills pour l'automatisation, les commandes CLI, ou les ponts avec d'autres outils.
+
+## Conventions
+- Nommage : `mistral-<outil>-<action>.md` (ex: `mistral-github-bridge.md`).
+- Format : Markdown avec métadonnées YAML (voir `SKILL_FORMAT_CANONICAL.md`).
+- Strate : **L3** (ECOS-CLI).
+
+## Exemple de métadonnées
+```yaml
+---
+name: mistral-github-bridge
+strate: L3
+source: Mistral
+dependencies:
+  - repo: gerivdb/ECOS-CLI
+  - tool: mcp_github
+---
+```
+
+## Skills à intégrer
+- [ ] `mistral-github-bridge.md` (pont entre Mistral et GitHub via `mcp_github`).
+- [ ] `mistral-ecos-cli.md` (intégration avec ECOS-CLI).
+- [ ] `mistral-script-runner.md` (exécution de scripts Mistral via CLI).

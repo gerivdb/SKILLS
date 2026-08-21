@@ -1,0 +1,28 @@
+# Dossier governance pour Mistral
+
+Ce dossier contient les **skills liés à la gouvernance (L0)** pour Mistral.
+
+## Structure attendue
+- `mistral-*.md` : Skills de gestion des règles, organes, ou agents.
+
+## Conventions
+- Nommage : `mistral-<domaine>-<action>.md` (ex: `mistral-agent-rules.md`).
+- Format : Markdown avec métadonnées YAML (voir `SKILL_FORMAT_CANONICAL.md`).
+- Strate : **L0** (GOVERNANCE-HUB).
+
+## Exemple de métadonnées
+```yaml
+---
+name: mistral-agent-rules
+strate: L0
+source: Mistral
+dependencies:
+  - repo: gerivdb/GOVERNANCE-HUB
+  - file: AGENT_RAM.yaml
+---
+```
+
+## Skills à intégrer
+- [ ] `mistral-agent-rules.md` (règles pour les agents Mistral, aligné sur `AGENT_RAM.yaml`).
+- [ ] `mistral-organs-registry.md` (registre des organes Mistral, aligné sur `OrgansRegistry.yaml`).
+- [ ] `mistral-compliance.md` (règles de conformité pour les skills Mistral).
