@@ -22,3 +22,5 @@ build/
 __pycache__/
 *.pyc
 *.pyo
+!channels/registry.yaml
+
