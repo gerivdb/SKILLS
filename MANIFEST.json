@@ -7,78 +7,99 @@
       "name": "adr-manager",
       "version": "1.0.0",
       "description": "Architecture Decision Records: validation, creation, lifecycle. Use when user mentions 'ADR', 'décision architecture', 'valider ADR', 'nexus jalon'.",
-      "triggers": null,
+      "triggers": [
+        "adr-manager"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "argus-tracker",
       "version": "1.0.0",
       "description": "ARGUS project phases, delta registry, propagation, KIVA scheduler. Use when user mentions 'ARGUS', 'delta registry', 'propagation', 'Phase 4'.",
-      "triggers": null,
+      "triggers": [
+        "argus-tracker"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "base243",
       "version": "1.0.0",
       "description": "Base-243 converter, Ladybird, ternary, Tauri, portage. Use when user mentions 'base 243', 'convertisseur', 'Ladybird', 'ternaire'.",
-      "triggers": null,
+      "triggers": [
+        "base243"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "boinc-p2p",
       "version": "1.0.0",
       "description": "BOINC-LLM distributed inference, DHT Kademlia, swarm, P2P computing. Use when user mentions 'BOINC-LLM', 'P2P', 'distribué', 'swarm'.",
-      "triggers": null,
+      "triggers": [
+        "boinc-p2p"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "claude-optimizer",
       "version": "1.0.0",
       "description": "18-step Claude optimization, custom instructions, projects, style cloning. Use when user mentions 'optimisation Claude', '18 étapes', 'custom instructions'.",
-      "triggers": null,
+      "triggers": [
+        "claude-optimizer"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "comet-browser",
       "version": "1.0.0",
       "description": "COMET, BIRDY, headless browsers, CDP automation, browser extensions. Use when user mentions 'COMET', 'BIRDY', 'headless', 'CDP', 'navigateur IA'.",
-      "triggers": null,
+      "triggers": [
+        "comet-browser"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "data-vector",
       "version": "1.0.0",
       "description": "VDB, TQL, embeddings, vector search, VEC-243, SparrowDB. Use when user mentions 'VDB', 'TQL', 'embedding', 'vector', 'VEC-243'.",
-      "triggers": null,
+      "triggers": [
+        "data-vector"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "deepwiki-ops",
@@ -100,73 +121,92 @@
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": null,
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "devtools-core",
       "version": "1.0.0",
       "description": "PowerShell modules, CI Gate, MCP, Fix-MCPConnection, cleanup. Use when user mentions 'DevTools', 'PowerShell', 'CI Gate', 'nettoyage'.",
-      "triggers": null,
+      "triggers": [
+        "devtools-core"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "diagram-infographic",
       "version": "1.0.0",
       "description": "Infographics, KPI cards, mind maps, layered architecture. Use when user mentions 'infographie', 'KPI', 'carte mentale', 'architecture'.",
-      "triggers": null,
+      "triggers": [
+        "diagram-infographic"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "diagram-infra",
       "version": "1.0.0",
       "description": "Infrastructure diagrams: cloud, network, security, AWS, Azure. Use when user mentions 'cloud', 'AWS', 'Azure', 'réseau', 'sécurité'.",
-      "triggers": null,
+      "triggers": [
+        "diagram-infra"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "diagram-mermaid",
       "version": "1.0.0",
       "description": "Mermaid diagrams, flowcharts, Gantt, ERD, gitgraph. Use when user mentions 'Mermaid', 'flowchart', 'Gantt', 'ERD'.",
-      "triggers": null,
+      "triggers": [
+        "diagram-mermaid"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "diagram-uml",
       "version": "1.0.0",
       "description": "UML diagrams, PlantUML, ArchiMate, BPMN. Use when user mentions 'UML', 'PlantUML', 'ArchiMate', 'BPMN'.",
-      "triggers": null,
+      "triggers": [
+        "diagram-uml"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "diagram-vega",
       "version": "1.0.0",
       "description": "Vega-Lite charts, data visualization, analytics. Use when user mentions 'Vega-Lite', 'graphique', 'data analytics'.",
-      "triggers": null,
+      "triggers": [
+        "diagram-vega"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "ecos-vision",
@@ -190,7 +230,8 @@
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": null,
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "github-config",
@@ -209,18 +250,22 @@
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": "gh CLI >=2.0",
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "governance-formal",
       "version": "1.0.0",
       "description": "GOVERNANCE-HUB, REPO-STANDARDS, ONTOLOGY, RSS-v1 lifecycle. Use when user mentions 'GOVERNANCE-HUB', 'REPO-STANDARDS', 'ONTOLOGY', 'RSS-v1', 'lifecycle'.",
-      "triggers": null,
+      "triggers": [
+        "governance-formal"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "hitl-core",
@@ -245,73 +290,92 @@
       ],
       "prerequisites": null,
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "ide-tools",
       "version": "1.0.0",
       "description": "KiloCode, Cline, VSIX, MCP Sequential Thinking, Rust alternatives. Use when user mentions 'KiloCode', 'Cline', 'VSIX', 'MCP Sequential Thinking', 'Rust'.",
-      "triggers": null,
+      "triggers": [
+        "ide-tools"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "intent-bridge",
       "version": "1.0.0",
       "description": "Neurosymbolic bridge: INTENT-ENCODER, nomic-embed-text, 768-dim, ECOS v3.0. Use when user mentions 'INTENT-ENCODER', 'neurosymbolique', 'nomic-embed-text', 'BOINC-LLM'.",
-      "triggers": null,
+      "triggers": [
+        "intent-bridge"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "iot-diagram",
       "version": "1.0.0",
       "description": "IoT architecture diagrams, sensors, edge computing, MQTT. Use when user mentions 'IoT', 'capteurs', 'edge', 'MQTT'.",
-      "triggers": null,
+      "triggers": [
+        "iot-diagram"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "kiva-pipeline",
       "version": "1.0.0",
       "description": "KIVA-CLI pipelines, local CI, preflight, GitHub Actions migration. Use when user mentions 'KIVA', 'pipeline', 'CI locale', 'preflight'.",
-      "triggers": null,
+      "triggers": [
+        "kiva-pipeline"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "lecun-prd",
       "version": "1.0.0",
       "description": "Generate PRD from LeCun's positions, PLIX world model, Triade alignment. Use when user mentions 'PRD LeCun', 'plix world model', 'triade alignment'.",
-      "triggers": null,
+      "triggers": [
+        "lecun-prd"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "local-recovery",
       "version": "1.0.0",
       "description": "Disappeared local clones, WAZAA, git detective, restoration. Use when user mentions 'clone disparu', 'WAZAA', 'restauration', 'ecos repo'.",
-      "triggers": null,
+      "triggers": [
+        "local-recovery"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "mcp-write-guard",
@@ -328,150 +392,190 @@
       "nexusTags": "RESILIENCE_WRITE",
       "prerequisites": null,
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "media-culture",
       "version": "1.0.0",
       "description": "",
-      "triggers": null,
+      "triggers": [
+        "media-culture"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "multi-repo-syncer",
       "version": "1.0.0",
       "description": "Cross-repo synchronization, KIVA, NEXUS, gateway GPU, ECOS_ROOT. Use when user mentions 'sync multi-dépôts', 'KIVA', 'NEXUS', 'gateway GPU'.",
-      "triggers": null,
+      "triggers": [
+        "multi-repo-syncer"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "new-pillars",
       "version": "1.0.0",
       "description": "",
-      "triggers": null,
+      "triggers": [
+        "new-pillars"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-auditor",
       "version": "1.0.0",
       "description": "Audit repository structure against DDD criteria, EPIC size, violations. Use when user mentions 'audit structure', 'DDD', 'EPIC volumineuse', 'taille'.",
-      "triggers": null,
+      "triggers": [
+        "nexus-auditor"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-compliance",
       "version": "1.0.0",
       "description": "Branch governance, cherry-pick safety, hook validation. Use when user mentions 'conformité', 'gouvernance branche', 'cherry-pick safety'.",
-      "triggers": null,
+      "triggers": [
+        "nexus-compliance"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-core",
       "version": "1.0.0",
       "description": "NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'φ-CPS'.",
-      "triggers": null,
+      "triggers": [
+        "nexus-core"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-deps",
       "version": "1.0.0",
       "description": "Shadow dependency detection, dependency matrix, inter-layer coupling. Use when user mentions 'shadow dependency', 'matrice dépendances', 'inter-strates'.",
-      "triggers": null,
+      "triggers": [
+        "nexus-deps"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-map",
       "version": "1.0.0",
       "description": "",
-      "triggers": null,
+      "triggers": [
+        "nexus-map"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-monitor",
       "version": "1.0.0",
       "description": "φ-CPS scoring, ecosystem health, production readiness, drift detection. Use when user mentions 'φ-CPS', 'santé écosystème', 'production readiness', 'drift'.",
-      "triggers": null,
+      "triggers": [
+        "nexus-monitor"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-prd",
       "version": "1.0.0",
       "description": "Magistral PRD synthesis, ASCII diagrams, recommendations. Use when user mentions 'PRD magistral', 'synthèse', 'diagramme ASCII', 'recommandations'.",
-      "triggers": null,
+      "triggers": [
+        "nexus-prd"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-reformer",
       "version": "1.0.0",
       "description": "Refactoring, migration, cleanup, extraction of responsibilities. Use when user mentions 'refactoring', 'migration', 'nettoyage résidus', 'extraction'.",
-      "triggers": null,
+      "triggers": [
+        "nexus-reformer"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-registry-sync",
       "version": "1.0.0",
       "description": "ECOS_ROOT synchronization, autodiscover, missing repositories. Use when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'dépôts manquants'.",
-      "triggers": null,
+      "triggers": [
+        "nexus-registry-sync"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "nexus-registry-view",
       "version": "1.0.0",
       "description": "Dashboard, herd view, registry status. Use when user mentions 'dashboard troupeau', 'vue registre', 'tableau de bord'.",
-      "triggers": null,
+      "triggers": [
+        "nexus-registry-view"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "plix-core",
@@ -493,7 +597,8 @@
       ],
       "prerequisites": null,
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "prd-factory",
@@ -510,29 +615,36 @@
       "nexusTags": "PRD_FACTORY",
       "prerequisites": null,
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "pruning-explainer",
       "version": "1.0.0",
       "description": "Pruning in dev and Git, git remote prune, optimization. Use when user mentions 'pruning', 'élagage', 'git remote prune'.",
-      "triggers": null,
+      "triggers": [
+        "pruning-explainer"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "pulse-infra",
       "version": "1.0.0",
       "description": "",
-      "triggers": null,
+      "triggers": [
+        "pulse-infra"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "reasoning-toolkit",
@@ -559,183 +671,232 @@
       ],
       "prerequisites": null,
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "reposcope-process",
       "version": "1.0.0",
       "description": "Signal scoring, cross-artefact correlation, timeline, discovery sheets. Use when user mentions 'scoring', 'corrélation', 'timeline', 'fiche découverte'.",
-      "triggers": null,
+      "triggers": [
+        "reposcope-process"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "PENDING_ASSIMILATION"
+      "status": "PENDING_ASSIMILATION",
+      "license": "MIT"
     },
     {
       "name": "reposcope-publish",
       "version": "1.0.0",
       "description": "Brain-feed publication, signal clustering, dashboards, alerts. Use when user mentions 'brain‑feed', 'clusters', 'dashboard', 'alertes'.",
-      "triggers": null,
+      "triggers": [
+        "reposcope-publish"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "reposcope-run",
       "version": "1.0.0",
       "description": "Digestion engine execution, long scans, ingestion pipeline. Use when user mentions 'digestion', 'scan long', 'ingestion', 'pipeline'.",
-      "triggers": null,
+      "triggers": [
+        "reposcope-run"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "reposcope-watch",
       "version": "1.0.0",
       "description": "External surveillance: signals, flags, env vars, API endpoints, secrets. Use when user mentions 'surveillance', 'signal', 'hidden flag', 'API endpoint', 'secret CI'.",
-      "triggers": null,
+      "triggers": [
+        "reposcope-watch"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "scaffold-pipeline",
       "version": "1.0.0",
       "description": "SCAFFOLD governance flow: issue→intent, WAL, constitutional validation, artifact cataloging. Use when user mentions 'SCAFFOLD', 'pipeline gouvernance', 'WAL', 'issue to intent'.",
-      "triggers": null,
+      "triggers": [
+        "scaffold-pipeline"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skill-tester",
       "version": "1.0.0",
       "description": "Skill testing, validation, trigger verification, matrix. Use when user mentions 'test skill', 'validation', 'déclenchement', 'matrice'.",
-      "triggers": null,
+      "triggers": [
+        "skill-tester"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skills-manager",
       "version": "1.0.0",
       "description": "Skill creation, fusion, format canonical, refactoring, analysis. Use when user mentions 'skill', 'format canonique', 'refonte', 'fusion', 'analyse'.",
-      "triggers": null,
+      "triggers": [
+        "skills-manager"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "swarm-cli",
       "version": "1.0.0",
       "description": "",
-      "triggers": null,
+      "triggers": [
+        "swarm-cli"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "task-automator",
       "version": "1.0.0",
       "description": "Windows Task Scheduler, schtasks, polling automation. Use when user mentions 'Task Scheduler', 'schtasks', 'polling'.",
-      "triggers": null,
+      "triggers": [
+        "task-automator"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "triade-flux",
       "version": "1.0.0",
       "description": "FLUX review, HITL promotion, assimilation into NEXUS. Use when user mentions 'FLUX', 'review', 'HITL', 'promotion'.",
-      "triggers": null,
+      "triggers": [
+        "triade-flux"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "triade-hub",
       "version": "1.0.0",
       "description": "Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX. Use when user mentions 'triade cognitive', 'orchestration', 'end‑to‑end'.",
-      "triggers": null,
+      "triggers": [
+        "triade-hub"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "triade-iris",
       "version": "1.0.0",
       "description": "IRIS external sensor, polling, GitHub Actions workflow, target YAML. Use when user mentions 'IRIS', 'polling', 'capteur externe'.",
-      "triggers": null,
+      "triggers": [
+        "triade-iris"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "triade-kronos",
       "version": "1.0.0",
       "description": "KRONOS digester, signal qualification, deduplication. Use when user mentions 'KRONOS', 'digesteur', 'qualification'.",
-      "triggers": null,
+      "triggers": [
+        "triade-kronos"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "wiki-mimir",
       "version": "1.0.0",
       "description": "Wiki back-office, MIMIR, Atomic, project management, cross-repo docs. Use when user mentions 'wiki back-office', 'MIMIR', 'Atomic', 'projets'.",
-      "triggers": null,
+      "triggers": [
+        "wiki-mimir"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "workflow-debugger",
       "version": "1.0.0",
       "description": "GitHub Actions debugging: startup_failure, permissions, PYTHONPATH. Use when user mentions 'startup_failure', 'permissions', 'PYTHONPATH'.",
-      "triggers": null,
+      "triggers": [
+        "workflow-debugger"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "z600-hardware",
       "version": "1.0.0",
       "description": "HP Z600, E5620, Fermi GPU, AVX limitations, WASM bypass, Zig, LXC. Use when user mentions 'Z600', 'E5620', 'Fermi', 'AVX', 'WASM', 'Zig', 'LXC'.",
-      "triggers": null,
+      "triggers": [
+        "z600-hardware"
+      ],
       "layer": "L0_UNKNOWN",
       "nexusTags": "CONFORME_NEXUS",
       "prerequisites": [],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skills-agentic",
@@ -760,7 +921,8 @@
         "MANIFEST.json (SKILLS)"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skills-coverage",
@@ -785,7 +947,8 @@
         "skills-agentic.md (orchestrateur)"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skills-router",
@@ -811,7 +974,8 @@
         "skills-agentic.md (orchestrateur)"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skills-agentic-test",
@@ -842,7 +1006,8 @@
         "MANIFEST.json (SKILLS)"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skills-rewriter",
@@ -868,7 +1033,8 @@
         "skills-agentic.md (orchestrateur)"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skill-router-uae",
@@ -894,7 +1060,8 @@
         "skills-agentic.md (orchestrateur)"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "session-snapshot",
@@ -918,7 +1085,8 @@
         "Accès aux fichiers créés"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "keel-peg-parser",
@@ -943,7 +1111,8 @@
         "gerivdb/KEEL/README.md v0.5"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "keel-vdb-tql",
@@ -966,7 +1135,8 @@
         "gerivdb/BRAIN/src/brain/parsers/"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "prd-keel-factory",
@@ -988,7 +1158,8 @@
         "gerivdb/GOVERNANCE-HUB/PRD/"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "google-agentic-rag",
@@ -1011,7 +1182,8 @@
         "Connaissance des agents SCO7/Selena/Alfred/Riddler"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skill-slot-governor",
@@ -1033,7 +1205,8 @@
         "gerivdb/SKILLS/MANIFEST.json"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "uae-keel-coords",
@@ -1058,7 +1231,8 @@
         "gerivdb/SKILLS/TAXONOMY/"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "name": "skills-agentic-ref",
@@ -1083,7 +1257,8 @@
         "perplexity/skills/skills-coverage.md v2"
       ],
       "slotWeight": 1,
-      "status": "active"
+      "status": "active",
+      "license": "MIT"
     },
     {
       "layer": "L3_EMERGENCE",
@@ -1102,7 +1277,8 @@
         "scene",
         "anchor",
         "positioning"
-      ]
+      ],
+      "license": "MIT"
     },
     {
       "layer": "L3_EMERGENCE",
@@ -1119,7 +1295,8 @@
         "threshold",
         "emergency stop",
         "safety monitor"
-      ]
+      ],
+      "license": "MIT"
     },
     {
       "layer": "L3_EMERGENCE",
@@ -1136,7 +1313,8 @@
         "anchor",
         "workspace",
         "motor position"
-      ]
+      ],
+      "license": "MIT"
     },
     {
       "layer": "L2_COMPOSITION",
@@ -1154,7 +1332,8 @@
         "src/cli",
         "src/core",
         "entry point"
-      ]
+      ],
+      "license": "MIT"
     },
     {
       "layer": "L1_INFRA",
@@ -1171,7 +1350,8 @@
         "new repo",
         "rss compliance",
         "repo structure"
-      ]
+      ],
+      "license": "MIT"
     }
   ]
 }
