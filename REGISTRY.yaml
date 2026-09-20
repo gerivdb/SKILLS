@@ -1,4003 +1,1453 @@
 registry:
+  name: SKILLS
   version: 1.0.0
-  ecosystem: ecosystem-1
-  last_updated: '2026-08-07'
-  total_skills: 194
+  description: Skill registry for gerivdb ecosystem
+  total_skills: 80
+  last_updated: '2026-09-20T22:16:17Z'
 skills:
-
-- name: booking
-  description: Orchestration des reservations et planification pour services
-  type: domain
-  triggers:
-  - booking
-  - reservation
-  - scheduling
-  - calendar
-  - rendez-vous
-  - planification
-  domain: booking
+- id: ARGUS-REMOTE-AUDITOR
+  name: ARGUS-REMOTE-AUDITOR
+  description: Skill ARGUS-REMOTE-AUDITOR
   version: 1.0.0
-  author: gerivdb
-  license: MIT
   status: active
-  created: 2026-03-17
-  updated: 2026-03-17
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\domain\booking\SKILL.md'
   source: native
-  assimilation_status: N/A
-  consumes_from:
-  - product-context
-  source_repo: external
-
-- name: audit-trail
-  description: Skill for tracking and auditing financial transactions and operations
-  type: domain
-  triggers:
-  - audit
-  - trail
-  - tracking
-  - finance
-  - transactions
-  - compliance
-  domain: finance
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\domain\finance\audit-trail\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: finance
-  description: Analyse financiere et banking pour decisions metier
-  type: domain
-  triggers:
-  - finance
-  - banking
-  - analysis
-  - transactions
-  - budgetaire
-  - investissement
-  domain: finance
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-17
-  updated: 2026-03-17
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\domain\finance\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  consumes_from:
-  - ecosystem-principles
-  source_repo: external
-
-- name: alive-check
-  description: Skill for verifying if individuals in genealogy records are still alive
-  type: domain
-  triggers:
-  - alive
-  - check
-  - verification
-  - genealogy
-  - status
-  - vital-records
-  domain: genealogy
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\domain\genealogy\alive-check\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: gedcom-parser
-  description: Skill for parsing and analyzing GEDCOM genealogy files
-  type: domain
-  triggers:
-  - gedcom
-  - genealogy
-  - family-tree
-  - parsing
-  - ancestry
-  domain: genealogy
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\domain\genealogy\gedcom-parser\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: cv-parser
-  description: Skill for parsing and extracting structured data from CV/resume documents
-  type: domain
-  triggers:
-  - cv
-  - resume
-  - parsing
-  - extraction
-  - recruitment
-  domain: recruitment
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.008
-  path: '.kilo\worktrees\fire-omelet\native\domain\recruitment\cv-parser\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: domain
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\domain\recruitment\template-render\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\csv-extract\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: design-validation
-  description: Interview socratique relentless sur tout plan ou design jusqu'a resolution
-    complete de chaque branche de l'arbre de decisions
-  type: foundational
-  triggers:
-  - grill-me
-  - stress-test
-  - design-review
-  - validate-plan
-  - challenge
-  - interview-design
-  - decision-tree
-  - validate-architecture
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-25
-  updated: 2026-03-25
-  phi_weight: 0.007
-  path: '.kilo\worktrees\fire-omelet\native\foundational\design-validation\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: ecosystem-principles
-  description: Principes architecturaux ONTOLOGY, DRY, KISS, phi-CPS pour ecosystem-1
-  type: foundational
-  triggers:
-  - ontology
-  - dry
-  - kiss
-  - phi-cps
-  - principles
-  - architecture
-  - gouvernance
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-17
-  updated: 2026-03-17
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\ecosystem-principles\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\email-sender\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\embedding\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: notion-connector
-  description: Skill for connecting to Notion API and retrieving data from databases
-  type: foundational
-  triggers:
-  - notion
-  - api
-  - database
-  - data-retrieval
-  - connector
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\notion-connector\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: perplexity-sourcer
-  description: Skill for automated job sourcing using Perplexity API
-  type: foundational
-  triggers:
-  - perplexity
-  - job-sourcing
-  - search
-  - api
-  - job-listings
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\perplexity-sourcer\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: product-context
-  description: Contextualisation produit et audience pour optimisation marche
-  type: foundational
-  triggers:
-  - product-context
-  - audience
-  - market-fit
-  - positionnement
-  - persona
-  - cible
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-17
-  updated: 2026-03-17
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\product-context\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\rate-limiter\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\semantic-search\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: workflow-orchestrator
-  description: Skill for orchestrating daily automated workflows
-  type: foundational
-  triggers:
-  - workflow
-  - orchestration
-  - automation
-  - daily
-  - process
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: '.kilo\worktrees\fire-omelet\native\foundational\workflow-orchestrator\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  consumes_from:
-  - notion-connector
-  - perplexity-sourcer
-  source_repo: external
-
-- name: close-loop-detector
-  description: Detecte la fin d'une session et les boucles semantiques dans l'ecosysteme
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'close-loop-detector\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: booking
-  description: Orchestration des reservations et planification pour services
-  type: domain
-  triggers:
-  - booking
-  - reservation
-  - scheduling
-  - calendar
-  - rendez-vous
-  - planification
-  domain: booking
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-17
-  updated: 2026-03-17
-  phi_weight: 0.005
-  path: 'native\domain\booking\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  consumes_from:
-  - product-context
-  source_repo: external
-
-- name: audit-trail
-  description: Skill for tracking and auditing financial transactions and operations
-  type: domain
-  triggers:
-  - audit
-  - trail
-  - tracking
-  - finance
-  - transactions
-  - compliance
-  domain: finance
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: 'native\domain\finance\audit-trail\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: finance
-  description: Analyse financiere et banking pour decisions metier
-  type: domain
-  triggers:
-  - finance
-  - banking
-  - analysis
-  - transactions
-  - budgetaire
-  - investissement
-  domain: finance
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-17
-  updated: 2026-03-17
-  phi_weight: 0.005
-  path: 'native\domain\finance\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  consumes_from:
-  - ecosystem-principles
-  source_repo: external
-
-- name: alive-check
-  description: Skill for verifying if individuals in genealogy records are still alive
-  type: domain
-  triggers:
-  - alive
-  - check
-  - verification
-  - genealogy
-  - status
-  - vital-records
-  domain: genealogy
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: 'native\domain\genealogy\alive-check\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: gedcom-parser
-  description: Skill for parsing and analyzing GEDCOM genealogy files
-  type: domain
-  triggers:
-  - gedcom
-  - genealogy
-  - family-tree
-  - parsing
-  - ancestry
-  domain: genealogy
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: 'native\domain\genealogy\gedcom-parser\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: cv-parser
-  description: Skill for parsing and extracting structured data from CV/resume documents
-  type: domain
-  triggers:
-  - cv
-  - resume
-  - parsing
-  - extraction
-  - recruitment
-  domain: recruitment
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: 'native\domain\recruitment\cv-parser\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: domain
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: 'native\domain\recruitment\template-render\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: causal-chain
-  description: ''
-  type: external
-  triggers:
-  - causal-chain
-  - cause drift resolve
-  - causal dag
-  - counterfactual
-  - intervention
-  - notears
-  - lingam
-  - fci
-  domain: engines
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-06-17'
-  updated: '2026-06-17'
-  phi_weight: 0.012
-  path: 'native\engines\causal-chain\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: dag-rag
-  description: ''
-  type: external
-  triggers:
-  - dag-rag
-  - dag traversal
-  - rag
-  - kv cache
-  - retrieval augmented
-  - epic 074
-  domain: engines
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-06-17'
-  updated: '2026-06-17'
-  phi_weight: 0.01
-  path: 'native\engines\dag-rag\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: moe-router
-  description: ''
-  type: external
-  triggers:
-  - moe-router
-  - routing intelligence
-  - gate routing
-  - jepa
-  - energy-trit
-  - dispatch engine
-  domain: engines
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-06-17'
-  updated: '2026-06-17'
-  phi_weight: 0.013
-  path: 'native\engines\moe-router\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: polymorphic-pipeline
-  description: ''
-  type: external
-  triggers:
-  - polymorphic-pipeline
-  - oae
-  - pipeline modes
-  - L0 L9 pipeline
-  - multi-mode orchestration
-  domain: engines
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-06-17'
-  updated: '2026-06-17'
-  phi_weight: 0.011
-  path: 'native\engines\polymorphic-pipeline\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: safety-guard
-  description: ''
-  type: external
-  triggers:
-  - safety-guard
-  - phi-cps validation
-  - governance rules
-  - garde-fous
-  - safety validate
-  domain: engines
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-06-17'
-  updated: '2026-06-17'
-  phi_weight: 0.015
-  path: 'native\engines\safety-guard\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: talex
-  description: Moteur narratif X-FORGE - convertit graphes de reecriture (SPIDX, DAG-3)
-    en recits coherents et genere des scenarios narratifs
-  type: native
-  triggers:
-  - narrate
-  - forge
-  - x-forge
-  - tale
-  - story
-  - narrative
-  - spidx
-  - dag3
-  - verse
-  - spider-graph
-  - rewriting
-  domain: engines
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-08-04'
-  updated: '2026-08-04'
-  phi_weight: 0.012
-  path: 'native\engines\talex\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  consumes_from:
-  - ecosystem-principles
-  - spidx
-  - dag-3
-  - batverse
-  - holmes
-  provides_to:
-  - BATVERSE
-  - HOLMES
-  - DAG-3
-  - VERSES
-  - BUZZ-X
-  - FLUX
-  - BRAIN
-  source_repo: external
-
-- name: batch-cherry-pick-executor
-  description: Executes cherry-pick of unique commits from multiple orphan branches
-    with conflict detection, deduplication, and reporting
-  type: foundational
-  triggers:
-  - /batch-cherry-pick
-  - cherry-pick orphans
-  - cherry-pick multiple branches
-  - execute cherry-pick plan
-  - bulk cherry-pick
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.007
-  path: 'native\foundational\batch-cherry-pick-executor\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: bisect-forensics
-  description: Guides git bisect for regression hunting, automated bisect scripts,
-    and git blame for forensic analysis
-  type: foundational
-  triggers:
-  - /bisect
-  - git bisect
-  - find regression
-  - bisect start
-  - git blame
-  - who changed this
-  - when was this introduced
-  - forensic analysis
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.005
-  path: 'native\foundational\bisect-forensics\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: branch-content-analyzer
-  description: Detects if branch content is already in main (0 unique files = safe
-    to delete), analyzes file overlap and commit ancestry
-  type: foundational
-  triggers:
-  - /analyze-branch-content
-  - branch content analysis
-  - is branch merged
-  - branch overlap
-  - check branch files
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.006
-  path: 'native\foundational\branch-content-analyzer\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: branch-lifecycle
-  description: Analyzes all branches, recommends PR merge / cherry-pick / delete strategy,
-    and executes sync/cleanup (merged with sync-branches)
-  type: foundational
-  triggers:
-  - /branch-lifecycle
-  - /sync-branches
-  - analyze branches
-  - branch strategy
-  - which branches to merge
-  - branch cleanup
-  - branch analysis
-  - sync branches local remote
-  - cleanup merged branches
-  - delete merged branches
-  - branch sync
-  - prune branches
-  domain: foundational
-  version: 1.1.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.008
-  path: 'native\foundational\branch-lifecycle\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: branch-merge-strategy
-  description: 'Decides optimal merge strategy per branch: cherry-pick, squash merge,
-    rebase, or delete based on content analysis'
-  type: foundational
-  triggers:
-  - /merge-strategy
-  - branch merge strategy
-  - how to merge branch
-  - cherry-pick or squash
-  - optimal merge
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.006
-  path: 'native\foundational\branch-merge-strategy\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: branch-protection-config
-  description: Configure branch protection rules, required reviews, status checks
-    via gh CLI
-  type: foundational
-  triggers:
-  - /branch-protection
-  - protect branch
-  - branch protection rules
-  - required reviews
-  - status checks
-  - prevent force push
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.004
-  path: 'native\foundational\branch-protection-config\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: cherry-pick-batch
-  description: Cherry-picks multiple commits with automatic conflict detection, skip/abort
-    decisions, and reporting
-  type: foundational
-  triggers:
-  - /cherry-pick-batch
-  - cherry-pick multiple commits
-  - batch cherry-pick
-  - cherry-pick from branch
-  - cherry-pick range
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.005
-  path: 'native\foundational\cherry-pick-batch\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: cherry-pick-conflict-resolver
-  description: Extends cherry-pick-batch with conflict resolution during cherry-pick
-    operations (binary files, rerere, manual resolve)
-  type: foundational
-  triggers:
-  - /cherry-pick-resolve
-  - cherry-pick conflict
-  - resolve cherry-pick conflict
-  - cherry-pick binary conflict
-  - git rerere
-  - reuse recorded resolution
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.006
-  path: 'native\foundational\cherry-pick-conflict-resolver\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: citizen-module-integrator
-  description: 'Handles Jules citizen modules integration: validates citizen structure,
-    checks for conflicts, integrates new citizens'
-  type: foundational
-  triggers:
-  - /citizen-integrate
-  - citizen module
-  - jules citizen
-  - integrate citizen
-  - citizen branch
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.005
-  path: 'native\foundational\citizen-module-integrator\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: clean-pycache
-  description: Removes __pycache__ directories and .pyc files from working tree and
-    git index, ensures .gitignore coverage
-  type: foundational
-  triggers:
-  - /clean-pycache
-  - clean pycache
-  - remove pyc files
-  - pycache cleanup
-  - clean python cache
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.003
-  path: 'native\foundational\clean-pycache\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: conventional-commit-validator
-  description: Enforces Conventional Commits specification (feat, fix, docs, chore,
-    refactor, etc.) with commit-msg hook integration
-  type: foundational
-  triggers:
-  - /commit-msg
-  - conventional commit
-  - commit message format
-  - validate commit message
-  - commit lint
-  - commit convention
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.006
-  path: 'native\foundational\conventional-commit-validator\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: cross-repo-hooks
-  description: 'Cross-repo hook analysis and orchestration: identify missing hooks,
-    deploy hooks across repos, validate integration'
-  type: foundational
-  triggers:
-  - /cross-repo-hooks
-  - cross-repo hooks
-  - analyze hooks
-  - deploy hooks
-  - hook orchestration
-  - hook analysis
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.005
-  path: 'native\foundational\cross-repo-hooks\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: 'native\foundational\csv-extract\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: design-validation
-  description: Interview socratique relentless sur tout plan ou design jusqu'a resolution
-    complete de chaque branche de l'arbre de decisions
-  type: foundational
-  triggers:
-  - grill-me
-  - stress-test
-  - design-review
-  - validate-plan
-  - challenge
-  - interview-design
-  - decision-tree
-  - validate-architecture
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-25
-  updated: 2026-03-25
-  phi_weight: 0.007
-  path: 'native\foundational\design-validation\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: diffscope-review
-  description: Reviews a pull request using diffscope (or gh fallback on Windows)
-    and posts review comments
-  type: foundational
-  triggers:
-  - /diffscope-review
-  - review pr with diffscope
-  - diffscope pr
-  - automated pr review
-  - pr review auto
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.005
-  path: 'native\foundational\diffscope-review\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: ecosystem-principles
-  description: Principes architecturaux ONTOLOGY, DRY, KISS, phi-CPS pour ecosystem-1
-  type: foundational
-  triggers:
-  - ontology
-  - dry
-  - kiss
-  - phi-cps
-  - principles
-  - architecture
-  - gouvernance
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-17
-  updated: 2026-03-17
-  phi_weight: 0.005
-  path: 'native\foundational\ecosystem-principles\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: eecs-migration-handler
-  description: 'Handles EECS migration branches: validates migration files, checks
-    for conflicts with existing EECS config, integrates safely'
-  type: foundational
-  triggers:
-  - /eecs-migration
-  - eecs migration
-  - migrate eecs
-  - eecs branch
-  - eecs integration
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.005
-  path: 'native\foundational\eecs-migration-handler\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: 'native\foundational\email-sender\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: 'native\foundational\embedding\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: fork-sync-workflow
-  description: 'Fork-based contribution workflow: sync upstream, manage remotes, PR
-    from fork'
-  type: foundational
-  triggers:
-  - /fork-sync
-  - sync fork
-  - fork workflow
-  - upstream sync
-  - pull from upstream
-  - pr from fork
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.004
-  path: 'native\foundational\fork-sync-workflow\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: git-assainissement
-  description: 'Complete git repository sanitization: branch lifecycle, orphan dispatch,
-    cherry-pick, cleanup, tags, submodules, reporting'
-  type: foundational
-  triggers:
-  - /assainir
-  - git cleanup
-  - sanitize git
-  - repository cleanup
-  - full git audit
-  - assainissement git
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.01
-  path: 'native\foundational\git-assainissement\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: git-flow-manager
-  description: 'Implements git-flow branching model: feature, release, hotfix, develop,
-    main - guides branch creation, merging, and deletion per git-flow conventions'
-  type: foundational
-  triggers:
-  - /git-flow
-  - git flow
-  - gitflow
-  - branch naming convention
-  - create feature branch
-  - create release branch
-  - create hotfix branch
-  - finish feature
-  - finish release
-  - finish hotfix
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.008
-  path: 'native\foundational\git-flow-manager\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: git-hooks-manager
-  description: Create, install, debug, and manage git hooks (pre-commit, pre-push,
-    commit-msg) with templates and testing
-  type: foundational
-  triggers:
-  - /hooks
-  - git hooks
-  - install hooks
-  - pre-commit hook
-  - pre-push hook
-  - commit-msg hook
-  - hook management
-  - debug hooks
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.006
-  path: 'native\foundational\git-hooks-manager\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: kiva-pr-workflow
-  description: 'Executes the complete KIVA-CLI PR merge workflow: rollback point,
-    review, merge, WAL update, drift check, citizen promotion'
-  type: foundational
-  triggers:
-  - /kiva-pr-workflow
-  - kiva merge pr
-  - merge with kiva
-  - pr workflow kiva
-  - kiva pr merge
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.008
-  path: 'native\foundational\kiva-pr-workflow\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: merge-conflict-resolver
-  description: 'Interactive merge conflict resolution: detects conflicts, presents
-    options (ours/theirs/manual), guides resolution, validates result'
-  type: foundational
-  triggers:
-  - /resolve-conflicts
-  - merge conflict
-  - resolve merge conflict
-  - conflict resolution
-  - fix merge conflict
-  - git conflict
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.008
-  path: 'native\foundational\merge-conflict-resolver\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: network-resilient-sync
-  description: 'Network-resilient git sync: pre-checks reachability, retry with backoff,
-    offline mode, queued pushes'
-  type: foundational
-  triggers:
-  - /sync
-  - git sync
-  - network sync
-  - offline sync
-  - retry push
-  - remote unreachable
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.004
-  path: 'native\foundational\network-resilient-sync\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: notion-connector
-  description: Skill for connecting to Notion API and retrieving data from databases
-  type: foundational
-  triggers:
-  - notion
-  - api
-  - database
-  - data-retrieval
-  - connector
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: 'native\foundational\notion-connector\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: orphan-branch-dispatcher
-  description: 'Analyzes orphan/closed-PR branches and dispatches: cherry-pick valuable
-    commits, delete stale ones, escalate ambiguous cases'
-  type: foundational
-  triggers:
-  - /orphan-dispatch
-  - orphan branches
-  - closed pr branches
-  - dispatch orphans
-  - review closed branches
-  - triage orphan branches
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.007
-  path: 'native\foundational\orphan-branch-dispatcher\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: perplexity-sourcer
-  description: Skill for automated job sourcing using Perplexity API
-  type: foundational
-  triggers:
-  - perplexity
-  - job-sourcing
-  - search
-  - api
-  - job-listings
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: 'native\foundational\perplexity-sourcer\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: product-context
-  description: Contextualisation produit et audience pour optimisation marche
-  type: foundational
-  triggers:
-  - product-context
-  - audience
-  - market-fit
-  - positionnement
-  - persona
-  - cible
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-17
-  updated: 2026-03-17
-  phi_weight: 0.005
-  path: 'native\foundational\product-context\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: 'native\foundational\rate-limiter\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: rebase-workflow
-  description: Covers interactive rebase, rebase vs. merge decision tree, squashing,
-    reordering, and safe rebase practices
-  type: foundational
-  triggers:
-  - /rebase
-  - interactive rebase
-  - rebase workflow
-  - squash commits
-  - reorder commits
-  - rebase vs merge
-  - git rebase
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.007
-  path: 'native\foundational\rebase-workflow\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: rollback-strategy
-  description: Guides git revert vs. git reset decisions, safe rollback procedures,
-    and post-rollback validation
-  type: foundational
-  triggers:
-  - /rollback
-  - git revert
-  - git reset
-  - undo commit
-  - rollback commit
-  - undo merge
-  - revert merge
-  - safe rollback
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.007
-  path: 'native\foundational\rollback-strategy\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: 'native\foundational\semantic-search\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: stash-workflow
-  description: Covers stash save, pop, apply, drop, branch-from-stash, partial stashes,
-    and stash conflict handling
-  type: foundational
-  triggers:
-  - /stash
-  - git stash
-  - stash save
-  - stash pop
-  - stash apply
-  - stash list
-  - stash branch
-  - partial stash
-  - stash untracked
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.005
-  path: 'native\foundational\stash-workflow\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: submodule-manager
-  description: 'Git submodule lifecycle: add, update, sync, remove - validates submodule
-    health and handles broken references'
-  type: foundational
-  triggers:
-  - /submodule
-  - git submodule
-  - add submodule
-  - update submodule
-  - sync submodule
-  - remove submodule
-  - broken submodule
-  - submodule status
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.005
-  path: 'native\foundational\submodule-manager\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: sync-branches
-  description: Synchronizes local and remote branches, detects already-merged branches,
-    and cleans up stale references
-  type: foundational
-  triggers:
-  - /sync-branches
-  - sync branches local remote
-  - cleanup merged branches
-  - delete merged branches
-  - branch sync
-  - prune branches
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.005
-  path: 'native\foundational\sync-branches\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: tag-release-manager
-  description: Semantic versioning, git tag creation, release branch management, release
-    automation, and changelog integration
-  type: foundational
-  triggers:
-  - /release
-  - create release
-  - tag release
-  - semantic version
-  - bump version
-  - create tag
-  - release notes
-  - publish release
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.007
-  path: 'native\foundational\tag-release-manager\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: wal-reconciler
-  description: Validates WAL integrity against actual git state, detects orphaned
-    entries, compacts old entries
-  type: foundational
-  triggers:
-  - /wal-reconcile
-  - wal integrity
-  - wal validation
-  - wal compact
-  - wal audit
-  - wal vs git
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.006
-  path: 'native\foundational\wal-reconciler\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: foundational
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.005
-  path: 'native\foundational\web-scraper\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: workflow-orchestrator
-  description: Skill for orchestrating daily automated workflows
-  type: foundational
-  triggers:
-  - workflow
-  - orchestration
-  - automation
-  - daily
-  - process
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-03-27
-  updated: 2026-03-27
-  phi_weight: 0.005
-  path: 'native\foundational\workflow-orchestrator\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  consumes_from:
-  - notion-connector
-  - perplexity-sourcer
-  source_repo: external
-
-- name: worktree-manager
-  description: 'Git worktree management: create, list, remove worktrees for parallel
-    branch work'
-  type: foundational
-  triggers:
-  - /worktree
-  - git worktree
-  - create worktree
-  - list worktrees
-  - remove worktree
-  - parallel branches
-  domain: foundational
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: 2026-06-06
-  updated: 2026-06-06
-  phi_weight: 0.003
-  path: 'native\foundational\worktree-manager\SKILL.md'
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-
-- name: nexus-core
-  description: Load when user mentions "NEXUS governance", "SOT conformity", "ECOS_ROOT",
-    "phi-CPS", "ADR validation", "EPIC compliance".
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\build\nexus-core\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: skills-pack
-  description: Pack de 59 skills Perplexity pour l'ecosysteme gerivdb (ENV1 - DEV-COMET).
-    Use when user mentions any skill name.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\SKILL.md'
-  source: unknown
-  assimilation_status: pending
   source_repo: gerivdb/SKILLS
-
-- name: adr-manager
-  description: 'Architecture Decision Records: validation, creation, lifecycle. Use
-    when user mentions ''ADR'', ''decision architecture'', ''valider ADR'', ''nexus
-    jalon''.'
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
+  path: skills/ARGUS-REMOTE-AUDITOR/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\adr-manager\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GOVERNANCE-HUB
-
-- name: argus-tracker
-  description: ARGUS project phases, delta registry, propagation, KIVA scheduler.
-    Use when user mentions 'ARGUS', 'delta registry', 'propagation', 'Phase 4'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\argus-tracker\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/ARGUS
-
-- name: base243
-  description: Base-243 converter, Ladybird, ternary, Tauri, portage. Use when user
-    mentions 'base 243', 'convertisseur', 'Ladybird', 'ternaire'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\base243\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/BASE243
-
-- name: boinc-p2p
-  description: BOINC-LLM distributed inference, DHT Kademlia, swarm, P2P computing.
-    Use when user mentions 'BOINC-LLM', 'P2P', 'distribue', 'swarm'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\boinc-p2p\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/BOINC-P2P
-
-- name: claude-optimizer
-  description: 18-step Claude optimization, custom instructions, projects, style cloning.
-    Use when user mentions 'optimisation Claude', '18 etapes', 'custom instructions'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\claude-optimizer\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/CLAUDE-OPTIMIZER
-
-- name: comet-browser
-  description: COMET, BIRDY, headless browsers, CDP automation, browser extensions.
-    Use when user mentions 'COMET', 'BIRDY', 'headless', 'CDP', 'navigateur IA'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\comet-browser\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/COMET
-
-- name: data-vector
-  description: VDB, TQL, embeddings, vector search, VEC-243, SparrowDB. Use when user
-    mentions 'VDB', 'TQL', 'embedding', 'vector', 'VEC-243'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\data-vector\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/DATA-VECTOR
-
-- name: deepwiki-ops
-  description: Fused skill combining DeepWiki-based repo analysis (analyse-repo-deepwiki)
-    and DeepWiki repo enrichment (deepwiki_repo_enricher). Provides constitutional
-    ECOS analysis, ENV2 scoring, GitHub issue coverage, alternatives comparison, and
-    final recommendation. Use when user mentions any of the original triggers.
-  type: external
+  type: domain
   triggers:
-  - /analyse-repo
-  - evalue depot
-  - DeepWiki
-  - scoring ECOS
-  - citoyennisation
-  - DeepWiki Enricher
-  - constitutionnelle ECOS
-  - ENV2 compliance
-  - GitHub coverage
-  - alternatives
-  domain: ''
+  - ARGUS-REMOTE-AUDITOR
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: EPIC-DEPENDENCY-ENGINE
+  name: EPIC-DEPENDENCY-ENGINE
+  description: Skill EPIC-DEPENDENCY-ENGINE
   version: 1.0.0
-  author: gerivdb
-  license: MIT
   status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\deepwiki-ops\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/DEEPWIKI-OPS
-
-- name: devtools-core
-  description: PowerShell modules, CI Gate, MCP, Fix-MCPConnection, cleanup. Use when
-    user mentions 'DevTools', 'PowerShell', 'CI Gate', 'nettoyage'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\devtools-core\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/DevTools
-
-- name: diagram-infographic
-  description: Infographics, KPI cards, mind maps, layered architecture. Use when
-    user mentions 'infographie', 'KPI', 'carte mentale', 'architecture'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\diagram-infographic\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/DIAGRAM-INFOGRAPHIC
-
-- name: diagram-infra
-  description: 'Infrastructure diagrams: cloud, network, security, AWS, Azure. Use
-    when user mentions ''cloud'', ''AWS'', ''Azure'', ''reseau'', ''securite''.'
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\diagram-infra\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/DIAGRAM-INFRA
-
-- name: diagram-mermaid
-  description: Mermaid diagrams, flowcharts, Gantt, ERD, gitgraph. Use when user mentions
-    'Mermaid', 'flowchart', 'Gantt', 'ERD'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\diagram-mermaid\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/DIAGRAM-MERMAID
-
-- name: diagram-uml
-  description: UML diagrams, PlantUML, ArchiMate, BPMN. Use when user mentions 'UML',
-    'PlantUML', 'ArchiMate', 'BPMN'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\diagram-uml\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/DIAGRAM-UML
-
-- name: diagram-vega
-  description: Vega-Lite charts, data visualization, analytics. Use when user mentions
-    'Vega-Lite', 'graphique', 'data analytics'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\diagram-vega\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/DIAGRAM-VEGA
-
-- name: ecos-vision
-  description: Fused skill combining ECOS-VISION (cross-repo visualization), ecosystem-self
-    (self-learning / semantic cache / META-CLUSTER GRAPH) and lecun-vision (Yann LeCun's
-    AI vision - JEPA, world models, AMI, Tapestry). Use when user mentions any of
-    the original triggers.
-  type: external
-  triggers:
-  - ECOS-VISION
-  - visualisation
-  - diagrammes cross-repo
-  - apprentissage interne
-  - cache semantique
-  - META-CLUSTER
-  - LeCun
-  - JEPA
-  - world model
-  - AMI
-  - Tapestry
-  - debat IA
-  domain: ''
-  version: 2.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\ecos-vision\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/ECOS-VISION
-
-- name: github-config
-  description: GITHUB_TOKEN, gh auth, scopes, Actions settings, rate-limit, gestion
-    des gros fichiers (push_files vs create_or_update, split-payload, SHA-management).
-    Use when user mentions 'GITHUB_TOKEN', 'gh auth', 'scopes', 'Settings Actions',
-    'large files', 'push_files', 'create_or_update'.
-  type: external
-  triggers:
-  - GITHUB_TOKEN
-  - gh auth
-  - scopes
-  - Settings Actions
-  - large files
-  - push_files
-  - create_or_update
-  domain: ''
-  version: 2.1.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\github-config\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GITHUB-CONFIG
-
-- name: governance-formal
-  description: GOVERNANCE-HUB, REPO-STANDARDS, ONTOLOGY, RSS-v1 lifecycle. Use when
-    user mentions 'GOVERNANCE-HUB', 'REPO-STANDARDS', 'ONTOLOGY', 'RSS-v1', 'lifecycle'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\governance-formal\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GOVERNANCE-HUB
-
-- name: hitl-core
-  description: Fused skill combining HITL Hub (review of signals, workflow building,
-    world-model review) and HITL Ops (governance audit, ecosystem health, token scope,
-    permissions). Use when user mentions any of the original triggers.
-  type: external
-  triggers:
-  - HITL
-  - review signals
-  - audit
-  - workflow builder
-  - gouvernance transverse
-  - token scope
-  - permissions
-  - rapport d'etat
-  - ECOS_ROOT
-  - priorisation
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\hitl-core\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/HITL-CORE
-
-- name: ide-tools
-  description: KiloCode, Cline, VSIX, MCP Sequential Thinking, Rust alternatives.
-    Use when user mentions 'KiloCode', 'Cline', 'VSIX', 'MCP Sequential Thinking',
-    'Rust'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\ide-tools\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/IDE-TOOLS
-
-- name: intent-bridge
-  description: 'Neurosymbolic bridge: INTENT-ENCODER, nomic-embed-text, 768-dim, ECOS
-    v3.0. Use when user mentions ''INTENT-ENCODER'', ''neurosymbolique'', ''nomic-embed-text'',
-    ''BOINC-LLM''.'
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\intent-bridge\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/INTENT-BRIDGE
-
-- name: iot-diagram
-  description: IoT architecture diagrams, sensors, edge computing, MQTT. Use when
-    user mentions 'IoT', 'capteurs', 'edge', 'MQTT'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\iot-diagram\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/IOT-DIAGRAM
-
-- name: kiva-pipeline
-  description: KIVA-CLI pipelines, local CI, preflight, GitHub Actions migration.
-    Use when user mentions 'KIVA', 'pipeline', 'CI locale', 'preflight'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\kiva-pipeline\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/KIVA-CLI
-
-- name: lecun-prd
-  description: Generate PRD from LeCun's positions, PLIX world model, Triade alignment.
-    Use when user mentions 'PRD LeCun', 'plix world model', 'triade alignment'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\lecun-prd\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/LECUN-PRD
-
-- name: local-recovery
-  description: Disappeared local clones, WAZAA, git detective, restoration. Use when
-    user mentions 'clone disparu', 'WAZAA', 'restauration', 'ecos repo'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\\skills_pack\\local-recovery\\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/LOCAL-RECOVERY
-
-- name: mcp-write-guard
-  description: 'MCP write resilience skill for payload size estimation, retry escalation, session context monitoring, and failure verbosity management.'
-  type: external
-  triggers:
-  - MCP write
-  - payload size
-  - retry strategy
-  - session context
-  - fail verbosity
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\mcp-write-guard\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/MCP-WRITE-GUARD
-
-- name: media-culture
-  description: Media, culture and booking expert for ROCK-REIMS-AGENDA, GVDB-MEDIA,
-    GERI-VON-DER-BITSH. Use when user mentions "ROCK-REIMS", "GVDB-MEDIA", "GERI-VON-DER-BITSH",
-    "agenda", "booking", "medias", "culture remoise".
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\media-culture\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/MEDIA-CULTURE
-
-- name: multi-repo-syncer
-  description: Cross-repo synchronization, KIVA, NEXUS, gateway GPU, ECOS_ROOT. Use
-    when user mentions 'sync multi-depots', 'KIVA', 'NEXUS', 'gateway GPU'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\multi-repo-syncer\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/MULTI-REPO-SYNCER
-
-- name: new-pillars
-  description: New ecosystem pillars expert for PLIX, GOST, TINA, TRANSCENDANCE, VERSUS,
-    BATVERSE. Use when user mentions "PLIX", "GOST", "TINA", "TRANSCENDANCE", "VERSUS",
-    "BATVERSE", "piliers", "ternaire", "grain".
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\new-pillars\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEW-PILLARS
-
-- name: nexus-auditor
-  description: Audit repository structure against DDD criteria, EPIC size, violations.
-    Use when user mentions 'audit structure', 'DDD', 'EPIC volumineuse', 'taille'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-auditor\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: nexus-compliance
-  description: Branch governance, cherry-pick safety, hook validation. Use when user
-    mentions 'conformite', 'gouvernance branche', 'cherry-pick safety'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-compliance\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: nexus-core
-  description: NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use
-    when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'phi-CPS'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-core\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: nexus-deps
-  description: Shadow dependency detection, dependency matrix, inter-layer coupling.
-    Use when user mentions 'shadow dependency', 'matrice dependances', 'inter-strates'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-deps\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: nexus-map
-  description: Universal navigation map for all active gerivdb repos (168 total, geri-cms-*
-    excluded). Use when user mentions "where is", "quel repo", "cluster", "liste des
-    repos", "cartographie", "nexus-map".
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-map\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: nexus-monitor
-  description: phi-CPS scoring, ecosystem health, production readiness, drift detection.
-    Use when user mentions 'phi-CPS', 'sante ecosysteme', 'production readiness', 'drift'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-monitor\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: nexus-prd
-  description: Magistral PRD synthesis, ASCII diagrams, recommendations. Use when
-    user mentions 'PRD magistral', 'synthese', 'diagramme ASCII', 'recommandations'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-prd\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: nexus-reformer
-  description: Refactoring, migration, cleanup, extraction of responsibilities. Use
-    when user mentions 'refactoring', 'migration', 'nettoyage residus', 'extraction'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-reformer\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: nexus-registry-sync
-  description: ECOS_ROOT synchronization, autodiscover, missing repositories. Use
-    when user mentions 'ECOS_ROOT sync', 'registre', 'autodiscover', 'depots manquants'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-registry-sync\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: nexus-registry-view
-  description: Dashboard, herd view, registry status. Use when user mentions 'dashboard
-    troupeau', 'vue registre', 'tableau de bord'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\nexus-registry-view\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/NEXUS
-
-- name: plix-core
-  description: PLIX video substrate, CODEC-243, PLAYER-243, PLIXVAULT, OCTOPUS, BitNet
-    mapping, ThermoGate, VDB. Use when user mentions 'PLIX', 'CODEC-243', 'PLAYER-243',
-    'PLIXVAULT', 'OCTOPUS', 'ThermoGate', 'VDB'.
-  type: external
-  triggers:
-  - PLIX
-  - CODEC-243
-  - PLAYER-243
-  - PLIXVAULT
-  - OCTOPUS
-  - ThermoGate
-  - VDB
-  domain: ''
-  version: 2.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\plix-core\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/PLIX
-
-- name: prd-factory
-  description: 'PRD production skill for complete specification validation, OKR coherence verification, and canonical format guidance.'
-  type: external
-  triggers:
-  - PRD production
-  - spec cross-validator
-  - OKR consistency
-  - PRD canonique
-  - PRD factory
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\prd-factory\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/PRD-FACTORY
-
-- name: pruning-explainer
-  description: Pruning in dev and Git, git remote prune, optimization. Use when user
-    mentions 'pruning', 'elagage', 'git remote prune'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\pruning-explainer\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/PRUNING-EXPLAINER
-
-- name: pulse-infra
-  description: Monitoring and infrastructure expert for PULSE, KIVA, KIVA-CLI, ATLAS,
-    FORGE, CONTAINER-ORCHESTRATOR. Use when user mentions "PULSE", "KIVA", "ATLAS",
-    "FORGE", "container", "pipeline", "metriques", "LXC".
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\pulse-infra\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/PULSE-INFRA
-
-- name: reasoning-toolkit
-  description: Fused skill combining Fermi-legacy (hardware/performance expert for
-    FERMI-EVER, CodeDB-E5620, LYCOS) and Scientific Method (hypothesis validation,
-    NEXUS protocol). Use when user mentions any of the original triggers.
-  type: external
-  triggers:
-  - FERMI
-  - CodeDB-E5620
-  - LYCOS
-  - Xeon E5620
-  - GPU Fermi
-  - AVX
-  - LXC Z600
-  - SSE4.2
-  - Poincare
-  - Feynman
-  - methode scientifique
-  - hypothese
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\reasoning-toolkit\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/REASONING-TOOLKIT
-
-- name: reposcope-process
-  description: Signal scoring, cross-artefact correlation, timeline, discovery sheets.
-    Use when user mentions 'scoring', 'correlation', 'timeline', 'fiche decouverte'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\reposcope-process\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/REPOSCOPE
-
-- name: reposcope-publish
-  description: Brain-feed publication, signal clustering, dashboards, alerts. Use
-    when user mentions 'brain-feed', 'clusters', 'dashboard', 'alertes'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\reposcope-publish\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/REPOSCOPE
-
-- name: reposcope-run
-  description: Digestion engine execution, long scans, ingestion pipeline. Use when
-    user mentions 'digestion', 'scan long', 'ingestion', 'pipeline'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\reposcope-run\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/REPOSCOPE
-
-- name: reposcope-watch
-  description: 'External surveillance: signals, flags, env vars, API endpoints, secrets.
-    Use when user mentions ''surveillance'', ''signal'', ''hidden flag'', ''API endpoint'',
-    ''secret CI''.'
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\reposcope-watch\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/REPOSCOPE
-
-- name: scaffold-pipeline
-  description: 'SCAFFOLD governance flow: issue->intent, WAL, constitutional validation,
-    artifact cataloging. Use when user mentions ''SCAFFOLD'', ''pipeline gouvernance'',
-    ''WAL'', ''issue to intent''.'
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\scaffold-pipeline\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/SCAFFOLD-PIPELINE
-
-- name: skill-tester
-  description: Skill testing, validation, trigger verification, matrix. Use when user
-    mentions 'test skill', 'validation', 'declenchement', 'matrice'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\skill-tester\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/SKILL-TESTER
-
-- name: skills-manager
-  description: Skill creation, fusion, format canonical, refactoring, analysis. Use
-    when user mentions 'skill', 'format canonique', 'refonte', 'fusion', 'analyse'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\skills-manager\SKILL.md'
-  source: unknown
-  assimilation_status: pending
+  source: native
   source_repo: gerivdb/SKILLS
-
-- name: swarm-cli
-  description: Swarm, bus ternaire and governance CLI expert for WAZAA, OPENCLAW-CLI,
-    BLO, GOVERNANCE-HUB. Use when user mentions "WAZAA", "OPENCLAW", "BLO", "GOVERNANCE-HUB",
-    "bus ternaire", "swarm", "phi-CPS", "TritRegistry".
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
+  path: skills/EPIC-DEPENDENCY-ENGINE/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\swarm-cli\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/SWARM-CLI
-
-- name: task-automator
-  description: Windows Task Scheduler, schtasks, polling automation. Use when user
-    mentions 'Task Scheduler', 'schtasks', 'polling'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\task-automator\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/TASK-AUTOMATOR
-
-- name: triade-flux
-  description: FLUX review, HITL promotion, assimilation into NEXUS. Use when user
-    mentions 'FLUX', 'review', 'HITL', 'promotion'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\triade-flux\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/TRIADE-FLUX
-
-- name: triade-hub
-  description: Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX.
-    Use when user mentions 'triade cognitive', 'orchestration', 'end-to-end'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\triade-hub\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/TRIADE-HUB
-
-- name: triade-iris
-  description: IRIS external sensor, polling, GitHub Actions workflow, target YAML.
-    Use when user mentions 'IRIS', 'polling', 'capteur externe'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\triade-iris\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/TRIADE-IRIS
-
-- name: triade-kronos
-  description: KRONOS digester, signal qualification, deduplication. Use when user
-    mentions 'KRONOS', 'digesteur', 'qualification'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\triade-kronos\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/TRIADE-KRONOS
-
-- name: wiki-mimir
-  description: Wiki back-office, MIMIR, Atomic, project management, cross-repo docs.
-    Use when user mentions 'wiki back-office', 'MIMIR', 'Atomic', 'projets'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\wiki-mimir\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/WIKI-MIMIR
-
-- name: workflow-debugger
-  description: 'GitHub Actions debugging: startup_failure, permissions, PYTHONPATH.
-    Use when user mentions ''startup_failure'', ''permissions'', ''PYTHONPATH''.'
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\workflow-debugger\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/WORKFLOW-DEBUGGER
-
-- name: z600-hardware
-  description: HP Z600, E5620, Fermi GPU, AVX limitations, WASM bypass, Zig, LXC.
-    Use when user mentions 'Z600', 'E5620', 'Fermi', 'AVX', 'WASM', 'Zig', 'LXC'.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'perplexity\skills_pack\z600-hardware\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/Z600-HARDWARE
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.1.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\argus-pipeline-runner\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\bdcp-mode-verification\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\declarative-scanner-builder\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: dependency-injection
-  description: Implement dependency injection container for Python async applications.
-    Enables testable code through mock injection, detects circular dependencies, and
-    provides lazy loading with centralized configuration.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\dependency-injection\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\doc-gate\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: deprecated
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\doc-status-validator\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: event-system-coherence
-  description: Verify that every emitted event has a corresponding consumer, logger,
-    or metric. Detects orphan events, missing audit trails, and unexposed event endpoints.
-    Ensures events are not silently created and forgotten.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\event-system-coherence\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\gap-report-lifecycle\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 2.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\gap-report-parser\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: deprecated
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\git-hook-enforcer\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\kilocode-worktree-agent\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: lifecycle-state-machine
-  description: Validate async component lifecycle patterns - verify proper initialization,
-    error handling, shutdown timeouts, and state transitions. Detects missing try/except
-    in initialize(), missing timeout in close(), and invalid state access.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\lifecycle-state-machine\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: pr-review-resolver
-  description: Review + resolve PR via diffscope + auto-merge gate + cleanup across
-    all ecosystem repos
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\pr-review-resolver\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 2.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\pre-flight-orchestrator\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\repo-coverage-batch\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 2.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\repo-path-resolver\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: reposcope-artefact
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: '1.0'
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\reposcope-artefact\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: reposcope-compare
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: '1.0'
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\reposcope-compare\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: reposcope-extract
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: '1.0'
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\reposcope-extract\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: reposcope-propagate
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: '1.0'
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\reposcope-propagate\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: reposcope-score
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: '1.0'
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\reposcope-score\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\scaffold-scanner\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: singleton-thread-safety
-  description: Detect and fix singleton patterns that lack thread-safety. Identifies
-    race conditions in __new__(), missing locks, and non-thread-safe state mutations.
-    Provides thread-safe implementations using locks or alternative patterns.
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\singleton-thread-safety\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\skill-trit-patcher\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\slm-local-prompt-design\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: deprecated
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\untracked-auditor\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\workspace-audit\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: ''
-  description: ''
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: deprecated
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'skills\workspace-sanitizer\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: gerivdb/GeriCode
-
-- name: close-loop-detector
-  description: Detecte la fin d'une session et les boucles semantiques dans l'ecosysteme
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'TRANSVERSE\close-loop-detector\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: pr-review-resolver
-  description: Review + resolve PR via diffscope + auto-merge gate + cleanup across
-    all ecosystem repos
-  type: external
-  triggers: []
-  domain: ''
-  version: 1.0.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-07-30'
-  updated: '2026-07-30'
-  phi_weight: 0.001
-  path: 'TRANSVERSE\pr-review-resolver\SKILL.md'
-  source: unknown
-  assimilation_status: pending
-  source_repo: external
-
-- name: yaml-safe-injector
-  description: Injection securisee de champs YAML dans known_repositories.yaml
-  type: foundational
+  type: domain
   triggers:
-  - yaml
-  - inject
-  - safe
-  - known_repositories
-  domain: ecosystem-tools
+  - EPIC-DEPENDENCY-ENGINE
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: admg-implementation
+  name: admg-implementation
+  description: Skill admg-implementation
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/admg-implementation/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/yaml-safe-injector/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from:
-  - sot-registry-guardian
-
-- name: sot-registry-guardian
-  description: Validation des chemins et metadonnees des repos dans known_repositories.yaml
-  type: foundational
+  type: domain
   triggers:
-  - sot
-  - registry
-  - guardian
-  - validation
-  domain: ecosystem-tools
+  - admg-implementation
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: argus-pipeline-runner
+  name: argus-pipeline-runner
+  description: Skill argus-pipeline-runner
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/argus-pipeline-runner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/sot-registry-guardian/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from:
-  - yaml-safe-injector
-
-- name: n243-graph-builder
-  description: Construction du graphe N243 de dependances entre repos
-  type: foundational
+  type: domain
   triggers:
-  - n243
-  - graph
-  - dependencies
-  - topology
-  domain: ecosystem-tools
+  - argus-pipeline-runner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: atomic-task-planner
+  name: atomic-task-planner
+  description: Skill atomic-task-planner
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/atomic-task-planner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/n243-graph-builder/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from:
-  - sot-registry-guardian
-
-- name: skill-scaffold
-  description: Generateur de skill conforme aux conventions TDD/BDD/ATDD/DDD/DbC/Hexagonal
-  type: foundational
+  type: domain
   triggers:
-  - scaffold
-  - generate
-  - skill-creation
-  - template
-  domain: ecosystem-tools
+  - atomic-task-planner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: batmcpext
+  name: batmcpext
+  description: Skill batmcpext
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/batmcpext/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/skill-scaffold/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from:
-  - ecosystem-principles
-
-- name: repo-citizen-manager
-  description: Skill repo-citizen-manager for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - repo citizen manager
-  domain: ecosystem-tools
+  - batmcpext
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: batverse-operators
+  name: batverse-operators
+  description: Skill batverse-operators
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/batverse-operators/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/repo-citizen-manager/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: registry-sync
-  description: Skill registry-sync for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - registry sync
-  domain: ecosystem-tools
+  - batverse-operators
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: bdcp-mode-verification
+  name: bdcp-mode-verification
+  description: Skill bdcp-mode-verification
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/bdcp-mode-verification/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/registry-sync/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: skill-auto-enroller
-  description: Skill skill-auto-enroller for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - skill auto enroller
-  domain: ecosystem-tools
+  - bdcp-mode-verification
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: branch-guard
+  name: branch-guard
+  description: Skill branch-guard
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/branch-guard/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/skill-auto-enroller/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: citizenship-auditor
-  description: Skill citizenship-auditor for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - citizenship auditor
-  domain: ecosystem-tools
+  - branch-guard
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: buzz-parasitage
+  name: buzz-parasitage
+  description: Skill buzz-parasitage
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/buzz-parasitage/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/citizenship-auditor/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: bridge-auditor
-  description: Skill bridge-auditor for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - bridge auditor
-  domain: ecosystem-tools
+  - buzz-parasitage
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: capta-4d
+  name: capta-4d
+  description: Skill capta-4d
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/capta-4d/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/bridge-auditor/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: skills-validator
-  description: Skill skills-validator for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - skills validator
-  domain: ecosystem-tools
+  - capta-4d
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: causal-engine
+  name: causal-engine
+  description: Skill causal-engine
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/causal-engine/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/skills-validator/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: gitignore-harmonizer
-  description: Skill gitignore-harmonizer for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - gitignore harmonizer
-  domain: ecosystem-tools
+  - causal-engine
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: cfmi-dashboard-generator
+  name: cfmi-dashboard-generator
+  description: Skill cfmi-dashboard-generator
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/cfmi-dashboard-generator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/gitignore-harmonizer/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: harness-bootstrapper
-  description: Skill harness-bootstrapper for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - harness bootstrapper
-  domain: ecosystem-tools
+  - cfmi-dashboard-generator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: cfmi-scanner
+  name: cfmi-scanner
+  description: Skill cfmi-scanner
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/cfmi-scanner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/harness-bootstrapper/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: harness_probes
-  description: Harness probes P-701..P-711 for GeriCode stack validation (TDD/BDD/ATDD/DDD/DbC/Hexagonal/Harness compliance).
-  type: foundational
+  type: domain
   triggers:
-  - harness probes
-  - P-701
-  - P-711
-  - stack validation
-  domain: ecosystem-tools
-  version: 0.1.0
-  author: gerivdb
-  license: MIT
-  status: active
-  created: '2026-08-08'
-  updated: '2026-08-08'
+  - cfmi-scanner
+  domain: general
   phi_weight: 0.005
-  path: native/gericode/harness_probes/SKILL.md
-  source: native
   assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: known-repositories-updater
-  description: Skill known-repositories-updater for ecosystem management
-  type: foundational
-  triggers:
-  - known repositories updater
-  domain: ecosystem-tools
+- id: coupling-matrix
+  name: coupling-matrix
+  description: Skill coupling-matrix
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/coupling-matrix/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/known-repositories-updater/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: registry-prune
-  description: Skill registry-prune for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - registry prune
-  domain: ecosystem-tools
+  - coupling-matrix
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: cross-repo-validator
+  name: cross-repo-validator
+  description: Skill cross-repo-validator
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/cross-repo-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/registry-prune/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: verse-sync
-  description: Skill verse-sync for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - verse sync
-  domain: ecosystem-tools
+  - cross-repo-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-artifact-builder
+  name: ctulu-artifact-builder
+  description: Skill ctulu-artifact-builder
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-artifact-builder/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/verse-sync/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: ecosystem-probe
-  description: Skill ecosystem-probe for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - ecosystem probe
-  domain: ecosystem-tools
+  - ctulu-artifact-builder
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-cluster-propagator
+  name: ctulu-cluster-propagator
+  description: Skill ctulu-cluster-propagator
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-cluster-propagator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/ecosystem-probe/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: ontology-guardian
-  description: Skill ontology-guardian for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - ontology guardian
-  domain: ecosystem-tools
+  - ctulu-cluster-propagator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-graph-builder
+  name: ctulu-graph-builder
+  description: Skill ctulu-graph-builder
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-graph-builder/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/ontology-guardian/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: verify-terms
-  description: Skill verify-terms for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - verify terms
-  domain: ecosystem-tools
+  - ctulu-graph-builder
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-graph-delta-exporter
+  name: ctulu-graph-delta-exporter
+  description: Skill ctulu-graph-delta-exporter
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-graph-delta-exporter/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/verify-terms/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: mcp-guardian
-  description: Skill mcp-guardian for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - mcp guardian
-  domain: ecosystem-tools
+  - ctulu-graph-delta-exporter
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-louvain-clusterer
+  name: ctulu-louvain-clusterer
+  description: Skill ctulu-louvain-clusterer
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-louvain-clusterer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/mcp-guardian/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: mcp-access-repair
-  description: Skill mcp-access-repair for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - mcp access repair
-  domain: ecosystem-tools
+  - ctulu-louvain-clusterer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-pagerank-runner
+  name: ctulu-pagerank-runner
+  description: Skill ctulu-pagerank-runner
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-pagerank-runner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/mcp-access-repair/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: ecosystem-brain
-  description: Skill ecosystem-brain for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - ecosystem brain
-  domain: ecosystem-tools
+  - ctulu-pagerank-runner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-reposcope-extractor
+  name: ctulu-reposcope-extractor
+  description: Skill ctulu-reposcope-extractor
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-reposcope-extractor/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/ecosystem-brain/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: mox-validator
-  description: Skill mox-validator for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - mox validator
-  domain: ecosystem-tools
+  - ctulu-reposcope-extractor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-reposcope-scorer
+  name: ctulu-reposcope-scorer
+  description: Skill ctulu-reposcope-scorer
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-reposcope-scorer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/mox-validator/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: kiva-ci-local
-  description: Skill kiva-ci-local for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - kiva ci local
-  domain: ecosystem-tools
+  - ctulu-reposcope-scorer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: declarative-scanner-builder
+  name: declarative-scanner-builder
+  description: Skill declarative-scanner-builder
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/declarative-scanner-builder/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/kiva-ci-local/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: artifact-quality-checker
-  description: Skill artifact-quality-checker for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - artifact quality checker
-  domain: ecosystem-tools
+  - declarative-scanner-builder
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: dependency-injection
+  name: dependency-injection
+  description: Skill dependency-injection
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/dependency-injection/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/artifact-quality-checker/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: git-atomic-rename
-  description: Skill git-atomic-rename for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - git atomic rename
-  domain: ecosystem-tools
+  - dependency-injection
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: doc-gate
+  name: doc-gate
+  description: Skill doc-gate
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/doc-gate/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/git-atomic-rename/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: ci-nomenclature-guard
-  description: Skill ci-nomenclature-guard for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - ci nomenclature guard
-  domain: ecosystem-tools
+  - doc-gate
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: doc-status-validator
+  name: doc-status-validator
+  description: Skill doc-status-validator
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/doc-status-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/ci-nomenclature-guard/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: n243-query-engine
-  description: Skill n243-query-engine for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - n243 query engine
-  domain: ecosystem-tools
+  - doc-status-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: dot-cache-manager
+  name: dot-cache-manager
+  description: Skill dot-cache-manager
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/dot-cache-manager/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/n243-query-engine/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: yaml-debug-forensic
-  description: Skill yaml-debug-forensic for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - yaml debug forensic
-  domain: ecosystem-tools
+  - dot-cache-manager
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: event-system-coherence
+  name: event-system-coherence
+  description: Skill event-system-coherence
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/event-system-coherence/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
-  phi_weight: 0.005
-  path: native/gericode/yaml-debug-forensic/SKILL.md
-  source: native
-  assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
-
-- name: actprotocol-fractal-nomenclature
-  description: Skill actprotocol-fractal-nomenclature for ecosystem management
-  type: foundational
+  type: domain
   triggers:
-  - actprotocol fractal nomenclature
-  domain: ecosystem-tools
+  - event-system-coherence
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: fractal-engineering-validator
+  name: fractal-engineering-validator
+  description: Skill fractal-engineering-validator
   version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/fractal-engineering-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
   author: gerivdb
   license: MIT
-  status: active
-  created: '2026-08-07'
-  updated: '2026-08-07'
+  type: domain
+  triggers:
+  - fractal-engineering-validator
+  domain: general
   phi_weight: 0.005
-  path: native/gericode/actprotocol-fractal-nomenclature/SKILL.md
-  source: native
   assimilation_status: N/A
-  source_repo: gerivdb/GeriCode
-  consumes_from: []
+- id: gap-report-lifecycle
+  name: gap-report-lifecycle
+  description: Skill gap-report-lifecycle
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/gap-report-lifecycle/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - gap-report-lifecycle
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: gap-report-parser
+  name: gap-report-parser
+  description: Skill gap-report-parser
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/gap-report-parser/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - gap-report-parser
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: gateway-audit-autonomous
+  name: gateway-audit-autonomous
+  description: Skill gateway-audit-autonomous
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/gateway-audit-autonomous/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - gateway-audit-autonomous
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: generation-engine
+  name: generation-engine
+  description: Skill generation-engine
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/generation-engine/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - generation-engine
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: git-checkpoint
+  name: git-checkpoint
+  description: Skill git-checkpoint
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/git-checkpoint/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - git-checkpoint
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: git-hook-enforcer
+  name: git-hook-enforcer
+  description: Skill git-hook-enforcer
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/git-hook-enforcer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - git-hook-enforcer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: governance-architect
+  name: governance-architect
+  description: Skill governance-architect
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/governance-architect/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - governance-architect
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: halo-co-abduction
+  name: halo-co-abduction
+  description: Skill halo-co-abduction
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/halo-co-abduction/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - halo-co-abduction
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: insight-capture
+  name: insight-capture
+  description: Skill insight-capture
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/insight-capture/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - insight-capture
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: intent-generation
+  name: intent-generation
+  description: Skill intent-generation
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/intent-generation/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - intent-generation
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: intent-version-bumper
+  name: intent-version-bumper
+  description: Skill intent-version-bumper
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/intent-version-bumper/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - intent-version-bumper
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: kilocode-worktree-agent
+  name: kilocode-worktree-agent
+  description: Skill kilocode-worktree-agent
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/kilocode-worktree-agent/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - kilocode-worktree-agent
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: korx-path-manager
+  name: korx-path-manager
+  description: Skill korx-path-manager
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/korx-path-manager/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - korx-path-manager
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: lifecycle-state-machine
+  name: lifecycle-state-machine
+  description: Skill lifecycle-state-machine
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/lifecycle-state-machine/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - lifecycle-state-machine
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: llm-rate-limit-fallback
+  name: llm-rate-limit-fallback
+  description: Skill llm-rate-limit-fallback
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/llm-rate-limit-fallback/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - llm-rate-limit-fallback
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: lore-validator
+  name: lore-validator
+  description: Skill lore-validator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/lore-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - lore-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: matrix-runner
+  name: matrix-runner
+  description: Skill matrix-runner
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/matrix-runner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - matrix-runner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: module-registry
+  name: module-registry
+  description: Skill module-registry
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/module-registry/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - module-registry
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: n243-rust-scaffold
+  name: n243-rust-scaffold
+  description: Skill n243-rust-scaffold
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/n243-rust-scaffold/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - n243-rust-scaffold
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: patch-management
+  name: patch-management
+  description: Skill patch-management
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/patch-management/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - patch-management
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: plix-graph-generator
+  name: plix-graph-generator
+  description: Skill plix-graph-generator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/plix-graph-generator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - plix-graph-generator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: plix-inspector
+  name: plix-inspector
+  description: Skill plix-inspector
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/plix-inspector/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - plix-inspector
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: powershell-writer
+  name: powershell-writer
+  description: Skill powershell-writer
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/powershell-writer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - powershell-writer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: pr-review-resolver
+  name: pr-review-resolver
+  description: Skill pr-review-resolver
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/pr-review-resolver/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - pr-review-resolver
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: prd-generation
+  name: prd-generation
+  description: Skill prd-generation
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/prd-generation/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - prd-generation
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: pre-flight-orchestrator
+  name: pre-flight-orchestrator
+  description: Skill pre-flight-orchestrator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/pre-flight-orchestrator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - pre-flight-orchestrator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: repo-coverage-batch
+  name: repo-coverage-batch
+  description: Skill repo-coverage-batch
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/repo-coverage-batch/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - repo-coverage-batch
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: repo-path-resolver
+  name: repo-path-resolver
+  description: Skill repo-path-resolver
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/repo-path-resolver/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - repo-path-resolver
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: repo-ref-validator
+  name: repo-ref-validator
+  description: Skill repo-ref-validator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/repo-ref-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - repo-ref-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: repo-state-auditor
+  name: repo-state-auditor
+  description: Skill repo-state-auditor
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/repo-state-auditor/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - repo-state-auditor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-artefact
+  name: reposcope-artefact
+  description: Skill reposcope-artefact
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-artefact/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-artefact
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-compare
+  name: reposcope-compare
+  description: Skill reposcope-compare
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-compare/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-compare
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-extract
+  name: reposcope-extract
+  description: Skill reposcope-extract
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-extract/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-extract
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-propagate
+  name: reposcope-propagate
+  description: Skill reposcope-propagate
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-propagate/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-propagate
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-score
+  name: reposcope-score
+  description: Skill reposcope-score
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-score/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-score
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: review-to-intent-mapper
+  name: review-to-intent-mapper
+  description: Skill review-to-intent-mapper
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/review-to-intent-mapper/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - review-to-intent-mapper
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: rss-v2-compliance
+  name: rss-v2-compliance
+  description: Skill rss-v2-compliance
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/rss-v2-compliance/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - rss-v2-compliance
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: scaffold-scanner
+  name: scaffold-scanner
+  description: Skill scaffold-scanner
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/scaffold-scanner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - scaffold-scanner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: singleton-thread-safety
+  name: singleton-thread-safety
+  description: Skill singleton-thread-safety
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/singleton-thread-safety/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - singleton-thread-safety
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: skill-trit-patcher
+  name: skill-trit-patcher
+  description: Skill skill-trit-patcher
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-trit-patcher/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-trit-patcher
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: slm-local-prompt-design
+  name: slm-local-prompt-design
+  description: Skill slm-local-prompt-design
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/slm-local-prompt-design/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - slm-local-prompt-design
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: slm-micro-executor
+  name: slm-micro-executor
+  description: Skill slm-micro-executor
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/slm-micro-executor/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - slm-micro-executor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: spidx-proof-reader
+  name: spidx-proof-reader
+  description: Skill spidx-proof-reader
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/spidx-proof-reader/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - spidx-proof-reader
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: structural-relations-validator
+  name: structural-relations-validator
+  description: Skill structural-relations-validator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/structural-relations-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - structural-relations-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: untracked-auditor
+  name: untracked-auditor
+  description: Skill untracked-auditor
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/untracked-auditor/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - untracked-auditor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: wazaa-buzz-bridge
+  name: wazaa-buzz-bridge
+  description: Skill wazaa-buzz-bridge
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/wazaa-buzz-bridge/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - wazaa-buzz-bridge
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: workspace-audit
+  name: workspace-audit
+  description: Skill workspace-audit
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/workspace-audit/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - workspace-audit
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: workspace-sanitizer
+  name: workspace-sanitizer
+  description: Skill workspace-sanitizer
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/workspace-sanitizer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - workspace-sanitizer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: zig-python-bridge
+  name: zig-python-bridge
+  description: Skill zig-python-bridge
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/zig-python-bridge/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - zig-python-bridge
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
 metadata:
-  phi_cps_contribution: 0.683
-  governance_level: L2
-  citizen: skills-registry
-  lifecycle: GENESIS
-
-
-
-
-
+  total_skills: 80
+  valid_skills: 80
+  invalid_skills: 0
+  source: physical_scan
+  scan_timestamp: '2026-09-20T22:16:17Z'
