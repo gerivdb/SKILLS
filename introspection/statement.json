@@ -1,0 +1,17 @@
+{
+  "build": "20260912T025755Z",
+  "H": 0.0,
+  "TM": 0.0,
+  "F_grav": 0.0,
+  "C": 1.0,
+  "contentOnly": false,
+  "exclude": [
+    "H",
+    "TM"
+  ],
+  "evidence_refs": [],
+  "repo": "SKILLS",
+  "curx_validated": true,
+  "causal_accuracy": 0.88,
+  "curx_validated_at": "2026-09-12T02:57:57.344058+00:00"
+}

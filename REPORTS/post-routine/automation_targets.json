@@ -1,0 +1,46 @@
+{
+  "repo": "SKILLS",
+  "scope_dir": "D:\\DO\\WEB\\TOOLS\\SKILLS",
+  "targets": [
+    {
+      "category": "citizen",
+      "name": "CitizenManager",
+      "status": "existing",
+      "path": "native\\gericode\\repo-citizen-manager\\application\\ports\\in\\{skill_name}_ports.py",
+      "references": [
+        "native\\gericode\\repo-citizen-manager\\application\\ports\\in\\{skill_name}_ports.py"
+      ],
+      "rationale": "Concept citizen L0-L5 existant"
+    },
+    {
+      "category": "routine",
+      "name": "prd_path",
+      "status": "missing",
+      "path": null,
+      "references": [
+        "pre-impl-inventory\\SKILL.md"
+      ],
+      "rationale": "Mentionné dans contexte KG (KG-L/VOLTX/VERSES) mais routine non formalisée"
+    },
+    {
+      "category": "routine",
+      "name": "session_boot",
+      "status": "existing",
+      "path": "skills\\llm-rate-limit-fallback\\INTEGRATION.md",
+      "references": [
+        "skills\\llm-rate-limit-fallback\\INTEGRATION.md"
+      ],
+      "rationale": "Routine Python/PS1 existante: session_boot"
+    }
+  ],
+  "patterns": [
+    {
+      "pattern_name": "registry sync",
+      "frequency": 4,
+      "files": [
+        ".github\\workflows\\registry-sync.yml"
+      ],
+      "automation_target": "registry-sync-checker"
+    }
+  ]
+}
