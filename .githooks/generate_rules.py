@@ -60,13 +60,13 @@ def generate_rules(manifest_path: str, repo_name: str, output_path: str) -> None
     repos = routing.get("repositories", {})
 
     # `repo_name` accepte trois formes, car le manifeste route des BRANCHES,
-    # pas des dépôts :
-    #   1. une clé de routage exacte            -> `fix/*`
-    #   2. une branche matchant une clé         -> `fix/gateway-foo`
-    #   3. un nom de dépôt                     -> `GATEWAY-MANAGER`
-    # Les formes 1 et 2 sont les seules ancrées dans le manifeste ; la forme 3
-    # retombe sur le routage global (toutes les clés), car aucun dépôt n'a
-    # d'entrée propre.
+    # pas des dpts :
+    #   1. une cl de routage exacte            -> `fix/*`
+    #   2. une branche matchant une cl         -> `fix/gateway-foo`
+    #   3. un nom de dpt                     -> `GATEWAY-MANAGER`
+    # Les formes 1 et 2 sont les seules ancres dans le manifeste ; la forme 3
+    # retombe sur le routage global (toutes les cls), car aucun dpt n'a
+    # d'entre propre.
     repo_config = repos.get(repo_name)
     if repo_config is None:
         import fnmatch
@@ -81,10 +81,10 @@ def generate_rules(manifest_path: str, repo_name: str, output_path: str) -> None
 
     forbidden = repo_config.get("forbidden_paths", [])
 
-    # Les préfixes autorisés ne sont PAS un champ du manifeste : ils sont
-    # déductibles des clés de routage elles-mêmes. `main` -> `main`,
-    # `release/*` -> `release/`, etc. Une branche qui ne matche aucune clé de
-    # routage n'est routable pour aucun dépôt.
+    # Les prfixes autoriss ne sont PAS un champ du manifeste : ils sont
+    # dductibles des cls de routage elles-mmes. `main` -> `main`,
+    # `release/*` -> `release/`, etc. Une branche qui ne matche aucune cl de
+    # routage n'est routable pour aucun dpt.
     prefixes = repo_config.get("allowed_branch_prefixes")
     if not prefixes:
         derived = []
@@ -92,11 +92,11 @@ def generate_rules(manifest_path: str, repo_name: str, output_path: str) -> None
             derived.append(key[:-2] if key.endswith("/*") else key)
         prefixes = sorted(set(derived))
 
-    # Normalisation du séparateur (ADR-2026-10-12-001). Le manifeste peut fournir
-    # des préfixes NUS (`feat` sans slash) et la dérivation `key[:-2]` aussi :
+    # Normalisation du sparateur (ADR-2026-10-12-001). Le manifeste peut fournir
+    # des prfixes NUS (`feat` sans slash) et la drivation `key[:-2]` aussi :
     # sans slash, `feat` matche `feature-x` dans le glob du garde (faux positif).
-    # On force le slash final sur tout préfixe non-trunk, quelle que soit sa
-    # source (manifeste ou dérivation), pour rendre le séparateur étanche.
+    # On force le slash final sur tout prfixe non-trunk, quelle que soit sa
+    # source (manifeste ou drivation), pour rendre le sparateur tanche.
     # `main`/`develop` restent exacts (branches trunk, pas de glob).
     _trunk = {"main", "develop", "dev", "master"}
     _norm = set()

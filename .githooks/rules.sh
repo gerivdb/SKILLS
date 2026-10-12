@@ -1,6 +1,6 @@
 # .githooks/rules.sh - Auto-generated from multi-repo-governance.yaml
 # DO NOT EDIT MANUALLY - Run: python .githooks/generate_rules.py
-# Generated: 2026-10-12T05:53:25.182925
+# Generated: 2026-10-12T06:31:01.316318
 # BRGS Version: 3.0
 # Repository: main
 # IntentHash: 0xBRG_GENERATE_RULES_20260526

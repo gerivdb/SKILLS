@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# ─────────────────────────────────────────────────────────────────────────────
-# pre-push hook — Branch Routing & Governance System (BRGS) v3.0
+# -----------------------------------------------------------------------------
+# pre-push hook - Branch Routing & Governance System (BRGS) v3.0
 #
 # Guards:
 #   Guard 1: Remote URL validation (EXISTANT)
 #   Guard 2: Ancestry check (EXISTANT)
-#   Guard 3: Forbidden paths check (NOUVEAU — BRGS)
-#   Guard 4: Branch prefix validation (NOUVEAU — BRGS)
+#   Guard 3: Forbidden paths check (NOUVEAU - BRGS)
+#   Guard 4: Branch prefix validation (NOUVEAU - BRGS)
 #
 # IntentHash: 0xBRG_PRE_PUSH_20260526
 # Version: 3.0.0
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 
 set -euo pipefail
 
@@ -19,10 +19,10 @@ REMOTE_URL="$2"
 CURRENT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || echo "DETACHED")
 REPO_ROOT=$(git rev-parse --show-toplevel)
 
-# Nom du dépôt déduit du remote, PAS du nom du répertoire : un worktree porte
-# presque toujours un nom de dossier différent du dépôt (`basename` valait alors
-# `gateway-lfcb-purge`), ce qui faisait échouer la régénération des règles en
-# silence et rendait le garde inopérant. Le remote est la source fiable.
+# Nom du dpt dduit du remote, PAS du nom du rpertoire : un worktree porte
+# presque toujours un nom de dossier diffrent du dpt (`basename` valait alors
+# `gateway-lfcb-purge`), ce qui faisait chouer la rgnration des rgles en
+# silence et rendait le garde inoprant. Le remote est la source fiable.
 REPO_NAME=""
 for _url in $(git remote get-url "${REMOTE_NAME}" 2>/dev/null) $(git config --get "remote.${REMOTE_NAME}.url" 2>/dev/null); do
     _base="${_url##*[/:]}"
@@ -30,19 +30,19 @@ for _url in $(git remote get-url "${REMOTE_NAME}" 2>/dev/null) $(git config --ge
     if [ -n "${_base}" ]; then REPO_NAME="${_base}"; break; fi
 done
 if [ -z "${REPO_NAME}" ]; then
-    # Repli : nom du répertoire (moins fiable, mais mieux que rien)
+    # Repli : nom du rpertoire (moins fiable, mais mieux que rien)
     REPO_NAME=$(basename "${REPO_ROOT}")
 fi
 
-echo "[BRGS pre-push] Validating push → ${REMOTE_NAME} (${REMOTE_URL})"
+echo "[BRGS pre-push] Validating push -> ${REMOTE_NAME} (${REMOTE_URL})"
 echo "[BRGS pre-push] Branch: ${CURRENT_BRANCH}"
 echo "[BRGS pre-push] Repo:   ${REPO_NAME}"
 
-# ── Manifest detection ───────────────────────────────────────────────────────
+# -- Manifest detection -------------------------------------------------------
 # Search order:
 #   1. $GOVERNANCE_HUB_PATH environment variable
 #   2. Absolute path D:\DO\WEB\TOOLS\L0-CANON\GOVERNANCE-HUB
-#   3. Fallback hardcodé (DevTools only)
+#   3. Fallback hardcod (DevTools only)
 
 MANIFEST_PATH=""
 GOVERNANCE_HUB_PATH="${GOVERNANCE_HUB_PATH:-}"
@@ -54,22 +54,22 @@ elif [ -f "D:/DO/WEB/TOOLS/L0-CANON/GOVERNANCE-HUB/multi-repo-governance.yaml" ]
     MANIFEST_PATH="D:/DO/WEB/TOOLS/L0-CANON/GOVERNANCE-HUB/multi-repo-governance.yaml"
     echo "[BRGS pre-push] Manifest: ${MANIFEST_PATH} (absolute path)"
 else
-    echo "[BRGS pre-push] ⚠️  Manifest not found — using fallback rules"
+    echo "[BRGS pre-push] [WARN]  Manifest not found - using fallback rules"
     MANIFEST_PATH=""
 fi
 
-# ── Generate rules.sh if manifest is available ────────────────────────────────
+# -- Generate rules.sh if manifest is available --------------------------------
 RULES_FILE="${REPO_ROOT}/.githooks/rules.sh"
 
 if [ -n "${MANIFEST_PATH}" ] && [ -f "${REPO_ROOT}/.githooks/generate_rules.py" ]; then
-    # On passe la BRANCHE, pas le nom du dépôt : `branch_routing.repositories`
-    # est clé par patron de branche (`fix/*`), pas par dépôt. Un nom de dépôt
-    # ne matchait rien, la régénération échouait, et le garde restait figé sur
-    # une version périmée.
+    # On passe la BRANCHE, pas le nom du dpt : `branch_routing.repositories`
+    # est cl par patron de branche (`fix/*`), pas par dpt. Un nom de dpt
+    # ne matchait rien, la rgnration chouait, et le garde restait fig sur
+    # une version prime.
     python "${REPO_ROOT}/.githooks/generate_rules.py" "${MANIFEST_PATH}" "${CURRENT_BRANCH}" "${RULES_FILE}" 2>/dev/null || true
 fi
 
-# ── Load rules (from generated file or fallback) ──────────────────────────────
+# -- Load rules (from generated file or fallback) ------------------------------
 FORBIDDEN_PATHS=""
 ALLOWED_PREFIXES=""
 REDIRECT_MAP=""
@@ -80,7 +80,7 @@ if [ -f "${RULES_FILE}" ]; then
     echo "[BRGS pre-push] Rules loaded from ${RULES_FILE}"
 else
     # Fallback rules for DevTools (minimal safety net)
-    echo "[BRGS pre-push] ⚠️  Using fallback rules — run generate_rules.py for full configuration"
+    echo "[BRGS pre-push] [WARN]  Using fallback rules - run generate_rules.py for full configuration"
     if [ "${REPO_NAME}" = "DevTools" ]; then
         FORBIDDEN_PATHS="src/ecos/|.ecos/|.kilocode/|bin/"
         ALLOWED_PREFIXES="devtools/|fix/|chore/|docs/|refactor/"
@@ -88,84 +88,84 @@ else
     fi
 fi
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ===============================================================================
 # Guard 1: Remote URL validation (EXISTANT)
-# ═══════════════════════════════════════════════════════════════════════════════
+# ===============================================================================
 ECOS_REGISTRY="ECOS_ROOT.json"
 
 if [ -f "${REPO_ROOT}/${ECOS_REGISTRY}" ]; then
     EXPECTED_PATTERN="gerivdb/${REPO_NAME}"
     if ! echo "${REMOTE_URL}" | grep -q "${EXPECTED_PATTERN}"; then
-        echo "[BRGS pre-push] ❌ BLOCKED: Remote URL mismatch!"
+        echo "[BRGS pre-push] [KO] BLOCKED: Remote URL mismatch!"
         echo "  Expected pattern : ${EXPECTED_PATTERN}"
         echo "  Got              : ${REMOTE_URL}"
         echo "  Fix: git remote set-url origin https://github.com/${EXPECTED_PATTERN}.git"
         exit 1
     fi
-    echo "[BRGS pre-push] ✅ Guard 1 — Remote URL validated: ${REMOTE_URL}"
+    echo "[BRGS pre-push] [OK] Guard 1 - Remote URL validated: ${REMOTE_URL}"
 else
-    echo "[BRGS pre-push] ✅ Guard 1 — No ECOS_ROOT.json, skipping remote validation"
+    echo "[BRGS pre-push] [OK] Guard 1 - No ECOS_ROOT.json, skipping remote validation"
 fi
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ===============================================================================
 # Guard 2: Ancestry check (EXISTANT)
-# ═══════════════════════════════════════════════════════════════════════════════
+# ===============================================================================
 if [ "${CURRENT_BRANCH}" != "main" ] && [ "${CURRENT_BRANCH}" != "dev" ]; then
     MERGE_BASE=$(git merge-base HEAD origin/main 2>/dev/null || echo "")
     MAIN_TIP=$(git rev-parse origin/main 2>/dev/null || echo "")
 
     if [ -z "${MERGE_BASE}" ]; then
-        echo "[BRGS pre-push] ⚠️  Guard 2 — Cannot verify ancestry (origin/main not fetched)"
+        echo "[BRGS pre-push] [WARN]  Guard 2 - Cannot verify ancestry (origin/main not fetched)"
         echo "  Run: git fetch origin main"
     else
         COMMITS_AHEAD=$(git rev-list --count origin/main..HEAD 2>/dev/null || echo "0")
         COMMITS_BEHIND=$(git rev-list --count HEAD..origin/main 2>/dev/null || echo "0")
         CHANGED_FILES=$(git diff --name-only origin/main...HEAD 2>/dev/null | wc -l | tr -d ' ')
 
-        echo "[BRGS pre-push] Guard 2 — Branch stats:"
+        echo "[BRGS pre-push] Guard 2 - Branch stats:"
         echo "  Commits ahead of main  : ${COMMITS_AHEAD}"
         echo "  Commits behind main    : ${COMMITS_BEHIND}"
         echo "  Files changed vs main  : ${CHANGED_FILES}"
 
         if [ "${CHANGED_FILES}" -gt 200 ]; then
-            echo "[BRGS pre-push] ❌ BLOCKED: ${CHANGED_FILES} files changed — ancestry mismatch suspected!"
+            echo "[BRGS pre-push] [KO] BLOCKED: ${CHANGED_FILES} files changed - ancestry mismatch suspected!"
             echo "  Expected: < 200 files for a feature branch"
             echo "  Fix: Run scripts/Repair-BranchAncestry.ps1 -BranchName ${CURRENT_BRANCH}"
             exit 1
         fi
 
         if [ "${COMMITS_BEHIND}" -gt 100 ]; then
-            echo "[BRGS pre-push] ❌ BLOCKED: Branch is ${COMMITS_BEHIND} commits behind main — rebase required"
+            echo "[BRGS pre-push] [KO] BLOCKED: Branch is ${COMMITS_BEHIND} commits behind main - rebase required"
             echo "  Fix: git fetch origin && git rebase origin/main"
             exit 1
         fi
 
-        echo "[BRGS pre-push] ✅ Guard 2 — Ancestry validated (${CHANGED_FILES} files, ${COMMITS_AHEAD} commits ahead)"
+        echo "[BRGS pre-push] [OK] Guard 2 - Ancestry validated (${CHANGED_FILES} files, ${COMMITS_AHEAD} commits ahead)"
     fi
 else
-    echo "[BRGS pre-push] ✅ Guard 2 — Skipping (on ${CURRENT_BRANCH})"
+    echo "[BRGS pre-push] [OK] Guard 2 - Skipping (on ${CURRENT_BRANCH})"
 fi
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Guard 3: Forbidden paths check (NOUVEAU — BRGS)
-# ═══════════════════════════════════════════════════════════════════════════════
+# ===============================================================================
+# Guard 3: Forbidden paths check (NOUVEAU - BRGS)
+# ===============================================================================
 
 guard3_check() {
     if [ -z "${FORBIDDEN_PATHS}" ]; then
-        echo "[BRGS pre-push] ✅ Guard 3 — No forbidden paths configured, skipping"
+        echo "[BRGS pre-push] [OK] Guard 3 - No forbidden paths configured, skipping"
         return 0
     fi
 
     # Get changed files vs origin/main (three-dot: changes on this branch only)
-    # Correctif diff inverse (validé par la table de vérité BRGS, campagne E2) :
+    # Correctif diff inverse (valid par la table de vrit BRGS, campagne E2) :
     # origin/main...HEAD = changements de LA BRANCHE. L'ancien sens
-    # l ancien sens examinait le distant — vide par définition pour
-    # une branche en avance pure, donc aucun chemin interdit détecté.
+    # l ancien sens examinait le distant - vide par dfinition pour
+    # une branche en avance pure, donc aucun chemin interdit dtect.
     local changed_files
     changed_files=$(git diff --name-only origin/main...HEAD 2>/dev/null || echo "")
 
     if [ -z "${changed_files}" ]; then
-        echo "[BRGS pre-push] ✅ Guard 3 — No changed files detected, skipping"
+        echo "[BRGS pre-push] [OK] Guard 3 - No changed files detected, skipping"
         return 0
     fi
 
@@ -177,13 +177,13 @@ guard3_check() {
     # reste bloquee.
     if git log -1 --pretty=%s 2>/dev/null | grep -q "\[BRGS-REPAIR\]"; then
         local exempted
-        # Dérogation ADR-2026-10-12-001 §1 : TOUT le répertoire .githooks/ (hooks)
-        # est modifiable par PR (branche dédiée + correctif complet + ADR citée).
+        # Drogation ADR-2026-10-12-001 1 : TOUT le rpertoire .githooks/ (hooks)
+        # est modifiable par PR (branche ddie + correctif complet + ADR cite).
         # On exclut donc .githooks/ et tests/hooks/ du blocage chemins interdits,
         # sinon le garde s'auto-bloquerait en corrigeant ses propres hooks.
         exempted=$(echo "${changed_files}" | grep -E '^\.githooks/|^tests/hooks/' || true)
         if [ -n "${exempted}" ]; then
-            echo "[BRGS pre-push] [BRGS-REPAIR] Derogation ADR-2026-10-12-001 §1 (.githooks/ par PR) : $(echo "${exempted}" | tr '\n' ' ')"
+            echo "[BRGS pre-push] [BRGS-REPAIR] Derogation ADR-2026-10-12-001 1 (.githooks/ par PR) : $(echo "${exempted}" | tr '\n' ' ')"
             changed_files=$(echo "${changed_files}" | grep -vE '^\.githooks/|^tests/hooks/' || true)
         fi
     fi
@@ -228,7 +228,7 @@ guard3_check() {
 
     if [ -n "${violated_files}" ]; then
         echo ""
-        echo "[BRGS pre-push] ❌ BLOCKED: Forbidden paths detected in ${REPO_NAME}"
+        echo "[BRGS pre-push] [KO] BLOCKED: Forbidden paths detected in ${REPO_NAME}"
         echo "  Modified files in forbidden paths:"
         echo -e "${violated_files}" | while IFS= read -r vf; do
             [ -z "${vf}" ] && continue
@@ -254,25 +254,25 @@ guard3_check() {
         return 1
     fi
 
-    echo "[BRGS pre-push] ✅ Guard 3 — No forbidden path violations"
+    echo "[BRGS pre-push] [OK] Guard 3 - No forbidden path violations"
     return 0
 }
 
 guard3_check || exit 1
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Guard 4: Branch prefix validation (NOUVEAU — BRGS)
-# ═══════════════════════════════════════════════════════════════════════════════
+# ===============================================================================
+# Guard 4: Branch prefix validation (NOUVEAU - BRGS)
+# ===============================================================================
 
 guard4_check() {
     if [ -z "${ALLOWED_PREFIXES}" ]; then
-        echo "[BRGS pre-push] ✅ Guard 4 — No branch prefix rules configured, skipping"
+        echo "[BRGS pre-push] [OK] Guard 4 - No branch prefix rules configured, skipping"
         return 0
     fi
 
     # Skip prefix check for main/dev branches
     if [ "${CURRENT_BRANCH}" = "main" ] || [ "${CURRENT_BRANCH}" = "dev" ]; then
-        echo "[BRGS pre-push] ✅ Guard 4 — Skipping prefix check for ${CURRENT_BRANCH}"
+        echo "[BRGS pre-push] [OK] Guard 4 - Skipping prefix check for ${CURRENT_BRANCH}"
         return 0
     fi
 
@@ -283,9 +283,9 @@ guard4_check() {
     IFS='|'
     for p in ${ALLOWED_PREFIXES}; do
         [ -z "${p}" ] && continue
-        # Séparateur étanche (ADR-2026-10-12-001) : `feat/` ne matche que
-        # `feat/...`, jamais `feature-x`. On NE retire PAS le slash — le retrait
-        # `${p%/}` était le défaut de séparateur.
+        # Sparateur tanche (ADR-2026-10-12-001) : `feat/` ne matche que
+        # `feat/...`, jamais `feature-x`. On NE retire PAS le slash - le retrait
+        # `${p%/}` tait le dfaut de sparateur.
         case "${CURRENT_BRANCH}" in
             ${p}*)
                 prefix_matched=1
@@ -297,7 +297,7 @@ guard4_check() {
 
     if [ "${prefix_matched}" -eq 0 ]; then
         echo ""
-        echo "[BRGS pre-push] ❌ BLOCKED: Branch prefix mismatch in ${REPO_NAME}"
+        echo "[BRGS pre-push] [KO] BLOCKED: Branch prefix mismatch in ${REPO_NAME}"
         echo "  Branch: ${CURRENT_BRANCH}"
         echo "  Allowed prefixes:"
         IFS='|'
@@ -331,13 +331,13 @@ guard4_check() {
         return 1
     fi
 
-    echo "[BRGS pre-push] ✅ Guard 4 — Branch prefix validated (${CURRENT_BRANCH})"
+    echo "[BRGS pre-push] [OK] Guard 4 - Branch prefix validated (${CURRENT_BRANCH})"
     return 0
 }
 
 guard4_check || exit 1
 
-# ── All guards passed ────────────────────────────────────────────────────────
+# -- All guards passed --------------------------------------------------------
 echo ""
-echo "[BRGS pre-push] ✅ All guards passed — proceeding with push"
+echo "[BRGS pre-push] [OK] All guards passed - proceeding with push"
 exit 0
