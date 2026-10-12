@@ -1,19 +1,19 @@
 # .githooks/rules.sh - Auto-generated from multi-repo-governance.yaml
 # DO NOT EDIT MANUALLY - Run: python .githooks/generate_rules.py
-# Generated: 2026-10-12T06:31:01.316318
+# Generated: 2026-10-12T06:42:09.809731
 # BRGS Version: 3.0
-# Repository: main
+# Repository: feat/*
 # IntentHash: 0xBRG_GENERATE_RULES_20260526
 
 BRGS_VERSION="3.0"
 GUARD_MODE="BLOCK"
-TARGET_REPO="main"
+TARGET_REPO="feat/*"
 
 # Forbidden paths (pipe-separated globs)
-FORBIDDEN_PATHS=""
+FORBIDDEN_PATHS="EPICS/|PRD/|ADR/|INTENTS/|SPEC/|docs/architecture/|config/schemas/|.githooks/|.kilocode/|.github/workflows/"
 
 # Allowed branch prefixes (pipe-separated)
-ALLOWED_PREFIXES="ci/|feat/|fix/|main|release/"
+ALLOWED_PREFIXES="feat/|fix/|docs/|chore/|refactor/|perf/|test/|hotfix/|emergency/|release/|experiment/|deploy/|rollback/"
 
 # Redirect map (format: source_path:target_repo|...)
 REDIRECT_MAP=""
