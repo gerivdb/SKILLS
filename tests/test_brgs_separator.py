@@ -1,14 +1,14 @@
-"""Tests du séparateur de préfixes BRGS (Option B) — ADR-2026-10-12-001.
+"""Tests du separateur de prefixes BRGS (Option B) - ADR-2026-10-12-001.
 
-La politique SOT approuvée fournit `allowed_branch_prefixes` NUS (`feat` sans
-slash) ; `pre-push` retirait en plus le slash (`${p%/}`). Résultat : `feat`
-matchait `feature-x` — le garde laissait passer des branches hors routage.
+La politique SOT approuvee fournit `allowed_branch_prefixes` NUS (`feat` sans
+slash) ; `pre-push` retirait en plus le slash (`${p%/}`). Resultat : `feat`
+matchait `feature-x` - le garde laissait passer des branches hors routage.
 
 Correctif minimal (hors SOT) :
-  * `generate_rules.py` normalise tout préfixe non-trunk AVEC slash final ;
+  * `generate_rules.py` normalise tout prefixe non-trunk AVEC slash final ;
   * `pre-push` Guard 4 ne retire plus le slash.
 
-Ces tests verrouillent la normalisation et la table de vérité du séparateur.
+Ces tests verrouillent la normalisation et la table de verite du separateur.
 La logique de matching reproduit `pre-push` Guard 4 : `case branch in ${p}*)`
 == `fnmatch(branch, p + "*")`.
 
@@ -24,7 +24,7 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 GENERATOR = REPO_ROOT / ".githooks" / "generate_rules.py"
 
-# Manifeste dont la route expose des préfixes NUS (comme la politique approuvée).
+# Manifeste dont la route expose des prefixes NUS (comme la politique approuvee).
 MANIFEST_BARE = """\
 branch_routing:
   repositories:
@@ -37,7 +37,7 @@ branch_routing:
       role: development
 """
 
-# Manifeste sans allowed_branch_prefixes -> chemin de dérivation (key[:-2]).
+# Manifeste sans allowed_branch_prefixes -> chemin de derivation (key[:-2]).
 MANIFEST_DERIVED = """\
 branch_routing:
   repositories:
@@ -87,15 +87,15 @@ def _passes(branch, prefixes):
 
 
 # ---------------------------------------------------------------------------
-# Normalisation du séparateur
+# Normalisation du separateur
 # ---------------------------------------------------------------------------
 
 def test_bare_prefixes_become_slashed(gen, tmp_path):
     ps = _vars(gen, tmp_path, "feat/x", MANIFEST_BARE)["ALLOWED_PREFIXES"].split("|")
     for want in ("feat/", "fix/", "ci/", "chore/", "docs/"):
-        assert want in ps, f"préfixe slashé manquant : {want}"
+        assert want in ps, f"prefixe slashe manquant : {want}"
     for bare in ("feat", "fix", "ci", "chore", "docs"):
-        assert bare not in ps, f"préfixe nu résiduel : {bare}"
+        assert bare not in ps, f"prefixe nu residuel : {bare}"
 
 
 def test_derived_prefixes_become_slashed(gen, tmp_path):
@@ -111,7 +111,7 @@ def test_trunk_main_stays_exact(gen, tmp_path):
 
 
 # ---------------------------------------------------------------------------
-# Table de vérité du séparateur (famille de préfixes autorisés du MANIFEST_BARE:
+# Table de verite du separateur (famille de prefixes autorises du MANIFEST_BARE:
 # chore/ ci/ docs/ feat/ fix/ + trunk main)
 # ---------------------------------------------------------------------------
 
@@ -125,11 +125,11 @@ def test_trunk_main_stays_exact(gen, tmp_path):
         ("docs/readme", True),
         ("main", True),
         ("feat/", True),
-        ("feature-x", False),   # le faux positif éliminé
+        ("feature-x", False),   # le faux positif elimine
         ("fixthing", False),
-        ("cicd/x", False),      # ci/ != cicd (séparateur strict)
+        ("cicd/x", False),      # ci/ != cicd (separateur strict)
         ("docsx/y", False),
-        ("release/1.0", False), # hors famille autorisée du manifeste
+        ("release/1.0", False), # hors famille autorisee du manifeste
         ("hotfix-urgent", False),
         ("random", False),
     ],
