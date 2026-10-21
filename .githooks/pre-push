@@ -61,12 +61,25 @@ fi
 # -- Generate rules.sh if manifest is available --------------------------------
 RULES_FILE="${REPO_ROOT}/.githooks/rules.sh"
 
+# Politique locale AVANT regeneration (reference de non-regression).
+_LOCAL_FORBIDDEN=""
+if [ -f "${RULES_FILE}" ]; then
+    _LOCAL_FORBIDDEN=$(sed -n 's/^\(export \)\?FORBIDDEN_PATHS="\(.*\)"$/\2/p' "${RULES_FILE}" | head -1)
+fi
+
+# Politique COMITEE (HEAD) : reference complementaire.
+_COMMITTED_FORBIDDEN=""
+if git -C "${REPO_ROOT}" rev-parse --verify HEAD >/dev/null 2>&1; then
+    _COMMITTED_FORBIDDEN=$(git -C "${REPO_ROOT}" show HEAD:.githooks/rules.sh 2>/dev/null \
+        | sed -n 's/^\(export \)\?FORBIDDEN_PATHS="\(.*\)"$/\2/p' | head -1)
+fi
+
 if [ -n "${MANIFEST_PATH}" ] && [ -f "${REPO_ROOT}/.githooks/generate_rules.py" ]; then
     # On passe la BRANCHE, pas le nom du dpt : `branch_routing.repositories`
     # est cl par patron de branche (`fix/*`), pas par dpt. Un nom de dpt
     # ne matchait rien, la rgnration chouait, et le garde restait fig sur
     # une version prime.
-    python "${REPO_ROOT}/.githooks/generate_rules.py" "${MANIFEST_PATH}" "${CURRENT_BRANCH}" "${RULES_FILE}" 2>/dev/null || true
+    python "${REPO_ROOT}/.githooks/generate_rules.py" "${MANIFEST_PATH}" "${CURRENT_BRANCH}" "${RULES_FILE}" || true
 fi
 
 # -- Load rules (from generated file or fallback) ------------------------------
@@ -78,6 +91,19 @@ GUARD_MODE="BLOCK"
 if [ -f "${RULES_FILE}" ]; then
     source "${RULES_FILE}"
     echo "[BRGS pre-push] Rules loaded from ${RULES_FILE}"
+
+    # Garde-fou fail-closed : la regeneration ne doit PAS avoir vide une
+    # politique locale preexistante. Deux references sont comparees : le
+    # rules.sh local (avant regeneration) et la version COMMITEE (HEAD).
+    if [ -z "${FORBIDDEN_PATHS}" ] \
+       && { [ -n "${_LOCAL_FORBIDDEN}" ] || [ -n "${_COMMITTED_FORBIDDEN}" ]; }; then
+        echo ""
+        echo "[BRGS pre-push] [KO] BLOCKED: FORBIDDEN_PATHS est vide"
+        echo "  Politique locale (avant regeneration) : ${_LOCAL_FORBIDDEN:-<vide>}"
+        echo "  Politique commitee (HEAD)              : ${_COMMITTED_FORBIDDEN:-<vide>}"
+        echo "  Fix  : git checkout -- .githooks/rules.sh"
+        exit 1
+    fi
 else
     # Fallback rules for DevTools (minimal safety net)
     echo "[BRGS pre-push] [WARN]  Using fallback rules - run generate_rules.py for full configuration"
@@ -175,7 +201,8 @@ guard3_check() {
     # fichiers DU GARDE sont exemptes, et uniquement si le sujet du commit
     # porte la trace [BRGS-REPAIR]. Toute autre modification de .githooks/
     # reste bloquee.
-    if git log -1 --pretty=%s 2>/dev/null | grep -q "\[BRGS-REPAIR\]"; then
+    if git log --format="%s" origin/main..HEAD -- .githooks/ tests/hooks/ 2>/dev/null \
+        | grep -q "\[BRGS-REPAIR\]"; then
         local exempted
         # Drogation ADR-2026-10-12-001 1 : TOUT le rpertoire .githooks/ (hooks)
         # est modifiable par PR (branche ddie + correctif complet + ADR cite).
