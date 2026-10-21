@@ -1,191 +1,370 @@
-#!/bin/sh
-# ALFRED pre-push v2.0 (UNIFIÉ : BRGS guards + Branch Governor taxonomie)
-# Source de vérité hooks  : REPO-STANDARDS/.githooks/pre-push
-# Source de vérité rules  : GOVERNANCE-HUB/multi-repo-governance.yaml (généré via generate_rules.py)
-# Source de vérité contraintes : REPO-STANDARDS/schemas/BRANCH-CHECK.yaml
-# IntentHash: 0xALFRED_PREPUSH_V2_UNIFIED_20260531
+#!/usr/bin/env bash
+# -----------------------------------------------------------------------------
+# pre-push hook - Branch Routing & Governance System (BRGS) v3.0
+#
+# Guards:
+#   Guard 1: Remote URL validation (EXISTANT)
+#   Guard 2: Ancestry check (EXISTANT)
+#   Guard 3: Forbidden paths check (NOUVEAU - BRGS)
+#   Guard 4: Branch prefix validation (NOUVEAU - BRGS)
+#
+# IntentHash: 0xBRG_PRE_PUSH_20260526
+# Version: 3.0.0
+# -----------------------------------------------------------------------------
 
-set -e
+set -euo pipefail
 
-REPO_ROOT="$(git rev-parse --show-toplevel)"
-BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-REPO_NAME="$(basename "$REPO_ROOT")"
+REMOTE_NAME="$1"
+REMOTE_URL="$2"
+CURRENT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || echo "DETACHED")
+REPO_ROOT=$(git rev-parse --show-toplevel)
 
-###############################################################################
-# ÉTAPE 1 : BYPASSES
-###############################################################################
-
-# PROTECTION main/master (client-side, pas de GitHub Pro requis)
-# Remplace l'ancien bypass — le push direct sur main est BLOQUÉ
-# Contournement intentionnel uniquement : git push --no-verify
-# Exception: git push --delete (suppression de branche distante) est autorisé
-IS_DELETE_PUSH=false
-while read -r local_ref local_sha remote_ref remote_sha; do
-    if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
-        IS_DELETE_PUSH=true
-        break
-    fi
+# Nom du dpt dduit du remote, PAS du nom du rpertoire : un worktree porte
+# presque toujours un nom de dossier diffrent du dpt (`basename` valait alors
+# `gateway-lfcb-purge`), ce qui faisait chouer la rgnration des rgles en
+# silence et rendait le garde inoprant. Le remote est la source fiable.
+REPO_NAME=""
+for _url in $(git remote get-url "${REMOTE_NAME}" 2>/dev/null) $(git config --get "remote.${REMOTE_NAME}.url" 2>/dev/null); do
+    _base="${_url##*[/:]}"
+    _base="${_base%.git}"
+    if [ -n "${_base}" ]; then REPO_NAME="${_base}"; break; fi
 done
-
-if [ "$IS_DELETE_PUSH" = "false" ] && { [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; }; then
-    echo ""
-    echo "============================================================"
-    echo "[ALFRED BLOCK] Push DIRECT sur '$BRANCH' interdit."
-    echo "============================================================"
-    echo ""
-    echo "Workflow requis (Plan Lens Module 2 - branch-lifecycle.md) :"
-    echo "  1. Créer une branche : git checkout -b feat/<desc>"
-    echo "  2. Committer : git commit -m 'feat(<scope>): <desc>'"
-    echo "  3. Pousser la branche : git push origin feat/<desc>"
-    echo "  4. Créer une PR : gh pr create"
-    echo ""
-    echo "Contournement intentionnel : git push --no-verify"
-    echo "============================================================"
-    exit 1
+if [ -z "${REPO_NAME}" ]; then
+    # Repli : nom du rpertoire (moins fiable, mais mieux que rien)
+    REPO_NAME=$(basename "${REPO_ROOT}")
 fi
 
-# Bypass pour commits d'urgence [FIX]
-LAST_MSG="$(git log -1 --pretty=%B)"
-if echo "$LAST_MSG" | grep -qE "^\[FIX\]"; then
-    echo "[ALFRED SKIP] Commit d'urgence [FIX] — validation réduite"
-    exit 0
-fi
+echo "[BRGS pre-push] Validating push -> ${REMOTE_NAME} (${REMOTE_URL})"
+echo "[BRGS pre-push] Branch: ${CURRENT_BRANCH}"
+echo "[BRGS pre-push] Repo:   ${REPO_NAME}"
 
-###############################################################################
-# ÉTAPE 2 : BRGS GUARDS (depuis rules.sh généré ou fallback inline)
-###############################################################################
+# -- Manifest detection -------------------------------------------------------
+# Search order:
+#   1. $GOVERNANCE_HUB_PATH environment variable
+#   2. Absolute path D:\DO\WEB\TOOLS\L0-CANON\GOVERNANCE-HUB
+#   3. Fallback hardcod (DevTools only)
 
-# Chercher rules.sh dans .githooks/ (généré par generate_rules.py)
-RULES_FILE="$REPO_ROOT/.githooks/rules.sh"
+MANIFEST_PATH=""
+GOVERNANCE_HUB_PATH="${GOVERNANCE_HUB_PATH:-}"
 
-if [ -f "$RULES_FILE" ]; then
-    # Exécuter les guards depuis rules.sh généré
-    # Le rules.sh doit définir GUARD_MODE, FORBIDDEN_PATHS, ALLOWED_PREFIXES, REDIRECT_MAP
-    . "$RULES_FILE"
-
-    # Guard 3 : Forbidden paths (rediriger fichiers vers bon repo)
-    if [ -n "$FORBIDDEN_PATHS" ]; then
-        CHANGED_FILES=$(git diff --cached --name-only 2>/dev/null || git diff HEAD~1 --name-only 2>/dev/null || echo "")
-        if [ -n "$CHANGED_FILES" ]; then
-            for pattern in $(echo "$FORBIDDEN_PATHS" | tr '|' ' '); do
-                MATCH=$(echo "$CHANGED_FILES" | grep -E "$pattern" 2>/dev/null || true)
-                if [ -n "$MATCH" ]; then
-                    echo "[BRGS BLOCK] Forbidden path détecté : $MATCH"
-                    echo "  Pattern: $pattern"
-                    echo "  Redirect vers: $REDIRECT_MAP"
-                    exit 1
-                fi
-            done
-        fi
-    fi
-
-    # Guard 4 : Allowed branch prefixes
-    if [ -n "$ALLOWED_PREFIXES" ]; then
-        ALLOWED=0
-        for prefix in $(echo "$ALLOWED_PREFIXES" | tr '|' ' '); do
-            if echo "$BRANCH" | grep -qE "^${prefix}"; then
-                ALLOWED=1
-                break
-            fi
-        done
-        if [ "$ALLOWED" -eq 0 ]; then
-            echo "[BRGS BLOCK] Branche '$BRANCH' ne commence pas par un préfixe autorisé"
-            echo "  Préfixes: $ALLOWED_PREFIXES"
-            echo "  Pour forcer: git push --no-verify"
-            [ "$GUARD_MODE" = "BLOCK" ] && exit 1
-        fi
-    fi
-
-    echo "[BRGS OK] Guards passés pour $REPO_NAME"
+if [ -n "${GOVERNANCE_HUB_PATH}" ] && [ -f "${GOVERNANCE_HUB_PATH}/multi-repo-governance.yaml" ]; then
+    MANIFEST_PATH="${GOVERNANCE_HUB_PATH}/multi-repo-governance.yaml"
+    echo "[BRGS pre-push] Manifest: ${MANIFEST_PATH} (from env)"
+elif [ -f "D:/DO/WEB/TOOLS/L0-CANON/GOVERNANCE-HUB/multi-repo-governance.yaml" ]; then
+    MANIFEST_PATH="D:/DO/WEB/TOOLS/L0-CANON/GOVERNANCE-HUB/multi-repo-governance.yaml"
+    echo "[BRGS pre-push] Manifest: ${MANIFEST_PATH} (absolute path)"
 else
-    # Fallback : pas de rules.sh généré → pas de guards BRGS
-    echo "[BRGS SKIP] rules.sh absent pour $REPO_NAME — guards BRGS non appliqués"
+    echo "[BRGS pre-push] [WARN]  Manifest not found - using fallback rules"
+    MANIFEST_PATH=""
 fi
 
-###############################################################################
-# ÉTAPE 3 : VALIDATION TAXONOMIE BRANCH GOVERNOR
-###############################################################################
+# -- Generate rules.sh if manifest is available --------------------------------
+RULES_FILE="${REPO_ROOT}/.githooks/rules.sh"
 
-# Pattern unifié : {type}/{juridiction}-{slug}-{id}
-BRANCH_PATTERN='^(feat|fix|docs|chore|refactor|perf|test|hotfix|emergency|release|experiment|deploy|rollback)/(env[0-5]|infra|web|cross)-[a-z0-9-]+-[0-9]{3}$'
-
-if ! echo "$BRANCH" | grep -qE "$BRANCH_PATTERN"; then
-    echo "[ALFRED WARN] Branche '$BRANCH' non conforme à la taxonomie unifiée"
-    echo "  Pattern attendu: type/jurisdiction-slug-id"
-    echo "  Exemple: feat/env2-lxc-network-001"
-    echo "  Pour forcer: git push --no-verify"
-    # WARN seulement — ne bloque pas (phase adoption)
+# Politique locale AVANT regeneration (reference de non-regression).
+_LOCAL_FORBIDDEN=""
+if [ -f "${RULES_FILE}" ]; then
+    _LOCAL_FORBIDDEN=$(sed -n 's/^\(export \)\?FORBIDDEN_PATHS="\(.*\)"$/\2/p' "${RULES_FILE}" | head -1)
 fi
 
-###############################################################################
-# ÉTAPE 4 : VÉRIFICATION JURIDICTION TOPOS (optionnel)
-###############################################################################
+# Politique COMITEE (HEAD) : reference complementaire.
+_COMMITTED_FORBIDDEN=""
+if git -C "${REPO_ROOT}" rev-parse --verify HEAD >/dev/null 2>&1; then
+    _COMMITTED_FORBIDDEN=$(git -C "${REPO_ROOT}" show HEAD:.githooks/rules.sh 2>/dev/null \
+        | sed -n 's/^\(export \)\?FORBIDDEN_PATHS="\(.*\)"$/\2/p' | head -1)
+fi
 
-# Vérifier que la juridiction existe dans TOPOS (si accessible depuis ce repo)
-JURISDICTION_PATTERN='^(env[0-5])-'
-if echo "$BRANCH" | grep -qE "/$JURISDICTION_PATTERN"; then
-    JURISDICTION="$(echo "$BRANCH" | sed -E 's|^[^/]+/(env[0-5])-.*|\1|')"
-    # Chercher TOPOS dans les parents (chemin relatif variable)
-    TOPOS_FOUND=""
-    for candidate in \
-        "$REPO_ROOT/../../L1-INFRA/TOPOS" \
-        "$REPO_ROOT/../../../L1-INFRA/TOPOS" \
-        "$REPO_ROOT/TOOLS/L1-INFRA/TOPOS" \
-        "$REPO_ROOT/../L1-INFRA/TOPOS"; do
-        if [ -d "$candidate/envs/$JURISDICTION" ]; then
-            TOPOS_FOUND="$candidate"
-            break
-        fi
-    done
-    if [ -n "$TOPOS_FOUND" ]; then
-        echo "[ALFRED] Juridiction '$JURISDICTION' validée (TOPOS/envs/$JURISDICTION)"
+if [ -n "${MANIFEST_PATH}" ] && [ -f "${REPO_ROOT}/.githooks/generate_rules.py" ]; then
+    # On passe la BRANCHE, pas le nom du dpt : `branch_routing.repositories`
+    # est cl par patron de branche (`fix/*`), pas par dpt. Un nom de dpt
+    # ne matchait rien, la rgnration chouait, et le garde restait fig sur
+    # une version prime.
+    python "${REPO_ROOT}/.githooks/generate_rules.py" "${MANIFEST_PATH}" "${CURRENT_BRANCH}" "${RULES_FILE}" || true
+fi
+
+# -- Load rules (from generated file or fallback) ------------------------------
+FORBIDDEN_PATHS=""
+ALLOWED_PREFIXES=""
+REDIRECT_MAP=""
+GUARD_MODE="BLOCK"
+
+if [ -f "${RULES_FILE}" ]; then
+    source "${RULES_FILE}"
+    echo "[BRGS pre-push] Rules loaded from ${RULES_FILE}"
+
+    # Garde-fou fail-closed : la regeneration ne doit PAS avoir vide une
+    # politique locale preexistante. Deux references sont comparees : le
+    # rules.sh local (avant regeneration) et la version COMMITEE (HEAD).
+    if [ -z "${FORBIDDEN_PATHS}" ] \
+       && { [ -n "${_LOCAL_FORBIDDEN}" ] || [ -n "${_COMMITTED_FORBIDDEN}" ]; }; then
+        echo ""
+        echo "[BRGS pre-push] [KO] BLOCKED: FORBIDDEN_PATHS est vide"
+        echo "  Politique locale (avant regeneration) : ${_LOCAL_FORBIDDEN:-<vide>}"
+        echo "  Politique commitee (HEAD)              : ${_COMMITTED_FORBIDDEN:-<vide>}"
+        echo "  Fix  : git checkout -- .githooks/rules.sh"
+        exit 1
     fi
-    # Si TOPOS pas accessible → skip silencieux (repos hors écosystème)
+else
+    # Fallback rules for DevTools (minimal safety net)
+    echo "[BRGS pre-push] [WARN]  Using fallback rules - run generate_rules.py for full configuration"
+    if [ "${REPO_NAME}" = "DevTools" ]; then
+        FORBIDDEN_PATHS="src/ecos/|.ecos/|.kilocode/|bin/"
+        ALLOWED_PREFIXES="devtools/|fix/|chore/|docs/|refactor/"
+        REDIRECT_MAP="src/ecos/:gerivdb/ECOS-CLI|.ecos/:gerivdb/ECOYSTEM|.kilocode/:gerivdb/ECOS-CLI|bin/:gerivdb/ECOS-CLI"
+    fi
 fi
 
-###############################################################################
-# ÉTAPE 5 : RSS-v2 lint (si rss_lint.py présent)
-###############################################################################
+# ===============================================================================
+# Guard 1: Remote URL validation (EXISTANT)
+# ===============================================================================
+ECOS_REGISTRY="ECOS_ROOT.json"
 
-if [ -f "$REPO_ROOT/rss_lint.py" ]; then
-    LINT_OUTPUT=$(python "$REPO_ROOT/rss_lint.py" --repo "$REPO_ROOT" --check-branch 2>&1) || true
-    if echo "$LINT_OUTPUT" | grep -qi "fail\|error\|violation"; then
-        echo "[ALFRED WARN] rss_lint.py signale des violations :"
-        echo "$LINT_OUTPUT" | head -5
-        # Non-bloquant en phase adoption
+if [ -f "${REPO_ROOT}/${ECOS_REGISTRY}" ]; then
+    EXPECTED_PATTERN="gerivdb/${REPO_NAME}"
+    if ! echo "${REMOTE_URL}" | grep -q "${EXPECTED_PATTERN}"; then
+        echo "[BRGS pre-push] [KO] BLOCKED: Remote URL mismatch!"
+        echo "  Expected pattern : ${EXPECTED_PATTERN}"
+        echo "  Got              : ${REMOTE_URL}"
+        echo "  Fix: git remote set-url origin https://github.com/${EXPECTED_PATTERN}.git"
+        exit 1
+    fi
+    echo "[BRGS pre-push] [OK] Guard 1 - Remote URL validated: ${REMOTE_URL}"
+else
+    echo "[BRGS pre-push] [OK] Guard 1 - No ECOS_ROOT.json, skipping remote validation"
+fi
+
+# ===============================================================================
+# Guard 2: Ancestry check (EXISTANT)
+# ===============================================================================
+if [ "${CURRENT_BRANCH}" != "main" ] && [ "${CURRENT_BRANCH}" != "dev" ]; then
+    MERGE_BASE=$(git merge-base HEAD origin/main 2>/dev/null || echo "")
+    MAIN_TIP=$(git rev-parse origin/main 2>/dev/null || echo "")
+
+    if [ -z "${MERGE_BASE}" ]; then
+        echo "[BRGS pre-push] [WARN]  Guard 2 - Cannot verify ancestry (origin/main not fetched)"
+        echo "  Run: git fetch origin main"
     else
-        echo "[ALFRED] rss_lint.py --check-branch OK"
+        COMMITS_AHEAD=$(git rev-list --count origin/main..HEAD 2>/dev/null || echo "0")
+        COMMITS_BEHIND=$(git rev-list --count HEAD..origin/main 2>/dev/null || echo "0")
+        CHANGED_FILES=$(git diff --name-only origin/main...HEAD 2>/dev/null | wc -l | tr -d ' ')
+
+        echo "[BRGS pre-push] Guard 2 - Branch stats:"
+        echo "  Commits ahead of main  : ${COMMITS_AHEAD}"
+        echo "  Commits behind main    : ${COMMITS_BEHIND}"
+        echo "  Files changed vs main  : ${CHANGED_FILES}"
+
+        if [ "${CHANGED_FILES}" -gt 200 ]; then
+            echo "[BRGS pre-push] [KO] BLOCKED: ${CHANGED_FILES} files changed - ancestry mismatch suspected!"
+            echo "  Expected: < 200 files for a feature branch"
+            echo "  Fix: Run scripts/Repair-BranchAncestry.ps1 -BranchName ${CURRENT_BRANCH}"
+            exit 1
+        fi
+
+        if [ "${COMMITS_BEHIND}" -gt 100 ]; then
+            echo "[BRGS pre-push] [KO] BLOCKED: Branch is ${COMMITS_BEHIND} commits behind main - rebase required"
+            echo "  Fix: git fetch origin && git rebase origin/main"
+            exit 1
+        fi
+
+        echo "[BRGS pre-push] [OK] Guard 2 - Ancestry validated (${CHANGED_FILES} files, ${COMMITS_AHEAD} commits ahead)"
     fi
+else
+    echo "[BRGS pre-push] [OK] Guard 2 - Skipping (on ${CURRENT_BRANCH})"
 fi
 
-###############################################################################
-# ÉTAPE 6 : BRANCH-CHECK.yaml (si présent)
-###############################################################################
+# ===============================================================================
+# Guard 3: Forbidden paths check (NOUVEAU - BRGS)
+# ===============================================================================
 
-if [ -f "$REPO_ROOT/BRANCH-CHECK.yaml" ]; then
-    # Vérifier les règles de base (présence du fichier suffit pour l'instant)
-    # L'intégration complète avec rss_lint.py v3 est prévue en Phase F
-    echo "[ALFRED] BRANCH-CHECK.yaml présent — règles appliquées via rss_lint.py"
-fi
+guard3_check() {
+    if [ -z "${FORBIDDEN_PATHS}" ]; then
+        echo "[BRGS pre-push] [OK] Guard 3 - No forbidden paths configured, skipping"
+        return 0
+    fi
 
-###############################################################################
-# ÉTAPE 7 : Stash reminder + HEAD détaché (Plan Lens Module 3)
-###############################################################################
+    # Get changed files vs origin/main (three-dot: changes on this branch only)
+    # Correctif diff inverse (valid par la table de vrit BRGS, campagne E2) :
+    # origin/main...HEAD = changements de LA BRANCHE. L'ancien sens
+    # l ancien sens examinait le distant - vide par dfinition pour
+    # une branche en avance pure, donc aucun chemin interdit dtect.
+    local changed_files
+    changed_files=$(git diff --name-only origin/main...HEAD 2>/dev/null || echo "")
 
-STASH_COUNT=$(git stash list 2>/dev/null | wc -l | tr -d ' ')
-if [ "${STASH_COUNT}" -gt 0 ]; then
-    echo "[ALFRED INFO] ${STASH_COUNT} stash(es) en attente — vérifier que le stash ne contient pas de travail non poussé."
-fi
+    if [ -z "${changed_files}" ]; then
+        echo "[BRGS pre-push] [OK] Guard 3 - No changed files detected, skipping"
+        return 0
+    fi
 
-if [ "$BRANCH" = "HEAD" ]; then
-    echo "[ALFRED BLOCK] HEAD détaché — impossible de pousser."
-    echo "Créer une branche : git checkout -b <branch-name>"
-    exit 1
-fi
+    # --- Derogation tracee (ADR-2026-10-12-001) --------------------------------
+    # Le garde doit rester reparable : la politique interdit .githooks/, ce
+    # qui interdit sa propre reparation (circularite documentee). Seuls les
+    # fichiers DU GARDE sont exemptes, et uniquement si le sujet du commit
+    # porte la trace [BRGS-REPAIR]. Toute autre modification de .githooks/
+    # reste bloquee.
+    if git log --format="%s" origin/main..HEAD -- .githooks/ tests/hooks/ 2>/dev/null \
+        | grep -q "\[BRGS-REPAIR\]"; then
+        local exempted
+        # Drogation ADR-2026-10-12-001 1 : TOUT le rpertoire .githooks/ (hooks)
+        # est modifiable par PR (branche ddie + correctif complet + ADR cite).
+        # On exclut donc .githooks/ et tests/hooks/ du blocage chemins interdits,
+        # sinon le garde s'auto-bloquerait en corrigeant ses propres hooks.
+        exempted=$(echo "${changed_files}" | grep -E '^\.githooks/|^tests/hooks/' || true)
+        if [ -n "${exempted}" ]; then
+            echo "[BRGS pre-push] [BRGS-REPAIR] Derogation ADR-2026-10-12-001 1 (.githooks/ par PR) : $(echo "${exempted}" | tr '\n' ' ')"
+            changed_files=$(echo "${changed_files}" | grep -vE '^\.githooks/|^tests/hooks/' || true)
+        fi
+    fi
 
-###############################################################################
-# SORTIE
-#################################################################################
+    local violated_files=""
+    local redirect_target=""
 
-echo "[ALFRED OK] Push autorisé pour $BRANCH (repo: $REPO_NAME)"
+    # Split forbidden paths by | and check each
+    local OLD_IFS="${IFS}"
+    IFS='|'
+    local fp
+    for fp in ${FORBIDDEN_PATHS}; do
+        [ -z "${fp}" ] && continue
+        # Remove trailing slash for prefix matching
+        local prefix="${fp%/}"
+
+        while IFS= read -r file; do
+            [ -z "${file}" ] && continue
+            # Check if file starts with forbidden prefix
+            case "${file}" in
+                ${prefix}*)
+                    violated_files="${violated_files}${file}\n"
+                    # Find redirect target from REDIRECT_MAP
+                    if [ -n "${REDIRECT_MAP}" ]; then
+                        local r
+                        IFS='|'
+                        for r in ${REDIRECT_MAP}; do
+                            local r_src="${r%%:*}"
+                            local r_dst="${r##*:}"
+                            if [ "${r_src}" = "${fp}" ] || [ "${r_src}" = "${prefix}/" ]; then
+                                redirect_target="${r_dst}"
+                                break
+                            fi
+                        done
+                        IFS='|'
+                    fi
+                    ;;
+            esac
+        done <<< "${changed_files}"
+    done
+    IFS="${OLD_IFS}"
+
+    if [ -n "${violated_files}" ]; then
+        echo ""
+        echo "[BRGS pre-push] [KO] BLOCKED: Forbidden paths detected in ${REPO_NAME}"
+        echo "  Modified files in forbidden paths:"
+        echo -e "${violated_files}" | while IFS= read -r vf; do
+            [ -z "${vf}" ] && continue
+            echo "    ${vf}"
+        done
+
+        if [ -n "${redirect_target}" ]; then
+            echo ""
+            echo "  These paths belong to: ${redirect_target}"
+            echo ""
+            echo "  Fix:"
+            echo "    git stash"
+            echo "    cd <path/to/${redirect_target}>"
+            echo "    git checkout -b <prefix>/feat/your-branch"
+            echo "    git stash pop"
+            echo "    git add . && git commit -m \"feat: your feature\""
+            echo "    git push origin <prefix>/feat/your-branch"
+        fi
+
+        echo ""
+        echo "  Bypass (NOT recommended): git push --no-verify"
+        echo ""
+        return 1
+    fi
+
+    echo "[BRGS pre-push] [OK] Guard 3 - No forbidden path violations"
+    return 0
+}
+
+guard3_check || exit 1
+
+# ===============================================================================
+# Guard 4: Branch prefix validation (NOUVEAU - BRGS)
+# ===============================================================================
+
+guard4_check() {
+    if [ -z "${ALLOWED_PREFIXES}" ]; then
+        echo "[BRGS pre-push] [OK] Guard 4 - No branch prefix rules configured, skipping"
+        return 0
+    fi
+
+    # Skip prefix check for main/dev branches
+    if [ "${CURRENT_BRANCH}" = "main" ] || [ "${CURRENT_BRANCH}" = "dev" ]; then
+        echo "[BRGS pre-push] [OK] Guard 4 - Skipping prefix check for ${CURRENT_BRANCH}"
+        return 0
+    fi
+
+    local prefix_matched=0
+    local p
+
+    local OLD_IFS="${IFS}"
+    IFS='|'
+    for p in ${ALLOWED_PREFIXES}; do
+        [ -z "${p}" ] && continue
+        # Sparateur tanche (ADR-2026-10-12-001) : `feat/` ne matche que
+        # `feat/...`, jamais `feature-x`. On NE retire PAS le slash - le retrait
+        # `${p%/}` tait le dfaut de sparateur.
+        case "${CURRENT_BRANCH}" in
+            ${p}*)
+                prefix_matched=1
+                break
+                ;;
+        esac
+    done
+    IFS="${OLD_IFS}"
+
+    if [ "${prefix_matched}" -eq 0 ]; then
+        echo ""
+        echo "[BRGS pre-push] [KO] BLOCKED: Branch prefix mismatch in ${REPO_NAME}"
+        echo "  Branch: ${CURRENT_BRANCH}"
+        echo "  Allowed prefixes:"
+        IFS='|'
+        for p in ${ALLOWED_PREFIXES}; do
+            [ -z "${p}" ] && continue
+            echo "    ${p}"
+        done
+        IFS="${OLD_IFS}"
+
+        # Check if the branch prefix matches another repo's prefix
+        if [ -n "${REDIRECT_MAP}" ]; then
+            local suggested=""
+            # Check if branch starts with a known repo prefix
+            local bp="${CURRENT_BRANCH%%/*}"
+            case "${bp}" in
+                ecos-cli|ecosystem|devtools|fluence|brain|nexus|kiva-cli|governance)
+                    suggested="${bp}"
+                    ;;
+            esac
+            if [ -n "${suggested}" ]; then
+                echo ""
+                echo "  The branch name suggests this belongs to ${suggested^^}."
+                local new_branch="${suggested}/${CURRENT_BRANCH}"
+                echo "  Suggested: git checkout -b ${new_branch}"
+            fi
+        fi
+
+        echo ""
+        echo "  Bypass (NOT recommended): git push --no-verify"
+        echo ""
+        return 1
+    fi
+
+    echo "[BRGS pre-push] [OK] Guard 4 - Branch prefix validated (${CURRENT_BRANCH})"
+    return 0
+}
+
+guard4_check || exit 1
+
+# -- All guards passed --------------------------------------------------------
+echo ""
+echo "[BRGS pre-push] [OK] All guards passed - proceeding with push"
 exit 0
