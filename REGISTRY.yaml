@@ -2,8 +2,8 @@ registry:
   name: SKILLS
   version: 1.0.0
   description: Skill registry for gerivdb ecosystem
-  total_skills: 89
-  last_updated: '2026-10-25T06:58:00Z'
+  total_skills: 94
+  last_updated: '2026-10-25T06:15:22Z'
 skills:
 - id: ARGUS-REMOTE-AUDITOR
   name: ARGUS-REMOTE-AUDITOR
@@ -1518,7 +1518,7 @@ skills:
   phi_weight: 0.005
   assimilation_status: N/A
 metadata:
-  total_skills: 89
+  total_skills: 94
   valid_skills: 88
   invalid_skills: 0
   source: physical_scan
@@ -1686,3 +1686,94 @@ metadata:
   phi_weight: 0.005
   assimilation_status: N/A
 
+
+- id: GERICODE-ACT-PREFLIGHT
+  name: gericode-act-preflight
+  description: Verifie que l'environnement ENV2 est apte a reactiver l'extension gerivdb.act-vscode-0.2.0 sans conflit
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/gericode-act-preflight/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - gericode-act-preflight
+  domain: resilience
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: GERICODE-BEADS-INTEGRITY
+  name: gericode-beads-integrity
+  description: Previens la corruption ou le verrouillage de la base de graphes de connaissances beads.json
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/gericode-beads-integrity/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - gericode-beads-integrity
+  domain: resilience
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: GERICODE-KILO-BOUNDARY
+  name: gericode-kilo-boundary-arbiter
+  description: Garantit l etancheite stricte entre Kilo Code et GeriCode ACT
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/gericode-kilo-boundary-arbiter/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - gericode-kilo-boundary-arbiter
+  domain: infrastructure
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ACT-BUS-SIGNAL-COURIER
+  name: act-bus-signal-courier
+  description: Rend deterministe et fiable la communication inter-worktrees orchestre par GeriCode
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/act-bus-signal-courier/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - act-bus-signal-courier
+  domain: infrastructure
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ACT-AUTOMODE-SENTINEL
+  name: act-automode-sentinel
+  description: Securise l execution de act.autoMode contre la boucle infinie autonome
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/act-automode-sentinel/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - act-automode-sentinel
+  domain: resilience
+  phi_weight: 0.005
+  assimilation_status: N/A

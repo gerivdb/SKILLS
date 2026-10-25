@@ -1,7 +1,7 @@
-﻿{
+{
   "schemaVersion": "1.0",
-  "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 87,
+  "generatedAt": "2026-10-25T06:15:22Z",
+  "skillsCount": 92,
   "skills": [
     {
       "name": "adr-manager",
@@ -1539,6 +1539,76 @@
       "description": "Registre des Combos standards de l'écosystème (ex: Combo-Incident-Triage). Liste, valide et récupère les recettes de combo. Use when user mentions 'combo-recipe-catalog', 'catalogue combo', 'recette combo', 'combo standard'.",
       "triggers": [
         "combo-recipe-catalog"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "gericode-act-preflight",
+      "version": "1.0.0",
+      "description": "Verifie que l environnement ENV2 est apte a reactiver l extension gerivdb.act-vscode-0.2.0 sans provoquer de conflit. Use when user mentions gericode-act-preflight, act preflight, vsix verification, gpg cache purge.",
+      "triggers": [
+        "gericode-act-preflight"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "gericode-beads-integrity",
+      "version": "1.0.0",
+      "description": "Previens la corruption ou le verrouillage de la base de graphes de connaissances beads.json (2.1 Mo). Use when user mentions gericode-beads-integrity, beads integrity, json verification, rotating backup.",
+      "triggers": [
+        "gericode-beads-integrity"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "gericode-kilo-boundary-arbiter",
+      "version": "1.0.0",
+      "description": "Garantit l etancheite stricte entre Kilo Code et GeriCode ACT. Use when user mentions gericode-kilo-boundary-arbiter, kilo gericode boundary, coexistence arbitration, .kilo/bus.",
+      "triggers": [
+        "gericode-kilo-boundary-arbiter"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "act-bus-signal-courier",
+      "version": "1.0.0",
+      "description": "Rend deterministe et fiable la communication inter-worktrees orchestree par GeriCode. Use when user mentions act-bus-signal-courier, signal relay, wazaa bus, wal fallback 0x243.",
+      "triggers": [
+        "act-bus-signal-courier"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "act-automode-sentinel",
+      "version": "1.0.0",
+      "description": "Securise l execution de act.autoMode pour qu elle ne parte jamais en boucle infinie autonome. Use when user mentions act-automode-sentinel, automode watchdog, circuit breaker, idle session.",
+      "triggers": [
+        "act-automode-sentinel"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
