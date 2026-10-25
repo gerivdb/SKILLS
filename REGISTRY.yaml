@@ -2,8 +2,8 @@ registry:
   name: SKILLS
   version: 1.0.0
   description: Skill registry for gerivdb ecosystem
-  total_skills: 89
-  last_updated: '2026-10-25T06:58:00Z'
+  total_skills: 93
+  last_updated: '2026-10-25T07:00:00Z'
 skills:
 - id: ARGUS-REMOTE-AUDITOR
   name: ARGUS-REMOTE-AUDITOR
@@ -1683,6 +1683,78 @@ metadata:
   triggers:
   - combo-recipe-catalog
   domain: infrastructure
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: SKILL-FORGE-DETERMINIST
+  name: skill-forge-determinist
+  description: Scaffolder unitaire : crée un skill L4 en 1 transaction (template SKILL.md, script CP1252 strict, REGISTRY.yaml, MANIFEST.json et jonctions NTFS)
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-forge-determinist/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-forge-determinist
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: SKILL-LINTER-SENTINEL
+  name: skill-linter-sentinel
+  description: Linter continu : audite l'encodage (anti-Unicode non-CP1252), teste la validité ast.parse des scripts Python et la syntaxe PowerShell
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-linter-sentinel/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-linter-sentinel
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: SKILL-SYNAPSE-WEAVER
+  name: skill-synapse-weaver
+  description: Tisseur topologique : analyse les entrées/sorties de tous les skills existants pour déduire automatiquement les Combos possibles et détecter les impasses
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-synapse-weaver/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-synapse-weaver
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: SKILL-PRUNER-RETIRE
+  name: skill-pruner-retire
+  description: Décommissionne proprement un skill ou un Combo obsolète (retrait sécurisé des jonctions NTFS, archivage, nettoyage des registres)
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-pruner-retire/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-pruner-retire
+  domain: general
   phi_weight: 0.005
   assimilation_status: N/A
 
