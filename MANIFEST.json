@@ -1,7 +1,7 @@
 ﻿{
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 87,
+  "skillsCount": 91,
   "skills": [
     {
       "name": "adr-manager",
@@ -1539,6 +1539,62 @@
       "description": "Registre des Combos standards de l'écosystème (ex: Combo-Incident-Triage). Liste, valide et récupère les recettes de combo. Use when user mentions 'combo-recipe-catalog', 'catalogue combo', 'recette combo', 'combo standard'.",
       "triggers": [
         "combo-recipe-catalog"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-forge-determinist",
+      "version": "1.0.0",
+      "description": "Scaffolder unitaire : crée un skill L4 en 1 transaction (template SKILL.md, script CP1252 strict, REGISTRY.yaml, MANIFEST.json et jonctions NTFS). Use when user mentions 'skill-forge-determinist', 'forge skill', 'scaffolder skill L4'.",
+      "triggers": [
+        "skill-forge-determinist"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-linter-sentinel",
+      "version": "1.0.0",
+      "description": "Linter continu : audite l'encodage CP1252, valide la syntaxe Python et PowerShell des skills L4. Use when user mentions 'skill-linter-sentinel', 'lint skill', 'conformité pre-commit'.",
+      "triggers": [
+        "skill-linter-sentinel"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-synapse-weaver",
+      "version": "1.0.0",
+      "description": "Tisseur topologique : déduit les Combos possibles et détecte les impasses dans l'écosystème des skills. Use when user mentions 'skill-synapse-weaver', 'tissage topologique', 'combo déduction'.",
+      "triggers": [
+        "skill-synapse-weaver"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-pruner-retire",
+      "version": "1.0.0",
+      "description": "Décommissionne proprement un skill ou un Combo obsolète (retrait NTFS, archivage, nettoyage des registres). Use when user mentions 'skill-pruner-retire', 'retirer skill', 'décommission skill'.",
+      "triggers": [
+        "skill-pruner-retire"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
