@@ -2,8 +2,8 @@ registry:
   name: SKILLS
   version: 1.0.0
   description: Skill registry for gerivdb ecosystem
-  total_skills: 81
-  last_updated: '2026-10-25T05:45:00Z'
+  total_skills: 89
+  last_updated: '2026-10-25T06:58:00Z'
 skills:
 - id: ARGUS-REMOTE-AUDITOR
   name: ARGUS-REMOTE-AUDITOR
@@ -1445,12 +1445,84 @@ skills:
   domain: general
   phi_weight: 0.005
   assimilation_status: N/A
+- id: CITIZEN-SKILL-BINDER
+  name: citizen-skill-binder
+  description: Skill citizen-skill-binder
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/citizen-skill-binder/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - citizen-skill-binder
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: CITIZEN-WORKLOAD-DISPATCHER
+  name: citizen-workload-dispatcher
+  description: Skill citizen-workload-dispatcher
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/citizen-workload-dispatcher/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - citizen-workload-dispatcher
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: CITIZEN-CREDENTIAL-ATTESTOR
+  name: citizen-credential-attestor
+  description: Skill citizen-credential-attestor
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/citizen-credential-attestor/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - citizen-credential-attestor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: CITIZEN-PERSONA-RECONCILER
+  name: citizen-persona-reconciler
+  description: Skill citizen-persona-reconciler
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/citizen-persona-reconciler/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - citizen-persona-reconciler
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
 metadata:
-  total_skills: 81
-  valid_skills: 80
+  total_skills: 89
+  valid_skills: 88
   invalid_skills: 0
   source: physical_scan
-  scan_timestamp: '2026-09-20T22:20:21Z'
+  scan_timestamp: '2026-10-25T06:55:00Z'
 - id: STRATA-TOPOLOGY-NAVIGATOR
   name: strata-topology-navigator
   description: Navigation spatiale deterministe des depots gerivdb par strates L*
@@ -1466,6 +1538,150 @@ metadata:
   type: domain
   triggers:
   - strata-topology-navigator
+  domain: infrastructure
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WAL-EVENT-NOTARY
+  name: wal-event-notary
+  description: Notarise chaque transition d'état dans le journal d'audit append-only WAL/0x243.log
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: wal-event-notary/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - wal-event-notary
+  domain: observability
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: PHI-CPS-DRIFT-METER
+  name: phi-cps-drift-meter
+  description: Mesure la friction (F) et l'entropie (H) lors de l'exécution d'un Combo
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: phi-cps-drift-meter/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - phi-cps-drift-meter
+  domain: observability
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: STRATA-BOUNDARY-ENFORCER
+  name: strata-boundary-enforcer
+  description: Interdit à un skill L4 de modifier un fichier L0 sans mandat explicite d'un Citoyen habilité
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: strata-boundary-enforcer/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - strata-boundary-enforcer
+  domain: governance
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: SELF-HEALING-ORCHESTRATOR
+  name: self-healing-orchestrator
+  description: Combo maître de haut niveau : détecte un freeze, révoque le bail, purge SQLite, redémarre l'UI, consigne dans le WAL
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: self-healing-orchestrator/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - self-healing-orchestrator
+  domain: resilience
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: COMBO-PIPELINE-EXECUTOR
+  name: combo-pipeline-executor
+  description: Moteur d'exécution synaptique pour pipelines de skills avec passage de contexte déterministe via JSON-RPC/stdin
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/combo-pipeline-executor/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - combo-pipeline-executor
+  domain: infrastructure
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: COMBO-DEPENDENCY-RESOLVER
+  name: combo-dependency-resolver
+  description: Calcule le graphe de dépendances (DAG) avant l'exécution d'un Combo
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/combo-dependency-resolver/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - combo-dependency-resolver
+  domain: infrastructure
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: COMBO-ROLLBACK-GUARD
+  name: combo-rollback-guard
+  description: Mécanisme de transaction atomique aux Combos avec undo en cas d'échec
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/combo-rollback-guard/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - combo-rollback-guard
+  domain: resilience
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: COMBO-RECIPE-CATALOG
+  name: combo-recipe-catalog
+  description: Registre des Combos standards de l'écosystème (ex: Combo-Incident-Triage)
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/combo-recipe-catalog/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - combo-recipe-catalog
   domain: infrastructure
   phi_weight: 0.005
   assimilation_status: N/A

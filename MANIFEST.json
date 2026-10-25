@@ -1,7 +1,7 @@
-{
+﻿{
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 79,
+  "skillsCount": 87,
   "skills": [
     {
       "name": "adr-manager",
@@ -211,7 +211,7 @@
     {
       "name": "ecos-vision",
       "version": "2.0.0",
-      "description": "Fused skill combining ECOS-VISION (cross‑repo visualization), ecosystem‑self (self‑learning / semantic cache / META‑CLUSTER GRAPH) and lecun‑vision (Yann LeCun’s AI vision – JEPA, world models, AMI, Tapestry). Use when user mentions any of the original triggers.",
+      "description": "Fused skill combining ECOS-VISION (cross-repo visualization), ecosystem-self (self-learning / semantic cache / META-CLUSTER GRAPH) and lecun-vision (Yann LeCun’s AI vision – JEPA, world models, AMI, Tapestry). Use when user mentions any of the original triggers.",
       "triggers": [
         "ECOS-VISION",
         "visualisation",
@@ -236,7 +236,7 @@
     {
       "name": "github-config",
       "version": "2.1.0",
-      "description": "GITHUB_TOKEN, gh auth, scopes, Actions settings, rate-limit, gestion des gros fichiers (push_files vs create_or_update, split‑payload, SHA‑management). Use when user mentions 'GITHUB_TOKEN', 'gh auth', 'scopes', 'Settings Actions', 'large files', 'push_files', 'create_or_update'.",
+      "description": "GITHUB_TOKEN, gh auth, scopes, Actions settings, rate-limit, gestion des gros fichiers (push_files vs create_or_update, split-payload, SHA-management). Use when user mentions 'GITHUB_TOKEN', 'gh auth', 'scopes', 'Settings Actions', 'large files', 'push_files', 'create_or_update'.",
       "triggers": [
         "GITHUB_TOKEN",
         "gh auth",
@@ -270,7 +270,7 @@
     {
       "name": "hitl-core",
       "version": "1.0.0",
-      "description": "Fused skill combining HITL Hub (review of signals, workflow building, world‑model review) and HITL Ops (governance audit, ecosystem health, token scope, permissions). Use when user mentions any of the original triggers.",
+      "description": "Fused skill combining HITL Hub (review of signals, workflow building, world-model review) and HITL Ops (governance audit, ecosystem health, token scope, permissions). Use when user mentions any of the original triggers.",
       "triggers": [
         "HITL",
         "review signals",
@@ -468,7 +468,7 @@
     {
       "name": "nexus-core",
       "version": "1.0.0",
-      "description": "NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'φ-CPS'.",
+      "description": "NEXUS governance, SOT conformity, ECOS_ROOT, EPIC, PRD, RSS-v1. Use when user mentions 'NEXUS', 'gouvernance', 'SOT', 'ECOS_ROOT', 'f-CPS'.",
       "triggers": [
         "nexus-core"
       ],
@@ -510,7 +510,7 @@
     {
       "name": "nexus-monitor",
       "version": "1.0.0",
-      "description": "φ-CPS scoring, ecosystem health, production readiness, drift detection. Use when user mentions 'φ-CPS', 'santé écosystème', 'production readiness', 'drift'.",
+      "description": "f-CPS scoring, ecosystem health, production readiness, drift detection. Use when user mentions 'f-CPS', 'santé écosystème', 'production readiness', 'drift'.",
       "triggers": [
         "nexus-monitor"
       ],
@@ -603,7 +603,7 @@
     {
       "name": "prd-factory",
       "version": "1.0.0",
-      "description": "Compétence pour la production complète d’un PRD : validation croisée des spécifications, vérification de la cohérence OKR, guide de rédaction selon le format canonique (sections 1→17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur mentionne 'PRD production', 'spec cross‑validator', 'OKR consistency', 'PRD canonique'.",
+      "description": "Compétence pour la production complète d’un PRD : validation croisée des spécifications, vérification de la cohérence OKR, guide de rédaction selon le format canonique (sections?1?17, OKRs, ADRs, etc.). Utiliser quand l’utilisateur mentionne 'PRD production', 'spec cross-validator', 'OKR consistency', 'PRD canonique'.",
       "triggers": [
         "PRD production",
         "spec cross-validator",
@@ -649,7 +649,7 @@
     {
       "name": "reasoning-toolkit",
       "version": "1.0.0",
-      "description": "Fused skill combining Fermi‑legacy (hardware/performance expert for FERMI‑EVER, CodeDB‑E5620, LYCOS) and Scientific Method (hypothesis validation, NEXUS protocol). Use when user mentions any of the original triggers.",
+      "description": "Fused skill combining Fermi-legacy (hardware/performance expert for FERMI-EVER, CodeDB-E5620, LYCOS) and Scientific Method (hypothesis validation, NEXUS protocol). Use when user mentions any of the original triggers.",
       "triggers": [
         "FERMI",
         "CodeDB-E5620",
@@ -691,7 +691,7 @@
     {
       "name": "reposcope-publish",
       "version": "1.0.0",
-      "description": "Brain-feed publication, signal clustering, dashboards, alerts. Use when user mentions 'brain‑feed', 'clusters', 'dashboard', 'alertes'.",
+      "description": "Brain-feed publication, signal clustering, dashboards, alerts. Use when user mentions 'brain-feed', 'clusters', 'dashboard', 'alertes'.",
       "triggers": [
         "reposcope-publish"
       ],
@@ -733,7 +733,7 @@
     {
       "name": "scaffold-pipeline",
       "version": "1.0.0",
-      "description": "SCAFFOLD governance flow: issue→intent, WAL, constitutional validation, artifact cataloging. Use when user mentions 'SCAFFOLD', 'pipeline gouvernance', 'WAL', 'issue to intent'.",
+      "description": "SCAFFOLD governance flow: issue?intent, WAL, constitutional validation, artifact cataloging. Use when user mentions 'SCAFFOLD', 'pipeline gouvernance', 'WAL', 'issue to intent'.",
       "triggers": [
         "scaffold-pipeline"
       ],
@@ -817,7 +817,7 @@
     {
       "name": "triade-hub",
       "version": "1.0.0",
-      "description": "Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX. Use when user mentions 'triade cognitive', 'orchestration', 'end‑to‑end'.",
+      "description": "Cognitive Triade orchestration, end-to-end test, coordination IRIS/KRONOS/FLUX. Use when user mentions 'triade cognitive', 'orchestration', 'end-to-end'.",
       "triggers": [
         "triade-hub"
       ],
@@ -1117,7 +1117,7 @@
     {
       "name": "keel-vdb-tql",
       "version": "1.0.0",
-      "description": "Indexation VDB des Thought-Commits KEEL + TQL live (~sim, path_from, .functor:, .adjoint:). Sync bidirectionnelle graph.yaml ↔ VDB.",
+      "description": "Indexation VDB des Thought-Commits KEEL + TQL live (~sim, path_from, .functor:, .adjoint:). Sync bidirectionnelle graph.yaml ? VDB.",
       "triggers": [
         "TQL live",
         "indexer graph KEEL",
@@ -1211,7 +1211,7 @@
     {
       "name": "uae-keel-coords",
       "version": "1.0.0",
-      "description": "Génération de coords.yaml + graph.yaml pour les skills UAE. Formule embedding 1/√d, zones LADYBIRD/STANDARD/BASIC, 5 axes UAE.",
+      "description": "Génération de coords.yaml + graph.yaml pour les skills UAE. Formule embedding 1/vd, zones LADYBIRD/STANDARD/BASIC, 5 axes UAE.",
       "triggers": [
         "coordonner les skills",
         "UAE layout",
@@ -1366,6 +1366,186 @@
       ],
       "version": "1.0.0",
       "description": "Navigation spatiale deterministe des depots gerivdb par strates L*. Use when user mentions 'strata', 'L0-CANON', 'L1-INFRA', 'L2-PLATFORM', 'L3-CITIZENS', 'L4-TOOLS', 'L5-ARCHIVE', 'L6-WORK'."
+    },
+    {
+      "name": "wal-event-notary",
+      "version": "1.0.0",
+      "description": "Notarise chaque transition d'état dans le journal d'audit append-only WAL/0x243.log. Garantit l'immuabilité et la traçabilité complète des changements d'état. Use when user mentions 'wal-event-notary', 'notarisation WAL', 'traçabilité état', 'audit append-only'.",
+      "triggers": [
+        "wal-event-notary"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "WAL_NOTARY"
+      ],
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "phi-cps-drift-meter",
+      "version": "1.0.0",
+      "description": "Mesure la friction (F) et l'entropie (H) lors de l'exécution d'un Combo. Fournit des métriques de drift pour détecter l'instabilité des exécutions. Use when user mentions 'phi-cps-drift-meter', 'friction F', 'entropie H', 'drift Combo', 'f-CPS scoring'.",
+      "triggers": [
+        "phi-cps-drift-meter"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "PHI_CPS_DRIFT"
+      ],
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "strata-boundary-enforcer",
+      "version": "1.0.0",
+      "description": "Interdit à un skill L4 de modifier un fichier L0 sans mandat explicite d'un Citoyen habilité. Garantit l'intégrité du socle L0-CANON. Use when user mentions 'strata-boundary-enforcer', 'limite strate', 'L0 protection', 'mandat Citoyen'.",
+      "triggers": [
+        "strata-boundary-enforcer"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "STRATA_BOUNDARY"
+      ],
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "self-healing-orchestrator",
+      "version": "1.0.0",
+      "description": "Combo maître de haut niveau : détecte un freeze, révoque le bail, purge SQLite, redémarre l'UI et consigne l'incident dans le WAL. Use when user mentions 'self-healing-orchestrator', 'auto-guérison', 'freeze', 'purge SQLite', 'redémarrage UI'.",
+      "triggers": [
+        "self-healing-orchestrator"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": [
+        "CONFORME_NEXUS",
+        "SELF_HEALING"
+      ],
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "citizen-skill-binder",
+      "version": "1.0.0",
+      "description": "Liaison RBAC citizen L3 vers skills L4. Lit CITIZENS.yaml et valide les competences d'un citizen selon son mandat.",
+      "triggers": [
+        "citizen-skill-binder"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "citizen-workload-dispatcher",
+      "version": "1.0.0",
+      "description": "Analyse une intention utilisateur et la dispatche vers le Citoyen le plus qualifie selon CITIZENS.yaml.",
+      "triggers": [
+        "citizen-workload-dispatcher"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "citizen-credential-attestor",
+      "version": "1.0.0",
+      "description": "Verifie que le Citoyen appelant dispose des droits cryptographiques (signature GPG, tokens BDCP).",
+      "triggers": [
+        "citizen-credential-attestor"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "citizen-persona-reconciler",
+      "version": "1.0.0",
+      "description": "Reconcilie le prompt systeme de l'agent (kilo.json) avec la definition de son Citoyen en L3.",
+      "triggers": [
+        "citizen-persona-reconciler"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "combo-pipeline-executor",
+      "version": "1.0.0",
+      "description": "Moteur d'exécution synaptique pour pipelines de skills avec passage de contexte déterministe via JSON-RPC/stdin. Use when user mentions 'combo-pipeline-executor', 'pipeline synaptique', 'exécution combo', 'JSON-RPC', 'mémoire partagée'.",
+      "triggers": [
+        "combo-pipeline-executor"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "combo-dependency-resolver",
+      "version": "1.0.0",
+      "description": "Calcule le graphe de dépendances (DAG) avant l'exécution d'un Combo, détecte les cycles et retourne un ordre topologique. Use when user mentions 'combo-dependency-resolver', 'DAG', 'dépendances combo', 'topological sort', 'graphe dépendances'.",
+      "triggers": [
+        "combo-dependency-resolver"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "combo-rollback-guard",
+      "version": "1.0.0",
+      "description": "Fournit un mécanisme de transaction atomique aux Combos avec undo en cas d'échec (rollback LIFO). Use when user mentions 'combo-rollback-guard', 'rollback atomique', 'transaction combo', 'undo', 'LIFO'.",
+      "triggers": [
+        "combo-rollback-guard"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "combo-recipe-catalog",
+      "version": "1.0.0",
+      "description": "Registre des Combos standards de l'écosystème (ex: Combo-Incident-Triage). Liste, valide et récupère les recettes de combo. Use when user mentions 'combo-recipe-catalog', 'catalogue combo', 'recette combo', 'combo standard'.",
+      "triggers": [
+        "combo-recipe-catalog"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
     }
   ]
 }
