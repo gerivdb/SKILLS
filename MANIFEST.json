@@ -1,7 +1,7 @@
 ﻿{
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 83,
+  "skillsCount": 87,
   "skills": [
     {
       "name": "adr-manager",
@@ -1434,7 +1434,7 @@
       "slotWeight": 1,
       "status": "active",
       "license": "MIT"
-    }
+    },
     {
       "name": "citizen-skill-binder",
       "version": "1.0.0",
@@ -1491,5 +1491,61 @@
       "status": "active",
       "license": "MIT"
     },
+    {
+      "name": "combo-pipeline-executor",
+      "version": "1.0.0",
+      "description": "Moteur d'exécution synaptique pour pipelines de skills avec passage de contexte déterministe via JSON-RPC/stdin. Use when user mentions 'combo-pipeline-executor', 'pipeline synaptique', 'exécution combo', 'JSON-RPC', 'mémoire partagée'.",
+      "triggers": [
+        "combo-pipeline-executor"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "combo-dependency-resolver",
+      "version": "1.0.0",
+      "description": "Calcule le graphe de dépendances (DAG) avant l'exécution d'un Combo, détecte les cycles et retourne un ordre topologique. Use when user mentions 'combo-dependency-resolver', 'DAG', 'dépendances combo', 'topological sort', 'graphe dépendances'.",
+      "triggers": [
+        "combo-dependency-resolver"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "combo-rollback-guard",
+      "version": "1.0.0",
+      "description": "Fournit un mécanisme de transaction atomique aux Combos avec undo en cas d'échec (rollback LIFO). Use when user mentions 'combo-rollback-guard', 'rollback atomique', 'transaction combo', 'undo', 'LIFO'.",
+      "triggers": [
+        "combo-rollback-guard"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "combo-recipe-catalog",
+      "version": "1.0.0",
+      "description": "Registre des Combos standards de l'écosystème (ex: Combo-Incident-Triage). Liste, valide et récupère les recettes de combo. Use when user mentions 'combo-recipe-catalog', 'catalogue combo', 'recette combo', 'combo standard'.",
+      "triggers": [
+        "combo-recipe-catalog"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    }
   ]
 }
