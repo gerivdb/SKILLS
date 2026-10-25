@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 78,
+  "skillsCount": 79,
   "skills": [
     {
       "name": "adr-manager",
@@ -1352,6 +1352,20 @@
         "repo structure"
       ],
       "license": "MIT"
+    },
+    {
+      "slotWeight": 1,
+      "name": "strata-topology-navigator",
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "status": "active",
+      "license": "MIT",
+      "prerequisites": [],
+      "triggers": [
+        "strata-topology-navigator"
+      ],
+      "version": "1.0.0",
+      "description": "Navigation spatiale deterministe des depots gerivdb par strates L*. Use when user mentions 'strata', 'L0-CANON', 'L1-INFRA', 'L2-PLATFORM', 'L3-CITIZENS', 'L4-TOOLS', 'L5-ARCHIVE', 'L6-WORK'."
     }
   ]
 }

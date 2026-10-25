@@ -2,8 +2,8 @@ registry:
   name: SKILLS
   version: 1.0.0
   description: Skill registry for gerivdb ecosystem
-  total_skills: 80
-  last_updated: '2026-09-20T22:20:21Z'
+  total_skills: 81
+  last_updated: '2026-10-25T05:45:00Z'
 skills:
 - id: ARGUS-REMOTE-AUDITOR
   name: ARGUS-REMOTE-AUDITOR
@@ -1446,8 +1446,27 @@ skills:
   phi_weight: 0.005
   assimilation_status: N/A
 metadata:
-  total_skills: 80
+  total_skills: 81
   valid_skills: 80
   invalid_skills: 0
   source: physical_scan
   scan_timestamp: '2026-09-20T22:20:21Z'
+- id: STRATA-TOPOLOGY-NAVIGATOR
+  name: strata-topology-navigator
+  description: Navigation spatiale deterministe des depots gerivdb par strates L*
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: strata-topology-navigator/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - strata-topology-navigator
+  domain: infrastructure
+  phi_weight: 0.005
+  assimilation_status: N/A
+
