@@ -22,7 +22,7 @@ Use the 3-level search protocol (INDEX -> STRATA -> RECURSIVE):
 
 ```powershell
 $repos = @()
-foreach ($s in @("L0-CANON","L1-INFRA","L2-PLATFORM","L3-CITIZENS","L4-TOOLS","L5-ARCHIVE")) {
+foreach ($s in @("L0-CANON","L1-INFRA","L2-PLATFORM","L3-CITIZENS","L4-TOOLS","L5-ARCHIVE","L6-WORK")) {
     $dirs = Get-ChildItem "D:\DO\WEB\TOOLS\$s" -Directory -ErrorAction SilentlyContinue
     foreach ($d in $dirs) {
         $repos += @{name=$d.Name; root=$d.FullName}

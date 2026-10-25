@@ -31,7 +31,7 @@ Base skill (repo-ref-validator) validates single-file references. This skill add
 
 ### 2. Deployment Targets
 - plix deploy targets in EPICs must match ECOS_ROOT.json entries
-- Stratum prefix validation: L0-CANON/, L1-INFRA/, L2-PLATFORM/, L3-CITIZENS/, L4-TOOLS/
+- Stratum prefix validation: L0-CANON/, L1-INFRA/, L2-PLATFORM/, L3-CITIZENS/, L4-TOOLS/, L5-ARCHIVE/, L6-WORK/
 - No orphan deployments (target not in registry)
 
 ### 3. Import/Dependency Graph
