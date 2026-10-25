@@ -1,0 +1,250 @@
+﻿2026-10-25T05:12:31.2210774Z | [T36] script_created=OK
+2026-10-25T05:12:31.2210774Z | [T37] kilocode_target_exists=OK
+2026-10-25T05:12:31.2210774Z | [T37] gemini_target_exists=OK
+2026-10-25T05:12:31.2210774Z | [T38] skills_discovered=101
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=admg-ml-benchmark kilocode=C:\Users\GG\.kilocode\skills\admg-ml-benchmark gemini=C:\Users\GG\.gemini\config\skills\admg-ml-benchmark
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=admg-ml-debug kilocode=C:\Users\GG\.kilocode\skills\admg-ml-debug gemini=C:\Users\GG\.gemini\config\skills\admg-ml-debug
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=admg-ml-doc-generator kilocode=C:\Users\GG\.kilocode\skills\admg-ml-doc-generator gemini=C:\Users\GG\.gemini\config\skills\admg-ml-doc-generator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=admg-ml-lint kilocode=C:\Users\GG\.kilocode\skills\admg-ml-lint gemini=C:\Users\GG\.gemini\config\skills\admg-ml-lint
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=admg-ml-parser kilocode=C:\Users\GG\.kilocode\skills\admg-ml-parser gemini=C:\Users\GG\.gemini\config\skills\admg-ml-parser
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=admg-ml-test-generator kilocode=C:\Users\GG\.kilocode\skills\admg-ml-test-generator gemini=C:\Users\GG\.gemini\config\skills\admg-ml-test-generator
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.kilocode\skills\agent-ipc-socket-triage
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.gemini\config\skills\agent-ipc-socket-triage
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=agent-ipc-socket-triage kilocode=C:\Users\GG\.kilocode\skills\agent-ipc-socket-triage gemini=C:\Users\GG\.gemini\config\skills\agent-ipc-socket-triage
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=agent-manager-api-server kilocode=C:\Users\GG\.kilocode\skills\agent-manager-api-server gemini=C:\Users\GG\.gemini\config\skills\agent-manager-api-server
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=agent-manager-diagnostics kilocode=C:\Users\GG\.kilocode\skills\agent-manager-diagnostics gemini=C:\Users\GG\.gemini\config\skills\agent-manager-diagnostics
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=agent-manager-mode-router kilocode=C:\Users\GG\.kilocode\skills\agent-manager-mode-router gemini=C:\Users\GG\.gemini\config\skills\agent-manager-mode-router
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=agent-manager-session-orchestrator kilocode=C:\Users\GG\.kilocode\skills\agent-manager-session-orchestrator gemini=C:\Users\GG\.gemini\config\skills\agent-manager-session-orchestrator
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.kilocode\skills\agent-process-forensics
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.gemini\config\skills\agent-process-forensics
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=agent-process-forensics kilocode=C:\Users\GG\.kilocode\skills\agent-process-forensics gemini=C:\Users\GG\.gemini\config\skills\agent-process-forensics
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=artifact-quality-checker kilocode=C:\Users\GG\.kilocode\skills\artifact-quality-checker gemini=C:\Users\GG\.gemini\config\skills\artifact-quality-checker
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=audit-repo kilocode=C:\Users\GG\.kilocode\skills\audit-repo gemini=C:\Users\GG\.gemini\config\skills\audit-repo
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=branch-auditor kilocode=C:\Users\GG\.kilocode\skills\branch-auditor gemini=C:\Users\GG\.gemini\config\skills\branch-auditor
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=branch-hygiene-auditor kilocode=C:\Users\GG\.kilocode\skills\branch-hygiene-auditor gemini=C:\Users\GG\.gemini\config\skills\branch-hygiene-auditor
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=branch-name-validator kilocode=C:\Users\GG\.kilocode\skills\branch-name-validator gemini=C:\Users\GG\.gemini\config\skills\branch-name-validator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=bridge-auditor kilocode=C:\Users\GG\.kilocode\skills\bridge-auditor gemini=C:\Users\GG\.gemini\config\skills\bridge-auditor
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=causal-bisimulation kilocode=C:\Users\GG\.kilocode\skills\causal-bisimulation gemini=C:\Users\GG\.gemini\config\skills\causal-bisimulation
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=causal-conflict-resolver kilocode=C:\Users\GG\.kilocode\skills\causal-conflict-resolver gemini=C:\Users\GG\.gemini\config\skills\causal-conflict-resolver
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=causal-edge-validator kilocode=C:\Users\GG\.kilocode\skills\causal-edge-validator gemini=C:\Users\GG\.gemini\config\skills\causal-edge-validator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=causal-graph-diff kilocode=C:\Users\GG\.kilocode\skills\causal-graph-diff gemini=C:\Users\GG\.gemini\config\skills\causal-graph-diff
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=certified-code-generator kilocode=C:\Users\GG\.kilocode\skills\certified-code-generator gemini=C:\Users\GG\.gemini\config\skills\certified-code-generator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=citizenship-auditor kilocode=C:\Users\GG\.kilocode\skills\citizenship-auditor gemini=C:\Users\GG\.gemini\config\skills\citizenship-auditor
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=close-loop-detector kilocode=C:\Users\GG\.kilocode\skills\close-loop-detector gemini=C:\Users\GG\.gemini\config\skills\close-loop-detector
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=codebase-intelligence kilocode=C:\Users\GG\.kilocode\skills\codebase-intelligence gemini=C:\Users\GG\.gemini\config\skills\codebase-intelligence
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=conditional-validation kilocode=C:\Users\GG\.kilocode\skills\conditional-validation gemini=C:\Users\GG\.gemini\config\skills\conditional-validation
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=context-engineering kilocode=C:\Users\GG\.kilocode\skills\context-engineering gemini=C:\Users\GG\.gemini\config\skills\context-engineering
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=dbc-scaffolder kilocode=C:\Users\GG\.kilocode\skills\dbc-scaffolder gemini=C:\Users\GG\.gemini\config\skills\dbc-scaffolder
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=delta-optimizer kilocode=C:\Users\GG\.kilocode\skills\delta-optimizer gemini=C:\Users\GG\.gemini\config\skills\delta-optimizer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=drift-axis-scaffolder kilocode=C:\Users\GG\.kilocode\skills\drift-axis-scaffolder gemini=C:\Users\GG\.gemini\config\skills\drift-axis-scaffolder
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=ecosystem-brain kilocode=C:\Users\GG\.kilocode\skills\ecosystem-brain gemini=C:\Users\GG\.gemini\config\skills\ecosystem-brain
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=ecosystem-probe kilocode=C:\Users\GG\.kilocode\skills\ecosystem-probe gemini=C:\Users\GG\.gemini\config\skills\ecosystem-probe
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=forensic-runners kilocode=C:\Users\GG\.kilocode\skills\forensic-runners gemini=C:\Users\GG\.gemini\config\skills\forensic-runners
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=frontmatter-guardian kilocode=C:\Users\GG\.kilocode\skills\frontmatter-guardian gemini=C:\Users\GG\.gemini\config\skills\frontmatter-guardian
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=gitignore-harmonizer kilocode=C:\Users\GG\.kilocode\skills\gitignore-harmonizer gemini=C:\Users\GG\.gemini\config\skills\gitignore-harmonizer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=git-lock-rescuer kilocode=C:\Users\GG\.kilocode\skills\git-lock-rescuer gemini=C:\Users\GG\.gemini\config\skills\git-lock-rescuer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=git-workflow-enforcer kilocode=C:\Users\GG\.kilocode\skills\git-workflow-enforcer gemini=C:\Users\GG\.gemini\config\skills\git-workflow-enforcer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=hadmg-omega kilocode=C:\Users\GG\.kilocode\skills\hadmg-omega gemini=C:\Users\GG\.gemini\config\skills\hadmg-omega
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=hexagonal-scaffolder kilocode=C:\Users\GG\.kilocode\skills\hexagonal-scaffolder gemini=C:\Users\GG\.gemini\config\skills\hexagonal-scaffolder
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=intent-hash-branch-mapper kilocode=C:\Users\GG\.kilocode\skills\intent-hash-branch-mapper gemini=C:\Users\GG\.gemini\config\skills\intent-hash-branch-mapper
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=jest-chai-migration kilocode=C:\Users\GG\.kilocode\skills\jest-chai-migration gemini=C:\Users\GG\.gemini\config\skills\jest-chai-migration
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=keel-meta-loop kilocode=C:\Users\GG\.kilocode\skills\keel-meta-loop gemini=C:\Users\GG\.gemini\config\skills\keel-meta-loop
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=kg-l-builder kilocode=C:\Users\GG\.kilocode\skills\kg-l-builder gemini=C:\Users\GG\.gemini\config\skills\kg-l-builder
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=kg-l-indexer kilocode=C:\Users\GG\.kilocode\skills\kg-l-indexer gemini=C:\Users\GG\.gemini\config\skills\kg-l-indexer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=kg-l-migrator kilocode=C:\Users\GG\.kilocode\skills\kg-l-migrator gemini=C:\Users\GG\.gemini\config\skills\kg-l-migrator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=kg-l-query kilocode=C:\Users\GG\.kilocode\skills\kg-l-query gemini=C:\Users\GG\.gemini\config\skills\kg-l-query
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=kg-l-rollback kilocode=C:\Users\GG\.kilocode\skills\kg-l-rollback gemini=C:\Users\GG\.gemini\config\skills\kg-l-rollback
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=kg-l-visualizer kilocode=C:\Users\GG\.kilocode\skills\kg-l-visualizer gemini=C:\Users\GG\.gemini\config\skills\kg-l-visualizer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=kilo-rule-auditor kilocode=C:\Users\GG\.kilocode\skills\kilo-rule-auditor gemini=C:\Users\GG\.gemini\config\skills\kilo-rule-auditor
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=kilo-worktree-reconciler kilocode=C:\Users\GG\.kilocode\skills\kilo-worktree-reconciler gemini=C:\Users\GG\.gemini\config\skills\kilo-worktree-reconciler
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=kiva-ci-local kilocode=C:\Users\GG\.kilocode\skills\kiva-ci-local gemini=C:\Users\GG\.gemini\config\skills\kiva-ci-local
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=known-repositories-updater kilocode=C:\Users\GG\.kilocode\skills\known-repositories-updater gemini=C:\Users\GG\.gemini\config\skills\known-repositories-updater
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=laplace-proof-writer kilocode=C:\Users\GG\.kilocode\skills\laplace-proof-writer gemini=C:\Users\GG\.gemini\config\skills\laplace-proof-writer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=laplace-spectrum-analyzer kilocode=C:\Users\GG\.kilocode\skills\laplace-spectrum-analyzer gemini=C:\Users\GG\.gemini\config\skills\laplace-spectrum-analyzer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=m5-production-monitor kilocode=C:\Users\GG\.kilocode\skills\m5-production-monitor gemini=C:\Users\GG\.gemini\config\skills\m5-production-monitor
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=meta-coherence-validator kilocode=C:\Users\GG\.kilocode\skills\meta-coherence-validator gemini=C:\Users\GG\.gemini\config\skills\meta-coherence-validator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=mox-plan-consultant kilocode=C:\Users\GG\.kilocode\skills\mox-plan-consultant gemini=C:\Users\GG\.gemini\config\skills\mox-plan-consultant
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=mox-validator kilocode=C:\Users\GG\.kilocode\skills\mox-validator gemini=C:\Users\GG\.gemini\config\skills\mox-validator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=n243-graph-builder kilocode=C:\Users\GG\.kilocode\skills\n243-graph-builder gemini=C:\Users\GG\.gemini\config\skills\n243-graph-builder
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=n243-query-engine kilocode=C:\Users\GG\.kilocode\skills\n243-query-engine gemini=C:\Users\GG\.gemini\config\skills\n243-query-engine
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=ontology-guardian kilocode=C:\Users\GG\.kilocode\skills\ontology-guardian gemini=C:\Users\GG\.gemini\config\skills\ontology-guardian
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=ontology-verses-validator kilocode=C:\Users\GG\.kilocode\skills\ontology-verses-validator gemini=C:\Users\GG\.gemini\config\skills\ontology-verses-validator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=operational-verification kilocode=C:\Users\GG\.kilocode\skills\operational-verification gemini=C:\Users\GG\.gemini\config\skills\operational-verification
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=perplexity kilocode=C:\Users\GG\.kilocode\skills\perplexity gemini=C:\Users\GG\.gemini\config\skills\perplexity
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=powershell-json-safe kilocode=C:\Users\GG\.kilocode\skills\powershell-json-safe gemini=C:\Users\GG\.gemini\config\skills\powershell-json-safe
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=prd-moc-generator kilocode=C:\Users\GG\.kilocode\skills\prd-moc-generator gemini=C:\Users\GG\.gemini\config\skills\prd-moc-generator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=pre-impl-inventory kilocode=C:\Users\GG\.kilocode\skills\pre-impl-inventory gemini=C:\Users\GG\.gemini\config\skills\pre-impl-inventory
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=process-hygiene kilocode=C:\Users\GG\.kilocode\skills\process-hygiene gemini=C:\Users\GG\.gemini\config\skills\process-hygiene
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=recall-ouroboros kilocode=C:\Users\GG\.kilocode\skills\recall-ouroboros gemini=C:\Users\GG\.gemini\config\skills\recall-ouroboros
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=registry-prune kilocode=C:\Users\GG\.kilocode\skills\registry-prune gemini=C:\Users\GG\.gemini\config\skills\registry-prune
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=registry-sync kilocode=C:\Users\GG\.kilocode\skills\registry-sync gemini=C:\Users\GG\.gemini\config\skills\registry-sync
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=repo-citizen-manager kilocode=C:\Users\GG\.kilocode\skills\repo-citizen-manager gemini=C:\Users\GG\.gemini\config\skills\repo-citizen-manager
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=report-template kilocode=C:\Users\GG\.kilocode\skills\report-template gemini=C:\Users\GG\.gemini\config\skills\report-template
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=rlm-243-benchmark kilocode=C:\Users\GG\.kilocode\skills\rlm-243-benchmark gemini=C:\Users\GG\.gemini\config\skills\rlm-243-benchmark
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=self-improvement-loop kilocode=C:\Users\GG\.kilocode\skills\self-improvement-loop gemini=C:\Users\GG\.gemini\config\skills\self-improvement-loop
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=session-start-checklist kilocode=C:\Users\GG\.kilocode\skills\session-start-checklist gemini=C:\Users\GG\.gemini\config\skills\session-start-checklist
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=skill-auto-enroller kilocode=C:\Users\GG\.kilocode\skills\skill-auto-enroller gemini=C:\Users\GG\.gemini\config\skills\skill-auto-enroller
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=skill-scaffold kilocode=C:\Users\GG\.kilocode\skills\skill-scaffold gemini=C:\Users\GG\.gemini\config\skills\skill-scaffold
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=skills-validator kilocode=C:\Users\GG\.kilocode\skills\skills-validator gemini=C:\Users\GG\.gemini\config\skills\skills-validator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=skill-test-scaffolder kilocode=C:\Users\GG\.kilocode\skills\skill-test-scaffolder gemini=C:\Users\GG\.gemini\config\skills\skill-test-scaffolder
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=sot-registry-guardian kilocode=C:\Users\GG\.kilocode\skills\sot-registry-guardian gemini=C:\Users\GG\.gemini\config\skills\sot-registry-guardian
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=spectrum-updater kilocode=C:\Users\GG\.kilocode\skills\spectrum-updater gemini=C:\Users\GG\.gemini\config\skills\spectrum-updater
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=ssm-matrix-extractor kilocode=C:\Users\GG\.kilocode\skills\ssm-matrix-extractor gemini=C:\Users\GG\.gemini\config\skills\ssm-matrix-extractor
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.kilocode\skills\ssot-referential-integrity
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.gemini\config\skills\ssot-referential-integrity
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=ssot-referential-integrity kilocode=C:\Users\GG\.kilocode\skills\ssot-referential-integrity gemini=C:\Users\GG\.gemini\config\skills\ssot-referential-integrity
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=stack-validation kilocode=C:\Users\GG\.kilocode\skills\stack-validation gemini=C:\Users\GG\.gemini\config\skills\stack-validation
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=stash-hygiene-auditor kilocode=C:\Users\GG\.kilocode\skills\stash-hygiene-auditor gemini=C:\Users\GG\.gemini\config\skills\stash-hygiene-auditor
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=state-reducer kilocode=C:\Users\GG\.kilocode\skills\state-reducer gemini=C:\Users\GG\.gemini\config\skills\state-reducer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=swarm-git-coordinator kilocode=C:\Users\GG\.kilocode\skills\swarm-git-coordinator gemini=C:\Users\GG\.gemini\config\skills\swarm-git-coordinator
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=thermal-predictor kilocode=C:\Users\GG\.kilocode\skills\thermal-predictor gemini=C:\Users\GG\.gemini\config\skills\thermal-predictor
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=traceability kilocode=C:\Users\GG\.kilocode\skills\traceability gemini=C:\Users\GG\.gemini\config\skills\traceability
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=typescript-compile-fixer kilocode=C:\Users\GG\.kilocode\skills\typescript-compile-fixer gemini=C:\Users\GG\.gemini\config\skills\typescript-compile-fixer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=validation-checklist kilocode=C:\Users\GG\.kilocode\skills\validation-checklist gemini=C:\Users\GG\.gemini\config\skills\validation-checklist
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=verify-dispatcher-cycle kilocode=C:\Users\GG\.kilocode\skills\verify-dispatcher-cycle gemini=C:\Users\GG\.gemini\config\skills\verify-dispatcher-cycle
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.kilocode\skills\vscode-storage-memento-inspector
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.gemini\config\skills\vscode-storage-memento-inspector
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=vscode-storage-memento-inspector kilocode=C:\Users\GG\.kilocode\skills\vscode-storage-memento-inspector gemini=C:\Users\GG\.gemini\config\skills\vscode-storage-memento-inspector
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=vsx-packager kilocode=C:\Users\GG\.kilocode\skills\vsx-packager gemini=C:\Users\GG\.gemini\config\skills\vsx-packager
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=wal-auto-logger kilocode=C:\Users\GG\.kilocode\skills\wal-auto-logger gemini=C:\Users\GG\.gemini\config\skills\wal-auto-logger
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.kilocode\skills\webview-runtime-crash-analyzer
+2026-10-25T05:12:31.2210774Z | [T39] old_link_removed=C:\Users\GG\.gemini\config\skills\webview-runtime-crash-analyzer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=webview-runtime-crash-analyzer kilocode=C:\Users\GG\.kilocode\skills\webview-runtime-crash-analyzer gemini=C:\Users\GG\.gemini\config\skills\webview-runtime-crash-analyzer
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=worktree-hygiene-auditor kilocode=C:\Users\GG\.kilocode\skills\worktree-hygiene-auditor gemini=C:\Users\GG\.gemini\config\skills\worktree-hygiene-auditor
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=yaml-debug-forensic kilocode=C:\Users\GG\.kilocode\skills\yaml-debug-forensic gemini=C:\Users\GG\.gemini\config\skills\yaml-debug-forensic
+2026-10-25T05:12:31.2210774Z | [T39] junction_ok=yaml-safe-injector kilocode=C:\Users\GG\.kilocode\skills\yaml-safe-injector gemini=C:\Users\GG\.gemini\config\skills\yaml-safe-injector
+2026-10-25T05:12:31.2210774Z | [T39] junctions_created=202 failed=0 partial=0
+2026-10-25T05:12:31.2210774Z | [T40] exceptions_handled=OK
+2026-10-25T05:12:31.2210774Z | [T41] log_written=OK
+2026-10-25T05:12:31.2210774Z | [T42] validation_mismatch=frontmatter-guardian link1_target= link2_target=D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\frontmatter-guardian expected=D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\frontmatter-guardian
+2026-10-25T05:12:31.2210774Z | [T42] junctions_validated=100 failed=1 validation_ok=False
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\artifacts-builder
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\batch-cherry-pick-executor
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\bisect-forensics
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\branch-content-analyzer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\branch-lifecycle
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\branch-merge-strategy
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\branch-protection-config
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\branch-taxonomy-enforcer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\canvas-design
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\changelog-generator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\cherry-pick-batch
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\cherry-pick-conflict-resolver
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\citizen-module-integrator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\clairvoyance-analytics-engine
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\clean-pycache
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\code-evolution-tracker
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\content-research-writer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\conventional-commit-validator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\conversation-digestor-operator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\conversation-intelligence-extractor
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\conversation-pattern-analyzer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\create-pull-request
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\cross-domain-insight-generator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\cross-repo-hook-analyzer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\cross-repo-hooks
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\cross-session-recall-enhancer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\curx-pre-impl-routine
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\decision-impact-analyzer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\devtools-branch-taxonomy
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\diffscope-review
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\domain-links-exporter
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\domain-name-brainstormer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\ecos-preflight
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\eecs-migration-handler
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\file-organizer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\filesystem-reality-check
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\fork-sync-workflow
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\git-assainissement
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\git-flow-manager
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\git-hooks-manager
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\git-remote-safety-guard
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\git-workflow-guardian
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\github-issue-epic-automation
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\governance-doc-validator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\governance-doc-writer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\hitl-collision-resolver
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\kgl-impact-query
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\kiva-pr-workflow
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\knowledge-graph-builder
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\lead-research-assistant
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\llm-rate-limit-fallback
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\mcp-builder
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\mcp-scope-check
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\merge-conflict-resolver
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\multi-repo-hook-orchestration
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\network-resilient-sync
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-ai-engineer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-code-reviewer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-codebase-onboarding-engineer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-data-engineer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-database-optimizer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-devops-automator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-incident-response-commander
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-security-engineer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-sre
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\nexus-technical-writer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\ontology-anchor-cleaner
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\ontology-auditor
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\ontology-term-extractor
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\operational-excellence-auditor
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\orphan-branch-dispatcher
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\prd-moc-proof-updater
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\pre-push-path-audit
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\predictive-boot-cache
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\predictive-maintenance-advisor
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\ps-safe-replace
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\ps-write-safe
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\rebase-workflow
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\risk-pattern-detector
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\rollback-strategy
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\script-hook-verifier
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\session-workflow-closer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\skill-creator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\skill-share
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\stash-workflow
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\submodule-manager
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\sync-branches
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\system-health-predictor
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\tag-release-manager
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\talex-friction-analyzer
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\tdd-script-development
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\tool-schema-validator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\trix-build-compile
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\trix-debug
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\trix-deploy
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\trix-linux-dual
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\trix-test
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\verses-sync-pipeline
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\voltx-kg-bridge-operator
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\wal-reconciler
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\wazaa-session-publisher
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\web-design-guidelines
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\webapp-testing
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\worktree-manager
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.kilocode\skills\yaml-editor
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\accidental-data-loss-prevention
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\bigquery-data-transfer-service
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\bigquery-sql
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\building-data-apps
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\data-autocleaning
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\dataform-bigquery
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\dbt-bigquery
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\discovering-gcp-data-assets
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\enforcing-resource-attribution
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\gcp-data-pipelines
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\gcp-dataflow
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\gcp-pipeline-orchestration
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\gcp-pipeline-resource-provisioning
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\gcp-spark
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\gcp-spark-troubleshooting
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\google-cloud-auth-verification
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\managing-python-dependencies
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\ml-best-practices
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\notebook-guidance
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\schema-mapping
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\skill-repair
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junction_removed=C:\Users\GG\.gemini\config\skills\.datacloud_skills_manifest
+2026-10-25T05:12:31.2210774Z | [T43] orphan_junctions_removed=127
+2026-10-25T05:12:31.2210774Z | [T44] access_lock_verified=True
+2026-10-25T05:12:31.2210774Z | [T45] exit_code=1
