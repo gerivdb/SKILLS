@@ -2,8 +2,8 @@ registry:
   name: SKILLS
   version: 1.0.0
   description: Skill registry for gerivdb ecosystem
-  total_skills: 93
-  last_updated: '2026-10-25T07:00:00Z'
+  total_skills: 100
+  last_updated: '2026-10-25T22:15:00Z'
 skills:
 - id: ARGUS-REMOTE-AUDITOR
   name: ARGUS-REMOTE-AUDITOR
@@ -1754,6 +1754,132 @@ metadata:
   type: domain
   triggers:
   - skill-pruner-retire
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-AUDITOR
+  name: worktree-auditor
+  description: Audite systématiquement tous les worktrees managés d'Agent Manager (état, branche, avance/délai, orphelins, stagnants, dérivants)
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-auditor/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-auditor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-CLOSEOUT
+  name: worktree-closeout
+  description: Ferme proprement un worktree managé après vérification du merge dans main (unassign, stop session, nettoyage ungrouped)
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-closeout/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-closeout
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-CRUSH
+  name: worktree-crush
+  description: Purge définitive d'un worktree managé ou orphelin, avec sauvegarde optionnelle de la branche
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-crush/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-crush
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-SPAWN
+  name: worktree-spawn
+  description: Instancie un nouveau worktree managé dans un projet Agent Manager, depuis une branche existante ou nouvelle
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-spawn/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-spawn
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-REVIVE
+  name: worktree-revive
+  description: Ressuscite un worktree managé orphelin ou supprimé par erreur, via git reflog
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-revive/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-revive
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-SYNC-ALL
+  name: worktree-sync-all
+  description: Effectue un fetch explicite puis un rebase sur main pour tous les worktrees managés d'un projet
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-sync-all/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-sync-all
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-GAP-DETECTOR
+  name: worktree-gap-detector
+  description: Détecte les worktrees "fuites" (idle, non mergés, orphelins) et recommande une action (closeout, crush, push, merge)
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-gap-detector/SKILL.md
+  created: '2026-10-25'
+  updated: '2026-10-25'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-gap-detector
   domain: general
   phi_weight: 0.005
   assimilation_status: N/A

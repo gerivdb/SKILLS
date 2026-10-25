@@ -1,7 +1,7 @@
-﻿{
+{
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 91,
+  "skillsCount": 105,
   "skills": [
     {
       "name": "adr-manager",
@@ -1595,6 +1595,104 @@
       "description": "Décommissionne proprement un skill ou un Combo obsolète (retrait NTFS, archivage, nettoyage des registres). Use when user mentions 'skill-pruner-retire', 'retirer skill', 'décommission skill'.",
       "triggers": [
         "skill-pruner-retire"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-auditor",
+      "version": "1.0.0",
+      "description": "Audite systématiquement tous les worktrees managés d'Agent Manager (état, branche, avance/délai, orphelins, stagnants, dérivants). Use when user mentions 'worktree-auditor', 'audit worktrees', 'état worktrees'.",
+      "triggers": [
+        "worktree-auditor"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-closeout",
+      "version": "1.0.0",
+      "description": "Ferme proprement un worktree managé après vérification du merge dans main (unassign, stop session, nettoyage ungrouped). Use when user mentions 'worktree-closeout', 'fermer worktree', 'closeout worktree'.",
+      "triggers": [
+        "worktree-closeout"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-crush",
+      "version": "1.0.0",
+      "description": "Purge définitive d'un worktree managé ou orphelin, avec sauvegarde optionnelle de la branche. Use when user mentions 'worktree-crush', 'supprimer worktree', 'purge worktree'.",
+      "triggers": [
+        "worktree-crush"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-spawn",
+      "version": "1.0.0",
+      "description": "Instancie un nouveau worktree managé dans un projet Agent Manager, depuis une branche existante ou nouvelle. Use when user mentions 'worktree-spawn', 'créer worktree', 'nouveau worktree'.",
+      "triggers": [
+        "worktree-spawn"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-revive",
+      "version": "1.0.0",
+      "description": "Ressuscite un worktree managé orphelin ou supprimé par erreur, via git reflog. Use when user mentions 'worktree-revive', 'ressusciter worktree', 'worktree perdu'.",
+      "triggers": [
+        "worktree-revive"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-sync-all",
+      "version": "1.0.0",
+      "description": "Effectue un fetch explicite puis un rebase sur main pour tous les worktrees managés d'un projet. Use when user mentions 'worktree-sync-all', 'synchroniser worktrees', 'rebase worktrees'.",
+      "triggers": [
+        "worktree-sync-all"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-gap-detector",
+      "version": "1.0.0",
+      "description": "Détecte les worktrees 'fuites' (idle, non mergés, orphelins) et recommande une action (closeout, crush, push, merge). Use when user mentions 'worktree-gap-detector', 'fuites worktrees', 'worktrees stagnants'.",
+      "triggers": [
+        "worktree-gap-detector"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
