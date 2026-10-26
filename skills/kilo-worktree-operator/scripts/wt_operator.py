@@ -19,7 +19,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # --- Constantes ---
 SKILLS_REPO = Path(r"D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS")
-RAGX_REPO = Path(r"D:\DO\WEB\L0-CANON\RAGX")
+RAGX_REPO = Path(r"D:\DO\WEB\TOOLS\L0-CANON\RAGX")
 AM_JSON = SKILLS_REPO / ".kilo" / "agent-manager.json"
 WAL_LOG = SKILLS_REPO / "wal" / "kwo-wal.log"
 
@@ -34,18 +34,26 @@ def wal_log(message: str) -> None:
         f.write(f"[{utc_now()}] {message}\n")
 
 
-def load_agent_manager() -> dict:
-    if not AM_JSON.exists():
+def load_agent_manager(project_id: str = "SKILLS") -> dict:
+    am_json = get_am_json_path(project_id)
+    if not am_json.exists():
         return {"worktrees": {}, "sessions": {}, "tabOrder": {"local": []}, "worktreeOrder": []}
-    with open(AM_JSON, "r", encoding="utf-8") as f:
+    with open(am_json, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
-def save_agent_manager(data: dict) -> None:
-    AM_JSON.parent.mkdir(parents=True, exist_ok=True)
-    with open(AM_JSON, "w", encoding="utf-8") as f:
+def save_agent_manager(data: dict, project_id: str = "SKILLS") -> None:
+    am_json = get_am_json_path(project_id)
+    am_json.parent.mkdir(parents=True, exist_ok=True)
+    with open(am_json, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    wal_log(f"agent-manager.json mis à jour")
+    wal_log(f"agent-manager.json mis à jour (project={project_id})")
+
+
+def get_am_json_path(project_id: str) -> Path:
+    if project_id == "RAGX":
+        return RAGX_REPO / ".kilo" / "agent-manager.json"
+    return SKILLS_REPO / ".kilo" / "agent-manager.json"
 
 
 def get_repo_path(project_id: str) -> Path:
@@ -78,7 +86,7 @@ def cmd_purge_merged(project_id: str) -> dict:
     # Exclure main elle-même
     merged_branches = [b for b in merged_lines if b != "main"]
 
-    data = load_agent_manager()
+    data = load_agent_manager(project_id)
     purged = []
     errors = []
 
@@ -135,7 +143,7 @@ def cmd_organize_sections(project_id: str) -> dict:
     repo = get_repo_path(project_id)
     wal_log(f"wt:organize-sections debut project={project_id}")
 
-    data = load_agent_manager()
+    data = load_agent_manager(project_id)
     sections = {}
     ungrouped = []
 
@@ -154,7 +162,7 @@ def cmd_organize_sections(project_id: str) -> dict:
 
     # Mettre à jour agent-manager.json avec les sections
     data["sections"] = {k: v for k, v in sections.items()}
-    save_agent_manager(data)
+    save_agent_manager(data, project_id)
 
     return {
         "command": "wt:organize-sections",
@@ -201,7 +209,7 @@ def cmd_sync_all(project_id: str) -> dict:
     repo = get_repo_path(project_id)
     wal_log(f"wt:sync-all debut project={project_id}")
 
-    data = load_agent_manager()
+    data = load_agent_manager(project_id)
     worktrees = data.get("worktrees", {})
 
     results = []
@@ -234,7 +242,7 @@ def cmd_sync_all(project_id: str) -> dict:
 # 4. wt:pin / wt:unpin
 # ---------------------------------------------------------------------------
 def cmd_pin(project_id: str, worktree_id: str) -> dict:
-    data = load_agent_manager()
+    data = load_agent_manager(project_id)
     if worktree_id not in data.get("worktrees", {}):
         return {"command": "wt:pin", "status": "FAIL", "error": f"worktree {worktree_id} introuvable"}
 
@@ -242,19 +250,19 @@ def cmd_pin(project_id: str, worktree_id: str) -> dict:
         data["pinnedWorktrees"] = []
     if worktree_id not in data["pinnedWorktrees"]:
         data["pinnedWorktrees"].append(worktree_id)
-    save_agent_manager(data)
+    save_agent_manager(data, project_id)
     wal_log(f"wt:pin worktree={worktree_id}")
 
     return {"command": "wt:pin", "worktree_id": worktree_id, "status": "OK", "pinned": True}
 
 
 def cmd_unpin(project_id: str, worktree_id: str) -> dict:
-    data = load_agent_manager()
+    data = load_agent_manager(project_id)
     pinned = data.get("pinnedWorktrees", [])
     if worktree_id in pinned:
         pinned.remove(worktree_id)
         data["pinnedWorktrees"] = pinned
-        save_agent_manager(data)
+        save_agent_manager(data, project_id)
         wal_log(f"wt:unpin worktree={worktree_id}")
         return {"command": "wt:unpin", "worktree_id": worktree_id, "status": "OK", "pinned": False}
     return {"command": "wt:unpin", "worktree_id": worktree_id, "status": "OK", "pinned": False, "detail": "déjà non épinglé"}
@@ -328,7 +336,7 @@ def cmd_ghost_buster(project_id: str) -> dict:
     repo = get_repo_path(project_id)
     wal_log(f"wt:ghost-buster debut project={project_id}")
 
-    data = load_agent_manager()
+    data = load_agent_manager(project_id)
 
     # Détecter les sessions orphelines (session dont le worktree n'existe plus)
     active_wt_ids = set(data.get("worktrees", {}).keys())
@@ -351,7 +359,7 @@ def cmd_ghost_buster(project_id: str) -> dict:
         data.setdefault("tabOrder", {})["local"] = clean_tab
         wal_log(f"wt:ghost-buster {len(pending_keys)} clé(s) pending supprimée(s)")
 
-    save_agent_manager(data)
+    save_agent_manager(data, project_id)
 
     return {
         "command": "wt:ghost-buster",
@@ -361,6 +369,51 @@ def cmd_ghost_buster(project_id: str) -> dict:
         "orphan_session_ids": orphan_sessions,
         "pending_keys_removed": len(pending_keys),
         "pending_key_ids": pending_keys,
+    }
+
+
+# ---------------------------------------------------------------------------
+# 7. wt:prune-orphans
+# ---------------------------------------------------------------------------
+def cmd_prune_orphans(project_id: str) -> dict:
+    """wt:prune-orphans — Supprime les entrées worktrees orphelines (chemin physique absent)."""
+    repo = get_repo_path(project_id)
+    wal_log(f"wt:prune-orphans debut project={project_id}")
+
+    data = load_agent_manager(project_id)
+    worktrees = data.get("worktrees", {})
+    sessions = data.get("sessions", {})
+    worktree_order = data.get("worktreeOrder", [])
+
+    pruned_ids = []
+    for wt_id, wt_info in list(worktrees.items()):
+        wt_path = wt_info.get("path", "")
+        if wt_path and not os.path.exists(wt_path):
+            del worktrees[wt_id]
+            pruned_ids.append(wt_id)
+            wal_log(f"wt:prune-orphans travail orphelin supprime: {wt_id} ({wt_path})")
+
+    # Supprimer les sessions liées aux worktrees supprimés
+    orphan_sessions = []
+    for sid, sinfo in list(sessions.items()):
+        if sinfo.get("worktreeId") in pruned_ids:
+            del sessions[sid]
+            orphan_sessions.append(sid)
+
+    # Retirer de worktreeOrder
+    data["worktreeOrder"] = [wid for wid in worktree_order if wid in worktrees]
+
+    data["worktrees"] = worktrees
+    data["sessions"] = sessions
+    save_agent_manager(data, project_id)
+
+    return {
+        "command": "wt:prune-orphans",
+        "project": project_id,
+        "status": "OK",
+        "pruned_worktrees": pruned_ids,
+        "pruned_sessions": orphan_sessions,
+        "count": len(pruned_ids),
     }
 
 
@@ -401,6 +454,10 @@ def main():
     p_ghost = sub.add_parser("wt:ghost-buster")
     p_ghost.add_argument("--project", default="SKILLS")
 
+    # wt:prune-orphans
+    p_prune = sub.add_parser("wt:prune-orphans")
+    p_prune.add_argument("--project", default="SKILLS")
+
     args = parser.parse_args()
 
     result = None
@@ -422,6 +479,8 @@ def main():
             result = cmd_spawn_clean(project, args.branch)
         elif cmd == "wt:ghost-buster":
             result = cmd_ghost_buster(project)
+        elif cmd == "wt:prune-orphans":
+            result = cmd_prune_orphans(project)
     except Exception as e:
         result = {"command": cmd, "status": "FAIL", "error": str(e)}
         wal_log(f"{cmd} ERREUR: {e}")
