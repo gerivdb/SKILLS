@@ -1789,7 +1789,97 @@ metadata:
   license: MIT
   type: domain
   triggers:
-  - worktree-closeout
+  - worktree-lifecycle-reaper
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: GIT-WORKTREE-REALITY-CHECKER
+  name: git-worktree-reality-checker
+  description: Interdire d'affirmer qu'un worktree "n'existe pas" sur un simple appel CLI négatif. Vérifie simultanément dossier physique, déclaration Git et agent-manager.json.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/git-worktree-reality-checker/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - git-worktree-reality-checker
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: AGENT-MANAGER-UI-SEMANTIC-MAP
+  name: agent-manager-ui-semantic-map
+  description: Empêcher les hallucinations d'interprétation des boutons graphiques Kilo. Dictionnaire sémantique liant libellé UI à action Git réelle.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/agent-manager-ui-semantic-map/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - agent-manager-ui-semantic-map
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: GIT-MERGE-SAFETY-GATE
+  name: git-merge-safety-gate
+  description: Remplacer les hésitations manuelles par un test déterministe git branch --merged main avant purge de worktree.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/git-merge-safety-gate/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - git-merge-safety-gate
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: PENDING-TAB-SENTINEL
+  name: pending-tab-sentinel
+  description: Détecter et neutraliser les embryons de freeze UI. Surveille tabOrder.local et élimine les clés pending:<uuid> orphelines.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/pending-tab-sentinel/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - pending-tab-sentinel
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: KILO-WORKTREE-OPERATOR
+  name: kilo-worktree-operator
+  description: Manipulateur headless de l'Agent Manager via CLI. 6 super-pouvoirs : purge-merged, organize-sections, sync-all, pin/unpin, spawn-clean, ghost-buster.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/kilo-worktree-operator/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - kilo-worktree-operator
   domain: general
   phi_weight: 0.005
   assimilation_status: N/A
