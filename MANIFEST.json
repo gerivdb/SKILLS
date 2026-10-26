@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 105,
+  "skillsCount": 110,
   "skills": [
     {
       "name": "adr-manager",
@@ -1693,6 +1693,146 @@
       "description": "Détecte les worktrees 'fuites' (idle, non mergés, orphelins) et recommande une action (closeout, crush, push, merge). Use when user mentions 'worktree-gap-detector', 'fuites worktrees', 'worktrees stagnants'.",
       "triggers": [
         "worktree-gap-detector"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "git-worktree-reality-checker",
+      "version": "1.0.0",
+      "description": "Interdire d'affirmer qu'un worktree n'existe pas sur un simple appel CLI négatif. Vérifie simultanément dossier physique, déclaration Git et agent-manager.json. Use when user mentions 'git-worktree-reality-checker', 'double preuve worktree', 'worktree existe'.",
+      "triggers": [
+        "git-worktree-reality-checker"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "agent-manager-ui-semantic-map",
+      "version": "1.0.0",
+      "description": "Empêcher les hallucinations d'interprétation des boutons graphiques Kilo. Dictionnaire sémantique liant libellé UI à action Git réelle. Use when user mentions 'agent-manager-ui-semantic-map', 'dictionnaire UI Kilo', 'bouton supprimer worktree'.",
+      "triggers": [
+        "agent-manager-ui-semantic-map"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "git-merge-safety-gate",
+      "version": "1.0.0",
+      "description": "Remplacer les hésitations manuelles par un test déterministe git branch --merged main avant purge de worktree. Use when user mentions 'git-merge-safety-gate', 'branche mergée', 'supprimer branche'.",
+      "triggers": [
+        "git-merge-safety-gate"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "pending-tab-sentinel",
+      "version": "1.0.0",
+      "description": "Détecter et neutraliser les embryons de freeze UI. Surveille tabOrder.local et élimine les clés pending:<uuid> orphelines. Use when user mentions 'pending-tab-sentinel', 'freeze UI', 'tabOrder.local', 'sessions orphelines'.",
+      "triggers": [
+        "pending-tab-sentinel"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "kilo-worktree-operator",
+      "version": "1.0.0",
+      "description": "Manipulateur headless de l'Agent Manager via CLI. 6 super-pouvoirs : purge-merged, organize-sections, sync-all, pin/unpin, spawn-clean, ghost-buster. Use when user mentions 'kilo-worktree-operator', 'wt:purge-merged', 'wt:sync-all', 'wt:spawn-clean', 'wt:ghost-buster'.",
+      "triggers": [
+        "kilo-worktree-operator"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "git-worktree-reality-checker",
+      "version": "1.0.0",
+      "description": "Interdire d'affirmer qu'un worktree \"n'existe pas\" sur un simple appel CLI négatif. Vérifie simultanément dossier physique, déclaration Git et agent-manager.json. Use when user mentions 'git-worktree-reality-checker', 'double preuve worktree', 'réalité worktree'.",
+      "triggers": [
+        "git-worktree-reality-checker"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "agent-manager-ui-semantic-map",
+      "version": "1.0.0",
+      "description": "Empêcher les hallucinations d'interprétation des boutons graphiques Kilo. Dictionnaire sémantique liant libellé UI à action Git réelle. Use when user mentions 'agent-manager-ui-semantic-map', 'dictionnaire UI', 'bouton supprimer worktree'.",
+      "triggers": [
+        "agent-manager-ui-semantic-map"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "git-merge-safety-gate",
+      "version": "1.0.0",
+      "description": "Remplacer les hésitations manuelles par un test déterministe git branch --merged main avant purge de worktree. Use when user mentions 'git-merge-safety-gate', 'vérifier merge', 'branche mergée'.",
+      "triggers": [
+        "git-merge-safety-gate"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "pending-tab-sentinel",
+      "version": "1.0.0",
+      "description": "Détecter et neutraliser les embryons de freeze UI. Surveille tabOrder.local et élimine les clés pending:<uuid> orphelines. Use when user mentions 'pending-tab-sentinel', 'désamorcer freeze', 'pending tab'.",
+      "triggers": [
+        "pending-tab-sentinel"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "kilo-worktree-operator",
+      "version": "1.0.0",
+      "description": "Manipulateur headless de l'Agent Manager via CLI. 6 super-pouvoirs : purge-merged, organize-sections, sync-all, pin/unpin, spawn-clean, ghost-buster. Use when user mentions 'kilo-worktree-operator', 'wt:purge-merged', 'wt:ghost-buster', 'opérateur worktree'.",
+      "triggers": [
+        "kilo-worktree-operator"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
