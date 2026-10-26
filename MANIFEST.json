@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 105,
+  "skillsCount": 115,
   "skills": [
     {
       "name": "adr-manager",
@@ -1693,6 +1693,76 @@
       "description": "Détecte les worktrees 'fuites' (idle, non mergés, orphelins) et recommande une action (closeout, crush, push, merge). Use when user mentions 'worktree-gap-detector', 'fuites worktrees', 'worktrees stagnants'.",
       "triggers": [
         "worktree-gap-detector"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-zero-copy-hydrator",
+      "version": "1.0.0",
+      "description": "Hydratation instantanée d'un worktree neuf via jonctions NTFS vers le cache partagé du repo maître (node_modules, .venv, etc.). Use when user mentions 'worktree-zero-copy-hydrator', 'zero-copy worktree', 'hydratation worktree'.",
+      "triggers": [
+        "worktree-zero-copy-hydrator"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-genetic-contractor",
+      "version": "1.0.0",
+      "description": "Injection du contrat de mission WORKTREE_MISSION.md à la naissance du worktree (périmètre, dépendances, IntentHash). Use when user mentions 'worktree-genetic-contractor', 'contrat mission worktree', 'WORKTREE_MISSION.md'.",
+      "triggers": [
+        "worktree-genetic-contractor"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-synaptic-bus-joiner",
+      "version": "1.0.0",
+      "description": "Enrôlement du nouveau worktree dans le bus inter-worktrees .kilo/bus/ et émission de session-spawned.json vers WAZAA. Use when user mentions 'worktree-synaptic-bus-joiner', 'bus worktree', 'session-spawned.json'.",
+      "triggers": [
+        "worktree-synaptic-bus-joiner"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-precommit-armorer",
+      "version": "1.0.0",
+      "description": "Armement immédiat des garde-fous Git (core.hooksPath vers .githooks du repo maître) à la naissance du worktree. Use when user mentions 'worktree-precommit-armorer', 'armement worktree', 'githooks worktree'.",
+      "triggers": [
+        "worktree-precommit-armorer"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "worktree-lifecycle-reaper",
+      "version": "1.0.0",
+      "description": "Protocole d'épitaphe et de restitution propre à la clôture d'une session (teardown automatique, restitution des baux, trace WAL). Use when user mentions 'worktree-lifecycle-reaper', 'clôture worktree', 'teardown worktree', 'reaper worktree'.",
+      "triggers": [
+        "worktree-lifecycle-reaper"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",

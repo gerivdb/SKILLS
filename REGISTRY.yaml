@@ -2,8 +2,8 @@ registry:
   name: SKILLS
   version: 1.0.0
   description: Skill registry for gerivdb ecosystem
-  total_skills: 100
-  last_updated: '2026-10-25T22:15:00Z'
+  total_skills: 110
+  last_updated: '2026-10-26T00:05:00Z'
 skills:
 - id: ARGUS-REMOTE-AUDITOR
   name: ARGUS-REMOTE-AUDITOR
@@ -1880,6 +1880,96 @@ metadata:
   type: domain
   triggers:
   - worktree-gap-detector
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-ZERO-COPY-HYDRATOR
+  name: worktree-zero-copy-hydrator
+  description: Hydratation instantanée d'un worktree neuf via jonctions NTFS vers le cache partagé du repo maître (node_modules, .venv, etc.).
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-zero-copy-hydrator/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-zero-copy-hydrator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-GENETIC-CONTRACTOR
+  name: worktree-genetic-contractor
+  description: Injection du contrat de mission WORKTREE_MISSION.md à la naissance du worktree (périmètre, dépendances, IntentHash).
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-genetic-contractor/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-genetic-contractor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-SYNAPTIC-BUS-JOINER
+  name: worktree-synaptic-bus-joiner
+  description: Enrôlement du nouveau worktree dans le bus inter-worktrees .kilo/bus/ et émission de session-spawned.json vers WAZAA.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-synaptic-bus-joiner/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-synaptic-bus-joiner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-PRECOMMIT-ARMORER
+  name: worktree-precommit-armorer
+  description: Armement immédiat des garde-fous Git (core.hooksPath vers .githooks du repo maître) à la naissance du worktree.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-precommit-armorer/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-precommit-armorer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: WORKTREE-LIFECYCLE-REAPER
+  name: worktree-lifecycle-reaper
+  description: Protocole d'épitaphe et de restitution propre à la clôture d'une session (teardown automatique, restitution des baux, trace WAL).
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/worktree-lifecycle-reaper/SKILL.md
+  created: '2026-10-26'
+  updated: '2026-10-26'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - worktree-lifecycle-reaper
   domain: general
   phi_weight: 0.005
   assimilation_status: N/A
