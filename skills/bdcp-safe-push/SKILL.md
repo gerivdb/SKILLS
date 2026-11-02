@@ -10,52 +10,72 @@ extends: bdcp-clapet-guard
 # Skill: bdcp-safe-push
 
 ## Purpose
-Effectuer un `git push` securise depuis n'importe quel repo de l'ecosysteme gerivdb sur ENV2, en respectant le mode BDCP (clapet ferme, trafic proxyfie via CDP). Aucun `gh`, aucune interface web GitHub, aucun `--force` sans verification.
+Effectuer un `git push` securise depuis n'importe quel repo de l'ecosysteme gerivdb sur ENV2, en respectant le mode BDCP (clapet ferme). Aucun `gh`, aucune interface web GitHub, aucun `--force` sans verification.
 
-## Context
-Le push git est l'operation la plus sensible car elle sort du workspace local. Sur ENV2 (HP Z600, 2 Xeon E5620, 24 Go DDR3), le push doit transiter par le proxy CDP et non par une connexion directe. Ce skill applique le protocole de securite avant chaque push.
+## Contexte important - proxy CDP
+
+Le clapet BDCP ferme bloque les connexions directes sortantes. Pour qu'un `git push` fonctionne avec le clapet ferme, le trafic doit transiter par un proxy local. Sur ENV2, ce proxy est le **CDP sur `localhost:18000`**.
+
+**Condition prealable obligatoire :** le proxy CDP doit etre demarre et ecouter sur `localhost:18000`. Si le proxy n'ecoute pas, `git push` ECHOUERA avec le clapet ferme (erreur de connexion, pas un echec de BDCP).
 
 ## Prerequisites
 - Clapet BDCP ferme (bdcp-clapet-guard valide)
 - Commit(s) effectue(s) localement (bdcp-atomic-commit valide)
 - Remote `origin` configure (https://github.com/gerivdb/<repo>.git)
+- Proxy CDP ecoutant sur `localhost:18000` (verifier avec Test-NetConnection)
 
 ## Workflow
 
-### 1. Verifier le remote (Etape 1)
+### 1. Verifier que le clapet est ferme (pre-requis)
 ```powershell
-# Verifier que le remote correspond au repo attendu
+# Le fichier $env:TEMP\ecos_clapet_state doit etre ABSENT (clapet ferme = BDCP mode)
+Test-Path "$env:TEMP\ecos_clapet_state"
+# Si le fichier existe -> clapet ouvert -> BDCP viole, STOP
+```
+
+### 2. Verifier que le proxy CDP ecoute sur 18000 (pre-requis)
+```powershell
+$proxyTest = Test-NetConnection -ComputerName localhost -Port 18000
+if (-not $proxyTest.TcpTestSucceeded) {
+    Write-Error "PROXY CDP NON DISPONIBLE sur localhost:18000"
+    Write-Host "Le push git echouera avec le clapet ferme car aucune connexion directe nest autorisee."
+    Write-Host "Actions possibles :"
+    Write-Host "  a) Demarrer le proxy CDP sur 18000, puis reessayer"
+    Write-Host "  b) Ouvrir le clapet (instruction explicite de l utilisateur requise)"
+    exit 1
+}
+```
+
+### 3. Verifier le remote (Etape 1)
+```powershell
 git -C "<repo_path>" remote -v
 # Resultat attendu : origin  https://github.com/gerivdb/<REPO>.git (fetch)
 #                    origin  https://github.com/gerivdb/<REPO>.git (push)
 # Si mismatch -> git -C "<repo_path>" remote set-url origin <url_correcte>
 ```
 
-### 2. Verifier la branche (Etape 2)
+### 4. Verifier la branche (Etape 2)
 ```powershell
-# Verifier qu'on est sur la bonne branche (pas de HEAD detache)
 git -C "<repo_path>" branch
 # Si HEAD detache -> git -C "<repo_path>" checkout -B main HEAD
 ```
 
-### 3. Verifier l'historique distant (Etape 3)
+### 5. Verifier l'historique distant (Etape 3)
 ```powershell
-# Verifier que le distant n'a pas ete ecrase
 git -C "<repo_path>" log origin/main --oneline -5
 # Comparer avec l'historique local
 ```
 
-### 4. Push sans force (Etape 4)
+### 6. Push sans force (Etape 4)
 ```powershell
 # Push SANS --force
 git -C "<repo_path>" push origin <branch>
-# Le trafic est automatiquement proxyfie par le CDP (localhost:18000)
+# Le trafic transite par le proxy CDP localhost:18000 (si configure dans git)
 # Aucun appel POST /clapet/open n'est necessaire
 ```
 
-### 5. Verifier le resultat (Etape 5)
+### 7. Verifier le resultat (Etape 5)
 ```powershell
-# Confirmer que le push a ete accepte
 git -C "<repo_path>" log --oneline -1
 git -C "<repo_path>" log origin/main --oneline -1
 # Les deux doivent afficher le meme commit HEAD
@@ -66,11 +86,13 @@ git -C "<repo_path>" log origin/main --oneline -1
 - **Jamais GitHub Actions / `.github/workflows/`**
 - **Jamais interface web GitHub** pour creer/fusionner des PRs
 - **Jamais `git push --force`** sans avoir verifie les etapes 1-3
-- **Clapet BDCP reste ferme** - le trafic passe par le proxy CDP
+- **Clapet BDCP reste ferme** - le trafic doit passer par le proxy CDP sur 18000
+- **Sans proxy CDP sur 18000, git push echouera avec le clapet ferme**
 
 ## Anti-patterns interdits
 - [KO] `git push --force` sans verifier remote, branche, historique
 - [KO] Push sans verifier `git remote -v`
+- [KO] Push sans verifier que le proxy CDP ecoute sur 18000
 - [KO] Changer de repo sans utiliser `git -C` ou chemins absolus
 - [KO] Utiliser `gh CLI` pour toute operation git
 
@@ -81,6 +103,17 @@ git -C "<repo_path>" log origin/main --oneline -1
 | HEAD detache | `git checkout -B main HEAD` avant push |
 | Distant ecrase | STOP - ne pas push, investiguer d'abord |
 | Clapet BDCP ouvert | STOP - invoquer bdcp-clapet-guard |
+| Proxy CDP non ecoutant sur 18000 | STOP - demarrer le proxy CDP ou ouvrir le clapet (instruction explicite) |
+
+## Configuration git pour utiliser le proxy CDP (si necessaire)
+```powershell
+# Configurer git pour utiliser le proxy local sur toutes les operations
+git config --global http.proxy http://localhost:18000
+git config --global https.proxy http://localhost:18000
+# Pour revenir a la connexion directe (quand le clapet est ouvert):
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
 
 ## References
 - **Rule** : git-remote-safety.md (protocole avant push)
