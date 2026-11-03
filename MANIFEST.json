@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 145,
+  "skillsCount": 146,
   "skills": [
     {
       "name": "adr-manager",
@@ -2405,6 +2405,23 @@
         "citizen",
         "default_skills",
         "global catalog"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "verse-context-coordinator",
+      "version": "1.0.0",
+      "description": "Resolves Impensé 4: coordinates verse_context.py with lazy-load to exclude skill schemas from compaction. Guarantees verse context does not compact skill schemas. Use when user mentions 'verse-context-coordinator', 'verse context', 'lazy load', 'skill schemas'.",
+      "triggers": [
+        "verse-context-coordinator",
+        "verse context",
+        "lazy load",
+        "skill schemas"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
