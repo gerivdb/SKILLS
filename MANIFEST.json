@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 168,
+  "skillsCount": 169,
   "skills": [
     {
       "name": "adr-manager",
@@ -2797,6 +2797,23 @@
         "snapshot versioning",
         "vault snapshot",
         "rollback vault"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-intervault-auth",
+      "version": "1.0.0",
+      "description": "Authentication and authorization between vaults in the ~60 NotebookLM mesh. Granular access control between vaults of the same mesh to prevent a compromised vault from accessing another vault's data without right. M3-Tree primitive for inter-vault security. Use when user mentions 'm3-intervault-auth', 'inter-vault auth', 'vault access control', 'mesh security'.",
+      "triggers": [
+        "m3-intervault-auth",
+        "inter-vault auth",
+        "vault access control",
+        "mesh security"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
