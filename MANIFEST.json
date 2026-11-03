@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 122,
+  "skillsCount": 123,
   "skills": [
     {
       "name": "adr-manager",
@@ -2006,6 +2006,23 @@
         "git lock",
         "index.lock",
         "lock rescuer"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "geri-rules-propagator",
+      "version": "1.0.0",
+      "description": "Charge et priorise les règles locales de .geri/rules/ sur les règles globales non versionnées de KiloCode (~/.kilocode/rules/). Garantit que les règles spécifiques au depot GeriCode priment sur les règles globales generiques. Use when user mentions 'geri-rules-propagator', 'geri rules', 'rules priority', 'kilo code rules'.",
+      "triggers": [
+        "geri-rules-propagator",
+        "geri rules",
+        "rules priority",
+        "kilo code rules"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
