@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 159,
+  "skillsCount": 160,
   "skills": [
     {
       "name": "adr-manager",
@@ -2644,6 +2644,23 @@
         "semantic RAID",
         "vault parity",
         "semantic replication"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-tree-entropy-homeostat",
+      "version": "1.0.0",
+      "description": "Continuous homeostatic monitoring of entropy (H = 0.0) across the ~60 NotebookLM vault mesh. Prunes duplicates, resynchronizes cross-labels and guarantees perfect stasis of the swarm. M3-Tree primitive for entropic multi-vault regulation. Use when user mentions 'm3-tree-entropy-homeostat', 'entropic regulation', 'cross-label sync', 'vault mesh homeostasis'.",
+      "triggers": [
+        "m3-tree-entropy-homeostat",
+        "entropic regulation",
+        "cross-label sync",
+        "vault mesh homeostasis"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
