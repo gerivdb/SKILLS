@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 166,
+  "skillsCount": 167,
   "skills": [
     {
       "name": "adr-manager",
@@ -2763,6 +2763,23 @@
         "load balancing",
         "vault load",
         "request routing"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-chunk-gc",
+      "version": "1.0.0",
+      "description": "Garbage collection of orphaned or duplicated chunks after pruning or migration in the ~60 NotebookLM vault mesh. Prevents accumulation of dead chunks consuming space and complicating queries. M3-Tree primitive for chunk garbage collection. Use when user mentions 'm3-chunk-gc', 'chunk gc', 'dead chunks', 'chunk cleanup'.",
+      "triggers": [
+        "m3-chunk-gc",
+        "chunk gc",
+        "dead chunks",
+        "chunk cleanup"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
