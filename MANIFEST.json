@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 123,
+  "skillsCount": 124,
   "skills": [
     {
       "name": "adr-manager",
@@ -2023,6 +2023,23 @@
         "geri rules",
         "rules priority",
         "kilo code rules"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "act-protocol-runner",
+      "version": "1.0.0",
+      "description": "Executes state transitions of the ACT protocol (ACT-V19.2.1-FINALLY-PROPOSED.md) and validates HITL checkpoints. Guarantees that each state transition is preceded by HITL validation when required. Use when user mentions 'act-protocol-runner', 'act protocol', 'state transition', 'HITL checkpoint'.",
+      "triggers": [
+        "act-protocol-runner",
+        "act protocol",
+        "state transition",
+        "HITL checkpoint"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
