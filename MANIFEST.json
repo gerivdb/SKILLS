@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 144,
+  "skillsCount": 145,
   "skills": [
     {
       "name": "adr-manager",
@@ -2388,6 +2388,23 @@
         "SHA256",
         "registry integrity",
         "REGISTRY.yaml"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "citizen-skill-binder",
+      "version": "1.0.0",
+      "description": "Resolves Impensé 3: links default_skills of each citizen to its instantiation without loading the global catalog. Guarantees each citizen loads only its default skills. Use when user mentions 'citizen-skill-binder', 'citizen', 'default_skills', 'global catalog'.",
+      "triggers": [
+        "citizen-skill-binder",
+        "citizen",
+        "default_skills",
+        "global catalog"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
