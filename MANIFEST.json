@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 139,
+  "skillsCount": 140,
   "skills": [
     {
       "name": "adr-manager",
@@ -2300,6 +2300,23 @@
         "IntentHash",
         "traffic guard",
         "bdcp_enforcer"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "mcp-tool-inventory-cache",
+      "version": "1.0.0",
+      "description": "Caches discovered tools to answer tools/list instantly without querying cold processes. Improves gateway MCP latency for clients listing available tools. Use when user mentions 'mcp-tool-inventory-cache', 'MCP inventory', 'tool cache', 'tools list cache'.",
+      "triggers": [
+        "mcp-tool-inventory-cache",
+        "MCP inventory",
+        "tool cache",
+        "tools list cache"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
