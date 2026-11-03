@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 137,
+  "skillsCount": 138,
   "skills": [
     {
       "name": "adr-manager",
@@ -2263,6 +2263,25 @@
         "OpenRouter",
         "backoff 60s",
         "ResourceExhausted"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "cdp-browser-bridge-health",
+      "version": "1.0.0",
+      "description": "Tests reactivity of Chrome CDP (port 9223) and Lightpanda (port 19222) bridges on ENV5. Guarantees AI browser bridges are operational before any traffic routing. Use when user mentions 'cdp-browser-bridge-health', 'CDP health', 'Chrome CDP', 'Lightpanda', 'port 9223', 'port 19222'.",
+      "triggers": [
+        "cdp-browser-bridge-health",
+        "CDP health",
+        "Chrome CDP",
+        "Lightpanda",
+        "port 9223",
+        "port 19222"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
