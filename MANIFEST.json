@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 154,
+  "skillsCount": 155,
   "skills": [
     {
       "name": "adr-manager",
@@ -2559,6 +2559,23 @@
         "cross-vault synthesis",
         "NotebookLM aggregation",
         "token compression"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-finops-guardian",
+      "version": "1.0.0",
+      "description": "Models computation cost, proxy endpoint latency (port 18000) and quota usage continuously to dynamically arbitrate request routing between BYOK backends. M3-Tree primitive for predictive FinOps supervision. Use when user mentions 'm3-finops-guardian', 'predictive FinOps', 'quota arbitration', 'proxy latency'.",
+      "triggers": [
+        "m3-finops-guardian",
+        "predictive FinOps",
+        "quota arbitration",
+        "proxy latency"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
