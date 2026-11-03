@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 148,
+  "skillsCount": 149,
   "skills": [
     {
       "name": "adr-manager",
@@ -2457,6 +2457,23 @@
         "knowledge graph",
         "causal query",
         "graph traversal"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "context-engineering",
+      "version": "1.0.0",
+      "description": "Structures contextual prompts to avoid passive acknowledgment loops. Guarantees clean context engineering for LLM interactions. Use when user mentions 'context-engineering', 'contextual prompts', 'acknowledgment loops', 'LLM context'.",
+      "triggers": [
+        "context-engineering",
+        "contextual prompts",
+        "acknowledgment loops",
+        "LLM context"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
