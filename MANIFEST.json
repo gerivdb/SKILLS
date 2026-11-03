@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 125,
+  "skillsCount": 126,
   "skills": [
     {
       "name": "adr-manager",
@@ -2058,6 +2058,23 @@
         "intent",
         "ADR",
         "architecture decision"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "known-repositories-syncer",
+      "version": "1.0.0",
+      "description": "Ensure that every new backend clone (ex: jupyter-server-mcp) is registered in known_repositories.yaml without drift. Guarantees coherence between physical clones and the SOT registry. Use when user mentions 'known-repositories-syncer', 'known repositories', 'SOT', 'clone registry'.",
+      "triggers": [
+        "known-repositories-syncer",
+        "known repositories",
+        "SOT",
+        "clone registry"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
