@@ -12,43 +12,43 @@ source_repo: gerivdb/SKILLS
 source_path: skills/self-healing-orchestrator/SKILL.md
 ---
 
-# Skill — self-healing-orchestrator
+# Skill - self-healing-orchestrator
 
 ## Objectif
-Combo maître de plus haut niveau : détecte un freeze, révoque le bail, purge la base SQLite, redémarre l'UI et consigne l'incident dans le WAL. Assure la reprise automatique après une panne ou un blocage du système.
+Combo maitre de plus haut niveau : detecte un freeze, revoque le bail, purge la base SQLite, redemarre l'UI et consigne l'incident dans le WAL. Assure la reprise automatique apres une panne ou un blocage du systeme.
 
 ## Declencheur
-- Un freeze du système est détecté (absence de réponse heartbeat)
-- Un bail est expiré ou bloqué
-- Une base SQLite est corrompue ou verrouillée
-- L'UI ne répond plus et doit être redémarrée
-- Un incident de niveau critique nécessite une récupération automatisée
+- Un freeze du systeme est detecte (absence de reponse heartbeat)
+- Un bail est expire ou bloque
+- Une base SQLite est corrompue ou verrouillee
+- L'UI ne repond plus et doit etre redemarree
+- Un incident de niveau critique necessite une recuperation automatisee
 
 ## Entrees
-- `incident_id`: identifiant de l'incident détecté
-- `freeze_detected`: boolean indiquant un gel du système
-- `lease_id`: identifiant du bail à révoquer
-- `sqlite_path`: chemin de la base SQLite à purger
-- `ui_process`: nom du processus UI à redémarrer
+- `incident_id`: identifiant de l'incident detecte
+- `freeze_detected`: boolean indiquant un gel du systeme
+- `lease_id`: identifiant du bail a revoquer
+- `sqlite_path`: chemin de la base SQLite a purger
+- `ui_process`: nom du processus UI a redemarrer
 - `wal_path`: chemin du journal WAL pour consignation
 
 ## Sorties
-- `heal_status`: statut de l'auto-guérison (success, partial, failed)
-- `lease_revoked`: boolean indiquant la révocation du bail
+- `heal_status`: statut de l'auto-guerison (success, partial, failed)
+- `lease_revoked`: boolean indiquant la revocation du bail
 - `sqlite_purged`: boolean indiquant la purge de la base
-- `ui_restarted`: boolean indiquant le redémarrage de l'UI
-- `wal_entry_id`: identifiant de l'entrée WAL de l'incident
+- `ui_restarted`: boolean indiquant le redemarrage de l'UI
+- `wal_entry_id`: identifiant de l'entree WAL de l'incident
 
-## Protocole d'auto-guérison
-1. Détecter le freeze (absence de heartbeat > seuil)
-2. Révoquer le bail actif associé
+## Protocole d'auto-guerison
+1. Detecter le freeze (absence de heartbeat > seuil)
+2. Revoquer le bail actif associe
 3. Purger la base SQLite (suppression des verrous, nettoyage WAL)
-4. Redémarrer le processus UI
+4. Redemarrer le processus UI
 5. Consigner l'incident et les actions dans le WAL
-6. Notifier le Citoyen habilité
+6. Notifier le Citoyen habilite
 
 ## WAL NEXUS
-Chaque incident d'auto-guérison est consigné dans le WAL avec l'identifiant d'incident, les actions effectuées (révocation bail, purge SQLite, redémarrage UI), le statut final et l'horodatage UTC.
+Chaque incident d'auto-guerison est consigne dans le WAL avec l'identifiant d'incident, les actions effectuees (revocation bail, purge SQLite, redemarrage UI), le statut final et l'horodatage UTC.
 
 ## Reference ADR
 - **ADR** : ADR-2026-06-28-001-LOGICAL-ARCHITECTURE-N1-N4

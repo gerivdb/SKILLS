@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 151,
+  "skillsCount": 152,
   "skills": [
     {
       "name": "adr-manager",
@@ -2508,6 +2508,23 @@
         "auto enroll",
         "skill registration",
         "registry update"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "self-healing-orchestrator",
+      "version": "1.0.0",
+      "description": "Coordinates the cascade of self-healing sentinels as soon as a critical incident is intercepted. Guarantees automatic remediation across the GeriCode meta-cluster. Use when user mentions 'self-healing-orchestrator', 'self healing', 'orchestrator', 'cascade remediation'.",
+      "triggers": [
+        "self-healing-orchestrator",
+        "self healing",
+        "orchestrator",
+        "cascade remediation"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
