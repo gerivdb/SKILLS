@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 146,
+  "skillsCount": 147,
   "skills": [
     {
       "name": "adr-manager",
@@ -2422,6 +2422,23 @@
         "verse context",
         "lazy load",
         "skill schemas"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "manifest-lazy-load-synchronizer",
+      "version": "1.0.0",
+      "description": "Resolves the index drift between the 112 skills of MANIFEST.json and the 239 real folders of L4-TOOLS/SKILLS. Synchronizes the manifest with the filesystem and implements lazy-loading of skills. Use when user mentions 'manifest-lazy-load-synchronizer', 'manifest sync', 'index drift', 'lazy load skills'.",
+      "triggers": [
+        "manifest-lazy-load-synchronizer",
+        "manifest sync",
+        "index drift",
+        "lazy load skills"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
