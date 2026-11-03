@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 138,
+  "skillsCount": 139,
   "skills": [
     {
       "name": "adr-manager",
@@ -2282,6 +2282,24 @@
         "Lightpanda",
         "port 9223",
         "port 19222"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "bdcp-zero-trust-traffic-guard",
+      "version": "1.0.0",
+      "description": "Validates IntentHash BDCP signatures on traffic transiting through src/bdcp_enforcer.py. Guarantees no unsigned traffic crosses BDCP mode (Behind CDP). Use when user mentions 'bdcp-zero-trust-traffic-guard', 'BDCP', 'IntentHash', 'traffic guard', 'bdcp_enforcer'.",
+      "triggers": [
+        "bdcp-zero-trust-traffic-guard",
+        "BDCP",
+        "IntentHash",
+        "traffic guard",
+        "bdcp_enforcer"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
