@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 128,
+  "skillsCount": 129,
   "skills": [
     {
       "name": "adr-manager",
@@ -2109,6 +2109,23 @@
         "merge hygiene",
         "700 files",
         "merge block"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "kilo-rule-auditor",
+      "version": "1.0.0",
+      "description": "Audits and sanitizes Kilo rules in C:\\Users\\GG\\.kilocode\\rules\\ and .geri/rules/. Verifies consistency with ADRs, detects contradictions, and traces changes in git. Use when user mentions 'kilo-rule-auditor', 'rule auditor', 'kilo rules', 'ADR backing'.",
+      "triggers": [
+        "kilo-rule-auditor",
+        "rule auditor",
+        "kilo rules",
+        "ADR backing"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
