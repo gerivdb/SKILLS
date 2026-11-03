@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 141,
+  "skillsCount": 142,
   "skills": [
     {
       "name": "adr-manager",
@@ -2335,6 +2335,25 @@
         "quota",
         "gateway.yaml",
         "daily quota"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "network-discovery-prober",
+      "version": "1.0.0",
+      "description": "Optimizes external probes (SearXNG, ChatJimmy, AppFlowy) so they do not delay gateway boot. Guarantees network discovery probes are parallelized and do not block startup. Use when user mentions 'network-discovery-prober', 'probe parallelization', 'gateway boot', 'SearXNG', 'ChatJimmy', 'AppFlowy'.",
+      "triggers": [
+        "network-discovery-prober",
+        "probe parallelization",
+        "gateway boot",
+        "SearXNG",
+        "ChatJimmy",
+        "AppFlowy"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
