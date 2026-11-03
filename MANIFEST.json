@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 124,
+  "skillsCount": 125,
   "skills": [
     {
       "name": "adr-manager",
@@ -2040,6 +2040,24 @@
         "act protocol",
         "state transition",
         "HITL checkpoint"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "adr-traceability-linker",
+      "version": "1.0.0",
+      "description": "Link automatically a code change to its Intent (.geri/INTENTS/) and to its Architecture Decision Record (.geri/ADR/). Guarantees full traceability between code, intent and architectural decision. Use when user mentions 'adr-traceability-linker', 'traceability', 'intent', 'ADR', 'architecture decision'.",
+      "triggers": [
+        "adr-traceability-linker",
+        "traceability",
+        "intent",
+        "ADR",
+        "architecture decision"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
