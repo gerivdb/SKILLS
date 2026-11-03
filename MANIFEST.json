@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 150,
+  "skillsCount": 151,
   "skills": [
     {
       "name": "adr-manager",
@@ -2491,6 +2491,23 @@
         "skill validator",
         "frontmatter",
         "intent_hash"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-auto-enroller",
+      "version": "1.0.0",
+      "description": "Automates the registration of newly created skills in REGISTRY.yaml and MANIFEST.json. Guarantees every new skill is indexed without manual intervention. Use when user mentions 'skill-auto-enroller', 'auto enroll', 'skill registration', 'registry update'.",
+      "triggers": [
+        "skill-auto-enroller",
+        "auto enroll",
+        "skill registration",
+        "registry update"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
