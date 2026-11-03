@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 156,
+  "skillsCount": 157,
   "skills": [
     {
       "name": "adr-manager",
@@ -2593,6 +2593,23 @@
         "dynamic skill tree",
         "skill composition",
         "M3-Tree navigation"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-epsilon-pruning",
+      "version": "1.0.0",
+      "description": "Uses affinity weight and entropy metrics to prune obsolete or underperforming skill branches in the M3-Tree in real time, guaranteeing minimal memory and cognitive footprint (H = 0.0). M3-Tree primitive for automated topological pruning. Use when user mentions 'm3-epsilon-pruning', 'topological pruning', 'entropy pruning', 'skill tree optimization'.",
+      "triggers": [
+        "m3-epsilon-pruning",
+        "topological pruning",
+        "entropy pruning",
+        "skill tree optimization"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
