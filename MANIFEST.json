@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 114,
+  "skillsCount": 115,
   "skills": [
     {
       "name": "adr-manager",
@@ -1867,6 +1867,23 @@
         "fluence ipc",
         "socket check",
         "ecos routing"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "fastmcp-schema-verifier",
+      "version": "1.0.0",
+      "description": "Verifies the compliance of FastMCP tool schemas (inputSchema, Pydantic types) before exposure on the unified gateway. Guarantees every declared tool respects the JSON-RPC 2.0 spec and can be serialized without error. Use when user mentions 'fastmcp-schema-verifier', 'fastmcp schema', 'inputSchema validation', 'mcp tool schema'.",
+      "triggers": [
+        "fastmcp-schema-verifier",
+        "fastmcp schema",
+        "inputSchema validation",
+        "mcp tool schema"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
