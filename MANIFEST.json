@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 135,
+  "skillsCount": 136,
   "skills": [
     {
       "name": "adr-manager",
@@ -2228,6 +2228,23 @@
         "Jupyter MCP",
         "upstream bridge",
         "stdio proxy"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "llm-free-tier-arbitrator",
+      "version": "1.0.0",
+      "description": "Routes dynamic LLM priority requests toward 9 free providers (Cerebras, Groq, Mistral, etc.). Guarantees optimal use of free quotas without depending on a single provider. Use when user mentions 'llm-free-tier-arbitrator', 'free tier LLM', 'LLM routing', 'free provider'.",
+      "triggers": [
+        "llm-free-tier-arbitrator",
+        "free tier LLM",
+        "LLM routing",
+        "free provider"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
