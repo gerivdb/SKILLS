@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 155,
+  "skillsCount": 156,
   "skills": [
     {
       "name": "adr-manager",
@@ -2576,6 +2576,23 @@
         "predictive FinOps",
         "quota arbitration",
         "proxy latency"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-dynamic-skill-tree",
+      "version": "1.0.0",
+      "description": "Replaces the linear skill list or static catalog with a decisional M3-Tree. For complex problems, the agent navigates the M3-Tree to compose a custom execution pipeline combining competencies from different quadrants. M3-Tree primitive for dynamic skill composition. Use when user mentions 'm3-dynamic-skill-tree', 'dynamic skill tree', 'skill composition', 'M3-Tree navigation'.",
+      "triggers": [
+        "m3-dynamic-skill-tree",
+        "dynamic skill tree",
+        "skill composition",
+        "M3-Tree navigation"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
