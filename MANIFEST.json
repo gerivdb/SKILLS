@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 161,
+  "skillsCount": 162,
   "skills": [
     {
       "name": "adr-manager",
@@ -2678,6 +2678,23 @@
         "holographic indexing",
         "topological mapping",
         "strata links"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-replica-sync",
+      "version": "1.0.0",
+      "description": "Ensures physical replication of data chunks across the ~60 NotebookLM vaults of the M3-Tree mesh. Guarantees a physical copy of each critical chunk exists on at least two distinct vaults to avoid any data loss in case of node unavailability. M3-Tree primitive for distributed replication. Use when user mentions 'm3-replica-sync', 'chunk replication', 'vault sync', 'physical replication'.",
+      "triggers": [
+        "m3-replica-sync",
+        "chunk replication",
+        "vault sync",
+        "physical replication"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
