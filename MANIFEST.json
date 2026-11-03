@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 113,
+  "skillsCount": 114,
   "skills": [
     {
       "name": "adr-manager",
@@ -1850,6 +1850,23 @@
         "zombie port",
         "port locked",
         "bind error"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "ecos-ipc-fastpath-guardian",
+      "version": "1.0.0",
+      "description": "Monitors and validates the presence of the IPC socket (/tmp/fluence.ipc) before routing CLI traffic in ENV3, per the global ECOS rule. Prevents any inter-process communication attempt when the socket is absent or unreachable. Use when user mentions 'ecos-ipc-fastpath-guardian', 'fluence ipc', 'socket check', 'ecos routing'.",
+      "triggers": [
+        "ecos-ipc-fastpath-guardian",
+        "fluence ipc",
+        "socket check",
+        "ecos routing"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
