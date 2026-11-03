@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 132,
+  "skillsCount": 133,
   "skills": [
     {
       "name": "adr-manager",
@@ -2177,6 +2177,23 @@
         "strata boundary",
         "layer enforcement",
         "L* strata"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "mcp-stdio-multiplexer",
+      "version": "1.0.0",
+      "description": "Pools and reuses persistent stdio MCP processes without saturating the file descriptor table under Windows. Guarantees efficient stdio connection management between the gateway and MCP backends. Use when user mentions 'mcp-stdio-multiplexer', 'stdio multiplexer', 'MCP stdio', 'process pool'.",
+      "triggers": [
+        "mcp-stdio-multiplexer",
+        "stdio multiplexer",
+        "MCP stdio",
+        "process pool"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
