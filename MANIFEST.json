@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 167,
+  "skillsCount": 168,
   "skills": [
     {
       "name": "adr-manager",
@@ -2780,6 +2780,23 @@
         "chunk gc",
         "dead chunks",
         "chunk cleanup"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-snapshot-versioning",
+      "version": "1.0.0",
+      "description": "Versioning of vault snapshots in the ~60 NotebookLM mesh. Allows rolling back to a previous state of a vault in case of corruption or erroneous modification. M3-Tree primitive for snapshot versioning. Use when user mentions 'm3-snapshot-versioning', 'snapshot versioning', 'vault snapshot', 'rollback vault'.",
+      "triggers": [
+        "m3-snapshot-versioning",
+        "snapshot versioning",
+        "vault snapshot",
+        "rollback vault"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
