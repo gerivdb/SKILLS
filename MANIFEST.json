@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 127,
+  "skillsCount": 128,
   "skills": [
     {
       "name": "adr-manager",
@@ -2092,6 +2092,23 @@
         "SOT",
         "registry guardian",
         "hash integrity"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "merge-hygiene-enforcer",
+      "version": "1.0.0",
+      "description": "Blocks merges polluted by an excessive number of unwanted files (threshold: 700 files). Synchronizes with the GeriCode version to guarantee merge hygiene across all meta-cluster repositories. Use when user mentions 'merge-hygiene-enforcer', 'merge hygiene', '700 files', 'merge block'.",
+      "triggers": [
+        "merge-hygiene-enforcer",
+        "merge hygiene",
+        "700 files",
+        "merge block"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
