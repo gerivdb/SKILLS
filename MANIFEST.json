@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 149,
+  "skillsCount": 150,
   "skills": [
     {
       "name": "adr-manager",
@@ -2474,6 +2474,23 @@
         "contextual prompts",
         "acknowledgment loops",
         "LLM context"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "skills-validator",
+      "version": "1.0.0",
+      "description": "Validates the frontmatter YAML of all 239 SKILL.md files (detects duplicated or invalid intent_hash). Guarantees skill metadata consistency across the repository. Use when user mentions 'skills-validator', 'skill validator', 'frontmatter', 'intent_hash'.",
+      "triggers": [
+        "skills-validator",
+        "skill validator",
+        "frontmatter",
+        "intent_hash"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
