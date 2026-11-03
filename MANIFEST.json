@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 110,
+  "skillsCount": 113,
   "skills": [
     {
       "name": "adr-manager",
@@ -1833,6 +1833,23 @@
       "description": "Manipulateur headless de l'Agent Manager via CLI. 6 super-pouvoirs : purge-merged, organize-sections, sync-all, pin/unpin, spawn-clean, ghost-buster. Use when user mentions 'kilo-worktree-operator', 'wt:purge-merged', 'wt:ghost-buster', 'opérateur worktree'.",
       "triggers": [
         "kilo-worktree-operator"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "windows-zombie-port-cleaner",
+      "version": "1.0.0",
+      "description": "Detects and releases TCP ports locked by orphaned child processes (python.exe, node.exe, uvicorn.exe) after an ASGI/WSGI server crash or IDE reload on Windows ENV2 (HP Z600). Use when user mentions 'windows-zombie-port-cleaner', 'zombie port', 'port locked', '9000 bind error'.",
+      "triggers": [
+        "windows-zombie-port-cleaner",
+        "zombie port",
+        "port locked",
+        "bind error"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
