@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 131,
+  "skillsCount": 132,
   "skills": [
     {
       "name": "adr-manager",
@@ -2160,6 +2160,23 @@
         "citizenship",
         "citizen audit",
         "L3 citizens"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "strata-boundary-enforcer",
+      "version": "1.0.0",
+      "description": "Interdict illegitimate circular or downward dependencies between strata (ex: L1 depending directly on L4). Guarantees stratum integrity of the GeriCode meta-cluster. Use when user mentions 'strata-boundary-enforcer', 'strata boundary', 'layer enforcement', 'L* strata'.",
+      "triggers": [
+        "strata-boundary-enforcer",
+        "strata boundary",
+        "layer enforcement",
+        "L* strata"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
