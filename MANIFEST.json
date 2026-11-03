@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 142,
+  "skillsCount": 143,
   "skills": [
     {
       "name": "adr-manager",
@@ -2354,6 +2354,23 @@
         "SearXNG",
         "ChatJimmy",
         "AppFlowy"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-lazy-unloader",
+      "version": "1.0.0",
+      "description": "Resolves Impensé 1: implements unload_skill(name) to free token memory after use. Guarantees loaded skills do not remain in memory indefinitely. Use when user mentions 'skill-lazy-unloader', 'lazy unload', 'token memory', 'unload skill'.",
+      "triggers": [
+        "skill-lazy-unloader",
+        "lazy unload",
+        "token memory",
+        "unload skill"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
