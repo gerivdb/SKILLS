@@ -2553,7 +2553,7 @@
     {
       "name": "m3-vault-synthesizer",
       "version": "1.0.0",
-      "description": "Automates continuous aggregation of 30+ NotebookLM vaults to dynamically feed agent context without saturating token limits. Natural extension of the Zot Compressor. M3-Tree primitive for real-time cross-vault synthesis. Use when user mentions 'm3-vault-synthesizer', 'cross-vault synthesis', 'NotebookLM aggregation', 'token compression'.",
+      "description": "Automates continuous aggregation of ~60 NotebookLM vaults to dynamically feed agent context without saturating token limits. Natural extension of the Zot Compressor. M3-Tree primitive for real-time cross-vault synthesis. Use when user mentions 'm3-vault-synthesizer', 'cross-vault synthesis', 'NotebookLM aggregation', 'token compression'.",
       "triggers": [
         "m3-vault-synthesizer",
         "cross-vault synthesis",

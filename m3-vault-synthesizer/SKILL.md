@@ -14,7 +14,7 @@ source_path: skills/m3-vault-synthesizer/SKILL.md
 
 ## Objectif
 
-Automatiser l'aggregation continue des 30+ vaults NotebookLM pour alimenter dynamiquement le contexte des agents sans saturer les limites de tokens. Extension naturelle du Zot Compressor. Primitive M3-Tree de synthese inter-vault en temps reel.
+Automatiser l'aggregation continue des ~60 voutes NotebookLM pour alimenter dynamiquement le contexte des agents sans saturer les limites de tokens. Extension naturelle du Zot Compressor. Primitive M3-Tree de synthese inter-vault en temps reel.
 
 ## Declencheur
 
