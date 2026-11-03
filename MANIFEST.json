@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 121,
+  "skillsCount": 122,
   "skills": [
     {
       "name": "adr-manager",
@@ -1989,6 +1989,23 @@
         "zombie process",
         "orphan worktree",
         "stash cleanup"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "git-lock-rescuer",
+      "version": "1.0.0",
+      "description": "Diagnostic et resolution securisee des fichiers .lock git (.git/index.lock, etc.). Jamais de suppression aveugle. Utilise ce skill quand un git add/commit/push est bloque par un lock, avant toute suppression de .lock. Use when user mentions 'git-lock-rescuer', 'git lock', 'index.lock', 'lock rescuer'.",
+      "triggers": [
+        "git-lock-rescuer",
+        "git lock",
+        "index.lock",
+        "lock rescuer"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
