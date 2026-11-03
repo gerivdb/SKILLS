@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 158,
+  "skillsCount": 159,
   "skills": [
     {
       "name": "adr-manager",
@@ -2627,6 +2627,23 @@
         "synaptic trace",
         "WAL seal",
         "decision tree audit"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-tree-semantic-raid",
+      "version": "1.0.0",
+      "description": "Transposes RAID fault-tolerance principles to semantic and memory domains. At ~60 NotebookLM vaults scale, guarantees no chunk loss, lexical drift or external source unavailability compromises global context coherence. M3-Tree primitive for distributed semantic replication. Use when user mentions 'm3-tree-semantic-raid', 'semantic RAID', 'vault parity', 'semantic replication'.",
+      "triggers": [
+        "m3-tree-semantic-raid",
+        "semantic RAID",
+        "vault parity",
+        "semantic replication"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
