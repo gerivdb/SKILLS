@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 130,
+  "skillsCount": 131,
   "skills": [
     {
       "name": "adr-manager",
@@ -2143,6 +2143,23 @@
         "branch hygiene",
         "orphan branches",
         "merged branches"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "citizenship-auditor",
+      "version": "1.1.0",
+      "description": "Validates the registration of citizen repositories in stratum L3 (CITIZENS.md / citizens.yaml). Ensures every active citizen is properly declared and compliant with governance rules. Use when user mentions 'citizenship-auditor', 'citizenship', 'citizen audit', 'L3 citizens'.",
+      "triggers": [
+        "citizenship-auditor",
+        "citizenship",
+        "citizen audit",
+        "L3 citizens"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
