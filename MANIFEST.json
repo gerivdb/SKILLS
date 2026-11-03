@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 162,
+  "skillsCount": 163,
   "skills": [
     {
       "name": "adr-manager",
@@ -2695,6 +2695,23 @@
         "chunk replication",
         "vault sync",
         "physical replication"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-vault-health-monitor",
+      "version": "1.0.0",
+      "description": "Monitors the individual health of each vault in the ~60 NotebookLM vault mesh. Early detection of a failing vault before the M3-Tree-RAID engine must reconstruct missing data. M3-Tree primitive for preventive health monitoring. Use when user mentions 'm3-vault-health-monitor', 'vault health', 'health check', 'vault monitoring'.",
+      "triggers": [
+        "m3-vault-health-monitor",
+        "vault health",
+        "health check",
+        "vault monitoring"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
