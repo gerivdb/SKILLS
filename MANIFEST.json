@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 165,
+  "skillsCount": 166,
   "skills": [
     {
       "name": "adr-manager",
@@ -2746,6 +2746,23 @@
         "distributed query",
         "multi-vault query",
         "parallel query"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-load-balancer",
+      "version": "1.0.0",
+      "description": "Load balancing of requests across the 60 NotebookLM vaults of the M3-Tree mesh. Some vaults can be over-solicited while others are under-utilized. M3-Tree primitive for load balancing. Use when user mentions 'm3-load-balancer', 'load balancing', 'vault load', 'request routing'.",
+      "triggers": [
+        "m3-load-balancer",
+        "load balancing",
+        "vault load",
+        "request routing"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
