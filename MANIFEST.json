@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 119,
+  "skillsCount": 120,
   "skills": [
     {
       "name": "adr-manager",
@@ -1953,6 +1953,24 @@
         "json safe",
         "convertto-json",
         "psobject properties"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "thermal-predictor",
+      "version": "1.0.0",
+      "description": "Surveillance de charge CPU/RAM sous charge multi-workers sur l'hote HP Z600 (ENV2). Predicts thermal load and warns before saturation. Use when user mentions 'thermal-predictor', 'thermal monitoring', 'CPU load', 'RAM saturation', 'Z600'.",
+      "triggers": [
+        "thermal-predictor",
+        "thermal monitoring",
+        "CPU load",
+        "RAM saturation",
+        "Z600"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
