@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 164,
+  "skillsCount": 165,
   "skills": [
     {
       "name": "adr-manager",
@@ -2729,6 +2729,23 @@
         "conflict resolution",
         "merge conflict",
         "version conflict"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-distributed-query",
+      "version": "1.0.0",
+      "description": "Orchestrator of distributed multi-vault queries in the ~60 NotebookLM mesh. Provides a single optimized entry point for a query spanning several vaults, avoiding sequential scanning of each vault. M3-Tree primitive for distributed query. Use when user mentions 'm3-distributed-query', 'distributed query', 'multi-vault query', 'parallel query'.",
+      "triggers": [
+        "m3-distributed-query",
+        "distributed query",
+        "multi-vault query",
+        "parallel query"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
