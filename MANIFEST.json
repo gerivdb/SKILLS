@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 160,
+  "skillsCount": 161,
   "skills": [
     {
       "name": "adr-manager",
@@ -2661,6 +2661,23 @@
         "entropic regulation",
         "cross-label sync",
         "vault mesh homeostasis"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-tree-holocron",
+      "version": "1.0.0",
+      "description": "Real-time holographic indexing of the ~60 NotebookLM vaults and of their links to strata ENV0 (remote GitHub), ENV2 (local HP Z600 workstation) and ENV3 (cloud orchestration mesh). M3-Tree primitive for integral topological mapping. Use when user mentions 'm3-tree-holocron', 'holographic indexing', 'topological mapping', 'strata links'.",
+      "triggers": [
+        "m3-tree-holocron",
+        "holographic indexing",
+        "topological mapping",
+        "strata links"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
