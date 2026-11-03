@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 163,
+  "skillsCount": 164,
   "skills": [
     {
       "name": "adr-manager",
@@ -2712,6 +2712,23 @@
         "vault health",
         "health check",
         "vault monitoring"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-conflict-resolver",
+      "version": "1.0.0",
+      "description": "Resolves version conflicts between vaults in the ~60 NotebookLM mesh. Two vaults can modify the same chunk simultaneously without a merge strategy. M3-Tree primitive for semantic conflict resolution. Use when user mentions 'm3-conflict-resolver', 'conflict resolution', 'merge conflict', 'version conflict'.",
+      "triggers": [
+        "m3-conflict-resolver",
+        "conflict resolution",
+        "merge conflict",
+        "version conflict"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
