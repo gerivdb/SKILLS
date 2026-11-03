@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 117,
+  "skillsCount": 118,
   "skills": [
     {
       "name": "adr-manager",
@@ -1919,6 +1919,23 @@
         "WMI",
         "CIM",
         "Uvicorn state"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "agent-ipc-socket-triage",
+      "version": "1.0.0",
+      "description": "Gerer les timeouts de communication inter-processus (IPC) entre ECOS-CLI et FLUENCE. Detecte les blocages de socket et propose des strategies de reprise. Use when user mentions 'agent-ipc-socket-triage', 'IPC timeout', 'ECOS-CLI FLUENCE', 'socket triage'.",
+      "triggers": [
+        "agent-ipc-socket-triage",
+        "IPC timeout",
+        "ECOS-CLI FLUENCE",
+        "socket triage"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
