@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 120,
+  "skillsCount": 121,
   "skills": [
     {
       "name": "adr-manager",
@@ -1971,6 +1971,24 @@
         "CPU load",
         "RAM saturation",
         "Z600"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "process-hygiene",
+      "version": "1.0.0",
+      "description": "Detecte et purge les processus zombies et worktrees orphelins apres sessions KiloCode. Utilise ce skill quand tu dois nettoyer les processus legers residuels (git, node, python, zig, cargo, bun, pwsh, trixd, kix), les worktrees temporaires non fermes, ou les stashes anciens. Transverse a GeriCode, KIX, TRIX, KIVA-CLI. Use when user mentions 'process-hygiene', 'process hygiene', 'zombie process', 'orphan worktree', 'stash cleanup'.",
+      "triggers": [
+        "process-hygiene",
+        "process hygiene",
+        "zombie process",
+        "orphan worktree",
+        "stash cleanup"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
