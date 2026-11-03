@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 157,
+  "skillsCount": 158,
   "skills": [
     {
       "name": "adr-manager",
@@ -2610,6 +2610,23 @@
         "topological pruning",
         "entropy pruning",
         "skill tree optimization"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-synaptic-trace",
+      "version": "1.0.0",
+      "description": "Generates a WAL seal linked to the corresponding synaptic vector (s in S) for each skill execution through an M3-Tree node, allowing visual replay and audit of the swarm decision tree after the fact. M3-Tree primitive for synaptic transition traceability. Use when user mentions 'm3-synaptic-trace', 'synaptic trace', 'WAL seal', 'decision tree audit'.",
+      "triggers": [
+        "m3-synaptic-trace",
+        "synaptic trace",
+        "WAL seal",
+        "decision tree audit"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
