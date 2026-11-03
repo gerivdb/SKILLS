@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 152,
+  "skillsCount": 153,
   "skills": [
     {
       "name": "adr-manager",
@@ -2525,6 +2525,23 @@
         "self healing",
         "orchestrator",
         "cascade remediation"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-mutator",
+      "version": "1.0.0",
+      "description": "Scans source code to identify redundancies or undetected frictions, and autonomously generates new sub-skills to fill blind spots without human intervention (extended HOTL). M3-Tree primitive for auto-mutation and fractal refactoring. Use when user mentions 'm3-mutator', 'fractal refactoring', 'auto-mutation', 'blind spot skill'.",
+      "triggers": [
+        "m3-mutator",
+        "fractal refactoring",
+        "auto-mutation",
+        "blind spot skill"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
