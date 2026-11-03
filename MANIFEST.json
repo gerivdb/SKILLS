@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 118,
+  "skillsCount": 119,
   "skills": [
     {
       "name": "adr-manager",
@@ -1936,6 +1936,23 @@
         "IPC timeout",
         "ECOS-CLI FLUENCE",
         "socket triage"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "powershell-json-safe",
+      "version": "1.0.0",
+      "description": "Manipule du JSON complexe en PowerShell en preservant les cles originales via PSObject.Properties. Utilise ce skill quand tu dois lire, ecrire, filtrer ou modifier des JSON PowerShell sans perdre les cles dynamiques. Use when user mentions 'powershell-json-safe', 'json safe', 'convertto-json', 'psobject properties'.",
+      "triggers": [
+        "powershell-json-safe",
+        "json safe",
+        "convertto-json",
+        "psobject properties"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
