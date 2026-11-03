@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 143,
+  "skillsCount": 144,
   "skills": [
     {
       "name": "adr-manager",
@@ -2371,6 +2371,23 @@
         "lazy unload",
         "token memory",
         "unload skill"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "registry-hash-integrity-guard",
+      "version": "1.0.0",
+      "description": "Resolves Impensé 2: verifies the SHA256 signature of REGISTRY.yaml against menu.yaml at load. Guarantees registry integrity before any skill usage. Use when user mentions 'registry-hash-integrity-guard', 'SHA256', 'registry integrity', 'REGISTRY.yaml'.",
+      "triggers": [
+        "registry-hash-integrity-guard",
+        "SHA256",
+        "registry integrity",
+        "REGISTRY.yaml"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
