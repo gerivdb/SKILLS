@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 133,
+  "skillsCount": 134,
   "skills": [
     {
       "name": "adr-manager",
@@ -2194,6 +2194,23 @@
         "stdio multiplexer",
         "MCP stdio",
         "process pool"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "mcp-sse-keepalive-sentinel",
+      "version": "1.0.0",
+      "description": "Detects silent disconnections on Server-Sent Events (SSE) streaming endpoints of the gateway. Guarantees MCP clients remain informed of their SSE connection state. Use when user mentions 'mcp-sse-keepalive-sentinel', 'SSE keepalive', 'SSE disconnect', 'streaming events'.",
+      "triggers": [
+        "mcp-sse-keepalive-sentinel",
+        "SSE keepalive",
+        "SSE disconnect",
+        "streaming events"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
