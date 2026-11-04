@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 183,
+  "skillsCount": 184,
   "skills": [
     {
       "name": "adr-manager",
@@ -3035,6 +3035,23 @@
         "dashboard GERICODE 3",
         "vault dashboard",
         "conversation dashboard"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-notebook-workspace-registrar",
+      "version": "1.0.0",
+      "description": "Ajoute automatiquement toute nouvelle conversation NotebookLM au workspace cible configure. Elimine l'ajout manuel necessaire pour integrer une conversation dans la workspace cible. Premier relais apres m3-omni-notebook-bridge dans la chaine OMNI-INTER-NOTEBOOK-LM.",
+      "triggers": [
+        "m3-notebook-workspace-registrar",
+        "workspace registrar",
+        "notebookLM workspace",
+        "notebook workspace add"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
