@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 181,
+  "skillsCount": 182,
   "skills": [
     {
       "name": "adr-manager",
@@ -3018,6 +3018,23 @@
         "PGX analyzer",
         "graph analysis",
         "conversation graph analysis"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-gericode3-dashboard",
+      "version": "1.0.0",
+      "description": "Interface de pilotage unifiee dans GERICODE 3 pour le maillage OMNI-INTER-NOTEBOOK-LM. Affiche le graphe CASIS, la liste des conversations orphelines, les metriques BigQuery et la sante des voûtes NotebookLM (~60). Permet le pilotage centralise de tout le maillage depuis une interface unique.",
+      "triggers": [
+        "m3-gericode3-dashboard",
+        "dashboard GERICODE 3",
+        "vault dashboard",
+        "conversation dashboard"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
