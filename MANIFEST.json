@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 175,
+  "skillsCount": 176,
   "skills": [
     {
       "name": "adr-manager",
@@ -2916,6 +2916,23 @@
         "daemon runtime",
         "daemon sentinel",
         "daemon monitoring"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-vault-session-reaper",
+      "version": "1.0.0",
+      "description": "Cleans abandoned vault sessions in the ~60 NotebookLM vault mesh. Prevents accumulation of orphan sessions that consume resources and complicate inter-vault queries. M3-Tree primitive for vault session reaper. Use when user mentions 'm3-vault-session-reaper', 'vault session reaper', 'vault session cleanup', 'notebooklm session'.",
+      "triggers": [
+        "m3-vault-session-reaper",
+        "vault session reaper",
+        "vault session cleanup",
+        "notebooklm session"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
