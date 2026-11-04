@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 179,
+  "skillsCount": 180,
   "skills": [
     {
       "name": "adr-manager",
@@ -2984,6 +2984,23 @@
         "casis intercharts",
         "conversation graph",
         "DAG conversation"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-bigquery-conversation-warehouse",
+      "version": "1.0.0",
+      "description": "Entrepot SQL des conversations NotebookLM dans BigQuery. Centralise les metadonnees de toutes les conversations du maillage (~60 vaults) pour permettre des requetes analytiques rapides et paralleles. Centralise les donnees pour le moteur PGX d'analyse graphique.",
+      "triggers": [
+        "m3-bigquery-conversation-warehouse",
+        "bigquery warehouse",
+        "conversation warehouse",
+        "SQL conversation"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
