@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 176,
+  "skillsCount": 177,
   "skills": [
     {
       "name": "adr-manager",
@@ -2933,6 +2933,23 @@
         "vault session reaper",
         "vault session cleanup",
         "notebooklm session"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-omni-notebook-bridge",
+      "version": "1.0.0",
+      "description": "Point d'entree du pont GAS (Google Apps Script) pour le maillage OMNI-INTER-NOTEBOOK-LM. Detecte les nouvelles conversations NotebookLM via les webhooks GAS, valide leur frontmatter, et cree le nœud correspondant dans le M3-Tree (graphe causal des conversations). Premier maillon de la chaine OMNI-INTER-NOTEBOOK-LM.",
+      "triggers": [
+        "m3-omni-notebook-bridge",
+        "notebook bridge",
+        "notebookLM webhook",
+        "M3-Tree node creation"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
