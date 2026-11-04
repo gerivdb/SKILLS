@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 170,
+  "skillsCount": 171,
   "skills": [
     {
       "name": "adr-manager",
@@ -2831,6 +2831,23 @@
         "proxy lifecycle",
         "port 18000",
         "BYOK proxy"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-cpu-throttle-governor",
+      "version": "1.0.0",
+      "description": "Monitors the CPU load of the ENV2 station (HP Z600, Dual Xeon E5620) and applies dynamic regulation (throttling) of non-critical competencies when the load exceeds a critical threshold. Guarantees that M3-Tree sub-trees do not saturate the hardware. M3-Tree primitive for thermal and CPU governance. Use when user mentions 'm3-cpu-throttle-governor', 'CPU throttle', 'CPU governance', 'CPU load control'.",
+      "triggers": [
+        "m3-cpu-throttle-governor",
+        "CPU throttle",
+        "CPU governance",
+        "CPU load control"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
