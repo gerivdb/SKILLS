@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 173,
+  "skillsCount": 174,
   "skills": [
     {
       "name": "adr-manager",
@@ -2882,6 +2882,23 @@
         "orphan worktree",
         "worktree audit",
         "worktree cleanup"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-env-sync-coordinator",
+      "version": "1.0.0",
+      "description": "Ensures isomorphic synchronization between the physical station ENV2 (HP Z600) and the cloud mesh ENV3 (NotebookLM, semantic orchestration). Guarantees that every change or test validated on ENV2 is packaged and transmitted to the central ENV0 depot, and that ENV3 updates the M3-Tree graphs to notify ENV2 via synaptic vectors. M3-Tree primitive for inter-strata synchronization. Use when user mentions 'm3-env-sync-coordinator', 'env sync', 'inter-strata sync', 'mirror synapse'.",
+      "triggers": [
+        "m3-env-sync-coordinator",
+        "env sync",
+        "inter-strata sync",
+        "mirror synapse"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
