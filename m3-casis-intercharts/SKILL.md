@@ -14,7 +14,7 @@ source_path: skills/m3-casis-intercharts/SKILL.md
 
 ## Objectif
 
-Construire et maintenir le graphe de dependances entre conversations NotebookLM (CASIS - Cross-Artifact Signal Intelligence System). Modelise les relations entre conversations sous forme de Directed Acyclic Graph (DAG) : references, suites, contradictions, approfondissements. Rend le graphe interrogeable et renderable sous forme Mermaid/DOT pour GERICODE 3.
+Construire et maintenir le graphe de dependances entre conversations NotebookLM (CASIS - Cross-Artifact Signal Intelligence System). Modele les relations entre conversations sous forme de Directed Acyclic Graph (DAG) : references, suites, contradictions, approfondissements. Rend le graphe interrogeable et renderable sous forme Mermaid/DOT pour GERICODE 3.
 
 ## Declencheur
 
