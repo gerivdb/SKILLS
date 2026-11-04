@@ -1,0 +1,1 @@
+# Dépendances pour m3-liaison-agent (stdlib pure, aucune dépendance externe requise)
