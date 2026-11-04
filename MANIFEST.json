@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 169,
+  "skillsCount": 170,
   "skills": [
     {
       "name": "adr-manager",
@@ -2814,6 +2814,23 @@
         "inter-vault auth",
         "vault access control",
         "mesh security"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-proxy-lifecycle-sentinel",
+      "version": "1.0.0",
+      "description": "Monitors the local synaptc proxy (port 18000) in real time and ensures automatic restart in case of unexpected stop. Guarantees permanent availability of the BYOK channel and inter-strata flows ENV2 <-> ENV3. M3-Tree primitive for stealth proxy lifecycle maintenance. Use when user mentions 'm3-proxy-lifecycle-sentinel', 'proxy lifecycle', 'port 18000', 'BYOK proxy'.",
+      "triggers": [
+        "m3-proxy-lifecycle-sentinel",
+        "proxy lifecycle",
+        "port 18000",
+        "BYOK proxy"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
