@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 174,
+  "skillsCount": 175,
   "skills": [
     {
       "name": "adr-manager",
@@ -2899,6 +2899,23 @@
         "env sync",
         "inter-strata sync",
         "mirror synapse"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-daemon-runtime-sentinel",
+      "version": "1.0.0",
+      "description": "Monitors Python and node daemons in real time on ENV2 and intervenes immediately in case of failure (dead process, unresponsive port, blocking exception). Complements the static pre-flight of daemon-preflight-import-sentinel with runtime monitoring. M3-Tree primitive for daemon runtime sentinel. Use when user mentions 'm3-daemon-runtime-sentinel', 'daemon runtime', 'daemon sentinel', 'daemon monitoring'.",
+      "triggers": [
+        "m3-daemon-runtime-sentinel",
+        "daemon runtime",
+        "daemon sentinel",
+        "daemon monitoring"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
