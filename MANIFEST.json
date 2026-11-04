@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 172,
+  "skillsCount": 173,
   "skills": [
     {
       "name": "adr-manager",
@@ -2865,6 +2865,23 @@
         "orphan process",
         "process reaper",
         "git fsmonitor cleanup"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-worktree-orphan-auditor",
+      "version": "1.0.0",
+      "description": "Audits and cleans orphan worktrees not managed by KIX, VEX and TRIX engines. Guarantees that each worktree in the working directory is linked to an active branch and does not consume disk space unnecessarily. M3-Tree primitive for orphan worktree audit. Use when user mentions 'm3-worktree-orphan-auditor', 'orphan worktree', 'worktree audit', 'worktree cleanup'.",
+      "triggers": [
+        "m3-worktree-orphan-auditor",
+        "orphan worktree",
+        "worktree audit",
+        "worktree cleanup"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
