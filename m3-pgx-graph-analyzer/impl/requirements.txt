@@ -1,0 +1,2 @@
+# Dépendances pour m3-pgx-graph-analyzer (PGX-like, implémenté en pure Python)
+networkx>=3.0
