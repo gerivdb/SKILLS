@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 171,
+  "skillsCount": 172,
   "skills": [
     {
       "name": "adr-manager",
@@ -2848,6 +2848,23 @@
         "CPU throttle",
         "CPU governance",
         "CPU load control"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-orphan-process-reaper",
+      "version": "1.0.0",
+      "description": "Cleans orphan processes (git fsmonitor--daemon, abandoned IDE instances, zombie browsers) that escape the control of KIX, VEX and TRIX engines. Guarantees that the ENV2 mesh is not polluted by residual processes consuming CPU and memory unnecessarily. M3-Tree primitive for orphan process reaper. Use when user mentions 'm3-orphan-process-reaper', 'orphan process', 'process reaper', 'git fsmonitor cleanup'.",
+      "triggers": [
+        "m3-orphan-process-reaper",
+        "orphan process",
+        "process reaper",
+        "git fsmonitor cleanup"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
