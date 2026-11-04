@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 178,
+  "skillsCount": 179,
   "skills": [
     {
       "name": "adr-manager",
@@ -2967,6 +2967,23 @@
         "workspace registrar",
         "notebookLM workspace",
         "notebook workspace add"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-casis-intercharts",
+      "version": "1.0.0",
+      "description": "Construit et maintient le graphe de dependances entre conversations NotebookLM (CASIS - Cross-Artifact Signal Intelligence System). Modelise les relations entre conversations sous forme de DAG : references, suites, contradictions, approfondissements. Rend le graphe interrogeable et renderable sous forme Mermaid/DOT pour GERICODE 3.",
+      "triggers": [
+        "m3-casis-intercharts",
+        "casis intercharts",
+        "conversation graph",
+        "DAG conversation"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
