@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "generatedAt": "2026-06-17T07:11:27Z",
-  "skillsCount": 180,
+  "skillsCount": 181,
   "skills": [
     {
       "name": "adr-manager",
@@ -3001,6 +3001,23 @@
         "bigquery warehouse",
         "conversation warehouse",
         "SQL conversation"
+      ],
+      "layer": "L4-TOOLS",
+      "nexusTags": "CONFORME_NEXUS",
+      "prerequisites": [],
+      "slotWeight": 1,
+      "status": "active",
+      "license": "MIT"
+    },
+    {
+      "name": "m3-pgx-graph-analyzer",
+      "version": "1.0.0",
+      "description": "Moteur d'analyse de graphe PGX (Parallel Graph Analytics) sur le graphe de conversations NotebookLM. Execute des requetes TQL sur le graphe M3-Tree pour detecter les conversations orphelines, les communautes de conversations, les chemins critiques et les contradictions. Fournit des analyses topologiques pour GERICODE 3.",
+      "triggers": [
+        "m3-pgx-graph-analyzer",
+        "PGX analyzer",
+        "graph analysis",
+        "conversation graph analysis"
       ],
       "layer": "L4-TOOLS",
       "nexusTags": "CONFORME_NEXUS",
