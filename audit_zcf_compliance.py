@@ -221,10 +221,11 @@ def scan_repository(repo_dir: Path, paid_lookup: dict, free_lookup: dict) -> dic
     return result
 
 
-def scan_tree(root_path: str, taxonomy_path: str) -> dict:
+def scan_tree(root_path: str, taxonomy_path: str, max_depth: int = 5) -> dict:
     """
     Scanne récursivement une arborescence à la recherche de fichiers de dépendances.
     Retourne le rapport complet de conformité.
+    max_depth limite la profondeur de descente depuis root (root = profondeur 0).
     """
     taxonomy = load_taxonomy(taxonomy_path)
     paid_lookup, free_lookup = build_lookup_tables(taxonomy)
@@ -238,6 +239,13 @@ def scan_tree(root_path: str, taxonomy_path: str) -> dict:
             "timestamp_utc": now_utc_iso(),
         }
 
+    IGNORED_DIRS = {
+        ".git", "__pycache__", ".venv", "venv", "env", ".env",
+        "node_modules", ".mypy_cache", ".pytest_cache", ".ruff_cache",
+        ".idea", ".vscode", "build", "dist", ".eggs",
+    }
+
+    root_depth = len(root.parts)
     repo_results = []
     all_violations = []
     all_unknowns = []
@@ -247,43 +255,27 @@ def scan_tree(root_path: str, taxonomy_path: str) -> dict:
     total_repos = 0
     total_files = 0
 
-    # Dossiers à ignorer totalement (ne pas descendre dedans)
-    IGNORED_DIRS = {
-        ".git", "__pycache__", ".venv", "venv", "env", ".env",
-        "node_modules", ".mypy_cache", ".pytest_cache", ".ruff_cache",
-        ".idea", ".vscode", "build", "dist", ".eggs",
-    }
-
-    def _should_ignore(path: Path) -> bool:
-        """Vérifie si un composant de chemin doit être ignoré."""
-        parts = set(path.parts)
-        return bool(parts & IGNORED_DIRS)
-
-    # Trouver directement tous les fichiers de dépendance via rglob (plus rapide qu'os.walk)
-    dep_files_found: list[Path] = []
-    for dep_file in DEPENDENCY_FILES:
-        try:
-            dep_files_found.extend(root.rglob(dep_file))
-        except Exception:
-            pass
-
-    # Grouper par dossier parent (chaque dossier contenant un fichier de dépendance = un repo)
-    repos_map: dict[Path, list[Path]] = {}
-    for dep_file in dep_files_found:
-        if _should_ignore(dep_file):
+    for dirpath, dirnames, filenames in os.walk(root):
+        # Calculer la profondeur relative depuis root
+        current_depth = len(Path(dirpath).parts) - root_depth
+        if current_depth > max_depth:
+            dirnames[:] = []
             continue
-        parent = dep_file.parent
-        if parent not in repos_map:
-            repos_map[parent] = []
-        repos_map[parent].append(dep_file)
 
-    for repo_dir, files in repos_map.items():
+        # Filtrer les dossiers à ignorer (ne pas descendre dedans)
+        dirnames[:] = [d for d in dirnames if d not in IGNORED_DIRS]
+
+        current_dir = Path(dirpath)
+        dep_files_present = [f for f in DEPENDENCY_FILES if f in filenames]
+        if not dep_files_present:
+            continue
+
         total_repos += 1
-        repo_result = scan_repository(repo_dir, paid_lookup, free_lookup)
-        # Ne garder que les fichiers effectivement trouvés
+        repo_result = scan_repository(current_dir, paid_lookup, free_lookup)
+        # Ne garder que les fichiers effectivement présents dans ce dossier
         repo_result["files"] = [
             f for f in repo_result["files"]
-            if (repo_dir / f["file"]).exists()
+            if f["file"] in dep_files_present
         ]
         total_files += len(repo_result["files"])
         repo_results.append(repo_result)
@@ -449,13 +441,17 @@ def main():
         "--self-test", action="store_true",
         help="Exécuter le self-test avec TemporaryDirectory"
     )
+    parser.add_argument(
+        "--max-depth", type=int, default=5,
+        help="Profondeur maximale de scan depuis root (défaut: 5)"
+    )
     args = parser.parse_args()
 
     if args.self_test:
         success = self_test()
         sys.exit(0 if success else 1)
 
-    report = scan_tree(args.root, args.taxonomy)
+    report = scan_tree(args.root, args.taxonomy, max_depth=args.max_depth)
 
     if args.json or args.output:
         report_json = json.dumps(report, ensure_ascii=False, indent=2)
