@@ -1,0 +1,90 @@
+2026-10-25T05:07:24.724447+00:00 | [T21] indexation_script_created=OK
+2026-10-25T05:07:25.004866+00:00 | [T22] physical_skills_discovered=102
+2026-10-25T05:07:25.744677+00:00 | [T23] registry_injected skills_count=102
+2026-10-25T05:07:25.744677+00:00 | [T24] legacy_passive=94 active=8
+2026-10-25T05:07:25.744677+00:00 | [T25] global_counter_updated=102
+2026-10-25T05:07:25.744677+00:00 | [T26] batch_1 skills=['admg-ml-benchmark', 'admg-ml-debug', 'admg-ml-doc-generator', 'admg-ml-lint', 'admg-ml-parser', 'admg-ml-test-generator', 'agent-ipc-socket-triage', 'agent-lease-arbiter', 'agent-manager-api-server', 'agent-manager-diagnostics', 'agent-manager-mode-router', 'agent-manager-session-orchestrator', 'agent-process-forensics', 'agent-worktree-pruner', 'artifact-quality-checker', 'audit-repo', 'branch-auditor', 'branch-hygiene-auditor', 'branch-name-validator', 'bridge-auditor']
+2026-10-25T05:07:25.744677+00:00 | [T26] batch_2 skills=['causal-bisimulation', 'causal-conflict-resolver', 'causal-edge-validator', 'causal-graph-diff', 'certified-code-generator', 'citizenship-auditor', 'close-loop-detector', 'conditional-validation', 'context-engineering', 'dbc-scaffolder', 'delta-optimizer', 'drift-axis-scaffolder', 'ecosystem-brain', 'ecosystem-probe', 'forensic-runners', 'frontmatter-guardian', 'git-lock-rescuer', 'git-workflow-enforcer', 'gitignore-harmonizer', 'hadmg-omega']
+2026-10-25T05:07:25.753597+00:00 | [T26] batch_3 skills=['hexagonal-scaffolder', 'intent-hash-branch-mapper', 'jest-chai-migration', 'keel-meta-loop', 'kg-l-builder', 'kg-l-indexer', 'kg-l-migrator', 'kg-l-query', 'kg-l-rollback', 'kg-l-visualizer', 'kilo-rule-auditor', 'kilo-worktree-reconciler', 'kiva-ci-local', 'known-repositories-updater', 'laplace-proof-writer', 'laplace-spectrum-analyzer', 'm5-production-monitor', 'meta-coherence-validator', 'mox-plan-consultant', 'mox-validator']
+2026-10-25T05:07:25.754426+00:00 | [T26] batch_4 skills=['n243-graph-builder', 'n243-query-engine', 'ontology-guardian', 'ontology-verses-validator', 'operational-verification', 'skills-pack', 'powershell-json-safe', 'prd-moc-generator', 'pre-impl-inventory', 'process-hygiene', 'recall-ouroboros', 'registry-prune', 'registry-sync', 'repo-citizen-manager', 'report-template', 'rlm-243-benchmark', 'self-improvement-loop', 'session-start-checklist', 'skill-auto-enroller', 'skill-scaffold']
+2026-10-25T05:07:25.754426+00:00 | [T26] batch_5 skills=['skill-test-scaffolder', 'skills-validator', 'sot-registry-guardian', 'spectrum-updater', 'ssm-matrix-extractor', 'ssot-referential-integrity', 'stack-validation', 'stash-hygiene-auditor', 'state-reducer', 'swarm-git-coordinator', 'thermal-predictor', 'traceability', 'typescript-compile-fixer', 'validation-checklist', 'verify-dispatcher-cycle', 'vscode-storage-memento-inspector', 'vsx-packager', 'wal-auto-logger', 'webview-runtime-crash-analyzer', 'worktree-hygiene-auditor']
+2026-10-25T05:07:25.754426+00:00 | [T26] batch_6 skills=['yaml-debug-forensic', 'yaml-safe-injector']
+2026-10-25T05:07:25.754426+00:00 | [T27] id_uniqueness=OK
+2026-10-25T05:07:26.179661+00:00 | [T28] schema_validation=OK
+2026-10-25T05:07:26.191135+00:00 | [T29] manifest_synced skills_count=102
+2026-10-25T05:07:44.707462+00:00 | [T21] indexation_script_created=OK
+2026-10-25T05:07:44.974489+00:00 | [T22] physical_skills_discovered=102
+2026-10-25T05:07:45.731274+00:00 | [T23] registry_injected skills_count=102
+2026-10-25T05:07:45.731274+00:00 | [T24] legacy_passive=94 active=8
+2026-10-25T05:07:45.731274+00:00 | [T25] global_counter_updated=102
+2026-10-25T05:07:45.731274+00:00 | [T26] batch_1 skills=['admg-ml-benchmark', 'admg-ml-debug', 'admg-ml-doc-generator', 'admg-ml-lint', 'admg-ml-parser', 'admg-ml-test-generator', 'agent-ipc-socket-triage', 'agent-lease-arbiter', 'agent-manager-api-server', 'agent-manager-diagnostics', 'agent-manager-mode-router', 'agent-manager-session-orchestrator', 'agent-process-forensics', 'agent-worktree-pruner', 'artifact-quality-checker', 'audit-repo', 'branch-auditor', 'branch-hygiene-auditor', 'branch-name-validator', 'bridge-auditor']
+2026-10-25T05:07:45.731274+00:00 | [T26] batch_2 skills=['causal-bisimulation', 'causal-conflict-resolver', 'causal-edge-validator', 'causal-graph-diff', 'certified-code-generator', 'citizenship-auditor', 'close-loop-detector', 'conditional-validation', 'context-engineering', 'dbc-scaffolder', 'delta-optimizer', 'drift-axis-scaffolder', 'ecosystem-brain', 'ecosystem-probe', 'forensic-runners', 'frontmatter-guardian', 'git-lock-rescuer', 'git-workflow-enforcer', 'gitignore-harmonizer', 'hadmg-omega']
+2026-10-25T05:07:45.734819+00:00 | [T26] batch_3 skills=['hexagonal-scaffolder', 'intent-hash-branch-mapper', 'jest-chai-migration', 'keel-meta-loop', 'kg-l-builder', 'kg-l-indexer', 'kg-l-migrator', 'kg-l-query', 'kg-l-rollback', 'kg-l-visualizer', 'kilo-rule-auditor', 'kilo-worktree-reconciler', 'kiva-ci-local', 'known-repositories-updater', 'laplace-proof-writer', 'laplace-spectrum-analyzer', 'm5-production-monitor', 'meta-coherence-validator', 'mox-plan-consultant', 'mox-validator']
+2026-10-25T05:07:45.734819+00:00 | [T26] batch_4 skills=['n243-graph-builder', 'n243-query-engine', 'ontology-guardian', 'ontology-verses-validator', 'operational-verification', 'skills-pack', 'powershell-json-safe', 'prd-moc-generator', 'pre-impl-inventory', 'process-hygiene', 'recall-ouroboros', 'registry-prune', 'registry-sync', 'repo-citizen-manager', 'report-template', 'rlm-243-benchmark', 'self-improvement-loop', 'session-start-checklist', 'skill-auto-enroller', 'skill-scaffold']
+2026-10-25T05:07:45.736826+00:00 | [T26] batch_5 skills=['skill-test-scaffolder', 'skills-validator', 'sot-registry-guardian', 'spectrum-updater', 'ssm-matrix-extractor', 'ssot-referential-integrity', 'stack-validation', 'stash-hygiene-auditor', 'state-reducer', 'swarm-git-coordinator', 'thermal-predictor', 'traceability', 'typescript-compile-fixer', 'validation-checklist', 'verify-dispatcher-cycle', 'vscode-storage-memento-inspector', 'vsx-packager', 'wal-auto-logger', 'webview-runtime-crash-analyzer', 'worktree-hygiene-auditor']
+2026-10-25T05:07:45.736826+00:00 | [T26] batch_6 skills=['yaml-debug-forensic', 'yaml-safe-injector']
+2026-10-25T05:07:45.736826+00:00 | [T27] id_uniqueness=OK
+2026-10-25T05:07:46.244438+00:00 | [T28] schema_validation=OK
+2026-10-25T05:07:46.257628+00:00 | [T29] manifest_synced skills_count=102
+2026-10-25T05:07:46.803321+00:00 | [T30] WARN ids_only_in_registry=['skills-pack']
+2026-10-25T05:07:46.804782+00:00 | [T30] WARN ids_only_on_disk=['perplexity']
+2026-10-25T05:07:46.805984+00:00 | [T30] cross_read_validation=WARN reg=102 disk=102
+2026-10-25T05:07:46.807121+00:00 | [T31] forensics_preserved=OK
+2026-10-25T05:09:07.203163+00:00 | [T21] indexation_script_created=OK
+2026-10-25T05:09:07.449110+00:00 | [T22] physical_skills_discovered=102
+2026-10-25T05:09:08.175654+00:00 | [T23] registry_injected skills_count=102
+2026-10-25T05:09:08.177789+00:00 | [T24] legacy_passive=94 active=8
+2026-10-25T05:09:08.177789+00:00 | [T25] global_counter_updated=102
+2026-10-25T05:09:08.177789+00:00 | [T26] batch_1 skills=['admg-ml-benchmark', 'admg-ml-debug', 'admg-ml-doc-generator', 'admg-ml-lint', 'admg-ml-parser', 'admg-ml-test-generator', 'agent-ipc-socket-triage', 'agent-lease-arbiter', 'agent-manager-api-server', 'agent-manager-diagnostics', 'agent-manager-mode-router', 'agent-manager-session-orchestrator', 'agent-process-forensics', 'agent-worktree-pruner', 'artifact-quality-checker', 'audit-repo', 'branch-auditor', 'branch-hygiene-auditor', 'branch-name-validator', 'bridge-auditor']
+2026-10-25T05:09:08.177789+00:00 | [T26] batch_2 skills=['causal-bisimulation', 'causal-conflict-resolver', 'causal-edge-validator', 'causal-graph-diff', 'certified-code-generator', 'citizenship-auditor', 'close-loop-detector', 'conditional-validation', 'context-engineering', 'dbc-scaffolder', 'delta-optimizer', 'drift-axis-scaffolder', 'ecosystem-brain', 'ecosystem-probe', 'forensic-runners', 'frontmatter-guardian', 'git-lock-rescuer', 'git-workflow-enforcer', 'gitignore-harmonizer', 'hadmg-omega']
+2026-10-25T05:09:08.177789+00:00 | [T26] batch_3 skills=['hexagonal-scaffolder', 'intent-hash-branch-mapper', 'jest-chai-migration', 'keel-meta-loop', 'kg-l-builder', 'kg-l-indexer', 'kg-l-migrator', 'kg-l-query', 'kg-l-rollback', 'kg-l-visualizer', 'kilo-rule-auditor', 'kilo-worktree-reconciler', 'kiva-ci-local', 'known-repositories-updater', 'laplace-proof-writer', 'laplace-spectrum-analyzer', 'm5-production-monitor', 'meta-coherence-validator', 'mox-plan-consultant', 'mox-validator']
+2026-10-25T05:09:08.180925+00:00 | [T26] batch_4 skills=['n243-graph-builder', 'n243-query-engine', 'ontology-guardian', 'ontology-verses-validator', 'operational-verification', 'skills-pack', 'powershell-json-safe', 'prd-moc-generator', 'pre-impl-inventory', 'process-hygiene', 'recall-ouroboros', 'registry-prune', 'registry-sync', 'repo-citizen-manager', 'report-template', 'rlm-243-benchmark', 'self-improvement-loop', 'session-start-checklist', 'skill-auto-enroller', 'skill-scaffold']
+2026-10-25T05:09:08.180925+00:00 | [T26] batch_5 skills=['skill-test-scaffolder', 'skills-validator', 'sot-registry-guardian', 'spectrum-updater', 'ssm-matrix-extractor', 'ssot-referential-integrity', 'stack-validation', 'stash-hygiene-auditor', 'state-reducer', 'swarm-git-coordinator', 'thermal-predictor', 'traceability', 'typescript-compile-fixer', 'validation-checklist', 'verify-dispatcher-cycle', 'vscode-storage-memento-inspector', 'vsx-packager', 'wal-auto-logger', 'webview-runtime-crash-analyzer', 'worktree-hygiene-auditor']
+2026-10-25T05:09:08.180925+00:00 | [T26] batch_6 skills=['yaml-debug-forensic', 'yaml-safe-injector']
+2026-10-25T05:09:08.180925+00:00 | [T27] id_uniqueness=OK
+2026-10-25T05:09:08.579003+00:00 | [T28] schema_validation=OK
+2026-10-25T05:09:08.586515+00:00 | [T29] manifest_synced skills_count=102
+2026-10-25T05:09:09.069876+00:00 | [T30] WARN ids_only_in_registry=['skills-pack']
+2026-10-25T05:09:09.070618+00:00 | [T30] WARN ids_only_on_disk=['perplexity']
+2026-10-25T05:09:09.070618+00:00 | [T30] cross_read_validation=WARN reg=102 disk=102
+2026-10-25T05:09:09.070618+00:00 | [T31] forensics_preserved=OK
+2026-10-25T05:10:05.182548+00:00 | [T21] indexation_script_created=OK
+2026-10-25T05:10:05.476010+00:00 | [T22] physical_skills_discovered=102
+2026-10-25T05:10:06.171879+00:00 | [T23] registry_injected skills_count=102
+2026-10-25T05:10:06.171879+00:00 | [T24] legacy_passive=94 active=8
+2026-10-25T05:10:06.171879+00:00 | [T25] global_counter_updated=102
+2026-10-25T05:10:06.171879+00:00 | [T26] batch_1 skills=['admg-ml-benchmark', 'admg-ml-debug', 'admg-ml-doc-generator', 'admg-ml-lint', 'admg-ml-parser', 'admg-ml-test-generator', 'agent-ipc-socket-triage', 'agent-lease-arbiter', 'agent-manager-api-server', 'agent-manager-diagnostics', 'agent-manager-mode-router', 'agent-manager-session-orchestrator', 'agent-process-forensics', 'agent-worktree-pruner', 'artifact-quality-checker', 'audit-repo', 'branch-auditor', 'branch-hygiene-auditor', 'branch-name-validator', 'bridge-auditor']
+2026-10-25T05:10:06.175880+00:00 | [T26] batch_2 skills=['causal-bisimulation', 'causal-conflict-resolver', 'causal-edge-validator', 'causal-graph-diff', 'certified-code-generator', 'citizenship-auditor', 'close-loop-detector', 'conditional-validation', 'context-engineering', 'dbc-scaffolder', 'delta-optimizer', 'drift-axis-scaffolder', 'ecosystem-brain', 'ecosystem-probe', 'forensic-runners', 'frontmatter-guardian', 'git-lock-rescuer', 'git-workflow-enforcer', 'gitignore-harmonizer', 'hadmg-omega']
+2026-10-25T05:10:06.175880+00:00 | [T26] batch_3 skills=['hexagonal-scaffolder', 'intent-hash-branch-mapper', 'jest-chai-migration', 'keel-meta-loop', 'kg-l-builder', 'kg-l-indexer', 'kg-l-migrator', 'kg-l-query', 'kg-l-rollback', 'kg-l-visualizer', 'kilo-rule-auditor', 'kilo-worktree-reconciler', 'kiva-ci-local', 'known-repositories-updater', 'laplace-proof-writer', 'laplace-spectrum-analyzer', 'm5-production-monitor', 'meta-coherence-validator', 'mox-plan-consultant', 'mox-validator']
+2026-10-25T05:10:06.175880+00:00 | [T26] batch_4 skills=['n243-graph-builder', 'n243-query-engine', 'ontology-guardian', 'ontology-verses-validator', 'operational-verification', 'skills-pack', 'powershell-json-safe', 'prd-moc-generator', 'pre-impl-inventory', 'process-hygiene', 'recall-ouroboros', 'registry-prune', 'registry-sync', 'repo-citizen-manager', 'report-template', 'rlm-243-benchmark', 'self-improvement-loop', 'session-start-checklist', 'skill-auto-enroller', 'skill-scaffold']
+2026-10-25T05:10:06.175880+00:00 | [T26] batch_5 skills=['skill-test-scaffolder', 'skills-validator', 'sot-registry-guardian', 'spectrum-updater', 'ssm-matrix-extractor', 'ssot-referential-integrity', 'stack-validation', 'stash-hygiene-auditor', 'state-reducer', 'swarm-git-coordinator', 'thermal-predictor', 'traceability', 'typescript-compile-fixer', 'validation-checklist', 'verify-dispatcher-cycle', 'vscode-storage-memento-inspector', 'vsx-packager', 'wal-auto-logger', 'webview-runtime-crash-analyzer', 'worktree-hygiene-auditor']
+2026-10-25T05:10:06.175880+00:00 | [T26] batch_6 skills=['yaml-debug-forensic', 'yaml-safe-injector']
+2026-10-25T05:10:06.179877+00:00 | [T27] id_uniqueness=OK
+2026-10-25T05:10:06.596961+00:00 | [T28] schema_validation=OK
+2026-10-25T05:10:06.602866+00:00 | [T29] manifest_synced skills_count=102
+2026-10-25T05:10:07.037888+00:00 | [T30] WARN ids_only_in_registry=['skills-pack']
+2026-10-25T05:10:07.037888+00:00 | [T30] WARN ids_only_on_disk=['perplexity']
+2026-10-25T05:10:07.041976+00:00 | [T30] cross_read_validation=WARN reg=102 disk=102
+2026-10-25T05:10:07.041976+00:00 | [T31] forensics_preserved=OK
+2026-10-25T05:10:35.861536+00:00 | [T21] indexation_script_created=OK
+2026-10-25T05:10:36.121872+00:00 | [T22] physical_skills_discovered=102
+2026-10-25T05:10:36.797280+00:00 | [T23] registry_injected skills_count=102
+2026-10-25T05:10:36.801247+00:00 | [T24] legacy_passive=94 active=8
+2026-10-25T05:10:36.802388+00:00 | [T25] global_counter_updated=102
+2026-10-25T05:10:36.803124+00:00 | [T26] batch_1 skills=['admg-ml-benchmark', 'admg-ml-debug', 'admg-ml-doc-generator', 'admg-ml-lint', 'admg-ml-parser', 'admg-ml-test-generator', 'agent-ipc-socket-triage', 'agent-lease-arbiter', 'agent-manager-api-server', 'agent-manager-diagnostics', 'agent-manager-mode-router', 'agent-manager-session-orchestrator', 'agent-process-forensics', 'agent-worktree-pruner', 'artifact-quality-checker', 'audit-repo', 'branch-auditor', 'branch-hygiene-auditor', 'branch-name-validator', 'bridge-auditor']
+2026-10-25T05:10:36.803660+00:00 | [T26] batch_2 skills=['causal-bisimulation', 'causal-conflict-resolver', 'causal-edge-validator', 'causal-graph-diff', 'certified-code-generator', 'citizenship-auditor', 'close-loop-detector', 'conditional-validation', 'context-engineering', 'dbc-scaffolder', 'delta-optimizer', 'drift-axis-scaffolder', 'ecosystem-brain', 'ecosystem-probe', 'forensic-runners', 'frontmatter-guardian', 'git-lock-rescuer', 'git-workflow-enforcer', 'gitignore-harmonizer', 'hadmg-omega']
+2026-10-25T05:10:36.803660+00:00 | [T26] batch_3 skills=['hexagonal-scaffolder', 'intent-hash-branch-mapper', 'jest-chai-migration', 'keel-meta-loop', 'kg-l-builder', 'kg-l-indexer', 'kg-l-migrator', 'kg-l-query', 'kg-l-rollback', 'kg-l-visualizer', 'kilo-rule-auditor', 'kilo-worktree-reconciler', 'kiva-ci-local', 'known-repositories-updater', 'laplace-proof-writer', 'laplace-spectrum-analyzer', 'm5-production-monitor', 'meta-coherence-validator', 'mox-plan-consultant', 'mox-validator']
+2026-10-25T05:10:36.804655+00:00 | [T26] batch_4 skills=['n243-graph-builder', 'n243-query-engine', 'ontology-guardian', 'ontology-verses-validator', 'operational-verification', 'skills-pack', 'powershell-json-safe', 'prd-moc-generator', 'pre-impl-inventory', 'process-hygiene', 'recall-ouroboros', 'registry-prune', 'registry-sync', 'repo-citizen-manager', 'report-template', 'rlm-243-benchmark', 'self-improvement-loop', 'session-start-checklist', 'skill-auto-enroller', 'skill-scaffold']
+2026-10-25T05:10:36.805793+00:00 | [T26] batch_5 skills=['skill-test-scaffolder', 'skills-validator', 'sot-registry-guardian', 'spectrum-updater', 'ssm-matrix-extractor', 'ssot-referential-integrity', 'stack-validation', 'stash-hygiene-auditor', 'state-reducer', 'swarm-git-coordinator', 'thermal-predictor', 'traceability', 'typescript-compile-fixer', 'validation-checklist', 'verify-dispatcher-cycle', 'vscode-storage-memento-inspector', 'vsx-packager', 'wal-auto-logger', 'webview-runtime-crash-analyzer', 'worktree-hygiene-auditor']
+2026-10-25T05:10:36.806522+00:00 | [T26] batch_6 skills=['yaml-debug-forensic', 'yaml-safe-injector']
+2026-10-25T05:10:36.807543+00:00 | [T27] id_uniqueness=OK
+2026-10-25T05:10:37.208415+00:00 | [T28] schema_validation=OK
+2026-10-25T05:10:37.219823+00:00 | [T29] manifest_synced skills_count=102
+2026-10-25T05:10:37.676103+00:00 | [T30] WARN ids_only_in_registry=['skills-pack']
+2026-10-25T05:10:37.676103+00:00 | [T30] WARN ids_only_on_disk=['perplexity']
+2026-10-25T05:10:37.676103+00:00 | [T30] cross_read_validation=WARN reg=102 disk=102
+2026-10-25T05:10:37.680045+00:00 | [T31] forensics_preserved=OK
+2026-10-25T05:10:37.696347+00:00 | [T32] WARN invalid_paths=['skills-pack/SKILL.md']
+2026-10-25T05:10:37.696347+00:00 | [T33] temp_cleanup=OK
+2026-10-25T05:10:37.696347+00:00 | [T34] reconciliation_complete total=102 legacy=94 active=8
+2026-10-25T05:10:37.696347+00:00 | [T35] exit_code=0

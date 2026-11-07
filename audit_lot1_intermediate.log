@@ -1,0 +1,11 @@
+﻿2026-10-25T05:04:10.6924149Z | [T1] physical_skills_count=100
+2026-10-25T05:04:10.6924149Z | [T2] yaml_valid=55 yaml_invalid=45
+2026-10-25T05:04:10.6924149Z | [T3] metadata_extracted=100
+2026-10-25T05:04:10.6924149Z | [T4] orphan_physical=95
+2026-10-25T05:04:10.6924149Z | [T5] registry_ids_count=91
+2026-10-25T05:04:10.6924149Z | [T6] ghost_registry=86
+2026-10-25T05:04:10.6924149Z | [T7] report_written=OK
+2026-10-25T05:04:10.6924149Z | [T8] ntfs_ok=True
+2026-10-25T05:04:10.6924149Z | [T9] driveD_free_GB=248.51 driveD_total_GB=0
+2026-10-25T05:04:10.6924149Z | [T9] driveC_free_GB=70.68 driveC_total_GB=0
+2026-10-25T05:04:10.6924149Z | [T10] exit_code=1

@@ -1,0 +1,13 @@
+2026-10-25T05:04:59.178725+00:00 | [T11] backup_created=D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\REGISTRY.yaml.bak
+2026-10-25T05:06:03.142431+00:00 | [T11] backup_created=D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\REGISTRY.yaml.bak
+2026-10-25T05:06:03.397774+00:00 | [T12] original_skills_count=80
+2026-10-25T05:06:03.584901+00:00 | [T13] physical_skills_on_disk=102
+2026-10-25T05:06:03.587360+00:00 | [T13] ghost_ids_count=80
+2026-10-25T05:06:03.587360+00:00 | [T13] purged_count=80 kept_count=0
+2026-10-25T05:06:03.594177+00:00 | [T14] registry_written skills_count=0
+2026-10-25T05:06:03.595283+00:00 | [T15] manifest_synced original=78 new=0
+2026-10-25T05:06:03.599934+00:00 | [T16] yaml_reload_validated=OK
+2026-10-25T05:06:03.599934+00:00 | [T17] structure_integrity=OK
+2026-10-25T05:06:03.601514+00:00 | [T18] entropy_delta_before=80 after=0 purged=80
+2026-10-25T05:06:03.601514+00:00 | [T19] ghosts_confirmed_removed=OK
+2026-10-25T05:06:03.602972+00:00 | [T20] exit_code=0

@@ -1,0 +1,1453 @@
+registry:
+  name: SKILLS
+  version: 1.0.0
+  description: Skill registry for gerivdb ecosystem
+  total_skills: 80
+  last_updated: '2026-09-20T22:20:21Z'
+skills:
+- id: ARGUS-REMOTE-AUDITOR
+  name: ARGUS-REMOTE-AUDITOR
+  description: Skill ARGUS-REMOTE-AUDITOR
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ARGUS-REMOTE-AUDITOR/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - ARGUS-REMOTE-AUDITOR
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: EPIC-DEPENDENCY-ENGINE
+  name: EPIC-DEPENDENCY-ENGINE
+  description: Skill EPIC-DEPENDENCY-ENGINE
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/EPIC-DEPENDENCY-ENGINE/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - EPIC-DEPENDENCY-ENGINE
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: admg-implementation
+  name: admg-implementation
+  description: Skill admg-implementation
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/admg-implementation/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - admg-implementation
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: argus-pipeline-runner
+  name: argus-pipeline-runner
+  description: Skill argus-pipeline-runner
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/argus-pipeline-runner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - argus-pipeline-runner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: atomic-task-planner
+  name: atomic-task-planner
+  description: Skill atomic-task-planner
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/atomic-task-planner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - atomic-task-planner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: batmcpext
+  name: batmcpext
+  description: Skill batmcpext
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/batmcpext/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - batmcpext
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: batverse-operators
+  name: batverse-operators
+  description: Skill batverse-operators
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/batverse-operators/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - batverse-operators
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: bdcp-mode-verification
+  name: bdcp-mode-verification
+  description: Skill bdcp-mode-verification
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/bdcp-mode-verification/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - bdcp-mode-verification
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: branch-guard
+  name: branch-guard
+  description: Skill branch-guard
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/branch-guard/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - branch-guard
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: buzz-parasitage
+  name: buzz-parasitage
+  description: Skill buzz-parasitage
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/buzz-parasitage/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - buzz-parasitage
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: capta-4d
+  name: capta-4d
+  description: Skill capta-4d
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/capta-4d/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - capta-4d
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: causal-engine
+  name: causal-engine
+  description: Skill causal-engine
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/causal-engine/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - causal-engine
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: cfmi-dashboard-generator
+  name: cfmi-dashboard-generator
+  description: Skill cfmi-dashboard-generator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/cfmi-dashboard-generator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - cfmi-dashboard-generator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: cfmi-scanner
+  name: cfmi-scanner
+  description: Skill cfmi-scanner
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/cfmi-scanner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - cfmi-scanner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: coupling-matrix
+  name: coupling-matrix
+  description: Skill coupling-matrix
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/coupling-matrix/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - coupling-matrix
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: cross-repo-validator
+  name: cross-repo-validator
+  description: Skill cross-repo-validator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/cross-repo-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - cross-repo-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-artifact-builder
+  name: ctulu-artifact-builder
+  description: Skill ctulu-artifact-builder
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-artifact-builder/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - ctulu-artifact-builder
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-cluster-propagator
+  name: ctulu-cluster-propagator
+  description: Skill ctulu-cluster-propagator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-cluster-propagator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - ctulu-cluster-propagator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-graph-builder
+  name: ctulu-graph-builder
+  description: Skill ctulu-graph-builder
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-graph-builder/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - ctulu-graph-builder
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-graph-delta-exporter
+  name: ctulu-graph-delta-exporter
+  description: Skill ctulu-graph-delta-exporter
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-graph-delta-exporter/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - ctulu-graph-delta-exporter
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-louvain-clusterer
+  name: ctulu-louvain-clusterer
+  description: Skill ctulu-louvain-clusterer
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-louvain-clusterer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - ctulu-louvain-clusterer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-pagerank-runner
+  name: ctulu-pagerank-runner
+  description: Skill ctulu-pagerank-runner
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-pagerank-runner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - ctulu-pagerank-runner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-reposcope-extractor
+  name: ctulu-reposcope-extractor
+  description: Skill ctulu-reposcope-extractor
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-reposcope-extractor/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - ctulu-reposcope-extractor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: ctulu-reposcope-scorer
+  name: ctulu-reposcope-scorer
+  description: Skill ctulu-reposcope-scorer
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/ctulu-reposcope-scorer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - ctulu-reposcope-scorer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: declarative-scanner-builder
+  name: declarative-scanner-builder
+  description: Skill declarative-scanner-builder
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/declarative-scanner-builder/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - declarative-scanner-builder
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: dependency-injection
+  name: dependency-injection
+  description: Skill dependency-injection
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/dependency-injection/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - dependency-injection
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: doc-gate
+  name: doc-gate
+  description: Skill doc-gate
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/doc-gate/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - doc-gate
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: doc-status-validator
+  name: doc-status-validator
+  description: Skill doc-status-validator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/doc-status-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - doc-status-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: dot-cache-manager
+  name: dot-cache-manager
+  description: Skill dot-cache-manager
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/dot-cache-manager/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - dot-cache-manager
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: event-system-coherence
+  name: event-system-coherence
+  description: Skill event-system-coherence
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/event-system-coherence/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - event-system-coherence
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: fractal-engineering-validator
+  name: fractal-engineering-validator
+  description: Skill fractal-engineering-validator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/fractal-engineering-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - fractal-engineering-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: gap-report-lifecycle
+  name: gap-report-lifecycle
+  description: Skill gap-report-lifecycle
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/gap-report-lifecycle/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - gap-report-lifecycle
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: gap-report-parser
+  name: gap-report-parser
+  description: Skill gap-report-parser
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/gap-report-parser/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - gap-report-parser
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: gateway-audit-autonomous
+  name: gateway-audit-autonomous
+  description: Skill gateway-audit-autonomous
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/gateway-audit-autonomous/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - gateway-audit-autonomous
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: generation-engine
+  name: generation-engine
+  description: Skill generation-engine
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/generation-engine/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - generation-engine
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: git-checkpoint
+  name: git-checkpoint
+  description: Skill git-checkpoint
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/git-checkpoint/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - git-checkpoint
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: git-hook-enforcer
+  name: git-hook-enforcer
+  description: Skill git-hook-enforcer
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/git-hook-enforcer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - git-hook-enforcer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: governance-architect
+  name: governance-architect
+  description: Skill governance-architect
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/governance-architect/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - governance-architect
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: halo-co-abduction
+  name: halo-co-abduction
+  description: Skill halo-co-abduction
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/halo-co-abduction/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - halo-co-abduction
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: insight-capture
+  name: insight-capture
+  description: Skill insight-capture
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/insight-capture/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - insight-capture
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: intent-generation
+  name: intent-generation
+  description: Skill intent-generation
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/intent-generation/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - intent-generation
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: intent-version-bumper
+  name: intent-version-bumper
+  description: Skill intent-version-bumper
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/intent-version-bumper/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - intent-version-bumper
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: kilocode-worktree-agent
+  name: kilocode-worktree-agent
+  description: Skill kilocode-worktree-agent
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/kilocode-worktree-agent/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - kilocode-worktree-agent
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: korx-path-manager
+  name: korx-path-manager
+  description: Skill korx-path-manager
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/korx-path-manager/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - korx-path-manager
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: lifecycle-state-machine
+  name: lifecycle-state-machine
+  description: Skill lifecycle-state-machine
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/lifecycle-state-machine/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - lifecycle-state-machine
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: llm-rate-limit-fallback
+  name: llm-rate-limit-fallback
+  description: Skill llm-rate-limit-fallback
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/llm-rate-limit-fallback/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - llm-rate-limit-fallback
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: lore-validator
+  name: lore-validator
+  description: Skill lore-validator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/lore-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - lore-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: matrix-runner
+  name: matrix-runner
+  description: Skill matrix-runner
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/matrix-runner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - matrix-runner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: module-registry
+  name: module-registry
+  description: Skill module-registry
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/module-registry/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - module-registry
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: n243-rust-scaffold
+  name: n243-rust-scaffold
+  description: Skill n243-rust-scaffold
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/n243-rust-scaffold/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - n243-rust-scaffold
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: patch-management
+  name: patch-management
+  description: Skill patch-management
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/patch-management/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - patch-management
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: plix-graph-generator
+  name: plix-graph-generator
+  description: Skill plix-graph-generator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/plix-graph-generator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - plix-graph-generator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: plix-inspector
+  name: plix-inspector
+  description: Skill plix-inspector
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/plix-inspector/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - plix-inspector
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: powershell-writer
+  name: powershell-writer
+  description: Skill powershell-writer
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/powershell-writer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - powershell-writer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: pr-review-resolver
+  name: pr-review-resolver
+  description: Skill pr-review-resolver
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/pr-review-resolver/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - pr-review-resolver
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: prd-generation
+  name: prd-generation
+  description: Skill prd-generation
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/prd-generation/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - prd-generation
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: pre-flight-orchestrator
+  name: pre-flight-orchestrator
+  description: Skill pre-flight-orchestrator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/pre-flight-orchestrator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - pre-flight-orchestrator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: repo-coverage-batch
+  name: repo-coverage-batch
+  description: Skill repo-coverage-batch
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/repo-coverage-batch/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - repo-coverage-batch
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: repo-path-resolver
+  name: repo-path-resolver
+  description: Skill repo-path-resolver
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/repo-path-resolver/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - repo-path-resolver
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: repo-ref-validator
+  name: repo-ref-validator
+  description: Skill repo-ref-validator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/repo-ref-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - repo-ref-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: repo-state-auditor
+  name: repo-state-auditor
+  description: Skill repo-state-auditor
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/repo-state-auditor/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - repo-state-auditor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-artefact
+  name: reposcope-artefact
+  description: Skill reposcope-artefact
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-artefact/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-artefact
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-compare
+  name: reposcope-compare
+  description: Skill reposcope-compare
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-compare/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-compare
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-extract
+  name: reposcope-extract
+  description: Skill reposcope-extract
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-extract/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-extract
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-propagate
+  name: reposcope-propagate
+  description: Skill reposcope-propagate
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-propagate/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-propagate
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: reposcope-score
+  name: reposcope-score
+  description: Skill reposcope-score
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/reposcope-score/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - reposcope-score
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: review-to-intent-mapper
+  name: review-to-intent-mapper
+  description: Skill review-to-intent-mapper
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/review-to-intent-mapper/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - review-to-intent-mapper
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: rss-v2-compliance
+  name: rss-v2-compliance
+  description: Skill rss-v2-compliance
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/rss-v2-compliance/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - rss-v2-compliance
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: scaffold-scanner
+  name: scaffold-scanner
+  description: Skill scaffold-scanner
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/scaffold-scanner/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - scaffold-scanner
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: singleton-thread-safety
+  name: singleton-thread-safety
+  description: Skill singleton-thread-safety
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/singleton-thread-safety/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - singleton-thread-safety
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: skill-trit-patcher
+  name: skill-trit-patcher
+  description: Skill skill-trit-patcher
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-trit-patcher/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-trit-patcher
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: slm-local-prompt-design
+  name: slm-local-prompt-design
+  description: Skill slm-local-prompt-design
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/slm-local-prompt-design/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - slm-local-prompt-design
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: slm-micro-executor
+  name: slm-micro-executor
+  description: Skill slm-micro-executor
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/slm-micro-executor/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - slm-micro-executor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: spidx-proof-reader
+  name: spidx-proof-reader
+  description: Skill spidx-proof-reader
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/spidx-proof-reader/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - spidx-proof-reader
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: structural-relations-validator
+  name: structural-relations-validator
+  description: Skill structural-relations-validator
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/structural-relations-validator/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - structural-relations-validator
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: untracked-auditor
+  name: untracked-auditor
+  description: Skill untracked-auditor
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/untracked-auditor/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - untracked-auditor
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: wazaa-buzz-bridge
+  name: wazaa-buzz-bridge
+  description: Skill wazaa-buzz-bridge
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/wazaa-buzz-bridge/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - wazaa-buzz-bridge
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: workspace-audit
+  name: workspace-audit
+  description: Skill workspace-audit
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/workspace-audit/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - workspace-audit
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: workspace-sanitizer
+  name: workspace-sanitizer
+  description: Skill workspace-sanitizer
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/workspace-sanitizer/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - workspace-sanitizer
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: zig-python-bridge
+  name: zig-python-bridge
+  description: Skill zig-python-bridge
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/zig-python-bridge/SKILL.md
+  created: '2026-09-20'
+  updated: '2026-09-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - zig-python-bridge
+  domain: general
+  phi_weight: 0.005
+  assimilation_status: N/A
+metadata:
+  total_skills: 80
+  valid_skills: 80
+  invalid_skills: 0
+  source: physical_scan
+  scan_timestamp: '2026-09-20T22:20:21Z'

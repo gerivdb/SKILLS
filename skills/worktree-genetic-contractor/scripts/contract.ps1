@@ -34,7 +34,7 @@ if (-not $WorktreePath -or -not (Test-Path -LiteralPath $WorktreePath)) {
 if (-not $BranchName) {
     # Tenter de récupérer depuis le dépôt
     try {
-        $BranchName = & git -C $RepoPath branch --show-current 2>&1 | Out-String | Trim()
+        $BranchName = & git -C $RepoPath branch --show-current 2>&1 | Out-String | ForEach-Object { $_.Trim() }
     }
     catch {
         $BranchName = "unknown"
@@ -43,7 +43,7 @@ if (-not $BranchName) {
 
 # Déterminer le périmètre selon le préfixe de branche
 $scope = "Général — aucun périmètre spécifique défini"
-$allowedFiles = []
+$allowedFiles = @()
 $forbiddenFiles = @()
 
 if ($BranchName -like "feat/citizen-*") {

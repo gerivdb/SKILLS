@@ -1,0 +1,68 @@
+[2026-10-26T00:21:23Z] wt:ghost-buster debut project=RAGX
+[2026-10-26T00:21:23Z] wt:ghost-buster 2 clé(s) pending supprimée(s)
+[2026-10-26T00:21:23Z] agent-manager.json mis à jour
+[2026-10-26T00:21:23Z] wt:ghost-buster terminé status=OK
+[2026-10-26T00:21:34Z] wt:purge-merged debut project=RAGX
+[2026-10-26T00:21:34Z] wt:purge-merged terminé status=FAIL
+[2026-10-26T00:22:51Z] wt:purge-merged debut project=RAGX
+[2026-10-26T00:22:51Z] agent-manager.json mis à jour
+[2026-10-26T00:22:51Z] wt:purge-merged terminé status=OK
+[2026-10-26T00:23:36Z] wt:ghost-buster debut project=RAGX
+[2026-10-26T00:23:36Z] wt:ghost-buster session orpheline: ses_e8e8f4037ffe27kp46HMZlBYzj
+[2026-10-26T00:23:36Z] wt:ghost-buster 1 clé(s) pending supprimée(s)
+[2026-10-26T00:23:36Z] agent-manager.json mis à jour
+[2026-10-26T00:23:36Z] wt:ghost-buster terminé status=OK
+[2026-10-26T00:23:50Z] wt:purge-merged debut project=RAGX
+[2026-10-26T00:23:50Z] wt:purge-merged supprime worktree branch=feat/wt-kilo-worktree-operator id=wt-1792972937867-1
+[2026-10-26T00:23:51Z] agent-manager.json mis à jour
+[2026-10-26T00:23:51Z] wt:purge-merged terminé status=OK
+[2026-10-26T00:24:32Z] wt:ghost-buster debut project=RAGX
+[2026-10-26T00:24:32Z] wt:ghost-buster session orpheline: ses_e8a7c187cffeBEFkoJ38LCLjFc
+[2026-10-26T00:24:32Z] agent-manager.json mis à jour
+[2026-10-26T00:24:32Z] wt:ghost-buster terminé status=OK
+[2026-10-26T00:24:58Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T00:24:58Z] agent-manager.json mis à jour
+[2026-10-26T00:24:58Z] wt:prune-orphans terminé status=OK
+[2026-10-26T00:26:10Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T00:26:10Z] agent-manager.json mis à jour
+[2026-10-26T00:26:10Z] wt:prune-orphans terminé status=OK
+[2026-10-26T01:48:40Z] wt:ghost-buster debut project=RAGX
+[2026-10-26T01:48:40Z] agent-manager.json mis à jour
+[2026-10-26T01:48:40Z] wt:ghost-buster terminé status=OK
+[2026-10-26T01:51:54Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T01:51:54Z] wt:prune-orphans ERREUR: load_agent_manager() takes 0 positional arguments but 1 was given
+[2026-10-26T01:51:54Z] wt:prune-orphans terminé status=FAIL
+[2026-10-26T01:57:19Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T01:57:19Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T01:57:19Z] wt:prune-orphans terminé status=OK
+[2026-10-26T01:58:48Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T01:58:48Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:00:24Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T02:00:24Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:00:34Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T02:00:34Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:00:43Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T02:00:43Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:02:25Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T02:02:25Z] wt:prune-orphans travail orphelin supprime: wt-1792974004524-2 (d:\do\web\tools\l0-canon\ragx\.kilo\worktrees\feat-wt-cleanup-ragx-863c20ab1951b5c4)
+[2026-10-26T02:02:25Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:02:44Z] wt:ghost-buster debut project=RAGX
+[2026-10-26T02:02:44Z] agent-manager.json mis à jour (project=SKILLS)
+[2026-10-26T02:02:44Z] wt:ghost-buster terminé status=OK
+[2026-10-26T02:03:51Z] wt:ghost-buster debut project=RAGX
+[2026-10-26T02:03:51Z] wt:ghost-buster 1 clé(s) pending supprimée(s)
+[2026-10-26T02:03:51Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:10:33Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T02:10:33Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:10:33Z] wt:prune-orphans terminé status=OK
+[2026-10-26T02:11:41Z] wt:ghost-buster debut project=RAGX
+[2026-10-26T02:11:41Z] wt:ghost-buster 1 clé(s) pending supprimée(s)
+[2026-10-26T02:11:41Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:11:41Z] wt:ghost-buster terminé status=OK
+[2026-10-26T02:11:59Z] wt:prune-orphans debut project=RAGX
+[2026-10-26T02:11:59Z] wt:prune-orphans travail orphelin supprime: wt-1792974004524-2 (d:\do\web\tools\l0-canon\ragx\.kilo\worktrees\feat-wt-cleanup-ragx-863c20ab1951b5c4)
+[2026-10-26T02:11:59Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:11:59Z] wt:prune-orphans terminé status=OK
+[2026-10-26T02:12:20Z] wt:ghost-buster debut project=RAGX
+[2026-10-26T02:12:20Z] agent-manager.json mis à jour (project=RAGX)
+[2026-10-26T02:12:20Z] wt:ghost-buster terminé status=OK

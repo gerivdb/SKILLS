@@ -87,6 +87,16 @@ See [`REGISTRY.yaml`](REGISTRY.yaml) for the complete index of all skills.
 | `finance` | Banking analysis | BANK-BUSTER | 1.0.0 |
 | `content` | Content generation | FLUENCE + BRAIN | 1.0.0 |
 
+### Citizen Skills (ENV2 Memory Unified — P0-P7)
+
+| Skill | Description | Version | Sceau WAL |
+|-------|-------------|---------|-----------|
+| `api_inspector` | Inspection statique d'API Python (classes, méthodes, schémas DB) | 1.0.0 | `WAL-0x243-API-INSPECTOR-SELFTEST` |
+| `bridge_generator` | Génération de bridges idempotents (source → destination, hash SHA-256, checkpoint) | 1.0.0 | `WAL-0x243-BRIDGE-GENERATOR-SELFTEST` |
+
+These citizen skills were created during the ENV2 Memory Unified mission (P0-P7) to accelerate cross-layer synchronization between DuckDB, Mnemo, HERMES, and MIMIR.
+
+
 ## 🤝 Contributing
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for contribution guidelines.

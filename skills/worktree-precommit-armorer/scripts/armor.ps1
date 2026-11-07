@@ -53,7 +53,7 @@ catch {
 }
 
 # Vérifier que la configuration a été prise en compte
-$verify = & git -C $WorktreePath config --get core.hooksPath 2>&1 | Out-String | Trim()
+$verify = & git -C $WorktreePath config --get core.hooksPath 2>&1 | Out-String | ForEach-Object { $_.Trim() }
 $hooksVerified = ($verify -eq $masterHooks)
 
 $report = [PSCustomObject]@{
