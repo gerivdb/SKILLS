@@ -337,6 +337,10 @@ def self_test() -> bool:
         )
         conn.close()
 
+        # Le checkpoint doit pointer vers le répertoire temporaire du test,
+        # pas vers un chemin fixe, pour garantir l'idempotence entre exécutions.
+        CHECKPOINT_PATH = ckpt  # noqa: PLW0603
+
         source = DuckDBAdapter(src_db, "test_table")
         destination = SQLiteAdapter(dst_db, "synced")
         bridge = Bridge(source, destination)
@@ -405,16 +409,15 @@ def self_test() -> bool:
     vérifie le transfert et l'idempotence."""
     print("[SELF-TEST] citizen_bridge_generator — génération de bridge ...")
 
-    bridge_code = generate_bridge(
-        source_adapter="duckdb",
-        destination_adapter="sqlite",
-        checkpoint_file="/tmp/bridge_ckpt.json",
-        wal_seal_prefix="WAL-0x243",
-    )
-
-    # Écrire le bridge généré dans un fichier temporaire et l'exécuter
     with tempfile.TemporaryDirectory(prefix="bridge_gen_test_") as tmpdir:
+        ckpt_file = str(Path(tmpdir) / "checkpoint.json")
         bridge_path = Path(tmpdir) / "generated_bridge.py"
+        bridge_code = generate_bridge(
+            source_adapter="duckdb",
+            destination_adapter="sqlite",
+            checkpoint_file=ckpt_file,
+            wal_seal_prefix="WAL-0x243",
+        )
         bridge_path.write_text(bridge_code, encoding="utf-8")
 
         result = subprocess.run(
