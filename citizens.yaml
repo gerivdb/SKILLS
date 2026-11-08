@@ -46,3 +46,14 @@ citizens:
     skills:
       - "browser-dom-extractor"
     owners: ["HITL"]
+  - id: "citizen-browser-attitre"
+    name: "Gardien du Navigateur Attitré (Chromium Profile 2)"
+    role: "Responsable de l'intégrité et de la manipulation du navigateur souverain d'ENV2"
+    doctrine: "CHROMIUM-ATTITRE-DOCTRINE.md"
+    rules:
+      - "Toujours utiliser connect_over_cdp (jamais launch)."
+      - "Utiliser le contexte existant (contexts[0])."
+      - "Vérifier l'authentification (URL != accounts.google.com)."
+    skills:
+      - "browser-cdp-controller"
+    owners: ["HITL"]
