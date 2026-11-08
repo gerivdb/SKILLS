@@ -57,3 +57,14 @@ citizens:
     skills:
       - "browser-cdp-controller"
     owners: ["HITL"]
+  - id: "citizen-kilo-fts-indexer"
+    name: "Indexeur Historique KiloCode (FTS5)"
+    role: "Responsable de l'indexation plein-texte de kilo.db pour recherche instantanée"
+    doctrine: "KILO-FTS-INDEXER-DOCTRINE.md"
+    rules:
+      - "Lire kilo.db en lecture seule (mode=ro, jamais d'écriture sur la source)."
+      - "Écrire l'index FTS5 dans une base séparée (kilo_fts_index.db)."
+      - "Indexer par lots (--limit/--offset), jamais les 21 Go d'un coup."
+    skills:
+      - "kilo-fts-indexer"
+    owners: ["HITL"]
