@@ -33,3 +33,16 @@ citizens:
       validate_skills: "bash tools/validate-skills.sh"
       registry_gen: "python tools/registry-gen.py"
       governance_glossary: "https://github.com/gerivdb/GOVERNANCE-HUB/blob/main/SKILLS_GLOSSARY.md"
+  - id: "citizen-browser-automation"
+    name: "Browser Automation & CDP Specialist"
+    role: "Responsable des interactions avec les navigateurs headful (Chromium/Chrome) via CDP"
+    description: >
+      Ce citoyen gère l'extraction DOM, la navigation et les tests UI sur des sessions authentifiées.
+      Il applique strictement la doctrine CHROMIUM-CDP-SESSION-DOCTRINE.
+    rules:
+      - "Ne jamais utiliser playwright.launch() pour une session authentifiée."
+      - "Toujours utiliser playwright.connect_over_cdp() avec le port 9222."
+      - "Refuser l'exécution si l'URL atterrit sur accounts.google.com."
+    skills:
+      - "browser-dom-extractor"
+    owners: ["HITL"]
