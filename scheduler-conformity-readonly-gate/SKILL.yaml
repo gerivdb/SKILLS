@@ -1,0 +1,9 @@
+name: scheduler-conformity-readonly-gate
+version: 1.0.0
+description: Gate fail-closed: si Shard E échoue, les autres shards passent en readonly.
+triggers:
+  - scheduler
+  - gate
+  - readonly
+source_file: shard_scheduler.py
+status: stable

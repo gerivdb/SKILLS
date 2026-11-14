@@ -1,0 +1,9 @@
+name: deepseek-ui-autosend-probe
+version: 1.0.0
+description: Injection autonome de texte dans le textarea DeepSeek et envoi (Enter).
+triggers:
+  - deepseek
+  - autosend
+  - ui
+source_file: None
+status: stable

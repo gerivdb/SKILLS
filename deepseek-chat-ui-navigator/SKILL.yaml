@@ -1,0 +1,9 @@
+name: deepseek-chat-ui-navigator
+version: 1.0.0
+description: Navigue dans l'interface DeepSeek (col_gauche) via CDP 9222. List, switch, new conversation.
+triggers:
+  - deepseek
+  - ui
+  - navigation
+source_file: env6_ui_navigator.py
+status: stable
