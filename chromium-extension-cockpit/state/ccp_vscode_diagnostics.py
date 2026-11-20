@@ -133,7 +133,7 @@ def emit_diagnostic(event_id: int, ext_slug: str, level: str, message: str,
     code = ext_slug or "unknown"
     # Échapper les barres obliques inversées pour Windows
     path_str = str(source_path) if source_path else "<inconnu>"
-    return f"{path_str}:{line}:{col}: {severity} [{code}]: {message}"
+    return f"{path_str}:{line}:{col}: {severity}|{code}|{message}"
 
 
 def process_event(conn: sqlite3.Connection, row: sqlite3.Row,
