@@ -294,6 +294,42 @@ def snapshot_list(args: argparse.Namespace) -> None:
         conn.close()
 
 
+def snapshot_restore(args: argparse.Namespace) -> None:
+    """Restaure un snapshot dans un fichier JSON de sortie."""
+    conn = _connect()
+    try:
+        row = conn.execute(
+            """SELECT s.id, e.slug, s.storage_json
+               FROM snapshots s
+               JOIN extensions e ON e.id = s.extension_id
+               WHERE s.id = ?""",
+            (args.snapshot_id,),
+        ).fetchone()
+        if not row:
+            print(f"[ÉCHEC] Aucun snapshot avec l'ID {args.snapshot_id}")
+            return
+
+        output_path = Path(args.output)
+        output_path.write_text(row["storage_json"], encoding="utf-8")
+        print(f"[SUCCÈS] Snapshot {args.snapshot_id} ({row['slug']}) restauré dans : {output_path}")
+    finally:
+        conn.close()
+
+
+def snapshot_delete(args: argparse.Namespace) -> None:
+    """Supprime un snapshot."""
+    conn = _connect()
+    try:
+        cur = conn.execute("DELETE FROM snapshots WHERE id = ?", (args.snapshot_id,))
+        if cur.rowcount == 0:
+            print(f"[ÉCHEC] Aucun snapshot avec l'ID {args.snapshot_id}")
+        else:
+            conn.commit()
+            print(f"[SUCCÈS] Snapshot {args.snapshot_id} supprimé.")
+    finally:
+        conn.close()
+
+
 def telemetry_start_ingest(args: argparse.Namespace) -> None:
     """Lance l'ingester de télémétrie CDP en continu."""
     import subprocess
@@ -406,6 +442,15 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_snap_list = p_snap_sub.add_parser("list", help="Lister les snapshots")
     p_snap_list.set_defaults(func=snapshot_list)
+
+    p_snap_restore = p_snap_sub.add_parser("restore", help="Restaure un snapshot dans un fichier JSON")
+    p_snap_restore.add_argument("--snapshot-id", type=int, required=True)
+    p_snap_restore.add_argument("--output", required=True, help="Fichier JSON de sortie")
+    p_snap_restore.set_defaults(func=snapshot_restore)
+
+    p_snap_delete = p_snap_sub.add_parser("delete", help="Supprime un snapshot")
+    p_snap_delete.add_argument("--snapshot-id", type=int, required=True)
+    p_snap_delete.set_defaults(func=snapshot_delete)
 
     return parser
 
