@@ -164,6 +164,10 @@ class CCPHandler(BaseHTTPRequestHandler):
                 self._send_json(500, {"ok": False, "error": str(exc)})
             return
 
+        if path == "/api/llux/ui-concepts":
+            self._handle_llux_ui_concepts_list()
+            return
+
         if path == "/" or path == "/dashboard":
             self._serve_dashboard()
             return
@@ -182,6 +186,9 @@ class CCPHandler(BaseHTTPRequestHandler):
             return
         if path == "/api/clear-errors":
             self._handle_clear_errors(slug)
+            return
+        if path == "/api/llux/ui-concepts":
+            self._handle_llux_ui_concepts()
             return
 
         self._send_json(404, {"ok": False, "error": "not_found"})
@@ -219,6 +226,70 @@ class CCPHandler(BaseHTTPRequestHandler):
                 self._send_json(200, {"ok": True, "message": f"Erreurs purgées pour {slug}"})
             else:
                 self._send_json(200, {"ok": False, "error": res.stderr or res.stdout})
+        except Exception as exc:
+            self._send_json(500, {"ok": False, "error": str(exc)})
+
+    def _handle_llux_ui_concepts_list(self) -> None:
+        """Gère les requêtes GET vers /api/llux/ui-concepts (liste des concepts UI)."""
+        try:
+            conn = get_db(self.db_path)
+            rows = conn.execute(
+                """SELECT t.id, t.timestamp, e.slug AS extension_slug, t.message,
+                          t.stack_trace
+                   FROM telemetry_events t
+                   LEFT JOIN extensions e ON e.id = t.extension_id
+                   WHERE t.source = 'llux-ui-generator'
+                   ORDER BY t.id DESC
+                   LIMIT 50"""
+            ).fetchall()
+            concepts = []
+            for r in rows:
+                concepts.append({
+                    "id": r["id"],
+                    "timestamp": r["timestamp"],
+                    "extension_slug": r["extension_slug"],
+                    "message": r["message"],
+                    "stack_trace": r["stack_trace"],
+                })
+            conn.close()
+            self._send_json(200, {"ok": True, "concepts": concepts})
+        except Exception as exc:
+            self._send_json(500, {"ok": False, "error": str(exc)})
+
+    def _handle_llux_ui_concepts(self) -> None:
+        """Gère les requêtes POST vers /api/llux/ui-concepts (création de concept UI)."""
+        try:
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(content_length) if content_length else b"{}"
+            payload = json.loads(body.decode("utf-8")) if body else {}
+        except Exception:
+            payload = {}
+
+        name = payload.get("name", "Nouveau Composant")
+        component_type = payload.get("type", "card")
+        ext_id = payload.get("ext_id")
+
+        try:
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            from ccp_llux_ui_generator import design_concept_ui, get_db, save_concept_to_db, resolve_ext_name
+
+            design = design_concept_ui(
+                name=name,
+                component_type=component_type,
+                ext_slug=None,
+                rootx_endpoint="http://localhost:8030",
+            )
+
+            # Lier à l'extension si un ID est fourni
+            if ext_id:
+                conn = get_db()
+                try:
+                    design["ext_slug"] = resolve_ext_name(conn, ext_id)
+                    save_concept_to_db(conn, ext_id, design)
+                finally:
+                    conn.close()
+
+            self._send_json(200, {"ok": True, "concept": design})
         except Exception as exc:
             self._send_json(500, {"ok": False, "error": str(exc)})
 
