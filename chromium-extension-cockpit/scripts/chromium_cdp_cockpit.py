@@ -55,20 +55,72 @@ def cdp_check_port():
 DEFAULT_SANDBOX_EXT = r"D:\DO\WEB\TOOLS\L0-CANON\ENV3-repo\sidekeep-x"
 LAUNCHER_SCRIPT = r"D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\chromium-extension-cockpit\scripts\launch_micro_sandbox.ps1"
 
+# WEBX (L2-PLATFORM) — fournisseur de runtime navigateur.
+WEBX_CLI = r"D:\DO\WEB\TOOLS\L2-PLATFORM\WEBX\src\webx\cli.py"
+WEBX_PROFILE = "axe3-debug"
+WEBX_BROWSER = "chrome"
+
+
+def ensure_cdp_port_via_webx(timeout_s: float = 5.0) -> bool:
+    """Tente de lancer Chromium via la plateforme WEBX (L2) avant le fallback sandbox.
+
+    Utilise la CLI WEBX (`webx session start --browser=chrome --profile=axe3-debug`)
+    qui respecte le driver `chrome.yaml` (port 9222, ZERO_KILL, CONNECT_ONLY).
+
+    Retourne True si le port est disponible après le lancement WEBX, False sinon.
+    """
+    webx_cli = Path(WEBX_CLI)
+    if not webx_cli.exists():
+        print("[INFO] WEBX CLI introuvable — passage direct au fallback sandbox.")
+        return False
+
+    print("[INFO] Port CDP 9222 fermé — tentative de lancement via WEBX (L2)…")
+    try:
+        subprocess.Popen(
+            [
+                sys.executable,
+                str(webx_cli),
+                "session",
+                "start",
+                "--browser",
+                WEBX_BROWSER,
+                "--profile",
+                WEBX_PROFILE,
+            ],
+            creationflags=subprocess.CREATE_NO_WINDOW,
+        )
+    except Exception as exc:
+        print(f"[ERREUR] Échec du lancement WEBX : {exc}")
+        return False
+
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        time.sleep(0.5)
+        if cdp_check_port():
+            print("[SUCCÈS] Port CDP 9222 disponible après lancement WEBX.")
+            return True
+
+    print(f"[ATTENTION] WEBX n'a pas rendu le port 9222 disponible après {timeout_s} s.")
+    return False
+
 
 def ensure_cdp_port(timeout_s: float = 8.0) -> bool:
     """Garantit que le port CDP 9222 est joignable.
 
-    Si le port ne répond pas, le script lance automatiquement en arrière-plan
-    une micro-sandbox Chromium via ``launch_micro_sandbox.ps1`` (port 9222,
-    profil éphémère), puis poll le socket jusqu'au timeout.
+    Ordre de priorité :
+    1. Port déjà ouvert → OK immédiatement.
+    2. Lancement via WEBX (L2-PLATFORM) : `webx session start --browser=chrome --profile=axe3-debug`.
+    3. Fallback : micro-sandbox éphémère via `launch_micro_sandbox.ps1`.
 
     Retourne True si le port est disponible, False sinon.
     """
     if cdp_check_port():
         return True
 
-    print("[INFO] Port CDP 9222 fermé — auto-spawn de la micro-sandbox éphémère…")
+    if ensure_cdp_port_via_webx(timeout_s=min(timeout_s, 5.0)):
+        return True
+
+    print("[INFO] WEBX indisponible ou échoué — auto-spawn de la micro-sandbox éphémère…")
     try:
         subprocess.Popen(
             [
