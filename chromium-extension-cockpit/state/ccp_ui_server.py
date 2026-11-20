@@ -76,7 +76,7 @@ class CCPHandler(BaseHTTPRequestHandler):
                 rows = conn.execute(
                     """SELECT e.id, e.slug, e.version, e.status, e.auto_reload,
                               e.git_repo, e.git_commit,
-                              COUNT(t.id) AS error_count,
+                              SUM(CASE WHEN t.level='error' THEN 1 ELSE 0 END) AS error_count,
                               SUM(CASE WHEN t.level='error' AND t.resolved=0 THEN 1 ELSE 0 END) AS unresolved_errors
                        FROM extensions e
                        LEFT JOIN telemetry_events t ON t.extension_id = e.id
