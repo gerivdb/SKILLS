@@ -164,11 +164,15 @@ def lint_deprecated_directives(root: Path):
         except Exception as e:
             error(f"Impossible de lire {html_file} : {e}")
             continue
-        if "focus-without-user-activation" in content:
+        if re.search(
+            r'allow\s*=\s*["\'][^"\']*focus-without-user-activation',
+            content,
+            re.IGNORECASE,
+        ):
             rel = html_file.relative_to(root)
             error(
                 f"Directive dépréciée 'focus-without-user-activation' "
-                f"trouvée dans {rel}"
+                f"active dans l'attribut allow de {rel}"
             )
 
 
