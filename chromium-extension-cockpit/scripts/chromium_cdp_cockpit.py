@@ -97,7 +97,11 @@ def cmd_status():
     print(json.dumps({"ok": True, "extensions": exts}, indent=2, ensure_ascii=False))
 
 def cmd_reload(ext_id):
-    """Rechargement à chaud d'une extension via son ID Chromium."""
+    """Rechargement à chaud d'une extension via son ID Chromium.
+    
+    Si l'extension est désactivée, l'active d'abord (auto-réveil) avant
+    de déclencher le rechargement.
+    """
     if not cdp_check_port():
         print(json.dumps({"ok": False, "error": "Port CDP 9222 non joignable"}, ensure_ascii=False))
         return
@@ -112,8 +116,14 @@ def cmd_reload(ext_id):
             const item = list?.shadowRoot?.querySelector(`extensions-item[id="${id}"]`);
             if (!item) return {{ ok: false, error: "Extension introuvable" }};
             const shadow = item.shadowRoot;
-            const btn = shadow?.querySelector('#dev-reload-button');
-            if (!btn) return {{ ok: false, error: "Bouton reload introuvable" }};
+            let btn = shadow?.querySelector('#dev-reload-button');
+            if (!btn) {{
+                // Extension désactivée : activer d'abord (auto-réveil)
+                const toggle = shadow?.querySelector('#enable-toggle');
+                if (!toggle) return {{ ok: false, error: "Extension désactivée et toggle d'activation introuvable" }};
+                toggle.click();
+                return {{ ok: false, error: "Extension désactivée — activation demandée. Relancez la commande reload." }};
+            }}
             btn.click();
             const nameEl = shadow?.querySelector('#name');
             return {{ ok: true, id: id, name: nameEl?.textContent?.trim() || '' }};
