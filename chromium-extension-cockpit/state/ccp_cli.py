@@ -21,6 +21,8 @@ import json
 import sqlite3
 from pathlib import Path
 
+from ccp_telemetry_ingester import main as telemetry_ingest_main
+
 DB_PATH = Path(__file__).resolve().parent / "chromium_meta.db"
 
 
@@ -292,6 +294,25 @@ def snapshot_list(args: argparse.Namespace) -> None:
         conn.close()
 
 
+def telemetry_start_ingest(args: argparse.Namespace) -> None:
+    """Lance l'ingester de télémétrie CDP en continu."""
+    import subprocess
+
+    cmd = [
+        sys.executable,
+        str(Path(__file__).resolve().parent / "ccp_telemetry_ingester.py"),
+        "--port",
+        str(args.port),
+        "--db-path",
+        str(Path(__file__).resolve().parent / "chromium_meta.db"),
+    ]
+    print(f"[INFO] Lancement de l'ingester CDP : {' '.join(cmd)}")
+    try:
+        subprocess.run(cmd)
+    except KeyboardInterrupt:
+        print("\n[INFO] Ingestion interrompue par l'utilisateur.")
+
+
 # ---------------------------------------------------------------------------
 # argparse wiring
 # ---------------------------------------------------------------------------
@@ -368,6 +389,10 @@ def build_parser() -> argparse.ArgumentParser:
     p_tele_resolve = p_tele_sub.add_parser("resolve", help="Marquer un événement résolu")
     p_tele_resolve.add_argument("--event-id", type=int, required=True)
     p_tele_resolve.set_defaults(func=telemetry_resolve)
+
+    p_tele_ingest = p_tele_sub.add_parser("start-ingest", help="Lancer l'ingestion CDP en continu")
+    p_tele_ingest.add_argument("--port", type=int, default=9222, help="Port CDP de Chromium")
+    p_tele_ingest.set_defaults(func=telemetry_start_ingest)
 
     # --- snapshots ---
     p_snap = sub.add_parser("snapshots", help="Gestion des instantanés d'état")
