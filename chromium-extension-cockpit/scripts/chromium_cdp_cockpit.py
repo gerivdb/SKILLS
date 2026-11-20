@@ -10,6 +10,7 @@ Actions supportées :
   - clear-errors : Purge le journal d'erreurs d'une extension (Clear All)
   - frames    : Inspection de la hiérarchie iframes d'une extension (panel)
   - version   : Preuve Disque vs Live (manifest version vs runtime version)
+  - audit     : Audit de santé global des extensions (matrice de santé)
 
 Requiert : playwright (pip install playwright) et un Chromium lancé avec --remote-debugging-port=9222
 """
@@ -257,6 +258,62 @@ def cmd_version(manifest_path):
         "match": match
     }, indent=2, ensure_ascii=False))
 
+def cmd_audit():
+    """Audit de santé global des extensions via CDP (matrice de santé)."""
+    if not cdp_check_port():
+        print(json.dumps({"ok": False, "error": "Port CDP 9222 non joignable"}, ensure_ascii=False))
+        return
+
+    p, browser, context = _connect_cdp()
+    try:
+        page = context.new_page()
+        page.goto("chrome://extensions", wait_until="networkidle")
+        exts = page.evaluate("""() => {
+            const mgr = document.querySelector('extensions-manager');
+            const list = mgr?.shadowRoot?.querySelector('extensions-item-list');
+            const items = list?.shadowRoot?.querySelectorAll('extensions-item') || [];
+            return Array.from(items).map(it => {
+                const shadow = it.shadowRoot;
+                const nameEl = shadow?.querySelector('#name');
+                const versionEl = shadow?.querySelector('#version');
+                const errorsBtn = shadow?.querySelector('#errors-button');
+                const toggle = shadow?.querySelector('#enable-toggle');
+                return {
+                    id: it.id,
+                    name: nameEl?.textContent?.trim() || 'Inconnu',
+                    version: versionEl?.textContent?.trim() || '?',
+                    hasErrors: !!errorsBtn,
+                    enabled: toggle?.getAttribute('aria-pressed') === 'true'
+                };
+            });
+        }""")
+        page.close()
+    finally:
+        _close_cdp(p, browser)
+
+    # Tableau de santé
+    print("+----------------------------+---------+---------+------------------+----------------------+")
+    print("| Extension                  | Version | Runtime | Backend Requis   | Statut Santé         |")
+    print("+----------------------------+---------+---------+------------------+----------------------+")
+    for e in exts:
+        name = e['name'][:26].ljust(26)
+        version = e['version'][:7].ljust(7)
+        runtime = "Actif" if e['enabled'] else "Inactif"
+        runtime = runtime[:9].ljust(9)
+        backend = "-"
+        if e['hasErrors']:
+            health = "❌ ERREURS".ljust(20)
+        elif not e['enabled']:
+            health = "⚠️ DÉSACTIVÉE".ljust(20)
+        else:
+            health = "✅ 0 erreur".ljust(20)
+        print(f"| {name} | {version} | {runtime} | {backend.ljust(16)} | {health} |")
+    print("+----------------------------+---------+---------+------------------+----------------------+")
+    print(f"\nTotal : {len(exts)} extension(s) détectée(s).")
+    healthy = sum(1 for e in exts if e['enabled'] and not e['hasErrors'])
+    print(f"Santé : {healthy}/{len(exts)} opérationnelle(s).")
+
+
 # ——————————————————————————————————————————————
 # Point d'entrée
 # ——————————————————————————————————————————————
@@ -274,6 +331,7 @@ def main():
     p_frames.add_argument("--id", required=True, help="ID Chromium de l'extension")
     p_version = sub.add_parser("version", help="Preuve Disque vs Live (manifest version)")
     p_version.add_argument("--manifest", required=True, help="Chemin vers manifest.json sur disque")
+    p_audit = sub.add_parser("audit", help="Audit de santé global des extensions (matrice)")
 
     args = parser.parse_args()
 
@@ -287,6 +345,8 @@ def main():
         cmd_frames(args.id)
     elif args.action == "version":
         cmd_version(args.manifest)
+    elif args.action == "audit":
+        cmd_audit()
 
 if __name__ == "__main__":
     main()
