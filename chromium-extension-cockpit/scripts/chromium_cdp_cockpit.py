@@ -12,12 +12,16 @@ Actions supportées :
   - version   : Preuve Disque vs Live (manifest version vs runtime version)
   - audit     : Audit de santé global des extensions (matrice de santé)
 
-Requiert : playwright (pip install playwright) et un Chromium lancé avec --remote-debugging-port=9222
+Requiert : playwright (pip install playwright).
+Si le port CDP 9222 est fermé, le script lance automatiquement une
+micro-sandbox Chromium (launch_micro_sandbox.ps1) puis exécute l'action demandée.
 """
 
 import argparse
 import json
+import subprocess
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
@@ -46,6 +50,55 @@ def cdp_check_port():
     except Exception:
         return False
 
+# Extension par défaut utilisée pour le auto-spawn de la micro-sandbox
+# quand le port CDP est fermé. Doit disposer d'un manifest.json valide.
+DEFAULT_SANDBOX_EXT = r"D:\DO\WEB\TOOLS\L0-CANON\ENV3-repo\sidekeep-x"
+LAUNCHER_SCRIPT = r"D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\chromium-extension-cockpit\scripts\launch_micro_sandbox.ps1"
+
+
+def ensure_cdp_port(timeout_s: float = 8.0) -> bool:
+    """Garantit que le port CDP 9222 est joignable.
+
+    Si le port ne répond pas, le script lance automatiquement en arrière-plan
+    une micro-sandbox Chromium via ``launch_micro_sandbox.ps1`` (port 9222,
+    profil éphémère), puis poll le socket jusqu'au timeout.
+
+    Retourne True si le port est disponible, False sinon.
+    """
+    if cdp_check_port():
+        return True
+
+    print("[INFO] Port CDP 9222 fermé — auto-spawn de la micro-sandbox éphémère…")
+    try:
+        subprocess.Popen(
+            [
+                "pwsh",
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                LAUNCHER_SCRIPT,
+                "-ExtensionPath",
+                DEFAULT_SANDBOX_EXT,
+                "-Port",
+                "9222",
+            ],
+            creationflags=subprocess.CREATE_NO_WINDOW,
+        )
+    except Exception as exc:
+        print(f"[ERREUR] Échec du lancement de la sandbox : {exc}")
+        return False
+
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        time.sleep(0.5)
+        if cdp_check_port():
+            print("[SUCCÈS] Port CDP 9222 disponible après auto-spawn.")
+            return True
+
+    print(f"[ERREUR] Port CDP 9222 toujours indisponible après {timeout_s} s.")
+    return False
+
 # ——————————————————————————————————————————————
 # Primitives Playwright (Shadow DOM, iframes, erreurs)
 # ——————————————————————————————————————————————
@@ -64,8 +117,8 @@ def _close_cdp(p, browser):
 
 def cmd_status():
     """Affiche le statut des extensions (id, nom, version, erreurs, activé)."""
-    if not cdp_check_port():
-        print(json.dumps({"ok": False, "error": "Port CDP 9222 non joignable. Lancez Chromium avec --remote-debugging-port=9222"}, ensure_ascii=False))
+    if not ensure_cdp_port():
+        print(json.dumps({"ok": False, "error": "Port CDP 9222 non joignable"}, ensure_ascii=False))
         return
 
     p, browser, context = _connect_cdp()
@@ -103,7 +156,7 @@ def cmd_reload(ext_id):
     Si l'extension est désactivée, l'active d'abord (auto-réveil) avant
     de déclencher le rechargement.
     """
-    if not cdp_check_port():
+    if not ensure_cdp_port():
         print(json.dumps({"ok": False, "error": "Port CDP 9222 non joignable"}, ensure_ascii=False))
         return
 
@@ -137,7 +190,7 @@ def cmd_reload(ext_id):
 
 def cmd_clear_errors(ext_id):
     """Purge le journal d'erreurs d'une extension (bouton Clear All)."""
-    if not cdp_check_port():
+    if not ensure_cdp_port():
         print(json.dumps({"ok": False, "error": "Port CDP 9222 non joignable"}, ensure_ascii=False))
         return
 
@@ -167,7 +220,7 @@ def cmd_clear_errors(ext_id):
 
 def cmd_frames(ext_id):
     """Inspecte la hiérarchie iframes d'une extension (side panel / popup)."""
-    if not cdp_check_port():
+    if not ensure_cdp_port():
         print(json.dumps({"ok": False, "error": "Port CDP 9222 non joignable"}, ensure_ascii=False))
         return
 
@@ -220,7 +273,7 @@ def cmd_version(manifest_path):
     disk_version = manifest_data.get("version", "unknown")
     manifest_name = manifest_data.get("name", manifest.parent.name).lower()
 
-    if not cdp_check_port():
+    if not ensure_cdp_port():
         print(json.dumps({
             "ok": False,
             "error": "Port CDP 9222 non joignable",
@@ -260,7 +313,7 @@ def cmd_version(manifest_path):
 
 def cmd_audit():
     """Audit de santé global des extensions via CDP (matrice de santé)."""
-    if not cdp_check_port():
+    if not ensure_cdp_port():
         print(json.dumps({"ok": False, "error": "Port CDP 9222 non joignable"}, ensure_ascii=False))
         return
 
