@@ -2064,3 +2064,114 @@ metadata:
   phi_weight: 0.005
   assimilation_status: N/A
 
+- id: skill-ecosystem-auditor
+  name: skill-ecosystem-auditor
+  description: Audite l'écosystème des skills L4 : détecte doublons, orphelins, dépendances circulaires, chemins de registre non cohérents.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-ecosystem-auditor/SKILL.md
+  created: '2026-11-09'
+  updated: '2026-11-09'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-ecosystem-auditor
+  domain: governance
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: skill-version-bumper
+  name: skill-version-bumper
+  description: Incrémente automatiquement les numéros de version V-4D dans SKILL.md et REGISTRY.yaml lors de modification d'un skill.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-version-bumper/SKILL.md
+  created: '2026-11-09'
+  updated: '2026-11-09'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-version-bumper
+  domain: governance
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: skill-dependency-healer
+  name: skill-dependency-healer
+  description: Détecte et résout les dépendances manquantes ou circulaires entre skills L4.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-dependency-healer/SKILL.md
+  created: '2026-11-09'
+  updated: '2026-11-09'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-dependency-healer
+  domain: governance
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: skill-template-evolver
+  name: skill-template-evolver
+  description: Fait évoluer le template canonique SKILL.md lorsqu'une nouvelle propriété est ajoutée à un skill existant.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-template-evolver/SKILL.md
+  created: '2026-11-09'
+  updated: '2026-11-09'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-template-evolver
+  domain: governance
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: skill-deployer
+  name: skill-deployer
+  description: Déploie un skill d'un dépôt source vers un dépôt cible (strate L* uniquement), avec sauvegarde WAL et vérification skill-linter-sentinel.
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: skills/skill-deployer/SKILL.md
+  created: '2026-11-09'
+  updated: '2026-11-09'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - skill-deployer
+  domain: governance
+  phi_weight: 0.005
+  assimilation_status: N/A
+- id: CHROMIUM-EXTENSION-COCKPIT
+  name: chromium-extension-cockpit
+  description: Pilotage et preuve matérielle d'extensions Chromium via CDP (port 9222).
+  version: 1.0.0
+  status: active
+  source: native
+  source_repo: gerivdb/SKILLS
+  path: chromium-extension-cockpit/SKILL.md
+  created: '2026-11-20'
+  updated: '2026-11-20'
+  author: gerivdb
+  license: MIT
+  type: domain
+  triggers:
+  - chromium-extension-cockpit
+  - cdp-cockpit
+  - ipa-001
+  domain: infrastructure
+  phi_weight: 0.005
+  assimilation_status: N/A
+
