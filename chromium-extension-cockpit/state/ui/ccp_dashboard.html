@@ -28,6 +28,23 @@
   .badge--err { background: rgba(239,68,68,0.15); color: var(--danger); border: 1px solid rgba(239,68,68,0.35); }
   .badge--warn { background: rgba(245,158,11,0.15); color: var(--warning); border: 1px solid rgba(245,158,11,0.35); }
   .badge--inactive { background: rgba(148,163,184,0.15); color: var(--muted); border: 1px solid rgba(148,163,184,0.35); }
+  .badge--llux { background: rgba(139,92,246,0.15); color: #a855f7; border: 1px solid rgba(139,92,246,0.35); }
+  .dot--llux { background: #a855f7; box-shadow: 0 0 8px #a855f7; }
+  .code-preview {
+    background: #0f172a;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+    color: #cbd5e1;
+    overflow: auto;
+    max-height: 200px;
+    margin-top: 8px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items: end; margin-bottom: 12px; }
+  .form-row input { padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; background: #0f172a; color: var(--text); }
+  .form-row select { padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; background: #0f172a; color: var(--text); }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-bottom: 24px; }
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
   .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
@@ -73,6 +90,24 @@
     <div class="section-title">Extensions</div>
     <div id="extensions-grid" class="grid">
       <div class="empty">Chargement des extensions…</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Stitch Local — Générateur UI (LLUX / BIRDY)</div>
+    <div class="form-row">
+      <input type="text" id="llux-name" placeholder="Nom du composant" maxlength="60">
+      <select id="llux-type">
+        <option value="card">Carte (card)</option>
+        <option value="button">Bouton (button)</option>
+        <option value="sidepanel">Side Panel (sidepanel)</option>
+      </select>
+      <button class="btn-primary btn-sm" onclick="createLLUXConcept()">Générer</button>
+    </div>
+    <div id="llux-result" style="margin-top: 12px;"></div>
+    <div style="margin-top: 16px;">
+      <div class="section-title" style="margin-bottom: 8px;">Concepts générés</div>
+      <div id="llux-list" class="empty">Aucun concept généré.</div>
     </div>
   </div>
 
@@ -222,6 +257,71 @@ async function clearErrors(slug) {
   }
 }
 
+async function createLLUXConcept() {
+  const nameInput = document.getElementById('llux-name');
+  const typeSelect = document.getElementById('llux-type');
+  const resultDiv = document.getElementById('llux-result');
+  const name = nameInput.value.trim();
+  const type = typeSelect.value;
+  if (!name) {
+    alert('Veuillez saisir un nom de composant.');
+    return;
+  }
+  try {
+    const res = await fetch(`${API_BASE}/api/llux/ui-concepts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, type, type: type }),
+    });
+    const data = await res.json();
+    if (!data.ok) {
+      alert('Erreur lors de la génération : ' + (data.error || 'inconnue'));
+      return;
+    }
+    const concept = data.concept;
+    resultDiv.innerHTML = `
+      <div class="card" style="margin-top: 10px;">
+        <div class="card-header">
+          <div class="card-slug">${escapeHtml(concept.name)}</div>
+          <span class="badge badge--llux">LLUX</span>
+        </div>
+        <div class="card-meta"><span>Type : ${concept.component_type}</span> <span>• ID : ${concept.concept_id}</span></div>
+        <div class="code-preview">${escapeHtml(concept.code)}</div>
+      </div>
+    `;
+    nameInput.value = '';
+    await loadLLUXConcepts();
+  } catch (e) {
+    alert('Erreur lors de la génération : ' + e.message);
+  }
+}
+
+async function loadLLUXConcepts() {
+  try {
+    const data = await fetchJSON(`${API_BASE}/api/llux/ui-concepts`);
+    renderLLUXConcepts(data.concepts);
+  } catch (e) {
+    document.getElementById('llux-list').innerHTML = `<div class="empty">Erreur : ${escapeHtml(e.message)}</div>`;
+  }
+}
+
+function renderLLUXConcepts(concepts) {
+  const list = document.getElementById('llux-list');
+  if (!concepts || concepts.length === 0) {
+    list.innerHTML = '<div class="empty">Aucun concept généré.</div>';
+    return;
+  }
+  list.innerHTML = concepts.map(c => `
+    <div class="card" style="margin-top: 8px; padding: 12px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <div class="card-slug" style="font-size: 0.9rem;">${escapeHtml(c.message || 'Concept LLUX')}</div>
+        <span class="badge badge--llux">LLUX</span>
+      </div>
+      <div style="font-size: 0.8rem; color: var(--muted);">${escapeHtml(c.timestamp || '')} • ${escapeHtml(c.extension_slug || '—')}</div>
+    </div>
+  `).join('');
+}
+
 async function checkAPI() {
   try {
     const data = await fetchJSON('/api/health');
@@ -237,6 +337,7 @@ async function refresh() {
   await checkAPI();
   await loadExtensions();
   await loadTelemetry();
+  await loadLLUXConcepts();
   const now = new Date().toLocaleTimeString();
   document.getElementById('last-refresh').textContent = `Dernière MAJ : ${now}`;
 }
