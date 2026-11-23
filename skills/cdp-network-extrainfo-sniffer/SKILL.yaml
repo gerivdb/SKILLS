@@ -1,0 +1,9 @@
+name: cdp-network-extrainfo-sniffer
+version: 1.0.0
+description: Capture Network.requestWillBeSentExtraInfo pour extraire cookies et auth Bearer.
+triggers:
+  - cdp
+  - sniffer
+  - auth
+source_file: cdp_sniffer_extra_info.py
+status: stable

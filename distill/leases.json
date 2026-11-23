@@ -1,0 +1,42 @@
+{
+  "leases": [
+    {
+      "lease_id": "lease-ENV2-shard-01-territory-skills-distill-20261123T050010",
+      "territory_id": "territory-skills-distill",
+      "scope_paths": [
+        "D:\\DO\\WEB\\TOOLS\\SKILLS\\skills"
+      ],
+      "holder_shard_id": "ENV2-shard-01",
+      "acquired_utc": "2026-11-23T05:00:10.9032521Z",
+      "expires_utc": "2026-11-23T05:05:10.9032521Z",
+      "ttl_seconds": 300,
+      "status": "active"
+    },
+    {
+      "lease_id": "lease-ENV2-shard-03-territory-skills-build-20261123T050018",
+      "territory_id": "territory-skills-build",
+      "scope_paths": [
+        "D:\\DO\\WEB\\TOOLS\\SKILLS\\skills\\*"
+      ],
+      "holder_shard_id": "ENV2-shard-03",
+      "acquired_utc": "2026-11-23T05:00:18.8485808Z",
+      "expires_utc": "2026-11-23T05:05:18.8485808Z",
+      "ttl_seconds": 300,
+      "status": "active"
+    },
+    {
+      "lease_id": "lease-ENV2-shard-01-territory-skills-t200-20261123T051552",
+      "territory_id": "territory-skills-t200",
+      "scope_paths": [
+        "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS\\skills"
+      ],
+      "holder_shard_id": "ENV2-shard-01",
+      "acquired_utc": "2026-11-23T05:15:52.1138459Z",
+      "expires_utc": "2026-11-23T05:20:52.1138459Z",
+      "ttl_seconds": 300,
+      "status": "active"
+    }
+  ],
+  "generated_at_utc": "2026-11-23T05:15:52.1138459Z",
+  "source_repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS"
+}

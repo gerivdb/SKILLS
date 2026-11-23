@@ -1,0 +1,36 @@
+# Golden Template REPO.yaml pour L2-PLATFORM
+# Ce fichier définit le contrat canonique pour tout dépôt de strate L2
+
+layer: L2-PLATFORM
+intentHash: "0xL2_PLATFORM_CANON_{{REPO_NAME_UPPER}}"
+version: "1.0.0"
+last_synced: "{{TIMESTAMP_ISO}}"
+sync_group: "l2-platform"
+
+repo_identity:
+  name: "{{REPO_NAME}}"
+  owner: "gerivdb"
+  stratum: L2-PLATFORM
+  type: platform-component
+  description: "{{REPO_DESCRIPTION}}"
+
+visibility:
+  public: false
+  internal: true
+
+dependencies:
+  - repo: "gerivdb/CTULU"
+    via: bridge
+    status: active
+  # Ajouter ici les dépendances spécifiques au dépôt
+
+governance:
+  bridge_required: true
+  hooks_required:
+    - pre-commit
+    - pre-push
+  ci_required: true
+
+metadata:
+  audit_tool: "audit_l2_pipelines.py"
+  template_version: "1.0.0"

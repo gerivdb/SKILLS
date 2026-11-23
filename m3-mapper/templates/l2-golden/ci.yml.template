@@ -1,0 +1,42 @@
+# Golden Template CI pour L2-PLATFORM
+name: L2-Platform CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pyyaml
+
+    - name: Validate REPO.yaml
+      run: |
+        python -c "import yaml; yaml.safe_load(open('REPO.yaml'))"
+
+    - name: Run tests
+      run: |
+        if [ -d "tests" ]; then
+          pytest tests/ -v
+        fi
+
+    - name: Check bridge schema
+      run: |
+        if [ -d "bridges" ]; then
+          # Adapter le chemin selon la structure réelle
+          python -m tools.audit_anything.audit --rule bridge-schema --target bridges/
+        fi

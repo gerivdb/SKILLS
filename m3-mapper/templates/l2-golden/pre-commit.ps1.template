@@ -1,0 +1,52 @@
+#!/usr/bin/env pwsh
+# Golden Template pre-commit pour L2-PLATFORM
+
+$errs = @()
+
+# 1. Check secrets (pattern générique)
+$staged = & git diff --cached --name-only 2>$null
+foreach ($file in $staged) {
+    $content = Get-Content $file -Raw -ErrorAction SilentlyContinue
+    if ($content -match 'ghp_[A-Za-z0-9]{36}|AKIA[0-9A-Z]{16}|-----BEGIN.*PRIVATE KEY-----') {
+        $errs += "SECRET_DETECTED in $file"
+    }
+}
+
+# 2. Check file size (>5MB)
+foreach ($file in $staged) {
+    if (Test-Path $file) {
+        $size = (Get-Item $file).Length
+        if ($size -gt 5MB -and $file -notmatch '\.gitattributes$') {
+            $errs += "LARGE_FILE in $file ($size bytes)"
+        }
+    }
+}
+
+# 3. Bridge schema validation
+$bridgeFiles = & git diff --cached --name-only --diff-filter=ACM -- 'bridges/*.yaml' 2>$null
+if ($bridgeFiles) {
+    foreach ($bf in $bridgeFiles) {
+        if (Test-Path "tools/audit-anything/audit.py") {
+            python tools/audit-anything/audit.py --target $bf --rule bridge-schema --output json 2>&1 | Out-Null
+            if ($LASTEXITCODE -ne 0) {
+                $errs += "BRIDGE_SCHEMA_VIOLATION in $bf"
+            }
+        }
+    }
+}
+
+# 4. REPO.yaml validation
+if ($staged -contains 'REPO.yaml') {
+    python -c "import yaml; yaml.safe_load(open('REPO.yaml'))" 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) {
+        $errs += "REPO_YAML_INVALID"
+    }
+}
+
+if ($errs.Count -gt 0) {
+    Write-Host "PRE-COMMIT REJECTED:" -ForegroundColor Red
+    $errs | ForEach-Object { Write-Host "  $_" -ForegroundColor Red }
+    exit 1
+}
+
+exit 0

@@ -13,6 +13,10 @@ Blocage connu :
   Le WebSocket CDP est refusé (403 Forbidden) si Chromium a été lancé sans
   --remote-allow-origins=*. Relancer Chromium avec ce flag pour activer
   send/navigate/click/etc.
+
+Pilier 1 (Session Pooling) : WebSocket persistante (self._ws) réutilisée entre les commandes.
+Pilier 1 (Event-driven) : navigate() attend Page.loadEventFired au lieu d'un sleep().
+Pilier 4 (Auto-guérison) : catch -32601 → génération dynamique d'un wrapper dans dynamic_methods.py.
 """
 
 from __future__ import annotations
@@ -34,6 +38,12 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import websockets
+
+# Import MA3 algorithmes deterministes (REF-182)
+MA3_PATH = Path(__file__).resolve().parent.parent / "ma3_algorithms"
+if str(MA3_PATH) not in sys.path:
+    sys.path.insert(0, str(MA3_PATH))
+from sliding_window import SlidingWindow  # noqa: E402
 
 from cdp_use import CDPClient
 
@@ -58,9 +68,11 @@ class ChromiumCDPClient:
     def __init__(self, host: str = DEBUG_HOST, port: int = DEBUG_PORT):
         self.host = host
         self.port = port
-        self._ws = None                      # WebSocket persistant (session pooling) — endpoint Browser
-        self._ws_url: Optional[str] = None   # URL du WebSocket CDP (Browser)
-        self._page_ws = None                 # WebSocket persistant — endpoint Page (pour Runtime/DOM/Page)
+        # Session Pooling : WebSocket persistante (endpoint Browser)
+        self._ws = None
+        self._ws_url: Optional[str] = None
+        # WebSocket dédiée Page (pour domaines Runtime/DOM/Page/Input)
+        self._page_ws = None
         self._page_ws_url: Optional[str] = None
         self._page_tab_id: Optional[str] = None
         self._client: Optional[CDPClient] = None
@@ -68,11 +80,11 @@ class ChromiumCDPClient:
         self._loop: Optional[asyncio.AbstractEventLoop] = None
         self._tab_ws_urls: Dict[str, str] = {}
         self._msg_id = 0                     # Compteur d'ID JSON-RPC
-        self._session_ids: Dict[str, str] = {}  # tab_id -> sessionId (Target.attachToTarget flatten)
-        self._event_queue: "queue.Queue[str]" = queue.Queue()  # Événements CDP reçus
-        self._event_thread: Optional[threading.Thread] = None  # Thread d'écoute événements
-        self._page_ws_events = None          # WebSocket dédié aux événements (séparé des requêtes)
-        self._event_listener_running = False # Flag d'arrêt du listener
+        self._session_ids: Dict[str, str] = {}  # tab_id -> sessionId (Target.attachToTarget)
+        # Event-driven navigation
+        self._event_queue: "queue.Queue[str]" = queue.Queue()
+        self._event_thread: Optional[threading.Thread] = None
+        self._event_listener_running = False
 
     # Domaines CDP de niveau Page (disponibles uniquement sur /devtools/page/<id>)
     # "Page" est EXCLU car Page.navigate fonctionne sur l'endpoint Browser.
@@ -181,16 +193,15 @@ class ChromiumCDPClient:
             asyncio.set_event_loop(self._loop)
         return self._loop
 
+    # ------------------------------------------------------------------ session pooling (WebSocket Browser)
     def _ensure_connected(self):
-        """Ouvre (ou réutilise) un WebSocket persistant vers Chromium CDP."""
+        """Ouvre (ou réutilise) un WebSocket persistant vers Chromium CDP (endpoint Browser)."""
         if self._ws is not None:
             try:
-                # Vérifier que la socket est encore vivante avec un ping léger
                 loop = self._get_loop()
                 loop.run_until_complete(self._ws.ping())
                 return self._ws
             except Exception:
-                # Socket morte : fermer et recréer
                 try:
                     loop.run_until_complete(self._ws.close())
                 except Exception:
@@ -204,96 +215,51 @@ class ChromiumCDPClient:
         self._ws_url = ws_url
         return self._ws
 
-    def _ensure_page_connected(self, tab_id: Optional[str] = None) -> Optional[str]:
+    # ------------------------------------------------------------------ session pooling (WebSocket Page)
+    def _ensure_page_connected(self, tab_id: Optional[str] = None) -> Any:
         """
-        Attache un sessionId stable à l'onglet cible via Target.attachToTarget (flatten: true)
-        sur la connexion WebSocket Browser existante (self._ws).
-        Le sessionId est capturé depuis l'événement Target.attachedToTarget (dispatché sur
-        la connexion Browser quand flatten: true).
-        Retourne le sessionId à utiliser dans les params des commandes de domaine Page.
+        Ouvre (ou réutilise) un WebSocket persistant vers l'endpoint Page de l'onglet cible.
+        Nécessaire pour les domaines Runtime/DOM/Page/Input qui ne sont pas sur l'endpoint Browser.
+        Vérifie la fraîcheur de la socket (ping) avant de la réutiliser.
         """
         target_id = tab_id or self._active_tab_id
         if not target_id:
             return None
 
-        # Si on a déjà un sessionId pour cet onglet, le réutiliser
-        if target_id in self._session_ids:
-            return self._session_ids[target_id]
-
-        ws = self._ensure_connected()  # connexion Browser persistante
-        loop = self._get_loop()
-        msg_id = self._next_id()
-        message = json.dumps({
-            "id": msg_id,
-            "method": "Target.attachToTarget",
-            "params": {
-                "targetId": target_id,
-                "flatten": True,
-            },
-        })
-
-        def _do_attach():
-            return loop.run_until_complete(self._ws_send_recv(ws, message))
-
-        try:
-            response_str = _do_attach()
-        except websockets.ConnectionClosed:
+        # Réutiliser si déjà connecté et vivant
+        if self._page_ws is not None and self._page_tab_id == target_id:
             try:
-                loop.run_until_complete(ws.close())
+                loop = self._get_loop()
+                loop.run_until_complete(self._page_ws.ping())
+                return self._page_ws
             except Exception:
-                pass
-            self._ws = None
-            ws = self._ensure_connected()
-            response_str = _do_attach()
+                try:
+                    loop.run_until_complete(self._page_ws.close())
+                except Exception:
+                    pass
+                self._page_ws = None
+                self._page_ws_url = None
+                self._page_tab_id = None
 
-        # La réponse directe ne contient PAS le sessionId (flatten: true l'envoie
-        # comme événement Target.attachedToTarget sur la connexion Browser).
-        # On démarre un listener temporaire sur self._ws pour le capturer.
-        session_id = self._capture_attached_session(target_id, timeout=5.0)
-
-        if session_id:
-            self._session_ids[target_id] = session_id
-            return session_id
-
-        return None
-
-    def _capture_attached_session(self, target_id: str, timeout: float = 5.0) -> Optional[str]:
-        """
-        Écoute l'événement Target.attachedToTarget sur la connexion Browser
-        pour extraire le sessionId. Utilise un thread dédié avec une boucle
-        asyncio sur self._ws.
-        """
-        if self._ws is None:
+        # Toujours rafraîchir l'URL de debug via /json/list (le cache self._tab_ws_urls
+        # devient obsolète après une Page.navigate qui change le contexte d'exécution)
+        page_url = None
+        tabs = self.list_tabs()
+        for t in tabs:
+            if t["id"] == target_id and t.get("webSocketDebuggerUrl"):
+                page_url = t["webSocketDebuggerUrl"]
+                break
+        # Fallback sur le cache _tab_ws_urls (rempli par open_tab / attach_to_tab)
+        if not page_url and target_id in self._tab_ws_urls:
+            page_url = self._tab_ws_urls[target_id]
+        if not page_url:
             return None
 
-        captured: list[str] = []
-
-        async def _listen():
-            try:
-                while self._ws.open:
-                    try:
-                        msg = await asyncio.wait_for(self._ws.recv(), timeout=timeout)
-                        evt = json.loads(msg)
-                        if evt.get("method") == "Target.attachedToTarget":
-                            params = evt.get("params", {})
-                            if params.get("targetInfo", {}).get("targetId") == target_id:
-                                captured.append(params.get("sessionId", ""))
-                                return
-                    except asyncio.TimeoutError:
-                        return
-                    except Exception:
-                        continue
-            except Exception:
-                pass
-
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        try:
-            loop.run_until_complete(_listen())
-        finally:
-            loop.close()
-
-        return captured[0] if captured else None
+        loop = self._get_loop()
+        self._page_ws = loop.run_until_complete(websockets.connect(page_url))
+        self._page_ws_url = page_url
+        self._page_tab_id = target_id
+        return self._page_ws
 
     # ------------------------------------------------------------------ événements CDP (Event-driven navigation)
     def _event_listener_coro(self, ws_url: str):
@@ -375,7 +341,54 @@ class ChromiumCDPClient:
                 continue
         return None
 
-    # ------------------------------------------------------------------ navigation
+    # ------------------------------------------------------------------ navigation (event-driven)
+    def navigate(self, url: str) -> Any:
+        """
+        Navigation event-driven : envoie Page.navigate puis attend l'événement
+        Page.loadEventFired (événement CDP natif) avant de retourner.
+        Retourne un dict avec le statut et le temps mesuré.
+        """
+        tab_id = self._active_tab_id
+        if tab_id is None:
+            raise RuntimeError("Aucun onglet actif. Appelez open_tab() avant navigate().")
+
+        # 1. Démarrer le listener d'événements CDP pour cet onglet
+        self._start_event_listener(tab_id)
+
+        # 2. Envoyer Page.navigate
+        nav_result = self.send("Page", "navigate", {"url": url})
+
+        # 3. Attendre Page.loadEventFired (événement natif, pas de sleep)
+        load_event = self._wait_for_event("Page.loadEventFired", timeout=15.0)
+
+        # 4. Arrêter le listener une fois la page chargée
+        self._stop_event_listener()
+
+        # 5. Invalider le cache WebSocket Page : le contexte d'exécution a changé
+        #    après la navigation, l'ancienne socket pointe vers about:blank.
+        self._page_ws = None
+        self._page_ws_url = None
+        self._page_tab_id = None
+
+        return {
+            "navigate_response": nav_result,
+            "load_event": load_event,
+            "loaded": load_event is not None,
+        }
+
+    def go_back(self) -> Any:
+        return self.send("Page", "goBack")
+
+    def go_forward(self) -> Any:
+        return self.send("Page", "goForward")
+
+    def reload(self) -> Any:
+        return self.send("Page", "reload")
+
+    def stop_loading(self) -> Any:
+        return self.send("Page", "stopLoading")
+
+    # ------------------------------------------------------------------ envoi CDP (WebSocket persistante)
     async def _ws_send_recv(self, ws, message: str, timeout: float = 10.0) -> str:
         await ws.send(message)
         return await asyncio.wait_for(ws.recv(), timeout=timeout)
@@ -408,23 +421,20 @@ def {func_name}(client, **params):
             f.write(wrapper)
 
     def send(self, domain: str, method: str, params: Optional[Dict[str, Any]] = None) -> Any:
-        # Routage par domaine : Page DOMAINS -> connexion Browser avec sessionId
-        # (Target.attachToTarget flatten: true). Autres domaines -> connexion Browser directe.
-        session_id = None
+        # Routage par domaine : Page DOMAINS -> WebSocket Page dédiée
+        # Autre domaine -> WebSocket Browser persistante
         if domain in self.PAGE_DOMAINS:
-            session_id = self._ensure_page_connected(self._active_tab_id)
-            if session_id is None:
+            ws = self._ensure_page_connected(self._active_tab_id)
+            if ws is None:
                 return {"error": {"code": -32603, "message": "Impossible d'attacher à la page"}}
-        ws = self._ensure_connected()  # toujours la connexion Browser persistante
+        else:
+            ws = self._ensure_connected()
         loop = self._get_loop()
         msg_id = self._next_id()
-        final_params = dict(params or {})
-        if session_id:
-            final_params["sessionId"] = session_id
         message = json.dumps({
             "id": msg_id,
             "method": f"{domain}.{method}",
-            "params": final_params,
+            "params": params or {},
         })
 
         def _do_send():
@@ -559,6 +569,7 @@ def {func_name}(client, **params):
                 "title": t.get("title"),
                 "url": t.get("url"),
                 "type": t.get("type"),
+                "webSocketDebuggerUrl": t.get("webSocketDebuggerUrl"),
             }
             for t in data
         ]
@@ -566,48 +577,7 @@ def {func_name}(client, **params):
     def switch_tab(self, target_id: str) -> Dict[str, Any]:
         return self.send("Target", "activateTarget", {"targetId": target_id})
 
-    # ------------------------------------------------------------- navigation
-    def navigate(self, url: str) -> Any:
-        """
-        Navigation event-driven : envoie Page.navigate puis attend l'événement
-        Page.loadEventFired (événement CDP natif) avant de retourner.
-        Retourne un dict avec le statut et le temps mesuré.
-        """
-        tab_id = self._active_tab_id
-        if tab_id is None:
-            raise RuntimeError("Aucun onglet actif. Appelez open_tab() avant navigate().")
-
-        # 1. Démarrer le listener d'événements CDP pour cet onglet
-        self._start_event_listener(tab_id)
-
-        # 2. Envoyer Page.navigate
-        nav_result = self.send("Page", "navigate", {"url": url})
-
-        # 3. Attendre Page.loadEventFired (événement natif, pas de sleep)
-        load_event = self._wait_for_event("Page.loadEventFired", timeout=15.0)
-
-        # 4. Arrêter le listener une fois la page chargée
-        self._stop_event_listener()
-
-        return {
-            "navigate_response": nav_result,
-            "load_event": load_event,
-            "loaded": load_event is not None,
-        }
-
-    def go_back(self) -> Any:
-        return self.send("Page", "goBack")
-
-    def go_forward(self) -> Any:
-        return self.send("Page", "goForward")
-
-    def reload(self) -> Any:
-        return self.send("Page", "reload")
-
-    def stop_loading(self) -> Any:
-        return self.send("Page", "stopLoading")
-
-    # ------------------------------------------------------------- interaction
+    # ------------------------------------------------------------- navigation helpers
     def read_dom(self, selector: str) -> Any:
         return self.send("Runtime", "evaluate", {
             "expression": (
@@ -619,6 +589,112 @@ def {func_name}(client, **params):
             ),
             "returnByValue": True,
         })
+
+    def _extract_eval_value(self, response: Any) -> str:
+        """Extrait la valeur d'une reponse CDP Runtime.evaluate (double nesting result.result.value)."""
+        if isinstance(response, dict):
+            result = response.get("result", {})
+            if isinstance(result, dict):
+                inner = result.get("result", {})
+                if isinstance(inner, dict):
+                    val = inner.get("value", "")
+                    return str(val) if val is not None else ""
+                return str(result.get("value", ""))
+        return ""
+
+    def _strip_html_tags(self, html: str) -> str:
+        """Supprime les balises HTML d'une chaine (fallback extraction texte)."""
+        import re
+        text = re.sub(r'<script[^>]*>.*?</script>', '', html, flags=re.DOTALL | re.IGNORECASE)
+        text = re.sub(r'<style[^>]*>.*?</style>', '', text, flags=re.DOTALL | re.IGNORECASE)
+        text = re.sub(r'<[^>]+>', ' ', text)
+        text = re.sub(r'\s+', ' ', text).strip()
+        return text
+
+    def read_dom_sliding(self, selector: str, window_size: int = 4096,
+                          min_chars: int = 256) -> Dict[str, Any]:
+        """Extraction de densite DOM via SlidingWindow (remplace DENSITY_JS bugge).
+
+        Recupere le textContent de l element selectionne, puis en cas de texte
+        vide (Shadow DOM, iframes) bascule sur innerHTML + nettoyage Python.
+        Applique ensuite une fenetre glissante pour isoler les chunks
+        semantiques denses.
+        """
+        raw = self.read_dom(selector)
+        text = self._extract_eval_value(raw)
+
+        # Fallback : si textContent vide, utiliser innerHTML + nettoyage Python
+        if not text:
+            html_raw = self.evaluate_js(
+                f"(function(){{const el=document.querySelector('{selector}');"
+                "return el ? el.innerHTML : '';}})()"
+            )
+            html_text = self._extract_eval_value(html_raw)
+            text = self._strip_html_tags(html_text)
+
+        chunks = SlidingWindow.dom_density(text, window_size, min_chars)
+        total_chars = sum(len(c) for _, _, c in chunks)
+        return {
+            "selector": selector,
+            "total_chars": total_chars,
+            "chunk_count": len(chunks),
+            "chunks": chunks,
+        }
+
+    def read_bridge_state(self) -> Dict[str, Any]:
+        """Lit l'état du pont DOM (document.documentElement.dataset.bridgeState)
+        maintenu par l'extension Sensor. Accessible depuis main world via CDP."""
+        import json
+        response = self.send("Runtime", "evaluate", {
+            "expression": (
+                "(function(){"
+                "const ds = document.documentElement.dataset.bridgeState;"
+                "return ds ? JSON.parse(ds) : { generating: true, lastResponse: '', cycle: 0, ready: false };"
+                "})()"
+            ),
+            "returnByValue": True,
+        })
+        val = self._extract_eval_value(response)
+        try:
+            return json.loads(val) if val else {}
+        except json.JSONDecodeError:
+            return {}
+
+    def wait_for_response_complete(self, timeout: float = 30.0) -> str:
+        """Attend que la réponse Gemini soit complète (pas de génération en cours).
+
+        Lit document.documentElement.dataset.bridgeState maintenu par l'extension
+        Sensor (Chemin B). Si le capteur n'apparaît pas après sensor_timeout,
+        bascule sur read_dom_sliding (innerHTML, Chemin A).
+        Retourne lastResponse dès que ready=True et generating=False.
+        """
+        import json
+
+        sensor_timeout = 5.0  # attendre max 5s que le capteur soit injecté
+        state = {}
+        sensor_seen = False
+        sensor_deadline = time.perf_counter() + sensor_timeout
+        deadline = time.perf_counter() + timeout
+
+        while time.perf_counter() < deadline:
+            state = self.read_bridge_state()
+            if state:
+                sensor_seen = True
+                if state.get("ready") and not state.get("generating"):
+                    return str(state.get("lastResponse", ""))
+            elif time.perf_counter() >= sensor_deadline and not sensor_seen:
+                # Capteur jamais apparu : bascule sur le fallback innerHTML
+                break
+            time.sleep(0.2)
+
+        # Fallback Chemin A : innerHTML + SlidingWindow
+        sliding = self.read_dom_sliding("body", window_size=4096, min_chars=256)
+        if sliding["total_chars"] > 0:
+            return "".join(c for _, _, c in sliding["chunks"])
+
+        raise TimeoutError(
+            f"Réponse Gemini non complète après {timeout}s (état dernier: {state})"
+        )
 
     def click(self, selector: str) -> Any:
         return self.send("Input", "dispatchMouseEvent", {

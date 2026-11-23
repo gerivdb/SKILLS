@@ -1,0 +1,9 @@
+name: shard-e-conformity-auditor
+version: 1.0.0
+description: Strate CHECK. G-PROOF, WAL 0x243 Merkle, M3-Tree validation, RemoveOutcome scan.
+triggers:
+  - conformity
+  - audit
+  - wal
+source_file: shard_e_conformity_audit.py
+status: stable

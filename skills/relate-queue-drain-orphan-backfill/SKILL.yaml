@@ -1,0 +1,9 @@
+name: relate-queue-drain-orphan-backfill
+version: 1.0.0
+description: Drain __RELATE_QUEUE et backfill des Turn orphelins dans SQLite.
+triggers:
+  - relate
+  - sqlite
+  - backfill
+source_file: a_queue_drain_daemon.py
+status: stable

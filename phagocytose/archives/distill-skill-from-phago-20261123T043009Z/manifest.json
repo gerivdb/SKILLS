@@ -1,0 +1,21 @@
+{
+  "date_utc": "2026-11-23T04:30:03.0017831Z",
+  "source": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS\\distill\\distill-skill.ps1",
+  "source_url": "https://github.com/example/distill-skill",
+  "source_hash": "d221455d42c94dac315b6b866afd12b60ae442c36ed02352c6fac26ad2d8d947",
+  "archive_dir": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS\\phagocytose\\archives\\distill-skill-from-phago-20261123T043009Z",
+  "fichiers": [
+    {
+      "fichier": "capture.brut",
+      "hash_sha256": "a78d016a8912769b4ec2c4115d7233c1822b60a9026f124f5803798b68d91b0a"
+    },
+    {
+      "fichier": "deconstruction.json",
+      "hash_sha256": "c308abcb7e44fd78590747b24f692ddf5d816296cc38844503e33bda06f86c60"
+    },
+    {
+      "fichier": "SKILL.md",
+      "hash_sha256": "d71b5eed0dc6702544f754d40c4e9c340b33e391e921fabdb0f1afdbd9ed9d36"
+    }
+  ]
+}

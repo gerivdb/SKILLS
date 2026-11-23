@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft-2020-12/schema",
+  "title": "Matrice effective des permissions KiloCode — ENV2",
+  "description": "Matrice calculée des permissions effectives par mode, après application de la règle last-match-wins (la dernière règle correspondante fait foi). Évaluée séquentiellement du plus générique au plus spécifique.",
+  "type": "object",
+  "required": ["generated_at_utc", "source_repo", "evaluation_order", "permissions"],
+  "properties": {
+    "generated_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Horodatage UTC de génération de la matrice effective"
+    },
+    "source_repo": {
+      "type": "string",
+      "description": "Dépôt source (ex: D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS)"
+    },
+    "evaluation_order": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ordre d'évaluation des règles (du plus générique au plus spécifique) pour la règle last-match-wins"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_index", "mode_id", "permission_type", "target_pattern", "decision", "matched_by_last_match_wins"],
+        "properties": {
+          "rule_index": {
+            "type": "integer",
+            "description": "Index de la règle dans l'ordre d'évaluation (pour traçabilité last-match-wins)"
+          },
+          "mode_id": {
+            "type": "string",
+            "description": "Mode cible (ex: architect, data, bdcp, free)"
+          },
+          "permission_type": {
+            "type": "string",
+            "enum": ["read", "edit", "bash", "mcp", "question", "plan_exit"],
+            "description": "Type de permission"
+          },
+          "target_pattern": {
+            "type": "string",
+            "description": "Pattern de chemin ou de commande ciblé par la règle"
+          },
+          "decision": {
+            "type": "string",
+            "enum": ["allow", "deny", "ask"],
+            "description": "Décision finale après application de last-match-wins"
+          },
+          "matched_by_last_match_wins": {
+            "type": "boolean",
+            "description": "true si cette règle est la dernière correspondante (décision effective)"
+          }
+        }
+      }
+    }
+  }
+}

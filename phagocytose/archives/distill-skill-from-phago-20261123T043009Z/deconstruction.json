@@ -1,0 +1,36 @@
+{
+  "date_utc": "2026-11-23T04:30:03.0017831Z",
+  "source": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS\\distill\\distill-skill.ps1",
+  "source_hash": "d221455d42c94dac315b6b866afd12b60ae442c36ed02352c6fac26ad2d8d947",
+  "faits_verifies": [
+    "Write-Output \"SKILL.md candidat généré avec succès\""
+  ],
+  "hypotheses": [
+    "if ($line -match '(?:powershell|pwsh|python|git|pip|node|zig)\\b') {",
+    "if ($line -match '(?:D:\\\\|C:\\\\|/)[^\\s]+') {",
+    "if ($transcriptContent -match '(?i)chromium') { $triggers += \"chromium\" }",
+    "if ($transcriptContent -match '(?i)cdp') { $triggers += \"cdp\" }",
+    "if ($transcriptContent -match '(?i)profile') { $triggers += \"profile\" }",
+    "if ($transcriptContent -match '(?i)git') { $triggers += \"git\" }",
+    "if ($transcriptContent -match '(?i)python') { $triggers += \"python\" }",
+    "if ($transcriptContent -match '(?i)9222') { $prerequisites += \"Port CDP 9222 accessible\" }",
+    "if ($transcriptContent -match '(?i)chromium') { $prerequisites += \"Chromium lancé avec --user-data-dir et --profile-directory\" }",
+    "if ($transcriptContent -match '(?i)headless') { $antiTriggersDetected += \"headless\" }",
+    "if ($transcriptContent -match '(?i)profil.?temporaire') { $antiTriggersDetected += \"profil temporaire\" }",
+    "$lines += '  command: \"TODO - à définir après validation\"'",
+    "$lines += '  expected_output_contains: \"TODO\"'",
+    "$historyLines += \"- Statut: draft (en attente de validation via validate-skill.ps1)\"",
+    "$evidenceLines += \"En attente de première utilisation réussie.\"",
+    "Write-Output \"Statut       : draft (en attente de validation)\""
+  ],
+  "dependances": [],
+  "etapes_reproductibles": [
+    "versioning v0.1.0, merge au lieu de duplication).",
+    "Shard d'origine (ENV2, ENV3, ...). Défaut: ENV2.",
+    "$lines += 'version: \"0.1.0\"'",
+    "$lines += \"Les étapes ci-dessous doivent être vérifiées et complétées manuellement avant promotion.\"",
+    "$lines += \"- v0.1.0 : Distillé depuis $TranscriptPath le $nowUtc (statut: draft).\"",
+    "$historyLines += \"## v0.1.0 — $nowUtc\"",
+    "Write-Output \"Prochaine étape : valider avec validate-skill.ps1, puis promouvoir vers skills/\""
+  ]
+}

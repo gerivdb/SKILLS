@@ -1,0 +1,242 @@
+[
+  {
+    "repo": "auto-dev",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": true,
+    "has_github_actions": true,
+    "workflow_count": 1,
+    "has_githooks": true,
+    "has_bridge_validation": true,
+    "status": "INDUSTRIALIZED"
+  },
+  {
+    "repo": "BIRDY",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "BRAIN",
+    "has_repo_yaml": false,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "BRAIN-CLI",
+    "has_repo_yaml": false,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "BRAIN-DOCS",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": true,
+    "has_github_actions": true,
+    "workflow_count": 7,
+    "has_githooks": true,
+    "has_bridge_validation": true,
+    "status": "INDUSTRIALIZED"
+  },
+  {
+    "repo": "CURX",
+    "has_repo_yaml": false,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "DAG-3",
+    "has_repo_yaml": false,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "EMIT",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": true,
+    "has_github_actions": true,
+    "workflow_count": 4,
+    "has_githooks": true,
+    "has_bridge_validation": true,
+    "status": "INDUSTRIALIZED"
+  },
+  {
+    "repo": "GeriCode",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": true,
+    "has_github_actions": true,
+    "workflow_count": 2,
+    "has_githooks": true,
+    "has_bridge_validation": true,
+    "status": "INDUSTRIALIZED"
+  },
+  {
+    "repo": "IRIS",
+    "has_repo_yaml": false,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": false,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "KEEL",
+    "has_repo_yaml": false,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "KIX",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": true,
+    "has_github_actions": true,
+    "workflow_count": 1,
+    "has_githooks": true,
+    "has_bridge_validation": true,
+    "status": "INDUSTRIALIZED"
+  },
+  {
+    "repo": "PLIX",
+    "has_repo_yaml": false,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "PULSE",
+    "has_repo_yaml": false,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "RLM-COMMON",
+    "has_repo_yaml": false,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": false,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "RLM-CONFIG",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "RLM-DEPLOY",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "RLM-GRAPH",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "RLM-INCIDENT",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "RLM-MDU",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "RLM-METRICS",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "RLM-RELEASE",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "RLM-SECURE",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  },
+  {
+    "repo": "WEBX",
+    "has_repo_yaml": true,
+    "repo_yaml_valid": false,
+    "has_github_actions": false,
+    "workflow_count": 0,
+    "has_githooks": true,
+    "has_bridge_validation": false,
+    "status": "LEGACY_ADHOC"
+  }
+]

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft-2020-12/schema",
+  "title": "Matrice canonique des modes KiloCode — ENV2",
+  "description": "Matrice décrivant chaque mode KiloCode configuré sur ENV2 : identifiant, vocation, accès réseau/outil, niveau de risque, conditions d'entrée et de sortie, politique d'écriture, type de définition.",
+  "type": "object",
+  "required": ["generated_at_utc", "source_repo", "modes"],
+  "properties": {
+    "generated_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Horodatage UTC de génération de la matrice"
+    },
+    "source_repo": {
+      "type": "string",
+      "description": "Dépôt source de la matrice (ex: D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS)"
+    },
+    "modes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["mode_id", "kind", "vocation", "write_policy", "lease_required", "risk_level", "entry_conditions", "exit_conditions"],
+        "properties": {
+          "mode_id": {
+            "type": "string",
+            "description": "Identifiant unique du mode (ex: bdcp, free, architect, data)"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["agent_definition", "rule_profile"],
+            "description": "Type de définition : agent_definition (agent Kilo natif dans .config\kilo\agents) ou rule_profile (profil porté par règle dans .kilocode\rules)"
+          },
+          "vocation": {
+            "type": "string",
+            "enum": ["audit", "lecture", "execution", "ecriture", "diagnostic", "pontage", "orchestration"],
+            "description": "Vocation du mode (audit/lecture, exécution/écriture, diagnostic, pontage, orchestration)"
+          },
+          "write_policy": {
+            "type": "string",
+            "enum": ["read_only", "lease_required"],
+            "description": "Politique d'écriture : read_only (aucune mutation de code/livrable) ou lease_required (mutation autorisée uniquement avec bail actif)"
+          },
+          "lease_required": {
+            "type": "boolean",
+            "description": "Indique si un bail actif est requis pour toute opération d'écriture dans ce mode"
+          },
+          "network_access": {
+            "type": "string",
+            "enum": ["none", "cdp_local_only", "full"],
+            "description": "Niveau d'accès réseau autorisé"
+          },
+          "tool_access": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Outils autorisés (ex: bash, powershell, python, cdp, git)"
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": ["low", "medium", "high"],
+            "description": "Niveau de risque du mode"
+          },
+          "bdcp_clapet_default": {
+            "type": "string",
+            "enum": ["closed", "open"],
+            "description": "État par défaut du clapet BDCP V1 (uniquement pour le mode bdcp)"
+          },
+          "entry_conditions": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Conditions d'entrée du mode (territoire, permissions, contexte)"
+          },
+          "exit_conditions": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Critères de sortie du mode (preuve, état laissé sur disque)"
+          },
+          "config_path": {
+            "type": "string",
+            "description": "Chemin vers le fichier de configuration du mode"
+          },
+          "source_shard": {
+            "type": "string",
+            "description": "Shard d'origine du mode (ex: ENV2)"
+          }
+        }
+      }
+    }
+  }
+}

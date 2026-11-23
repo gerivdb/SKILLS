@@ -56,8 +56,8 @@ def build_index(source_db: str, index_db: str, limit: int | None = None, offset:
     id_col = None
     for c in cols:
         cl = c.lower()
-        if cl in ("content", "body", "text", "message"):
-            content_col = c
+    if cl in ("content", "body", "text", "message", "data"):
+        content_col = c
         if cl in ("id", "message_id", "rowid"):
             id_col = c
 

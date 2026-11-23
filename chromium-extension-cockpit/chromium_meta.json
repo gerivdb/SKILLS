@@ -1,0 +1,34 @@
+{
+  "extensions": {
+    "gem-x": {
+      "slug": "gem-x",
+      "name": "GEM-X",
+      "version": "1.0.0",
+      "description": "Fork souverain de DeepSeek Exporter pour l'écosystème gerivdb — export Markdown/JSON/TXT avec fallback anti-vide",
+      "manifest_version": 3,
+      "manifest_path": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\GEM-X\\manifest.json",
+      "git_repo": "L4-TOOLS",
+      "extension_dir": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\GEM-X",
+      "predicted_id": "cjbbifahjjnjpdfhlabmjlgljlchkgnl",
+      "actual_id": "jglflbolpclioognabcahamfmblahdol",
+      "status": "active",
+      "activated": true
+    },
+    "browse": {
+      "slug": "browse",
+      "name": "browse",
+      "version": "0.1.4",
+      "description": "Lets your AI agents use your browser: drive tabs, run Playwright, take screenshots, and hand off to you.",
+      "manifest_version": 3,
+      "manifest_path": "C:\\Temp\\OpenCode_Fork\\dist\\manifest.json",
+      "git_repo": "unknown",
+      "extension_dir": "C:\\Temp\\OpenCode_Fork\\dist",
+      "predicted_id": null,
+      "actual_id": "afeafocngkodbmaipcngoamamfmekgfo",
+      "status": "active",
+      "activated": true,
+      "key_based_id": true,
+      "path": "C:\\Temp\\OpenCode_Fork\\dist"
+    }
+  }
+}

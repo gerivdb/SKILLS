@@ -24,7 +24,7 @@ from pathlib import Path
 from typing import Any
 
 # Ajouter le chemin vers BIRDY pour importer concept_design
-BIRDY_SRC = Path(__file__).resolve().parents[3] / "L2-PLATFORM" / "BIRDY" / "src"
+BIRDY_SRC = Path(__file__).resolve().parents[4] / "L2-PLATFORM" / "BIRDY" / "src"
 if str(BIRDY_SRC) not in sys.path:
     sys.path.insert(0, str(BIRDY_SRC))
 

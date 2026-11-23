@@ -1,0 +1,66 @@
+{
+  "generated_at_utc": "2026-11-23T05:50:00Z",
+  "source_repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\L4-TOOLS\\SKILLS",
+  "modes": [
+    {
+      "mode_id": "architect",
+      "kind": "agent_definition",
+      "vocation": "audit",
+      "write_policy": "read_only",
+      "lease_required": false,
+      "network_access": "none",
+      "tool_access": ["powershell", "python"],
+      "risk_level": "low",
+      "bdcp_clapet_default": null,
+      "entry_conditions": ["permissions read allow", "permissions edit deny (sauf plans)", "permissions bash deny", "permissions mcp deny"],
+      "exit_conditions": ["plan written to .kilo/plans/ or .plans/", "plan_exit called", "no source files modified"],
+      "config_path": "C:\\Users\\GG\\.config\\kilo\\agents\\architect.md",
+      "source_shard": "ENV2"
+    },
+    {
+      "mode_id": "data",
+      "kind": "agent_definition",
+      "vocation": "execution",
+      "write_policy": "lease_required",
+      "lease_required": true,
+      "network_access": "none",
+      "tool_access": ["powershell", "python", "jupyter"],
+      "risk_level": "medium",
+      "bdcp_clapet_default": null,
+      "entry_conditions": ["permissions read allow", "permissions edit allow", "permissions bash allow", "permissions mcp allow"],
+      "exit_conditions": ["notebook cells appended and executed", "notebook history preserved"],
+      "config_path": "C:\\Users\\GG\\.config\\kilo\\agents\\data.md",
+      "source_shard": "ENV2"
+    },
+    {
+      "mode_id": "bdcp",
+      "kind": "rule_profile",
+      "vocation": "diagnostic",
+      "write_policy": "read_only",
+      "lease_required": false,
+      "network_access": "cdp_local_only",
+      "tool_access": ["powershell", "python", "cdp"],
+      "risk_level": "low",
+      "bdcp_clapet_default": "closed",
+      "entry_conditions": ["clapet BDCP ferme par defaut", "port CDP 9222 accessible sur 127.0.0.1", "profil Chromium Profile 2 authentifie"],
+      "exit_conditions": ["clapet BDCP reste ferme", "aucune sortie reseau directe", "profil temporaire non utilise"],
+      "config_path": "C:\\Users\\GG\\.kilocode\\rules\\kilo-modes-bdcp-free.md",
+      "source_shard": "ENV2"
+    },
+    {
+      "mode_id": "free",
+      "kind": "rule_profile",
+      "vocation": "lecture",
+      "write_policy": "read_only",
+      "lease_required": false,
+      "network_access": "none",
+      "tool_access": ["powershell", "python", "bash"],
+      "risk_level": "low",
+      "bdcp_clapet_default": null,
+      "entry_conditions": ["pas d abonnement payant", "sobriete d appels et de contexte", "chemins explicites obligatoires"],
+      "exit_conditions": ["pas de basculement automatique vers BDCP", "aucun chemin par défaut substitutif"],
+      "config_path": "C:\\Users\\GG\\.kilocode\\rules\\kilo-modes-bdcp-free.md",
+      "source_shard": "ENV2"
+    }
+  ]
+}

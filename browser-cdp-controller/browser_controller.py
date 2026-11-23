@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-Skill: browser-cdp-controller
+"""Skill: browser-cdp-controller
 Rôle: Primitives de pilotage du navigateur attitré (Chromium Profile 2) via CDP.
 Contrainte: Ne JAMAIS lancer le navigateur via Playwright (launch), TOUJOURS se connecter (connect_over_cdp).
 """
@@ -66,10 +65,72 @@ class BrowserController:
         """Clique sur un élément."""
         page.locator(selector).click()
 
+    # Ajout : get_axtree (primitive AXTree)
+    async def get_axtree(page):
+        """Retourne le Full AXTree via CDP. Plus robuste aux refontes CSS que DOM pur."""
+        client = await page.context.new_cdp_session(page)
+        try:
+            tree = await client.send("Accessibility.getFullAXTree")
+            return tree
+        finally:
+            await client.detach()
 
-if __name__ == "__main__":
-    # Test rapide
-    with BrowserController() as bc:
-        print("Onglets ouverts :")
-        for tab in bc.list_tabs():
-            print(f"[{tab['index']}] {tab['title']} - {tab['url']}")
+    # Ajout : capture_storage_state (primitive storage_state)
+    async def capture_storage_state(context, out_path):
+        """Exporte storage_state standardisé, SANS valeurs de cookies/tokens."""
+        state = await context.storage_state()
+        sanitized = {
+            "version": 1,
+            "cookies_meta": [
+                {k: c[k] for k in ("name","domain","path","secure","httpOnly","expires") if k in c}
+                for c in state.get("cookies", [])
+            ],
+            "origins_meta": [
+                {"origin": o["origin"], "localStorage_keys": [x["name"] for x in o.get("localStorage", [])]}
+                for o in state.get("origins", [])
+            ]
+        }
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(sanitized, f, indent=2)
+        return out_path
+
+    # Ajout : launch_chromium (primitive lifecycle)
+    async def launch_chromium(profile_dir, port=9222, extra_args=None):
+        """Lance Chromium en mode debug CDP sur le port spécifié."""
+        from pyppeteer import launch
+        args = [
+            "--user-data-dir", profile_dir,
+            "--remote-debugging-port", str(port),
+            "--password-store=basic",
+            "--no-first-run",
+            "--disable-gpu"
+        ]
+        if extra_args:
+            args.extend(extra_args)
+        browser = await launch(args=args, headless=False)
+        page = await browser.pages()[0] if browser.pages() else None
+        return browser, page
+
+    def stop_chromium(context):
+        """Arrête ownContext proprement."""
+        context.close()
+
+    async def restart_chromium(context, profile_dir, port):
+        """Redémarre Chromium sur un port donné en préservant le contexte."""
+        stop_chromium(context)
+        _, _ = await launch_chromium(profile_dir, port)
+
+    async def is_chromium_alive(port):
+        """Vérifie si un CDP écoute sur le port donné."""
+        import urllib.request
+        try:
+            r = urllib.request.urlopen(f"http://localhost:{port}/json/version", timeout=2)
+            return r.status == 200
+        except Exception:
+            return False
+
+browser_controller.get_axtree = browser_controller.BrowserController.get_axtree
+
+
+browser_controller.get_axtree = browser_controller.BrowserController.get_axtree
+browser_controller.get_axtree = browser_controller.BrowserController.get_axtree

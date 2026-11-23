@@ -1,0 +1,9 @@
+name: deepseek-synaptic-gateway-cdp
+version: 1.0.0
+description: Pont synaptique ENV6. Résout PoW, appelle /chat/completion, écrit dans le graphe.
+triggers:
+  - gateway
+  - pow
+  - deepseek
+source_file: shard_f_gateway_daemon.py
+status: active (hybrid v4 + frontmatter daemon evidenced; direct /api/v0/chat/completion still blocked 40300)

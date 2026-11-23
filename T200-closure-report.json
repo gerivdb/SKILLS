@@ -1,0 +1,13 @@
+{
+  "warnings_count": 1,
+  "completed_tasks": 200,
+  "report_path": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS\\T200-final-report.md",
+  "success_rate_percent": 100.0,
+  "canonical_path": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS",
+  "status": "CLOSURE_T200_WITH_ERRORS",
+  "skills_path": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS",
+  "errors_count": 5,
+  "t200_generated_at_utc": "2026-11-23T05:17:31.1357914Z",
+  "report_hash_sha256": "a9163877ffeb132ebcfadcde25e99b19682442bcad70dd9c31598f325d094a87",
+  "total_tasks": 200
+}

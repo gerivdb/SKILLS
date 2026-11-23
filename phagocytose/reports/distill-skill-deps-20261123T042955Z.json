@@ -1,0 +1,23 @@
+{
+  "date_utc": "2026-11-23T04:29:55.7102322Z",
+  "source": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS\\distill\\distill-skill.ps1",
+  "skill": "distill-skill",
+  "env2": {
+    "cpu": "2x Intel Xeon E5620 (Westmere-EP, SSE4.2 max, pas d'AVX2)",
+    "ram_total_gb": 24,
+    "ram_recommandee_max_gb": 8,
+    "architecture": "x86_64 dual-socket ~2010-2011",
+    "avx2": false,
+    "avx512": false
+  },
+  "dependances_problemes": [
+    {
+      "ligne": "$sha256 = [System.Security.Cryptography.SHA256]::Create()",
+      "type": "crypto_lourde",
+      "risque": "Peut nécessiter des instructions CPU non disponibles sur ENV2",
+      "recommandation": "Tester sur ENV2 avant promotion"
+    }
+  ],
+  "nb_problemes": 1,
+  "verdict": "NON_ADAPTE_ENV2"
+}

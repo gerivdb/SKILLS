@@ -1,0 +1,288 @@
+=== CAPTURE PHAGOCYTOSE ===
+Date UTC : 2026-11-23T04:30:03.0017831Z
+Source   : D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\distill\distill-skill.ps1
+URL      : https://github.com/example/distill-skill
+Hash SHA-256 brut : d221455d42c94dac315b6b866afd12b60ae442c36ed02352c6fac26ad2d8d947
+Taille   : 10671 octets
+=== CONTENU BRUT ===
+#!/usr/bin/env pwsh
+<#
+.SYNOPSIS
+    Distille un transcript de shard ENV2 en candidat SKILL.md suivant SPEC-SKILL-FORMAT.md.
+
+.DESCRIPTION
+    Lit un transcript (JSONL ou texte) provenant d'une session dans un shard ENV2,
+    extrait la procédure (objectif, commandes, fichiers modifiés, prérequis, vérification),
+    et génère un fichier SKILL.md candidat dans reviews/skill-drafts/.
+
+    Inspiré de skilldistill (workflow review-first) et AutoSkill (format SKILL.md universel,
+    versioning v0.1.0, merge au lieu de duplication).
+
+.PARAMETER TranscriptPath
+    Chemin vers le fichier transcript à distiller (obligatoire).
+
+.PARAMETER OutputDir
+    Répertoire de sortie pour le candidat SKILL.md (défaut: reviews/skill-drafts).
+
+.PARAMETER SkillName
+    Nom du skill (kebab-case). Si omis, dérivé du nom du fichier transcript.
+
+.PARAMETER SourceShard
+    Shard d'origine (ENV2, ENV3, ...). Défaut: ENV2.
+
+.EXAMPLE
+    ./distill-skill.ps1 -TranscriptPath "C:\Users\GG\session-transcript.jsonl"
+
+.EXAMPLE
+    ./distill-skill.ps1 -TranscriptPath "transcript.jsonl" -SkillName "cdp-profile-2" -SourceShard ENV2
+
+.NOTES
+    Provenance: skilldistill (palasht75/skilldistill) + AutoSkill (ECNU-ICALK/AutoSkill)
+    Intégration: D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\SPEC-SKILL-FORMAT.md
+#>
+
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory = $true)]
+    [string]$TranscriptPath,
+
+    [string]$OutputDir = "D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS\reviews\skill-drafts",
+
+    [string]$SkillName,
+
+    [string]$SourceShard = "ENV2"
+)
+
+# --- Vérification pré-exécution du chemin (règle Explicit Path Compliance) ---
+if (-not (Test-Path -LiteralPath $TranscriptPath)) {
+    Write-Error "Transcript introuvable : $TranscriptPath"
+    exit 1
+}
+
+if (-not (Test-Path -LiteralPath $OutputDir)) {
+    Write-Output "Création du répertoire de sortie : $OutputDir"
+    New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null
+}
+
+# --- Détection du nom du skill ---
+if (-not $SkillName) {
+    $baseName = [System.IO.Path]::GetFileNameWithoutExtension($TranscriptPath)
+    $SkillName = ($baseName -replace '[^a-z0-9\-]', '-' -replace '-+', '-').Trim('-')
+    if (-not $SkillName) { $SkillName = "distilled-skill" }
+}
+
+$skillDir = Join-Path $OutputDir $SkillName
+$skillFile = Join-Path $skillDir "SKILL.md"
+
+if (Test-Path -LiteralPath $skillFile) {
+    Write-Error "Un skill existe déjà à cet emplacement : $skillFile"
+    exit 1
+}
+
+# --- Lecture du transcript ---
+$transcriptContent = Get-Content -LiteralPath $TranscriptPath -Raw -ErrorAction Stop
+$transcriptLines = Get-Content -LiteralPath $TranscriptPath -ErrorAction Stop
+
+# --- Extraction des éléments clés ---
+$nowUtc = (Get-Date).ToUniversalTime().ToString("o")
+$intentHash = "0x" + ($SkillName.ToUpper() + "_" + $nowUtc.Substring(0,10).Replace("-",""))
+
+# Extraire les commandes du transcript
+$commands = @()
+$filesModified = @()
+$prerequisites = @()
+
+foreach ($line in $transcriptLines) {
+    # Détecter les commandes (powershell, pwsh, python, git, pip, node, zig)
+    if ($line -match '(?:powershell|pwsh|python|git|pip|node|zig)\b') {
+        $cmd = $line.Trim()
+        if ($cmd.Length -gt 5 -and $cmd.Length -lt 200) {
+            $commands += $cmd
+        }
+    }
+    # Détecter les chemins de fichiers modifiés
+    if ($line -match '(?:D:\\|C:\\|/)[^\s]+') {
+        $path = $Matches[0]
+        if ($path -match '\.(ps1|py|md|json|yaml|yml|zig|ts|js)$') {
+            $filesModified += $path
+        }
+    }
+}
+
+# Déduire l'objectif à partir du transcript
+$objective = "Procédure extraite du transcript $([System.IO.Path]::GetFileName($TranscriptPath))"
+if ($transcriptLines[0] -and $transcriptLines[0].Length -gt 10 -and $transcriptLines[0].Length -lt 200) {
+    $objective = $transcriptLines[0].Trim()
+}
+
+# Déduire les triggers
+$triggers = @($SkillName.Split('-'))
+if ($transcriptContent -match '(?i)chromium') { $triggers += "chromium" }
+if ($transcriptContent -match '(?i)cdp') { $triggers += "cdp" }
+if ($transcriptContent -match '(?i)profile') { $triggers += "profile" }
+if ($transcriptContent -match '(?i)git') { $triggers += "git" }
+if ($transcriptContent -match '(?i)python') { $triggers += "python" }
+$triggers = $triggers | Select-Object -Unique
+
+# Déduire les prérequis
+if ($transcriptContent -match '(?i)9222') { $prerequisites += "Port CDP 9222 accessible" }
+if ($transcriptContent -match '(?i)chromium') { $prerequisites += "Chromium lancé avec --user-data-dir et --profile-directory" }
+if ($commands.Count -gt 0) { $prerequisites += "Environnement d'exécution disponible (PowerShell/Python)" }
+
+# --- Construction du frontmatter YAML (tableau de lignes) ---
+$lines = @()
+$lines += "---"
+$lines += "name: $SkillName"
+$lines += 'version: "0.1.0"'
+$lines += "status: draft"
+$lines += "type: procedural"
+$lines += "category: distilled"
+$lines += "intent_hash: $intentHash"
+$lines += "provenance: distilled"
+$lines += "source_shard: $SourceShard"
+$lines += "created_at: `"$nowUtc`""
+$lines += "updated_at: `"$nowUtc`""
+$lines += "author: auto"
+$lines += "triggers:"
+foreach ($t in $triggers) {
+    $lines += "  - `"$t`""
+}
+$lines += "anti_triggers:"
+# Anti-triggers déduits du contenu du transcript
+$antiTriggersDetected = @()
+if ($transcriptContent -match '(?i)headless') { $antiTriggersDetected += "headless" }
+if ($transcriptContent -match '(?i)profil.?temporaire') { $antiTriggersDetected += "profil temporaire" }
+if ($antiTriggersDetected.Count -eq 0) {
+    $lines += '  - ""'
+} else {
+    foreach ($at in $antiTriggersDetected) {
+        $lines += "  - `"$at`""
+    }
+}
+$lines += "weight:"
+$wCount = 0
+foreach ($t in $triggers) {
+    $lines += "  - " + (5 - $wCount)  # poids décroissant : premier trigger le plus important
+    $wCount++
+}
+if ($wCount -eq 0) {
+    $lines += "  - 1"
+}
+$lines += "prerequisites:"
+foreach ($p in $prerequisites) {
+    $lines += "  - `"$p`""
+}
+$lines += "verification:"
+$lines += '  command: "TODO - à définir après validation"'
+$lines += "  expected_exit_code: 0"
+$lines += '  expected_output_contains: "TODO"'
+$lines += 'hash_sha256_evidence: "placeholder - à remplir dans EVIDENCE.md après première utilisation"'
+$lines += "supersedes: []"
+$lines += "superseded_by: null"
+$lines += "tags:"
+$lines += '  - "distilled"'
+$lines += '  - "shard-' + $SourceShard + '"'
+$lines += "---"
+
+# --- Construction du corps Markdown (tableau de lignes) ---
+$lines += ""
+$lines += "# Skill : $SkillName — Distillé depuis un transcript shard $SourceShard"
+$lines += ""
+$lines += "## Objectif"
+$lines += $objective
+$lines += ""
+$lines += "## Localisation"
+$lines += '`' + $skillDir + '`'
+$lines += ""
+$lines += "## Fichiers du skill"
+$lines += '- `SKILL.md` — ce document (généré automatiquement par distill-skill.ps1).'
+$lines += "- À compléter : fichiers sources extraits du transcript."
+$lines += ""
+$lines += "## Prérequis"
+foreach ($p in $prerequisites) {
+    $lines += "- $p"
+}
+$lines += "- Transcript source : $TranscriptPath"
+$lines += ""
+$lines += "## Procédure"
+$lines += "Ce skill a été distillé automatiquement depuis une session $SourceShard."
+$lines += "Les étapes ci-dessous doivent être vérifiées et complétées manuellement avant promotion."
+$lines += ""
+if ($commands.Count -gt 0) {
+    $lines += "### Commandes identifiées dans le transcript"
+    foreach ($c in $commands) {
+        $lines += "- `"$c`""
+    }
+    $lines += ""
+}
+if ($filesModified.Count -gt 0) {
+    $lines += "### Fichiers identifiés dans le transcript"
+    foreach ($f in $filesModified) {
+        $lines += "- $f"
+    }
+    $lines += ""
+}
+$lines += "## Règles de bonne pratique"
+$lines += "- Valider chaque commande extraite avant promotion."
+$lines += "- Ne pas committer un skill distillé sans vérification manuelle."
+$lines += "- Respecter la règle Explicit Path Compliance pour tous les chemins."
+$lines += ""
+$lines += "## Vérification"
+$lines += '- Exécuter `validate-skill.ps1` sur ce candidat avant promotion.'
+$lines += "- Tester la procédure décrite dans un shard cible (ENV2 ou ENV3)."
+$lines += "- Recalculer le hash SHA-256 après toute modification de ce fichier."
+$lines += ""
+$lines += "## Historique"
+$lines += "- v0.1.0 : Distillé depuis $TranscriptPath le $nowUtc (statut: draft)."
+$lines += '- Voir `HISTORY.md` après promotion vers `active`.'
+
+# --- Assemblage final ---
+$fullContent = ($lines -join "`n")
+
+# --- Écriture du fichier ---
+New-Item -ItemType Directory -Force -Path $skillDir | Out-Null
+Set-Content -LiteralPath $skillFile -Value $fullContent -Encoding UTF8
+
+# --- Recalcul du hash SHA-256 sur le fichier écrit ---
+$fileBytes = [System.IO.File]::ReadAllBytes($skillFile)
+$sha256 = [System.Security.Cryptography.SHA256]::Create()
+$hashBytes = $sha256.ComputeHash($fileBytes)
+$hashString = ($hashBytes | ForEach-Object { $_.ToString("x2") }) -join ''
+
+# --- Mise à jour du hash dans le frontmatter ---
+$content = Get-Content -LiteralPath $skillFile -Raw
+$content = $content -replace 'hash_sha256: "[0-9a-f]+"', "hash_sha256: `"$hashString`""
+Set-Content -LiteralPath $skillFile -Value $content -Encoding UTF8
+
+# --- Création du fichier HISTORY.md ---
+$historyFile = Join-Path $skillDir "HISTORY.md"
+$historyLines = @()
+$historyLines += "# Historique des versions — $SkillName"
+$historyLines += ""
+$historyLines += "## v0.1.0 — $nowUtc"
+$historyLines += "- Création automatique par distill-skill.ps1 depuis $TranscriptPath"
+$historyLines += "- Statut: draft (en attente de validation via validate-skill.ps1)"
+$historyLines += "- Source: shard $SourceShard"
+Set-Content -LiteralPath $historyFile -Value ($historyLines -join "`n") -Encoding UTF8
+
+# --- Création du fichier EVIDENCE.md ---
+$evidenceFile = Join-Path $skillDir "EVIDENCE.md"
+$evidenceLines = @()
+$evidenceLines += "# Preuve d'exécution — $SkillName"
+$evidenceLines += ""
+$evidenceLines += "En attente de première utilisation réussie."
+$evidenceLines += "Aucune preuve n'a encore été enregistrée."
+Set-Content -LiteralPath $evidenceFile -Value ($evidenceLines -join "`n") -Encoding UTF8
+
+# --- Rapport de sortie ---
+Write-Output "=============================================="
+Write-Output "SKILL.md candidat généré avec succès"
+Write-Output "=============================================="
+Write-Output "Skill        : $SkillName"
+Write-Output "Fichier      : $skillFile"
+Write-Output "Répertoire   : $skillDir"
+Write-Output "Statut       : draft (en attente de validation)"
+Write-Output "Shard source : $SourceShard"
+Write-Output "Hash SHA-256 : $hashString"
+Write-Output "Prochaine étape : valider avec validate-skill.ps1, puis promouvoir vers skills/"
+Write-Output "=============================================="

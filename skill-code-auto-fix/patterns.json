@@ -1,0 +1,28 @@
+{
+  "patterns": [
+    {
+      "name": "fix_double_cdp_send_while_recv",
+      "search": "(await\\s+cdp_send\\s*\\([^)]*\\))\\s*\\n\\s*while\\s+True:\\s*await\\s+ws\\.recv\\(\\)",
+      "replace": "\\1",
+      "description": "Supprime double attente cdp_send + while ws.recv"
+    },
+    {
+      "name": "fix_double_await_ws_recv",
+      "search": "(await\\s+ws\\.recv\\(\\))\\s*\\n\\s*\\1",
+      "replace": "\\1",
+      "description": "Supprime double await ws.recv()"
+    },
+    {
+      "name": "fix_missing_ws_in_evaluate_js",
+      "search": "(await\\s+evaluate_js\\s*\\(\\s*)(?!\\s*ws\\s*[,)])",
+      "replace": "\\1ws, ",
+      "description": "Ajoute ws en premier argument de evaluate_js"
+    },
+    {
+      "name": "fix_double_cdp_send_while_true_recv",
+      "search": "(await\\s+cdp_send\\s*\\([^)]*\\))\\s*\\n\\s*while\\s+True:\\s*await\\s+ws\\.recv\\(\\)",
+      "replace": "\\1",
+      "description": "Supprime await cdp_send + while True: await ws.recv()"
+    }
+  ]
+}

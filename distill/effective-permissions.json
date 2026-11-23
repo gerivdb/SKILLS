@@ -1,0 +1,234 @@
+{
+  "generated_at_utc": "2026-11-23T06:15:00Z",
+  "source_repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\L4-TOOLS\\SKILLS",
+  "evaluation_order": [
+    "R001: read allow (tous modes)",
+    "R002: edit deny (modes read_only : architect, bdcp, free)",
+    "R003: edit allow (mode data, lease_required, bail actif)",
+    "R004: bash deny (modes read_only : architect, bdcp, free)",
+    "R005: bash allow (mode data, lease_required)",
+    "R006: mcp deny (modes read_only : architect, bdcp, free)",
+    "R007: mcp allow (mode data, lease_required)",
+    "R008: question allow (tous modes)",
+    "R009: plan_exit allow (tous modes)",
+    "R010: edit deny wildcard * (tous modes read_only, en dernier pour masquage)"
+  ],
+  "permissions": [
+    {
+      "rule_index": 1,
+      "mode_id": "architect",
+      "permission_type": "read",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 1,
+      "mode_id": "data",
+      "permission_type": "read",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 1,
+      "mode_id": "bdcp",
+      "permission_type": "read",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 1,
+      "mode_id": "free",
+      "permission_type": "read",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 2,
+      "mode_id": "architect",
+      "permission_type": "edit",
+      "target_pattern": "*",
+      "decision": "deny",
+      "matched_by_last_match_wins": false
+    },
+    {
+      "rule_index": 2,
+      "mode_id": "bdcp",
+      "permission_type": "edit",
+      "target_pattern": "*",
+      "decision": "deny",
+      "matched_by_last_match_wins": false
+    },
+    {
+      "rule_index": 2,
+      "mode_id": "free",
+      "permission_type": "edit",
+      "target_pattern": "*",
+      "decision": "deny",
+      "matched_by_last_match_wins": false
+    },
+    {
+      "rule_index": 3,
+      "mode_id": "data",
+      "permission_type": "edit",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 4,
+      "mode_id": "architect",
+      "permission_type": "bash",
+      "target_pattern": "*",
+      "decision": "deny",
+      "matched_by_last_match_wins": false
+    },
+    {
+      "rule_index": 4,
+      "mode_id": "bdcp",
+      "permission_type": "bash",
+      "target_pattern": "*",
+      "decision": "deny",
+      "matched_by_last_match_wins": false
+    },
+    {
+      "rule_index": 4,
+      "mode_id": "free",
+      "permission_type": "bash",
+      "target_pattern": "*",
+      "decision": "deny",
+      "matched_by_last_match_wins": false
+    },
+    {
+      "rule_index": 5,
+      "mode_id": "data",
+      "permission_type": "bash",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 6,
+      "mode_id": "architect",
+      "permission_type": "mcp",
+      "target_pattern": "*",
+      "decision": "deny",
+      "matched_by_last_match_wins": false
+    },
+    {
+      "rule_index": 6,
+      "mode_id": "bdcp",
+      "permission_type": "mcp",
+      "target_pattern": "*",
+      "decision": "deny",
+      "matched_by_last_match_wins": false
+    },
+    {
+      "rule_index": 6,
+      "mode_id": "free",
+      "permission_type": "mcp",
+      "target_pattern": "*",
+      "decision": "deny",
+      "matched_by_last_match_wins": false
+    },
+    {
+      "rule_index": 7,
+      "mode_id": "data",
+      "permission_type": "mcp",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 8,
+      "mode_id": "architect",
+      "permission_type": "question",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 8,
+      "mode_id": "data",
+      "permission_type": "question",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 8,
+      "mode_id": "bdcp",
+      "permission_type": "question",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 8,
+      "mode_id": "free",
+      "permission_type": "question",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 9,
+      "mode_id": "architect",
+      "permission_type": "plan_exit",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 9,
+      "mode_id": "data",
+      "permission_type": "plan_exit",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 9,
+      "mode_id": "bdcp",
+      "permission_type": "plan_exit",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 9,
+      "mode_id": "free",
+      "permission_type": "plan_exit",
+      "target_pattern": "*",
+      "decision": "allow",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 10,
+      "mode_id": "architect",
+      "permission_type": "edit",
+      "target_pattern": "D:\\DO\\WEB\\TOOLS\\SKILLS\\*",
+      "decision": "deny",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 10,
+      "mode_id": "bdcp",
+      "permission_type": "edit",
+      "target_pattern": "D:\\DO\\WEB\\TOOLS\\SKILLS\\*",
+      "decision": "deny",
+      "matched_by_last_match_wins": true
+    },
+    {
+      "rule_index": 10,
+      "mode_id": "free",
+      "permission_type": "edit",
+      "target_pattern": "D:\\DO\\WEB\\TOOLS\\SKILLS\\*",
+      "decision": "deny",
+      "matched_by_last_match_wins": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft-2020-12/schema",
+  "title": "Configuration du budget et de la sobriété du profil FREE — ENV2",
+  "description": "Configuration du mode FREE : plafond de contexte/sortie, endpoints payants ou lourds exclus, nombre maximum de requêtes par session.",
+  "type": "object",
+  "required": ["maxContextSizeBytes", "blockedEndpoints", "maxRequestsPerSession", "currentRequestsCount"],
+  "properties": {
+    "maxContextSizeBytes": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Plafond de taille de contexte en octets pour le mode FREE"
+    },
+    "blockedEndpoints": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Endpoints payants ou lourds à exclure absolument en mode FREE"
+    },
+    "maxRequestsPerSession": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Nombre maximum de requêtes par session en mode FREE"
+    },
+    "currentRequestsCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Nombre actuel de requêtes dans la session en cours"
+    }
+  }
+}

@@ -28,7 +28,23 @@ Exemples :
 
 ### Couche 3 — Références documentaires (consultatif)
 
-Les 59 skills sont disponibles dans la knowledge base du Space et dans le repo `gerivdb/SKILLS/perplexity/skills/<nom>.md`. Ils apportent le détail des instructions, règles et formats quand la Couche 2 renvoie à la liste complète.
+Les 119 skills déclarés dans `REGISTRY.yaml` sont disponibles dans la knowledge base du Space et dans le repo `gerivdb/SKILLS/perplexity/skills/<nom>.md`. Ils apportent le détail des instructions, règles et formats quand la Couche 2 renvoie à la liste complète.
+
+**État du registre (au 2026-11-09) :**
+- 234 dossiers de skills dans `L4-TOOLS/SKILLS/`
+- 187 dossiers contenant un `SKILL.md`
+- 119 entrées dans `REGISTRY.yaml`
+- 5 nouveaux skills de gouvernance méta ajoutés (voir ci-dessous)
+
+### Skills de gouvernance méta (ajoutés le 2026-11-09)
+
+| Skill | Rôle |
+|-------|------|
+| `skill-ecosystem-auditor` | Audite l'écosystème des skills L4 : détecte doublons, orphelins, dépendances circulaires, chemins de registre non cohérents |
+| `skill-version-bumper` | Incrémente automatiquement les numéros de version V-4D dans SKILL.md et REGISTRY.yaml lors de modification d'un skill |
+| `skill-dependency-healer` | Détecte et résout les dépendances manquantes ou circulaires entre skills L4 |
+| `skill-template-evolver` | Fait évoluer le template canonique SKILL.md lorsqu'une nouvelle propriété est ajoutée à un skill existant |
+| `skill-deployer` | Déploie un skill d'un dépôt source vers un dépôt cible (strate L* uniquement), avec sauvegarde WAL et vérification skill-linter-sentinel |
 
 ## Fichiers de référence
 
@@ -39,6 +55,8 @@ Les 59 skills sont disponibles dans la knowledge base du Space et dans le repo `
 | `perplexity/skills/<nom>.md` | Détail de chaque skill |
 | `perplexity/build/Skills_v3.zip` | ZIP importé dans la knowledge base |
 | `perplexity/scripts/generate-skills.ps1` | Script de régénération du ZIP |
+| `PROOF-CONTRACT.md` | Contrat de preuve GERIVDB : 14 principes de preuve et de gouvernance |
+
 
 ## Flux d'exécution
 
@@ -59,7 +77,7 @@ Pour ajouter un nouveau skill ou modifier un skill existant :
 2. Mettre à jour les déclencheurs dans la Couche 2 du prompt si nécessaire
 3. Régénérer le ZIP : `.\perplexity\scripts\generate-skills.ps1`
 4. Ré-importer le ZIP dans la knowledge base du Space
-5. Mettre à jour la liste des 59 skills dans la Couche 3
+5. Mettre à jour la liste des 119 skills dans la Couche 3
 
 ## Limitations connues
 

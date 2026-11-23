@@ -1,0 +1,40 @@
+{
+  "patterns": [
+    {
+      "name": "double_cdp_send_while_recv",
+      "regex": "await\\s+cdp_send\\s*\\([^)]*\\)\\s*.*\\s*while\\s+True:\\s*await\\s+ws\\.recv\\(\\)",
+      "severity": "CRITICAL",
+      "description": "Double attente cdp_send + while ws.recv (double lecture WebSocket)"
+    },
+    {
+      "name": "double_await_ws_recv",
+      "regex": "await\\s+ws\\.recv\\(\\)\\s*.*\\s*await\\s+ws\\.recv\\(\\)",
+      "severity": "CRITICAL",
+      "description": "Double await ws.recv() (double lecture WebSocket)"
+    },
+    {
+      "name": "cdp_send_while_recv",
+      "regex": "cdp_send\\s*\\([^)]*\\)\\s*.*\\s*while\\s+True:\\s*await\\s+ws\\.recv\\(\\)",
+      "severity": "CRITICAL",
+      "description": "Pattern cdp_send + while ws.recv (double lecture WebSocket)"
+    },
+    {
+      "name": "timeout_over_30s_no_logging",
+      "regex": "timeout\\s*[=>]\\s*(?:[3-9]\\d{2,}|[1-9]\\d{3,})",
+      "severity": "WARNING",
+      "description": "Timeout > 30s sans logging (heuristique)"
+    },
+    {
+      "name": "cdp_send_while_true_recv",
+      "regex": "await\\s+cdp_send\\s*\\([^)]*\\)\\s*.*\\s*while\\s+True:\\s*await\\s+ws\\.recv\\(\\)",
+      "severity": "CRITICAL",
+      "description": "Pattern await cdp_send + while True: await ws.recv()"
+    },
+    {
+      "name": "missing_ws_in_call",
+      "regex": "evaluate_js\\s*\\(\\s*(?![^\\S\\n]*ws[^\\S\\n]*[,)])\\s*[^)]*\\)",
+      "severity": "CRITICAL",
+      "description": "Appel evaluate_js sans paramètre ws en premier (doit être evaluate_js(ws, ...))"
+    }
+  ]
+}

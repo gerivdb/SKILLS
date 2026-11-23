@@ -1,0 +1,15 @@
+{
+  "maxContextSizeBytes": 100000,
+  "blockedEndpoints": [
+    "api.openai.com",
+    "api.anthropic.com",
+    "api.deepseek.com",
+    "api.google.com",
+    "gpt-4",
+    "gpt-3.5",
+    "claude",
+    "gemini"
+  ],
+  "maxRequestsPerSession": 50,
+  "currentRequestsCount": 0
+}

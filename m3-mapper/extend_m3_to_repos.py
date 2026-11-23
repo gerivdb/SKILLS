@@ -1,0 +1,180 @@
+#!/usr/bin/env python3
+"""
+Étend M3 Mapper aux dépôts découverts — Version limitée (proof of concept).
+Teste uniquement les dépôts prioritaires, un test par dépôt.
+"""
+
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from m3_mapper import load_topology, save_topology, update_tree, update_branch, mark_synapse
+
+TOPO_PATH = Path(__file__).resolve().parent / "topology.json"
+DISCOVERED_PATH = Path(__file__).resolve().parent / "discovered_repos.json"
+
+# Dépôts prioritaires à tester (ceux déjà dans le graphe ou stratégiques)
+PRIORITY_REPOS = [
+    "JEVX", "NEXUS", "CLM", "ROOTX", "ECOS-CLI", "KIVA-CLI",
+    "GATEWAY-MANAGER", "BRAIN", "VDB", "CTULU", "PITCH-1",
+    "MIMIR", "FLUENCE", "WAZAA", "TOPOS", "COMET-BOT",
+]
+
+def load_discovered_repos():
+    return json.loads(DISCOVERED_PATH.read_text())
+
+def run_test(repo_path, test_file):
+    """Exécute un test pytest et retourne le résultat."""
+    test_path = Path(repo_path) / "tests" / test_file
+
+    if not test_path.exists():
+        return {
+            "status": "DEAD_END",
+            "error_class": "FileNotFound",
+            "evidence": f"Fichier de test non trouvé: {test_path}",
+            "script": str(test_path),
+            "conclusion": "Fichier de test absent du dépôt",
+        }
+
+    try:
+        result = subprocess.run(
+            [sys.executable, "-m", "pytest", str(test_path), "-v", "--tb=short"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+            cwd=repo_path,
+        )
+
+        output = result.stdout + result.stderr
+
+        if result.returncode == 0:
+            return {
+                "status": "VALIDATED_PATH",
+                "error_class": None,
+                "evidence": "Test passé",
+                "evidence_full": output[:500],
+                "script": str(test_path),
+                "conclusion": "Test pytest passé avec succès",
+            }
+        else:
+            if "ModuleNotFoundError" in output or "ImportError" in output:
+                return {
+                    "status": "DEAD_END",
+                    "error_class": "ImportError",
+                    "evidence": "Erreur d'import - module manquant",
+                    "evidence_full": output[:500],
+                    "script": str(test_path),
+                    "conclusion": "Module manquant, test non exécutable",
+                }
+            elif "ConnectionError" in output or "ConnectionRefusedError" in output:
+                return {
+                    "status": "BLOCKED",
+                    "error_class": "Service_Unavailable",
+                    "evidence": "Service externe non disponible",
+                    "evidence_full": output[:500],
+                    "script": str(test_path),
+                    "conclusion": "Dépendance externe non disponible",
+                }
+            else:
+                return {
+                    "status": "DEAD_END",
+                    "error_class": "TestFailure",
+                    "evidence": "Test échoué - assertion ou erreur runtime",
+                    "evidence_full": output[:500],
+                    "script": str(test_path),
+                    "conclusion": "Test échoué",
+                }
+    except subprocess.TimeoutExpired:
+        return {
+            "status": "BLOCKED",
+            "error_class": "Timeout",
+            "evidence": "Timeout (30s) - test trop long ou bloqué",
+            "evidence_full": "Timeout après 30 secondes",
+            "script": str(test_path),
+            "conclusion": "Test trop long ou bloqué",
+        }
+    except Exception as e:
+        return {
+            "status": "DEAD_END",
+            "error_class": type(e).__name__,
+            "evidence": f"Erreur d'exécution: {str(e)}",
+            "evidence_full": str(e)[:500],
+            "script": str(test_path),
+            "conclusion": "Erreur inattendue",
+        }
+
+
+def extend_mapper():
+    repos = load_discovered_repos()
+    topo = load_topology(TOPO_PATH)
+
+    # Filtrer les dépôts prioritaires qui existent dans discovered_repos
+    priority_found = {}
+    for repo_name in PRIORITY_REPOS:
+        # Chercher le repo par nom (insensible à la casse)
+        for actual_name, repo_info in repos.items():
+            if actual_name.upper() == repo_name.upper():
+                priority_found[actual_name] = repo_info
+                break
+
+    print(f"Extension M3 Mapper à {len(priority_found)} dépôts prioritaires:\n")
+
+    for repo_name, repo_info in sorted(priority_found.items(), key=lambda x: x[1]['test_count'], reverse=True):
+        tree_id = f"T-{repo_name.upper()}"
+        branch_name = "Integration-Tests"
+
+        print(f"Traitement {repo_info['stratum']}/{repo_name} ({repo_info['test_count']} tests)...")
+
+        # Créer l'arbre
+        update_tree(topo, tree_id, f"{repo_name} — Tests d'intégration ({repo_info['stratum']})")
+        update_branch(topo, tree_id, branch_name, f"Tests pytest {repo_name}")
+
+        # Exécuter UN seul test (le premier)
+        test_file = repo_info['test_files'][0] if repo_info['test_files'] else None
+        if test_file:
+            synapse_name = test_file.replace("test_", "").replace(".py", "")
+            print(f"  → {synapse_name}...", end=" ")
+
+            result = run_test(repo_info['path'], test_file)
+
+            mark_synapse(
+                topo,
+                tree_id,
+                branch_name,
+                synapse_name,
+                result['status'],
+                synapse_name=synapse_name,
+                evidence=result.get('evidence', ''),
+                evidence_full=result.get('evidence_full', ''),
+                error_class=result.get('error_class'),
+                script=result.get('script', ''),
+                conclusion=result.get('conclusion', ''),
+            )
+
+            print(result['status'])
+        else:
+            print("  Aucun test trouvé")
+            # Créer quand même l'arbre avec une synapse vide
+            mark_synapse(
+                topo,
+                tree_id,
+                branch_name,
+                "no-tests",
+                "DEAD_END",
+                synapse_name="no-tests",
+                evidence="Aucun test trouvé dans le dépôt",
+                script=str(repo_info['path']),
+                conclusion="Dépôt sans tests pytest",
+            )
+
+        print()
+
+    save_topology(topo, TOPO_PATH)
+    print("\n✅ Extension terminée")
+
+
+if __name__ == "__main__":
+    extend_mapper()

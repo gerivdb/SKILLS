@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft-2020-12/schema",
+  "title": "Registre de baux swarm — ENV2",
+  "description": "Registre canonique des baux d'exclusion pour coordination multi-sessions KiloCode sur ENV2. Inspiré de la gestion du swarm d'Antigravity.",
+  "type": "object",
+  "required": ["generated_at_utc", "source_repo", "leases"],
+  "properties": {
+    "generated_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Horodatage UTC de génération du registre"
+    },
+    "source_repo": {
+      "type": "string",
+      "description": "Dépôt source du registre (ex: D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS)"
+    },
+    "leases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["lease_id", "territory_id", "scope_paths", "holder_shard_id", "acquired_utc", "expires_utc", "ttl_seconds", "status"],
+        "properties": {
+          "lease_id": {
+            "type": "string",
+            "description": "Identifiant unique du bail (ex: lease-ENV2-skills-001)"
+          },
+          "territory_id": {
+            "type": "string",
+            "description": "Identifiant du territoire (ex: territory-skills-distill, territory-swarm-bail)"
+          },
+          "scope_paths": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Chemins couverts par le bail (chemins absolus ou globs)"
+          },
+          "holder_shard_id": {
+            "type": "string",
+            "description": "Identifiant du shard détenteur du bail (ex: ENV2-shard-01)"
+          },
+          "acquired_utc": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Horodatage UTC d'acquisition du bail (règle premier bail horodaté gagne)"
+          },
+          "expires_utc": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Horodatage UTC d'expiration du bail (TTL)"
+          },
+          "ttl_seconds": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Durée de vie du bail en secondes"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "released", "expired"],
+            "description": "Statut du bail"
+          }
+        }
+      }
+    }
+  }
+}
