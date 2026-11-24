@@ -53,4 +53,48 @@ if command -v python >/dev/null 2>&1; then
     fi
 fi
 
+# T45 : Submodule Guardian — détection sous-modules tierce (non-gerivdb)
+# Interdit de committer un sous-module tierce sans fork gerivdb/* préalable.
+if command -v python >/dev/null 2>&1; then
+    while IFS= read -r sm; do
+        [ -z "$sm" ] && continue
+        # Format: <status><SHA> <path>
+        smPath=$(echo "$sm" | awk '{print $2}')
+        [ -z "$smPath" ] && continue
+        smRemote=$(git -C "$smPath" remote -v 2>/dev/null || true)
+        if ! echo "$smRemote" | grep -q 'gerivdb/'; then
+            echo "PRE-COMMIT REJECT: $smPath (sous-module tierce, remote non-gerivdb — modification interdite sans fork gerivdb/*)"
+            reject=1
+        fi
+    done < <(git submodule status 2>/dev/null || true)
+fi
+
+# T46 : Git History Guardian — détection commits étrangers dans la plage push
+upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null || true)
+if [ -n "$upstream" ]; then
+    if command -v python >/dev/null 2>&1; then
+        foreign=$(git log --format="%H%x09%an%x09%s" "@{u}..HEAD" 2>/dev/null | python -c "
+import sys
+for line in sys.stdin:
+    parts = line.strip().split('\t')
+    if len(parts) < 3: continue
+    sha, author, message = parts[0], parts[1], parts[2]
+    is_foreign = False
+    if 'gerivdb@users.noreply.github.com' not in author:
+        is_foreign = True
+    foreign_repos = ['NEXUS','CTULU','GATEWAY','SKILLS','PRIMUS','GOVERNANCE','ECOYSTEM','BRAIN','FLUENCE','RACINES','GERIBOOKING','BANK-BUSTER','CANDIDATOR','DATA-MINER','strix','TQL','DevTools','email-sender','WAZAA','COMET','ECIT','ECO','ecos','JOURNALISTE','LUKAS','ONTOLOGY_MC','DOC-UNIV','optimiser','comparateur','FRUSTRATION','JP-PETIT']
+    for r in foreign_repos:
+        if r in message:
+            is_foreign = True
+            break
+    if is_foreign:
+        print(f'PRE-COMMIT REJECT: {sha} :: auteur={author} :: message={message}')
+" 2>/dev/null)
+        if [ -n "$foreign" ]; then
+            echo "$foreign"
+            reject=1
+        fi
+    fi
+fi
+
 exit $reject
