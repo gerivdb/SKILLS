@@ -3,6 +3,16 @@ name: citizen-env6-liaison-skill
 description: Skill d'activation du citizen ENV6 liaison. Maintient le canal ENV3→ENV6 ouvert via CDP (port 9222), surveille les nouveaux messages ENV6 et alerte ENV3.
 version: 1.0.0
 intent_hash: 0xCITIZEN_ENV6_LIAISON_SKILL_20261124
+gericode_version: "1.0"
+stratum: L4-TOOLS
+shard_id: G
+turn_counter: 1
+uuid: citizen-env6-liaison-skill-001
+timestamp: "2026-11-24T03:30:00Z"
+invariants:
+  friction: 0.0
+  entropy: 0.0
+wal_reference: "WAL-0x243-CITIZEN-ENV6-LIAISON-001"
 ---
 
 # citizen-env6-liaison-skill
