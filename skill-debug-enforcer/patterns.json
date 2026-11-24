@@ -35,6 +35,54 @@
       "regex": "evaluate_js\\s*\\(\\s*(?![^\\S\\n]*ws[^\\S\\n]*[,)])\\s*[^)]*\\)",
       "severity": "CRITICAL",
       "description": "Appel evaluate_js sans paramètre ws en premier (doit être evaluate_js(ws, ...))"
+    },
+    {
+      "name": "pwsh_command_forbidden",
+      "regex": "pwsh\\s+-Command",
+      "severity": "CRITICAL",
+      "description": "Appel pwsh -Command interdit (popup UAC) — utiliser bash -c ou cmd /c"
+    },
+    {
+      "name": "pwsh_file_forbidden",
+      "regex": "pwsh\\s+-File",
+      "severity": "CRITICAL",
+      "description": "Appel pwsh -File interdit (popup UAC) — utiliser cmd /c"
+    },
+    {
+      "name": "powershell_command_forbidden",
+      "regex": "powershell\\s+-Command",
+      "severity": "CRITICAL",
+      "description": "Appel powershell -Command interdit (popup UAC) — utiliser bash -c \"cmd /c powershell ...\""
+    },
+    {
+      "name": "powershell_file_forbidden",
+      "regex": "powershell\\s+-File",
+      "severity": "CRITICAL",
+      "description": "Appel powershell -File interdit (popup UAC) — utiliser cmd /c"
+    },
+    {
+      "name": "pwsh_shebang_forbidden",
+      "regex": "^#!.*\\bpwsh\\b",
+      "severity": "CRITICAL",
+      "description": "Shebang pwsh interdit — utiliser #!/bin/sh ou #!/usr/bin/env bash"
+    },
+    {
+      "name": "read_host_forbidden",
+      "regex": "Read-Host",
+      "severity": "CRITICAL",
+      "description": "Read-Host interdit (prompt interactif) — utiliser argument CLI ou variable d'env"
+    },
+    {
+      "name": "read_key_forbidden",
+      "regex": "ReadKey",
+      "severity": "CRITICAL",
+      "description": "ReadKey interdit (prompt interactif) — utiliser argument CLI"
+    },
+    {
+      "name": "pause_forbidden",
+      "regex": "\\bpause\\b",
+      "severity": "CRITICAL",
+      "description": "pause (PowerShell) interdit — utiliser sleep ou rien"
     }
   ]
 }
