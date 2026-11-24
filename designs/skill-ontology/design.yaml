@@ -1,0 +1,186 @@
+---
+name: skill-ontology
+version: "1.0.0"
+status: active
+layer: L4
+intent_hash: 0xONTOLOGY_SKILL_20261123
+inherits:
+  - ecosystem-meta-coherence
+  - safe-action-pattern
+  - design-ops-loop
+depends_on:
+  - ATOM-ONTOLOGY-CONCEPT-ANTICONCEPT
+  - ATOM-STOP-CONDITION
+  - ATOM-GATE-LAYERS
+  - ATOM-INDEPENDENT-SOURCES-RULE
+  - ATOM-DELTA-CHECK
+  - ATOM-CARRY-FORWARD-PRINCIPLE
+implementation_contract:
+  repo: gerivdb/SKILLS
+  repo_root: D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS
+  artifacts:
+    - path: designs/skill-ontology/design.yaml
+      must_contain:
+        - "name: skill-ontology"
+        - "intent_hash: 0xONTOLOGY_SKILL_20261123"
+        - "concept_skill-concept"
+        - "concept_skills-index"
+        - "anticoncept_script-inline-sans-skill"
+        - "anticoncept_skill-orphelin"
+  tests:
+    - D:\DO\WEB\TOOLS\L0-CANON\unified-design\scripts\design_impl_verifier.py
+description: >
+  Design ontologique du Skill dans l'écosystème gerivdb. Définit le Skill comme
+  unité fondamentale d'automatisation dans le repo Skills (L4-TOOLS). Cycle de vie :
+  draft → active → superseded → archived. Interdiction des scripts inline quand
+  un Skill existe déjà pour le même besoin. Le Skill est invoqué via son contrat
+  canonique (SKILL.md avec frontmatter : intent_hash, triggers, anti_triggers, version).
+states:
+  - name: IDLE
+    nature: en attente de déclenchement de création ou d'usage de Skill
+    gate_to_next: ONTOLOGY_CHECK
+    question: "Un Skill existe-t-il déjà dans le registre Skills pour ce besoin ?"
+  - name: ONTOLOGY_CHECK
+    nature: vérification ontologique du Skill (statut, frontmatter, trit_primitive)
+    gate_to_next: SKILL_USE | SKILL_CREATE | BLOCKED
+    question: "Le Skill cible est-il déclaré dans skills-index.json ? Statut 'active' ?"
+  - name: SKILL_USE
+    nature: usage du Skill existant via son contrat canonique (SKILL.md)
+    gate_to_next: PROOF | FAIL
+    question: "L'invocation passe-t-elle par le Skill Router ou le contrat canonique ?"
+  - name: SKILL_CREATE
+    nature: création d'un nouveau Skill suivant le format canonique SPEC-SKILL-FORMAT
+    gate_to_next: PROOF | FAIL
+    question: "Le nouveau Skill respecte-t-il SPEC-SKILL-FORMAT.md et le frontmatter canonique ?"
+  - name: PROOF
+    nature: enregistrement de la preuve d'usage ou de création dans le WAL
+    gate_to_next: DONE | FAIL
+    question: "La preuve d'exécution (hash SHA-256, code de retour, fichier modifié) est-elle enregistrée ?"
+  - name: DONE
+    nature: opération Skill terminée et validée
+    gate_to_next: IDLE
+    question: "L'opération est-elle terminée et le Skill indexé ?"
+  - name: BLOCKED
+    nature: opération bloquée (Skill manquant, script inline détecté, ontologie invalide)
+    gate_to_next: IDLE
+    question: "Le Skill manquant a-t-il été créé ou le script inline remplacé par le Skill ?"
+  - name: FAIL
+    nature: opération échouée (Skill non valide, preuve manquante)
+    gate_to_next: IDLE
+    question: "L'échec est-il documenté et le système remis en état cohérent ?"
+functions:
+  - id: F1
+    name: VERIFIER_SKILL_EXISTANT
+    state: IDLE→ONTOLOGY_CHECK
+    description: "Vérifie qu'un Skill existe déjà dans skills-index.json / SKILLS registry pour le besoin exprimé"
+    implements: ATOM-INDEPENDENT-SOURCES-RULE
+    veto: true
+  - id: F2
+    name: VERIFIER_STATUT_SKILL
+    state: ONTOLOGY_CHECK
+    description: "Vérifie que le Skill cible a le statut 'active' dans le registre Skills"
+    implements: ATOM-GATE-LAYERS
+    veto: true
+  - id: F3
+    name: INTERDIRE_SCRIPT_INLINE
+    state: ONTOLOGY_CHECK→SKILL_USE
+    description: "Si un Skill existe, interdit tout script inline et force l'usage du Skill via son contrat canonique"
+    implements: ATOM-STOP-CONDITION
+    veto: true
+  - id: F4
+    name: INVOQUER_SKILL
+    state: SKILL_USE
+    description: "Invoque le Skill existant via son contrat canonique (intent_hash, triggers, frontmatter, skill_loader.py)"
+    implements: ecosystem-meta-coherence
+  - id: F5
+    name: CREER_SKILL_CANONIQUE
+    state: ONTOLOGY_CHECK→SKILL_CREATE
+    description: "Crée un nouveau Skill suivant SPEC-SKILL-FORMAT.md (frontmatter, intent_hash, triggers, anti_triggers, preuves)"
+    implements: safe-action-pattern
+  - id: F6
+    name: ENREGISTRER_PREUVE_WAL
+    state: SKILL_USE|SKILL_CREATE→PROOF
+    description: "Enregistre la preuve d'usage ou de création dans le WAL (WAL-0x243) avec hash SHA-256"
+    implements: ATOM-EXTERNAL-VERIFICATION-MANDATORY
+    veto: true
+  - id: F7
+    name: POUSSER_REMOTE_SKILLS
+    state: PROOF→DONE
+    description: "Pousse le Skill créé ou modifié sur le remote gerivdb/SKILLS (branche courante, pas de force push)"
+    implements: ATOM-DELTA-CHECK, ATOM-CARRY-FORWARD-PRINCIPLE
+invariant: "Aucun script inline ne peut remplacer un Skill existant. Tout besoin d'automatisation doit passer par un Skill déclaré dans le registre Skills (L4) avec statut 'active'."
+genes:
+  - id: G1
+    name: skill-prealable
+    description: "Avant tout script inline, vérifier qu'aucun Skill existant ne couvre le besoin dans le registre Skills"
+    implements: ATOM-INDEPENDENT-SOURCES-RULE
+  - id: G2
+    name: skill-actif
+    description: "Un Skill doit avoir le statut 'active' pour être invoqué"
+    implements: ATOM-GATE-LAYERS
+  - id: G3
+    name: pas-de-script-inline
+    description: "Interdiction absolue de générer un script inline quand un Skill existe pour le même besoin"
+    implements: ATOM-STOP-CONDITION
+  - id: G4
+    name: preuve-horodatee
+    description: "Toute opération Skill doit produire une preuve horodatée dans le WAL"
+    implements: ATOM-EXTERNAL-VERIFICATION-MANDATORY
+anti_patterns:
+  - missing_gene: skill-prealable
+    pathology: "Script inline généré sans vérification d'un Skill existant → duplication, dette technique"
+    mdu_atom: ATOM-INDEPENDENT-SOURCES-RULE
+  - missing_gene: pas-de-script-inline
+    pathology: "Script inline remplace un Skill existant → bypass du registre Skills, perte de traçabilité"
+    mdu_atom: ATOM-STOP-CONDITION
+  - missing_gene: preuve-horodatee
+    pathology: "Opération Skill sans preuve WAL → échec silencieux, non auditable"
+    mdu_atom: ATOM-EXTERNAL-VERIFICATION-MANDATORY
+concepts:
+  - id: C1
+    name: skill-concept
+    description: "Un Skill est une unité d'automatisation réutilisable, traçable et versionnée, déclarée dans le registre Skills (L4-TOOLS) avec un frontmatter canonique (intent_hash, triggers, anti_triggers, version) et un fichier SPEC-SKILL-FORMAT.md"
+    category: ontologique
+    implante_par: ATOM-ONTOLOGY-CONCEPT-ANTICONCEPT
+    repo_proprietaire: gerivdb/SKILLS
+    strate: L4-TOOLS
+anticoncepts:
+  - id: A1
+    name: script-inline-sans-skill
+    description: "Script inline généré alors qu'un Skill existe dans le registre Skills pour le même besoin"
+    category: ontologique
+    implante_par: ATOM-STOP-CONDITION
+    detecte_par: verification_skill_existant
+    repo_concerne: gerivdb/SKILLS
+inheritance_loop: |
+  IDLE → ONTOLOGY_CHECK → SKILL_USE|SKILL_CREATE → PROOF → DONE → IDLE
+                                         │
+                                         ▼
+                            injecté dans le IDLE suivant (prochaine opération Skill)
+cross_references:
+  - repo: gerivdb/SKILLS
+    relation: host_skill_ontology
+    path: designs/skill-ontology/design.yaml
+  - repo: gerivdb/ONTOLOGY
+    relation: ontologie_base
+    path: designs/skill-citizen-ontology-base/design.yaml
+  - repo: gerivdb/ENV3-repo
+    relation: hosts_rule
+    path: .kilocode/rules/skill-citizen-prealable.md
+  - design: skill-citizen-ontology-base
+  - design: ecosystem-meta-coherence-gate
+  - design: safe-action-pattern
+  - design: design-ops-loop
+  - atom: ATOM-ONTOLOGY-CONCEPT-ANTICONCEPT
+  - atom: ATOM-STOP-CONDITION
+  - atom: ATOM-GATE-LAYERS
+  - primitive: skill-ontology-primitive
+  - skill: mdu-integrity-checker
+  - skill: ontology-term-gate-skill
+  - skill: skill-router-enforcement
+  - skill: skill-deployer
+  - skill: skill-sequence-enforcer
+  - adr: ADR-2026-11-23-008-COORDONNEE-DEPLOIEMENT-M3-TREE-BRANCH
+  - adr: ADR-2026-11-23-007-NO-CYCLE-M3-TREE
+  - prd_moc: PRD-MOC-SKILL-ONTOLOGY-20261123
+  - moc: MOC-SKILL-ONTOLOGY-20261123

@@ -40,4 +40,17 @@ for file in $(git diff --cached --name-only -z | tr '\0' '\n'); do
     reject=1
   fi
 done
+
+# T44 : Skill/Citizen préalable — interdiction des scripts inline/processus ad hoc
+# quand un Skill ou Citizen existant couvre le besoin.
+if command -v python >/dev/null 2>&1; then
+    python "D:\DO\WEB\TOOLS\L0-CANON\unified-design\scripts\verify-skill-citizen-prealable.py" \
+        --skills-index "skills-index.json" \
+        --citizens "D:\DO\WEB\TOOLS\L3-CITIZENS\CITIZENS\CITIZENS.yaml" \
+        --staged-files "$(git diff --cached --name-only | tr '\n' ' ')" 2>/dev/null
+    if [ $? -ne 0 ]; then
+        reject=1
+    fi
+fi
+
 exit $reject
