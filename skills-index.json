@@ -2960,6 +2960,26 @@
       "source_repo": "external/Aider-AI/aider",
       "source_url": "https://github.com/Aider-AI/aider",
       "path": "aider"
+    },
+    "cdp-chat-gemini-dom-inspector": {
+      "name": "cdp-chat-gemini-dom-inspector",
+      "description": "Inspection du DOM de l'onglet Gemini via CDP pour découvrir les sélecteurs CSS réels des messages assistant.",
+      "version": "1.0.0",
+      "intent_hash": "0xM3_SKILL_CDP_CHAT_GEMINI_DOM_INSPECTOR_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "gerivdb/SKILLS",
+      "path": "cdp-chat-gemini-dom-inspector"
+    },
+    "cdp-chat-gemini-read-v2": {
+      "name": "cdp-chat-gemini-read-v2",
+      "description": "Lecture de la réponse assistant du chat Gemini via CDP avec le sélecteur DOM actuel (div.markdown-main-panel.md-content). Remplace le skill v1 obsolète (.message-text).",
+      "version": "2.0.0",
+      "intent_hash": "0xM3_SKILL_CDP_CHAT_GEMINI_READ_V2_20261125",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "gerivdb/SKILLS",
+      "path": "cdp-chat-gemini-read-v2"
     }
   },
   "source_repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS"
