@@ -190,7 +190,7 @@ def relay_via_cdp_tunnel(message: dict, message_id: str, message_sha256: str,
                 continue
 
             current_text = str(value).strip()
-            if current_text == previous_text:
+            if current_text and current_text == previous_text:
                 stable_count += 1
             else:
                 stable_count = 0
