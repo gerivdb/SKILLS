@@ -2990,6 +2990,16 @@
       "author": "gerivdb",
       "source_repo": "gerivdb/SKILLS",
       "path": "wazaa-bus-integration"
+    },
+    "wazaa-bus-relay": {
+      "name": "wazaa-bus-relay",
+      "description": "Relais du bus WAZAA sur le tunnel CDP persistant. Encapsule les messages WAZAA JSON enveloppé et les envoie à ENV3 (Gemini) via CDP. Lit la réponse et vérifie la preuve d'intégrité.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_WAZAA_BUS_RELAY_20261125",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "gerivdb/SKILLS",
+      "path": "wazaa-bus-relay"
     }
   },
   "source_repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS"
