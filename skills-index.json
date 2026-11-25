@@ -2980,6 +2980,16 @@
       "author": "gerivdb",
       "source_repo": "gerivdb/SKILLS",
       "path": "cdp-chat-gemini-read-v2"
+    },
+    "wazaa-bus-integration": {
+      "name": "wazaa-bus-integration",
+      "description": "Définit le protocole de message WAZAA pour le tunnel ENV2 ↔ ENV3. WAZAA est le système bus du métacluster qui orchestre tous les repos comme sous-modules, avec WISPX comme middleware de pont.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_WAZAA_BUS_INTEGRATION_20261125",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "gerivdb/SKILLS",
+      "path": "wazaa-bus-integration"
     }
   },
   "source_repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS"
