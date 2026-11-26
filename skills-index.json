@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-26T06:15:14.806557Z",
+  "generated_at_utc": "2026-11-26T19:23:00Z",
   "skills": {
     "act-protocol-runner": {
       "type": "SKILL",
@@ -109,6 +109,17 @@
       "intent_hash": "0xAGENT_MANAGER_SESSION_ORCHESTRATOR_20260808",
       "path": "agent-manager-session-orchestrator"
     },
+    "agent-memory-techniques": {
+      "name": "agent-memory-techniques",
+      "description": "Notebook et implémentation de mémoire procédurale (extraction de séquences d'actions, paramétrisation de templates et réutilisation).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AGENT_MEMORY_TECHNIQUES_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/NirDiamant/Agent_Memory_Techniques",
+      "source_url": "https://github.com/NirDiamant/Agent_Memory_Techniques",
+      "path": "agent-memory-techniques"
+    },
     "agent-numa-load-governor": {
       "name": "agent-numa-load-governor",
       "description": "Empêche le freeze physique de l'OS et de VS Code sur la machine de dev (dual Xeon E5620 NUMA) en throttlant les subagents selon la disponibilité RAM/CPU.",
@@ -128,12 +139,111 @@
       "source_path": "skills/agent-process-forensics/SKILL.md",
       "path": "agent-process-forensics"
     },
+    "agent-skills-addy-osmani": {
+      "name": "agent-skills-addy-osmani",
+      "description": "Encodage de workflows avec critères de sortie, garde-fous anti-rationalisation et exigences de vérification.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AGENT_SKILLS_ADDY_OSMANI_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/addyosmani/agent-skills",
+      "source_url": "https://github.com/addyosmani/agent-skills",
+      "path": "agent-skills-addy-osmani"
+    },
+    "agent-skills-commandcodeai": {
+      "name": "agent-skills-commandcodeai",
+      "description": "Organisation de skills combinant instructions (SKILL.md), scripts exécutables, templates et ressources.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AGENT_SKILLS_COMMANDCODEAI_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/commandcodeai/agent-skills",
+      "source_url": "https://github.com/commandcodeai/agent-skills",
+      "path": "agent-skills-commandcodeai"
+    },
+    "agent-skills-survey": {
+      "name": "agent-skills-survey",
+      "description": "Cartographie les approches d'acquisition, distillation, composition et raffinement de skills (Voyager, SkillWeaver, ASI, CASCADE, ReMe, LEGOMem).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AGENT_SKILLS_SURVEY_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/yashonwu/agent-skills-survey",
+      "source_url": "https://github.com/yashonwu/agent-skills-survey",
+      "path": "agent-skills-survey"
+    },
     "agent-split-brain-sentinel": {
       "name": "agent-split-brain-sentinel",
       "description": "Previent les conflits insolubles lors des experimentations paralleles dans différents corridors. Detecte la divergence entre branches soeurs et alerte en cas de modification conjointe du même module ou fichier de contrat.",
       "version": "1.0.0",
       "intent_hash": "0xAGENT_SPLIT_BRAIN_SENTINEL_20261025",
       "path": "agent-split-brain-sentinel"
+    },
+    "agent-toolkit": {
+      "name": "agent-toolkit",
+      "description": "Skills packagés avec dossiers scripts/ et references/ pour standardiser des tâches récurrentes.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AGENT_TOOLKIT_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/softaworks/agent-toolkit",
+      "source_url": "https://github.com/softaworks/agent-toolkit",
+      "path": "agent-toolkit"
+    },
+    "agentic-flow": {
+      "name": "agentic-flow",
+      "description": "Skills dédiés à l'automatisation de workflows, pipelines et coordination d'exécution.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AGENTIC_FLOW_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/ruvnet/agentic-flow",
+      "source_url": "https://github.com/ruvnet/agentic-flow",
+      "path": "agentic-flow"
+    },
+    "ai-agent-skills": {
+      "name": "ai-agent-skills",
+      "description": "Patterns inspirés de Voyager (curriculum automatique, bibliothèque de skills vérifiés, raffinement itératif et composition de skills).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AI_AGENT_SKILLS_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/sreerevanth/AI-Agent-Skills",
+      "source_url": "https://github.com/sreerevanth/AI-Agent-Skills",
+      "path": "ai-agent-skills"
+    },
+    "aider": {
+      "name": "aider",
+      "description": "Assistant de programmation en terminal utilisant des cartes de symboles/graphes pour cibler les bons extraits de code.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AIDER_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/Aider-AI/aider",
+      "source_url": "https://github.com/Aider-AI/aider",
+      "path": "aider"
+    },
+    "antigravity-brain-visualizer": {
+      "name": "antigravity-brain-visualizer",
+      "description": "Visualiseur web interactif pour traces d'exécution d'agents Antigravity, indexant SQLite et diffs de code.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_ANTIGRAVITY_BRAIN_VISUALIZER_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/glaforge/antigravity-brain-visualizer",
+      "source_url": "https://github.com/glaforge/antigravity-brain-visualizer",
+      "path": "antigravity-brain-visualizer"
+    },
+    "antigravity-gemini-extension": {
+      "name": "antigravity-gemini-extension",
+      "description": "Extension liée aux workflows Antigravity / Gemini et à l'interaction navigateur/CDP.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_ANTIGRAVITY_GEMINI_EXTENSION_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/lucasmartins-ai/antigravity-gemini-extension",
+      "source_url": "https://github.com/lucasmartins-ai/antigravity-gemini-extension",
+      "path": "antigravity-gemini-extension"
     },
     "artifact-quality-checker": {
       "name": "artifact-quality-checker",
@@ -154,12 +264,45 @@
       "bin": "bin/artifact-quality-check",
       "path": "artifact-quality-checker"
     },
+    "astchunk": {
+      "name": "astchunk",
+      "description": "Boîte à outils Python basée sur Tree-sitter pour découper le code en segments syntaxiques cohérents (AST chunking/slicing).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_ASTCHUNK_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/yilinjz/astchunk",
+      "source_url": "https://github.com/yilinjz/astchunk",
+      "path": "astchunk"
+    },
     "audit-repo": {
       "name": "audit-repo",
       "description": "Audit systématique des repos existants avant toute proposition de création. Vérifie la SOT (known_repositories.yaml), audite le repo cible, et détermine si le composant existe déjà, doit être étendu ou remplacé.",
       "version": "1.0.0",
       "intent_hash": "0xAUDIT_REPO_SKILL_20260809",
       "path": "audit-repo"
+    },
+    "awesome-ai-image-skills": {
+      "name": "awesome-ai-image-skills",
+      "description": "Exemples concrets de couplage SKILL.md + CLI/MCP pour figer des séquences d'exécution.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AWESOME_AI_IMAGE_SKILLS_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/zhuyansen/awesome-ai-image-skills",
+      "source_url": "https://github.com/zhuyansen/awesome-ai-image-skills",
+      "path": "awesome-ai-image-skills"
+    },
+    "awesome-omni-skill": {
+      "name": "awesome-omni-skill",
+      "description": "Modèles de conception de workflows d'agents, gestion d'état et découpage de tâches.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_AWESOME_OMNI_SKILL_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/diegosouzapw/awesome-omni-skill",
+      "source_url": "https://github.com/diegosouzapw/awesome-omni-skill",
+      "path": "awesome-omni-skill"
     },
     "bdcp-zero-trust-traffic-guard": {
       "type": "SKILL",
@@ -205,6 +348,17 @@
       "source_path": ".kilo/skills/bridge-auditor/SKILL.md",
       "path": "bridge-auditor"
     },
+    "building-with-decision-models": {
+      "name": "building-with-decision-models",
+      "description": "Exemple de skill structuré pour ancrer des décisions dans des modèles explicites.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_BUILDING_WITH_DECISION_MODELS_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/aaddrick/building-with-decision-models",
+      "source_url": "https://github.com/aaddrick/building-with-decision-models",
+      "path": "building-with-decision-models"
+    },
     "cache-cleaner": {
       "name": "cache-cleaner",
       "description": "Nettoie et purifie les caches de build et d'exécution (__pycache__, .pytest_cache, .ruff_cache, .benchmarks, .swarm, node_modules/.cache, etc.) dans L4-TOOLS, L3-CITIZENS et les worktrees associés. Utilise ce skill quand tu dois libérer de l'espace disque, supprimer des caches obsolètes, ou préparer un environnement propre avant compilation.",
@@ -216,6 +370,17 @@
       "source_repo": "gerivdb/GeriCode",
       "source_path": "skills/cache-cleaner/SKILL.md",
       "path": "cache-cleaner"
+    },
+    "cass-memory-system": {
+      "name": "cass-memory-system",
+      "description": "Transforme l'historique dispersé des sessions d'agents en mémoire procédurale persistante et détecte les anti-patterns récurrents.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_CASS_MEMORY_SYSTEM_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/Dicklesworthstone/cass_memory_system",
+      "source_url": "https://github.com/Dicklesworthstone/cass_memory_system",
+      "path": "cass-memory-system"
     },
     "causal-bisimulation": {
       "name": "causal-bisimulation",
@@ -252,6 +417,26 @@
       "source_repo": "gerivdb/SKILLS",
       "source_path": "skills/cdp-browser-bridge-health/SKILL.md",
       "path": "cdp-browser-bridge-health"
+    },
+    "cdp-chat-gemini-dom-inspector": {
+      "name": "cdp-chat-gemini-dom-inspector",
+      "description": "Inspection du DOM de l'onglet Gemini via CDP pour découvrir les sélecteurs CSS réels des messages assistant.",
+      "version": "1.0.0",
+      "intent_hash": "0xM3_SKILL_CDP_CHAT_GEMINI_DOM_INSPECTOR_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "gerivdb/SKILLS",
+      "path": "cdp-chat-gemini-dom-inspector"
+    },
+    "cdp-chat-gemini-read-v2": {
+      "name": "cdp-chat-gemini-read-v2",
+      "description": "Lecture de la réponse assistant du chat Gemini via CDP avec le sélecteur DOM actuel (div.markdown-main-panel.md-content). Remplace le skill v1 obsolète (.message-text).",
+      "version": "2.0.0",
+      "intent_hash": "0xM3_SKILL_CDP_CHAT_GEMINI_READ_V2_20261125",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "gerivdb/SKILLS",
+      "path": "cdp-chat-gemini-read-v2"
     },
     "cdp-tab-session-lifecycle": {
       "name": "cdp-tab-session-lifecycle",
@@ -374,6 +559,120 @@
       "description": "Protocole d'amorçage cognitif : injecte la directive système canonique (ENV6_CORE_DIRECTIVE.md) dans toute conversation LLM SaaS (DeepSeek) orpheline d'identité avant tout test de transport.",
       "path": "cognitive-bridge-bootstrap"
     },
+    "comet-embedded-extensions": {
+      "name": "comet-embedded-extensions",
+      "version": "0.1.1",
+      "status": "active",
+      "type": "procedural",
+      "category": "cdp",
+      "intent_hash": "0xCOMET_EMBEDDED_EXTENSIONS_20261126",
+      "provenance": "imported",
+      "source_shard": "ENV2",
+      "created_at": "2026-11-26T06:45:00Z",
+      "updated_at": "2026-11-26T07:30:00Z",
+      "author": "Kilo (Shard G, ENV2)",
+      "triggers": [
+        "comet",
+        "extensions embarquees",
+        "external_extensions.json",
+        "CRX",
+        "install extension"
+      ],
+      "anti_triggers": [
+        "headless",
+        "profil temporaire",
+        "playwright launch",
+        "profil jetable"
+      ],
+      "tags": [
+        "comet",
+        "extensions-embarquees",
+        "cdp",
+        "crx",
+        "profil-2"
+      ],
+      "path": "comet-embedded-extensions"
+    },
+    "comet-proprietary-ntp": {
+      "name": "comet-proprietary-ntp",
+      "version": "0.1.1",
+      "status": "active",
+      "type": "procedural",
+      "category": "cdp",
+      "intent_hash": "0xCOMET_PROPRIETARY_NTP_20261126",
+      "provenance": "imported",
+      "source_shard": "ENV2",
+      "created_at": "2026-11-26T06:53:00Z",
+      "updated_at": "2026-11-26T07:30:00Z",
+      "author": "Kilo (Shard G, ENV2)",
+      "triggers": [
+        "ntp",
+        "new tab page",
+        "preconnect",
+        "proprietary",
+        "homepage"
+      ],
+      "anti_triggers": [
+        "headless",
+        "profil temporaire",
+        "CDN externe"
+      ],
+      "tags": [
+        "comet",
+        "ntp",
+        "new-tab-page",
+        "preconnect",
+        "cdp",
+        "homepage"
+      ],
+      "path": "comet-proprietary-ntp"
+    },
+    "comet-universal-content-script": {
+      "name": "comet-universal-content-script",
+      "version": "0.1.1",
+      "status": "active",
+      "type": "procedural",
+      "category": "cdp",
+      "intent_hash": "0xCOMET_UNIVERSAL_CONTENT_SCRIPT_20261126",
+      "provenance": "imported",
+      "source_shard": "ENV2",
+      "created_at": "2026-11-26T06:48:00Z",
+      "updated_at": "2026-11-26T07:30:00Z",
+      "author": "Kilo (Shard G, ENV2)",
+      "triggers": [
+        "content script",
+        "universel",
+        "ISOLATED world",
+        "all_urls",
+        "observation DOM"
+      ],
+      "anti_triggers": [
+        "headless",
+        "profil temporaire",
+        "data-message-author-role",
+        "attribut suppose"
+      ],
+      "tags": [
+        "comet",
+        "content-script",
+        "universel",
+        "isolated-world",
+        "cdp",
+        "observation-dom"
+      ],
+      "path": "comet-universal-content-script"
+    },
+    "comfyui-mcp": {
+      "name": "comfyui-mcp",
+      "description": "Transforme des graphes/pipelines d'exécution en actions appelables via MCP.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_COMFYUI_MCP_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/artokun/comfyui-mcp",
+      "source_url": "https://github.com/artokun/comfyui-mcp",
+      "path": "comfyui-mcp"
+    },
     "conditional-validation": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -416,6 +715,17 @@
       "source_path": ".kilo/skills/context-engineering/SKILL.md",
       "path": "context-engineering"
     },
+    "ctxgrep": {
+      "name": "ctxgrep",
+      "description": "Recherche locale contexte / texte / regex / FTS5 — CLI locale sur SQLite + FTS5 combinant recherche exacte, regex, sémantique et mémoire.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_CTXGREP_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/yetone/ctxgrep",
+      "source_url": "https://github.com/yetone/ctxgrep",
+      "path": "ctxgrep"
+    },
     "daemon-preflight-import-sentinel": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -427,6 +737,28 @@
       "source_repo": "gerivdb/SKILLS",
       "source_path": "skills/daemon-preflight-import-sentinel/SKILL.md",
       "path": "daemon-preflight-import-sentinel"
+    },
+    "datasette": {
+      "name": "datasette",
+      "description": "Outil d'exploration, de filtrage par facettes/requêtes et de publication de bases SQLite (incluant Datasette Lite en WASM).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_DATASETTE_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/simonw/datasette",
+      "source_url": "https://github.com/simonw/datasette",
+      "path": "datasette"
+    },
+    "db-cli": {
+      "name": "db-cli",
+      "description": "CLI d'inspection relationnelle avec sorties table/json/csv — description de tables, échantillonnage de lignes et requêtes en lecture seule formatées pour scripts ou agents.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_DB_CLI_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/jeffersongoncalves/db-cli",
+      "source_url": "https://github.com/jeffersongoncalves/db-cli",
+      "path": "db-cli"
     },
     "dbc-scaffolder": {
       "type": "SKILL",
@@ -482,6 +814,17 @@
       "source_path": ".kilo/skills/delta-optimizer/SKILL.md",
       "path": "delta-optimizer"
     },
+    "dolt": {
+      "name": "dolt",
+      "description": "Base de données SQL avec versionnage type Git (branches, diffs, merges au niveau des lignes/tables).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_DOLT_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/dolthub/dolt",
+      "source_url": "https://github.com/dolthub/dolt",
+      "path": "dolt"
+    },
     "drift-axis-scaffolder": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -494,6 +837,17 @@
       "source_repo": "gerivdb/GeriCode",
       "source_path": ".kilo/skills/drift-axis-scaffolder/SKILL.md",
       "path": "drift-axis-scaffolder"
+    },
+    "duckdb-sqlite": {
+      "name": "duckdb-sqlite",
+      "description": "Extension permettant à DuckDB de lire/écrire directement des fichiers SQLite pour des coupes analytiques rapides.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_DUCKDB_SQLITE_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/duckdb/duckdb-sqlite",
+      "source_url": "https://github.com/duckdb/duckdb-sqlite",
+      "path": "duckdb-sqlite"
     },
     "duplicate-file-remover": {
       "name": "duplicate-file-remover",
@@ -569,6 +923,17 @@
       "source_path": "skills/fastmcp-schema-verifier/SKILL.md",
       "path": "fastmcp-schema-verifier"
     },
+    "ffts-grep": {
+      "name": "ffts-grep",
+      "description": "Indexeur plein texte rapide basé sur SQLite FTS5 — indexation FTS5 avec classement BM25 et requêtes sub-10ms sur arborescences de fichiers.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_FFTS_GREP_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/mneves75/ffts-grep",
+      "source_url": "https://github.com/mneves75/ffts-grep",
+      "path": "ffts-grep"
+    },
     "folder-organizer": {
       "name": "folder-organizer",
       "description": "Organise et range l'arborescence des dossiers dans L4-TOOLS\\SKILLS, L3-CITIZENS\\CITIZENS et L3-CITIZENS\\LOOPX selon une taxonomie de maintenance. Utilise ce skill quand tu dois structurer, renommer ou déplacer des dossiers pour améliorer la lisibilité et la maintenabilité.",
@@ -595,6 +960,39 @@
       "intent_hash": "0xFRONTMATTER_GUARDIAN_HADMG_20260811",
       "path": "frontmatter-guardian"
     },
+    "fts5-expose": {
+      "name": "fts5-expose",
+      "description": "Inspection interne du tokenizer FTS5 — expose fts5_tokenize() pour vérifier comment SQLite découpe les chaînes selon le tokenizer choisi.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_FTS5_EXPOSE_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/FaFre/fts5_expose",
+      "source_url": "https://github.com/FaFre/fts5_expose",
+      "path": "fts5-expose"
+    },
+    "fzql": {
+      "name": "fzql",
+      "description": "Recherche floue interactive sur résultats SQLite — pipe les sorties sqlite3 vers fzf pour filtrer et sélectionner des lignes à la volée.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_FZQL_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/benewberg/fzql",
+      "source_url": "https://github.com/benewberg/fzql",
+      "path": "fzql"
+    },
+    "gemini-browser": {
+      "name": "gemini-browser",
+      "description": "Exemple open source d'agent navigateur piloté avec Gemini.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_GEMINI_BROWSER_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/browserbase/gemini-browser",
+      "source_url": "https://github.com/browserbase/gemini-browser",
+      "path": "gemini-browser"
+    },
     "geri-rules-propagator": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -606,6 +1004,28 @@
       "source_repo": "gerivdb/SKILLS",
       "source_path": "skills/geri-rules-propagator/SKILL.md",
       "path": "geri-rules-propagator"
+    },
+    "git-history-cleanup-skill": {
+      "name": "git-history-cleanup-skill",
+      "description": "Nettoie l'historique d'un repo git pour retirer les commits etrangers.",
+      "version": "1.0.0",
+      "intent_hash": "0xGIT_HISTORY_CLEANUP_SKILL_20261124",
+      "stratum": "L0-CANON",
+      "layer": "L0-CANON",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/git-history-cleanup-skill/SKILL.md",
+      "path": "git-history-cleanup-skill"
+    },
+    "git-history-guardian": {
+      "name": "git-history-guardian",
+      "description": "Detecte les commits etrangers dans l'historique d'un repo.",
+      "version": "1.0.0",
+      "intent_hash": "0xGIT_HISTORY_GUARDIAN_20261124",
+      "stratum": "L0-CANON",
+      "layer": "L0-CANON",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/git-history-guardian/SKILL.md",
+      "path": "git-history-guardian"
     },
     "git-lock-rescuer": {
       "name": "git-lock-rescuer",
@@ -620,6 +1040,17 @@
       "intent_hash": "0xGIT_WORKFLOW_ENFORCER_20260808",
       "path": "git-workflow-enforcer"
     },
+    "github-token-provider": {
+      "name": "github-token-provider",
+      "description": "Recupere le token d'authentification GitHub via gh CLI sans basculer en mode FREE.",
+      "version": "1.0.0",
+      "intent_hash": "0xGITHUB_TOKEN_PROVIDER_20261124",
+      "stratum": "L0-CANON",
+      "layer": "L0-CANON",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/github-token-provider/SKILL.md",
+      "path": "github-token-provider"
+    },
     "gitignore-harmonizer": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -633,10 +1064,32 @@
       "source_path": ".kilo/skills/gitignore-harmonizer/SKILL.md",
       "path": "gitignore-harmonizer"
     },
+    "greybeard": {
+      "name": "greybeard",
+      "description": "Skills de contrôle et de vérification d'exécution pour agents.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_GREYBEARD_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/clawnify/greybeard",
+      "source_url": "https://github.com/clawnify/greybeard",
+      "path": "greybeard"
+    },
     "hadmg-omega": {
       "name": "hadmg-omega",
       "description": "Méta-méta-architecture HADMG-Ω pour l'écosystème gerivdb. Observe les patterns d'intégration, rétropropage les échecs, régularise les worktrees stagnants, apprend des séquences récurrentes et optimise automatiquement. À utiliser pour l'audit architectural, la détection de patterns récurrents, la régularisation des worktrees, l'apprentissage de méta-connaissances et l'optimisation des cycles d'intégration.",
       "path": "hadmg-omega"
+    },
+    "harlequin": {
+      "name": "harlequin",
+      "description": "IDE SQL terminal avec catalogue & CLI headless (hsql) — exploration de catalogue/schéma, exécution de requêtes et compagnon CLI pour scripts/agents.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_HARLEQUIN_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/tconbeer/harlequin",
+      "source_url": "https://github.com/tconbeer/harlequin",
+      "path": "harlequin"
     },
     "hexagonal-scaffolder": {
       "type": "SKILL",
@@ -661,6 +1114,17 @@
       "version": "1.0.0",
       "intent_hash": "0xINTENT_HASH_BRANCH_MAPPER_20260808",
       "path": "intent-hash-branch-mapper"
+    },
+    "jdbrowser": {
+      "name": "jdbrowser",
+      "description": "Navigateur SQLite TUI en Rust — exploration rapide de tables et vues en ligne de commande avec copie presse-papiers.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_JDBROWSER_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/Jkeyuk/JDbrowser",
+      "source_url": "https://github.com/Jkeyuk/JDbrowser",
+      "path": "jdbrowser"
     },
     "jest-chai-migration": {
       "name": "jest-chai-migration",
@@ -894,6 +1358,39 @@
       "source_repo": "gerivdb/GeriCode",
       "source_path": ".kilo/skills/laplace-spectrum-analyzer/SKILL.md",
       "path": "laplace-spectrum-analyzer"
+    },
+    "letta": {
+      "name": "letta",
+      "description": "Plateforme d'agents avec mémoire hiérarchisée et gestion d'états persistants.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_LETTA_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/letta-ai/letta",
+      "source_url": "https://github.com/letta-ai/letta",
+      "path": "letta"
+    },
+    "libsql": {
+      "name": "libsql",
+      "description": "Fork open source de SQLite avec répliques embarquées, UDFs et extensions d'exécution.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_LIBSQL_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/tursodatabase/libsql",
+      "source_url": "https://github.com/tursodatabase/libsql",
+      "path": "libsql"
+    },
+    "litecli": {
+      "name": "litecli",
+      "description": "CLI SQLite avec autocomplétion & coloration — édition interactive rapide de requêtes SQLite dans le terminal.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_LITECLI_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/dbcli/litecli",
+      "source_url": "https://github.com/dbcli/litecli",
+      "path": "litecli"
     },
     "llm-free-tier-arbitrator": {
       "type": "SKILL",
@@ -1378,6 +1875,17 @@
       "source_path": "skills/mcp-gateway-protocol-harmonizer/SKILL.md",
       "path": "mcp-gateway-protocol-harmonizer"
     },
+    "mcp-server-modular": {
+      "name": "mcp-server-modular",
+      "description": "Expose des fonctions, workflows et ressources sous forme d'outils standards invoquables via MCP.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_MCP_SERVER_MODULAR_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/converged-computing/mcp-server",
+      "source_url": "https://github.com/converged-computing/mcp-server",
+      "path": "mcp-server-modular"
+    },
     "mcp-sse-keepalive-sentinel": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -1414,6 +1922,28 @@
       "source_path": "skills/mcp-tool-inventory-cache/SKILL.md",
       "path": "mcp-tool-inventory-cache"
     },
+    "mem0": {
+      "name": "mem0",
+      "description": "Couche mémoire pour agents IA combinant recherche sémantique, mots-clés et liens d'entités.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_MEM0_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/mem0ai/mem0",
+      "source_url": "https://github.com/mem0ai/mem0",
+      "path": "mem0"
+    },
+    "memskill": {
+      "name": "memskill",
+      "description": "Boucle d'apprentissage qui extrait, raffine et réutilise des skills à partir des trajectoires et retours d'exécution.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_MEMSKILL_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/ViktorAxelsen/MemSkill",
+      "source_url": "https://github.com/ViktorAxelsen/MemSkill",
+      "path": "memskill"
+    },
     "merge-hygiene-enforcer": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -1438,6 +1968,28 @@
       "source_repo": "gerivdb/GeriCode",
       "source_path": ".kilo/skills/meta-coherence-validator/SKILL.md",
       "path": "meta-coherence-validator"
+    },
+    "minimax-mcp": {
+      "name": "minimax-mcp",
+      "description": "Exemple d'encapsulation d'actions/API en outils invoquables de manière standardisée.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_MINIMAX_MCP_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/MiniMax-AI/MiniMax-MCP",
+      "source_url": "https://github.com/MiniMax-AI/MiniMax-MCP",
+      "path": "minimax-mcp"
+    },
+    "minisqlite": {
+      "name": "minisqlite",
+      "description": "Implémentation éducative/modulaire d'un moteur type SQLite en Go (B-trees de tables/index, index couvrants, curseurs).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_MINISQLITE_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/cursor/minisqlite",
+      "source_url": "https://github.com/cursor/minisqlite",
+      "path": "minisqlite"
     },
     "mox-plan-consultant": {
       "type": "SKILL",
@@ -1501,6 +2053,17 @@
       "citizen": "N243-QUERY",
       "layer": "L4",
       "path": "n243-query-engine"
+    },
+    "n8n": {
+      "name": "n8n",
+      "description": "Enchaînement de nœuds et scripts automatisés pour figer des suites d'actions répétitives en workflows déterministes.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_N8N_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/n8n-io/n8n",
+      "source_url": "https://github.com/n8n-io/n8n",
+      "path": "n8n"
     },
     "naming-convention-enforcer": {
       "name": "naming-convention-enforcer",
@@ -1785,6 +2348,17 @@
       "description": "Recherche récursive sur la mémoire KiloCode locale pour dépasser la limite de 12 termes par requête de `kilo_local_recall`. Décompose une requête large en passes atomiques, agrège, déduplique et converge vers une carte complète des sessions pertinentes. Utiliser quand la recherche couvre plusieurs sujets transverses ou quand une seule requête `kilo_local_recall` est insuffisante.",
       "path": "recall-ouroboros"
     },
+    "refly": {
+      "name": "refly",
+      "description": "Convertit des workflows et SOP en skills versionnés, exécutables et exposables en outils/MCP avec garde-fous déterministes.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_REFLY_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/refly-ai/refly",
+      "source_url": "https://github.com/refly-ai/refly",
+      "path": "refly"
+    },
     "registry-hash-integrity-guard": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -1837,6 +2411,17 @@
       "friction": "0.0",
       "entropy": "0.0",
       "path": "registry-sync-extended"
+    },
+    "reglite": {
+      "name": "reglite",
+      "description": "Extension opérateur regex léger — correspondance d'expressions régulières sur colonnes texte et blob dans SQLite.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_REGLITE_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/caido/reglite",
+      "source_url": "https://github.com/caido/reglite",
+      "path": "reglite"
     },
     "relate-queue-drain-orphan-backfill": {
       "name": "relate-queue-drain-orphan-backfill",
@@ -1982,6 +2567,17 @@
       "source_path": "skills/skill-lazy-unloader/SKILL.md",
       "path": "skill-lazy-unloader"
     },
+    "skill-m3-topo-enforcer": {
+      "name": "skill-m3-topo-enforcer",
+      "description": "Garde-fou topologique M3 : verifie que Chrome et le pont 8810 restent allumes.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_M3_TOPO_ENFORCER_20261118",
+      "stratum": "ENV2",
+      "layer": "ENV2",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/skill-m3-topo-enforcer/SKILL.md",
+      "path": "skill-m3-topo-enforcer"
+    },
     "skill-scaffold": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -2007,6 +2603,28 @@
       "source_repo": "gerivdb/GeriCode",
       "source_path": ".kilo/skills/skill-test-scaffolder/SKILL.md",
       "path": "skill-test-scaffolder"
+    },
+    "skill.m3.extract.commit-analyzer": {
+      "name": "skill.m3.extract.commit-analyzer",
+      "description": "Extrait les metadonnees structurales d'un commit git en JSON pour la chaine autopoiese M3.",
+      "version": "1.0.0",
+      "intent_hash": "0xM3_EXTRACT_COMMIT_ANALYZER_20261119",
+      "stratum": "L0-CANON",
+      "layer": "L0-CANON",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/skill.m3.extract.commit-analyzer/SKILL.md",
+      "path": "skill.m3.extract.commit-analyzer"
+    },
+    "skill.m3.skill-generator": {
+      "name": "skill.m3.skill-generator",
+      "description": "Generateur de skills M3 (sans SKILL.md frontmatter - a completer).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_M3_SKILL_GENERATOR_20261126",
+      "stratum": "L0-CANON",
+      "layer": "L0-CANON",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/skill.m3.skill-generator/generate_skill.py",
+      "path": "skill.m3.skill-generator"
     },
     "skill.m3.stub-detector": {
       "type": "skill",
@@ -2060,6 +2678,160 @@
       "source_repo": "gerivdb/GeriCode",
       "source_path": ".kilo/skills/spectrum-updater/SKILL.md",
       "path": "spectrum-updater"
+    },
+    "sql-web": {
+      "name": "sql-web",
+      "description": "Explorateur web local binaire unique en Rust — interface web locale légère pour parcourir les tables SQLite avec pagination et mode lecture seule.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQL_WEB_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/YinMo19/sql-web",
+      "source_url": "https://github.com/YinMo19/sql-web",
+      "path": "sql-web"
+    },
+    "sqlean": {
+      "name": "sqlean",
+      "description": "Bibliothèque d'extensions SQLite — ajoute regexp (PCRE2), fuzzy (Levenshtein, Jaro-Winkler, phonétique), text, stats, vsv et fileio.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLEAN_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/nalgeon/sqlean",
+      "source_url": "https://github.com/nalgeon/sqlean",
+      "path": "sqlean"
+    },
+    "sqlit": {
+      "name": "sqlit",
+      "description": "Client TUI léger multi-bases inspiré de lazygit — parcourir les tables, lancer des requêtes et copier les résultats.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLIT_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/Maxteabag/sqlit",
+      "source_url": "https://github.com/Maxteabag/sqlit",
+      "path": "sqlit"
+    },
+    "sqlite-native": {
+      "name": "sqlite-native",
+      "description": "Moteur SQLite natif — B-trees, WITHOUT ROWID, index partiels/couverts, FTS5, R-Tree, tables virtuelles.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITE_NATIVE_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/sqlite/sqlite",
+      "source_url": "https://github.com/sqlite/sqlite",
+      "path": "sqlite-native"
+    },
+    "sqlite-regex": {
+      "name": "sqlite-regex",
+      "description": "Extension regex rapide en Rust — opérateur regexp, extraction de groupes, regex_find_all et RegexSet directement dans SQL.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITE_REGEX_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/asg017/sqlite-regex",
+      "source_url": "https://github.com/asg017/sqlite-regex",
+      "path": "sqlite-regex"
+    },
+    "sqlite-tui-megamanics": {
+      "name": "sqlite-tui-megamanics",
+      "description": "Navigateur SQLite TUI avec plugins de recherche — navigation vim, tri de colonnes et modes de recherche (mot-clé, FTS5, regex, filtre colonne, WHERE).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITE_TUI_MEGAMANICS_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/megamanics/sqlite-tui",
+      "source_url": "https://github.com/megamanics/sqlite-tui",
+      "path": "sqlite-tui-megamanics"
+    },
+    "sqlite-tui-pastalikek65": {
+      "name": "sqlite-tui-pastalikek65",
+      "description": "Visionneuse TUI SQLite binaire unique — affiche tables, lignes et taille WAL en terminal sans CGO (<40 Mo RAM).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITE_TUI_PASTALIKEK65_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/Pastalikek65/sqlite-tui",
+      "source_url": "https://github.com/Pastalikek65/sqlite-tui",
+      "path": "sqlite-tui-pastalikek65"
+    },
+    "sqlite-utils": {
+      "name": "sqlite-utils",
+      "description": "Utilitaire CLI & bibliothèque SQLite — inspection de tables, requêtes SQL, jointures rapides en mémoire et chargement de données structurées.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITE_UTILS_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/simonw/sqlite-utils",
+      "source_url": "https://github.com/simonw/sqlite-utils",
+      "path": "sqlite-utils"
+    },
+    "sqlite-vec": {
+      "name": "sqlite-vec",
+      "description": "Recherche vectorielle embarquée dans SQLite — extension C sans dépendance externe pour requêtes de similarité vectorielle dans des tables virtuelles vec0.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITE_VEC_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/asg017/sqlite-vec",
+      "source_url": "https://github.com/asg017/sqlite-vec",
+      "path": "sqlite-vec"
+    },
+    "sqlite-vss": {
+      "name": "sqlite-vss",
+      "description": "Extension historique de recherche vectorielle SQLite basée sur Faiss — référence d'intégration vectorielle/SQLite.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITE_VSS_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/asg017/sqlite-vss",
+      "source_url": "https://github.com/asg017/sqlite-vss",
+      "path": "sqlite-vss"
+    },
+    "sqlite-vtab-opendal": {
+      "name": "sqlite-vtab-opendal",
+      "description": "Tables virtuelles SQLite fédérées pour interroger des métadonnées/fichiers sans ingestion massive.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITE_VTAB_OPENDAL_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/mukhtaronif/sqlite-vtab-opendal",
+      "source_url": "https://github.com/mukhtaronif/sqlite-vtab-opendal",
+      "path": "sqlite-vtab-opendal"
+    },
+    "sqlite-zig": {
+      "name": "sqlite-zig",
+      "description": "Réimplémentation native d'un moteur compatible SQLite en Zig (pages B-tree, parseur, planificateur).",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITE_ZIG_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/muhammad-fiaz/sqlite.zig",
+      "source_url": "https://github.com/muhammad-fiaz/sqlite.zig",
+      "path": "sqlite-zig"
+    },
+    "sqlitebiter": {
+      "name": "sqlitebiter",
+      "description": "Convertisseur multi-formats vers SQLite — transforme CSV, TSV, JSON, LDJSON, Markdown, HTML ou feuilles tabulaires en bases SQLite.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITEBITER_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/thombashi/sqlitebiter",
+      "source_url": "https://github.com/thombashi/sqlitebiter",
+      "path": "sqlitebiter"
+    },
+    "sqlitebrowser": {
+      "name": "sqlitebrowser",
+      "description": "Navigateur visuel open source pour inspecter les tables, cellules, schémas et requêtes SQLite.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_SQLITEBROWSER_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/sqlitebrowser/sqlitebrowser",
+      "source_url": "https://github.com/sqlitebrowser/sqlitebrowser",
+      "path": "sqlitebrowser"
     },
     "ssm-matrix-extractor": {
       "type": "SKILL",
@@ -2142,11 +2914,77 @@
       "layer": "L4-TOOLS",
       "path": "strata-topology-navigator"
     },
+    "stub-to-client-transformation": {
+      "name": "stub-to-client-transformation",
+      "description": "Remplace un stub menteur par un client HTTP fonctionnel (urllib.request).",
+      "version": "1.0.0",
+      "intent_hash": "0xSTUB_TO_CLIENT_TRANSFORMATION_20261119",
+      "stratum": "L0-CANON",
+      "layer": "L0-CANON",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/stub-to-client-transformation/SKILL.md",
+      "path": "stub-to-client-transformation"
+    },
+    "submodule-citizen": {
+      "name": "submodule-citizen",
+      "description": "Citoyen persistant sous VEX qui surveille les sous-modules tiers modifies localement.",
+      "version": "1.0.0",
+      "intent_hash": "0xSUBMODULE_CITIZEN_20261124",
+      "stratum": "L0-CANON",
+      "layer": "L0-CANON",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/submodule-citizen/SKILL.md",
+      "path": "submodule-citizen"
+    },
+    "submodule-cleanup-skill": {
+      "name": "submodule-cleanup-skill",
+      "description": "Nettoie les sous-modules tiers modifies localement en preservant les patches.",
+      "version": "1.0.0",
+      "intent_hash": "0xSUBMODULE_CLEANUP_SKILL_20261124",
+      "stratum": "L0-CANON",
+      "layer": "L0-CANON",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/submodule-cleanup-skill/SKILL.md",
+      "path": "submodule-cleanup-skill"
+    },
+    "submodule-guardian": {
+      "name": "submodule-guardian",
+      "description": "Detecte et classe les sous-modules git gerivdb vs tierce.",
+      "version": "1.0.0",
+      "intent_hash": "0xSUBMODULE_GUARDIAN_20261124",
+      "stratum": "L0-CANON",
+      "layer": "L0-CANON",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/submodule-guardian/SKILL.md",
+      "path": "submodule-guardian"
+    },
     "swarm-git-coordinator": {
       "type": "SKILL",
       "version": "1.0.0",
       "intent_hash": "0xSWARM_GIT_COORDINATOR_20260808",
       "path": "swarm-git-coordinator"
+    },
+    "tables-import": {
+      "name": "tables-import",
+      "description": "Chargement de CSV / JSON / NDJSON / HTML en SQLite — importe des sources tabulaires ou flux JSON en tables relationnelles indexées.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_TABLES_IMPORT_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/zzolo/tables",
+      "source_url": "https://github.com/zzolo/tables",
+      "path": "tables-import"
+    },
+    "teaqlite": {
+      "name": "teaqlite",
+      "description": "Navigateur & éditeur TUI clavier en Go — parcours de tables, recherche floue (/), vue ligne par ligne et exécution SQL dans le terminal.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_TEAQLITE_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/taigrr/teaqlite",
+      "source_url": "https://github.com/taigrr/teaqlite",
+      "path": "teaqlite"
     },
     "temp-file-cleaner": {
       "name": "temp-file-cleaner",
@@ -2173,12 +3011,45 @@
       "source_path": ".kilo/skills/thermal-predictor/SKILL.md",
       "path": "thermal-predictor"
     },
+    "thread-keeper": {
+      "name": "thread-keeper",
+      "description": "Récolte automatique de skills (SKILL.md), validation/purge par usage et synchronisation multi-CLI via MCP local.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_THREAD_KEEPER_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/po4erk91/thread-keeper",
+      "source_url": "https://github.com/po4erk91/thread-keeper",
+      "path": "thread-keeper"
+    },
+    "timerise-skills": {
+      "name": "timerise-skills",
+      "description": "Modèle de skills découpés (SKILL.md, references/, assets/, evals/) avec règles strictes et versions.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_TIMERISE_SKILLS_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/timerise-ai/skills",
+      "source_url": "https://github.com/timerise-ai/skills",
+      "path": "timerise-skills"
+    },
     "traceability": {
       "name": "traceability",
       "description": "Traçabilité systématique des décisions et des choix. Relie chaque proposition à un besoin identifié, une source documentée, et un indicateur mesurable. Utiliser avant de rédiger un rapport, PRD, ADR ou INTENT.",
       "version": "1.0.0",
       "intent_hash": "0xTRACEABILITY_SKILL_20260809",
       "path": "traceability"
+    },
+    "tree-sitter": {
+      "name": "tree-sitter",
+      "description": "Parseur incrémental de référence pour extraire des nœuds syntaxiques précis et faire du slicing de fichiers/code.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_TREE_SITTER_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/tree-sitter/tree-sitter",
+      "source_url": "https://github.com/tree-sitter/tree-sitter",
+      "path": "tree-sitter"
     },
     "typescript-compile-fixer": {
       "name": "typescript-compile-fixer",
@@ -2244,6 +3115,26 @@
       "source_path": ".kilo/skills/wal-auto-logger/SKILL.md",
       "path": "wal-auto-logger"
     },
+    "wazaa-bus-integration": {
+      "name": "wazaa-bus-integration",
+      "description": "Définit le protocole de message WAZAA pour le tunnel ENV2 ↔ ENV3. WAZAA est le système bus du métacluster qui orchestre tous les repos comme sous-modules, avec WISPX comme middleware de pont.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_WAZAA_BUS_INTEGRATION_20261125",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "gerivdb/SKILLS",
+      "path": "wazaa-bus-integration"
+    },
+    "wazaa-bus-relay": {
+      "name": "wazaa-bus-relay",
+      "description": "Relais du bus WAZAA sur le tunnel CDP persistant. Encapsule les messages WAZAA JSON enveloppé et les envoie à ENV3 (Gemini) via CDP. Lit la réponse et vérifie la preuve d'intégrité.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_WAZAA_BUS_RELAY_20261125",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "gerivdb/SKILLS",
+      "path": "wazaa-bus-relay"
+    },
     "webview-runtime-crash-analyzer": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -2256,6 +3147,17 @@
       "source_path": "skills/webview-runtime-crash-analyzer/SKILL.md",
       "path": "webview-runtime-crash-analyzer"
     },
+    "windmill": {
+      "name": "windmill",
+      "description": "Transforme des scripts (Python, TypeScript, Go, Bash) et workflows en briques typées, versionnées et rejouables.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_WINDMILL_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/windmill-labs/windmill",
+      "source_url": "https://github.com/windmill-labs/windmill",
+      "path": "windmill"
+    },
     "windows-zombie-port-cleaner": {
       "type": "SKILL",
       "version": "1.0.0",
@@ -2267,6 +3169,17 @@
       "source_repo": "gerivdb/SKILLS",
       "source_path": "skills/windows-zombie-port-cleaner/SKILL.md",
       "path": "windows-zombie-port-cleaner"
+    },
+    "workrally": {
+      "name": "workrally",
+      "description": "Transforme des chaînes de traitements complexes en interfaces et APIs réutilisables.",
+      "version": "1.0.0",
+      "intent_hash": "0xSKILL_WORKRALLY_20261124",
+      "layer": "L4-TOOLS",
+      "author": "gerivdb",
+      "source_repo": "external/Tencent/workrally",
+      "source_url": "https://github.com/Tencent/workrally",
+      "path": "workrally"
     },
     "worktree-hygiene-auditor": {
       "name": "worktree-hygiene-auditor",
@@ -2300,809 +3213,6 @@
       "source_repo": "gerivdb/GeriCode",
       "source_path": ".kilo/skills/yaml-safe-injector/SKILL.md",
       "path": "yaml-safe-injector"
-    },
-    "cass-memory-system": {
-      "name": "cass-memory-system",
-      "description": "Transforme l'historique dispersé des sessions d'agents en mémoire procédurale persistante et détecte les anti-patterns récurrents.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_CASS_MEMORY_SYSTEM_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/Dicklesworthstone/cass_memory_system",
-      "source_url": "https://github.com/Dicklesworthstone/cass_memory_system",
-      "path": "cass-memory-system"
-    },
-    "memskill": {
-      "name": "memskill",
-      "description": "Boucle d'apprentissage qui extrait, raffine et réutilise des skills à partir des trajectoires et retours d'exécution.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_MEMSKILL_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/ViktorAxelsen/MemSkill",
-      "source_url": "https://github.com/ViktorAxelsen/MemSkill",
-      "path": "memskill"
-    },
-    "agent-skills-survey": {
-      "name": "agent-skills-survey",
-      "description": "Cartographie les approches d'acquisition, distillation, composition et raffinement de skills (Voyager, SkillWeaver, ASI, CASCADE, ReMe, LEGOMem).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AGENT_SKILLS_SURVEY_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/yashonwu/agent-skills-survey",
-      "source_url": "https://github.com/yashonwu/agent-skills-survey",
-      "path": "agent-skills-survey"
-    },
-    "agent-memory-techniques": {
-      "name": "agent-memory-techniques",
-      "description": "Notebook et implémentation de mémoire procédurale (extraction de séquences d'actions, paramétrisation de templates et réutilisation).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AGENT_MEMORY_TECHNIQUES_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/NirDiamant/Agent_Memory_Techniques",
-      "source_url": "https://github.com/NirDiamant/Agent_Memory_Techniques",
-      "path": "agent-memory-techniques"
-    },
-    "ai-agent-skills": {
-      "name": "ai-agent-skills",
-      "description": "Patterns inspirés de Voyager (curriculum automatique, bibliothèque de skills vérifiés, raffinement itératif et composition de skills).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AI_AGENT_SKILLS_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/sreerevanth/AI-Agent-Skills",
-      "source_url": "https://github.com/sreerevanth/AI-Agent-Skills",
-      "path": "ai-agent-skills"
-    },
-    "thread-keeper": {
-      "name": "thread-keeper",
-      "description": "Récolte automatique de skills (SKILL.md), validation/purge par usage et synchronisation multi-CLI via MCP local.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_THREAD_KEEPER_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/po4erk91/thread-keeper",
-      "source_url": "https://github.com/po4erk91/thread-keeper",
-      "path": "thread-keeper"
-    },
-    "refly": {
-      "name": "refly",
-      "description": "Convertit des workflows et SOP en skills versionnés, exécutables et exposables en outils/MCP avec garde-fous déterministes.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_REFLY_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/refly-ai/refly",
-      "source_url": "https://github.com/refly-ai/refly",
-      "path": "refly"
-    },
-    "windmill": {
-      "name": "windmill",
-      "description": "Transforme des scripts (Python, TypeScript, Go, Bash) et workflows en briques typées, versionnées et rejouables.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_WINDMILL_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/windmill-labs/windmill",
-      "source_url": "https://github.com/windmill-labs/windmill",
-      "path": "windmill"
-    },
-    "n8n": {
-      "name": "n8n",
-      "description": "Enchaînement de nœuds et scripts automatisés pour figer des suites d'actions répétitives en workflows déterministes.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_N8N_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/n8n-io/n8n",
-      "source_url": "https://github.com/n8n-io/n8n",
-      "path": "n8n"
-    },
-    "agentic-flow": {
-      "name": "agentic-flow",
-      "description": "Skills dédiés à l'automatisation de workflows, pipelines et coordination d'exécution.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AGENTIC_FLOW_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/ruvnet/agentic-flow",
-      "source_url": "https://github.com/ruvnet/agentic-flow",
-      "path": "agentic-flow"
-    },
-    "awesome-omni-skill": {
-      "name": "awesome-omni-skill",
-      "description": "Modèles de conception de workflows d'agents, gestion d'état et découpage de tâches.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AWESOME_OMNI_SKILL_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/diegosouzapw/awesome-omni-skill",
-      "source_url": "https://github.com/diegosouzapw/awesome-omni-skill",
-      "path": "awesome-omni-skill"
-    },
-    "workrally": {
-      "name": "workrally",
-      "description": "Transforme des chaînes de traitements complexes en interfaces et APIs réutilisables.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_WORKRALLY_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/Tencent/workrally",
-      "source_url": "https://github.com/Tencent/workrally",
-      "path": "workrally"
-    },
-    "agent-skills-addy-osmani": {
-      "name": "agent-skills-addy-osmani",
-      "description": "Encodage de workflows avec critères de sortie, garde-fous anti-rationalisation et exigences de vérification.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AGENT_SKILLS_ADDY_OSMANI_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/addyosmani/agent-skills",
-      "source_url": "https://github.com/addyosmani/agent-skills",
-      "path": "agent-skills-addy-osmani"
-    },
-    "agent-skills-commandcodeai": {
-      "name": "agent-skills-commandcodeai",
-      "description": "Organisation de skills combinant instructions (SKILL.md), scripts exécutables, templates et ressources.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AGENT_SKILLS_COMMANDCODEAI_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/commandcodeai/agent-skills",
-      "source_url": "https://github.com/commandcodeai/agent-skills",
-      "path": "agent-skills-commandcodeai"
-    },
-    "agent-toolkit": {
-      "name": "agent-toolkit",
-      "description": "Skills packagés avec dossiers scripts/ et references/ pour standardiser des tâches récurrentes.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AGENT_TOOLKIT_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/softaworks/agent-toolkit",
-      "source_url": "https://github.com/softaworks/agent-toolkit",
-      "path": "agent-toolkit"
-    },
-    "timerise-skills": {
-      "name": "timerise-skills",
-      "description": "Modèle de skills découpés (SKILL.md, references/, assets/, evals/) avec règles strictes et versions.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_TIMERISE_SKILLS_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/timerise-ai/skills",
-      "source_url": "https://github.com/timerise-ai/skills",
-      "path": "timerise-skills"
-    },
-    "greybeard": {
-      "name": "greybeard",
-      "description": "Skills de contrôle et de vérification d'exécution pour agents.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_GREYBEARD_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/clawnify/greybeard",
-      "source_url": "https://github.com/clawnify/greybeard",
-      "path": "greybeard"
-    },
-    "building-with-decision-models": {
-      "name": "building-with-decision-models",
-      "description": "Exemple de skill structuré pour ancrer des décisions dans des modèles explicites.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_BUILDING_WITH_DECISION_MODELS_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/aaddrick/building-with-decision-models",
-      "source_url": "https://github.com/aaddrick/building-with-decision-models",
-      "path": "building-with-decision-models"
-    },
-    "mcp-server-modular": {
-      "name": "mcp-server-modular",
-      "description": "Expose des fonctions, workflows et ressources sous forme d'outils standards invoquables via MCP.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_MCP_SERVER_MODULAR_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/converged-computing/mcp-server",
-      "source_url": "https://github.com/converged-computing/mcp-server",
-      "path": "mcp-server-modular"
-    },
-    "minimax-mcp": {
-      "name": "minimax-mcp",
-      "description": "Exemple d'encapsulation d'actions/API en outils invoquables de manière standardisée.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_MINIMAX_MCP_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/MiniMax-AI/MiniMax-MCP",
-      "source_url": "https://github.com/MiniMax-AI/MiniMax-MCP",
-      "path": "minimax-mcp"
-    },
-    "comfyui-mcp": {
-      "name": "comfyui-mcp",
-      "description": "Transforme des graphes/pipelines d'exécution en actions appelables via MCP.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_COMFYUI_MCP_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/artokun/comfyui-mcp",
-      "source_url": "https://github.com/artokun/comfyui-mcp",
-      "path": "comfyui-mcp"
-    },
-    "awesome-ai-image-skills": {
-      "name": "awesome-ai-image-skills",
-      "description": "Exemples concrets de couplage SKILL.md + CLI/MCP pour figer des séquences d'exécution.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AWESOME_AI_IMAGE_SKILLS_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/zhuyansen/awesome-ai-image-skills",
-      "source_url": "https://github.com/zhuyansen/awesome-ai-image-skills",
-      "path": "awesome-ai-image-skills"
-    },
-    "sqlite-tui-pastalikek65": {
-      "name": "sqlite-tui-pastalikek65",
-      "description": "Visionneuse TUI SQLite binaire unique — affiche tables, lignes et taille WAL en terminal sans CGO (<40 Mo RAM).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITE_TUI_PASTALIKEK65_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/Pastalikek65/sqlite-tui",
-      "source_url": "https://github.com/Pastalikek65/sqlite-tui",
-      "path": "sqlite-tui-pastalikek65"
-    },
-    "teaqlite": {
-      "name": "teaqlite",
-      "description": "Navigateur & éditeur TUI clavier en Go — parcours de tables, recherche floue (/), vue ligne par ligne et exécution SQL dans le terminal.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_TEAQLITE_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/taigrr/teaqlite",
-      "source_url": "https://github.com/taigrr/teaqlite",
-      "path": "teaqlite"
-    },
-    "harlequin": {
-      "name": "harlequin",
-      "description": "IDE SQL terminal avec catalogue & CLI headless (hsql) — exploration de catalogue/schéma, exécution de requêtes et compagnon CLI pour scripts/agents.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_HARLEQUIN_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/tconbeer/harlequin",
-      "source_url": "https://github.com/tconbeer/harlequin",
-      "path": "harlequin"
-    },
-    "sqlit": {
-      "name": "sqlit",
-      "description": "Client TUI léger multi-bases inspiré de lazygit — parcourir les tables, lancer des requêtes et copier les résultats.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLIT_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/Maxteabag/sqlit",
-      "source_url": "https://github.com/Maxteabag/sqlit",
-      "path": "sqlit"
-    },
-    "jdbrowser": {
-      "name": "jdbrowser",
-      "description": "Navigateur SQLite TUI en Rust — exploration rapide de tables et vues en ligne de commande avec copie presse-papiers.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_JDBROWSER_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/Jkeyuk/JDbrowser",
-      "source_url": "https://github.com/Jkeyuk/JDbrowser",
-      "path": "jdbrowser"
-    },
-    "sqlite-tui-megamanics": {
-      "name": "sqlite-tui-megamanics",
-      "description": "Navigateur SQLite TUI avec plugins de recherche — navigation vim, tri de colonnes et modes de recherche (mot-clé, FTS5, regex, filtre colonne, WHERE).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITE_TUI_MEGAMANICS_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/megamanics/sqlite-tui",
-      "source_url": "https://github.com/megamanics/sqlite-tui",
-      "path": "sqlite-tui-megamanics"
-    },
-    "sqlite-utils": {
-      "name": "sqlite-utils",
-      "description": "Utilitaire CLI & bibliothèque SQLite — inspection de tables, requêtes SQL, jointures rapides en mémoire et chargement de données structurées.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITE_UTILS_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/simonw/sqlite-utils",
-      "source_url": "https://github.com/simonw/sqlite-utils",
-      "path": "sqlite-utils"
-    },
-    "fzql": {
-      "name": "fzql",
-      "description": "Recherche floue interactive sur résultats SQLite — pipe les sorties sqlite3 vers fzf pour filtrer et sélectionner des lignes à la volée.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_FZQL_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/benewberg/fzql",
-      "source_url": "https://github.com/benewberg/fzql",
-      "path": "fzql"
-    },
-    "ffts-grep": {
-      "name": "ffts-grep",
-      "description": "Indexeur plein texte rapide basé sur SQLite FTS5 — indexation FTS5 avec classement BM25 et requêtes sub-10ms sur arborescences de fichiers.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_FFTS_GREP_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/mneves75/ffts-grep",
-      "source_url": "https://github.com/mneves75/ffts-grep",
-      "path": "ffts-grep"
-    },
-    "ctxgrep": {
-      "name": "ctxgrep",
-      "description": "Recherche locale contexte / texte / regex / FTS5 — CLI locale sur SQLite + FTS5 combinant recherche exacte, regex, sémantique et mémoire.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_CTXGREP_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/yetone/ctxgrep",
-      "source_url": "https://github.com/yetone/ctxgrep",
-      "path": "ctxgrep"
-    },
-    "db-cli": {
-      "name": "db-cli",
-      "description": "CLI d'inspection relationnelle avec sorties table/json/csv — description de tables, échantillonnage de lignes et requêtes en lecture seule formatées pour scripts ou agents.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_DB_CLI_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/jeffersongoncalves/db-cli",
-      "source_url": "https://github.com/jeffersongoncalves/db-cli",
-      "path": "db-cli"
-    },
-    "litecli": {
-      "name": "litecli",
-      "description": "CLI SQLite avec autocomplétion & coloration — édition interactive rapide de requêtes SQLite dans le terminal.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_LITECLI_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/dbcli/litecli",
-      "source_url": "https://github.com/dbcli/litecli",
-      "path": "litecli"
-    },
-    "sql-web": {
-      "name": "sql-web",
-      "description": "Explorateur web local binaire unique en Rust — interface web locale légère pour parcourir les tables SQLite avec pagination et mode lecture seule.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQL_WEB_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/YinMo19/sql-web",
-      "source_url": "https://github.com/YinMo19/sql-web",
-      "path": "sql-web"
-    },
-    "sqlean": {
-      "name": "sqlean",
-      "description": "Bibliothèque d'extensions SQLite — ajoute regexp (PCRE2), fuzzy (Levenshtein, Jaro-Winkler, phonétique), text, stats, vsv et fileio.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLEAN_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/nalgeon/sqlean",
-      "source_url": "https://github.com/nalgeon/sqlean",
-      "path": "sqlean"
-    },
-    "sqlite-regex": {
-      "name": "sqlite-regex",
-      "description": "Extension regex rapide en Rust — opérateur regexp, extraction de groupes, regex_find_all et RegexSet directement dans SQL.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITE_REGEX_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/asg017/sqlite-regex",
-      "source_url": "https://github.com/asg017/sqlite-regex",
-      "path": "sqlite-regex"
-    },
-    "reglite": {
-      "name": "reglite",
-      "description": "Extension opérateur regex léger — correspondance d'expressions régulières sur colonnes texte et blob dans SQLite.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_REGLITE_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/caido/reglite",
-      "source_url": "https://github.com/caido/reglite",
-      "path": "reglite"
-    },
-    "fts5-expose": {
-      "name": "fts5-expose",
-      "description": "Inspection interne du tokenizer FTS5 — expose fts5_tokenize() pour vérifier comment SQLite découpe les chaînes selon le tokenizer choisi.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_FTS5_EXPOSE_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/FaFre/fts5_expose",
-      "source_url": "https://github.com/FaFre/fts5_expose",
-      "path": "fts5-expose"
-    },
-    "sqlite-vec": {
-      "name": "sqlite-vec",
-      "description": "Recherche vectorielle embarquée dans SQLite — extension C sans dépendance externe pour requêtes de similarité vectorielle dans des tables virtuelles vec0.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITE_VEC_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/asg017/sqlite-vec",
-      "source_url": "https://github.com/asg017/sqlite-vec",
-      "path": "sqlite-vec"
-    },
-    "tables-import": {
-      "name": "tables-import",
-      "description": "Chargement de CSV / JSON / NDJSON / HTML en SQLite — importe des sources tabulaires ou flux JSON en tables relationnelles indexées.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_TABLES_IMPORT_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/zzolo/tables",
-      "source_url": "https://github.com/zzolo/tables",
-      "path": "tables-import"
-    },
-    "sqlitebiter": {
-      "name": "sqlitebiter",
-      "description": "Convertisseur multi-formats vers SQLite — transforme CSV, TSV, JSON, LDJSON, Markdown, HTML ou feuilles tabulaires en bases SQLite.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITEBITER_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/thombashi/sqlitebiter",
-      "source_url": "https://github.com/thombashi/sqlitebiter",
-      "path": "sqlitebiter"
-    },
-    "sqlite-native": {
-      "name": "sqlite-native",
-      "description": "Moteur SQLite natif — B-trees, WITHOUT ROWID, index partiels/couverts, FTS5, R-Tree, tables virtuelles.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITE_NATIVE_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/sqlite/sqlite",
-      "source_url": "https://github.com/sqlite/sqlite",
-      "path": "sqlite-native"
-    },
-    "libsql": {
-      "name": "libsql",
-      "description": "Fork open source de SQLite avec répliques embarquées, UDFs et extensions d'exécution.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_LIBSQL_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/tursodatabase/libsql",
-      "source_url": "https://github.com/tursodatabase/libsql",
-      "path": "libsql"
-    },
-    "sqlite-vss": {
-      "name": "sqlite-vss",
-      "description": "Extension historique de recherche vectorielle SQLite basée sur Faiss — référence d'intégration vectorielle/SQLite.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITE_VSS_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/asg017/sqlite-vss",
-      "source_url": "https://github.com/asg017/sqlite-vss",
-      "path": "sqlite-vss"
-    },
-    "datasette": {
-      "name": "datasette",
-      "description": "Outil d'exploration, de filtrage par facettes/requêtes et de publication de bases SQLite (incluant Datasette Lite en WASM).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_DATASETTE_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/simonw/datasette",
-      "source_url": "https://github.com/simonw/datasette",
-      "path": "datasette"
-    },
-    "duckdb-sqlite": {
-      "name": "duckdb-sqlite",
-      "description": "Extension permettant à DuckDB de lire/écrire directement des fichiers SQLite pour des coupes analytiques rapides.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_DUCKDB_SQLITE_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/duckdb/duckdb-sqlite",
-      "source_url": "https://github.com/duckdb/duckdb-sqlite",
-      "path": "duckdb-sqlite"
-    },
-    "dolt": {
-      "name": "dolt",
-      "description": "Base de données SQL avec versionnage type Git (branches, diffs, merges au niveau des lignes/tables).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_DOLT_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/dolthub/dolt",
-      "source_url": "https://github.com/dolthub/dolt",
-      "path": "dolt"
-    },
-    "minisqlite": {
-      "name": "minisqlite",
-      "description": "Implémentation éducative/modulaire d'un moteur type SQLite en Go (B-trees de tables/index, index couvrants, curseurs).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_MINISQLITE_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/cursor/minisqlite",
-      "source_url": "https://github.com/cursor/minisqlite",
-      "path": "minisqlite"
-    },
-    "sqlitebrowser": {
-      "name": "sqlitebrowser",
-      "description": "Navigateur visuel open source pour inspecter les tables, cellules, schémas et requêtes SQLite.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITEBROWSER_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/sqlitebrowser/sqlitebrowser",
-      "source_url": "https://github.com/sqlitebrowser/sqlitebrowser",
-      "path": "sqlitebrowser"
-    },
-    "sqlite-zig": {
-      "name": "sqlite-zig",
-      "description": "Réimplémentation native d'un moteur compatible SQLite en Zig (pages B-tree, parseur, planificateur).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITE_ZIG_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/muhammad-fiaz/sqlite.zig",
-      "source_url": "https://github.com/muhammad-fiaz/sqlite.zig",
-      "path": "sqlite-zig"
-    },
-    "sqlite-vtab-opendal": {
-      "name": "sqlite-vtab-opendal",
-      "description": "Tables virtuelles SQLite fédérées pour interroger des métadonnées/fichiers sans ingestion massive.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_SQLITE_VTAB_OPENDAL_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/mukhtaronif/sqlite-vtab-opendal",
-      "source_url": "https://github.com/mukhtaronif/sqlite-vtab-opendal",
-      "path": "sqlite-vtab-opendal"
-    },
-    "tree-sitter": {
-      "name": "tree-sitter",
-      "description": "Parseur incrémental de référence pour extraire des nœuds syntaxiques précis et faire du slicing de fichiers/code.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_TREE_SITTER_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/tree-sitter/tree-sitter",
-      "source_url": "https://github.com/tree-sitter/tree-sitter",
-      "path": "tree-sitter"
-    },
-    "astchunk": {
-      "name": "astchunk",
-      "description": "Boîte à outils Python basée sur Tree-sitter pour découper le code en segments syntaxiques cohérents (AST chunking/slicing).",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_ASTCHUNK_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/yilinjz/astchunk",
-      "source_url": "https://github.com/yilinjz/astchunk",
-      "path": "astchunk"
-    },
-    "antigravity-brain-visualizer": {
-      "name": "antigravity-brain-visualizer",
-      "description": "Visualiseur web interactif pour traces d'exécution d'agents Antigravity, indexant SQLite et diffs de code.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_ANTIGRAVITY_BRAIN_VISUALIZER_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/glaforge/antigravity-brain-visualizer",
-      "source_url": "https://github.com/glaforge/antigravity-brain-visualizer",
-      "path": "antigravity-brain-visualizer"
-    },
-    "antigravity-gemini-extension": {
-      "name": "antigravity-gemini-extension",
-      "description": "Extension liée aux workflows Antigravity / Gemini et à l'interaction navigateur/CDP.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_ANTIGRAVITY_GEMINI_EXTENSION_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/lucasmartins-ai/antigravity-gemini-extension",
-      "source_url": "https://github.com/lucasmartins-ai/antigravity-gemini-extension",
-      "path": "antigravity-gemini-extension"
-    },
-    "gemini-browser": {
-      "name": "gemini-browser",
-      "description": "Exemple open source d'agent navigateur piloté avec Gemini.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_GEMINI_BROWSER_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/browserbase/gemini-browser",
-      "source_url": "https://github.com/browserbase/gemini-browser",
-      "path": "gemini-browser"
-    },
-    "mem0": {
-      "name": "mem0",
-      "description": "Couche mémoire pour agents IA combinant recherche sémantique, mots-clés et liens d'entités.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_MEM0_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/mem0ai/mem0",
-      "source_url": "https://github.com/mem0ai/mem0",
-      "path": "mem0"
-    },
-    "letta": {
-      "name": "letta",
-      "description": "Plateforme d'agents avec mémoire hiérarchisée et gestion d'états persistants.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_LETTA_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/letta-ai/letta",
-      "source_url": "https://github.com/letta-ai/letta",
-      "path": "letta"
-    },
-    "aider": {
-      "name": "aider",
-      "description": "Assistant de programmation en terminal utilisant des cartes de symboles/graphes pour cibler les bons extraits de code.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_AIDER_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "external/Aider-AI/aider",
-      "source_url": "https://github.com/Aider-AI/aider",
-      "path": "aider"
-    },
-    "cdp-chat-gemini-dom-inspector": {
-      "name": "cdp-chat-gemini-dom-inspector",
-      "description": "Inspection du DOM de l'onglet Gemini via CDP pour découvrir les sélecteurs CSS réels des messages assistant.",
-      "version": "1.0.0",
-      "intent_hash": "0xM3_SKILL_CDP_CHAT_GEMINI_DOM_INSPECTOR_20261124",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "gerivdb/SKILLS",
-      "path": "cdp-chat-gemini-dom-inspector"
-    },
-    "cdp-chat-gemini-read-v2": {
-      "name": "cdp-chat-gemini-read-v2",
-      "description": "Lecture de la réponse assistant du chat Gemini via CDP avec le sélecteur DOM actuel (div.markdown-main-panel.md-content). Remplace le skill v1 obsolète (.message-text).",
-      "version": "2.0.0",
-      "intent_hash": "0xM3_SKILL_CDP_CHAT_GEMINI_READ_V2_20261125",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "gerivdb/SKILLS",
-      "path": "cdp-chat-gemini-read-v2"
-    },
-    "wazaa-bus-integration": {
-      "name": "wazaa-bus-integration",
-      "description": "Définit le protocole de message WAZAA pour le tunnel ENV2 ↔ ENV3. WAZAA est le système bus du métacluster qui orchestre tous les repos comme sous-modules, avec WISPX comme middleware de pont.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_WAZAA_BUS_INTEGRATION_20261125",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "gerivdb/SKILLS",
-      "path": "wazaa-bus-integration"
-    },
-    "wazaa-bus-relay": {
-      "name": "wazaa-bus-relay",
-      "description": "Relais du bus WAZAA sur le tunnel CDP persistant. Encapsule les messages WAZAA JSON enveloppé et les envoie à ENV3 (Gemini) via CDP. Lit la réponse et vérifie la preuve d'intégrité.",
-      "version": "1.0.0",
-      "intent_hash": "0xSKILL_WAZAA_BUS_RELAY_20261125",
-      "layer": "L4-TOOLS",
-      "author": "gerivdb",
-      "source_repo": "gerivdb/SKILLS",
-      "path": "wazaa-bus-relay"
-    },
-    "comet-embedded-extensions": {
-      "name": "comet-embedded-extensions",
-      "version": "0.1.1",
-      "status": "active",
-      "type": "procedural",
-      "category": "cdp",
-      "intent_hash": "0xCOMET_EMBEDDED_EXTENSIONS_20261126",
-      "provenance": "imported",
-      "source_shard": "ENV2",
-      "created_at": "2026-11-26T06:45:00Z",
-      "updated_at": "2026-11-26T07:30:00Z",
-      "author": "Kilo (Shard G, ENV2)",
-      "triggers": [
-        "comet",
-        "extensions embarquees",
-        "external_extensions.json",
-        "CRX",
-        "install extension"
-      ],
-      "anti_triggers": [
-        "headless",
-        "profil temporaire",
-        "playwright launch",
-        "profil jetable"
-      ],
-      "tags": [
-        "comet",
-        "extensions-embarquees",
-        "cdp",
-        "crx",
-        "profil-2"
-      ],
-      "path": "comet-embedded-extensions"
-    },
-    "comet-universal-content-script": {
-      "name": "comet-universal-content-script",
-      "version": "0.1.1",
-      "status": "active",
-      "type": "procedural",
-      "category": "cdp",
-      "intent_hash": "0xCOMET_UNIVERSAL_CONTENT_SCRIPT_20261126",
-      "provenance": "imported",
-      "source_shard": "ENV2",
-      "created_at": "2026-11-26T06:48:00Z",
-      "updated_at": "2026-11-26T07:30:00Z",
-      "author": "Kilo (Shard G, ENV2)",
-      "triggers": [
-        "content script",
-        "universel",
-        "ISOLATED world",
-        "all_urls",
-        "observation DOM"
-      ],
-      "anti_triggers": [
-        "headless",
-        "profil temporaire",
-        "data-message-author-role",
-        "attribut suppose"
-      ],
-      "tags": [
-        "comet",
-        "content-script",
-        "universel",
-        "isolated-world",
-        "cdp",
-        "observation-dom"
-      ],
-      "path": "comet-universal-content-script"
-    },
-    "comet-proprietary-ntp": {
-      "name": "comet-proprietary-ntp",
-      "version": "0.1.1",
-      "status": "active",
-      "type": "procedural",
-      "category": "cdp",
-      "intent_hash": "0xCOMET_PROPRIETARY_NTP_20261126",
-      "provenance": "imported",
-      "source_shard": "ENV2",
-      "created_at": "2026-11-26T06:53:00Z",
-      "updated_at": "2026-11-26T07:30:00Z",
-      "author": "Kilo (Shard G, ENV2)",
-      "triggers": [
-        "ntp",
-        "new tab page",
-        "preconnect",
-        "proprietary",
-        "homepage"
-      ],
-      "anti_triggers": [
-        "headless",
-        "profil temporaire",
-        "CDN externe"
-      ],
-      "tags": [
-        "comet",
-        "ntp",
-        "new-tab-page",
-        "preconnect",
-        "cdp",
-        "homepage"
-      ],
-      "path": "comet-proprietary-ntp"
     }
   },
   "source_repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS"
