@@ -3213,6 +3213,20 @@
       "source_repo": "gerivdb/GeriCode",
       "source_path": ".kilo/skills/yaml-safe-injector/SKILL.md",
       "path": "yaml-safe-injector"
+    },
+    "dax-skill-citizen-prealable": {
+      "type": "SKILL",
+      "version": "1.0.0",
+      "status": "active",
+      "date": "2026-11-26",
+      "intent_hash": "0xDAX_SKILL_CITIZEN_PREALABLE_20261126",
+      "layer": "L0-CANON",
+      "author": "gerivdb",
+      "source_repo": "gerivdb/ENV3-repo",
+      "source_path": ".kilocode/skills/dax-skill-citizen-prealable/SKILL.md",
+      "path": "dax-skill-citizen-prealable",
+      "trigger": "skill_citizen_prealable",
+      "anti_triggers": []
     }
   },
   "source_repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS"
