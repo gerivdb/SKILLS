@@ -1,7 +1,7 @@
 ---
 name: comet-proprietary-ntp
-version: "0.1.0"
-status: draft
+version: "0.1.1"
+status: active
 type: procedural
 category: cdp
 intent_hash: 0xCOMET_PROPRIETARY_NTP_20261126

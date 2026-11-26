@@ -1,7 +1,7 @@
 ---
 name: comet-universal-content-script
-version: "0.1.0"
-status: draft
+version: "0.1.1"
+status: active
 type: procedural
 category: cdp
 intent_hash: 0xCOMET_UNIVERSAL_CONTENT_SCRIPT_20261126
