@@ -19,3 +19,12 @@
 - **Score d'utilité mis à jour** : +1 (skill créé, attente d'exécution réelle sur Chromium port 9222)
 
 **Note** : L'exécution réelle de `install_extensions.py` nécessite Chromium lancé sur Profil 2 avec CDP port 9222 répondant. Cette preuve documente la création du skill, pas son exécution runtime.
+
+## Exécution runtime (2026-11-26T06:24:00Z)
+
+- **Commande** : `python D:\DO\WEB\TOOLS\L2-PLATFORM\WEBX\scripts\cdp_inject_universal.py`
+- **Résultat** : succès — 8 onglets injectés sur 10 via CDP WebSocket, onglet NTP propriétaire créé
+- **Preuve** : `D:\DO\WEB\TOOLS\L0-CANON\ENV3-repo\EVIDENCE_COMET_RUNTIME.md` (hash `524600C971390327AF694140089AF51E1283C1B427AA95229A9145B9B44C0764`)
+- **CDP cible** : `http://localhost:9222` (Chrome 147.0.7727.55, Protocole 1.3)
+- **Onglets injectés** : gemini.google.com (x5), chat.qwen.ai (x1), et 2 autres
+- **Score d'utilité mis à jour** : +2 (exécution runtime réussie)
