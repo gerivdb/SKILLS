@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-23T22:52:38.436834Z",
+  "generated_at_utc": "2026-11-26T05:57:24.739342Z",
   "skills": {
     "act-protocol-runner": {
       "type": "SKILL",
@@ -3000,6 +3000,109 @@
       "author": "gerivdb",
       "source_repo": "gerivdb/SKILLS",
       "path": "wazaa-bus-relay"
+    },
+    "comet-embedded-extensions": {
+      "name": "comet-embedded-extensions",
+      "version": "0.1.0",
+      "status": "draft",
+      "type": "procedural",
+      "category": "cdp",
+      "intent_hash": "0xCOMET_EMBEDDED_EXTENSIONS_20261126",
+      "provenance": "imported",
+      "source_shard": "ENV2",
+      "created_at": "2026-11-26T06:45:00Z",
+      "updated_at": "2026-11-26T06:45:00Z",
+      "author": "Kilo (Shard G, ENV2)",
+      "triggers": [
+        "comet",
+        "extensions embarquees",
+        "external_extensions.json",
+        "CRX",
+        "install extension"
+      ],
+      "anti_triggers": [
+        "headless",
+        "profil temporaire",
+        "playwright launch",
+        "profil jetable"
+      ],
+      "tags": [
+        "comet",
+        "extensions-embarquees",
+        "cdp",
+        "crx",
+        "profil-2"
+      ],
+      "path": "comet-embedded-extensions"
+    },
+    "comet-universal-content-script": {
+      "name": "comet-universal-content-script",
+      "version": "0.1.0",
+      "status": "draft",
+      "type": "procedural",
+      "category": "cdp",
+      "intent_hash": "0xCOMET_UNIVERSAL_CONTENT_SCRIPT_20261126",
+      "provenance": "imported",
+      "source_shard": "ENV2",
+      "created_at": "2026-11-26T06:48:00Z",
+      "updated_at": "2026-11-26T06:48:00Z",
+      "author": "Kilo (Shard G, ENV2)",
+      "triggers": [
+        "content script",
+        "universel",
+        "ISOLATED world",
+        "all_urls",
+        "observation DOM"
+      ],
+      "anti_triggers": [
+        "headless",
+        "profil temporaire",
+        "data-message-author-role",
+        "attribut suppose"
+      ],
+      "tags": [
+        "comet",
+        "content-script",
+        "universel",
+        "isolated-world",
+        "cdp",
+        "observation-dom"
+      ],
+      "path": "comet-universal-content-script"
+    },
+    "comet-proprietary-ntp": {
+      "name": "comet-proprietary-ntp",
+      "version": "0.1.0",
+      "status": "draft",
+      "type": "procedural",
+      "category": "cdp",
+      "intent_hash": "0xCOMET_PROPRIETARY_NTP_20261126",
+      "provenance": "imported",
+      "source_shard": "ENV2",
+      "created_at": "2026-11-26T06:53:00Z",
+      "updated_at": "2026-11-26T06:53:00Z",
+      "author": "Kilo (Shard G, ENV2)",
+      "triggers": [
+        "ntp",
+        "new tab page",
+        "preconnect",
+        "proprietary",
+        "homepage"
+      ],
+      "anti_triggers": [
+        "headless",
+        "profil temporaire",
+        "CDN externe"
+      ],
+      "tags": [
+        "comet",
+        "ntp",
+        "new-tab-page",
+        "preconnect",
+        "cdp",
+        "homepage"
+      ],
+      "path": "comet-proprietary-ntp"
     }
   },
   "source_repo": "D:\\DO\\WEB\\TOOLS\\L4-TOOLS\\SKILLS"
