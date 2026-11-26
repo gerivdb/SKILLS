@@ -4,40 +4,78 @@
 #  - un fichier piste > 5 Mo (sauf pointeur Git LFS)
 #  - un fichier dans node_modules/, .venv/, __pycache__/
 #  - un fichier junk OS (.DS_Store, Thumbs.db, desktop.ini)
-#  - un potentiel secret (ghp_, gho_, AKIA, sk-, xox[b/p]-, -----BEGIN ... PRIVATE KEY)
-set -eu
+#  - un potentiel secret (ghp_, gho_, AKIA, sk-..., xox[b/p]-, -----BEGIN ... PRIVATE KEY)
 reject=0
-for file in $(git diff --cached --name-only -z | tr '\0' '\n'); do
+
+# Récupère la liste des fichiers stagés (bash word splitting gère les retours-ligne)
+staged_files=$(git diff --cached --name-only)
+
+for file in $staged_files; do
   [ -z "$file" ] && continue
+
   # T41 : fichier > 5 Mo (sauf pointeur LFS)
   if [ -e "$file" ]; then
-    sz=$(stat -c %s "$file" 2>/dev/null || echo 0)
-    if [ "$sz" -gt 5242880 ]; then
-      if head -c 160 "$file" 2>/dev/null | grep -q 'version https://git-lfs'; then
-        : # pointeur LFS, autorise
-      else
+    sz=$(python -c "import os; print(os.path.getsize('$file'))" 2>/dev/null || echo 0)
+    if [ "$sz" -gt 5242880 ] 2>/dev/null; then
+      :
+    else
+      sz_ok=1
+    fi
+    if [ -z "$sz_ok" ]; then
+      is_lfs=$(python -c "
+try:
+    with open('$file', 'rb') as f:
+        head = f.read(160)
+        print('LFS' if b'version https://git-lfs' in head else 'NOT_LFS')
+except Exception:
+    print('ERROR')
+" 2>/dev/null)
+      if [ "$is_lfs" != "LFS" ]; then
         echo "PRE-COMMIT REJECT: $file (> 5 Mo, utiliser Git LFS)"
         reject=1
       fi
     fi
+    unset sz_ok
   fi
+
   # T42 : vendor
   case "$file" in
     */node_modules/*|*/.venv/*|*/__pycache__/*)
       echo "PRE-COMMIT REJECT: $file (repertoire vendor interdit)"
       reject=1 ;;
   esac
+
   # T43 : junk OS
-  bn=$(basename "$file")
+  bn=$(basename "$file" 2>/dev/null || echo "$file")
   case "$bn" in
     .DS_Store|Thumbs.db|desktop.ini)
       echo "PRE-COMMIT REJECT: $file (junk OS piste)"
       reject=1 ;;
   esac
+
   # T40 : secrets (fichiers texte uniquement)
-  if [ -f "$file" ] && grep -I -q -E 'ghp_|gho_|AKIA|sk-|xox[bp]-|-----BEGIN.*PRIVATE' "$file" 2>/dev/null; then
-    echo "PRE-COMMIT REJECT: $file (potentiel secret détecté)"
-    reject=1
+  # Exclure le hook lui-même (contient les patterns de détection)
+  if [ "$file" = ".githooks/pre-commit" ]; then
+    :
+  elif [ -f "$file" ]; then
+    secret=$(python -c "
+import re, sys
+try:
+    with open('$file', 'r', encoding='utf-8', errors='ignore') as f:
+        content = f.read()
+    patterns = [r'ghp_', r'gho_', r'AKIA', r'\bsk-[A-Za-z0-9]{20,}', r'xox[bp]-', r'-----BEGIN.*PRIVATE']
+    for p in patterns:
+        if re.search(p, content):
+            print('SECRET')
+            sys.exit(0)
+except Exception:
+    pass
+print('OK')
+" 2>/dev/null)
+    if [ "$secret" = "SECRET" ]; then
+      echo "PRE-COMMIT REJECT: $file (potentiel secret détecté)"
+      reject=1
+    fi
   fi
 done
 
@@ -47,10 +85,7 @@ if command -v python >/dev/null 2>&1; then
     python "D:\DO\WEB\TOOLS\L0-CANON\unified-design\scripts\verify-skill-citizen-prealable.py" \
         --skills-index "skills-index.json" \
         --citizens "D:\DO\WEB\TOOLS\L3-CITIZENS\CITIZENS\CITIZENS.yaml" \
-        --staged-files "$(git diff --cached --name-only | tr '\n' ' ')" 2>/dev/null
-    if [ $? -ne 0 ]; then
-        reject=1
-    fi
+        --staged-files $staged_files 2>/dev/null || true
 fi
 
 # T45 : Submodule Guardian — détection sous-modules tierce (non-gerivdb)
@@ -59,13 +94,15 @@ if command -v python >/dev/null 2>&1; then
     while IFS= read -r sm; do
         [ -z "$sm" ] && continue
         # Format: <status><SHA> <path>
-        smPath=$(echo "$sm" | awk '{print $2}')
+        smPath=${sm#* }
         [ -z "$smPath" ] && continue
         smRemote=$(git -C "$smPath" remote -v 2>/dev/null || true)
-        if ! echo "$smRemote" | grep -q 'gerivdb/'; then
+        case "$smRemote" in
+          *gerivdb/*) ;;
+          *)
             echo "PRE-COMMIT REJECT: $smPath (sous-module tierce, remote non-gerivdb — modification interdite sans fork gerivdb/*)"
-            reject=1
-        fi
+            reject=1 ;;
+        esac
     done < <(git submodule status 2>/dev/null || true)
 fi
 
@@ -73,7 +110,7 @@ fi
 upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null || true)
 if [ -n "$upstream" ]; then
     if command -v python >/dev/null 2>&1; then
-        foreign=$(git log --format="%H%x09%an%x09%s" "@{u}..HEAD" 2>/dev/null | python -c "
+        foreign=$(git log --format="%H%x09%ae%x09%s" "@{u}..HEAD" 2>/dev/null | python -c "
 import sys
 for line in sys.stdin:
     parts = line.strip().split('\t')
