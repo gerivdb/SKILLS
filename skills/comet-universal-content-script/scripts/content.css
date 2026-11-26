@@ -1,0 +1,31 @@
+/* Content.css — Styles injectés par le content script universel Comet */
+/* Injecté sur <all_urls> en world ISOLATED, document_start */
+
+/* Masquage des éléments de sidecar internes si présents */
+[data-erp="sidecar"] {
+  display: none !important;
+}
+
+/* Style de surlignage pour les blocs ACK détectés */
+.comet-ack-highlight {
+  background-color: rgba(59, 130, 246, 0.15);
+  border-left: 3px solid #3B82F6;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Indicateur d'observation active */
+.comet-observer-badge {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  z-index: 2147483647;
+  background: #100E12;
+  color: #FCFCF9;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-family: system-ui, -apple-system, sans-serif;
+  border-radius: 4px;
+  opacity: 0.8;
+  pointer-events: none;
+}
