@@ -1,3 +1,25 @@
+---
+name: chrome-vs-chromium-target-check
+description: "Vérifie le chemin exact de l'exécutable Chrome/Chromium, les flags --user-data-dir, --profile-directory, --remote-debugging-port avant toute opération de débugging CDP."
+version: 1.0.0
+status: active
+intent_hash: 0xSKILL_CHROME_VS_CHROMIUM_TARGET_CHECK_20261126
+stratum: L4-TOOLS
+source_repo: gerivdb/SKILLS
+source_path: navigation-web/cdp/chrome-vs-chromium-target-check/SKILL.md
+triggers:
+  - "lance-chrome"
+  - "lance-chromium"
+  - "user-data-dir"
+  - "profile-directory"
+  - "remote-debugging-port"
+  - "cdp"
+anti_triggers:
+  - "chrome-exe-manuel"
+  - "sans-cdp"
+  - "profil-vide"
+---
+
 # Skill : chrome-vs-chromium-target-check
 
 ## Déclencheurs

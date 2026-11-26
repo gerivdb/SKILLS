@@ -1,3 +1,25 @@
+---
+name: chromium-profile-2
+description: "Pilote l'instance Chromium déjà ouverte en profil 2 (port 9222) via le Chrome DevTools Protocol (CDP) : ouvrir un onglet, naviguer, évaluer du JS, cliquer physiquement, lire bookmarks/historique, scanner les extensions."
+version: 1.0.0
+status: active
+intent_hash: 0xSKILL_CHROMIUM_PROFILE_2_20261126
+stratum: L4-TOOLS
+source_repo: gerivdb/SKILLS
+source_path: navigation-web/cdp/chromium-profile-2/SKILL.md
+triggers:
+  - "profil-2"
+  - "cdp-9222"
+  - "chrome-devtools"
+  - "ouvre-onglet"
+  - "navigue"
+  - "lit-dom"
+anti_triggers:
+  - "chrome-exe-manuel"
+  - "sans-cdp"
+  - "profil-vide"
+---
+
 # Skill : chromium-profile-2 — Pilotage CDP de Chromium (profil 2)
 
 ## Objectif

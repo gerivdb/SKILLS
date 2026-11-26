@@ -2,13 +2,14 @@
 # index-skills.ps1 — Régénération de skills-index.json (ENV3)
 # Scanne le dossier D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS/ et reconstruit
 # skills-index.json à partir des frontmatter YAML des SKILL.md.
+# Supporte l'arborescence imbriquée (sous-dossiers thématiques).
 #
 # Usage :
 #   .\index-skills.ps1
 #
 # Sortie : skills-index.json mis à jour sur disque.
 
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Continue"
 
 $SKILLS_DIR = "D:\DO\WEB\TOOLS\L4-TOOLS\SKILLS"
 $SKILLS_INDEX = "$SKILLS_DIR\skills-index.json"
@@ -18,33 +19,68 @@ if (-not (Test-Path -LiteralPath $SKILLS_DIR)) {
     exit 1
 }
 
-$dossiers = Get-ChildItem -LiteralPath $SKILLS_DIR -Directory | Where-Object { $_.Name -notmatch '^__|^\.' }
+# Trouve tous les SKILL.md de façon récursive, en excluant les dossiers système
+$skillFiles = Get-ChildItem -LiteralPath $SKILLS_DIR -Filter "SKILL.md" -Recurse | Where-Object {
+    $parent = $_.Directory.Name
+    $parent -notmatch '^__|^\.'
+}
+
+function Get-YamlValeur {
+    param([string]$texte, [string]$cle)
+    if ($texte -match ($cle + ':\s*(.+)')) {
+        return $Matches[1].Trim().Trim('"')
+    }
+    return $null
+}
+
+function Test-Frontmatter {
+    param([string]$contenu)
+    # Vérifie que le contenu commence par --- sur une ligne, puis trouve le --- de clôture
+    $lines = $contenu -split "`n"
+    if ($lines[0].Trim() -ne '---') {
+        return $false
+    }
+    for ($i = 1; $i -lt $lines.Count; $i++) {
+        if ($lines[$i].Trim() -eq '---') {
+            return $true
+        }
+        if ($i -gt 50) { break }
+    }
+    return $false
+}
+
+function Extract-Frontmatter {
+    param([string]$contenu)
+    $lines = $contenu -split "`n"
+    $fmLines = @()
+    for ($i = 1; $i -lt $lines.Count; $i++) {
+        if ($lines[$i].Trim() -eq '---') {
+            break
+        }
+        $fmLines += $lines[$i]
+    }
+    return ($fmLines -join "`n")
+}
 
 $skills = @{}
 
-foreach ($d in $dossiers) {
-    $skillMd = "$($d.FullName)\SKILL.md"
-    if (-not (Test-Path -LiteralPath $skillMd)) {
-        continue
-    }
+foreach ($f in $skillFiles) {
+    $skillMd = $f.FullName
+    $skillDir = $f.Directory
 
-    $contenu = Get-Content -LiteralPath $skillMd -Raw
-    if ($contenu -notmatch '^---\s*$([\s\S]*?)^---\s*$') {
-        continue
-    }
+    $contenu = Get-Content -LiteralPath $skillMd -Raw -ErrorAction SilentlyContinue
+    if (-not $contenu) { continue }
 
-    $frontmatter = $Matches[1]
+    if (-not (Test-Frontmatter $contenu)) { continue }
 
-    function Get-YamlValeur($texte, $cle) {
-        if ($texte -match ($cle + ':\s*(.+)')) {
-            return $Matches[1].Trim().Trim('"')
-        }
-        return $null
-    }
+    $frontmatter = Extract-Frontmatter $contenu
 
     $nom = Get-YamlValeur $frontmatter 'name'
-    if (-not $nom) { $nom = $d.Name }
+    if (-not $nom) { $nom = $skillDir.Name }
 
+    # Le path est le chemin relatif depuis SKILLS_DIR
+    $relPath = $skillDir.FullName.Substring($SKILLS_DIR.Length).TrimStart('\').TrimStart('/')
+    
     $entree = [ordered]@{}
     $entree['name'] = $nom
     $entree['type'] = Get-YamlValeur $frontmatter 'type'
@@ -56,7 +92,7 @@ foreach ($d in $dossiers) {
     $entree['author'] = Get-YamlValeur $frontmatter 'author'
     $entree['source_repo'] = Get-YamlValeur $frontmatter 'source_repo'
     $entree['source_path'] = Get-YamlValeur $frontmatter 'source_path'
-    $entree['path'] = $d.Name
+    $entree['path'] = $relPath
     $entree['description'] = Get-YamlValeur $frontmatter 'description'
     $entree['trigger'] = Get-YamlValeur $frontmatter 'trigger'
 

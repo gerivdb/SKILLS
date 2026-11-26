@@ -25,9 +25,10 @@ triggers:
   - "chromium extension debug"
   - "clear errors extension"
   - "disque vs live version"
-workdir: "D:/DO/WEB/TOOLS/L4-TOOLS/SKILLS/chromium-extension-cockpit"
+workdir: "D:/DO/WEB/TOOLS/L4-TOOLS/SKILLS/navigation-web/cdp/chromium-extension-cockpit"
 entrypoint: "scripts/chromium_cdp_cockpit.py"
 source_repo: gerivdb/SKILLS
+source_path: navigation-web/cdp/chromium-extension-cockpit/SKILL.md
 ---
 
 # Skill : chromium-extension-cockpit

@@ -1,7 +1,7 @@
 ---
 type: SKILL
 version: 1.0.0
-status: draft
+status: active
 date: "2026-11-26"
 intent_hash: 0xDAX_SKILL_CITIZEN_PREALABLE_20261126
 layer: L0-CANON
@@ -14,7 +14,7 @@ description: "Gate anti-doublon : avant tout script inline ou commande système,
 trigger: skill_citizen_prealable
 anti_triggers: []
 gericode_version: "1.0"
-stratum: L0-CANON
+stratum: L4-TOOLS
 shard_id: G
 turn_counter: 1
 uuid: dax-skill-citizen-prealable-001

@@ -1,3 +1,24 @@
+---
+name: cdp-tunnel-persistant
+description: "Établit et maintient une connexion WebSocket CDP persistante (port 9222, Profil 2) pour éliminer le barrage de réouverture de connexion à chaque opération d'écriture sur Chromium."
+version: 1.0.0
+status: active
+intent_hash: 0xSKILL_CDP_TUNNEL_PERSISTANT_20261125
+stratum: L4-TOOLS
+source_repo: gerivdb/SKILLS
+source_path: navigation-web/cdp/cdp-tunnel-persistant/SKILL.md
+triggers:
+  - "cdp-tunnel"
+  - "websocket-cdp"
+  - "persistant"
+  - "page-enable"
+  - "runtime-enable"
+anti_triggers:
+  - "chrome-exe-manuel"
+  - "sans-cdp"
+  - "profil-vide"
+---
+
 # M3 Skill — CDP Tunnel Persistant
 WAL: 0x243 | F = 0.0 | H = 0.0 | Strate: ENV2 | Type: SKILL | Version: 1.0
 IntentHash: 0xSKILL_CDP_TUNNEL_PERSISTANT_20261125
