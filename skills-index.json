@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-26T05:57:24.739342Z",
+  "generated_at_utc": "2026-11-26T06:15:14.806557Z",
   "skills": {
     "act-protocol-runner": {
       "type": "SKILL",
@@ -3003,15 +3003,15 @@
     },
     "comet-embedded-extensions": {
       "name": "comet-embedded-extensions",
-      "version": "0.1.0",
-      "status": "draft",
+      "version": "0.1.1",
+      "status": "active",
       "type": "procedural",
       "category": "cdp",
       "intent_hash": "0xCOMET_EMBEDDED_EXTENSIONS_20261126",
       "provenance": "imported",
       "source_shard": "ENV2",
       "created_at": "2026-11-26T06:45:00Z",
-      "updated_at": "2026-11-26T06:45:00Z",
+      "updated_at": "2026-11-26T07:30:00Z",
       "author": "Kilo (Shard G, ENV2)",
       "triggers": [
         "comet",
@@ -3037,15 +3037,15 @@
     },
     "comet-universal-content-script": {
       "name": "comet-universal-content-script",
-      "version": "0.1.0",
-      "status": "draft",
+      "version": "0.1.1",
+      "status": "active",
       "type": "procedural",
       "category": "cdp",
       "intent_hash": "0xCOMET_UNIVERSAL_CONTENT_SCRIPT_20261126",
       "provenance": "imported",
       "source_shard": "ENV2",
       "created_at": "2026-11-26T06:48:00Z",
-      "updated_at": "2026-11-26T06:48:00Z",
+      "updated_at": "2026-11-26T07:30:00Z",
       "author": "Kilo (Shard G, ENV2)",
       "triggers": [
         "content script",
@@ -3072,15 +3072,15 @@
     },
     "comet-proprietary-ntp": {
       "name": "comet-proprietary-ntp",
-      "version": "0.1.0",
-      "status": "draft",
+      "version": "0.1.1",
+      "status": "active",
       "type": "procedural",
       "category": "cdp",
       "intent_hash": "0xCOMET_PROPRIETARY_NTP_20261126",
       "provenance": "imported",
       "source_shard": "ENV2",
       "created_at": "2026-11-26T06:53:00Z",
-      "updated_at": "2026-11-26T06:53:00Z",
+      "updated_at": "2026-11-26T07:30:00Z",
       "author": "Kilo (Shard G, ENV2)",
       "triggers": [
         "ntp",
